@@ -13,7 +13,11 @@ stylebench-data/
 │   └── more-itertools/
 ├── camelcase/          # snake_case → camelCase naming
 │   └── ...
-└── badnames/           # Descriptive names → single-letter (a, b, c)
+├── snakecase/          # camelCase → snake_case (roundtrip from camelcase)
+│   └── ...
+├── badnames/           # Descriptive names → single-letter (a, b, c)
+│   └── ...
+└── formatting/         # Compact formatting (79 char lines, single quotes)
     └── ...
 ```
 
@@ -36,12 +40,29 @@ Transforms `snake_case` identifiers to `camelCase`:
 
 **Validation**: 98-100% test pass rate across all projects.
 
+### SnakeCase (`snakecase/`)
+
+Transforms `camelCase` identifiers back to `snake_case` (roundtrip from camelcase variant):
+- `getUserName` → `get_user_name`
+- `totalCount` → `total_count`
+
+**Validation**: 99-100% test pass rate across all projects.
+
 ### BadNaming (`badnames/`)
 
 Transforms local variable names to single-letter names:
 - `result = x + y` → `a = x + y`
 - Only renames within function scopes
 - Preserves parameters, class attributes, and public APIs
+
+**Validation**: 100% test pass rate across all projects.
+
+### Formatting (`formatting/`)
+
+Applies compact formatting style using ruff:
+- 79 character line length
+- Single quotes for strings
+- PEP 8 compliant
 
 **Validation**: 100% test pass rate across all projects.
 
