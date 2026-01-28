@@ -75,12 +75,37 @@ git clone https://github.com/yuan0-0jia/stylebench.git
 git clone https://github.com/yuan0-0jia/stylebench-data.git
 ```
 
+The code repo has symlinks to this data repo for convenient access:
+
+```bash
+cd stylebench
+ls data/original/        # Points to ../stylebench-data/original
+ls data/camelcase/       # Points to ../stylebench-data/camelcase
+```
+
 Run tests on a transformed project:
 
 ```bash
 cd stylebench-data/camelcase/humanize
-PYTHONPATH=src python -m pytest tests/ -q
+uv run --with pytest pytest tests/ -q
+
+# Or from the code repo via symlinks
+cd stylebench/data/camelcase/humanize
+uv run --with pytest pytest tests/ -q
 ```
+
+## Validation Results
+
+All variants have been validated to ensure tests still pass after transformation:
+
+| Project | Original | CamelCase | SnakeCase | BadNaming | Formatting |
+|---------|----------|-----------|-----------|-----------|------------|
+| humanize | 684 pass | 681 (99.6%) | 684 (100%) | 684 (100%) | 684 (100%) |
+| validators | 878 pass | 878 (100%) | 878 (100%) | 878 (100%) | 878 (100%) |
+| python-markdown | 776 pass | 776 (100%) | 776 (100%) | 776 (100%) | 776 (100%) |
+| more-itertools | 701 pass | 693 (98.9%) | 700 (99.9%) | 701 (100%) | 701 (100%) |
+
+*Minor CamelCase/SnakeCase failures are due to dynamic imports that can't be tracked statically.*
 
 ## Regenerating Variants
 
@@ -88,7 +113,18 @@ To regenerate the style variants from scratch using the transformers:
 
 ```bash
 cd stylebench
-python scripts/transform_all.py --output ../stylebench-data
+
+# CamelCase
+python scripts/transform.py camelcase stylebench-data/original/humanize stylebench-data/camelcase/humanize --packages humanize
+
+# SnakeCase (from camelcase)
+python scripts/transform.py snakecase stylebench-data/camelcase/humanize stylebench-data/snakecase/humanize --packages humanize
+
+# BadNaming
+python scripts/transform.py badnames stylebench-data/original/humanize stylebench-data/badnames/humanize
+
+# Formatting
+python scripts/transform.py formatting stylebench-data/original/humanize stylebench-data/formatting/humanize --style compact
 ```
 
 ## License
