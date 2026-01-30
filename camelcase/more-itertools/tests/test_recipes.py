@@ -179,7 +179,7 @@ class AllEqualTests(TestCase):
                 nextCount += 1
                 return super().__next__()
 
-        mockGroupby.sideEffect = _groupby
+        mockGroupby.side_effect = _groupby
         iterable = iter('aaaaa')
         self.assertTrue(mi.allEqual(iterable))
         self.assertEqual(list(iterable), [])

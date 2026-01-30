@@ -101,7 +101,7 @@ RTL_BIDI_RANGES = (
 
 
 @lru_cache(maxsize=None)
-def getInstalledExtensions():
+def get_installed_extensions():
     """ Return all entry_points in the `markdown.extensions` group. """
     if sys.version_info >= (3, 10):
         from importlib import metadata
@@ -125,37 +125,37 @@ def deprecated(message: str, stacklevel: int = 2):
     """
     def wrapper(func):
         @wraps(func)
-        def deprecatedFunc(*args, **kwargs):
+        def deprecated_func(*args, **kwargs):
             warnings.warn(
                 f"'{func.__name__}' is deprecated. {message}",
                 category=DeprecationWarning,
                 stacklevel=stacklevel
             )
             return func(*args, **kwargs)
-        return deprecatedFunc
+        return deprecated_func
     return wrapper
 
 
-def parseBoolValue(value: str | None, failOnErrors: bool = True, preserveNone: bool = False) -> bool | None:
+def parseBoolValue(value: str | None, fail_on_errors: bool = True, preserve_none: bool = False) -> bool | None:
     """Parses a string representing a boolean value. If parsing was successful,
        returns `True` or `False`. If `preserve_none=True`, returns `True`, `False`,
        or `None`. If parsing was not successful, raises `ValueError`, or, if
        `fail_on_errors=False`, returns `None`."""
     if not isinstance(value, str):
-        if preserveNone and value is None:
+        if preserve_none and value is None:
             return value
         return bool(value)
-    elif preserveNone and value.lower() == 'none':
+    elif preserve_none and value.lower() == 'none':
         return None
     elif value.lower() in ('true', 'yes', 'y', 'on', '1'):
         return True
     elif value.lower() in ('false', 'no', 'n', 'off', '0', 'none'):
         return False
-    elif failOnErrors:
+    elif fail_on_errors:
         raise ValueError('Cannot parse bool value: %r' % value)
 
 
-def codeEscape(text: str) -> str:
+def code_escape(text: str) -> str:
     """HTML escape a string of code."""
     if "&" in text:
         text = text.replace("&", "&amp;")
@@ -166,7 +166,7 @@ def codeEscape(text: str) -> str:
     return text
 
 
-def _getStackDepth(size: int = 2) -> int:
+def _get_stack_depth(size: int = 2) -> int:
     """Get current stack depth, performantly.
     """
     frame = sys._getframe(size)
@@ -177,9 +177,9 @@ def _getStackDepth(size: int = 2) -> int:
             return size
 
 
-def nearingRecursionLimit() -> bool:
+def nearing_recursion_limit() -> bool:
     """Return true if current stack depth is within 100 of maximum limit."""
-    return sys.getrecursionlimit() - _getStackDepth() < 100
+    return sys.getrecursionlimit() - _get_stack_depth() < 100
 
 
 # MISC AUXILIARY CLASSES
@@ -209,8 +209,8 @@ if TYPE_CHECKING:  # pragma: no cover
     class TagData(TypedDict):
         tag: str
         attrs: dict[str, str]
-        leftIndex: int
-        rightIndex: int
+        left_index: int
+        right_index: int
 
 
 class HtmlStash:
@@ -221,10 +221,10 @@ class HtmlStash:
 
     def __init__(self):
         """ Create an `HtmlStash`. """
-        self.htmlCounter = 0  # for counting inline html segments
+        self.html_counter = 0  # for counting inline html segments
         self.rawHtmlBlocks: list[str | etree.Element] = []
-        self.tagCounter = 0
-        self.tagData: list[TagData] = []  # list of dictionaries in the order tags appear
+        self.tag_counter = 0
+        self.tag_data: list[TagData] = []  # list of dictionaries in the order tags appear
 
     def store(self, html: str | etree.Element) -> str:
         """
@@ -240,32 +240,32 @@ class HtmlStash:
 
         """
         self.rawHtmlBlocks.append(html)
-        placeholder = self.getPlaceholder(self.htmlCounter)
-        self.htmlCounter += 1
+        placeholder = self.get_placeholder(self.html_counter)
+        self.html_counter += 1
         return placeholder
 
     def reset(self) -> None:
         """ Clear the stash. """
-        self.htmlCounter = 0
+        self.html_counter = 0
         self.rawHtmlBlocks = []
 
-    def getPlaceholder(self, key: int) -> str:
+    def get_placeholder(self, key: int) -> str:
         return HTML_PLACEHOLDER % key
 
-    def storeTag(self, tag: str, attrs: dict[str, str], leftIndex: int, rightIndex: int) -> str:
+    def store_tag(self, tag: str, attrs: dict[str, str], left_index: int, right_index: int) -> str:
         """Store tag data and return a placeholder."""
-        self.tagData.append({'tag': tag, 'attrs': attrs,
-                              'left_index': leftIndex,
-                              'right_index': rightIndex})
-        placeholder = TAG_PLACEHOLDER % str(self.tagCounter)
-        self.tagCounter += 1  # equal to the tag's index in `self.tag_data`
+        self.tag_data.append({'tag': tag, 'attrs': attrs,
+                              'left_index': left_index,
+                              'right_index': right_index})
+        placeholder = TAG_PLACEHOLDER % str(self.tag_counter)
+        self.tag_counter += 1  # equal to the tag's index in `self.tag_data`
         return placeholder
 
 
 # Used internally by `Registry` for each item in its sorted list.
 # Provides an easier to read API when editing the code later.
 # For example, `item.name` is more clear than `item[0]`.
-class _priorityitem(NamedTuple):
+class _PriorityItem(NamedTuple):
     name: str
     priority: float
 
@@ -312,8 +312,8 @@ class Registry(Generic[_T]):
 
     def __init__(self):
         self._data: dict[str, _T] = {}
-        self._priority: list[_priorityitem] = []
-        self._isSorted = False
+        self._priority: list[_PriorityItem] = []
+        self._is_sorted = False
 
     def __contains__(self, item: str | _T) -> bool:
         if isinstance(item, str):
@@ -351,7 +351,7 @@ class Registry(Generic[_T]):
     def __repr__(self):
         return '<{}({})>'.format(self.__class__.__name__, list(self))
 
-    def getIndexForName(self, name: str) -> int:
+    def get_index_for_name(self, name: str) -> int:
         """
         Return the index of the given name.
         """
@@ -380,9 +380,9 @@ class Registry(Generic[_T]):
         if name in self:
             # Remove existing item of same name first
             self.deregister(name)
-        self._isSorted = False
+        self._is_sorted = False
         self._data[name] = item
-        self._priority.append(_priorityitem(name, priority))
+        self._priority.append(_PriorityItem(name, priority))
 
     def deregister(self, name: str, strict: bool = True) -> None:
         """
@@ -391,7 +391,7 @@ class Registry(Generic[_T]):
         Set `strict=False` to fail silently. Otherwise a [`ValueError`][] is raised for an unknown `name`.
         """
         try:
-            index = self.getIndexForName(name)
+            index = self.get_index_for_name(name)
             del self._priority[index]
             del self._data[name]
         except ValueError:
@@ -404,6 +404,6 @@ class Registry(Generic[_T]):
 
         This method is called internally and should never be explicitly called.
         """
-        if not self._isSorted:
+        if not self._is_sorted:
             self._priority.sort(key=lambda item: item.priority, reverse=True)
-            self._isSorted = True
+            self._is_sorted = True

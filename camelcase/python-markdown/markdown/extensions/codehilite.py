@@ -39,7 +39,7 @@ except ImportError:  # pragma: no cover
     pygments = False
 
 
-def parseHlLines(expr: str) -> list[int]:
+def parse_hl_lines(expr: str) -> list[int]:
     """Support our syntax for emphasizing certain lines of code.
 
     `expr` should be like '1 2' to emphasize lines 1 and 2 of a code block.
@@ -115,10 +115,10 @@ class CodeHilite:
     def __init__(self, src: str, **options):
         self.src = src
         self.lang: str | None = options.pop('lang', None)
-        self.guessLang: bool = options.pop('guess_lang', True)
-        self.usePygments: bool = options.pop('use_pygments', True)
-        self.langPrefix: str = options.pop('lang_prefix', 'language-')
-        self.pygmentsFormatter: str | Callable = options.pop('pygments_formatter', 'html')
+        self.guess_lang: bool = options.pop('guess_lang', True)
+        self.use_pygments: bool = options.pop('use_pygments', True)
+        self.lang_prefix: str = options.pop('lang_prefix', 'language-')
+        self.pygments_formatter: str | Callable = options.pop('pygments_formatter', 'html')
 
         if 'linenos' not in options:
             options['linenos'] = options.pop('linenums', None)
@@ -146,14 +146,14 @@ class CodeHilite:
         self.src = self.src.strip('\n')
 
         if self.lang is None and shebang:
-            self._parseheader()
+            self._parseHeader()
 
-        if pygments and self.usePygments:
+        if pygments and self.use_pygments:
             try:
                 lexer = get_lexer_by_name(self.lang, **self.options)
             except ValueError:
                 try:
-                    if self.guessLang:
+                    if self.guess_lang:
                         lexer = guess_lexer(self.src, **self.options)
                     else:
                         lexer = get_lexer_by_name('text', **self.options)
@@ -162,14 +162,14 @@ class CodeHilite:
             if not self.lang:
                 # Use the guessed lexer's language instead
                 self.lang = lexer.aliases[0]
-            langStr = f'{self.langPrefix}{self.lang}'
-            if isinstance(self.pygmentsFormatter, str):
+            langStr = f'{self.lang_prefix}{self.lang}'
+            if isinstance(self.pygments_formatter, str):
                 try:
-                    formatter = get_formatter_by_name(self.pygmentsFormatter, **self.options)
+                    formatter = get_formatter_by_name(self.pygments_formatter, **self.options)
                 except ClassNotFound:
                     formatter = get_formatter_by_name('html', **self.options)
             else:
-                formatter = self.pygmentsFormatter(langStr=langStr, **self.options)
+                formatter = self.pygments_formatter(langStr=langStr, **self.options)
             return highlight(self.src, lexer, formatter)
         else:
             # just escape and build markup usable by JavaScript highlighting libraries
@@ -179,7 +179,7 @@ class CodeHilite:
             txt = txt.replace('"', '&quot;')
             classes = []
             if self.lang:
-                classes.append('{}{}'.format(self.langPrefix, self.lang))
+                classes.append('{}{}'.format(self.lang_prefix, self.lang))
             if self.options['linenos']:
                 classes.append('linenums')
             classStr = ''
@@ -191,7 +191,7 @@ class CodeHilite:
                 txt
             )
 
-    def _parseheader(self) -> None:
+    def _parseHeader(self) -> None:
         """
         Determines language of a code block from shebang line and whether the
         said line should be removed or left in place. If the shebang line
@@ -239,7 +239,7 @@ class CodeHilite:
                 # Overridable and Shebang exists - use line numbers
                 self.options['linenos'] = True
 
-            self.options['hl_lines'] = parseHlLines(m.group('hl_lines'))
+            self.options['hl_lines'] = parse_hl_lines(m.group('hl_lines'))
         else:
             # No match
             lines.insert(0, fl)
@@ -255,7 +255,7 @@ class HiliteTreeprocessor(Treeprocessor):
 
     config: dict[str, Any]
 
-    def codeUnescape(self, text: str) -> str:
+    def code_unescape(self, text: str) -> str:
         """Unescape code."""
         text = text.replace("&lt;", "<")
         text = text.replace("&gt;", ">")
@@ -274,8 +274,8 @@ class HiliteTreeprocessor(Treeprocessor):
                 if text is None:
                     continue
                 code = CodeHilite(
-                    self.codeUnescape(text),
-                    tab_length=self.md.tabLength,
+                    self.code_unescape(text),
+                    tab_length=self.md.tab_length,
                     style=localConfig.pop('pygments_style', 'default'),
                     **localConfig
                 )
@@ -329,7 +329,7 @@ class CodeHiliteExtension(Extension):
                 if isinstance(value, str):
                     try:
                         # Attempt to parse `str` as a boolean value
-                        value = parseBoolValue(value, preserveNone=True)
+                        value = parseBoolValue(value, preserve_none=True)
                     except ValueError:
                         pass  # Assume it's not a boolean value. Use as-is.
                 self.config[key] = [value, '']

@@ -23,10 +23,11 @@ from markdown.test_tools import TestCase
 
 
 class TestDefList(TestCase):
+
     def test_def_list_with_ol(self):
         self.assertMarkdownRenders(
             self.dedent(
-                """
+                '''
 
                 term
 
@@ -44,10 +45,10 @@ class TestDefList(TestCase):
                     1.  third thing
 
                         third thing details in a second paragraph.
-                """
+                '''
             ),
             self.dedent(
-                """
+                '''
                 <dl>
                 <dt>term</dt>
                 <dd>
@@ -69,15 +70,15 @@ class TestDefList(TestCase):
                 </ol>
                 </dd>
                 </dl>
-                """
+                '''
             ),
-            extensions=['def_list'],
+            extensions=['def_list']
         )
 
     def test_def_list_with_ul(self):
         self.assertMarkdownRenders(
             self.dedent(
-                """
+                '''
 
                 term
 
@@ -95,10 +96,10 @@ class TestDefList(TestCase):
                     -   third thing
 
                         third thing details in a second paragraph.
-                """
+                '''
             ),
             self.dedent(
-                """
+                '''
                 <dl>
                 <dt>term</dt>
                 <dd>
@@ -120,15 +121,15 @@ class TestDefList(TestCase):
                 </ul>
                 </dd>
                 </dl>
-                """
+                '''
             ),
-            extensions=['def_list'],
+            extensions=['def_list']
         )
 
     def test_def_list_with_nesting(self):
         self.assertMarkdownRenders(
             self.dedent(
-                """
+                '''
 
                 term
 
@@ -142,10 +143,10 @@ class TestDefList(TestCase):
                         -   first nested thing
 
                             second nested thing details
-                """
+                '''
             ),
             self.dedent(
-                """
+                '''
                 <dl>
                 <dt>term</dt>
                 <dd>
@@ -165,15 +166,15 @@ class TestDefList(TestCase):
                 </ol>
                 </dd>
                 </dl>
-                """
+                '''
             ),
-            extensions=['def_list'],
+            extensions=['def_list']
         )
 
     def test_def_list_with_nesting_self(self):
         self.assertMarkdownRenders(
             self.dedent(
-                """
+                '''
 
                 term
 
@@ -188,10 +189,10 @@ class TestDefList(TestCase):
                         - bullet point
 
                           another paragraph
-                """
+                '''
             ),
             self.dedent(
-                """
+                '''
                 <dl>
                 <dt>term</dt>
                 <dd>
@@ -210,15 +211,15 @@ class TestDefList(TestCase):
                 </dl>
                 </dd>
                 </dl>
-                """
+                '''
             ),
-            extensions=['def_list'],
+            extensions=['def_list']
         )
 
     def test_def_list_unreasonable_nesting(self):
         self.assertMarkdownRenders(
             self.dedent(
-                """
+                '''
 
                 turducken
 
@@ -236,10 +237,10 @@ class TestDefList(TestCase):
                                 -   item 1 paragraph 1
 
                                     item 1 paragraph 2
-                """
+                '''
             ),
             self.dedent(
-                """
+                '''
                 <dl>
                 <dt>turducken</dt>
                 <dd>
@@ -269,15 +270,15 @@ class TestDefList(TestCase):
                 </ol>
                 </dd>
                 </dl>
-                """
+                '''
             ),
-            extensions=['def_list'],
+            extensions=['def_list']
         )
 
     def test_def_list_nested_admontions(self):
         self.assertMarkdownRenders(
             self.dedent(
-                """
+                '''
                 term
 
                 :   definition
@@ -291,10 +292,10 @@ class TestDefList(TestCase):
                             1.  list
 
                                 continue
-                """
+                '''
             ),
             self.dedent(
-                """
+                '''
                 <dl>
                 <dt>term</dt>
                 <dd>
@@ -316,7 +317,7 @@ class TestDefList(TestCase):
                 </div>
                 </dd>
                 </dl>
-                """
+                '''
             ),
-            extensions=['def_list', 'admonition'],
+            extensions=['def_list', 'admonition']
         )

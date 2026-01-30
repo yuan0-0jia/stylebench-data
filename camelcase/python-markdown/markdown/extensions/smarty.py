@@ -193,7 +193,7 @@ class SmartyExtension(Extension):
         self.substitutions: dict[str, str] = dict(substitutions)
         self.substitutions.update(self.getConfig('substitutions', default={}))
 
-    def _addpatterns(
+    def _addPatterns(
         self,
         md: Markdown,
         patterns: Sequence[tuple[str, Sequence[int | str | etree.Element]]],
@@ -254,7 +254,7 @@ class SmartyExtension(Extension):
             (closingDoubleQuotesRegex2, (rdquo,)),
             (remainingDoubleQuotesRegex, (ldquo,))
         )
-        self._addpatterns(md, patterns, 'quotes', 30)
+        self._addPatterns(md, patterns, 'quotes', 30)
 
     def extendMarkdown(self, md):
         configs = self.getConfigs()

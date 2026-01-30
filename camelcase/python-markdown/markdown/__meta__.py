@@ -31,21 +31,21 @@ from __future__ import annotations
 __version_info__ = (3, 10, 0, 'final', 0)
 
 
-def _getVersion(versionInfo):
+def _get_version(version_info):
     " Returns a PEP 440-compliant version number from `version_info`. "
-    assert len(versionInfo) == 5
-    assert versionInfo[3] in ('dev', 'alpha', 'beta', 'rc', 'final')
+    assert len(version_info) == 5
+    assert version_info[3] in ('dev', 'alpha', 'beta', 'rc', 'final')
 
-    parts = 2 if versionInfo[2] == 0 else 3
-    v = '.'.join(map(str, versionInfo[:parts]))
+    parts = 2 if version_info[2] == 0 else 3
+    v = '.'.join(map(str, version_info[:parts]))
 
-    if versionInfo[3] == 'dev':
-        v += '.dev' + str(versionInfo[4])
-    elif versionInfo[3] != 'final':
+    if version_info[3] == 'dev':
+        v += '.dev' + str(version_info[4])
+    elif version_info[3] != 'final':
         mapping = {'alpha': 'a', 'beta': 'b', 'rc': 'rc'}
-        v += mapping[versionInfo[3]] + str(versionInfo[4])
+        v += mapping[version_info[3]] + str(version_info[4])
 
     return v
 
 
-__version__ = _getVersion(__version_info__)
+__version__ = _get_version(__version_info__)

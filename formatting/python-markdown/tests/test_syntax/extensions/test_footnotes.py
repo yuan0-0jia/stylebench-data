@@ -23,6 +23,7 @@ from markdown.test_tools import TestCase
 
 
 class TestFootnotes(TestCase):
+
     default_kwargs = {'extensions': ['footnotes']}
     maxDiff = None
 
@@ -44,7 +45,7 @@ class TestFootnotes(TestCase):
             ' title="Jump back to footnote 1 in the text">&#8617;</a></p>\n'
             '</li>\n'
             '</ol>\n'
-            '</div>',
+            '</div>'
         )
 
     def test_multiple_footnotes(self):
@@ -73,7 +74,7 @@ class TestFootnotes(TestCase):
             ' title="Jump back to footnote 2 in the text">&#8617;</a></p>\n'
             '</li>\n'
             '</ol>\n'
-            '</div>',
+            '</div>'
         )
 
     def test_multiple_footnotes_multiline(self):
@@ -103,7 +104,7 @@ class TestFootnotes(TestCase):
             ' title="Jump back to footnote 2 in the text">&#8617;</a></p>\n'
             '</li>\n'
             '</ol>\n'
-            '</div>',
+            '</div>'
         )
 
     def test_footnote_multi_line(self):
@@ -124,7 +125,7 @@ class TestFootnotes(TestCase):
             ' title="Jump back to footnote 1 in the text">&#8617;</a></p>\n'
             '</li>\n'
             '</ol>\n'
-            '</div>',
+            '</div>'
         )
 
     def test_footnote_multi_line_lazy_indent(self):
@@ -145,7 +146,7 @@ class TestFootnotes(TestCase):
             ' title="Jump back to footnote 1 in the text">&#8617;</a></p>\n'
             '</li>\n'
             '</ol>\n'
-            '</div>',
+            '</div>'
         )
 
     def test_footnote_multi_line_complex(self):
@@ -176,7 +177,7 @@ class TestFootnotes(TestCase):
             ' title="Jump back to footnote 1 in the text">&#8617;</a></p>\n'
             '</li>\n'
             '</ol>\n'
-            '</div>',
+            '</div>'
         )
 
     def test_footnote_multple_complex(self):
@@ -219,7 +220,7 @@ class TestFootnotes(TestCase):
             ' title="Jump back to footnote 2 in the text">&#8617;</a></p>\n'
             '</li>\n'
             '</ol>\n'
-            '</div>',
+            '</div>'
         )
 
     def test_footnote_multple_complex_no_blank_line_between(self):
@@ -261,7 +262,7 @@ class TestFootnotes(TestCase):
             ' title="Jump back to footnote 2 in the text">&#8617;</a></p>\n'
             '</li>\n'
             '</ol>\n'
-            '</div>',
+            '</div>'
         )
 
     def test_backlink_text(self):
@@ -279,7 +280,7 @@ class TestFootnotes(TestCase):
             '</li>\n'
             '</ol>\n'
             '</div>',
-            extension_configs={'footnotes': {'BACKLINK_TEXT': 'back'}},
+            extension_configs={'footnotes': {'BACKLINK_TEXT': 'back'}}
         )
 
     def test_footnote_separator(self):
@@ -297,7 +298,7 @@ class TestFootnotes(TestCase):
             '</li>\n'
             '</ol>\n'
             '</div>',
-            extension_configs={'footnotes': {'SEPARATOR': '-'}},
+            extension_configs={'footnotes': {'SEPARATOR': '-'}}
         )
 
     def test_backlink_title(self):
@@ -315,9 +316,7 @@ class TestFootnotes(TestCase):
             '</li>\n'
             '</ol>\n'
             '</div>',
-            extension_configs={
-                'footnotes': {'BACKLINK_TITLE': 'Jump back to footnote'}
-            },
+            extension_configs={'footnotes': {'BACKLINK_TITLE': 'Jump back to footnote'}}
         )
 
     def test_superscript_text(self):
@@ -335,7 +334,7 @@ class TestFootnotes(TestCase):
             '</li>\n'
             '</ol>\n'
             '</div>',
-            extension_configs={'footnotes': {'SUPERSCRIPT_TEXT': '[{}]'}},
+            extension_configs={'footnotes': {'SUPERSCRIPT_TEXT': '[{}]'}}
         )
 
     def test_footnote_order_by_doc_order(self):
@@ -366,7 +365,7 @@ class TestFootnotes(TestCase):
             '</li>\n'
             '</ol>\n'
             '</div>',
-            extension_configs={'footnotes': {'USE_DEFINITION_ORDER': False}},
+            extension_configs={'footnotes': {'USE_DEFINITION_ORDER': False}}
         )
 
     def test_footnote_order_tricky(self):
@@ -400,7 +399,7 @@ class TestFootnotes(TestCase):
             'href="#fnref:tricky" title="Jump back to footnote 2 in the text">&#8617;</a></p>\n'
             '</li>\n'
             '</ol>\n'
-            '</div>',
+            '</div>'
         )
 
     def test_footnote_order_by_definition(self):
@@ -431,7 +430,7 @@ class TestFootnotes(TestCase):
             '</li>\n'
             '</ol>\n'
             '</div>',
-            extension_configs={'footnotes': {'USE_DEFINITION_ORDER': True}},
+            extension_configs={'footnotes': {'USE_DEFINITION_ORDER': True}}
         )
 
     def test_footnote_reference_within_code_span(self):
@@ -439,7 +438,7 @@ class TestFootnotes(TestCase):
 
         self.assertMarkdownRenders(
             'A `code span with a footnote[^1] reference`.',
-            '<p>A <code>code span with a footnote[^1] reference</code>.</p>',
+            '<p>A <code>code span with a footnote[^1] reference</code>.</p>'
         )
 
     def test_footnote_reference_within_link(self):
@@ -447,7 +446,7 @@ class TestFootnotes(TestCase):
 
         self.assertMarkdownRenders(
             'A [link with a footnote[^1] reference](http://example.com).',
-            '<p>A <a href="http://example.com">link with a footnote[^1] reference</a>.</p>',
+            '<p>A <a href="http://example.com">link with a footnote[^1] reference</a>.</p>'
         )
 
     def test_footnote_reference_within_footnote_definition(self):
@@ -476,7 +475,7 @@ class TestFootnotes(TestCase):
             'title="Jump back to footnote 2 in the text">&#8617;</a></p>\n'
             '</li>\n'
             '</ol>\n'
-            '</div>',
+            '</div>'
         )
 
     def test_footnote_reference_within_blockquote(self):
@@ -502,7 +501,7 @@ class TestFootnotes(TestCase):
             'title="Jump back to footnote 1 in the text">&#8617;</a></p>\n'
             '</li>\n'
             '</ol>\n'
-            '</div>',
+            '</div>'
         )
 
     def test_footnote_reference_within_list(self):
@@ -530,7 +529,7 @@ class TestFootnotes(TestCase):
             'title="Jump back to footnote 1 in the text">&#8617;</a></p>\n'
             '</li>\n'
             '</ol>\n'
-            '</div>',
+            '</div>'
         )
 
     def test_footnote_references_within_loose_list(self):
@@ -538,14 +537,14 @@ class TestFootnotes(TestCase):
 
         self.assertMarkdownRenders(
             self.dedent(
-                """
+                '''
                 * Reference to [^first]
 
                 * Reference to [^second]
 
                 [^first]: First footnote definition
                 [^second]: Second footnote definition
-                """
+                '''
             ),
             '<ul>\n'
             '<li>\n'
@@ -567,7 +566,7 @@ class TestFootnotes(TestCase):
             'title="Jump back to footnote 2 in the text">&#8617;</a></p>\n'
             '</li>\n'
             '</ol>\n'
-            '</div>',
+            '</div>'
         )
 
     def test_footnote_reference_within_html(self):
@@ -592,7 +591,7 @@ class TestFootnotes(TestCase):
             'title="Jump back to footnote 1 in the text">&#8617;</a></p>\n'
             '</li>\n'
             '</ol>\n'
-            '</div>',
+            '</div>'
         )
 
     def test_duplicate_footnote_references(self):
@@ -620,7 +619,7 @@ class TestFootnotes(TestCase):
             'title="Jump back to footnote 1 in the text">&#8617;</a></p>\n'
             '</li>\n'
             '</ol>\n'
-            '</div>',
+            '</div>'
         )
 
     def test_footnote_reference_without_definition(self):
@@ -628,7 +627,7 @@ class TestFootnotes(TestCase):
 
         self.assertMarkdownRenders(
             'This has a missing footnote[^missing].',
-            '<p>This has a missing footnote[^missing].</p>',
+            '<p>This has a missing footnote[^missing].</p>'
         )
 
     def test_footnote_definition_without_reference(self):
@@ -651,7 +650,7 @@ class TestFootnotes(TestCase):
             'title="Jump back to footnote 1 in the text">&#8617;</a></p>\n'
             '</li>\n'
             '</ol>\n'
-            '</div>',
+            '</div>'
         )
 
     def test_footnote_id_with_special_chars(self):
@@ -675,5 +674,5 @@ class TestFootnotes(TestCase):
             'title="Jump back to footnote 1 in the text">&#8617;</a></p>\n'
             '</li>\n'
             '</ol>\n'
-            '</div>',
+            '</div>'
         )

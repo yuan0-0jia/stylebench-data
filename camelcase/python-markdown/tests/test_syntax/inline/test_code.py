@@ -24,7 +24,7 @@ from markdown.test_tools import TestCase
 
 class TestCode(TestCase):
 
-    def testCodeComments(self):
+    def test_code_comments(self):
         self.assertMarkdownRenders(
             self.dedent(
                 """
@@ -45,7 +45,7 @@ class TestCode(TestCase):
             )
         )
 
-    def testCodeHtml(self):
+    def test_code_html(self):
         self.assertMarkdownRenders(
             self.dedent(
                 """
@@ -63,7 +63,7 @@ class TestCode(TestCase):
             )
         )
 
-    def testNonameTag(self):
+    def test_noname_tag(self):
         # Browsers ignore `</>`, but a Markdown parser should not, and should treat it as data
         # but not a tag.
 

@@ -25,7 +25,7 @@ from markdown.extensions.tables import TableExtension
 
 class TestTableBlocks(TestCase):
 
-    def testEmptyCells(self):
+    def test_empty_cells(self):
         """Empty cells (`nbsp`)."""
 
         text = """
@@ -62,7 +62,7 @@ Content Cell  |  
             extensions=['tables']
         )
 
-    def testNoSides(self):
+    def test_no_sides(self):
         self.assertMarkdownRenders(
             self.dedent(
                 """
@@ -97,7 +97,7 @@ Content Cell  |  
             extensions=['tables']
         )
 
-    def testBothSides(self):
+    def test_both_sides(self):
         self.assertMarkdownRenders(
             self.dedent(
                 """
@@ -132,7 +132,7 @@ Content Cell  |  
             extensions=['tables']
         )
 
-    def testAlignColumns(self):
+    def test_align_columns(self):
         self.assertMarkdownRenders(
             self.dedent(
                 """
@@ -172,7 +172,7 @@ Content Cell  |  
             extensions=['tables']
         )
 
-    def testStylesInTables(self):
+    def test_styles_in_tables(self):
         self.assertMarkdownRenders(
             self.dedent(
                 """
@@ -207,7 +207,7 @@ Content Cell  |  
             extensions=['tables']
         )
 
-    def testAlignThree(self):
+    def test_align_three(self):
         self.assertMarkdownRenders(
             self.dedent(
                 """
@@ -245,7 +245,7 @@ Content Cell  |  
             extensions=['tables']
         )
 
-    def testThreeColumns(self):
+    def test_three_columns(self):
         self.assertMarkdownRenders(
             self.dedent(
                 """
@@ -283,7 +283,7 @@ Content Cell  |  
             extensions=['tables']
         )
 
-    def testThreeSpacesPrefix(self):
+    def test_three_spaces_prefix(self):
         self.assertMarkdownRenders(
             self.dedent(
                 """
@@ -343,7 +343,7 @@ Content Cell  |  
             extensions=['tables']
         )
 
-    def testCodeBlockTable(self):
+    def test_code_block_table(self):
         self.assertMarkdownRenders(
             self.dedent(
                 """
@@ -384,7 +384,7 @@ Content Cell  |  
             extensions=['tables']
         )
 
-    def testInlineCodeBlocks(self):
+    def test_inline_code_blocks(self):
         self.assertMarkdownRenders(
             self.dedent(
                 """
@@ -478,7 +478,7 @@ Content Cell  |  
             extensions=['tables']
         )
 
-    def testIssue440(self):
+    def test_issue_440(self):
         self.assertMarkdownRenders(
             self.dedent(
                 """
@@ -510,7 +510,7 @@ Content Cell  |  
             extensions=['tables']
         )
 
-    def testListsNotTables(self):
+    def test_lists_not_tables(self):
         self.assertMarkdownRenders(
             self.dedent(
                 """
@@ -531,7 +531,7 @@ Content Cell  |  
             extensions=['tables']
         )
 
-    def testIssue449(self):
+    def test_issue_449(self):
         self.assertMarkdownRenders(
             self.dedent(
                 r"""
@@ -710,7 +710,7 @@ Content Cell  |  
             extensions=['tables']
         )
 
-    def testSingleColumnTables(self):
+    def test_single_column_tables(self):
         self.assertMarkdownRenders(
             self.dedent(
                 """
@@ -843,7 +843,7 @@ Content Cell  |  
             extensions=['tables']
         )
 
-    def testAlignColumnsLegacy(self):
+    def test_align_columns_legacy(self):
         self.assertMarkdownRenders(
             self.dedent(
                 """
@@ -883,7 +883,7 @@ Content Cell  |  
             extensions=[TableExtension(use_align_attribute=True)]
         )
 
-    def testAlignThreeLegacy(self):
+    def test_align_three_legacy(self):
         self.assertMarkdownRenders(
             self.dedent(
                 """

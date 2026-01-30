@@ -39,7 +39,7 @@ class TestAbbr(TestCase):
                 *[YAFR]: Yet Another Feature Request
                 """
             ),
-            '<p>This <a href="https://example.com/{YAFR}">https://example.com/{YAFR}</a></p>',
+            '<p>This <a href="https://example.com/{YAFR}">https://example.com/{YAFR}</a></p>'
         )
 
     def test_abbr_upper(self):
@@ -55,7 +55,7 @@ class TestAbbr(TestCase):
                 """
                 <p><abbr title="Abbreviation">ABBR</abbr></p>
                 """
-            ),
+            )
         )
 
     def test_abbr_lower(self):
@@ -71,7 +71,7 @@ class TestAbbr(TestCase):
                 """
                 <p><abbr title="Abbreviation">abbr</abbr></p>
                 """
-            ),
+            )
         )
 
     def test_abbr_multiple_in_text(self):
@@ -90,7 +90,7 @@ class TestAbbr(TestCase):
                 <p>The <abbr title="Hyper Text Markup Language">HTML</abbr> specification
                 is maintained by the <abbr title="World Wide Web Consortium">W3C</abbr>.</p>
                 """
-            ),
+            )
         )
 
     def test_abbr_multiple_in_tail(self):
@@ -109,7 +109,7 @@ class TestAbbr(TestCase):
                 <p><em>The</em> <abbr title="Hyper Text Markup Language">HTML</abbr> specification
                 is maintained by the <abbr title="World Wide Web Consortium">W3C</abbr>.</p>
                 """
-            ),
+            )
         )
 
     def test_abbr_multiple_nested(self):
@@ -128,7 +128,7 @@ class TestAbbr(TestCase):
                 <p>The <em><abbr title="Hyper Text Markup Language">HTML</abbr></em> specification
                 is maintained by the <em><abbr title="World Wide Web Consortium">W3C</abbr></em>.</p>
                 """
-            ),
+            )
         )
 
     def test_abbr_override(self):
@@ -145,15 +145,16 @@ class TestAbbr(TestCase):
                 """
                 <p><abbr title="The override">ABBR</abbr></p>
                 """
-            ),
+            )
         )
 
     def test_abbr_glossary(self):
+
         glossary = {
-            'ABBR': 'Abbreviation',
-            'abbr': 'Abbreviation',
-            'HTML': 'Hyper Text Markup Language',
-            'W3C': 'World Wide Web Consortium',
+            "ABBR": "Abbreviation",
+            "abbr": "Abbreviation",
+            "HTML": "Hyper Text Markup Language",
+            "W3C": "World Wide Web Consortium"
         }
 
         self.assertMarkdownRenders(
@@ -174,18 +175,21 @@ class TestAbbr(TestCase):
                 <abbr title="World Wide Web Consortium">W3C</abbr></p>
                 """
             ),
-            extensions=[AbbrExtension(glossary=glossary)],
+            extensions=[AbbrExtension(glossary=glossary)]
         )
 
     def test_abbr_glossary_2(self):
+
         glossary = {
-            'ABBR': 'Abbreviation',
-            'abbr': 'Abbreviation',
-            'HTML': 'Hyper Text Markup Language',
-            'W3C': 'World Wide Web Consortium',
+            "ABBR": "Abbreviation",
+            "abbr": "Abbreviation",
+            "HTML": "Hyper Text Markup Language",
+            "W3C": "World Wide Web Consortium"
         }
 
-        glossary_2 = {'ABBR': 'New Abbreviation'}
+        glossary_2 = {
+            "ABBR": "New Abbreviation"
+        }
 
         abbr_ext = AbbrExtension(glossary=glossary)
         abbr_ext.load_glossary(glossary_2)
@@ -204,7 +208,7 @@ class TestAbbr(TestCase):
                 + """<abbr title="World Wide Web Consortium">W3C</abbr></p>
                 """
             ),
-            extensions=[abbr_ext],
+            extensions=[abbr_ext]
         )
 
     def test_abbr_nested(self):
@@ -223,7 +227,7 @@ class TestAbbr(TestCase):
                 <p><a href="/foo"><abbr title="Abbreviation">ABBR</abbr></a></p>
                 <p><em><abbr title="Abbreviation">ABBR</abbr></em></p>
                 """
-            ),
+            )
         )
 
     def test_abbr_no_blank_Lines(self):
@@ -240,7 +244,7 @@ class TestAbbr(TestCase):
                 <p><abbr title="Abbreviation">ABBR</abbr></p>
                 <p><abbr title="Abbreviation">ABBR</abbr></p>
                 """
-            ),
+            )
         )
 
     def test_abbr_no_space(self):
@@ -256,7 +260,7 @@ class TestAbbr(TestCase):
                 """
                 <p><abbr title="Abbreviation">ABBR</abbr></p>
                 """
-            ),
+            )
         )
 
     def test_abbr_extra_space(self):
@@ -272,7 +276,7 @@ class TestAbbr(TestCase):
                 """
                 <p><abbr title="Abbreviation">ABBR</abbr></p>
                 """
-            ),
+            )
         )
 
     def test_abbr_line_break(self):
@@ -289,7 +293,7 @@ class TestAbbr(TestCase):
                 """
                 <p><abbr title="Abbreviation">ABBR</abbr></p>
                 """
-            ),
+            )
         )
 
     def test_abbr_ignore_unmatched_case(self):
@@ -305,7 +309,7 @@ class TestAbbr(TestCase):
                 """
                 <p><abbr title="Abbreviation">ABBR</abbr> abbr</p>
                 """
-            ),
+            )
         )
 
     def test_abbr_partial_word(self):
@@ -321,7 +325,7 @@ class TestAbbr(TestCase):
                 """
                 <p><abbr title="Abbreviation">ABBR</abbr> ABBREVIATION</p>
                 """
-            ),
+            )
         )
 
     def test_abbr_unused(self):
@@ -337,7 +341,7 @@ class TestAbbr(TestCase):
                 """
                 <p>foo bar</p>
                 """
-            ),
+            )
         )
 
     def test_abbr_double_quoted(self):
@@ -353,7 +357,7 @@ class TestAbbr(TestCase):
                 """
                 <p><abbr title="&quot;Abbreviation&quot;">ABBR</abbr></p>
                 """
-            ),
+            )
         )
 
     def test_abbr_single_quoted(self):
@@ -369,7 +373,7 @@ class TestAbbr(TestCase):
                 """
                 <p><abbr title="'Abbreviation'">ABBR</abbr></p>
                 """
-            ),
+            )
         )
 
     def test_abbr_ignore_backslash(self):
@@ -386,7 +390,7 @@ class TestAbbr(TestCase):
                 <p>\foo</p>
                 <p>*[\foo]: Not an abbreviation</p>
                 """
-            ),
+            )
         )
 
     def test_abbr_hyphen(self):
@@ -402,7 +406,7 @@ class TestAbbr(TestCase):
                 """
                 <p><abbr title="Abbreviation">ABBR-abbr</abbr></p>
                 """
-            ),
+            )
         )
 
     def test_abbr_carrot(self):
@@ -418,7 +422,7 @@ class TestAbbr(TestCase):
                 """
                 <p><abbr title="Abbreviation">ABBR^abbr</abbr></p>
                 """
-            ),
+            )
         )
 
     def test_abbr_bracket(self):
@@ -434,7 +438,7 @@ class TestAbbr(TestCase):
                 """
                 <p><abbr title="Abbreviation">ABBR]abbr</abbr></p>
                 """
-            ),
+            )
         )
 
     def test_abbr_with_attr_list(self):
@@ -451,7 +455,7 @@ class TestAbbr(TestCase):
                 <p><img alt="Image with abbr in title" src="abbr.png" title="Image with abbr in title" /></p>
                 """
             ),
-            extensions=['abbr', 'attr_list'],
+            extensions=['abbr', 'attr_list']
         )
 
     def test_abbr_superset_vs_subset(self):
@@ -472,7 +476,7 @@ class TestAbbr(TestCase):
                 + """and <abbr title="Abbreviation Superset Definition">abbr-SS</abbr> """
                 + """should have different definitions.</p>
                 """
-            ),
+            )
         )
 
     def test_abbr_empty(self):
@@ -504,7 +508,7 @@ class TestAbbr(TestCase):
                 + """<p>*[ABBR]:</p>\n"""
                 + """<p>Testing document text.</p>
                 """
-            ),
+            )
         )
 
     def test_abbr_clear(self):
@@ -524,7 +528,7 @@ class TestAbbr(TestCase):
                 """
                 <p>abbr ABBR</p>
                 """
-            ),
+            )
         )
 
     def test_abbr_reset(self):
@@ -533,13 +537,7 @@ class TestAbbr(TestCase):
         md.convert('*[abbr]: Abbreviation Definition')
         self.assertEqual(ext.abbrs, {'abbr': 'Abbreviation Definition'})
         md.convert('*[ABBR]: Capitalised Abbreviation')
-        self.assertEqual(
-            ext.abbrs,
-            {
-                'abbr': 'Abbreviation Definition',
-                'ABBR': 'Capitalised Abbreviation',
-            },
-        )
+        self.assertEqual(ext.abbrs, {'abbr': 'Abbreviation Definition', 'ABBR': 'Capitalised Abbreviation'})
         md.reset()
         self.assertEqual(ext.abbrs, {})
         md.convert('*[foo]: Foo Definition')

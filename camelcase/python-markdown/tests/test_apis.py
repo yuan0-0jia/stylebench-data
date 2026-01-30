@@ -29,7 +29,7 @@ import sys
 import os
 import markdown
 import warnings
-from markdown.__main__ import parseOptions
+from markdown.__main__ import parse_options
 from markdown import inlinepatterns
 from logging import DEBUG, WARNING, CRITICAL
 import yaml
@@ -128,7 +128,7 @@ class TestBlockParser(unittest.TestCase):
         text = 'foo'
         self.parser.parseChunk(root, text)
         self.assertEqual(
-            markdown.serializers.toXhtmlString(root),
+            markdown.serializers.to_xhtml_string(root),
             "<div><p>foo</p></div>"
         )
 
@@ -139,7 +139,7 @@ class TestBlockParser(unittest.TestCase):
         self.assertIsInstance(tree, etree.ElementTree)
         self.assertIs(etree.iselement(tree.getroot()), True)
         self.assertEqual(
-            markdown.serializers.toXhtmlString(tree.getroot()),
+            markdown.serializers.to_xhtml_string(tree.getroot()),
             "<div><h1>foo</h1><p>bar</p><pre><code>baz\n</code></pre></div>"
         )
 
@@ -191,15 +191,15 @@ class TestHtmlStash(unittest.TestCase):
 
     def testSimpleStore(self):
         """ Test `HtmlStash.store`. """
-        self.assertEqual(self.placeholder, self.stash.getPlaceholder(0))
-        self.assertEqual(self.stash.htmlCounter, 1)
+        self.assertEqual(self.placeholder, self.stash.get_placeholder(0))
+        self.assertEqual(self.stash.html_counter, 1)
         self.assertEqual(self.stash.rawHtmlBlocks, ['foo'])
 
     def testStoreMore(self):
         """ Test `HtmlStash.store` with additional blocks. """
         placeholder = self.stash.store('bar')
-        self.assertEqual(placeholder, self.stash.getPlaceholder(1))
-        self.assertEqual(self.stash.htmlCounter, 2)
+        self.assertEqual(placeholder, self.stash.get_placeholder(1))
+        self.assertEqual(self.stash.html_counter, 2)
         self.assertEqual(
             self.stash.rawHtmlBlocks,
             ['foo', 'bar']
@@ -208,7 +208,7 @@ class TestHtmlStash(unittest.TestCase):
     def testReset(self):
         """ Test `HtmlStash.reset`. """
         self.stash.reset()
-        self.assertEqual(self.stash.htmlCounter, 0)
+        self.assertEqual(self.stash.html_counter, 0)
         self.assertEqual(self.stash.rawHtmlBlocks, [])
 
 
@@ -248,20 +248,20 @@ class RegistryTests(unittest.TestCase):
 
     def testIsSorted(self):
         r = markdown.util.Registry()
-        self.assertIs(r._isSorted, False)
+        self.assertIs(r._is_sorted, False)
         r.register(Item('a'), 'a', 20)
         list(r)
-        self.assertIs(r._isSorted, True)
+        self.assertIs(r._is_sorted, True)
         r.register(Item('b'), 'b', 21)
-        self.assertIs(r._isSorted, False)
+        self.assertIs(r._is_sorted, False)
         r['a']
-        self.assertIs(r._isSorted, True)
-        r._isSorted = False
-        r.getIndexForName('a')
-        self.assertIs(r._isSorted, True)
-        r._isSorted = False
+        self.assertIs(r._is_sorted, True)
+        r._is_sorted = False
+        r.get_index_for_name('a')
+        self.assertIs(r._is_sorted, True)
+        r._is_sorted = False
         repr(r)
-        self.assertIs(r._isSorted, True)
+        self.assertIs(r._is_sorted, True)
 
     def testDeregister(self):
         r = markdown.util.Registry()
@@ -342,10 +342,10 @@ class RegistryTests(unittest.TestCase):
         r = markdown.util.Registry()
         r.register(Item('a'), 'a', 20)
         r.register(Item('b'), 'b', 30)
-        self.assertEqual(r.getIndexForName('a'), 1)
-        self.assertEqual(r.getIndexForName('b'), 0)
+        self.assertEqual(r.get_index_for_name('a'), 1)
+        self.assertEqual(r.get_index_for_name('b'), 0)
         with self.assertRaises(ValueError):
-            r.getIndexForName('c')
+            r.get_index_for_name('c')
 
     def testRegisterDupplicate(self):
         r = markdown.util.Registry()
@@ -371,7 +371,7 @@ class TestErrors(unittest.TestCase):
 
     def testBadOutputFormat(self):
         """ Test failure on bad output_format. """
-        self.assertRaises(KeyError, markdown.Markdown, outputFormat='invalid')
+        self.assertRaises(KeyError, markdown.Markdown, output_format='invalid')
 
     def testLoadExtensionFailure(self):
         """ Test failure of an extension to load. """
@@ -426,12 +426,12 @@ class testETreeComments(unittest.TestCase):
     def testCommentIsBlockLevel(self):
         """ Test that an `ElementTree` `Comment` is recognized as `BlockLevel`. """
         md = markdown.Markdown()
-        self.assertIs(md.isBlockLevel(self.comment.tag), False)
+        self.assertIs(md.is_block_level(self.comment.tag), False)
 
     def testCommentSerialization(self):
         """ Test that an `ElementTree` `Comment` serializes properly. """
         self.assertEqual(
-            markdown.serializers.toHtmlString(self.comment),
+            markdown.serializers.to_html_string(self.comment),
             '<!--foo-->'
         )
 
@@ -440,7 +440,7 @@ class testETreeComments(unittest.TestCase):
         pretty = markdown.treeprocessors.PrettifyTreeprocessor(markdown.Markdown())
         pretty.run(self.comment)
         self.assertEqual(
-            markdown.serializers.toHtmlString(self.comment),
+            markdown.serializers.to_html_string(self.comment),
             '<!--foo-->\n'
         )
 
@@ -507,13 +507,13 @@ class testSerializers(unittest.TestCase):
         p.text = 'foo <&escaped>'
         p.set('hidden', 'hidden')
         etree.SubElement(el, 'hr')
-        nonElement = etree.SubElement(el, None)
-        nonElement.text = 'non-element text'
-        script = etree.SubElement(nonElement, 'script')
+        non_element = etree.SubElement(el, None)
+        non_element.text = 'non-element text'
+        script = etree.SubElement(non_element, 'script')
         script.text = '<&"test\nescaping">'
         el.tail = "tail text"
         self.assertEqual(
-            markdown.serializers.toHtmlString(el),
+            markdown.serializers.to_html_string(el),
             '<div id="foo&lt;&amp;&quot;&gt;">'
             '<p hidden>foo &lt;&amp;escaped&gt;</p>'
             '<hr>'
@@ -530,13 +530,13 @@ class testSerializers(unittest.TestCase):
         p.text = 'foo<&escaped>'
         p.set('hidden', 'hidden')
         etree.SubElement(el, 'hr')
-        nonElement = etree.SubElement(el, None)
-        nonElement.text = 'non-element text'
-        script = etree.SubElement(nonElement, 'script')
+        non_element = etree.SubElement(el, None)
+        non_element.text = 'non-element text'
+        script = etree.SubElement(non_element, 'script')
         script.text = '<&"test\nescaping">'
         el.tail = "tail text"
         self.assertEqual(
-            markdown.serializers.toXhtmlString(el),
+            markdown.serializers.to_xhtml_string(el),
             '<div id="foo&lt;&amp;&quot;&gt;">'
             '<p hidden="hidden">foo&lt;&amp;escaped&gt;</p>'
             '<hr />'
@@ -553,7 +553,7 @@ class testSerializers(unittest.TestCase):
         em.text = 'html'
         etree.SubElement(el, 'HR')
         self.assertEqual(
-            markdown.serializers.toXhtmlString(el),
+            markdown.serializers.to_xhtml_string(el),
             '<MixedCase>not valid <EMPHASIS>html</EMPHASIS><HR /></MixedCase>'
         )
 
@@ -562,7 +562,7 @@ class testSerializers(unittest.TestCase):
         pi = ProcessingInstruction('foo', text='<&"test\nescaping">')
         self.assertIs(pi.tag, ProcessingInstruction)
         self.assertEqual(
-            markdown.serializers.toXhtmlString(pi),
+            markdown.serializers.to_xhtml_string(pi),
             '<?foo &lt;&amp;"test\nescaping"&gt;?>'
         )
 
@@ -581,7 +581,7 @@ class testSerializers(unittest.TestCase):
         ann = etree.SubElement(sem, 'annotations')
         ann.text = 'x^2'
         self.assertEqual(
-            markdown.serializers.toXhtmlString(div),
+            markdown.serializers.to_xhtml_string(div),
             '<div>'
             '<math display="block" xmlns="http://www.w3.org/1998/Math/MathML">'
             '<semantics>'
@@ -600,7 +600,7 @@ class testSerializers(unittest.TestCase):
         div = etree.Element('div')
         div.set(etree.QName('foo'), etree.QName('bar'))
         self.assertEqual(
-            markdown.serializers.toXhtmlString(div),
+            markdown.serializers.to_xhtml_string(div),
             '<div foo="bar"></div>'
         )
 
@@ -608,14 +608,14 @@ class testSerializers(unittest.TestCase):
         """ Test serialization of `QName` with no tag. """
         qname = etree.QName('http://www.w3.org/1998/Math/MathML')
         el = etree.Element(qname)
-        self.assertRaises(ValueError, markdown.serializers.toXhtmlString, el)
+        self.assertRaises(ValueError, markdown.serializers.to_xhtml_string, el)
 
     def testQNameEscaping(self):
         """ Test `QName` escaping. """
         qname = etree.QName('<&"test\nescaping">', 'div')
         el = etree.Element(qname)
         self.assertEqual(
-            markdown.serializers.toXhtmlString(el),
+            markdown.serializers.to_xhtml_string(el),
             '<div xmlns="&lt;&amp;&quot;test&#10;escaping&quot;&gt;"></div>'
         )
 
@@ -624,7 +624,7 @@ class testSerializers(unittest.TestCase):
         qname = etree.QName('&lt;&amp;"test&#10;escaping"&gt;', 'div')
         el = etree.Element(qname)
         self.assertEqual(
-            markdown.serializers.toXhtmlString(el),
+            markdown.serializers.to_xhtml_string(el),
             '<div xmlns="&lt;&amp;&quot;test&#10;escaping&quot;&gt;"></div>'
         )
 
@@ -636,27 +636,27 @@ class testSerializers(unittest.TestCase):
 
         class registerFakeSerializer(markdown.extensions.Extension):
             def extendMarkdown(self, md):
-                md.outputFormats['fake'] = fakeSerializer
+                md.output_formats['fake'] = fakeSerializer
 
         return registerFakeSerializer()
 
     def testRegisterSerializer(self):
         self.assertEqual(
             markdown.markdown(
-                'baz', extensions=[self.buildExtension()], outputFormat='fake'
+                'baz', extensions=[self.buildExtension()], output_format='fake'
             ),
             '<p>foo</p>'
         )
 
     def testXHTMLOutput(self):
         self.assertEqual(
-            markdown.markdown('foo  \nbar', outputFormat='xhtml'),
+            markdown.markdown('foo  \nbar', output_format='xhtml'),
             '<p>foo<br />\nbar</p>'
         )
 
     def testHTMLOutput(self):
         self.assertEqual(
-            markdown.markdown('foo  \nbar', outputFormat='html'),
+            markdown.markdown('foo  \nbar', output_format='html'),
             '<p>foo<br>\nbar</p>'
         )
 
@@ -675,7 +675,7 @@ class testAtomicString(unittest.TestCase):
         p.text = 'some *text*'
         new = self.inlineprocessor.run(tree)
         self.assertEqual(
-            markdown.serializers.toHtmlString(new),
+            markdown.serializers.to_html_string(new),
             '<div><p>some <em>text</em></p></div>'
         )
 
@@ -686,7 +686,7 @@ class testAtomicString(unittest.TestCase):
         p.text = markdown.util.AtomicString('some *text*')
         new = self.inlineprocessor.run(tree)
         self.assertEqual(
-            markdown.serializers.toHtmlString(new),
+            markdown.serializers.to_html_string(new),
             '<div><p>some *text*</p></div>'
         )
 
@@ -706,7 +706,7 @@ class testAtomicString(unittest.TestCase):
         span1.tail = markdown.util.AtomicString(' *with*')
         new = self.inlineprocessor.run(tree)
         self.assertEqual(
-            markdown.serializers.toHtmlString(new),
+            markdown.serializers.to_html_string(new),
             '<div><p>*some* <span>*more* <span>*text* <span>*here*</span> '
             '*to*</span> *test*</span> *with*</p></div>'
         )
@@ -717,16 +717,16 @@ class testAtomicString(unittest.TestCase):
         p = etree.SubElement(tree, 'p')
         p.text = 'a marker c'
         self.md.inlinePatterns.register(
-            _inlineprocessorthatreturnsatomicstring(r'marker', self.md), 'test', 100
+            _InlineProcessorThatReturnsAtomicString(r'marker', self.md), 'test', 100
         )
         new = self.inlineprocessor.run(tree)
         self.assertEqual(
-            markdown.serializers.toHtmlString(new),
+            markdown.serializers.to_html_string(new),
             '<div><p>a &lt;b&gt;atomic&lt;/b&gt; c</p></div>'
         )
 
 
-class _inlineprocessorthatreturnsatomicstring(inlinepatterns.InlineProcessor):
+class _InlineProcessorThatReturnsAtomicString(inlinepatterns.InlineProcessor):
     """ Return a simple text of `group(1)` of a Pattern. """
     def handleMatch(self, m, data):
         return markdown.util.AtomicString('<b>atomic</b>'), m.start(0), m.end(0)
@@ -745,8 +745,8 @@ class TestConfigParsing(unittest.TestCase):
         self.assertParses('none', False)
 
     def testPreserveNone(self):
-        self.assertIsNone(markdown.util.parseBoolValue('None', preserveNone=True))
-        self.assertIsNone(markdown.util.parseBoolValue(None, preserveNone=True))
+        self.assertIsNone(markdown.util.parseBoolValue('None', preserve_none=True))
+        self.assertIsNone(markdown.util.parseBoolValue(None, preserve_none=True))
 
     def testInvalidBooleansParsing(self):
         self.assertRaises(ValueError, markdown.util.parseBoolValue, 'novalue')
@@ -756,7 +756,7 @@ class TestCliOptionParsing(unittest.TestCase):
     """ Test parsing of Command Line Interface Options. """
 
     def setUp(self):
-        self.defaultOptions = {
+        self.default_options = {
             'input': None,
             'output': None,
             'encoding': None,
@@ -772,70 +772,70 @@ class TestCliOptionParsing(unittest.TestCase):
             os.remove(self.tempfile)
 
     def testNoOptions(self):
-        options, loggingLevel = parseOptions([])
-        self.assertEqual(options, self.defaultOptions)
-        self.assertEqual(loggingLevel, CRITICAL)
+        options, logging_level = parse_options([])
+        self.assertEqual(options, self.default_options)
+        self.assertEqual(logging_level, CRITICAL)
 
     def testQuietOption(self):
-        options, loggingLevel = parseOptions(['-q'])
-        self.assertGreater(loggingLevel, CRITICAL)
+        options, logging_level = parse_options(['-q'])
+        self.assertGreater(logging_level, CRITICAL)
 
     def testVerboseOption(self):
-        options, loggingLevel = parseOptions(['-v'])
-        self.assertEqual(loggingLevel, WARNING)
+        options, logging_level = parse_options(['-v'])
+        self.assertEqual(logging_level, WARNING)
 
     def testNoisyOption(self):
-        options, loggingLevel = parseOptions(['--noisy'])
-        self.assertEqual(loggingLevel, DEBUG)
+        options, logging_level = parse_options(['--noisy'])
+        self.assertEqual(logging_level, DEBUG)
 
     def testInputFileOption(self):
-        options, loggingLevel = parseOptions(['foo.txt'])
-        self.defaultOptions['input'] = 'foo.txt'
-        self.assertEqual(options, self.defaultOptions)
+        options, logging_level = parse_options(['foo.txt'])
+        self.default_options['input'] = 'foo.txt'
+        self.assertEqual(options, self.default_options)
 
     def testOutputFileOption(self):
-        options, loggingLevel = parseOptions(['-f', 'foo.html'])
-        self.defaultOptions['output'] = 'foo.html'
-        self.assertEqual(options, self.defaultOptions)
+        options, logging_level = parse_options(['-f', 'foo.html'])
+        self.default_options['output'] = 'foo.html'
+        self.assertEqual(options, self.default_options)
 
     def testInputAndOutputFileOptions(self):
-        options, loggingLevel = parseOptions(['-f', 'foo.html', 'foo.txt'])
-        self.defaultOptions['output'] = 'foo.html'
-        self.defaultOptions['input'] = 'foo.txt'
-        self.assertEqual(options, self.defaultOptions)
+        options, logging_level = parse_options(['-f', 'foo.html', 'foo.txt'])
+        self.default_options['output'] = 'foo.html'
+        self.default_options['input'] = 'foo.txt'
+        self.assertEqual(options, self.default_options)
 
     def testEncodingOption(self):
-        options, loggingLevel = parseOptions(['-e', 'utf-8'])
-        self.defaultOptions['encoding'] = 'utf-8'
-        self.assertEqual(options, self.defaultOptions)
+        options, logging_level = parse_options(['-e', 'utf-8'])
+        self.default_options['encoding'] = 'utf-8'
+        self.assertEqual(options, self.default_options)
 
     def testOutputFormatOption(self):
-        options, loggingLevel = parseOptions(['-o', 'html'])
-        self.defaultOptions['output_format'] = 'html'
-        self.assertEqual(options, self.defaultOptions)
+        options, logging_level = parse_options(['-o', 'html'])
+        self.default_options['output_format'] = 'html'
+        self.assertEqual(options, self.default_options)
 
     def testNoLazyOlOption(self):
-        options, loggingLevel = parseOptions(['-n'])
-        self.defaultOptions['lazy_ol'] = False
-        self.assertEqual(options, self.defaultOptions)
+        options, logging_level = parse_options(['-n'])
+        self.default_options['lazy_ol'] = False
+        self.assertEqual(options, self.default_options)
 
     def testExtensionOption(self):
-        options, loggingLevel = parseOptions(['-x', 'markdown.extensions.footnotes'])
-        self.defaultOptions['extensions'] = ['markdown.extensions.footnotes']
-        self.assertEqual(options, self.defaultOptions)
+        options, logging_level = parse_options(['-x', 'markdown.extensions.footnotes'])
+        self.default_options['extensions'] = ['markdown.extensions.footnotes']
+        self.assertEqual(options, self.default_options)
 
     def testMultipleExtensionOptions(self):
-        options, loggingLevel = parseOptions([
+        options, logging_level = parse_options([
             '-x', 'markdown.extensions.footnotes',
             '-x', 'markdown.extensions.smarty'
         ])
-        self.defaultOptions['extensions'] = [
+        self.default_options['extensions'] = [
             'markdown.extensions.footnotes',
             'markdown.extensions.smarty'
         ]
-        self.assertEqual(options, self.defaultOptions)
+        self.assertEqual(options, self.default_options)
 
-    def createConfigFile(self, config):
+    def create_config_file(self, config):
         """ Helper to create temporary configuration files. """
         if not isinstance(config, str):
             # convert to string
@@ -855,10 +855,10 @@ class TestCliOptionParsing(unittest.TestCase):
                 'PLACE_MARKER': '~~~footnotes~~~'
             }
         }
-        self.createConfigFile(config)
-        options, loggingLevel = parseOptions(['-c', self.tempfile])
-        self.defaultOptions['extension_configs'] = config
-        self.assertEqual(options, self.defaultOptions)
+        self.create_config_file(config)
+        options, logging_level = parse_options(['-c', self.tempfile])
+        self.default_options['extension_configs'] = config
+        self.assertEqual(options, self.default_options)
 
     def textBoolExtensionConfigOption(self):
         config = {
@@ -868,10 +868,10 @@ class TestCliOptionParsing(unittest.TestCase):
                 'permalink': True
             }
         }
-        self.createConfigFile(config)
-        options, loggingLevel = parseOptions(['-c', self.tempfile])
-        self.defaultOptions['extension_configs'] = config
-        self.assertEqual(options, self.defaultOptions)
+        self.create_config_file(config)
+        options, logging_level = parse_options(['-c', self.tempfile])
+        self.default_options['extension_configs'] = config
+        self.assertEqual(options, self.default_options)
 
     def testExtensionConfigOptionAsJSON(self):
         config = {
@@ -885,21 +885,21 @@ class TestCliOptionParsing(unittest.TestCase):
             }
         }
         import json
-        self.createConfigFile(json.dumps(config))
-        options, loggingLevel = parseOptions(['-c', self.tempfile])
-        self.defaultOptions['extension_configs'] = config
-        self.assertEqual(options, self.defaultOptions)
+        self.create_config_file(json.dumps(config))
+        options, logging_level = parse_options(['-c', self.tempfile])
+        self.default_options['extension_configs'] = config
+        self.assertEqual(options, self.default_options)
 
     def testExtensionConfigOptionMissingFile(self):
-        self.assertRaises(IOError, parseOptions, ['-c', 'missing_file.yaml'])
+        self.assertRaises(IOError, parse_options, ['-c', 'missing_file.yaml'])
 
     def testExtensionConfigOptionBadFormat(self):
         config = """
 [footnotes]
 PLACE_MARKER= ~~~footnotes~~~
 """
-        self.createConfigFile(config)
-        self.assertRaises(yaml.YAMLError, parseOptions, ['-c', self.tempfile])
+        self.create_config_file(config)
+        self.assertRaises(yaml.YAMLError, parse_options, ['-c', self.tempfile])
 
 
 class TestEscapeAppend(unittest.TestCase):
@@ -920,10 +920,10 @@ class TestBlockAppend(unittest.TestCase):
     def testBlockAppend(self):
         """ Test that appended escapes are only in the current instance. """
         md = markdown.Markdown()
-        md.blockLevelElements.append('test')
-        self.assertEqual('test' in md.blockLevelElements, True)
+        md.block_level_elements.append('test')
+        self.assertEqual('test' in md.block_level_elements, True)
         md2 = markdown.Markdown()
-        self.assertEqual('test' not in md2.blockLevelElements, True)
+        self.assertEqual('test' not in md2.block_level_elements, True)
 
 
 class TestAncestorExclusion(unittest.TestCase):
@@ -957,7 +957,7 @@ class TestAncestorExclusion(unittest.TestCase):
         """Setup markdown object."""
         self.md = markdown.Markdown(extensions=[TestAncestorExclusion.AncestorExtension()])
 
-    def testAncestors(self):
+    def test_ancestors(self):
         """ Test that an extension can exclude parent tags. """
         test = """
 Some +test+ and a [+link+](http://test.com)
@@ -967,7 +967,7 @@ Some +test+ and a [+link+](http://test.com)
         self.md.reset()
         self.assertEqual(self.md.convert(test), result)
 
-    def testAncestorsTail(self):
+    def test_ancestors_tail(self):
         """ Test that an extension can exclude parent tags when dealing with a tail. """
         test = """
 [***+em+*+strong+**](http://test.com)

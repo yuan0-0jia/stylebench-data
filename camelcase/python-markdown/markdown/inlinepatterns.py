@@ -50,7 +50,7 @@ if TYPE_CHECKING:  # pragma: no cover
     from markdown import Markdown
 
 
-def buildInlinepatterns(md: Markdown, **kwargs: Any) -> util.Registry[InlineProcessor]:
+def build_inlinepatterns(md: Markdown, **kwargs: Any) -> util.Registry[InlineProcessor]:
     """
     Build the default set of inline patterns for Markdown.
 
@@ -220,7 +220,7 @@ class Pattern:  # pragma: no cover
     would cause the content to be a descendant of one of the listed tag names.
     """
 
-    compiledRe: re.Pattern[str]
+    compiled_re: re.Pattern[str]
     md: Markdown | None
 
     def __init__(self, pattern: str, md: Markdown | None = None):
@@ -235,14 +235,14 @@ class Pattern:  # pragma: no cover
 
         """
         self.pattern = pattern
-        self.compiledRe = re.compile(r"^(.*?)%s(.*)$" % pattern,
+        self.compiled_re = re.compile(r"^(.*?)%s(.*)$" % pattern,
                                       re.DOTALL | re.UNICODE)
 
         self.md = md
 
     def getCompiledRegExp(self) -> re.Pattern:
         """ Return a compiled regular expression. """
-        return self.compiledRe
+        return self.compiled_re
 
     def handleMatch(self, m: re.Match[str]) -> etree.Element | str:
         """Return a ElementTree element from the given match.
@@ -264,11 +264,11 @@ class Pattern:  # pragma: no cover
     def unescape(self, text: str) -> str:
         """ Return unescaped text given text with an inline placeholder. """
         try:
-            stash = self.md.treeprocessors['inline'].stashedNodes
+            stash = self.md.treeprocessors['inline'].stashed_nodes
         except KeyError:  # pragma: no cover
             return text
 
-        def getStash(m):
+        def get_stash(m):
             id = m.group(1)
             if id in stash:
                 value = stash.get(id)
@@ -277,7 +277,7 @@ class Pattern:  # pragma: no cover
                 else:
                     # An `etree` Element - return text content only
                     return ''.join(value.itertext())
-        return util.INLINE_PLACEHOLDER_RE.sub(getStash, text)
+        return util.INLINE_PLACEHOLDER_RE.sub(get_stash, text)
 
 
 class InlineProcessor(Pattern):
@@ -300,10 +300,10 @@ class InlineProcessor(Pattern):
 
         """
         self.pattern = pattern
-        self.compiledRe = re.compile(pattern, re.DOTALL | re.UNICODE)
+        self.compiled_re = re.compile(pattern, re.DOTALL | re.UNICODE)
 
         # API for Markdown to pass `safe_mode` into instance
-        self.safeMode = False
+        self.safe_mode = False
         self.md = md
 
     def handleMatch(self, m: re.Match[str], data: str) -> tuple[etree.Element | str | None, int | None, int | None]:
@@ -452,7 +452,7 @@ class BacktickInlineProcessor(InlineProcessor):
         """
         if m.group(3):
             el = etree.Element(self.tag)
-            el.text = util.AtomicString(util.codeEscape(m.group(3).strip()))
+            el.text = util.AtomicString(util.code_escape(m.group(3).strip()))
             return el, m.start(0), m.end(0)
         else:
             return m.group(1).replace('\\\\', self.ESCAPED_BSLASH), m.start(0), m.end(0)
@@ -504,18 +504,18 @@ class HtmlInlineProcessor(InlineProcessor):
     """ Store raw inline html and return a placeholder. """
     def handleMatch(self, m: re.Match[str], data: str) -> tuple[str, int, int]:
         """ Store the text of `group(1)` of a pattern and return a placeholder string. """
-        rawhtml = self.backslashUnescape(self.unescape(m.group(1)))
+        rawhtml = self.backslash_unescape(self.unescape(m.group(1)))
         placeHolder = self.md.htmlStash.store(rawhtml)
         return placeHolder, m.start(0), m.end(0)
 
     def unescape(self, text: str) -> str:
         """ Return unescaped text given text with an inline placeholder. """
         try:
-            stash = self.md.treeprocessors['inline'].stashedNodes
+            stash = self.md.treeprocessors['inline'].stashed_nodes
         except KeyError:  # pragma: no cover
             return text
 
-        def getStash(m: re.Match[str]) -> str:
+        def get_stash(m: re.Match[str]) -> str:
             id = m.group(1)
             value = stash.get(id)
             if value is not None:
@@ -525,9 +525,9 @@ class HtmlInlineProcessor(InlineProcessor):
                 except Exception:
                     return r'\%s' % value
 
-        return util.INLINE_PLACEHOLDER_RE.sub(getStash, text)
+        return util.INLINE_PLACEHOLDER_RE.sub(get_stash, text)
 
-    def backslashUnescape(self, text: str) -> str:
+    def backslash_unescape(self, text: str) -> str:
         """ Return text with backslash escapes undone (backslashes are restored). """
         try:
             RE = self.md.treeprocessors['unescape'].RE
@@ -552,41 +552,41 @@ class AsteriskProcessor(InlineProcessor):
     ]
     """ The various strong and emphasis patterns handled by this processor. """
 
-    def buildSingle(self, m: re.Match[str], tag: str, idx: int) -> etree.Element:
+    def build_single(self, m: re.Match[str], tag: str, idx: int) -> etree.Element:
         """Return single tag."""
         el1 = etree.Element(tag)
         text = m.group(2)
-        self.parseSubPatterns(text, el1, None, idx)
+        self.parse_sub_patterns(text, el1, None, idx)
         return el1
 
-    def buildDouble(self, m: re.Match[str], tags: str, idx: int) -> etree.Element:
+    def build_double(self, m: re.Match[str], tags: str, idx: int) -> etree.Element:
         """Return double tag."""
 
         tag1, tag2 = tags.split(",")
         el1 = etree.Element(tag1)
         el2 = etree.Element(tag2)
         text = m.group(2)
-        self.parseSubPatterns(text, el2, None, idx)
+        self.parse_sub_patterns(text, el2, None, idx)
         el1.append(el2)
         if len(m.groups()) == 3:
             text = m.group(3)
-            self.parseSubPatterns(text, el1, el2, idx)
+            self.parse_sub_patterns(text, el1, el2, idx)
         return el1
 
-    def buildDouble2(self, m: re.Match[str], tags: str, idx: int) -> etree.Element:
+    def build_double2(self, m: re.Match[str], tags: str, idx: int) -> etree.Element:
         """Return double tags (variant 2): `<strong>text <em>text</em></strong>`."""
 
         tag1, tag2 = tags.split(",")
         el1 = etree.Element(tag1)
         el2 = etree.Element(tag2)
         text = m.group(2)
-        self.parseSubPatterns(text, el1, None, idx)
+        self.parse_sub_patterns(text, el1, None, idx)
         text = m.group(3)
         el1.append(el2)
-        self.parseSubPatterns(text, el2, None, idx)
+        self.parse_sub_patterns(text, el2, None, idx)
         return el1
 
-    def parseSubPatterns(
+    def parse_sub_patterns(
         self, data: str, parent: etree.Element, last: etree.Element | None, idx: int
     ) -> None:
         """
@@ -607,7 +607,7 @@ class AsteriskProcessor(InlineProcessor):
         length = len(data)
         while pos < length:
             # Find the start of potential emphasis or strong tokens
-            if self.compiledRe.match(data, pos):
+            if self.compiled_re.match(data, pos):
                 matched = False
                 # See if the we can match an emphasis/strong pattern
                 for index, item in enumerate(self.PATTERNS):
@@ -626,7 +626,7 @@ class AsteriskProcessor(InlineProcessor):
                                 last.tail = text
                             else:
                                 parent.text = text
-                        el = self.buildElement(m, item.builder, item.tags, index)
+                        el = self.build_element(m, item.builder, item.tags, index)
                         parent.append(el)
                         last = el
                         # Move our position past the matched hunk
@@ -647,15 +647,15 @@ class AsteriskProcessor(InlineProcessor):
             else:
                 parent.text = text
 
-    def buildElement(self, m: re.Match[str], builder: str, tags: str, index: int) -> etree.Element:
+    def build_element(self, m: re.Match[str], builder: str, tags: str, index: int) -> etree.Element:
         """Element builder."""
 
         if builder == 'double2':
-            return self.buildDouble2(m, tags, index)
+            return self.build_double2(m, tags, index)
         elif builder == 'double':
-            return self.buildDouble(m, tags, index)
+            return self.build_double(m, tags, index)
         else:
-            return self.buildSingle(m, tags, index)
+            return self.build_single(m, tags, index)
 
     def handleMatch(self, m: re.Match[str], data: str) -> tuple[etree.Element | None, int | None, int | None]:
         """Parse patterns."""
@@ -669,7 +669,7 @@ class AsteriskProcessor(InlineProcessor):
             if m1:
                 start = m1.start(0)
                 end = m1.end(0)
-                el = self.buildElement(m1, item.builder, item.tags, index)
+                el = self.build_element(m1, item.builder, item.tags, index)
                 break
         return el, start, end
 

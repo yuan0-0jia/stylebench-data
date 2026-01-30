@@ -23,22 +23,21 @@ from markdown.test_tools import TestCase
 
 
 class TestEntities(TestCase):
+
     def test_named_entities(self):
-        self.assertMarkdownRenders('&amp;', '<p>&amp;</p>')
-        self.assertMarkdownRenders('&sup2;', '<p>&sup2;</p>')
-        self.assertMarkdownRenders('&Aacute;', '<p>&Aacute;</p>')
+        self.assertMarkdownRenders("&amp;", "<p>&amp;</p>")
+        self.assertMarkdownRenders("&sup2;", "<p>&sup2;</p>")
+        self.assertMarkdownRenders("&Aacute;", "<p>&Aacute;</p>")
 
     def test_decimal_entities(self):
-        self.assertMarkdownRenders('&#38;', '<p>&#38;</p>')
-        self.assertMarkdownRenders('&#178;', '<p>&#178;</p>')
+        self.assertMarkdownRenders("&#38;", "<p>&#38;</p>")
+        self.assertMarkdownRenders("&#178;", "<p>&#178;</p>")
 
     def test_hexadecimal_entities(self):
-        self.assertMarkdownRenders('&#x00026;', '<p>&#x00026;</p>')
-        self.assertMarkdownRenders('&#xB2;', '<p>&#xB2;</p>')
+        self.assertMarkdownRenders("&#x00026;", "<p>&#x00026;</p>")
+        self.assertMarkdownRenders("&#xB2;", "<p>&#xB2;</p>")
 
     def test_false_entities(self):
-        self.assertMarkdownRenders(
-            '&not an entity;', '<p>&amp;not an entity;</p>'
-        )
-        self.assertMarkdownRenders('&#B2;', '<p>&amp;#B2;</p>')
-        self.assertMarkdownRenders('&#xnothex;', '<p>&amp;#xnothex;</p>')
+        self.assertMarkdownRenders("&not an entity;", "<p>&amp;not an entity;</p>")
+        self.assertMarkdownRenders("&#B2;", "<p>&amp;#B2;</p>")
+        self.assertMarkdownRenders("&#xnothex;", "<p>&amp;#xnothex;</p>")

@@ -3999,7 +3999,7 @@ class callbackIter:
 
         # Lazily import concurrent.future
         self._module = __import__('concurrent.futures').futures
-        self._executor = self._module.ThreadPoolExecutor(maxWorkers=1)
+        self._executor = self._module.ThreadPoolExecutor(max_workers=1)
         self._iterator = self._reader()
 
     def __enter__(self):

@@ -28,7 +28,7 @@ import re
 from typing import Any
 
 
-def buildUrl(label: str, base: str, end: str) -> str:
+def build_url(label: str, base: str, end: str) -> str:
     """ Build a URL from the label, a base, and an end. """
     cleanLabel = re.sub(r'([ ]+_)|(_[ ]+)|([ ]+)', '_', label)
     return '{}{}{}'.format(base, cleanLabel, end)
@@ -42,7 +42,7 @@ class WikiLinkExtension(Extension):
             'base_url': ['/', 'String to append to beginning or URL.'],
             'end_url': ['/', 'String to append to end of URL.'],
             'html_class': ['wikilink', 'CSS hook. Leave blank for none.'],
-            'build_url': [buildUrl, 'Callable formats URL from label.'],
+            'build_url': [build_url, 'Callable formats URL from label.'],
         }
         """ Default configuration options. """
         super().__init__(**kwargs)
@@ -66,7 +66,7 @@ class WikiLinksInlineProcessor(InlineProcessor):
 
     def handleMatch(self, m: re.Match[str], data: str) -> tuple[etree.Element | str, int, int]:
         if m.group(1).strip():
-            baseUrl, endUrl, htmlClass = self._getmeta()
+            baseUrl, endUrl, htmlClass = self._getMeta()
             label = m.group(1).strip()
             url = self.config['build_url'](label, baseUrl, endUrl)
             a = etree.Element('a')
@@ -78,7 +78,7 @@ class WikiLinksInlineProcessor(InlineProcessor):
             a = ''
         return a, m.start(0), m.end(0)
 
-    def _getmeta(self) -> tuple[str, str, str]:
+    def _getMeta(self) -> tuple[str, str, str]:
         """ Return meta data or `config` data. """
         baseUrl = self.config['base_url']
         endUrl = self.config['end_url']

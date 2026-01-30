@@ -50,18 +50,18 @@ from xml.etree.ElementTree import Comment, ElementTree, Element, QName, HTML_EMP
 import re
 from typing import Callable, Literal, NoReturn
 
-__all__ = ['toHtmlString', 'toXhtmlString']
+__all__ = ['to_html_string', 'to_xhtml_string']
 
 RE_AMP = re.compile(r'&(?!(?:\#[0-9]+|\#x[0-9a-f]+|[0-9a-z]+);)', re.I)
 
 
-def _raiseSerializationError(text: str) -> NoReturn:  # pragma: no cover
+def _raise_serialization_error(text: str) -> NoReturn:  # pragma: no cover
     raise TypeError(
         "cannot serialize {!r} (type {})".format(text, type(text).__name__)
         )
 
 
-def _escapeCdata(text) -> str:
+def _escape_cdata(text) -> str:
     # escape character data
     try:
         # it's worth avoiding do-nothing calls for strings that are
@@ -76,10 +76,10 @@ def _escapeCdata(text) -> str:
             text = text.replace(">", "&gt;")
         return text
     except (TypeError, AttributeError):  # pragma: no cover
-        _raiseSerializationError(text)
+        _raise_serialization_error(text)
 
 
-def _escapeAttrib(text: str) -> str:
+def _escape_attrib(text: str) -> str:
     # escape attribute value
     try:
         if "&" in text:
@@ -95,10 +95,10 @@ def _escapeAttrib(text: str) -> str:
             text = text.replace("\n", "&#10;")
         return text
     except (TypeError, AttributeError):  # pragma: no cover
-        _raiseSerializationError(text)
+        _raise_serialization_error(text)
 
 
-def _escapeAttribHtml(text: str) -> str:
+def _escape_attrib_html(text: str) -> str:
     # escape attribute value
     try:
         if "&" in text:
@@ -112,21 +112,21 @@ def _escapeAttribHtml(text: str) -> str:
             text = text.replace("\"", "&quot;")
         return text
     except (TypeError, AttributeError):  # pragma: no cover
-        _raiseSerializationError(text)
+        _raise_serialization_error(text)
 
 
-def _serializeHtml(write: Callable[[str], None], elem: Element, format: Literal["html", "xhtml"]) -> None:
+def _serialize_html(write: Callable[[str], None], elem: Element, format: Literal["html", "xhtml"]) -> None:
     tag = elem.tag
     text = elem.text
     if tag is Comment:
-        write("<!--%s-->" % _escapeCdata(text))
+        write("<!--%s-->" % _escape_cdata(text))
     elif tag is ProcessingInstruction:
-        write("<?%s?>" % _escapeCdata(text))
+        write("<?%s?>" % _escape_cdata(text))
     elif tag is None:
         if text:
-            write(_escapeCdata(text))
+            write(_escape_cdata(text))
         for e in elem:
-            _serializeHtml(write, e, format)
+            _serialize_html(write, e, format)
     else:
         namespaceUri = None
         if isinstance(tag, QName):
@@ -147,14 +147,14 @@ def _serializeHtml(write: Callable[[str], None], elem: Element, format: Literal[
                     # Assume a text only `QName`
                     v = v.text
                 else:
-                    v = _escapeAttribHtml(v)
+                    v = _escape_attrib_html(v)
                 if k == v and format == 'html':
                     # handle boolean attributes
                     write(" %s" % v)
                 else:
                     write(' {}="{}"'.format(k, v))
         if namespaceUri:
-            write(' xmlns="%s"' % (_escapeAttrib(namespaceUri)))
+            write(' xmlns="%s"' % (_escape_attrib(namespaceUri)))
         if format == "xhtml" and tag.lower() in HTML_EMPTY:
             write(" />")
         else:
@@ -163,20 +163,20 @@ def _serializeHtml(write: Callable[[str], None], elem: Element, format: Literal[
                 if tag.lower() in ["script", "style"]:
                     write(text)
                 else:
-                    write(_escapeCdata(text))
+                    write(_escape_cdata(text))
             for e in elem:
-                _serializeHtml(write, e, format)
+                _serialize_html(write, e, format)
             if tag.lower() not in HTML_EMPTY:
                 write("</" + tag + ">")
     if elem.tail:
-        write(_escapeCdata(elem.tail))
+        write(_escape_cdata(elem.tail))
 
 
-def _writeHtml(root: Element, format: Literal["html", "xhtml"] = "html") -> str:
+def _write_html(root: Element, format: Literal["html", "xhtml"] = "html") -> str:
     assert root is not None
     data: list[str] = []
     write = data.append
-    _serializeHtml(write, root, format)
+    _serialize_html(write, root, format)
     return "".join(data)
 
 
@@ -184,11 +184,11 @@ def _writeHtml(root: Element, format: Literal["html", "xhtml"] = "html") -> str:
 # public functions
 
 
-def toHtmlString(element: Element) -> str:
+def to_html_string(element: Element) -> str:
     """ Serialize element and its children to a string of HTML5. """
-    return _writeHtml(ElementTree(element).getroot(), format="html")
+    return _write_html(ElementTree(element).getroot(), format="html")
 
 
-def toXhtmlString(element: Element) -> str:
+def to_xhtml_string(element: Element) -> str:
     """ Serialize element and its children to a string of XHTML. """
-    return _writeHtml(ElementTree(element).getroot(), format="xhtml")
+    return _write_html(ElementTree(element).getroot(), format="xhtml")

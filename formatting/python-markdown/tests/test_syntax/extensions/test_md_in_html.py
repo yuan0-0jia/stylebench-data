@@ -28,7 +28,7 @@ from xml.etree.ElementTree import Element
 
 
 class TestMarkdownInHTMLPostProcessor(TestCase):
-    """Ensure any remaining elements in HTML stash are properly serialized."""
+    """ Ensure any remaining elements in HTML stash are properly serialized. """
 
     def test_stash_to_string(self):
         # There should be no known cases where this actually happens so we need to
@@ -41,17 +41,19 @@ class TestMarkdownInHTMLPostProcessor(TestCase):
 
 
 class TestDefaultwMdInHTML(TestHTMLBlocks):
-    """Ensure the md_in_html extension does not break the default behavior."""
+    """ Ensure the md_in_html extension does not break the default behavior. """
 
     default_kwargs = {'extensions': ['md_in_html']}
 
 
 class TestMdInHTML(TestCase):
+
     default_kwargs = {'extensions': ['md_in_html']}
 
     def test_md1_paragraph(self):
         self.assertMarkdownRenders(
-            '<p markdown="1">*foo*</p>', '<p><em>foo</em></p>'
+            '<p markdown="1">*foo*</p>',
+            '<p><em>foo</em></p>'
         )
 
     def test_md1_p_linebreaks(self):
@@ -69,7 +71,7 @@ class TestMdInHTML(TestCase):
                 <em>foo</em>
                 </p>
                 """
-            ),
+            )
         )
 
     def test_md1_p_blank_lines(self):
@@ -91,7 +93,7 @@ class TestMdInHTML(TestCase):
 
                 </p>
                 """
-            ),
+            )
         )
 
     def test_md1_div(self):
@@ -103,7 +105,7 @@ class TestMdInHTML(TestCase):
                 <p><em>foo</em></p>
                 </div>
                 """
-            ),
+            )
         )
 
     def test_md1_div_linebreaks(self):
@@ -121,7 +123,7 @@ class TestMdInHTML(TestCase):
                 <p><em>foo</em></p>
                 </div>
                 """
-            ),
+            )
         )
 
     def test_md1_code_span(self):
@@ -139,7 +141,7 @@ class TestMdInHTML(TestCase):
                 <p><code>&lt;h1&gt;code span&lt;/h1&gt;</code></p>
                 </div>
                 """
-            ),
+            )
         )
 
     def test_md1_code_span_oneline(self):
@@ -151,7 +153,7 @@ class TestMdInHTML(TestCase):
                 <p><code>&lt;h1&gt;code span&lt;/h1&gt;</code></p>
                 </div>
                 """
-            ),
+            )
         )
 
     def test_md1_code_span_unclosed(self):
@@ -169,7 +171,7 @@ class TestMdInHTML(TestCase):
                 <p><code>&lt;p&gt;</code></p>
                 </div>
                 """
-            ),
+            )
         )
 
     def test_md1_code_span_script_tag(self):
@@ -187,7 +189,7 @@ class TestMdInHTML(TestCase):
                 <p><code>&lt;script&gt;</code></p>
                 </div>
                 """
-            ),
+            )
         )
 
     def test_md1_div_blank_lines(self):
@@ -207,7 +209,7 @@ class TestMdInHTML(TestCase):
                 <p><em>foo</em></p>
                 </div>
                 """
-            ),
+            )
         )
 
     def test_md1_div_multi(self):
@@ -230,7 +232,7 @@ class TestMdInHTML(TestCase):
                 <p><strong>bar</strong></p>
                 </div>
                 """
-            ),
+            )
         )
 
     def test_md1_div_nested(self):
@@ -254,7 +256,7 @@ class TestMdInHTML(TestCase):
                 </div>
                 </div>
                 """
-            ),
+            )
         )
 
     def test_md1_div_multi_nest(self):
@@ -278,7 +280,7 @@ class TestMdInHTML(TestCase):
                 </div>
                 </div>
                 """
-            ),
+            )
         )
 
     def text_md1_details(self):
@@ -298,7 +300,7 @@ class TestMdInHTML(TestCase):
                 <p><em>foo</em></p>
                 </details>
                 """
-            ),
+            )
         )
 
     def test_md1_mix(self):
@@ -322,7 +324,7 @@ class TestMdInHTML(TestCase):
                 <p>A <em>Markdown</em> tail to the raw child.</p>
                 </div>
                 """
-            ),
+            )
         )
 
     def test_md1_deep_mix(self):
@@ -373,7 +375,7 @@ class TestMdInHTML(TestCase):
                 <p>More raw.</p>
                 </div>
                 """
-            ),
+            )
         )
 
     def test_md1_div_raw_inline(self):
@@ -393,11 +395,14 @@ class TestMdInHTML(TestCase):
                 <p><em>foo</em></p>
                 </div>
                 """
-            ),
+            )
         )
 
     def test_no_md1_paragraph(self):
-        self.assertMarkdownRenders('<p>*foo*</p>', '<p>*foo*</p>')
+        self.assertMarkdownRenders(
+            '<p>*foo*</p>',
+            '<p>*foo*</p>'
+        )
 
     def test_no_md1_nest(self):
         self.assertMarkdownRenders(
@@ -420,7 +425,7 @@ class TestMdInHTML(TestCase):
                 <p>A <em>Markdown</em> tail to the raw child.</p>
                 </div>
                 """
-            ),
+            )
         )
 
     def test_md1_nested_empty(self):
@@ -444,7 +449,7 @@ class TestMdInHTML(TestCase):
                 <p>A <em>Markdown</em> tail to the raw empty tag.</p>
                 </div>
                 """
-            ),
+            )
         )
 
     def test_md1_nested_empty_block(self):
@@ -468,7 +473,7 @@ class TestMdInHTML(TestCase):
                 <p>A <em>Markdown</em> tail to the raw empty tag.</p>
                 </div>
                 """
-            ),
+            )
         )
 
     def test_empty_tags(self):
@@ -486,7 +491,7 @@ class TestMdInHTML(TestCase):
                 <div></div>
                 </div>
                 """
-            ),
+            )
         )
 
     def test_orphan_end_tag_in_raw_html(self):
@@ -516,7 +521,7 @@ class TestMdInHTML(TestCase):
                 </div>
                 </div>
                 """
-            ),
+            )
         )
 
     def test_complex_nested_case(self):
@@ -548,7 +553,7 @@ class TestMdInHTML(TestCase):
                 </div>
                 </div>
                 """
-            ),
+            )
         )
 
     def test_complex_nested_case_whitespace(self):
@@ -585,7 +590,7 @@ class TestMdInHTML(TestCase):
                 <p><strong>test</strong></p>
                 </div>
                 """
-            ),
+            )
         )
 
     def test_md1_intail_md1(self):
@@ -600,7 +605,7 @@ class TestMdInHTML(TestCase):
                 <p><em>bar</em></p>
                 </div>
                 """
-            ),
+            )
         )
 
     def test_md1_no_blank_line_before(self):
@@ -620,14 +625,14 @@ class TestMdInHTML(TestCase):
                 <p>A <em>Markdown</em> paragraph in an HTML block with no blank line before.</p>
                 </div>
                 """
-            ),
+            )
         )
 
     def test_md1_no_line_break(self):
         # The div here is parsed as a span-level element. Bad input equals bad output!
         self.assertMarkdownRenders(
             'A _Markdown_ paragraph with <div markdown="1">no _line break_.</div>',
-            '<p>A <em>Markdown</em> paragraph with <div markdown="1">no <em>line break</em>.</div></p>',
+            '<p>A <em>Markdown</em> paragraph with <div markdown="1">no <em>line break</em>.</div></p>'
         )
 
     def test_md1_in_tail(self):
@@ -646,7 +651,7 @@ class TestMdInHTML(TestCase):
                 <p>A <em>Markdown</em> paragraph in an HTML block in tail of previous element.</p>
                 </div>
                 """
-            ),
+            )
         )
 
     def test_md1_PI_oneliner(self):
@@ -658,7 +663,7 @@ class TestMdInHTML(TestCase):
                 <?php print("foo"); ?>
                 </div>
                 """
-            ),
+            )
         )
 
     def test_md1_PI_multiline(self):
@@ -676,7 +681,7 @@ class TestMdInHTML(TestCase):
                 <?php print("foo"); ?>
                 </div>
                 """
-            ),
+            )
         )
 
     def test_md1_PI_blank_lines(self):
@@ -696,12 +701,13 @@ class TestMdInHTML(TestCase):
                 <?php print("foo"); ?>
                 </div>
                 """
-            ),
+            )
         )
 
     def test_md_span_paragraph(self):
         self.assertMarkdownRenders(
-            '<p markdown="span">*foo*</p>', '<p><em>foo</em></p>'
+            '<p markdown="span">*foo*</p>',
+            '<p><em>foo</em></p>'
         )
 
     def test_md_block_paragraph(self):
@@ -713,12 +719,13 @@ class TestMdInHTML(TestCase):
                 <p><em>foo</em></p>
                 </p>
                 """
-            ),
+            )
         )
 
     def test_md_span_div(self):
         self.assertMarkdownRenders(
-            '<div markdown="span">*foo*</div>', '<div><em>foo</em></div>'
+            '<div markdown="span">*foo*</div>',
+            '<div><em>foo</em></div>'
         )
 
     def test_md_block_div(self):
@@ -730,7 +737,7 @@ class TestMdInHTML(TestCase):
                 <p><em>foo</em></p>
                 </div>
                 """
-            ),
+            )
         )
 
     def test_md_span_nested_in_block(self):
@@ -748,7 +755,7 @@ class TestMdInHTML(TestCase):
                 <div><em>foo</em></div>
                 </div>
                 """
-            ),
+            )
         )
 
     def test_md_block_nested_in_span(self):
@@ -766,7 +773,7 @@ class TestMdInHTML(TestCase):
                 <div><em>foo</em></div>
                 </div>
                 """
-            ),
+            )
         )
 
     def test_md_block_after_span_nested_in_block(self):
@@ -788,7 +795,7 @@ class TestMdInHTML(TestCase):
                 </div>
                 </div>
                 """
-            ),
+            )
         )
 
     def test_nomd_nested_in_md1(self):
@@ -818,7 +825,7 @@ class TestMdInHTML(TestCase):
                 <p><em>bar</em></p>
                 </div>
                 """
-            ),
+            )
         )
 
     def test_md1_nested_in_nomd(self):
@@ -836,22 +843,25 @@ class TestMdInHTML(TestCase):
                 <div markdown="1">*foo*</div>
                 </div>
                 """
-            ),
+            )
         )
 
     def test_md1_single_quotes(self):
         self.assertMarkdownRenders(
-            "<p markdown='1'>*foo*</p>", '<p><em>foo</em></p>'
+            "<p markdown='1'>*foo*</p>",
+            '<p><em>foo</em></p>'
         )
 
     def test_md1_no_quotes(self):
         self.assertMarkdownRenders(
-            '<p markdown=1>*foo*</p>', '<p><em>foo</em></p>'
+            '<p markdown=1>*foo*</p>',
+            '<p><em>foo</em></p>'
         )
 
     def test_md_no_value(self):
         self.assertMarkdownRenders(
-            '<p markdown>*foo*</p>', '<p><em>foo</em></p>'
+            '<p markdown>*foo*</p>',
+            '<p><em>foo</em></p>'
         )
 
     def test_md1_preserve_attrs(self):
@@ -875,7 +885,7 @@ class TestMdInHTML(TestCase):
                 </div>
                 </div>
                 """
-            ),
+            )
         )
 
     def test_md1_unclosed_div(self):
@@ -904,7 +914,7 @@ class TestMdInHTML(TestCase):
                 </div>
                 </div>
                 """
-            ),
+            )
         )
 
     def test_md1_orphan_endtag(self):
@@ -930,7 +940,7 @@ class TestMdInHTML(TestCase):
                 <p><em>bar</em></p>
                 </div>
                 """
-            ),
+            )
         )
 
     def test_md1_unclosed_p(self):
@@ -949,7 +959,7 @@ class TestMdInHTML(TestCase):
 
                 </p>
                 """
-            ),
+            )
         )
 
     def test_md1_nested_unclosed_p(self):
@@ -971,7 +981,7 @@ class TestMdInHTML(TestCase):
                 </p>
                 </div>
                 """
-            ),
+            )
         )
 
     def test_md1_nested_comment(self):
@@ -993,7 +1003,7 @@ class TestMdInHTML(TestCase):
                 <p>A <em>Markdown</em> paragraph.</p>
                 </div>
                 """
-            ),
+            )
         )
 
     def test_md1_nested_link_ref(self):
@@ -1016,7 +1026,7 @@ class TestMdInHTML(TestCase):
                 </div>
                 </div>
                 """
-            ),
+            )
         )
 
     def test_md1_hr_only_start(self):
@@ -1034,7 +1044,7 @@ class TestMdInHTML(TestCase):
                 <hr>
                 <p><em>emphasis2</em></p>
                 """
-            ),
+            )
         )
 
     def test_md1_hr_self_close(self):
@@ -1052,7 +1062,7 @@ class TestMdInHTML(TestCase):
                 <hr>
                 <p><em>emphasis2</em></p>
                 """
-            ),
+            )
         )
 
     def test_md1_hr_start_and_end(self):
@@ -1072,7 +1082,7 @@ class TestMdInHTML(TestCase):
                 <p></hr>
                 <em>emphasis2</em></p>
                 """
-            ),
+            )
         )
 
     def test_md1_hr_only_end(self):
@@ -1091,7 +1101,7 @@ class TestMdInHTML(TestCase):
                 </hr>
                 <em>emphasis2</em></p>
                 """
-            ),
+            )
         )
 
     def test_md1_hr_with_content(self):
@@ -1115,7 +1125,7 @@ class TestMdInHTML(TestCase):
                 </hr>
                 <em>emphasis2</em></p>
                 """
-            ),
+            )
         )
 
     def test_no_md1_hr_with_content(self):
@@ -1139,7 +1149,7 @@ class TestMdInHTML(TestCase):
                 </hr>
                 <em>emphasis2</em></p>
                 """
-            ),
+            )
         )
 
     def test_md1_nested_abbr_ref(self):
@@ -1163,7 +1173,7 @@ class TestMdInHTML(TestCase):
                 </div>
                 """
             ),
-            extensions=['md_in_html', 'abbr'],
+            extensions=['md_in_html', 'abbr']
         )
 
     def test_md1_nested_footnote_ref(self):
@@ -1193,10 +1203,11 @@ class TestMdInHTML(TestCase):
             '</li>\n'
             '</ol>\n'
             '</div>',
-            extensions=['md_in_html', 'footnotes'],
+            extensions=['md_in_html', 'footnotes']
         )
 
     def test_md1_code_void_tag(self):
+
         # https://github.com/Python-Markdown/markdown/issues/1075
         self.assertMarkdownRenders(
             self.dedent(
@@ -1220,10 +1231,11 @@ class TestMdInHTML(TestCase):
             '<div class="outer">\n'
             '<p>HTML: <label><input/></label></p>\n'
             '</div>',
-            extensions=['md_in_html'],
+            extensions=['md_in_html']
         )
 
     def test_md1_code_void_tag_multiline(self):
+
         # https://github.com/Python-Markdown/markdown/issues/1075
         self.assertMarkdownRenders(
             self.dedent(
@@ -1259,7 +1271,7 @@ class TestMdInHTML(TestCase):
             '<input/>\n'
             '</label></p>\n'
             '</div>',
-            extensions=['md_in_html'],
+            extensions=['md_in_html']
         )
 
     def test_md1_oneliner_block(self):
@@ -1273,7 +1285,7 @@ class TestMdInHTML(TestCase):
             '<p><em>foo</em></p>\n'
             '</div>\n'
             '</div>',
-            extensions=['md_in_html'],
+            extensions=['md_in_html']
         )
 
     def test_md1_oneliner_block_mixed(self):
@@ -1299,7 +1311,7 @@ class TestMdInHTML(TestCase):
             '</div>\n'
             '</div>\n'
             '</div>',
-            extensions=['md_in_html'],
+            extensions=['md_in_html']
         )
 
     def test_md1_oneliner_block_tail(self):
@@ -1324,7 +1336,7 @@ class TestMdInHTML(TestCase):
             '</div>\n'
             '</div>\n'
             '</div>',
-            extensions=['md_in_html'],
+            extensions=['md_in_html']
         )
 
     def test_md1_oneliner_block_complex_start_tail(self):
@@ -1341,7 +1353,7 @@ class TestMdInHTML(TestCase):
             '</div>\n'
             '<div class="d">*not md*</div>\n'
             '</div>',
-            extensions=['md_in_html'],
+            extensions=['md_in_html']
         )
 
     def test_md1_oneliner_block_complex_fail(self):
@@ -1353,7 +1365,7 @@ class TestMdInHTML(TestCase):
             '<p><strong>strong</strong><div class="b" markdown><strong>strong</strong></p>\n'
             '</div>\n'
             '</div>',
-            extensions=['md_in_html'],
+            extensions=['md_in_html']
         )
 
     def test_md1_oneliner_block_start(self):
@@ -1371,7 +1383,7 @@ class TestMdInHTML(TestCase):
             '<p><em>foo</em></p>\n'
             '</div>\n'
             '</div>',
-            extensions=['md_in_html'],
+            extensions=['md_in_html']
         )
 
     def test_md1_oneliner_block_span(self):
@@ -1383,7 +1395,7 @@ class TestMdInHTML(TestCase):
             '<div class="outer">\n'
             '<div class="inner"><em>foo</em></div>\n'
             '</div>',
-            extensions=['md_in_html'],
+            extensions=['md_in_html']
         )
 
     def test_md1_oneliner_block_span_start(self):
@@ -1401,7 +1413,7 @@ class TestMdInHTML(TestCase):
             '<em>foo</em>\n'
             '</div>\n'
             '</div>',
-            extensions=['md_in_html'],
+            extensions=['md_in_html']
         )
 
     def test_md1_oneliner_span_block_start(self):
@@ -1421,10 +1433,11 @@ class TestMdInHTML(TestCase):
             '<em>foo</em>\n'
             '</div>\n\n'
             '<em>foo</em></div>',
-            extensions=['md_in_html'],
+            extensions=['md_in_html']
         )
 
     def test_md1_code_comment(self):
+
         self.assertMarkdownRenders(
             self.dedent(
                 """
@@ -1447,10 +1460,11 @@ class TestMdInHTML(TestCase):
             '<div class="outer">\n'
             '<p>HTML: <label><!-- **comment** --></label></p>\n'
             '</div>',
-            extensions=['md_in_html'],
+            extensions=['md_in_html']
         )
 
     def test_md1_code_pi(self):
+
         self.assertMarkdownRenders(
             self.dedent(
                 """
@@ -1468,15 +1482,16 @@ class TestMdInHTML(TestCase):
                 """
             ),
             '<div class="outer">\n'
-            "<p>Code: <code>&lt;label&gt;&lt;?php # echo '**simple**';?&gt;&lt;/label&gt;</code></p>\n"
+            '<p>Code: <code>&lt;label&gt;&lt;?php # echo \'**simple**\';?&gt;&lt;/label&gt;</code></p>\n'
             '</div>\n'
             '<div class="outer">\n'
-            "<p>HTML: <label><?php # echo '**simple**';?></label></p>\n"
+            '<p>HTML: <label><?php # echo \'**simple**\';?></label></p>\n'
             '</div>',
-            extensions=['md_in_html'],
+            extensions=['md_in_html']
         )
 
     def test_md1_code_cdata(self):
+
         self.assertMarkdownRenders(
             self.dedent(
                 """
@@ -1499,10 +1514,11 @@ class TestMdInHTML(TestCase):
             '<div class="outer">\n'
             '<p>HTML: <label><![CDATA[some stuff]]></label></p>\n'
             '</div>',
-            extensions=['md_in_html'],
+            extensions=['md_in_html']
         )
 
     def test_trailing_content_after_tag_in_md_block(self):
+
         # It should be noted that this is not the way `md_in_html` is intended to be used.
         # What we are specifically testing is an edge case where content was previously lost.
         # Lost content should not happen.
@@ -1519,7 +1535,7 @@ class TestMdInHTML(TestCase):
             '<p>AAAAA<div class="circle"></p>\n'
             '</div>\n'
             '</div>',
-            extensions=['md_in_html'],
+            extensions=['md_in_html']
         )
 
     def test_noname_tag(self):
@@ -1537,18 +1553,14 @@ class TestMdInHTML(TestCase):
                 <p>&lt;/&gt;</p>
                 </div>
                 """
-            ),
+            )
         )
 
 
 def load_tests(loader, tests, pattern):
-    """Ensure `TestHTMLBlocks` doesn't get run twice by excluding it here."""
+    """ Ensure `TestHTMLBlocks` doesn't get run twice by excluding it here. """
     suite = TestSuite()
-    for test_class in [
-        TestDefaultwMdInHTML,
-        TestMdInHTML,
-        TestMarkdownInHTMLPostProcessor,
-    ]:
+    for test_class in [TestDefaultwMdInHTML, TestMdInHTML, TestMarkdownInHTMLPostProcessor]:
         tests = loader.loadTestsFromTestCase(test_class)
         suite.addTests(tests)
     return suite

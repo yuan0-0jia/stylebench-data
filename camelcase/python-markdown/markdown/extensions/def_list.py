@@ -99,7 +99,7 @@ class DefListIndentProcessor(ListIndentProcessor):
     LIST_TYPES = ['dl', 'ol', 'ul']
     """ Include `dl` is list types. """
 
-    def createItem(self, parent: etree.Element, block: str) -> None:
+    def create_item(self, parent: etree.Element, block: str) -> None:
         """ Create a new `dd` or `li` (depending on parent) and parse the block with it as the parent. """
 
         dd = etree.SubElement(parent, 'dd')

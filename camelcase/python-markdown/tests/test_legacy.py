@@ -29,15 +29,15 @@ warnings.simplefilter('error')
 warnings.filterwarnings('default', category=PendingDeprecationWarning)
 warnings.filterwarnings('default', category=DeprecationWarning, module='markdown')
 
-parentTestDir = os.path.abspath(os.path.dirname(__file__))
+parent_test_dir = os.path.abspath(os.path.dirname(__file__))
 
 
 class TestBasic(LegacyTestCase):
-    location = os.path.join(parentTestDir, 'basic')
+    location = os.path.join(parent_test_dir, 'basic')
 
 
 class TestMisc(LegacyTestCase):
-    location = os.path.join(parentTestDir, 'misc')
+    location = os.path.join(parent_test_dir, 'misc')
 
 
 class TestPhp(LegacyTestCase):
@@ -68,10 +68,10 @@ class TestPhp(LegacyTestCase):
     PHP-Specific Bugs: Not sure what to make of the escaping stuff here.
     Why is PHP not removing a backslash?
     """
-    location = os.path.join(parentTestDir, 'php')
+    location = os.path.join(parent_test_dir, 'php')
     normalize = True
-    inputExt = '.text'
-    outputExt = '.xhtml'
+    input_ext = '.text'
+    output_ext = '.xhtml'
     exclude = [
         'Quotes_in_attributes',
         'Inline_HTML_(Span)',
@@ -88,9 +88,9 @@ class TestPhp(LegacyTestCase):
 
 
 class TestPl2004(LegacyTestCase):
-    location = os.path.join(parentTestDir, 'pl/Tests_2004')
+    location = os.path.join(parent_test_dir, 'pl/Tests_2004')
     normalize = True
-    inputExt = '.text'
+    input_ext = '.text'
     exclude = ['Yuri_Footnotes', 'Yuri_Attributes']
 
 
@@ -108,9 +108,9 @@ class TestPl2007(LegacyTestCase):
 
     Code Spans: more backticks in raw html attributes TODO: fix me
     """
-    location = os.path.join(parentTestDir, 'pl/Tests_2007')
+    location = os.path.join(parent_test_dir, 'pl/Tests_2007')
     normalize = True
-    inputExt = '.text'
+    input_ext = '.text'
     exclude = [
         'Images',
         'Code_Blocks',
@@ -121,57 +121,57 @@ class TestPl2007(LegacyTestCase):
 
 
 class TestExtensions(LegacyTestCase):
-    location = os.path.join(parentTestDir, 'extensions')
+    location = os.path.join(parent_test_dir, 'extensions')
     exclude = ['codehilite']
 
-    attrList = Kwargs(extensions=['attr_list', 'def_list', 'smarty'])
+    attr_list = Kwargs(extensions=['attr_list', 'def_list', 'smarty'])
 
     codehilite = Kwargs(extensions=['codehilite'])
 
     toc = Kwargs(extensions=['toc'])
 
-    tocInvalid = Kwargs(extensions=['toc'])
+    toc_invalid = Kwargs(extensions=['toc'])
 
-    tocOutOfOrder = Kwargs(extensions=['toc'])
+    toc_out_of_order = Kwargs(extensions=['toc'])
 
-    tocNested = Kwargs(
+    toc_nested = Kwargs(
         extensions=['toc'],
-        extensionConfigs={'toc': {'permalink': True}}
+        extension_configs={'toc': {'permalink': True}}
     )
 
-    tocNested2 = Kwargs(
+    toc_nested2 = Kwargs(
         extensions=['toc'],
-        extensionConfigs={'toc': {'permalink': "[link]"}}
+        extension_configs={'toc': {'permalink': "[link]"}}
     )
 
-    tocNestedList = Kwargs(extensions=['toc'])
+    toc_nested_list = Kwargs(extensions=['toc'])
 
     wikilinks = Kwargs(extensions=['wikilinks'])
 
-    githubFlavored = Kwargs(extensions=['fenced_code'])
+    github_flavored = Kwargs(extensions=['fenced_code'])
 
-    saneLists = Kwargs(extensions=['sane_lists'])
+    sane_lists = Kwargs(extensions=['sane_lists'])
 
-    nl2brWAttrList = Kwargs(extensions=['nl2br', 'attr_list'])
+    nl2br_w_attr_list = Kwargs(extensions=['nl2br', 'attr_list'])
 
     admonition = Kwargs(extensions=['admonition'])
 
 
 class TestExtensionsExtra(LegacyTestCase):
-    location = os.path.join(parentTestDir, 'extensions/extra')
-    defaultKwargs = Kwargs(extensions=['extra'])
+    location = os.path.join(parent_test_dir, 'extensions/extra')
+    default_kwargs = Kwargs(extensions=['extra'])
 
-    looseDefList = Kwargs(extensions=['def_list'])
+    loose_def_list = Kwargs(extensions=['def_list'])
 
-    simpleDefLists = Kwargs(extensions=['def_list'])
+    simple_def_lists = Kwargs(extensions=['def_list'])
 
     abbr = Kwargs(extensions=['abbr'])
 
     footnotes = Kwargs(extensions=['footnotes'])
 
-    extraConfig = Kwargs(
+    extra_config = Kwargs(
         extensions=['extra'],
-        extensionConfigs={
+        extension_configs={
             'extra': {
                 'footnotes': {
                     'PLACE_MARKER': '~~~placemarker~~~'

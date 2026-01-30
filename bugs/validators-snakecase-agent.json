@@ -1,0 +1,255 @@
+{
+  "repo": "validators",
+  "style": "snakecase",
+  "test_command": [
+    "uv",
+    "run",
+    "pytest",
+    "-x",
+    "-q",
+    "--tb=short",
+    "--color=no"
+  ],
+  "bugs": [
+    {
+      "bug_id": "validators-snakecase-001",
+      "test_output": "........................................................................ [  8%]\n........................................................................ [ 16%]\n........................................................................ [ 24%]\n.........................F\n=================================== FAILURES ===================================\n__________________ test_returns_true_on_valid_range[12-11-13] __________________\ntests/test_between.py:22: in test_returns_true_on_valid_range\n    assert between(value, min_val=min_val, max_val=max_val)\nE   AssertionError: assert ValidationError(func=between, args={'reason': '`min_val` cannot be greater than `max_val`', 'value': 12, 'min_val': 11, 'max_val': 13})\nE    +  where ValidationError(func=between, args={'reason': '`min_val` cannot be greater than `max_val`', 'value': 12, 'min_val': 11, 'max_val': 13}) = between(12, min_val=11, max_val=13)\n=========================== short test summary info ============================\nFAILED tests/test_between.py::test_returns_true_on_valid_range[12-11-13] - As...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 241 passed in 0.26s\n",
+      "failing_tests": [
+        "tests/test_between.py::test_returns_true_on_valid_range[12-11-13]"
+      ],
+      "exit_code": 1
+    },
+    {
+      "bug_id": "validators-snakecase-002",
+      "test_output": "........................................................................ [  8%]\n........................................................................ [ 16%]\n........................................................................ [ 24%]\n.........................F\n=================================== FAILURES ===================================\n__________________ test_returns_true_on_valid_range[12-11-13] __________________\ntests/test_between.py:22: in test_returns_true_on_valid_range\n    assert between(value, min_val=min_val, max_val=max_val)\nE   AssertionError: assert ValidationError(func=between, args={'value': 12, 'min_val': 11, 'max_val': 13})\nE    +  where ValidationError(func=between, args={'value': 12, 'min_val': 11, 'max_val': 13}) = between(12, min_val=11, max_val=13)\n=========================== short test summary info ============================\nFAILED tests/test_between.py::test_returns_true_on_valid_range[12-11-13] - As...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 241 passed in 0.15s\n",
+      "failing_tests": [
+        "tests/test_between.py::test_returns_true_on_valid_range[12-11-13]"
+      ],
+      "exit_code": 1
+    },
+    {
+      "bug_id": "validators-snakecase-003",
+      "test_output": "........................................................................ [  8%]\n........................................................................ [ 16%]\n........................................................................ [ 24%]\n.........................F\n=================================== FAILURES ===================================\n__________________ test_returns_true_on_valid_range[12-11-13] __________________\ntests/test_between.py:22: in test_returns_true_on_valid_range\n    assert between(value, min_val=min_val, max_val=max_val)\nE   AssertionError: assert ValidationError(func=between, args={'value': 12, 'min_val': 11, 'max_val': 13})\nE    +  where ValidationError(func=between, args={'value': 12, 'min_val': 11, 'max_val': 13}) = between(12, min_val=11, max_val=13)\n=========================== short test summary info ============================\nFAILED tests/test_between.py::test_returns_true_on_valid_range[12-11-13] - As...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 241 passed in 0.14s\n",
+      "failing_tests": [
+        "tests/test_between.py::test_returns_true_on_valid_range[12-11-13]"
+      ],
+      "exit_code": 1
+    },
+    {
+      "bug_id": "validators-snakecase-004",
+      "test_output": "........................................................................ [  8%]\n........................................................................ [ 16%]\n........................................................................ [ 24%]\n.......................................F\n=================================== FAILURES ===================================\n___________ test_returns_true_on_valid_card_number[4242424242424242] ___________\ntests/test_card.py:43: in test_returns_true_on_valid_card_number\n    assert card_number(value)\nE   AssertionError: assert ValidationError(func=card_number, args={'value': '4242424242424242'})\nE    +  where ValidationError(func=card_number, args={'value': '4242424242424242'}) = card_number('4242424242424242')\n=========================== short test summary info ============================\nFAILED tests/test_card.py::test_returns_true_on_valid_card_number[4242424242424242]\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 255 passed in 0.14s\n",
+      "failing_tests": [
+        "tests/test_card.py::test_returns_true_on_valid_card_number[4242424242424242]"
+      ],
+      "exit_code": 1
+    },
+    {
+      "bug_id": "validators-snakecase-005",
+      "test_output": "........................................................................ [  8%]\n........................................................................ [ 16%]\n........................................................................ [ 24%]\n.......................................F\n=================================== FAILURES ===================================\n___________ test_returns_true_on_valid_card_number[4242424242424242] ___________\ntests/test_card.py:43: in test_returns_true_on_valid_card_number\n    assert card_number(value)\nE   AssertionError: assert ValidationError(func=card_number, args={'value': '4242424242424242'})\nE    +  where ValidationError(func=card_number, args={'value': '4242424242424242'}) = card_number('4242424242424242')\n=========================== short test summary info ============================\nFAILED tests/test_card.py::test_returns_true_on_valid_card_number[4242424242424242]\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 255 passed in 0.14s\n",
+      "failing_tests": [
+        "tests/test_card.py::test_returns_true_on_valid_card_number[4242424242424242]"
+      ],
+      "exit_code": 1
+    },
+    {
+      "bug_id": "validators-snakecase-006",
+      "test_output": "........................................................................ [  8%]\n........................................................................ [ 16%]\n........................................................................ [ 24%]\n.......................................F\n=================================== FAILURES ===================================\n___________ test_returns_true_on_valid_card_number[4242424242424242] ___________\ntests/test_card.py:43: in test_returns_true_on_valid_card_number\n    assert card_number(value)\nE   AssertionError: assert ValidationError(func=card_number, args={'value': '4242424242424242'})\nE    +  where ValidationError(func=card_number, args={'value': '4242424242424242'}) = card_number('4242424242424242')\n=========================== short test summary info ============================\nFAILED tests/test_card.py::test_returns_true_on_valid_card_number[4242424242424242]\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 255 passed in 0.15s\n",
+      "failing_tests": [
+        "tests/test_card.py::test_returns_true_on_valid_card_number[4242424242424242]"
+      ],
+      "exit_code": 1
+    },
+    {
+      "bug_id": "validators-snakecase-007",
+      "test_output": "........................................................................ [  8%]\n........................................................................ [ 16%]\n........................................................................ [ 24%]\n.......................................F\n=================================== FAILURES ===================================\n___________ test_returns_true_on_valid_card_number[4242424242424242] ___________\ntests/test_card.py:43: in test_returns_true_on_valid_card_number\n    assert card_number(value)\nE   AssertionError: assert ValidationError(func=card_number, args={'value': '4242424242424242'})\nE    +  where ValidationError(func=card_number, args={'value': '4242424242424242'}) = card_number('4242424242424242')\n=========================== short test summary info ============================\nFAILED tests/test_card.py::test_returns_true_on_valid_card_number[4242424242424242]\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 255 passed in 0.14s\n",
+      "failing_tests": [
+        "tests/test_card.py::test_returns_true_on_valid_card_number[4242424242424242]"
+      ],
+      "exit_code": 1
+    },
+    {
+      "bug_id": "validators-snakecase-008",
+      "test_output": "........................................................................ [  8%]\n........................................................................ [ 16%]\n........................................................................ [ 24%]\n........................................F\n=================================== FAILURES ===================================\n___________ test_returns_true_on_valid_card_number[4000002760003184] ___________\ntests/test_card.py:43: in test_returns_true_on_valid_card_number\n    assert card_number(value)\nE   AssertionError: assert ValidationError(func=card_number, args={'value': '4000002760003184'})\nE    +  where ValidationError(func=card_number, args={'value': '4000002760003184'}) = card_number('4000002760003184')\n=========================== short test summary info ============================\nFAILED tests/test_card.py::test_returns_true_on_valid_card_number[4000002760003184]\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 256 passed in 0.14s\n",
+      "failing_tests": [
+        "tests/test_card.py::test_returns_true_on_valid_card_number[4000002760003184]"
+      ],
+      "exit_code": 1
+    },
+    {
+      "bug_id": "validators-snakecase-009",
+      "test_output": "........................................................................ [  8%]\n........................................................................ [ 16%]\n........................................................................ [ 24%]\n........................................F\n=================================== FAILURES ===================================\n___________ test_returns_true_on_valid_card_number[4000002760003184] ___________\ntests/test_card.py:43: in test_returns_true_on_valid_card_number\n    assert card_number(value)\nE   AssertionError: assert ValidationError(func=card_number, args={'value': '4000002760003184'})\nE    +  where ValidationError(func=card_number, args={'value': '4000002760003184'}) = card_number('4000002760003184')\n=========================== short test summary info ============================\nFAILED tests/test_card.py::test_returns_true_on_valid_card_number[4000002760003184]\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 256 passed in 0.15s\n",
+      "failing_tests": [
+        "tests/test_card.py::test_returns_true_on_valid_card_number[4000002760003184]"
+      ],
+      "exit_code": 1
+    },
+    {
+      "bug_id": "validators-snakecase-010",
+      "test_output": "........................................................................ [  8%]\n........................................................................ [ 16%]\n........................................................................ [ 24%]\n........................................F\n=================================== FAILURES ===================================\n___________ test_returns_true_on_valid_card_number[4000002760003184] ___________\ntests/test_card.py:43: in test_returns_true_on_valid_card_number\n    assert card_number(value)\nE   AssertionError: assert ValidationError(func=card_number, args={'value': '4000002760003184'})\nE    +  where ValidationError(func=card_number, args={'value': '4000002760003184'}) = card_number('4000002760003184')\n=========================== short test summary info ============================\nFAILED tests/test_card.py::test_returns_true_on_valid_card_number[4000002760003184]\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 256 passed in 0.15s\n",
+      "failing_tests": [
+        "tests/test_card.py::test_returns_true_on_valid_card_number[4000002760003184]"
+      ],
+      "exit_code": 1
+    },
+    {
+      "bug_id": "validators-snakecase-011",
+      "test_output": "........................................................................ [  8%]\n........................................................................ [ 16%]\n........................................................................ [ 24%]\n........................................F\n=================================== FAILURES ===================================\n___________ test_returns_true_on_valid_card_number[4000002760003184] ___________\ntests/test_card.py:43: in test_returns_true_on_valid_card_number\n    assert card_number(value)\nE   AssertionError: assert ValidationError(func=card_number, args={'value': '4000002760003184'})\nE    +  where ValidationError(func=card_number, args={'value': '4000002760003184'}) = card_number('4000002760003184')\n=========================== short test summary info ============================\nFAILED tests/test_card.py::test_returns_true_on_valid_card_number[4000002760003184]\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 256 passed in 0.15s\n",
+      "failing_tests": [
+        "tests/test_card.py::test_returns_true_on_valid_card_number[4000002760003184]"
+      ],
+      "exit_code": 1
+    },
+    {
+      "bug_id": "validators-snakecase-012",
+      "test_output": "........................................................................ [  8%]\n........................................................................ [ 16%]\n........................................................................ [ 24%]\n.......................................F\n=================================== FAILURES ===================================\n___________ test_returns_true_on_valid_card_number[4242424242424242] ___________\ntests/test_card.py:43: in test_returns_true_on_valid_card_number\n    assert card_number(value)\nE   AssertionError: assert ValidationError(func=card_number, args={'value': '4242424242424242'})\nE    +  where ValidationError(func=card_number, args={'value': '4242424242424242'}) = card_number('4242424242424242')\n=========================== short test summary info ============================\nFAILED tests/test_card.py::test_returns_true_on_valid_card_number[4242424242424242]\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 255 passed in 0.14s\n",
+      "failing_tests": [
+        "tests/test_card.py::test_returns_true_on_valid_card_number[4242424242424242]"
+      ],
+      "exit_code": 1
+    },
+    {
+      "bug_id": "validators-snakecase-013",
+      "test_output": "........................................................................ [  8%]\n........................................................................ [ 16%]\n........................................................................ [ 24%]\n.......................................F\n=================================== FAILURES ===================================\n___________ test_returns_true_on_valid_card_number[4242424242424242] ___________\ntests/test_card.py:43: in test_returns_true_on_valid_card_number\n    assert card_number(value)\nE   AssertionError: assert ValidationError(func=card_number, args={'value': '4242424242424242'})\nE    +  where ValidationError(func=card_number, args={'value': '4242424242424242'}) = card_number('4242424242424242')\n=========================== short test summary info ============================\nFAILED tests/test_card.py::test_returns_true_on_valid_card_number[4242424242424242]\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 255 passed in 0.15s\n",
+      "failing_tests": [
+        "tests/test_card.py::test_returns_true_on_valid_card_number[4242424242424242]"
+      ],
+      "exit_code": 1
+    },
+    {
+      "bug_id": "validators-snakecase-014",
+      "test_output": "........................................................................ [  8%]\n........................................................................ [ 16%]\n........................................................................ [ 24%]\n.......................................F\n=================================== FAILURES ===================================\n___________ test_returns_true_on_valid_card_number[4242424242424242] ___________\ntests/test_card.py:43: in test_returns_true_on_valid_card_number\n    assert card_number(value)\nE   AssertionError: assert ValidationError(func=card_number, args={'value': '4242424242424242'})\nE    +  where ValidationError(func=card_number, args={'value': '4242424242424242'}) = card_number('4242424242424242')\n=========================== short test summary info ============================\nFAILED tests/test_card.py::test_returns_true_on_valid_card_number[4242424242424242]\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 255 passed in 0.14s\n",
+      "failing_tests": [
+        "tests/test_card.py::test_returns_true_on_valid_card_number[4242424242424242]"
+      ],
+      "exit_code": 1
+    },
+    {
+      "bug_id": "validators-snakecase-015",
+      "test_output": "........................................................................ [  8%]\n........................................................................ [ 16%]\n........................................................................ [ 24%]\n.......................................F\n=================================== FAILURES ===================================\n___________ test_returns_true_on_valid_card_number[4242424242424242] ___________\ntests/test_card.py:43: in test_returns_true_on_valid_card_number\n    assert card_number(value)\nE   AssertionError: assert ValidationError(func=card_number, args={'value': '4242424242424242'})\nE    +  where ValidationError(func=card_number, args={'value': '4242424242424242'}) = card_number('4242424242424242')\n=========================== short test summary info ============================\nFAILED tests/test_card.py::test_returns_true_on_valid_card_number[4242424242424242]\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 255 passed in 0.14s\n",
+      "failing_tests": [
+        "tests/test_card.py::test_returns_true_on_valid_card_number[4242424242424242]"
+      ],
+      "exit_code": 1
+    },
+    {
+      "bug_id": "validators-snakecase-016",
+      "test_output": "........................................................................ [  8%]\n........................................................................ [ 16%]\n........................................................................ [ 24%]\n.......................................F\n=================================== FAILURES ===================================\n___________ test_returns_true_on_valid_card_number[4242424242424242] ___________\ntests/test_card.py:43: in test_returns_true_on_valid_card_number\n    assert card_number(value)\nE   AssertionError: assert ValidationError(func=card_number, args={'value': '4242424242424242'})\nE    +  where ValidationError(func=card_number, args={'value': '4242424242424242'}) = card_number('4242424242424242')\n=========================== short test summary info ============================\nFAILED tests/test_card.py::test_returns_true_on_valid_card_number[4242424242424242]\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 255 passed in 0.14s\n",
+      "failing_tests": [
+        "tests/test_card.py::test_returns_true_on_valid_card_number[4242424242424242]"
+      ],
+      "exit_code": 1
+    },
+    {
+      "bug_id": "validators-snakecase-017",
+      "test_output": "........................................................................ [  8%]\n........................................................................ [ 16%]\n........................................................................ [ 24%]\n.......................................F\n=================================== FAILURES ===================================\n___________ test_returns_true_on_valid_card_number[4242424242424242] ___________\ntests/test_card.py:43: in test_returns_true_on_valid_card_number\n    assert card_number(value)\nE   AssertionError: assert ValidationError(func=card_number, args={'value': '4242424242424242'})\nE    +  where ValidationError(func=card_number, args={'value': '4242424242424242'}) = card_number('4242424242424242')\n=========================== short test summary info ============================\nFAILED tests/test_card.py::test_returns_true_on_valid_card_number[4242424242424242]\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 255 passed in 0.14s\n",
+      "failing_tests": [
+        "tests/test_card.py::test_returns_true_on_valid_card_number[4242424242424242]"
+      ],
+      "exit_code": 1
+    },
+    {
+      "bug_id": "validators-snakecase-018",
+      "test_output": "........................................................................ [  8%]\n........................................................................ [ 16%]\n........................................................................ [ 24%]\n.......................................F\n=================================== FAILURES ===================================\n___________ test_returns_true_on_valid_card_number[4242424242424242] ___________\ntests/test_card.py:43: in test_returns_true_on_valid_card_number\n    assert card_number(value)\nE   AssertionError: assert ValidationError(func=card_number, args={'value': '4242424242424242'})\nE    +  where ValidationError(func=card_number, args={'value': '4242424242424242'}) = card_number('4242424242424242')\n=========================== short test summary info ============================\nFAILED tests/test_card.py::test_returns_true_on_valid_card_number[4242424242424242]\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 255 passed in 0.15s\n",
+      "failing_tests": [
+        "tests/test_card.py::test_returns_true_on_valid_card_number[4242424242424242]"
+      ],
+      "exit_code": 1
+    },
+    {
+      "bug_id": "validators-snakecase-019",
+      "test_output": "........................................................................ [  8%]\n........................................................................ [ 16%]\n........................................................................ [ 24%]\n.......................................F\n=================================== FAILURES ===================================\n___________ test_returns_true_on_valid_card_number[4242424242424242] ___________\ntests/test_card.py:43: in test_returns_true_on_valid_card_number\n    assert card_number(value)\nE   AssertionError: assert ValidationError(func=card_number, args={'value': '4242424242424242'})\nE    +  where ValidationError(func=card_number, args={'value': '4242424242424242'}) = card_number('4242424242424242')\n=========================== short test summary info ============================\nFAILED tests/test_card.py::test_returns_true_on_valid_card_number[4242424242424242]\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 255 passed in 0.15s\n",
+      "failing_tests": [
+        "tests/test_card.py::test_returns_true_on_valid_card_number[4242424242424242]"
+      ],
+      "exit_code": 1
+    },
+    {
+      "bug_id": "validators-snakecase-020",
+      "test_output": "........................................................................ [  8%]\n........................................................................ [ 16%]\n........................................................................ [ 24%]\n.......................................F\n=================================== FAILURES ===================================\n___________ test_returns_true_on_valid_card_number[4242424242424242] ___________\ntests/test_card.py:43: in test_returns_true_on_valid_card_number\n    assert card_number(value)\nE   AssertionError: assert ValidationError(func=card_number, args={'value': '4242424242424242'})\nE    +  where ValidationError(func=card_number, args={'value': '4242424242424242'}) = card_number('4242424242424242')\n=========================== short test summary info ============================\nFAILED tests/test_card.py::test_returns_true_on_valid_card_number[4242424242424242]\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 255 passed in 0.14s\n",
+      "failing_tests": [
+        "tests/test_card.py::test_returns_true_on_valid_card_number[4242424242424242]"
+      ],
+      "exit_code": 1
+    },
+    {
+      "bug_id": "validators-snakecase-021",
+      "test_output": "........................................................................ [  8%]\n........................................................................ [ 16%]\n........................................................................ [ 24%]\n...........................................................F\n=================================== FAILURES ===================================\n_____________ test_returns_failed_on_valid_visa[5555555555554444] ______________\ntests/test_card.py:72: in test_returns_failed_on_valid_visa\n    assert isinstance(visa(value), ValidationError)\nE   AssertionError: assert False\nE    +  where False = isinstance(True, ValidationError)\nE    +    where True = visa('5555555555554444')\n=========================== short test summary info ============================\nFAILED tests/test_card.py::test_returns_failed_on_valid_visa[5555555555554444]\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 275 passed in 0.15s\n",
+      "failing_tests": [
+        "tests/test_card.py::test_returns_failed_on_valid_visa[5555555555554444]"
+      ],
+      "exit_code": 1
+    },
+    {
+      "bug_id": "validators-snakecase-022",
+      "test_output": "........................................................................ [  8%]\n........................................................................ [ 16%]\n........................................................................ [ 24%]\n...........................................................F\n=================================== FAILURES ===================================\n_____________ test_returns_failed_on_valid_visa[5555555555554444] ______________\ntests/test_card.py:72: in test_returns_failed_on_valid_visa\n    assert isinstance(visa(value), ValidationError)\nE   AssertionError: assert False\nE    +  where False = isinstance(True, ValidationError)\nE    +    where True = visa('5555555555554444')\n=========================== short test summary info ============================\nFAILED tests/test_card.py::test_returns_failed_on_valid_visa[5555555555554444]\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 275 passed in 0.15s\n",
+      "failing_tests": [
+        "tests/test_card.py::test_returns_failed_on_valid_visa[5555555555554444]"
+      ],
+      "exit_code": 1
+    },
+    {
+      "bug_id": "validators-snakecase-023",
+      "test_output": "........................................................................ [  8%]\n........................................................................ [ 16%]\n........................................................................ [ 24%]\n.........................................................F\n=================================== FAILURES ===================================\n______________ test_returns_true_on_valid_visa[4242424242424242] _______________\ntests/test_card.py:63: in test_returns_true_on_valid_visa\n    assert visa(value)\nE   AssertionError: assert ValidationError(func=visa, args={'value': '4242424242424242'})\nE    +  where ValidationError(func=visa, args={'value': '4242424242424242'}) = visa('4242424242424242')\n=========================== short test summary info ============================\nFAILED tests/test_card.py::test_returns_true_on_valid_visa[4242424242424242]\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 273 passed in 0.15s\n",
+      "failing_tests": [
+        "tests/test_card.py::test_returns_true_on_valid_visa[4242424242424242]"
+      ],
+      "exit_code": 1
+    },
+    {
+      "bug_id": "validators-snakecase-024",
+      "test_output": "........................................................................ [  8%]\n........................................................................ [ 16%]\n........................................................................ [ 24%]\n.........................................................F\n=================================== FAILURES ===================================\n______________ test_returns_true_on_valid_visa[4242424242424242] _______________\ntests/test_card.py:63: in test_returns_true_on_valid_visa\n    assert visa(value)\nE   AssertionError: assert ValidationError(func=visa, args={'value': '4242424242424242'})\nE    +  where ValidationError(func=visa, args={'value': '4242424242424242'}) = visa('4242424242424242')\n=========================== short test summary info ============================\nFAILED tests/test_card.py::test_returns_true_on_valid_visa[4242424242424242]\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 273 passed in 0.17s\n",
+      "failing_tests": [
+        "tests/test_card.py::test_returns_true_on_valid_visa[4242424242424242]"
+      ],
+      "exit_code": 1
+    },
+    {
+      "bug_id": "validators-snakecase-025",
+      "test_output": "........................................................................ [  8%]\n........................................................................ [ 16%]\n........................................................................ [ 24%]\n.........................................................F\n=================================== FAILURES ===================================\n______________ test_returns_true_on_valid_visa[4242424242424242] _______________\ntests/test_card.py:63: in test_returns_true_on_valid_visa\n    assert visa(value)\nE   AssertionError: assert ValidationError(func=visa, args={'value': '4242424242424242'})\nE    +  where ValidationError(func=visa, args={'value': '4242424242424242'}) = visa('4242424242424242')\n=========================== short test summary info ============================\nFAILED tests/test_card.py::test_returns_true_on_valid_visa[4242424242424242]\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 273 passed in 0.16s\n",
+      "failing_tests": [
+        "tests/test_card.py::test_returns_true_on_valid_visa[4242424242424242]"
+      ],
+      "exit_code": 1
+    },
+    {
+      "bug_id": "validators-snakecase-026",
+      "test_output": "........................................................................ [  8%]\n........................................................................ [ 16%]\n........................................................................ [ 24%]\n.......................................................................F [ 32%]\n\n=================================== FAILURES ===================================\n__________ test_returns_failed_on_valid_mastercard[4242424242424242] ___________\ntests/test_card.py:87: in test_returns_failed_on_valid_mastercard\n    assert isinstance(mastercard(value), ValidationError)\nE   AssertionError: assert False\nE    +  where False = isinstance(True, ValidationError)\nE    +    where True = mastercard('4242424242424242')\n=========================== short test summary info ============================\nFAILED tests/test_card.py::test_returns_failed_on_valid_mastercard[4242424242424242]\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 287 passed in 0.18s\n",
+      "failing_tests": [
+        "tests/test_card.py::test_returns_failed_on_valid_mastercard[4242424242424242]"
+      ],
+      "exit_code": 1
+    },
+    {
+      "bug_id": "validators-snakecase-027",
+      "test_output": "........................................................................ [  8%]\n........................................................................ [ 16%]\n........................................................................ [ 24%]\n.......................................................................F [ 32%]\n\n=================================== FAILURES ===================================\n__________ test_returns_failed_on_valid_mastercard[4242424242424242] ___________\ntests/test_card.py:87: in test_returns_failed_on_valid_mastercard\n    assert isinstance(mastercard(value), ValidationError)\nE   AssertionError: assert False\nE    +  where False = isinstance(True, ValidationError)\nE    +    where True = mastercard('4242424242424242')\n=========================== short test summary info ============================\nFAILED tests/test_card.py::test_returns_failed_on_valid_mastercard[4242424242424242]\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 287 passed in 0.18s\n",
+      "failing_tests": [
+        "tests/test_card.py::test_returns_failed_on_valid_mastercard[4242424242424242]"
+      ],
+      "exit_code": 1
+    },
+    {
+      "bug_id": "validators-snakecase-028",
+      "test_output": "........................................................................ [  8%]\n........................................................................ [ 16%]\n........................................................................ [ 24%]\n.....................................................................F\n=================================== FAILURES ===================================\n___________ test_returns_true_on_valid_mastercard[5555555555554444] ____________\ntests/test_card.py:78: in test_returns_true_on_valid_mastercard\n    assert mastercard(value)\nE   AssertionError: assert ValidationError(func=mastercard, args={'value': '5555555555554444'})\nE    +  where ValidationError(func=mastercard, args={'value': '5555555555554444'}) = mastercard('5555555555554444')\n=========================== short test summary info ============================\nFAILED tests/test_card.py::test_returns_true_on_valid_mastercard[5555555555554444]\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 285 passed in 0.15s\n",
+      "failing_tests": [
+        "tests/test_card.py::test_returns_true_on_valid_mastercard[5555555555554444]"
+      ],
+      "exit_code": 1
+    },
+    {
+      "bug_id": "validators-snakecase-029",
+      "test_output": "........................................................................ [  8%]\n........................................................................ [ 16%]\n........................................................................ [ 24%]\n.....................................................................F\n=================================== FAILURES ===================================\n___________ test_returns_true_on_valid_mastercard[5555555555554444] ____________\ntests/test_card.py:78: in test_returns_true_on_valid_mastercard\n    assert mastercard(value)\nE   AssertionError: assert ValidationError(func=mastercard, args={'value': '5555555555554444'})\nE    +  where ValidationError(func=mastercard, args={'value': '5555555555554444'}) = mastercard('5555555555554444')\n=========================== short test summary info ============================\nFAILED tests/test_card.py::test_returns_true_on_valid_mastercard[5555555555554444]\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 285 passed in 0.16s\n",
+      "failing_tests": [
+        "tests/test_card.py::test_returns_true_on_valid_mastercard[5555555555554444]"
+      ],
+      "exit_code": 1
+    },
+    {
+      "bug_id": "validators-snakecase-030",
+      "test_output": "........................................................................ [  8%]\n........................................................................ [ 16%]\n........................................................................ [ 24%]\n.....................................................................F\n=================================== FAILURES ===================================\n___________ test_returns_true_on_valid_mastercard[5555555555554444] ____________\ntests/test_card.py:78: in test_returns_true_on_valid_mastercard\n    assert mastercard(value)\nE   AssertionError: assert ValidationError(func=mastercard, args={'value': '5555555555554444'})\nE    +  where ValidationError(func=mastercard, args={'value': '5555555555554444'}) = mastercard('5555555555554444')\n=========================== short test summary info ============================\nFAILED tests/test_card.py::test_returns_true_on_valid_mastercard[5555555555554444]\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 285 passed in 0.15s\n",
+      "failing_tests": [
+        "tests/test_card.py::test_returns_true_on_valid_mastercard[5555555555554444]"
+      ],
+      "exit_code": 1
+    }
+  ]
+}

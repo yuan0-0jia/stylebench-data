@@ -1,0 +1,255 @@
+{
+  "repo": "more-itertools",
+  "style": "badnames",
+  "test_command": [
+    "uv",
+    "run",
+    "pytest",
+    "-x",
+    "-q",
+    "--tb=short",
+    "--color=no"
+  ],
+  "bugs": [
+    {
+      "bug_id": "more-itertools-badnames-001",
+      "test_output": "...F\n=================================== FAILURES ===================================\n_____________________ ChunkedTests.test_strict_being_true ______________________\ntests/test_more.py:93: in test_strict_being_true\n    list(mi.chunked('ABCDEF', 3, strict=True)),\n    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nmore_itertools/more.py:236: in ret\n    raise ValueError('iterable is not divisible by n.')\nE   ValueError: iterable is not divisible by n.\n=========================== short test summary info ============================\nFAILED tests/test_more.py::ChunkedTests::test_strict_being_true - ValueError:...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 3 passed in 0.19s\n",
+      "failing_tests": [
+        "tests/test_more.py::ChunkedTests::test_strict_being_true"
+      ],
+      "exit_code": 1
+    },
+    {
+      "bug_id": "more-itertools-badnames-002",
+      "test_output": "...F\n=================================== FAILURES ===================================\n_____________________ ChunkedTests.test_strict_being_true ______________________\ntests/test_more.py:93: in test_strict_being_true\n    list(mi.chunked('ABCDEF', 3, strict=True)),\n    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nmore_itertools/more.py:236: in ret\n    raise ValueError('iterable is not divisible by n.')\nE   ValueError: iterable is not divisible by n.\n=========================== short test summary info ============================\nFAILED tests/test_more.py::ChunkedTests::test_strict_being_true - ValueError:...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 3 passed in 0.18s\n",
+      "failing_tests": [
+        "tests/test_more.py::ChunkedTests::test_strict_being_true"
+      ],
+      "exit_code": 1
+    },
+    {
+      "bug_id": "more-itertools-badnames-003",
+      "test_output": "...F\n=================================== FAILURES ===================================\n_____________________ ChunkedTests.test_strict_being_true ______________________\ntests/test_more.py:93: in test_strict_being_true\n    list(mi.chunked('ABCDEF', 3, strict=True)),\n    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nmore_itertools/more.py:236: in ret\n    raise ValueError('iterable is not divisible by n.')\nE   ValueError: iterable is not divisible by n.\n=========================== short test summary info ============================\nFAILED tests/test_more.py::ChunkedTests::test_strict_being_true - ValueError:...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 3 passed in 0.17s\n",
+      "failing_tests": [
+        "tests/test_more.py::ChunkedTests::test_strict_being_true"
+      ],
+      "exit_code": 1
+    },
+    {
+      "bug_id": "more-itertools-badnames-004",
+      "test_output": "..............F\n=================================== FAILURES ===================================\n__________________________ NthOrLastTests.test_basic ___________________________\ntests/test_more.py:198: in test_basic\n    self.assertEqual(mi.nth_or_last(range(3), 1), 1)\nE   AssertionError: 2 != 1\n=========================== short test summary info ============================\nFAILED tests/test_more.py::NthOrLastTests::test_basic - AssertionError: 2 != 1\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 14 passed, 13 subtests passed in 0.16s\n",
+      "failing_tests": [
+        "tests/test_more.py::NthOrLastTests::test_basic"
+      ],
+      "exit_code": 1
+    },
+    {
+      "bug_id": "more-itertools-badnames-005",
+      "test_output": "..............F\n=================================== FAILURES ===================================\n__________________________ NthOrLastTests.test_basic ___________________________\ntests/test_more.py:198: in test_basic\n    self.assertEqual(mi.nth_or_last(range(3), 1), 1)\nE   AssertionError: 0 != 1\n=========================== short test summary info ============================\nFAILED tests/test_more.py::NthOrLastTests::test_basic - AssertionError: 0 != 1\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 14 passed, 13 subtests passed in 0.16s\n",
+      "failing_tests": [
+        "tests/test_more.py::NthOrLastTests::test_basic"
+      ],
+      "exit_code": 1
+    },
+    {
+      "bug_id": "more-itertools-badnames-006",
+      "test_output": "..............F\n=================================== FAILURES ===================================\n__________________________ NthOrLastTests.test_basic ___________________________\ntests/test_more.py:198: in test_basic\n    self.assertEqual(mi.nth_or_last(range(3), 1), 1)\nE   AssertionError: 0 != 1\n=========================== short test summary info ============================\nFAILED tests/test_more.py::NthOrLastTests::test_basic - AssertionError: 0 != 1\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 14 passed, 13 subtests passed in 0.14s\n",
+      "failing_tests": [
+        "tests/test_more.py::NthOrLastTests::test_basic"
+      ],
+      "exit_code": 1
+    },
+    {
+      "bug_id": "more-itertools-badnames-007",
+      "test_output": "....................F\n=================================== FAILURES ===================================\n____________________ PeekableTests.test_multi_prepend_peek _____________________\ntests/test_more.py:393: in test_multi_prepend_peek\n    self.assertEqual(j.peek(), 10)\nE   AssertionError: 2 != 10\n=========================== short test summary info ============================\nFAILED tests/test_more.py::PeekableTests::test_multi_prepend_peek - Assertion...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 20 passed, 13 subtests passed in 0.15s\n",
+      "failing_tests": [
+        "tests/test_more.py::PeekableTests::test_multi_prepend_peek"
+      ],
+      "exit_code": 1
+    },
+    {
+      "bug_id": "more-itertools-badnames-008",
+      "test_output": ".............................F\n=================================== FAILURES ===================================\n______________________ PeekableTests.test_prepend_slicing ______________________\ntests/test_more.py:420: in test_prepend_slicing\n    self.assertEqual(p[1:8], g[1:8])\n                     ^^^^^^\nmore_itertools/more.py:470: in __getitem__\n    return self._get_slice(index)\n           ^^^^^^^^^^^^^^^^^^^^^^\nmore_itertools/more.py:452: in _get_slice\n    raise ValueError('slice step cannot be zero')\nE   ValueError: slice step cannot be zero\n=========================== short test summary info ============================\nFAILED tests/test_more.py::PeekableTests::test_prepend_slicing - ValueError: ...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 29 passed, 13 subtests passed in 0.20s\n",
+      "failing_tests": [
+        "tests/test_more.py::PeekableTests::test_prepend_slicing"
+      ],
+      "exit_code": 1
+    },
+    {
+      "bug_id": "more-itertools-badnames-009",
+      "test_output": ".............................F\n=================================== FAILURES ===================================\n______________________ PeekableTests.test_prepend_slicing ______________________\ntests/test_more.py:420: in test_prepend_slicing\n    self.assertEqual(p[1:8], g[1:8])\n                     ^^^^^^\nmore_itertools/more.py:470: in __getitem__\n    return self._get_slice(index)\n           ^^^^^^^^^^^^^^^^^^^^^^\nmore_itertools/more.py:452: in _get_slice\n    raise ValueError('slice step cannot be zero')\nE   ValueError: slice step cannot be zero\n=========================== short test summary info ============================\nFAILED tests/test_more.py::PeekableTests::test_prepend_slicing - ValueError: ...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 29 passed, 13 subtests passed in 0.29s\n",
+      "failing_tests": [
+        "tests/test_more.py::PeekableTests::test_prepend_slicing"
+      ],
+      "exit_code": 1
+    },
+    {
+      "bug_id": "more-itertools-badnames-010",
+      "test_output": ".............................F\n=================================== FAILURES ===================================\n______________________ PeekableTests.test_prepend_slicing ______________________\ntests/test_more.py:420: in test_prepend_slicing\n    self.assertEqual(p[1:8], g[1:8])\n                     ^^^^^^\nmore_itertools/more.py:470: in __getitem__\n    return self._get_slice(index)\n           ^^^^^^^^^^^^^^^^^^^^^^\nmore_itertools/more.py:452: in _get_slice\n    raise ValueError('slice step cannot be zero')\nE   ValueError: slice step cannot be zero\n=========================== short test summary info ============================\nFAILED tests/test_more.py::PeekableTests::test_prepend_slicing - ValueError: ...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 29 passed, 13 subtests passed in 0.19s\n",
+      "failing_tests": [
+        "tests/test_more.py::PeekableTests::test_prepend_slicing"
+      ],
+      "exit_code": 1
+    },
+    {
+      "bug_id": "more-itertools-badnames-011",
+      "test_output": ".................................F\n=================================== FAILURES ===================================\n_______________________ PeekableTests.test_slicing_error _______________________\ntests/test_more.py:329: in test_slicing_error\n    self.assertEqual(h, list(p._cache))\nE   AssertionError: Lists differ: ['0'] != ['0', '1', '2', '3', '4', '5', '6', '7']\nE   \nE   Second list contains 7 additional elements.\nE   First extra element 1:\nE   '1'\nE   \nE   - ['0']\nE   + ['0', '1', '2', '3', '4', '5', '6', '7']\n=========================== short test summary info ============================\nFAILED tests/test_more.py::PeekableTests::test_slicing_error - AssertionError...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 33 passed, 13 subtests passed in 0.16s\n",
+      "failing_tests": [
+        "tests/test_more.py::PeekableTests::test_slicing_error"
+      ],
+      "exit_code": 1
+    },
+    {
+      "bug_id": "more-itertools-badnames-012",
+      "test_output": ".............................F\n=================================== FAILURES ===================================\n______________________ PeekableTests.test_prepend_slicing ______________________\ntests/test_more.py:426: in test_prepend_slicing\n    self.assertEqual(p[::-1], g[::-1])\n                     ^^^^^^^\nmore_itertools/more.py:470: in __getitem__\n    return self._get_slice(index)\n           ^^^^^^^^^^^^^^^^^^^^^^\nmore_itertools/more.py:452: in _get_slice\n    raise ValueError('slice step cannot be zero')\nE   ValueError: slice step cannot be zero\n=========================== short test summary info ============================\nFAILED tests/test_more.py::PeekableTests::test_prepend_slicing - ValueError: ...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 29 passed, 13 subtests passed in 0.19s\n",
+      "failing_tests": [
+        "tests/test_more.py::PeekableTests::test_prepend_slicing"
+      ],
+      "exit_code": 1
+    },
+    {
+      "bug_id": "more-itertools-badnames-013",
+      "test_output": ".................................F\n=================================== FAILURES ===================================\n_______________________ PeekableTests.test_slicing_error _______________________\ntests/test_more.py:329: in test_slicing_error\n    self.assertEqual(h, list(p._cache))\nE   AssertionError: Lists differ: ['0'] != ['0', '1', '2', '3', '4', '5', '6', '7']\nE   \nE   Second list contains 7 additional elements.\nE   First extra element 1:\nE   '1'\nE   \nE   - ['0']\nE   + ['0', '1', '2', '3', '4', '5', '6', '7']\n=========================== short test summary info ============================\nFAILED tests/test_more.py::PeekableTests::test_slicing_error - AssertionError...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 33 passed, 13 subtests passed in 0.16s\n",
+      "failing_tests": [
+        "tests/test_more.py::PeekableTests::test_slicing_error"
+      ],
+      "exit_code": 1
+    },
+    {
+      "bug_id": "more-itertools-badnames-014",
+      "test_output": ".............................F\n=================================== FAILURES ===================================\n______________________ PeekableTests.test_prepend_slicing ______________________\ntests/test_more.py:426: in test_prepend_slicing\n    self.assertEqual(p[::-1], g[::-1])\n                     ^^^^^^^\nmore_itertools/more.py:470: in __getitem__\n    return self._get_slice(index)\n           ^^^^^^^^^^^^^^^^^^^^^^\nmore_itertools/more.py:452: in _get_slice\n    raise ValueError('slice step cannot be zero')\nE   ValueError: slice step cannot be zero\n=========================== short test summary info ============================\nFAILED tests/test_more.py::PeekableTests::test_prepend_slicing - ValueError: ...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 29 passed, 13 subtests passed in 0.19s\n",
+      "failing_tests": [
+        "tests/test_more.py::PeekableTests::test_prepend_slicing"
+      ],
+      "exit_code": 1
+    },
+    {
+      "bug_id": "more-itertools-badnames-015",
+      "test_output": "..................................F\n=================================== FAILURES ===================================\n_______________________ PeekableTests.test_slicing_reset _______________________\ntests/test_more.py:314: in test_slicing_reset\n    self.assertEqual(g, h, t)\nE   AssertionError: Lists differ: [] != ['5', '4', '3', '2']\nE   \nE   Second list contains 4 additional elements.\nE   First extra element 0:\nE   '5'\nE   \nE   - []\nE   + ['5', '4', '3', '2'] : (None, 0, -1)\n=========================== short test summary info ============================\nFAILED tests/test_more.py::PeekableTests::test_slicing_reset - AssertionError...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 34 passed, 13 subtests passed in 0.16s\n",
+      "failing_tests": [
+        "tests/test_more.py::PeekableTests::test_slicing_reset"
+      ],
+      "exit_code": 1
+    },
+    {
+      "bug_id": "more-itertools-badnames-016",
+      "test_output": "..................................F\n=================================== FAILURES ===================================\n_______________________ PeekableTests.test_slicing_reset _______________________\ntests/test_more.py:314: in test_slicing_reset\n    self.assertEqual(g, h, t)\nE   AssertionError: Lists differ: [] != ['5', '4', '3', '2']\nE   \nE   Second list contains 4 additional elements.\nE   First extra element 0:\nE   '5'\nE   \nE   - []\nE   + ['5', '4', '3', '2'] : (None, 0, -1)\n=========================== short test summary info ============================\nFAILED tests/test_more.py::PeekableTests::test_slicing_reset - AssertionError...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 34 passed, 13 subtests passed in 0.14s\n",
+      "failing_tests": [
+        "tests/test_more.py::PeekableTests::test_slicing_reset"
+      ],
+      "exit_code": 1
+    },
+    {
+      "bug_id": "more-itertools-badnames-017",
+      "test_output": "..................................F\n=================================== FAILURES ===================================\n_______________________ PeekableTests.test_slicing_reset _______________________\ntests/test_more.py:314: in test_slicing_reset\n    self.assertEqual(g, h, t)\nE   AssertionError: Lists differ: [] != ['5', '4', '3', '2']\nE   \nE   Second list contains 4 additional elements.\nE   First extra element 0:\nE   '5'\nE   \nE   - []\nE   + ['5', '4', '3', '2'] : (None, 0, -1)\n=========================== short test summary info ============================\nFAILED tests/test_more.py::PeekableTests::test_slicing_reset - AssertionError...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 34 passed, 13 subtests passed in 0.14s\n",
+      "failing_tests": [
+        "tests/test_more.py::PeekableTests::test_slicing_reset"
+      ],
+      "exit_code": 1
+    },
+    {
+      "bug_id": "more-itertools-badnames-018",
+      "test_output": "..................................F\n=================================== FAILURES ===================================\n_______________________ PeekableTests.test_slicing_reset _______________________\ntests/test_more.py:314: in test_slicing_reset\n    self.assertEqual(g, h, t)\nE   AssertionError: Lists differ: [] != ['2']\nE   \nE   Second list contains 1 additional elements.\nE   First extra element 0:\nE   '2'\nE   \nE   - []\nE   + ['2'] : (-4, 0, -1)\n=========================== short test summary info ============================\nFAILED tests/test_more.py::PeekableTests::test_slicing_reset - AssertionError...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 34 passed, 13 subtests passed in 0.15s\n",
+      "failing_tests": [
+        "tests/test_more.py::PeekableTests::test_slicing_reset"
+      ],
+      "exit_code": 1
+    },
+    {
+      "bug_id": "more-itertools-badnames-019",
+      "test_output": "..................................F\n=================================== FAILURES ===================================\n_______________________ PeekableTests.test_slicing_reset _______________________\ntests/test_more.py:314: in test_slicing_reset\n    self.assertEqual(g, h, t)\nE   AssertionError: Lists differ: [] != ['2']\nE   \nE   Second list contains 1 additional elements.\nE   First extra element 0:\nE   '2'\nE   \nE   - []\nE   + ['2'] : (-4, 0, -1)\n=========================== short test summary info ============================\nFAILED tests/test_more.py::PeekableTests::test_slicing_reset - AssertionError...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 34 passed, 13 subtests passed in 0.17s\n",
+      "failing_tests": [
+        "tests/test_more.py::PeekableTests::test_slicing_reset"
+      ],
+      "exit_code": 1
+    },
+    {
+      "bug_id": "more-itertools-badnames-020",
+      "test_output": "..................................F\n=================================== FAILURES ===================================\n_______________________ PeekableTests.test_slicing_reset _______________________\ntests/test_more.py:314: in test_slicing_reset\n    self.assertEqual(g, h, t)\nE   AssertionError: Lists differ: [] != ['2']\nE   \nE   Second list contains 1 additional elements.\nE   First extra element 0:\nE   '2'\nE   \nE   - []\nE   + ['2'] : (-4, 0, -1)\n=========================== short test summary info ============================\nFAILED tests/test_more.py::PeekableTests::test_slicing_reset - AssertionError...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 34 passed, 13 subtests passed in 0.15s\n",
+      "failing_tests": [
+        "tests/test_more.py::PeekableTests::test_slicing_reset"
+      ],
+      "exit_code": 1
+    },
+    {
+      "bug_id": "more-itertools-badnames-021",
+      "test_output": "..................................F\n=================================== FAILURES ===================================\n_______________________ PeekableTests.test_slicing_reset _______________________\ntests/test_more.py:314: in test_slicing_reset\n    self.assertEqual(g, h, t)\nE   AssertionError: Lists differ: [] != ['5', '4', '3', '2']\nE   \nE   Second list contains 4 additional elements.\nE   First extra element 0:\nE   '5'\nE   \nE   - []\nE   + ['5', '4', '3', '2'] : (-1, 0, -1)\n=========================== short test summary info ============================\nFAILED tests/test_more.py::PeekableTests::test_slicing_reset - AssertionError...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 34 passed, 13 subtests passed in 0.16s\n",
+      "failing_tests": [
+        "tests/test_more.py::PeekableTests::test_slicing_reset"
+      ],
+      "exit_code": 1
+    },
+    {
+      "bug_id": "more-itertools-badnames-022",
+      "test_output": "..................................F\n=================================== FAILURES ===================================\n_______________________ PeekableTests.test_slicing_reset _______________________\ntests/test_more.py:314: in test_slicing_reset\n    self.assertEqual(g, h, t)\nE   AssertionError: Lists differ: [] != ['1']\nE   \nE   Second list contains 1 additional elements.\nE   First extra element 0:\nE   '1'\nE   \nE   - []\nE   + ['1'] : (0, -4, 1)\n=========================== short test summary info ============================\nFAILED tests/test_more.py::PeekableTests::test_slicing_reset - AssertionError...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 34 passed, 13 subtests passed in 0.17s\n",
+      "failing_tests": [
+        "tests/test_more.py::PeekableTests::test_slicing_reset"
+      ],
+      "exit_code": 1
+    },
+    {
+      "bug_id": "more-itertools-badnames-023",
+      "test_output": "..................................F\n=================================== FAILURES ===================================\n_______________________ PeekableTests.test_slicing_reset _______________________\ntests/test_more.py:314: in test_slicing_reset\n    self.assertEqual(g, h, t)\nE   AssertionError: Lists differ: [] != ['1']\nE   \nE   Second list contains 1 additional elements.\nE   First extra element 0:\nE   '1'\nE   \nE   - []\nE   + ['1'] : (0, -4, 1)\n=========================== short test summary info ============================\nFAILED tests/test_more.py::PeekableTests::test_slicing_reset - AssertionError...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 34 passed, 13 subtests passed in 0.15s\n",
+      "failing_tests": [
+        "tests/test_more.py::PeekableTests::test_slicing_reset"
+      ],
+      "exit_code": 1
+    },
+    {
+      "bug_id": "more-itertools-badnames-024",
+      "test_output": "..................................F\n=================================== FAILURES ===================================\n_______________________ PeekableTests.test_slicing_reset _______________________\ntests/test_more.py:314: in test_slicing_reset\n    self.assertEqual(g, h, t)\nE   AssertionError: Lists differ: [] != ['1', '2', '3', '4']\nE   \nE   Second list contains 4 additional elements.\nE   First extra element 0:\nE   '1'\nE   \nE   - []\nE   + ['1', '2', '3', '4'] : (0, -1, 1)\n=========================== short test summary info ============================\nFAILED tests/test_more.py::PeekableTests::test_slicing_reset - AssertionError...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 34 passed, 13 subtests passed in 0.16s\n",
+      "failing_tests": [
+        "tests/test_more.py::PeekableTests::test_slicing_reset"
+      ],
+      "exit_code": 1
+    },
+    {
+      "bug_id": "more-itertools-badnames-025",
+      "test_output": "..................................F\n=================================== FAILURES ===================================\n_______________________ PeekableTests.test_slicing_reset _______________________\ntests/test_more.py:314: in test_slicing_reset\n    self.assertEqual(g, h, t)\nE   AssertionError: Lists differ: [] != ['2']\nE   \nE   Second list contains 1 additional elements.\nE   First extra element 0:\nE   '2'\nE   \nE   - []\nE   + ['2'] : (1, 0, -1)\n=========================== short test summary info ============================\nFAILED tests/test_more.py::PeekableTests::test_slicing_reset - AssertionError...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 34 passed, 13 subtests passed in 0.17s\n",
+      "failing_tests": [
+        "tests/test_more.py::PeekableTests::test_slicing_reset"
+      ],
+      "exit_code": 1
+    },
+    {
+      "bug_id": "more-itertools-badnames-026",
+      "test_output": ".............................F\n=================================== FAILURES ===================================\n______________________ PeekableTests.test_prepend_slicing ______________________\ntests/test_more.py:420: in test_prepend_slicing\n    self.assertEqual(p[1:8], g[1:8])\nE   AssertionError: Lists differ: [40, 50] != [40, 50, 0, 1, 2, 3, 4]\nE   \nE   Second list contains 5 additional elements.\nE   First extra element 2:\nE   0\nE   \nE   - [40, 50]\nE   + [40, 50, 0, 1, 2, 3, 4]\n=========================== short test summary info ============================\nFAILED tests/test_more.py::PeekableTests::test_prepend_slicing - AssertionErr...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 29 passed, 13 subtests passed in 0.16s\n",
+      "failing_tests": [
+        "tests/test_more.py::PeekableTests::test_prepend_slicing"
+      ],
+      "exit_code": 1
+    },
+    {
+      "bug_id": "more-itertools-badnames-027",
+      "test_output": ".............................F\n=================================== FAILURES ===================================\n______________________ PeekableTests.test_prepend_slicing ______________________\ntests/test_more.py:420: in test_prepend_slicing\n    self.assertEqual(p[1:8], g[1:8])\nE   AssertionError: Lists differ: [40, 50] != [40, 50, 0, 1, 2, 3, 4]\nE   \nE   Second list contains 5 additional elements.\nE   First extra element 2:\nE   0\nE   \nE   - [40, 50]\nE   + [40, 50, 0, 1, 2, 3, 4]\n=========================== short test summary info ============================\nFAILED tests/test_more.py::PeekableTests::test_prepend_slicing - AssertionErr...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 29 passed, 13 subtests passed in 0.15s\n",
+      "failing_tests": [
+        "tests/test_more.py::PeekableTests::test_prepend_slicing"
+      ],
+      "exit_code": 1
+    },
+    {
+      "bug_id": "more-itertools-badnames-028",
+      "test_output": ".............................F\n=================================== FAILURES ===================================\n______________________ PeekableTests.test_prepend_slicing ______________________\ntests/test_more.py:420: in test_prepend_slicing\n    self.assertEqual(p[1:8], g[1:8])\nE   AssertionError: Lists differ: [40, 50] != [40, 50, 0, 1, 2, 3, 4]\nE   \nE   Second list contains 5 additional elements.\nE   First extra element 2:\nE   0\nE   \nE   - [40, 50]\nE   + [40, 50, 0, 1, 2, 3, 4]\n=========================== short test summary info ============================\nFAILED tests/test_more.py::PeekableTests::test_prepend_slicing - AssertionErr...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 29 passed, 13 subtests passed in 0.13s\n",
+      "failing_tests": [
+        "tests/test_more.py::PeekableTests::test_prepend_slicing"
+      ],
+      "exit_code": 1
+    },
+    {
+      "bug_id": "more-itertools-badnames-029",
+      "test_output": "..................F\n=================================== FAILURES ===================================\n_________________________ PeekableTests.test_indexing __________________________\ntests/test_more.py:264: in test_indexing\n    self.assertEqual(p[2], 'd')\n                     ^^^^\nmore_itertools/more.py:478: in __getitem__\n    return self._cache[index]\n           ^^^^^^^^^^^^^^^^^^\nE   IndexError: deque index out of range\n=========================== short test summary info ============================\nFAILED tests/test_more.py::PeekableTests::test_indexing - IndexError: deque i...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 18 passed, 13 subtests passed in 0.18s\n",
+      "failing_tests": [
+        "tests/test_more.py::PeekableTests::test_indexing"
+      ],
+      "exit_code": 1
+    },
+    {
+      "bug_id": "more-itertools-badnames-030",
+      "test_output": "..................F\n=================================== FAILURES ===================================\n_________________________ PeekableTests.test_indexing __________________________\ntests/test_more.py:264: in test_indexing\n    self.assertEqual(p[2], 'd')\n                     ^^^^\nmore_itertools/more.py:478: in __getitem__\n    return self._cache[index]\n           ^^^^^^^^^^^^^^^^^^\nE   IndexError: deque index out of range\n=========================== short test summary info ============================\nFAILED tests/test_more.py::PeekableTests::test_indexing - IndexError: deque i...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 18 passed, 13 subtests passed in 0.17s\n",
+      "failing_tests": [
+        "tests/test_more.py::PeekableTests::test_indexing"
+      ],
+      "exit_code": 1
+    }
+  ]
+}

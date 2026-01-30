@@ -59,11 +59,11 @@ class AbbrExtension(Extension):
         if (self.glossary):
             self.abbrs.update(self.glossary)
 
-    def resetGlossary(self):
+    def reset_glossary(self):
         """ Clear all abbreviations from the glossary. """
         self.glossary.clear()
 
-    def loadGlossary(self, dictionary: dict[str, str]):
+    def load_glossary(self, dictionary: dict[str, str]):
         """Adds `dictionary` to our glossary. Any abbreviations that already exist will be overwritten."""
         if dictionary:
             self.glossary = {**dictionary, **self.glossary}
@@ -71,7 +71,7 @@ class AbbrExtension(Extension):
     def extendMarkdown(self, md):
         """ Insert `AbbrTreeprocessor` and `AbbrBlockprocessor`. """
         if (self.config['glossary'][0]):
-            self.loadGlossary(self.config['glossary'][0])
+            self.load_glossary(self.config['glossary'][0])
         self.abbrs.update(self.glossary)
         md.registerExtension(self)
         md.treeprocessors.register(AbbrTreeprocessor(md, self.abbrs), 'abbr', 7)
@@ -86,22 +86,22 @@ class AbbrTreeprocessor(Treeprocessor):
         self.RE: re.RegexObject | None = None
         super().__init__(md)
 
-    def createElement(self, title: str, text: str, tail: str) -> etree.Element:
+    def create_element(self, title: str, text: str, tail: str) -> etree.Element:
         ''' Create an `abbr` element. '''
         abbr = etree.Element('abbr', {'title': title})
         abbr.text = AtomicString(text)
         abbr.tail = tail
         return abbr
 
-    def iterElement(self, el: etree.Element, parent: etree.Element | None = None) -> None:
+    def iter_element(self, el: etree.Element, parent: etree.Element | None = None) -> None:
         ''' Recursively iterate over elements, run regex on text and wrap matches in `abbr` tags. '''
         for child in reversed(el):
-            self.iterElement(child, el)
+            self.iter_element(child, el)
         if text := el.text:
             if not isinstance(text, AtomicString):
                 for m in reversed(list(self.RE.finditer(text))):
                     if self.abbrs[m.group(0)]:
-                        abbr = self.createElement(self.abbrs[m.group(0)], m.group(0), text[m.end():])
+                        abbr = self.create_element(self.abbrs[m.group(0)], m.group(0), text[m.end():])
                         el.insert(0, abbr)
                         text = text[:m.start()]
                 el.text = text
@@ -110,7 +110,7 @@ class AbbrTreeprocessor(Treeprocessor):
             index = list(parent).index(el) + 1
             if not isinstance(tail, AtomicString):
                 for m in reversed(list(self.RE.finditer(tail))):
-                    abbr = self.createElement(self.abbrs[m.group(0)], m.group(0), tail[m.end():])
+                    abbr = self.create_element(self.abbrs[m.group(0)], m.group(0), tail[m.end():])
                     parent.insert(index, abbr)
                     tail = tail[:m.start()]
                 el.tail = tail
@@ -125,7 +125,7 @@ class AbbrTreeprocessor(Treeprocessor):
         abbrList.sort(key=len, reverse=True)
         self.RE = re.compile(f"\\b(?:{ '|'.join(re.escape(key) for key in abbrList) })\\b")
         # Step through tree and modify on matches
-        self.iterElement(root)
+        self.iter_element(root)
 
 
 class AbbrBlockprocessor(BlockProcessor):

@@ -27,7 +27,7 @@ class TestUnorderedLists(TestCase):
 
     # TODO: Move legacy tests here
 
-    def testHeaderAndParagraphNoBlankLineLooseList(self):
+    def test_header_and_paragraph_no_blank_line_loose_list(self):
         self.assertMarkdownRenders(
             self.dedent(
                 """
@@ -57,7 +57,7 @@ class TestUnorderedLists(TestCase):
     # Note: This is strange. Any other element on first line of list item would get very
     # different behavior. However, as a heading can only ever be one line, this is the
     # correct behavior. In fact, `markdown.pl` behaves this way with no indentation.
-    def testHeaderAndParagraphNoBlankLineLooseListNoIndent(self):
+    def test_header_and_paragraph_no_blank_line_loose_list_no_indent(self):
         self.assertMarkdownRenders(
             self.dedent(
                 """
@@ -88,7 +88,7 @@ class TestUnorderedLists(TestCase):
     # of `markdown.pl`, it is likely surprising to most users. In fact, actual
     # behavior is to return the same results as for a loose list.
     @unittest.skip('This behaves as a loose list in Python-Markdown')
-    def testHeaderAndParagraphNoBlankLineTightList(self):
+    def test_header_and_paragraph_no_blank_line_tight_list(self):
         self.assertMarkdownRenders(
             self.dedent(
                 """
@@ -114,7 +114,7 @@ class TestUnorderedLists(TestCase):
     # of `markdown.pl`, it is likely surprising to most users. In fact, actual
     # behavior is to return the same results as for a loose list.
     @unittest.skip('This behaves as a loose list in Python-Markdown')
-    def testHeaderAndParagraphNoBlankLineTightListNoIndent(self):
+    def test_header_and_paragraph_no_blank_line_tight_list_no_indent(self):
         self.assertMarkdownRenders(
             self.dedent(
                 """

@@ -34,7 +34,7 @@ if TYPE_CHECKING:  # pragma: no cover
     from markdown import Markdown
 
 
-def buildPreprocessors(md: Markdown, **kwargs: Any) -> util.Registry[Preprocessor]:
+def build_preprocessors(md: Markdown, **kwargs: Any) -> util.Registry[Preprocessor]:
     """ Build and return the default set of preprocessors used by Markdown. """
     preprocessors = util.Registry()
     preprocessors.register(NormalizeWhitespace(md), 'normalize_whitespace', 30)
@@ -70,7 +70,7 @@ class NormalizeWhitespace(Preprocessor):
         source = '\n'.join(lines)
         source = source.replace(util.STX, "").replace(util.ETX, "")
         source = source.replace("\r\n", "\n").replace("\r", "\n") + "\n\n"
-        source = source.expandtabs(self.md.tabLength)
+        source = source.expandtabs(self.md.tab_length)
         source = re.sub(r'(?<=\n) +\n', '\n', source)
         return source.split('\n')
 

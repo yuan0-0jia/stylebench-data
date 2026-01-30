@@ -21,13 +21,13 @@ License: BSD (see LICENSE.md for details).
 
 from markdown.test_tools import TestCase
 from markdown import Markdown
-from markdown.extensions.toc import TocExtension, stripTags, unique
+from markdown.extensions.toc import TocExtension, strip_tags, unique
 from markdown.extensions.nl2br import Nl2BrExtension
 
 
 class TestTOC(TestCase):
     maxDiff = None
-    defaultKwargs = {
+    default_kwargs = {
         'extensions': [TocExtension()]
     }
 
@@ -147,13 +147,13 @@ class TestTOC(TestCase):
     def testTOCReset(self):
         md = Markdown(extensions=[TocExtension()])
         self.assertEqual(md.toc, '')
-        self.assertEqual(md.tocTokens, [])
+        self.assertEqual(md.toc_tokens, [])
         md.convert('# Header 1')
         self.assertEqual('<div class="toc">', md.toc[:17])
-        self.assertEqual(len(md.tocTokens), 1)
+        self.assertEqual(len(md.toc_tokens), 1)
         md.reset()
         self.assertEqual(md.toc, '')
-        self.assertEqual(md.tocTokens, [])
+        self.assertEqual(md.toc_tokens, [])
 
     def testUniqueIds(self):
         self.assertMarkdownRenders(
@@ -926,7 +926,7 @@ class TestTOC(TestCase):
             extensions=[TocExtension(toc_depth=3, baselevel=2)]
         )
 
-    def testEscapedCode(self):
+    def test_escaped_code(self):
         self.assertMarkdownRenders(
             self.dedent(
                 '''
@@ -948,7 +948,7 @@ class TestTOC(TestCase):
             extensions=['toc']
         )
 
-    def testEscapedCharInId(self):
+    def test_escaped_char_in_id(self):
         self.assertMarkdownRenders(
             r'# escaped\_character',
             '<h1 id="escaped_character">escaped_character</h1>',
@@ -974,7 +974,7 @@ class TestTOC(TestCase):
             extensions=['toc']
         )
 
-    def testEscapedCharInAttrList(self):
+    def test_escaped_char_in_attr_list(self):
         self.assertMarkdownRenders(
             r'# `*Foo*` { id="\*Foo\*" }',
             '<h1 id="*Foo*"><code>*Foo*</code></h1>',
@@ -1111,25 +1111,25 @@ class TestTOC(TestCase):
         )
 
     def testPermalinkWithUnicodeInID(self):
-        from markdown.extensions.toc import slugifyUnicode
+        from markdown.extensions.toc import slugify_unicode
         self.assertMarkdownRenders(
             '# Unicode ヘッダー',
             '<h1 id="unicode-ヘッダー">'                                                            # noqa
                 'Unicode ヘッダー'                                                                  # noqa
                 '<a class="headerlink" href="#unicode-ヘッダー" title="Permanent link">&para;</a>'  # noqa
             '</h1>',                                                                               # noqa
-            extensions=[TocExtension(permalink=True, slugify=slugifyUnicode)]
+            extensions=[TocExtension(permalink=True, slugify=slugify_unicode)]
         )
 
     def testPermalinkWithUnicodeTitle(self):
-        from markdown.extensions.toc import slugifyUnicode
+        from markdown.extensions.toc import slugify_unicode
         self.assertMarkdownRenders(
             '# Unicode ヘッダー',
             '<h1 id="unicode-ヘッダー">'                                                        # noqa
                 'Unicode ヘッダー'                                                              # noqa
                 '<a class="headerlink" href="#unicode-ヘッダー" title="パーマリンク">&para;</a>'  # noqa
             '</h1>',                                                                           # noqa
-            extensions=[TocExtension(permalink=True, permalink_title="パーマリンク", slugify=slugifyUnicode)]
+            extensions=[TocExtension(permalink=True, permalink_title="パーマリンク", slugify=slugify_unicode)]
         )
 
     def testPermalinkWithExtendedLatinInID(self):
@@ -1414,66 +1414,66 @@ class testStripTags(TestCase):
 
     def testStripElement(self):
         self.assertEqual(
-            stripTags('foo <em>bar</em>'),
+            strip_tags('foo <em>bar</em>'),
             'foo bar'
         )
 
     def testStripOpenElement(self):
         self.assertEqual(
-            stripTags('foo <em>bar'),
+            strip_tags('foo <em>bar'),
             'foo bar'
         )
 
     def testStripEmptyElement(self):
         self.assertEqual(
-            stripTags('foo <br />bar'),
+            strip_tags('foo <br />bar'),
             'foo bar'
         )
 
     def testDontStripOpenBracket(self):
         self.assertEqual(
-            stripTags('foo < bar'),
+            strip_tags('foo < bar'),
             'foo < bar'
         )
 
     def testDontStripCloseBracket(self):
         self.assertEqual(
-            stripTags('foo > bar'),
+            strip_tags('foo > bar'),
             'foo > bar'
         )
 
     def testStripCollapseWhitespace(self):
         self.assertEqual(
-            stripTags('foo <em>\tbar\t</em>'),
+            strip_tags('foo <em>\tbar\t</em>'),
             'foo bar'
         )
 
     def testStripElementWithNewlines(self):
         self.assertEqual(
-            stripTags('foo <meta content="tag\nwith\nnewlines"> bar'),
+            strip_tags('foo <meta content="tag\nwith\nnewlines"> bar'),
             'foo bar'
         )
 
     def testStripComment(self):
         self.assertEqual(
-            stripTags('foo <!-- comment --> bar'),
+            strip_tags('foo <!-- comment --> bar'),
             'foo bar'
         )
 
     def testStripCommentWithInnerTags(self):
         self.assertEqual(
-            stripTags('foo <!-- comment with <em> --> bar'),
+            strip_tags('foo <!-- comment with <em> --> bar'),
             'foo bar'
         )
 
     def testStripCommentInElement(self):
         self.assertEqual(
-            stripTags('<em>foo <!-- comment --> bar<em>'),
+            strip_tags('<em>foo <!-- comment --> bar<em>'),
             'foo bar'
         )
 
     def testDontStripHTMLEntities(self):
         self.assertEqual(
-            stripTags('foo &lt; &amp; &lt; bar'),
+            strip_tags('foo &lt; &amp; &lt; bar'),
             'foo &lt; &amp; &lt; bar'
         )

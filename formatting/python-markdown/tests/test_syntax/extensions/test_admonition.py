@@ -23,10 +23,11 @@ from markdown.test_tools import TestCase
 
 
 class TestAdmonition(TestCase):
+
     def test_with_lists(self):
         self.assertMarkdownRenders(
             self.dedent(
-                """
+                '''
                 - List
 
                     !!! note "Admontion"
@@ -34,10 +35,10 @@ class TestAdmonition(TestCase):
                         - Paragraph
 
                             Paragraph
-                """
+                '''
             ),
             self.dedent(
-                """
+                '''
                 <ul>
                 <li>
                 <p>List</p>
@@ -52,15 +53,15 @@ class TestAdmonition(TestCase):
                 </div>
                 </li>
                 </ul>
-                """
+                '''
             ),
-            extensions=['admonition'],
+            extensions=['admonition']
         )
 
     def test_with_big_lists(self):
         self.assertMarkdownRenders(
             self.dedent(
-                """
+                '''
                 - List
 
                     !!! note "Admontion"
@@ -72,10 +73,10 @@ class TestAdmonition(TestCase):
                         - Paragraph
 
                             paragraph
-                """
+                '''
             ),
             self.dedent(
-                """
+                '''
                 <ul>
                 <li>
                 <p>List</p>
@@ -94,15 +95,15 @@ class TestAdmonition(TestCase):
                 </div>
                 </li>
                 </ul>
-                """
+                '''
             ),
-            extensions=['admonition'],
+            extensions=['admonition']
         )
 
     def test_with_complex_lists(self):
         self.assertMarkdownRenders(
             self.dedent(
-                """
+                '''
                 - List
 
                     !!! note "Admontion"
@@ -114,10 +115,10 @@ class TestAdmonition(TestCase):
                                 1. Paragraph
 
                                     Paragraph
-                """
+                '''
             ),
             self.dedent(
-                """
+                '''
                 <ul>
                 <li>
                 <p>List</p>
@@ -140,15 +141,15 @@ class TestAdmonition(TestCase):
                 </div>
                 </li>
                 </ul>
-                """
+                '''
             ),
-            extensions=['admonition'],
+            extensions=['admonition']
         )
 
     def test_definition_list(self):
         self.assertMarkdownRenders(
             self.dedent(
-                """
+                '''
                 - List
 
                     !!! note "Admontion"
@@ -163,10 +164,10 @@ class TestAdmonition(TestCase):
                             definition
 
                             Even more text
-                """
+                '''
             ),
             self.dedent(
-                """
+                '''
                 <ul>
                 <li>
                 <p>List</p>
@@ -187,45 +188,45 @@ class TestAdmonition(TestCase):
                 </div>
                 </li>
                 </ul>
-                """
+                '''
             ),
-            extensions=['admonition', 'def_list'],
+            extensions=['admonition', 'def_list']
         )
 
     def test_with_preceding_text(self):
         self.assertMarkdownRenders(
             self.dedent(
-                """
+                '''
                 foo
                 **foo**
                 !!! note "Admonition"
-                """
+                '''
             ),
             self.dedent(
-                """
+                '''
                 <p>foo
                 <strong>foo</strong></p>
                 <div class="admonition note">
                 <p class="admonition-title">Admonition</p>
                 </div>
-                """
+                '''
             ),
-            extensions=['admonition'],
+            extensions=['admonition']
         )
 
     def test_admontion_detabbing(self):
         self.assertMarkdownRenders(
             self.dedent(
-                """
+                '''
                 !!! note "Admonition"
                     - Parent 1
 
                         - Child 1
                         - Child 2
-                """
+                '''
             ),
             self.dedent(
-                """
+                '''
                 <div class="admonition note">
                 <p class="admonition-title">Admonition</p>
                 <ul>
@@ -238,27 +239,27 @@ class TestAdmonition(TestCase):
                 </li>
                 </ul>
                 </div>
-                """
+                '''
             ),
-            extensions=['admonition'],
+            extensions=['admonition']
         )
 
     def test_admonition_first_indented(self):
         self.assertMarkdownRenders(
             self.dedent(
-                """
+                '''
                 !!! danger "This is not"
                         one long admonition title
-                """
+                '''
             ),
             self.dedent(
-                """
+                '''
                 <div class="admonition danger">
                 <p class="admonition-title">This is not</p>
                 <pre><code>one long admonition title
                 </code></pre>
                 </div>
-                """
+                '''
             ),
-            extensions=['admonition'],
+            extensions=['admonition']
         )

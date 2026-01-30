@@ -25,13 +25,13 @@ import logging
 import importlib
 from typing import TYPE_CHECKING, Any, BinaryIO, Callable, ClassVar, Mapping, Sequence
 from . import util
-from .preprocessors import buildPreprocessors
-from .blockprocessors import buildBlockParser
-from .treeprocessors import buildTreeprocessors
-from .inlinepatterns import buildInlinepatterns
-from .postprocessors import buildPostprocessors
+from .preprocessors import build_preprocessors
+from .blockprocessors import build_block_parser
+from .treeprocessors import build_treeprocessors
+from .inlinepatterns import build_inlinepatterns
+from .postprocessors import build_postprocessors
 from .extensions import Extension
-from .serializers import toHtmlString, toXhtmlString
+from .serializers import to_html_string, to_xhtml_string
 from .util import BLOCK_LEVEL_ELEMENTS
 
 if TYPE_CHECKING:  # pragma: no cover
@@ -74,11 +74,11 @@ class Markdown:
 
     """
 
-    docTag = "div"     # Element used to wrap document - later removed
+    doc_tag = "div"     # Element used to wrap document - later removed
 
-    outputFormats: ClassVar[dict[str, Callable[[Element], str]]] = {
-        'html':   toHtmlString,
-        'xhtml':  toXhtmlString,
+    output_formats: ClassVar[dict[str, Callable[[Element], str]]] = {
+        'html':   to_html_string,
+        'xhtml':  to_xhtml_string,
     }
     """
     A mapping of known output formats by name and their respective serializers. Each serializer must be a
@@ -106,29 +106,29 @@ class Markdown:
 
         """
 
-        self.tabLength: int = kwargs.get('tab_length', 4)
+        self.tab_length: int = kwargs.get('tab_length', 4)
 
         self.ESCAPED_CHARS: list[str] = [
             '\\', '`', '*', '_', '{', '}', '[', ']', '(', ')', '>', '#', '+', '-', '.', '!'
         ]
         """ List of characters which get the backslash escape treatment. """
 
-        self.blockLevelElements: list[str] = BLOCK_LEVEL_ELEMENTS.copy()
+        self.block_level_elements: list[str] = BLOCK_LEVEL_ELEMENTS.copy()
 
         self.registeredExtensions: list[Extension] = []
         self.docType = ""  # TODO: Maybe delete this. It does not appear to be used anymore.
         self.stripTopLevelTags: bool = True
 
-        self.buildParser()
+        self.build_parser()
 
         self.references: dict[str, tuple[str, str]] = {}
         self.htmlStash: util.HtmlStash = util.HtmlStash()
         self.registerExtensions(extensions=kwargs.get('extensions', []),
                                 configs=kwargs.get('extension_configs', {}))
-        self.setOutputFormat(kwargs.get('output_format', 'xhtml'))
+        self.set_output_format(kwargs.get('output_format', 'xhtml'))
         self.reset()
 
-    def buildParser(self) -> Markdown:
+    def build_parser(self) -> Markdown:
         """
         Build the parser from the various parts.
 
@@ -149,11 +149,11 @@ class Markdown:
         combination of processors and patterns.
 
         """
-        self.preprocessors = buildPreprocessors(self)
-        self.parser = buildBlockParser(self)
-        self.inlinePatterns = buildInlinepatterns(self)
-        self.treeprocessors = buildTreeprocessors(self)
-        self.postprocessors = buildPostprocessors(self)
+        self.preprocessors = build_preprocessors(self)
+        self.parser = build_block_parser(self)
+        self.inlinePatterns = build_inlinepatterns(self)
+        self.treeprocessors = build_treeprocessors(self)
+        self.postprocessors = build_postprocessors(self)
         return self
 
     def registerExtensions(
@@ -176,7 +176,7 @@ class Markdown:
         """
         for ext in extensions:
             if isinstance(ext, str):
-                ext = self.buildExtension(ext, configs.get(ext, {}))
+                ext = self.build_extension(ext, configs.get(ext, {}))
             if isinstance(ext, Extension):
                 ext.extendMarkdown(self)
                 logger.debug(
@@ -192,7 +192,7 @@ class Markdown:
                 )
         return self
 
-    def buildExtension(self, extName: str, configs: Mapping[str, Any]) -> Extension:
+    def build_extension(self, ext_name: str, configs: Mapping[str, Any]) -> Extension:
         """
         Build extension from a string name, then return an instance using the given `configs`.
 
@@ -213,21 +213,21 @@ class Markdown:
         """
         configs = dict(configs)
 
-        entryPoints = [ep for ep in util.getInstalledExtensions() if ep.name == extName]
+        entryPoints = [ep for ep in util.get_installed_extensions() if ep.name == ext_name]
         if entryPoints:
             ext = entryPoints[0].load()
             return ext(**configs)
 
         # Get class name (if provided): `path.to.module:ClassName`
-        extName, className = extName.split(':', 1) if ':' in extName else (extName, '')
+        ext_name, className = ext_name.split(':', 1) if ':' in ext_name else (ext_name, '')
 
         try:
-            module = importlib.import_module(extName)
+            module = importlib.import_module(ext_name)
             logger.debug(
-                'Successfully imported extension module "%s".' % extName
+                'Successfully imported extension module "%s".' % ext_name
             )
         except ImportError as e:
-            message = 'Failed loading extension "%s".' % extName
+            message = 'Failed loading extension "%s".' % ext_name
             e.args = (message,) + e.args[1:]
             raise
 
@@ -241,7 +241,7 @@ class Markdown:
             except AttributeError as e:
                 message = e.args[0]
                 message = "Failed to initiate extension " \
-                          "'%s': %s" % (extName, message)
+                          "'%s': %s" % (ext_name, message)
                 e.args = (message,) + e.args[1:]
                 raise
 
@@ -276,7 +276,7 @@ class Markdown:
 
         return self
 
-    def setOutputFormat(self, format: str) -> Markdown:
+    def set_output_format(self, format: str) -> Markdown:
         """
         Set the output format for the class instance.
 
@@ -284,14 +284,14 @@ class Markdown:
             format: Must be a known value in `Markdown.output_formats`.
 
         """
-        self.outputFormat = format.lower().rstrip('145')  # ignore number
+        self.output_format = format.lower().rstrip('145')  # ignore number
         try:
-            self.serializer = self.outputFormats[self.outputFormat]
+            self.serializer = self.output_formats[self.output_format]
         except KeyError as e:
-            validFormats = list(self.outputFormats.keys())
+            validFormats = list(self.output_formats.keys())
             validFormats.sort()
             message = 'Invalid Output Format: "%s". Use one of %s.' \
-                % (self.outputFormat,
+                % (self.output_format,
                    '"' + '", "'.join(validFormats) + '"')
             e.args = (message,) + e.args[1:]
             raise
@@ -299,7 +299,7 @@ class Markdown:
 
     # Note: the `tag` argument is type annotated `Any` as ElementTree uses many various objects as tags.
     # As there is no standardization in ElementTree, the type of a given tag is unpredictable.
-    def isBlockLevel(self, tag: Any) -> bool:
+    def is_block_level(self, tag: Any) -> bool:
         """
         Check if the given `tag` is a block level HTML tag.
 
@@ -308,7 +308,7 @@ class Markdown:
 
         """
         if isinstance(tag, str):
-            return tag.lower().rstrip('/') in self.blockLevelElements
+            return tag.lower().rstrip('/') in self.block_level_elements
         # Some ElementTree tags are not strings, so return False.
         return False
 
@@ -367,11 +367,11 @@ class Markdown:
         if self.stripTopLevelTags:
             try:
                 start = output.index(
-                    '<%s>' % self.docTag) + len(self.docTag) + 2
-                end = output.rindex('</%s>' % self.docTag)
+                    '<%s>' % self.doc_tag) + len(self.doc_tag) + 2
+                end = output.rindex('</%s>' % self.doc_tag)
                 output = output[start:end].strip()
             except ValueError as e:  # pragma: no cover
-                if output.strip().endswith('<%s />' % self.docTag):
+                if output.strip().endswith('<%s />' % self.doc_tag):
                     # We have an empty document
                     output = ''
                 else:

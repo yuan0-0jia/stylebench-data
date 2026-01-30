@@ -25,7 +25,7 @@ from markdown.test_tools import TestCase
 
 class TestSetextHeaders(TestCase):
 
-    def testSetextH1(self):
+    def test_setext_h1(self):
         self.assertMarkdownRenders(
             self.dedent(
                 """
@@ -37,7 +37,7 @@ class TestSetextHeaders(TestCase):
             '<h1>This is an H1</h1>'
         )
 
-    def testSetextH2(self):
+    def test_setext_h2(self):
         self.assertMarkdownRenders(
             self.dedent(
                 """
@@ -49,7 +49,7 @@ class TestSetextHeaders(TestCase):
             '<h2>This is an H2</h2>'
         )
 
-    def testSetextH1MismatchedLength(self):
+    def test_setext_h1_mismatched_length(self):
         self.assertMarkdownRenders(
             self.dedent(
                 """
@@ -61,7 +61,7 @@ class TestSetextHeaders(TestCase):
             '<h1>This is an H1</h1>'
         )
 
-    def testSetextH2MismatchedLength(self):
+    def test_setext_h2_mismatched_length(self):
         self.assertMarkdownRenders(
             self.dedent(
                 """
@@ -73,7 +73,7 @@ class TestSetextHeaders(TestCase):
             '<h2>This is an H2</h2>'
         )
 
-    def testSetextH1FollowedByP(self):
+    def test_setext_h1_followed_by_p(self):
         self.assertMarkdownRenders(
             self.dedent(
                 """
@@ -90,7 +90,7 @@ class TestSetextHeaders(TestCase):
             )
         )
 
-    def testSetextH2FollowedByP(self):
+    def test_setext_h2_followed_by_p(self):
         self.assertMarkdownRenders(
             self.dedent(
                 """
@@ -110,7 +110,7 @@ class TestSetextHeaders(TestCase):
     # TODO: fix this
     # see https://johnmacfarlane.net/babelmark2/?normalize=1&text=Paragraph%0AAn+H1%0A%3D%3D%3D%3D%3D
     @unittest.skip('This is broken in Python-Markdown')
-    def testPFollowedBySetextH1(self):
+    def test_p_followed_by_setext_h1(self):
         self.assertMarkdownRenders(
             self.dedent(
                 """
@@ -130,7 +130,7 @@ class TestSetextHeaders(TestCase):
     # TODO: fix this
     # see https://johnmacfarlane.net/babelmark2/?normalize=1&text=Paragraph%0AAn+H2%0A-----
     @unittest.skip('This is broken in Python-Markdown')
-    def testPFollowedBySetextH2(self):
+    def test_p_followed_by_setext_h2(self):
         self.assertMarkdownRenders(
             self.dedent(
                 """
@@ -150,252 +150,252 @@ class TestSetextHeaders(TestCase):
 
 class TestHashHeaders(TestCase):
 
-    def testHashH1Open(self):
+    def test_hash_h1_open(self):
         self.assertMarkdownRenders(
             '# This is an H1',
 
             '<h1>This is an H1</h1>'
         )
 
-    def testHashH2Open(self):
+    def test_hash_h2_open(self):
         self.assertMarkdownRenders(
             '## This is an H2',
 
             '<h2>This is an H2</h2>'
         )
 
-    def testHashH3Open(self):
+    def test_hash_h3_open(self):
         self.assertMarkdownRenders(
             '### This is an H3',
 
             '<h3>This is an H3</h3>'
         )
 
-    def testHashH4Open(self):
+    def test_hash_h4_open(self):
         self.assertMarkdownRenders(
             '#### This is an H4',
 
             '<h4>This is an H4</h4>'
         )
 
-    def testHashH5Open(self):
+    def test_hash_h5_open(self):
         self.assertMarkdownRenders(
             '##### This is an H5',
 
             '<h5>This is an H5</h5>'
         )
 
-    def testHashH6Open(self):
+    def test_hash_h6_open(self):
         self.assertMarkdownRenders(
             '###### This is an H6',
 
             '<h6>This is an H6</h6>'
         )
 
-    def testHashGt6Open(self):
+    def test_hash_gt6_open(self):
         self.assertMarkdownRenders(
             '####### This is an H6',
 
             '<h6># This is an H6</h6>'
         )
 
-    def testHashH1OpenMissingSpace(self):
+    def test_hash_h1_open_missing_space(self):
         self.assertMarkdownRenders(
             '#This is an H1',
 
             '<h1>This is an H1</h1>'
         )
 
-    def testHashH2OpenMissingSpace(self):
+    def test_hash_h2_open_missing_space(self):
         self.assertMarkdownRenders(
             '##This is an H2',
 
             '<h2>This is an H2</h2>'
         )
 
-    def testHashH3OpenMissingSpace(self):
+    def test_hash_h3_open_missing_space(self):
         self.assertMarkdownRenders(
             '###This is an H3',
 
             '<h3>This is an H3</h3>'
         )
 
-    def testHashH4OpenMissingSpace(self):
+    def test_hash_h4_open_missing_space(self):
         self.assertMarkdownRenders(
             '####This is an H4',
 
             '<h4>This is an H4</h4>'
         )
 
-    def testHashH5OpenMissingSpace(self):
+    def test_hash_h5_open_missing_space(self):
         self.assertMarkdownRenders(
             '#####This is an H5',
 
             '<h5>This is an H5</h5>'
         )
 
-    def testHashH6OpenMissingSpace(self):
+    def test_hash_h6_open_missing_space(self):
         self.assertMarkdownRenders(
             '######This is an H6',
 
             '<h6>This is an H6</h6>'
         )
 
-    def testHashGt6OpenMissingSpace(self):
+    def test_hash_gt6_open_missing_space(self):
         self.assertMarkdownRenders(
             '#######This is an H6',
 
             '<h6>#This is an H6</h6>'
         )
 
-    def testHashH1Closed(self):
+    def test_hash_h1_closed(self):
         self.assertMarkdownRenders(
             '# This is an H1 #',
 
             '<h1>This is an H1</h1>'
         )
 
-    def testHashH2Closed(self):
+    def test_hash_h2_closed(self):
         self.assertMarkdownRenders(
             '## This is an H2 ##',
 
             '<h2>This is an H2</h2>'
         )
 
-    def testHashH3Closed(self):
+    def test_hash_h3_closed(self):
         self.assertMarkdownRenders(
             '### This is an H3 ###',
 
             '<h3>This is an H3</h3>'
         )
 
-    def testHashH4Closed(self):
+    def test_hash_h4_closed(self):
         self.assertMarkdownRenders(
             '#### This is an H4 ####',
 
             '<h4>This is an H4</h4>'
         )
 
-    def testHashH5Closed(self):
+    def test_hash_h5_closed(self):
         self.assertMarkdownRenders(
             '##### This is an H5 #####',
 
             '<h5>This is an H5</h5>'
         )
 
-    def testHashH6Closed(self):
+    def test_hash_h6_closed(self):
         self.assertMarkdownRenders(
             '###### This is an H6 ######',
 
             '<h6>This is an H6</h6>'
         )
 
-    def testHashGt6Closed(self):
+    def test_hash_gt6_closed(self):
         self.assertMarkdownRenders(
             '####### This is an H6 #######',
 
             '<h6># This is an H6</h6>'
         )
 
-    def testHashH1ClosedMissingSpace(self):
+    def test_hash_h1_closed_missing_space(self):
         self.assertMarkdownRenders(
             '#This is an H1#',
 
             '<h1>This is an H1</h1>'
         )
 
-    def testHashH2ClosedMissingSpace(self):
+    def test_hash_h2_closed_missing_space(self):
         self.assertMarkdownRenders(
             '##This is an H2##',
 
             '<h2>This is an H2</h2>'
         )
 
-    def testHashH3ClosedMissingSpace(self):
+    def test_hash_h3_closed_missing_space(self):
         self.assertMarkdownRenders(
             '###This is an H3###',
 
             '<h3>This is an H3</h3>'
         )
 
-    def testHashH4ClosedMissingSpace(self):
+    def test_hash_h4_closed_missing_space(self):
         self.assertMarkdownRenders(
             '####This is an H4####',
 
             '<h4>This is an H4</h4>'
         )
 
-    def testHashH5ClosedMissingSpace(self):
+    def test_hash_h5_closed_missing_space(self):
         self.assertMarkdownRenders(
             '#####This is an H5#####',
 
             '<h5>This is an H5</h5>'
         )
 
-    def testHashH6ClosedMissingSpace(self):
+    def test_hash_h6_closed_missing_space(self):
         self.assertMarkdownRenders(
             '######This is an H6######',
 
             '<h6>This is an H6</h6>'
         )
 
-    def testHashGt6ClosedMissingSpace(self):
+    def test_hash_gt6_closed_missing_space(self):
         self.assertMarkdownRenders(
             '#######This is an H6#######',
 
             '<h6>#This is an H6</h6>'
         )
 
-    def testHashH1ClosedMismatch(self):
+    def test_hash_h1_closed_mismatch(self):
         self.assertMarkdownRenders(
             '# This is an H1 ##',
 
             '<h1>This is an H1</h1>'
         )
 
-    def testHashH2ClosedMismatch(self):
+    def test_hash_h2_closed_mismatch(self):
         self.assertMarkdownRenders(
             '## This is an H2 #',
 
             '<h2>This is an H2</h2>'
         )
 
-    def testHashH3ClosedMismatch(self):
+    def test_hash_h3_closed_mismatch(self):
         self.assertMarkdownRenders(
             '### This is an H3 #',
 
             '<h3>This is an H3</h3>'
         )
 
-    def testHashH4ClosedMismatch(self):
+    def test_hash_h4_closed_mismatch(self):
         self.assertMarkdownRenders(
             '#### This is an H4 #',
 
             '<h4>This is an H4</h4>'
         )
 
-    def testHashH5ClosedMismatch(self):
+    def test_hash_h5_closed_mismatch(self):
         self.assertMarkdownRenders(
             '##### This is an H5 #',
 
             '<h5>This is an H5</h5>'
         )
 
-    def testHashH6ClosedMismatch(self):
+    def test_hash_h6_closed_mismatch(self):
         self.assertMarkdownRenders(
             '###### This is an H6 #',
 
             '<h6>This is an H6</h6>'
         )
 
-    def testHashGt6ClosedMismatch(self):
+    def test_hash_gt6_closed_mismatch(self):
         self.assertMarkdownRenders(
             '####### This is an H6 ##################',
 
             '<h6># This is an H6</h6>'
         )
 
-    def testHashH1FollowedByP(self):
+    def test_hash_h1_followed_by_p(self):
         self.assertMarkdownRenders(
             self.dedent(
                 """
@@ -411,7 +411,7 @@ class TestHashHeaders(TestCase):
             )
         )
 
-    def testHashH2FollowedByP(self):
+    def test_hash_h2_followed_by_p(self):
         self.assertMarkdownRenders(
             self.dedent(
                 """
@@ -427,7 +427,7 @@ class TestHashHeaders(TestCase):
             )
         )
 
-    def testHashH3FollowedByP(self):
+    def test_hash_h3_followed_by_p(self):
         self.assertMarkdownRenders(
             self.dedent(
                 """
@@ -443,7 +443,7 @@ class TestHashHeaders(TestCase):
             )
         )
 
-    def testHashH4FollowedByP(self):
+    def test_hash_h4_followed_by_p(self):
         self.assertMarkdownRenders(
             self.dedent(
                 """
@@ -459,7 +459,7 @@ class TestHashHeaders(TestCase):
             )
         )
 
-    def testHashH5FollowedByP(self):
+    def test_hash_h5_followed_by_p(self):
         self.assertMarkdownRenders(
             self.dedent(
                 """
@@ -475,7 +475,7 @@ class TestHashHeaders(TestCase):
             )
         )
 
-    def testHashH6FollowedByP(self):
+    def test_hash_h6_followed_by_p(self):
         self.assertMarkdownRenders(
             self.dedent(
                 """
@@ -491,91 +491,91 @@ class TestHashHeaders(TestCase):
             )
         )
 
-    def testHashH1LeadingSpace(self):
+    def test_hash_h1_leading_space(self):
         self.assertMarkdownRenders(
             ' # This is an H1',
 
             '<p># This is an H1</p>'
         )
 
-    def testHashH2LeadingSpace(self):
+    def test_hash_h2_leading_space(self):
         self.assertMarkdownRenders(
             ' ## This is an H2',
 
             '<p>## This is an H2</p>'
         )
 
-    def testHashH3LeadingSpace(self):
+    def test_hash_h3_leading_space(self):
         self.assertMarkdownRenders(
             ' ### This is an H3',
 
             '<p>### This is an H3</p>'
         )
 
-    def testHashH4LeadingSpace(self):
+    def test_hash_h4_leading_space(self):
         self.assertMarkdownRenders(
             ' #### This is an H4',
 
             '<p>#### This is an H4</p>'
         )
 
-    def testHashH5LeadingSpace(self):
+    def test_hash_h5_leading_space(self):
         self.assertMarkdownRenders(
             ' ##### This is an H5',
 
             '<p>##### This is an H5</p>'
         )
 
-    def testHashH6LeadingSpace(self):
+    def test_hash_h6_leading_space(self):
         self.assertMarkdownRenders(
             ' ###### This is an H6',
 
             '<p>###### This is an H6</p>'
         )
 
-    def testHashH1OpenTrailingSpace(self):
+    def test_hash_h1_open_trailing_space(self):
         self.assertMarkdownRenders(
             '# This is an H1 ',
 
             '<h1>This is an H1</h1>'
         )
 
-    def testHashH2OpenTrailingSpace(self):
+    def test_hash_h2_open_trailing_space(self):
         self.assertMarkdownRenders(
             '## This is an H2 ',
 
             '<h2>This is an H2</h2>'
         )
 
-    def testHashH3OpenTrailingSpace(self):
+    def test_hash_h3_open_trailing_space(self):
         self.assertMarkdownRenders(
             '### This is an H3 ',
 
             '<h3>This is an H3</h3>'
         )
 
-    def testHashH4OpenTrailingSpace(self):
+    def test_hash_h4_open_trailing_space(self):
         self.assertMarkdownRenders(
             '#### This is an H4 ',
 
             '<h4>This is an H4</h4>'
         )
 
-    def testHashH5OpenTrailingSpace(self):
+    def test_hash_h5_open_trailing_space(self):
         self.assertMarkdownRenders(
             '##### This is an H5 ',
 
             '<h5>This is an H5</h5>'
         )
 
-    def testHashH6OpenTrailingSpace(self):
+    def test_hash_h6_open_trailing_space(self):
         self.assertMarkdownRenders(
             '###### This is an H6 ',
 
             '<h6>This is an H6</h6>'
         )
 
-    def testHashGt6OpenTrailingSpace(self):
+    def test_hash_gt6_open_trailing_space(self):
         self.assertMarkdownRenders(
             '####### This is an H6 ',
 
@@ -585,56 +585,56 @@ class TestHashHeaders(TestCase):
     # TODO: Possibly change the following behavior. While this follows the behavior
     # of markdown.pl, it is rather uncommon and not necessarily intuitive.
     # See: https://johnmacfarlane.net/babelmark2/?normalize=1&text=%23+This+is+an+H1+%23+
-    def testHashH1ClosedTrailingSpace(self):
+    def test_hash_h1_closed_trailing_space(self):
         self.assertMarkdownRenders(
             '# This is an H1 # ',
 
             '<h1>This is an H1 #</h1>'
         )
 
-    def testHashH2ClosedTrailingSpace(self):
+    def test_hash_h2_closed_trailing_space(self):
         self.assertMarkdownRenders(
             '## This is an H2 ## ',
 
             '<h2>This is an H2 ##</h2>'
         )
 
-    def testHashH3ClosedTrailingSpace(self):
+    def test_hash_h3_closed_trailing_space(self):
         self.assertMarkdownRenders(
             '### This is an H3 ### ',
 
             '<h3>This is an H3 ###</h3>'
         )
 
-    def testHashH4ClosedTrailingSpace(self):
+    def test_hash_h4_closed_trailing_space(self):
         self.assertMarkdownRenders(
             '#### This is an H4 #### ',
 
             '<h4>This is an H4 ####</h4>'
         )
 
-    def testHashH5ClosedTrailingSpace(self):
+    def test_hash_h5_closed_trailing_space(self):
         self.assertMarkdownRenders(
             '##### This is an H5 ##### ',
 
             '<h5>This is an H5 #####</h5>'
         )
 
-    def testHashH6ClosedTrailingSpace(self):
+    def test_hash_h6_closed_trailing_space(self):
         self.assertMarkdownRenders(
             '###### This is an H6 ###### ',
 
             '<h6>This is an H6 ######</h6>'
         )
 
-    def testHashGt6ClosedTrailingSpace(self):
+    def test_hash_gt6_closed_trailing_space(self):
         self.assertMarkdownRenders(
             '####### This is an H6 ####### ',
 
             '<h6># This is an H6 #######</h6>'
         )
 
-    def testNoBlankLinesBetweenHashs(self):
+    def test_no_blank_lines_between_hashs(self):
         self.assertMarkdownRenders(
             self.dedent(
                 """
@@ -650,7 +650,7 @@ class TestHashHeaders(TestCase):
             )
         )
 
-    def testRandomHashLevels(self):
+    def test_random_hash_levels(self):
         self.assertMarkdownRenders(
             self.dedent(
                 """
@@ -676,7 +676,7 @@ class TestHashHeaders(TestCase):
             )
         )
 
-    def testHashFollowedByP(self):
+    def test_hash_followed_by_p(self):
         self.assertMarkdownRenders(
             self.dedent(
                 """
@@ -692,7 +692,7 @@ class TestHashHeaders(TestCase):
             )
         )
 
-    def testPFollowedByHash(self):
+    def test_p_followed_by_hash(self):
         self.assertMarkdownRenders(
             self.dedent(
                 """
@@ -708,7 +708,7 @@ class TestHashHeaders(TestCase):
             )
         )
 
-    def testEscapedHash(self):
+    def test_escaped_hash(self):
         self.assertMarkdownRenders(
             "### H3 \\###",
             self.dedent(
@@ -718,7 +718,7 @@ class TestHashHeaders(TestCase):
             )
         )
 
-    def testUnescapedHash(self):
+    def test_unescaped_hash(self):
         self.assertMarkdownRenders(
             "### H3 \\\\###",
             self.dedent(

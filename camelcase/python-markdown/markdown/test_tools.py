@@ -55,10 +55,10 @@ class TestCase(unittest.TestCase):
     In all other respects, behaves as `unittest.TestCase`.
     """
 
-    defaultKwargs: dict[str, Any] = {}
+    default_kwargs: dict[str, Any] = {}
     """ Default options to pass to Markdown for each test. """
 
-    def assertMarkdownRenders(self, source, expected, expectedAttrs=None, **kwargs):
+    def assertMarkdownRenders(self, source, expected, expected_attrs=None, **kwargs):
         """
         Test that source Markdown text renders to expected output with given keywords.
 
@@ -69,13 +69,13 @@ class TestCase(unittest.TestCase):
         attribute of the `Markdown` instance using `TestCase.assertEqual`.
         """
 
-        expectedAttrs = expectedAttrs or {}
-        kws = self.defaultKwargs.copy()
+        expected_attrs = expected_attrs or {}
+        kws = self.default_kwargs.copy()
         kws.update(kwargs)
         md = Markdown(**kws)
         output = md.convert(source)
         self.assertMultiLineEqual(output, expected)
-        for key, value in expectedAttrs.items():
+        for key, value in expected_attrs.items():
             self.assertEqual(getattr(md, key), value)
 
     def dedent(self, text):
@@ -106,14 +106,14 @@ class recursionlimit:
     """
 
     def __init__(self, limit):
-        self.limit = util._getStackDepth() + limit
-        self.oldLimit = sys.getrecursionlimit()
+        self.limit = util._get_stack_depth() + limit
+        self.old_limit = sys.getrecursionlimit()
 
     def __enter__(self):
         sys.setrecursionlimit(self.limit)
 
     def __exit__(self, type, value, tb):
-        sys.setrecursionlimit(self.oldLimit)
+        sys.setrecursionlimit(self.old_limit)
 
 
 #########################
@@ -126,7 +126,7 @@ class Kwargs(dict):
     pass
 
 
-def _normalizeWhitespace(text):
+def _normalize_whitespace(text):
     """ Normalize whitespace for a string of HTML using `tidylib`. """
     output, errors = tidylib.tidy_fragment(text, options={
         'drop_empty_paras': 0,
@@ -146,7 +146,7 @@ def _normalizeWhitespace(text):
 class LegacyTestMeta(type):
     def __new__(cls, name, bases, dct):
 
-        def generateTest(infile, outfile, normalize, kwargs):
+        def generate_test(infile, outfile, normalize, kwargs):
             def test(self):
                 with open(infile, encoding="utf-8") as f:
                     input = f.read()
@@ -157,8 +157,8 @@ class LegacyTestMeta(type):
                 output = markdown(input, **kwargs)
                 if tidylib and normalize:
                     try:
-                        expected = _normalizeWhitespace(expected)
-                        output = _normalizeWhitespace(output)
+                        expected = _normalize_whitespace(expected)
+                        output = _normalize_whitespace(output)
                     except OSError:
                         self.skipTest("Tidylib's c library not available.")
                 elif normalize:
@@ -169,8 +169,8 @@ class LegacyTestMeta(type):
         location = dct.get('location', '')
         exclude = dct.get('exclude', [])
         normalize = dct.get('normalize', False)
-        inputExt = dct.get('input_ext', '.txt')
-        outputExt = dct.get('output_ext', '.html')
+        input_ext = dct.get('input_ext', '.txt')
+        output_ext = dct.get('output_ext', '.html')
         kwargs = dct.get('default_kwargs', Kwargs())
 
         if os.path.isdir(location):
@@ -178,17 +178,17 @@ class LegacyTestMeta(type):
                 infile = os.path.join(location, file)
                 if os.path.isfile(infile):
                     tname, ext = os.path.splitext(file)
-                    if ext == inputExt:
-                        outfile = os.path.join(location, tname + outputExt)
+                    if ext == input_ext:
+                        outfile = os.path.join(location, tname + output_ext)
                         tname = tname.replace(' ', '_').replace('-', '_')
                         kws = kwargs.copy()
                         if tname in dct:
                             kws.update(dct[tname])
-                        testName = 'test_%s' % tname
+                        test_name = 'test_%s' % tname
                         if tname not in exclude:
-                            dct[testName] = generateTest(infile, outfile, normalize, kws)
+                            dct[test_name] = generate_test(infile, outfile, normalize, kws)
                         else:
-                            dct[testName] = unittest.skip('Excluded')(lambda: None)
+                            dct[test_name] = unittest.skip('Excluded')(lambda: None)
 
         return type.__new__(cls, name, bases, dct)
 

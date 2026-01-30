@@ -30,33 +30,33 @@ from xml.etree.ElementTree import Element
 class TestMarkdownInHTMLPostProcessor(TestCase):
     """ Ensure any remaining elements in HTML stash are properly serialized. """
 
-    def testStashToString(self):
+    def test_stash_to_string(self):
         # There should be no known cases where this actually happens so we need to
         # forcefully pass an `etree` `Element` to the method to ensure proper behavior.
         element = Element('div')
         element.text = 'Foo bar.'
         md = Markdown(extensions=['md_in_html'])
-        result = md.postprocessors['raw_html'].stashToString(element)
+        result = md.postprocessors['raw_html'].stash_to_string(element)
         self.assertEqual(result, '<div>Foo bar.</div>')
 
 
 class TestDefaultwMdInHTML(TestHTMLBlocks):
     """ Ensure the md_in_html extension does not break the default behavior. """
 
-    defaultKwargs = {'extensions': ['md_in_html']}
+    default_kwargs = {'extensions': ['md_in_html']}
 
 
 class TestMdInHTML(TestCase):
 
-    defaultKwargs = {'extensions': ['md_in_html']}
+    default_kwargs = {'extensions': ['md_in_html']}
 
-    def testMd1Paragraph(self):
+    def test_md1_paragraph(self):
         self.assertMarkdownRenders(
             '<p markdown="1">*foo*</p>',
             '<p><em>foo</em></p>'
         )
 
-    def testMd1PLinebreaks(self):
+    def test_md1_p_linebreaks(self):
         self.assertMarkdownRenders(
             self.dedent(
                 """
@@ -74,7 +74,7 @@ class TestMdInHTML(TestCase):
             )
         )
 
-    def testMd1PBlankLines(self):
+    def test_md1_p_blank_lines(self):
         self.assertMarkdownRenders(
             self.dedent(
                 """
@@ -96,7 +96,7 @@ class TestMdInHTML(TestCase):
             )
         )
 
-    def testMd1Div(self):
+    def test_md1_div(self):
         self.assertMarkdownRenders(
             '<div markdown="1">*foo*</div>',
             self.dedent(
@@ -108,7 +108,7 @@ class TestMdInHTML(TestCase):
             )
         )
 
-    def testMd1DivLinebreaks(self):
+    def test_md1_div_linebreaks(self):
         self.assertMarkdownRenders(
             self.dedent(
                 """
@@ -126,7 +126,7 @@ class TestMdInHTML(TestCase):
             )
         )
 
-    def testMd1CodeSpan(self):
+    def test_md1_code_span(self):
         self.assertMarkdownRenders(
             self.dedent(
                 """
@@ -144,7 +144,7 @@ class TestMdInHTML(TestCase):
             )
         )
 
-    def testMd1CodeSpanOneline(self):
+    def test_md1_code_span_oneline(self):
         self.assertMarkdownRenders(
             '<div markdown="1">`<h1>code span</h1>`</div>',
             self.dedent(
@@ -156,7 +156,7 @@ class TestMdInHTML(TestCase):
             )
         )
 
-    def testMd1CodeSpanUnclosed(self):
+    def test_md1_code_span_unclosed(self):
         self.assertMarkdownRenders(
             self.dedent(
                 """
@@ -174,7 +174,7 @@ class TestMdInHTML(TestCase):
             )
         )
 
-    def testMd1CodeSpanScriptTag(self):
+    def test_md1_code_span_script_tag(self):
         self.assertMarkdownRenders(
             self.dedent(
                 """
@@ -192,7 +192,7 @@ class TestMdInHTML(TestCase):
             )
         )
 
-    def testMd1DivBlankLines(self):
+    def test_md1_div_blank_lines(self):
         self.assertMarkdownRenders(
             self.dedent(
                 """
@@ -212,7 +212,7 @@ class TestMdInHTML(TestCase):
             )
         )
 
-    def testMd1DivMulti(self):
+    def test_md1_div_multi(self):
         self.assertMarkdownRenders(
             self.dedent(
                 """
@@ -235,7 +235,7 @@ class TestMdInHTML(TestCase):
             )
         )
 
-    def testMd1DivNested(self):
+    def test_md1_div_nested(self):
         self.assertMarkdownRenders(
             self.dedent(
                 """
@@ -259,7 +259,7 @@ class TestMdInHTML(TestCase):
             )
         )
 
-    def testMd1DivMultiNest(self):
+    def test_md1_div_multi_nest(self):
         self.assertMarkdownRenders(
             self.dedent(
                 """
@@ -283,7 +283,7 @@ class TestMdInHTML(TestCase):
             )
         )
 
-    def textMd1Details(self):
+    def text_md1_details(self):
         self.assertMarkdownRenders(
             self.dedent(
                 """
@@ -303,7 +303,7 @@ class TestMdInHTML(TestCase):
             )
         )
 
-    def testMd1Mix(self):
+    def test_md1_mix(self):
         self.assertMarkdownRenders(
             self.dedent(
                 """
@@ -327,7 +327,7 @@ class TestMdInHTML(TestCase):
             )
         )
 
-    def testMd1DeepMix(self):
+    def test_md1_deep_mix(self):
         self.assertMarkdownRenders(
             self.dedent(
                 """
@@ -378,7 +378,7 @@ class TestMdInHTML(TestCase):
             )
         )
 
-    def testMd1DivRawInline(self):
+    def test_md1_div_raw_inline(self):
         self.assertMarkdownRenders(
             self.dedent(
                 """
@@ -398,13 +398,13 @@ class TestMdInHTML(TestCase):
             )
         )
 
-    def testNoMd1Paragraph(self):
+    def test_no_md1_paragraph(self):
         self.assertMarkdownRenders(
             '<p>*foo*</p>',
             '<p>*foo*</p>'
         )
 
-    def testNoMd1Nest(self):
+    def test_no_md1_nest(self):
         self.assertMarkdownRenders(
             self.dedent(
                 """
@@ -428,7 +428,7 @@ class TestMdInHTML(TestCase):
             )
         )
 
-    def testMd1NestedEmpty(self):
+    def test_md1_nested_empty(self):
         self.assertMarkdownRenders(
             self.dedent(
                 """
@@ -452,7 +452,7 @@ class TestMdInHTML(TestCase):
             )
         )
 
-    def testMd1NestedEmptyBlock(self):
+    def test_md1_nested_empty_block(self):
         self.assertMarkdownRenders(
             self.dedent(
                 """
@@ -476,7 +476,7 @@ class TestMdInHTML(TestCase):
             )
         )
 
-    def testEmptyTags(self):
+    def test_empty_tags(self):
         self.assertMarkdownRenders(
             self.dedent(
                 """
@@ -494,7 +494,7 @@ class TestMdInHTML(TestCase):
             )
         )
 
-    def testOrphanEndTagInRawHtml(self):
+    def test_orphan_end_tag_in_raw_html(self):
         self.assertMarkdownRenders(
             self.dedent(
                 """
@@ -524,7 +524,7 @@ class TestMdInHTML(TestCase):
             )
         )
 
-    def testComplexNestedCase(self):
+    def test_complex_nested_case(self):
         self.assertMarkdownRenders(
             self.dedent(
                 """
@@ -556,7 +556,7 @@ class TestMdInHTML(TestCase):
             )
         )
 
-    def testComplexNestedCaseWhitespace(self):
+    def test_complex_nested_case_whitespace(self):
         self.assertMarkdownRenders(
             self.dedent(
                 """
@@ -593,7 +593,7 @@ class TestMdInHTML(TestCase):
             )
         )
 
-    def testMd1IntailMd1(self):
+    def test_md1_intail_md1(self):
         self.assertMarkdownRenders(
             '<div markdown="1">*foo*</div><div markdown="1">*bar*</div>',
             self.dedent(
@@ -608,7 +608,7 @@ class TestMdInHTML(TestCase):
             )
         )
 
-    def testMd1NoBlankLineBefore(self):
+    def test_md1_no_blank_line_before(self):
         self.assertMarkdownRenders(
             self.dedent(
                 """
@@ -628,14 +628,14 @@ class TestMdInHTML(TestCase):
             )
         )
 
-    def testMd1NoLineBreak(self):
+    def test_md1_no_line_break(self):
         # The div here is parsed as a span-level element. Bad input equals bad output!
         self.assertMarkdownRenders(
             'A _Markdown_ paragraph with <div markdown="1">no _line break_.</div>',
             '<p>A <em>Markdown</em> paragraph with <div markdown="1">no <em>line break</em>.</div></p>'
         )
 
-    def testMd1InTail(self):
+    def test_md1_in_tail(self):
         self.assertMarkdownRenders(
             self.dedent(
                 """
@@ -654,7 +654,7 @@ class TestMdInHTML(TestCase):
             )
         )
 
-    def testMd1PiOneliner(self):
+    def test_md1_PI_oneliner(self):
         self.assertMarkdownRenders(
             '<div markdown="1"><?php print("foo"); ?></div>',
             self.dedent(
@@ -666,7 +666,7 @@ class TestMdInHTML(TestCase):
             )
         )
 
-    def testMd1PiMultiline(self):
+    def test_md1_PI_multiline(self):
         self.assertMarkdownRenders(
             self.dedent(
                 """
@@ -684,7 +684,7 @@ class TestMdInHTML(TestCase):
             )
         )
 
-    def testMd1PiBlankLines(self):
+    def test_md1_PI_blank_lines(self):
         self.assertMarkdownRenders(
             self.dedent(
                 """
@@ -704,13 +704,13 @@ class TestMdInHTML(TestCase):
             )
         )
 
-    def testMdSpanParagraph(self):
+    def test_md_span_paragraph(self):
         self.assertMarkdownRenders(
             '<p markdown="span">*foo*</p>',
             '<p><em>foo</em></p>'
         )
 
-    def testMdBlockParagraph(self):
+    def test_md_block_paragraph(self):
         self.assertMarkdownRenders(
             '<p markdown="block">*foo*</p>',
             self.dedent(
@@ -722,13 +722,13 @@ class TestMdInHTML(TestCase):
             )
         )
 
-    def testMdSpanDiv(self):
+    def test_md_span_div(self):
         self.assertMarkdownRenders(
             '<div markdown="span">*foo*</div>',
             '<div><em>foo</em></div>'
         )
 
-    def testMdBlockDiv(self):
+    def test_md_block_div(self):
         self.assertMarkdownRenders(
             '<div markdown="block">*foo*</div>',
             self.dedent(
@@ -740,7 +740,7 @@ class TestMdInHTML(TestCase):
             )
         )
 
-    def testMdSpanNestedInBlock(self):
+    def test_md_span_nested_in_block(self):
         self.assertMarkdownRenders(
             self.dedent(
                 """
@@ -758,7 +758,7 @@ class TestMdInHTML(TestCase):
             )
         )
 
-    def testMdBlockNestedInSpan(self):
+    def test_md_block_nested_in_span(self):
         self.assertMarkdownRenders(
             self.dedent(
                 """
@@ -776,7 +776,7 @@ class TestMdInHTML(TestCase):
             )
         )
 
-    def testMdBlockAfterSpanNestedInBlock(self):
+    def test_md_block_after_span_nested_in_block(self):
         self.assertMarkdownRenders(
             self.dedent(
                 """
@@ -798,7 +798,7 @@ class TestMdInHTML(TestCase):
             )
         )
 
-    def testNomdNestedInMd1(self):
+    def test_nomd_nested_in_md1(self):
         self.assertMarkdownRenders(
             self.dedent(
                 """
@@ -828,7 +828,7 @@ class TestMdInHTML(TestCase):
             )
         )
 
-    def testMd1NestedInNomd(self):
+    def test_md1_nested_in_nomd(self):
         self.assertMarkdownRenders(
             self.dedent(
                 """
@@ -846,25 +846,25 @@ class TestMdInHTML(TestCase):
             )
         )
 
-    def testMd1SingleQuotes(self):
+    def test_md1_single_quotes(self):
         self.assertMarkdownRenders(
             "<p markdown='1'>*foo*</p>",
             '<p><em>foo</em></p>'
         )
 
-    def testMd1NoQuotes(self):
+    def test_md1_no_quotes(self):
         self.assertMarkdownRenders(
             '<p markdown=1>*foo*</p>',
             '<p><em>foo</em></p>'
         )
 
-    def testMdNoValue(self):
+    def test_md_no_value(self):
         self.assertMarkdownRenders(
             '<p markdown>*foo*</p>',
             '<p><em>foo</em></p>'
         )
 
-    def testMd1PreserveAttrs(self):
+    def test_md1_preserve_attrs(self):
         self.assertMarkdownRenders(
             self.dedent(
                 """
@@ -888,7 +888,7 @@ class TestMdInHTML(TestCase):
             )
         )
 
-    def testMd1UnclosedDiv(self):
+    def test_md1_unclosed_div(self):
         self.assertMarkdownRenders(
             self.dedent(
                 """
@@ -917,7 +917,7 @@ class TestMdInHTML(TestCase):
             )
         )
 
-    def testMd1OrphanEndtag(self):
+    def test_md1_orphan_endtag(self):
         self.assertMarkdownRenders(
             self.dedent(
                 """
@@ -943,7 +943,7 @@ class TestMdInHTML(TestCase):
             )
         )
 
-    def testMd1UnclosedP(self):
+    def test_md1_unclosed_p(self):
         self.assertMarkdownRenders(
             self.dedent(
                 """
@@ -962,7 +962,7 @@ class TestMdInHTML(TestCase):
             )
         )
 
-    def testMd1NestedUnclosedP(self):
+    def test_md1_nested_unclosed_p(self):
         self.assertMarkdownRenders(
             self.dedent(
                 """
@@ -984,7 +984,7 @@ class TestMdInHTML(TestCase):
             )
         )
 
-    def testMd1NestedComment(self):
+    def test_md1_nested_comment(self):
         self.assertMarkdownRenders(
             self.dedent(
                 """
@@ -1006,7 +1006,7 @@ class TestMdInHTML(TestCase):
             )
         )
 
-    def testMd1NestedLinkRef(self):
+    def test_md1_nested_link_ref(self):
         self.assertMarkdownRenders(
             self.dedent(
                 """
@@ -1029,7 +1029,7 @@ class TestMdInHTML(TestCase):
             )
         )
 
-    def testMd1HrOnlyStart(self):
+    def test_md1_hr_only_start(self):
         self.assertMarkdownRenders(
             self.dedent(
                 """
@@ -1047,7 +1047,7 @@ class TestMdInHTML(TestCase):
             )
         )
 
-    def testMd1HrSelfClose(self):
+    def test_md1_hr_self_close(self):
         self.assertMarkdownRenders(
             self.dedent(
                 """
@@ -1065,7 +1065,7 @@ class TestMdInHTML(TestCase):
             )
         )
 
-    def testMd1HrStartAndEnd(self):
+    def test_md1_hr_start_and_end(self):
         # Browsers ignore ending hr tags, so we don't try to do anything to handle them special.
         self.assertMarkdownRenders(
             self.dedent(
@@ -1085,7 +1085,7 @@ class TestMdInHTML(TestCase):
             )
         )
 
-    def testMd1HrOnlyEnd(self):
+    def test_md1_hr_only_end(self):
         # Browsers ignore ending hr tags, so we don't try to do anything to handle them special.
         self.assertMarkdownRenders(
             self.dedent(
@@ -1104,7 +1104,7 @@ class TestMdInHTML(TestCase):
             )
         )
 
-    def testMd1HrWithContent(self):
+    def test_md1_hr_with_content(self):
         # Browsers ignore ending hr tags, so we don't try to do anything to handle them special.
         # Content is not allowed and will be treated as normal content between two hr tags
         self.assertMarkdownRenders(
@@ -1128,7 +1128,7 @@ class TestMdInHTML(TestCase):
             )
         )
 
-    def testNoMd1HrWithContent(self):
+    def test_no_md1_hr_with_content(self):
         # Browsers ignore ending hr tags, so we don't try to do anything to handle them special.
         # Content is not allowed and will be treated as normal content between two hr tags
         self.assertMarkdownRenders(
@@ -1152,7 +1152,7 @@ class TestMdInHTML(TestCase):
             )
         )
 
-    def testMd1NestedAbbrRef(self):
+    def test_md1_nested_abbr_ref(self):
         self.assertMarkdownRenders(
             self.dedent(
                 """
@@ -1176,7 +1176,7 @@ class TestMdInHTML(TestCase):
             extensions=['md_in_html', 'abbr']
         )
 
-    def testMd1NestedFootnoteRef(self):
+    def test_md1_nested_footnote_ref(self):
         self.assertMarkdownRenders(
             self.dedent(
                 """
@@ -1206,7 +1206,7 @@ class TestMdInHTML(TestCase):
             extensions=['md_in_html', 'footnotes']
         )
 
-    def testMd1CodeVoidTag(self):
+    def test_md1_code_void_tag(self):
 
         # https://github.com/Python-Markdown/markdown/issues/1075
         self.assertMarkdownRenders(
@@ -1234,7 +1234,7 @@ class TestMdInHTML(TestCase):
             extensions=['md_in_html']
         )
 
-    def testMd1CodeVoidTagMultiline(self):
+    def test_md1_code_void_tag_multiline(self):
 
         # https://github.com/Python-Markdown/markdown/issues/1075
         self.assertMarkdownRenders(
@@ -1274,7 +1274,7 @@ class TestMdInHTML(TestCase):
             extensions=['md_in_html']
         )
 
-    def testMd1OnelinerBlock(self):
+    def test_md1_oneliner_block(self):
         # https://github.com/Python-Markdown/markdown/issues/1074
         self.assertMarkdownRenders(
             self.dedent(
@@ -1288,7 +1288,7 @@ class TestMdInHTML(TestCase):
             extensions=['md_in_html']
         )
 
-    def testMd1OnelinerBlockMixed(self):
+    def test_md1_oneliner_block_mixed(self):
         # https://github.com/Python-Markdown/markdown/issues/1074
         self.assertMarkdownRenders(
             self.dedent(
@@ -1314,7 +1314,7 @@ class TestMdInHTML(TestCase):
             extensions=['md_in_html']
         )
 
-    def testMd1OnelinerBlockTail(self):
+    def test_md1_oneliner_block_tail(self):
         # https://github.com/Python-Markdown/markdown/issues/1074
         self.assertMarkdownRenders(
             self.dedent(
@@ -1339,7 +1339,7 @@ class TestMdInHTML(TestCase):
             extensions=['md_in_html']
         )
 
-    def testMd1OnelinerBlockComplexStartTail(self):
+    def test_md1_oneliner_block_complex_start_tail(self):
         # https://github.com/Python-Markdown/markdown/issues/1074
         self.assertMarkdownRenders(
             '<div class="a" markdown><div class="b" markdown>**foo**</div>'
@@ -1356,7 +1356,7 @@ class TestMdInHTML(TestCase):
             extensions=['md_in_html']
         )
 
-    def testMd1OnelinerBlockComplexFail(self):
+    def test_md1_oneliner_block_complex_fail(self):
         # https://github.com/Python-Markdown/markdown/issues/1074
         # Nested will fail because an inline tag is only considered at the beginning if it is not preceded by text.
         self.assertMarkdownRenders(
@@ -1368,7 +1368,7 @@ class TestMdInHTML(TestCase):
             extensions=['md_in_html']
         )
 
-    def testMd1OnelinerBlockStart(self):
+    def test_md1_oneliner_block_start(self):
         # https://github.com/Python-Markdown/markdown/issues/1074
         self.assertMarkdownRenders(
             self.dedent(
@@ -1386,7 +1386,7 @@ class TestMdInHTML(TestCase):
             extensions=['md_in_html']
         )
 
-    def testMd1OnelinerBlockSpan(self):
+    def test_md1_oneliner_block_span(self):
         # https://github.com/Python-Markdown/markdown/issues/1074
         self.assertMarkdownRenders(
             self.dedent(
@@ -1398,7 +1398,7 @@ class TestMdInHTML(TestCase):
             extensions=['md_in_html']
         )
 
-    def testMd1OnelinerBlockSpanStart(self):
+    def test_md1_oneliner_block_span_start(self):
         # https://github.com/Python-Markdown/markdown/issues/1074
         self.assertMarkdownRenders(
             self.dedent(
@@ -1416,7 +1416,7 @@ class TestMdInHTML(TestCase):
             extensions=['md_in_html']
         )
 
-    def testMd1OnelinerSpanBlockStart(self):
+    def test_md1_oneliner_span_block_start(self):
         # https://github.com/Python-Markdown/markdown/issues/1074
         self.assertMarkdownRenders(
             self.dedent(
@@ -1436,7 +1436,7 @@ class TestMdInHTML(TestCase):
             extensions=['md_in_html']
         )
 
-    def testMd1CodeComment(self):
+    def test_md1_code_comment(self):
 
         self.assertMarkdownRenders(
             self.dedent(
@@ -1463,7 +1463,7 @@ class TestMdInHTML(TestCase):
             extensions=['md_in_html']
         )
 
-    def testMd1CodePi(self):
+    def test_md1_code_pi(self):
 
         self.assertMarkdownRenders(
             self.dedent(
@@ -1490,7 +1490,7 @@ class TestMdInHTML(TestCase):
             extensions=['md_in_html']
         )
 
-    def testMd1CodeCdata(self):
+    def test_md1_code_cdata(self):
 
         self.assertMarkdownRenders(
             self.dedent(
@@ -1517,7 +1517,7 @@ class TestMdInHTML(TestCase):
             extensions=['md_in_html']
         )
 
-    def testTrailingContentAfterTagInMdBlock(self):
+    def test_trailing_content_after_tag_in_md_block(self):
 
         # It should be noted that this is not the way `md_in_html` is intended to be used.
         # What we are specifically testing is an edge case where content was previously lost.
@@ -1538,7 +1538,7 @@ class TestMdInHTML(TestCase):
             extensions=['md_in_html']
         )
 
-    def testNonameTag(self):
+    def test_noname_tag(self):
         self.assertMarkdownRenders(
             self.dedent(
                 """
@@ -1557,10 +1557,10 @@ class TestMdInHTML(TestCase):
         )
 
 
-def loadTests(loader, tests, pattern):
+def load_tests(loader, tests, pattern):
     """ Ensure `TestHTMLBlocks` doesn't get run twice by excluding it here. """
     suite = TestSuite()
-    for testClass in [TestDefaultwMdInHTML, TestMdInHTML, TestMarkdownInHTMLPostProcessor]:
-        tests = loader.loadTestsFromTestCase(testClass)
+    for test_class in [TestDefaultwMdInHTML, TestMdInHTML, TestMarkdownInHTMLPostProcessor]:
+        tests = loader.loadTestsFromTestCase(test_class)
         suite.addTests(tests)
     return suite

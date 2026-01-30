@@ -25,29 +25,35 @@ import markdown
 
 
 class TestHTMLBlocks(TestCase):
+
     def test_raw_paragraph(self):
         self.assertMarkdownRenders(
-            '<p>A raw paragraph.</p>', '<p>A raw paragraph.</p>'
+            '<p>A raw paragraph.</p>',
+            '<p>A raw paragraph.</p>'
         )
 
     def test_raw_skip_inline_markdown(self):
         self.assertMarkdownRenders(
-            '<p>A *raw* paragraph.</p>', '<p>A *raw* paragraph.</p>'
+            '<p>A *raw* paragraph.</p>',
+            '<p>A *raw* paragraph.</p>'
         )
 
     def test_raw_indent_one_space(self):
         self.assertMarkdownRenders(
-            ' <p>A *raw* paragraph.</p>', '<p>A *raw* paragraph.</p>'
+            ' <p>A *raw* paragraph.</p>',
+            '<p>A *raw* paragraph.</p>'
         )
 
     def test_raw_indent_two_spaces(self):
         self.assertMarkdownRenders(
-            '  <p>A *raw* paragraph.</p>', '<p>A *raw* paragraph.</p>'
+            '  <p>A *raw* paragraph.</p>',
+            '<p>A *raw* paragraph.</p>'
         )
 
     def test_raw_indent_three_spaces(self):
         self.assertMarkdownRenders(
-            '   <p>A *raw* paragraph.</p>', '<p>A *raw* paragraph.</p>'
+            '   <p>A *raw* paragraph.</p>',
+            '<p>A *raw* paragraph.</p>'
         )
 
     def test_raw_indent_four_spaces(self):
@@ -58,40 +64,56 @@ class TestHTMLBlocks(TestCase):
                 <pre><code>&lt;p&gt;code block&lt;/p&gt;
                 </code></pre>
                 """
-            ),
+            )
         )
 
     def test_raw_span(self):
         self.assertMarkdownRenders(
-            '<span>*inline*</span>', '<p><span><em>inline</em></span></p>'
+            '<span>*inline*</span>',
+            '<p><span><em>inline</em></span></p>'
         )
 
     def test_code_span(self):
         self.assertMarkdownRenders(
             '`<p>code span</p>`',
-            '<p><code>&lt;p&gt;code span&lt;/p&gt;</code></p>',
+            '<p><code>&lt;p&gt;code span&lt;/p&gt;</code></p>'
         )
 
     def test_code_span_open_gt(self):
         self.assertMarkdownRenders(
             '*bar* `<` *foo*',
-            '<p><em>bar</em> <code>&lt;</code> <em>foo</em></p>',
+            '<p><em>bar</em> <code>&lt;</code> <em>foo</em></p>'
         )
 
     def test_raw_empty(self):
-        self.assertMarkdownRenders('<p></p>', '<p></p>')
+        self.assertMarkdownRenders(
+            '<p></p>',
+            '<p></p>'
+        )
 
     def test_raw_empty_space(self):
-        self.assertMarkdownRenders('<p> </p>', '<p> </p>')
+        self.assertMarkdownRenders(
+            '<p> </p>',
+            '<p> </p>'
+        )
 
     def test_raw_empty_newline(self):
-        self.assertMarkdownRenders('<p>\n</p>', '<p>\n</p>')
+        self.assertMarkdownRenders(
+            '<p>\n</p>',
+            '<p>\n</p>'
+        )
 
     def test_raw_empty_blank_line(self):
-        self.assertMarkdownRenders('<p>\n\n</p>', '<p>\n\n</p>')
+        self.assertMarkdownRenders(
+            '<p>\n\n</p>',
+            '<p>\n\n</p>'
+        )
 
     def test_raw_uppercase(self):
-        self.assertMarkdownRenders('<DIV>*foo*</DIV>', '<DIV>*foo*</DIV>')
+        self.assertMarkdownRenders(
+            '<DIV>*foo*</DIV>',
+            '<DIV>*foo*</DIV>'
+        )
 
     def test_raw_uppercase_multiline(self):
         self.assertMarkdownRenders(
@@ -108,7 +130,7 @@ class TestHTMLBlocks(TestCase):
                 *foo*
                 </DIV>
                 """
-            ),
+            )
         )
 
     def test_multiple_raw_single_line(self):
@@ -119,7 +141,7 @@ class TestHTMLBlocks(TestCase):
                 <p>*foo*</p>
                 <div>*bar*</div>
                 """
-            ),
+            )
         )
 
     def test_multiple_raw_single_line_with_pi(self):
@@ -130,7 +152,7 @@ class TestHTMLBlocks(TestCase):
                 <p>*foo*</p>
                 <?php echo '>'; ?>
                 """
-            ),
+            )
         )
 
     def test_multiline_raw(self):
@@ -150,7 +172,7 @@ class TestHTMLBlocks(TestCase):
                     with multiple lines.
                 </p>
                 """
-            ),
+            )
         )
 
     def test_blank_lines_in_raw(self):
@@ -176,7 +198,7 @@ class TestHTMLBlocks(TestCase):
 
                 </p>
                 """
-            ),
+            )
         )
 
     def test_raw_surrounded_by_Markdown(self):
@@ -197,7 +219,7 @@ class TestHTMLBlocks(TestCase):
 
                 <p>More <em>Markdown</em> text.</p>
                 """
-            ),
+            )
         )
 
     def test_raw_surrounded_by_text_without_blank_lines(self):
@@ -215,7 +237,7 @@ class TestHTMLBlocks(TestCase):
                 <p>*Raw* HTML.</p>
                 <p>More <em>Markdown</em> text.</p>
                 """
-            ),
+            )
         )
 
     def test_multiline_markdown_with_code_span(self):
@@ -233,12 +255,10 @@ class TestHTMLBlocks(TestCase):
                 <code>&lt;p&gt;code span&lt;/p&gt;</code>, which is
                 at the start of a line.</p>
                 """
-            ),
+            )
         )
 
-    def test_raw_block_preceded_by_markdown_code_span_with_unclosed_block_tag(
-        self,
-    ):
+    def test_raw_block_preceded_by_markdown_code_span_with_unclosed_block_tag(self):
         self.assertMarkdownRenders(
             self.dedent(
                 """
@@ -256,7 +276,7 @@ class TestHTMLBlocks(TestCase):
 
                 <p>This is <em>markdown</em></p>
                 """
-            ),
+            )
         )
 
     def test_raw_one_line_followed_by_text(self):
@@ -267,18 +287,18 @@ class TestHTMLBlocks(TestCase):
                 <p>*foo*</p>
                 <p><em>bar</em></p>
                 """
-            ),
+            )
         )
 
     def test_raw_one_line_followed_by_span(self):
         self.assertMarkdownRenders(
-            '<p>*foo*</p><span>*bar*</span>',
+            "<p>*foo*</p><span>*bar*</span>",
             self.dedent(
                 """
                 <p>*foo*</p>
                 <p><span><em>bar</em></span></p>
                 """
-            ),
+            )
         )
 
     def test_raw_with_markdown_blocks(self):
@@ -306,7 +326,7 @@ class TestHTMLBlocks(TestCase):
                     Another non-Markdown paragraph.
                 </div>
                 """
-            ),
+            )
         )
 
     def test_adjacent_raw_blocks(self):
@@ -322,7 +342,7 @@ class TestHTMLBlocks(TestCase):
                 <p>A raw paragraph.</p>
                 <p>A second raw paragraph.</p>
                 """
-            ),
+            )
         )
 
     def test_adjacent_raw_blocks_with_blank_lines(self):
@@ -340,12 +360,13 @@ class TestHTMLBlocks(TestCase):
 
                 <p>A second raw paragraph.</p>
                 """
-            ),
+            )
         )
 
     def test_nested_raw_one_line(self):
         self.assertMarkdownRenders(
-            '<div><p>*foo*</p></div>', '<div><p>*foo*</p></div>'
+            '<div><p>*foo*</p></div>',
+            '<div><p>*foo*</p></div>'
         )
 
     def test_nested_raw_block(self):
@@ -363,7 +384,7 @@ class TestHTMLBlocks(TestCase):
                 <p>A raw paragraph.</p>
                 </div>
                 """
-            ),
+            )
         )
 
     def test_nested_indented_raw_block(self):
@@ -381,7 +402,7 @@ class TestHTMLBlocks(TestCase):
                     <p>A raw paragraph.</p>
                 </div>
                 """
-            ),
+            )
         )
 
     def test_nested_raw_blocks(self):
@@ -401,7 +422,7 @@ class TestHTMLBlocks(TestCase):
                 <p>A second raw paragraph.</p>
                 </div>
                 """
-            ),
+            )
         )
 
     def test_nested_raw_blocks_with_blank_lines(self):
@@ -427,12 +448,13 @@ class TestHTMLBlocks(TestCase):
 
                 </div>
                 """
-            ),
+            )
         )
 
     def test_nested_inline_one_line(self):
         self.assertMarkdownRenders(
-            '<p><em>foo</em><br></p>', '<p><em>foo</em><br></p>'
+            '<p><em>foo</em><br></p>',
+            '<p><em>foo</em><br></p>'
         )
 
     def test_raw_nested_inline(self):
@@ -454,7 +476,7 @@ class TestHTMLBlocks(TestCase):
                     </p>
                 </div>
                 """
-            ),
+            )
         )
 
     def test_raw_nested_inline_with_blank_lines(self):
@@ -484,7 +506,7 @@ class TestHTMLBlocks(TestCase):
 
                 </div>
                 """
-            ),
+            )
         )
 
     def test_raw_html5(self):
@@ -524,7 +546,7 @@ class TestHTMLBlocks(TestCase):
                     </footer>
                 </section>
                 """
-            ),
+            )
         )
 
     def test_raw_pre_tag(self):
@@ -555,7 +577,7 @@ class TestHTMLBlocks(TestCase):
                         return self.bar
                 </pre>
                 """
-            ),
+            )
         )
 
     def test_raw_pre_tag_nested_escaped_html(self):
@@ -573,11 +595,14 @@ class TestHTMLBlocks(TestCase):
                 &lt;p&gt;foo&lt;/p&gt;
                 </pre>
                 """
-            ),
+            )
         )
 
     def test_raw_p_no_end_tag(self):
-        self.assertMarkdownRenders('<p>*text*', '<p>*text*')
+        self.assertMarkdownRenders(
+            '<p>*text*',
+            '<p>*text*'
+        )
 
     def test_raw_multiple_p_no_end_tag(self):
         self.assertMarkdownRenders(
@@ -594,7 +619,7 @@ class TestHTMLBlocks(TestCase):
 
                 <p>more *text*
                 """
-            ),
+            )
         )
 
     def test_raw_p_no_end_tag_followed_by_blank_line(self):
@@ -612,22 +637,32 @@ class TestHTMLBlocks(TestCase):
 
                 Still part of *raw* text.
                 """
-            ),
+            )
         )
 
     def test_raw_nested_p_no_end_tag(self):
         self.assertMarkdownRenders(
-            '<div><p>*text*</div>', '<div><p>*text*</div>'
+            '<div><p>*text*</div>',
+            '<div><p>*text*</div>'
         )
 
     def test_raw_open_bracket_only(self):
-        self.assertMarkdownRenders('<', '<p>&lt;</p>')
+        self.assertMarkdownRenders(
+            '<',
+            '<p>&lt;</p>'
+        )
 
     def test_raw_open_bracket_followed_by_space(self):
-        self.assertMarkdownRenders('< foo', '<p>&lt; foo</p>')
+        self.assertMarkdownRenders(
+            '< foo',
+            '<p>&lt; foo</p>'
+        )
 
     def test_raw_missing_close_bracket(self):
-        self.assertMarkdownRenders('<foo', '<p>&lt;foo</p>')
+        self.assertMarkdownRenders(
+            '<foo',
+            '<p>&lt;foo</p>'
+        )
 
     def test_raw_unclosed_tag_in_code_span(self):
         self.assertMarkdownRenders(
@@ -647,7 +682,7 @@ class TestHTMLBlocks(TestCase):
                 hello
                 </div>
                 """
-            ),
+            )
         )
 
     def test_raw_unclosed_tag_in_code_span_space(self):
@@ -668,13 +703,13 @@ class TestHTMLBlocks(TestCase):
                 hello
                 </div>
                 """
-            ),
+            )
         )
 
     def test_raw_attributes(self):
         self.assertMarkdownRenders(
             '<p id="foo", class="bar baz", style="margin: 15px; line-height: 1.5; text-align: center;">text</p>',
-            '<p id="foo", class="bar baz", style="margin: 15px; line-height: 1.5; text-align: center;">text</p>',
+            '<p id="foo", class="bar baz", style="margin: 15px; line-height: 1.5; text-align: center;">text</p>'
         )
 
     def test_raw_attributes_nested(self):
@@ -696,18 +731,25 @@ class TestHTMLBlocks(TestCase):
                     </p>
                 </div>
                 """
-            ),
+            )
         )
 
     def test_raw_comment_one_line(self):
-        self.assertMarkdownRenders('<!-- *foo* -->', '<!-- *foo* -->')
+        self.assertMarkdownRenders(
+            '<!-- *foo* -->',
+            '<!-- *foo* -->'
+        )
 
     def test_raw_comment_one_line_with_tag(self):
-        self.assertMarkdownRenders('<!-- <tag> -->', '<!-- <tag> -->')
+        self.assertMarkdownRenders(
+            '<!-- <tag> -->',
+            '<!-- <tag> -->'
+        )
 
     def test_comment_in_code_span(self):
         self.assertMarkdownRenders(
-            '`<!-- *foo* -->`', '<p><code>&lt;!-- *foo* --&gt;</code></p>'
+            '`<!-- *foo* -->`',
+            '<p><code>&lt;!-- *foo* --&gt;</code></p>'
         )
 
     def test_raw_comment_one_line_followed_by_text(self):
@@ -718,7 +760,7 @@ class TestHTMLBlocks(TestCase):
                 <!-- *foo* -->
                 <p><em>bar</em></p>
                 """
-            ),
+            )
         )
 
     def test_raw_comment_one_line_followed_by_html(self):
@@ -729,19 +771,28 @@ class TestHTMLBlocks(TestCase):
                 <!-- *foo* -->
                 <p>*bar*</p>
                 """
-            ),
+            )
         )
 
     # Note: Trailing (insignificant) whitespace is not preserved, which does not match the
     # reference implementation. However, it is not a change in behavior for Python-Markdown.
     def test_raw_comment_trailing_whitespace(self):
-        self.assertMarkdownRenders('<!-- *foo* --> ', '<!-- *foo* -->')
+        self.assertMarkdownRenders(
+            '<!-- *foo* --> ',
+            '<!-- *foo* -->'
+        )
 
     def test_bogus_comment(self):
-        self.assertMarkdownRenders('<!invalid>', '<p>&lt;!invalid&gt;</p>')
+        self.assertMarkdownRenders(
+            '<!invalid>',
+            '<p>&lt;!invalid&gt;</p>'
+        )
 
     def test_bogus_comment_endtag(self):
-        self.assertMarkdownRenders('</#invalid>', '<p>&lt;/#invalid&gt;</p>')
+        self.assertMarkdownRenders(
+            '</#invalid>',
+            '<p>&lt;/#invalid&gt;</p>'
+        )
 
     def test_raw_multiline_comment(self):
         self.assertMarkdownRenders(
@@ -758,7 +809,7 @@ class TestHTMLBlocks(TestCase):
                 *foo*
                 -->
                 """
-            ),
+            )
         )
 
     def test_raw_multiline_comment_with_tag(self):
@@ -776,7 +827,7 @@ class TestHTMLBlocks(TestCase):
                 <tag>
                 -->
                 """
-            ),
+            )
         )
 
     def test_raw_multiline_comment_first_line(self):
@@ -792,7 +843,7 @@ class TestHTMLBlocks(TestCase):
                 <!-- *foo*
                 -->
                 """
-            ),
+            )
         )
 
     def test_raw_multiline_comment_last_line(self):
@@ -808,7 +859,7 @@ class TestHTMLBlocks(TestCase):
                 <!--
                 *foo* -->
                 """
-            ),
+            )
         )
 
     def test_raw_comment_with_blank_lines(self):
@@ -830,7 +881,7 @@ class TestHTMLBlocks(TestCase):
 
                 -->
                 """
-            ),
+            )
         )
 
     def test_raw_comment_with_blank_lines_with_tag(self):
@@ -852,7 +903,7 @@ class TestHTMLBlocks(TestCase):
 
                 -->
                 """
-            ),
+            )
         )
 
     def test_raw_comment_with_blank_lines_first_line(self):
@@ -870,7 +921,7 @@ class TestHTMLBlocks(TestCase):
 
                 -->
                 """
-            ),
+            )
         )
 
     def test_raw_comment_with_blank_lines_last_line(self):
@@ -888,7 +939,7 @@ class TestHTMLBlocks(TestCase):
 
                 *foo* -->
                 """
-            ),
+            )
         )
 
     def test_raw_comment_indented(self):
@@ -910,7 +961,7 @@ class TestHTMLBlocks(TestCase):
 
                 -->
                 """
-            ),
+            )
         )
 
     def test_raw_comment_indented_with_tag(self):
@@ -932,7 +983,7 @@ class TestHTMLBlocks(TestCase):
 
                 -->
                 """
-            ),
+            )
         )
 
     def test_raw_comment_nested(self):
@@ -950,7 +1001,7 @@ class TestHTMLBlocks(TestCase):
                 <!-- *foo* -->
                 </div>
                 """
-            ),
+            )
         )
 
     def test_comment_in_code_block(self):
@@ -961,7 +1012,7 @@ class TestHTMLBlocks(TestCase):
                 <pre><code>&lt;!-- *foo* --&gt;
                 </code></pre>
                 """
-            ),
+            )
         )
 
     # Note: This is a change in behavior. Previously, Python-Markdown interpreted this in the same manner
@@ -981,7 +1032,7 @@ class TestHTMLBlocks(TestCase):
                 <p>&lt;!-- unclosed comment</p>
                 <p><em>not</em> a comment</p>
                 """
-            ),
+            )
         )
 
     def test_invalid_comment_end(self):
@@ -997,11 +1048,14 @@ class TestHTMLBlocks(TestCase):
                 <p>&lt;!-- This comment is malformed and never closes -- &gt;
                 Some content after the bad comment.</p>
                 """
-            ),
+            )
         )
 
     def test_raw_processing_instruction_one_line(self):
-        self.assertMarkdownRenders("<?php echo '>'; ?>", "<?php echo '>'; ?>")
+        self.assertMarkdownRenders(
+            "<?php echo '>'; ?>",
+            "<?php echo '>'; ?>"
+        )
 
     # This is a change in behavior and does not match the reference implementation.
     # We have no way to determine if text is on the same line, so we get this. TODO: reevaluate!
@@ -1013,7 +1067,7 @@ class TestHTMLBlocks(TestCase):
                 <?php echo '>'; ?>
                 <p><em>bar</em></p>
                 """
-            ),
+            )
         )
 
     def test_raw_multiline_processing_instruction(self):
@@ -1031,7 +1085,7 @@ class TestHTMLBlocks(TestCase):
                 echo '>';
                 ?>
                 """
-            ),
+            )
         )
 
     def test_raw_processing_instruction_with_blank_lines(self):
@@ -1053,7 +1107,7 @@ class TestHTMLBlocks(TestCase):
 
                 ?>
                 """
-            ),
+            )
         )
 
     def test_raw_processing_instruction_indented(self):
@@ -1075,7 +1129,7 @@ class TestHTMLBlocks(TestCase):
 
                 ?>
                 """
-            ),
+            )
         )
 
     def test_raw_processing_instruction_code_span(self):
@@ -1096,11 +1150,14 @@ class TestHTMLBlocks(TestCase):
                 foo
                 </div>
                 """
-            ),
+            )
         )
 
     def test_raw_declaration_one_line(self):
-        self.assertMarkdownRenders('<!DOCTYPE html>', '<!DOCTYPE html>')
+        self.assertMarkdownRenders(
+            '<!DOCTYPE html>',
+            '<!DOCTYPE html>'
+        )
 
     # This is a change in behavior and does not match the reference implementation.
     # We have no way to determine if text is on the same line, so we get this. TODO: reevaluate!
@@ -1112,7 +1169,7 @@ class TestHTMLBlocks(TestCase):
                 <!DOCTYPE html>
                 <p><em>bar</em></p>
                 """
-            ),
+            )
         )
 
     def test_raw_multiline_declaration(self):
@@ -1130,7 +1187,7 @@ class TestHTMLBlocks(TestCase):
                   "-//W3C//DTD XHTML 1.1//EN"
                   "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
                 """
-            ),
+            )
         )
 
     def test_raw_declaration_code_span(self):
@@ -1151,13 +1208,13 @@ class TestHTMLBlocks(TestCase):
                 foo
                 </div>
                 """
-            ),
+            )
         )
 
     def test_raw_cdata_one_line(self):
         self.assertMarkdownRenders(
             '<![CDATA[ document.write(">"); ]]>',
-            '<![CDATA[ document.write(">"); ]]>',
+            '<![CDATA[ document.write(">"); ]]>'
         )
 
     # Note: this is a change. Neither previous output nor this match reference implementation.
@@ -1169,7 +1226,7 @@ class TestHTMLBlocks(TestCase):
                 <![CDATA[ document.write(">"); ]]>
                 <p><em>bar</em></p>
                 """
-            ),
+            )
         )
 
     def test_raw_multiline_cdata(self):
@@ -1187,7 +1244,7 @@ class TestHTMLBlocks(TestCase):
                 document.write(">");
                 ]]>
                 """
-            ),
+            )
         )
 
     def test_raw_cdata_with_blank_lines(self):
@@ -1209,7 +1266,7 @@ class TestHTMLBlocks(TestCase):
 
                 ]]>
                 """
-            ),
+            )
         )
 
     def test_raw_cdata_indented(self):
@@ -1231,12 +1288,15 @@ class TestHTMLBlocks(TestCase):
 
                 ]]>
                 """
-            ),
+            )
         )
 
     def test_not_actually_cdata(self):
         # Ensure bug reported in #1534 is avoided.
-        self.assertMarkdownRenders('<![', '<p>&lt;![</p>')
+        self.assertMarkdownRenders(
+            '<![',
+            '<p>&lt;![</p>'
+        )
 
     def test_raw_cdata_code_span(self):
         self.assertMarkdownRenders(
@@ -1256,53 +1316,86 @@ class TestHTMLBlocks(TestCase):
                 foo
                 </div>
                 """
-            ),
+            )
         )
 
     def test_charref(self):
-        self.assertMarkdownRenders('&sect;', '<p>&sect;</p>')
+        self.assertMarkdownRenders(
+            '&sect;',
+            '<p>&sect;</p>'
+        )
 
     def test_nested_charref(self):
-        self.assertMarkdownRenders('<p>&sect;</p>', '<p>&sect;</p>')
+        self.assertMarkdownRenders(
+            '<p>&sect;</p>',
+            '<p>&sect;</p>'
+        )
 
     def test_entityref(self):
-        self.assertMarkdownRenders('&#167;', '<p>&#167;</p>')
+        self.assertMarkdownRenders(
+            '&#167;',
+            '<p>&#167;</p>'
+        )
 
     def test_nested_entityref(self):
-        self.assertMarkdownRenders('<p>&#167;</p>', '<p>&#167;</p>')
+        self.assertMarkdownRenders(
+            '<p>&#167;</p>',
+            '<p>&#167;</p>'
+        )
 
     def test_amperstand(self):
         self.assertMarkdownRenders(
-            'AT&T & AT&amp;T', '<p>AT&amp;T &amp; AT&amp;T</p>'
+            'AT&T & AT&amp;T',
+            '<p>AT&amp;T &amp; AT&amp;T</p>'
         )
 
     def test_startendtag(self):
-        self.assertMarkdownRenders('<hr>', '<hr>')
+        self.assertMarkdownRenders(
+            '<hr>',
+            '<hr>'
+        )
 
     def test_startendtag_with_attrs(self):
         self.assertMarkdownRenders(
-            '<hr id="foo" class="bar">', '<hr id="foo" class="bar">'
+            '<hr id="foo" class="bar">',
+            '<hr id="foo" class="bar">'
         )
 
     def test_startendtag_with_space(self):
-        self.assertMarkdownRenders('<hr >', '<hr >')
+        self.assertMarkdownRenders(
+            '<hr >',
+            '<hr >'
+        )
 
     def test_closed_startendtag(self):
-        self.assertMarkdownRenders('<hr />', '<hr />')
+        self.assertMarkdownRenders(
+            '<hr />',
+            '<hr />'
+        )
 
     def test_closed_startendtag_without_space(self):
-        self.assertMarkdownRenders('<hr/>', '<hr/>')
+        self.assertMarkdownRenders(
+            '<hr/>',
+            '<hr/>'
+        )
 
     def test_closed_startendtag_with_attrs(self):
         self.assertMarkdownRenders(
-            '<hr id="foo" class="bar" />', '<hr id="foo" class="bar" />'
+            '<hr id="foo" class="bar" />',
+            '<hr id="foo" class="bar" />'
         )
 
     def test_nested_startendtag(self):
-        self.assertMarkdownRenders('<div><hr></div>', '<div><hr></div>')
+        self.assertMarkdownRenders(
+            '<div><hr></div>',
+            '<div><hr></div>'
+        )
 
     def test_nested_closed_startendtag(self):
-        self.assertMarkdownRenders('<div><hr /></div>', '<div><hr /></div>')
+        self.assertMarkdownRenders(
+            '<div><hr /></div>',
+            '<div><hr /></div>'
+        )
 
     def test_multiline_attributes(self):
         self.assertMarkdownRenders(
@@ -1327,7 +1420,7 @@ class TestHTMLBlocks(TestCase):
                 <hr class="foo"
                     id="bar" >
                 """
-            ),
+            )
         )
 
     def test_auto_links_dont_break_parser(self):
@@ -1343,7 +1436,7 @@ class TestHTMLBlocks(TestCase):
             '<p><a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#101;&#109;'
             '&#97;&#105;&#108;&#64;&#101;&#120;&#97;&#109;&#112;&#108;&#101;'
             '&#46;&#99;&#111;&#109;">&#101;&#109;&#97;&#105;&#108;&#64;&#101;'
-            '&#120;&#97;&#109;&#112;&#108;&#101;&#46;&#99;&#111;&#109;</a></p>',
+            '&#120;&#97;&#109;&#112;&#108;&#101;&#46;&#99;&#111;&#109;</a></p>'
         )
 
     def test_text_links_ignored(self):
@@ -1377,7 +1470,7 @@ class TestHTMLBlocks(TestCase):
                 <p><some <a href="http://example.com">weird</a> stuff></p>
                 <p><some>&gt; &lt;<unbalanced>&gt; &lt;<brackets></p>
                 """
-            ),
+            )
         )
 
     def test_script_tags(self):
@@ -1403,7 +1496,7 @@ class TestHTMLBlocks(TestCase):
                 **more stuff**
                 </style>
                 """
-            ),
+            )
         )
 
     def test_unclosed_script_tag(self):
@@ -1424,7 +1517,7 @@ class TestHTMLBlocks(TestCase):
 
                 Still part of the *script* tag
                 """
-            ),
+            )
         )
 
     def test_inline_script_tags(self):
@@ -1462,7 +1555,7 @@ class TestHTMLBlocks(TestCase):
 
                 <p>A new paragraph with a closing <code>&lt;/script&gt;</code> tag.</p>
                 """
-            ),
+            )
         )
 
     def test_hr_only_start(self):
@@ -1480,7 +1573,7 @@ class TestHTMLBlocks(TestCase):
                 <hr>
                 <p><em>emphasis2</em></p>
                 """
-            ),
+            )
         )
 
     def test_hr_self_close(self):
@@ -1498,7 +1591,7 @@ class TestHTMLBlocks(TestCase):
                 <hr/>
                 <p><em>emphasis2</em></p>
                 """
-            ),
+            )
         )
 
     def test_hr_start_and_end(self):
@@ -1518,7 +1611,7 @@ class TestHTMLBlocks(TestCase):
                 <p></hr>
                 <em>emphasis2</em></p>
                 """
-            ),
+            )
         )
 
     def test_hr_only_end(self):
@@ -1537,7 +1630,7 @@ class TestHTMLBlocks(TestCase):
                 </hr>
                 <em>emphasis2</em></p>
                 """
-            ),
+            )
         )
 
     def test_hr_with_content(self):
@@ -1561,7 +1654,7 @@ class TestHTMLBlocks(TestCase):
                 </hr>
                 <em>emphasis2</em></p>
                 """
-            ),
+            )
         )
 
     def test_placeholder_in_source(self):
@@ -1570,9 +1663,7 @@ class TestHTMLBlocks(TestCase):
         # Ensure there is an `htmlstash` so relevant code (nested in `if replacements`) is run.
         md.htmlStash.store('foo')
         # Run with a placeholder which is not in the stash
-        placeholder = md.htmlStash.get_placeholder(
-            md.htmlStash.html_counter + 1
-        )
+        placeholder = md.htmlStash.get_placeholder(md.htmlStash.html_counter + 1)
         result = md.postprocessors['raw_html'].run(placeholder)
         self.assertEqual(placeholder, result)
 
@@ -1591,19 +1682,21 @@ class TestHTMLBlocks(TestCase):
                 </>
                 </div>
                 """
-            ),
+            )
         )
 
     def test_multiple_bogus_comments_no_hang(self):
         """Test that multiple bogus comments (</` patterns) don't cause infinite loop."""
         self.assertMarkdownRenders(
-            '`</` and `</`', '<p><code>&lt;/</code> and <code>&lt;/</code></p>'
+            '`</` and `</`',
+            '<p><code>&lt;/</code> and <code>&lt;/</code></p>'
         )
 
     def test_multiple_unclosed_comments_no_hang(self):
         """Test that multiple unclosed comments don't cause infinite loop."""
         self.assertMarkdownRenders(
-            '<!-- and <!--', '<p>&lt;!-- and &lt;!--</p>'
+            '<!-- and <!--',
+            '<p>&lt;!-- and &lt;!--</p>'
         )
 
     def test_no_hang_issue_1586(self):
@@ -1611,5 +1704,5 @@ class TestHTMLBlocks(TestCase):
 
         self.assertMarkdownRenders(
             'Test `<!--[if mso]>` and `<!--[if !mso]>`',
-            '<p>Test <code>&lt;!--[if mso]&gt;</code> and <code>&lt;!--[if !mso]&gt;</code></p>',
+            '<p>Test <code>&lt;!--[if mso]&gt;</code> and <code>&lt;!--[if !mso]&gt;</code></p>'
         )

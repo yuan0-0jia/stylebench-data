@@ -42,19 +42,19 @@ class HTMLExtractorExtra(HTMLExtractor):
 
     def __init__(self, md: Markdown, *args, **kwargs):
         # All block-level tags.
-        self.blockLevelTags = set(md.blockLevelElements.copy())
+        self.block_level_tags = set(md.block_level_elements.copy())
         # Block-level tags in which the content only gets span level parsing
-        self.spanTags = set(
+        self.span_tags = set(
             ['address', 'dd', 'dt', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'legend', 'li', 'p', 'summary', 'td', 'th']
         )
         # Block-level tags which never get their content parsed.
-        self.rawTags = set(['canvas', 'math', 'option', 'pre', 'script', 'style', 'textarea'])
+        self.raw_tags = set(['canvas', 'math', 'option', 'pre', 'script', 'style', 'textarea'])
 
         super().__init__(md, *args, **kwargs)
 
         # Block-level tags in which the content gets parsed as blocks
-        self.blockTags = set(self.blockLevelTags) - (self.spanTags | self.rawTags | self.emptyTags)
-        self.spanAndBlocksTags = self.blockTags | self.spanTags
+        self.block_tags = set(self.block_level_tags) - (self.span_tags | self.raw_tags | self.empty_tags)
+        self.span_and_blocks_tags = self.block_tags | self.span_tags
 
     def reset(self):
         """Reset this instance.  Loses all unprocessed data."""
@@ -72,13 +72,13 @@ class HTMLExtractorExtra(HTMLExtractor):
             # Close the outermost parent. `handle_endtag` will close all unclosed children.
             self.handle_endtag(self.mdstack[0])
 
-    def getElement(self) -> etree.Element:
+    def get_element(self) -> etree.Element:
         """ Return element from `treebuilder` and reset `treebuilder` for later use. """
         element = self.treebuilder.close()
         self.treebuilder = etree.TreeBuilder()
         return element
 
-    def getState(self, tag, attrs: Mapping[str, str]) -> Literal['block', 'span', 'off', None]:
+    def get_state(self, tag, attrs: Mapping[str, str]) -> Literal['block', 'span', 'off', None]:
         """ Return state from tag and `markdown` attribute. One of 'block', 'span', or 'off'. """
         mdAttr = attrs.get('markdown', '0')
         if mdAttr == 'markdown':
@@ -88,20 +88,20 @@ class HTMLExtractorExtra(HTMLExtractor):
         if parentState == 'off' or (parentState == 'span' and mdAttr != '0'):
             # Only use the parent state if it is more restrictive than the markdown attribute.
             mdAttr = parentState
-        if ((mdAttr == '1' and tag in self.blockTags) or
-                (mdAttr == 'block' and tag in self.spanAndBlocksTags)):
+        if ((mdAttr == '1' and tag in self.block_tags) or
+                (mdAttr == 'block' and tag in self.span_and_blocks_tags)):
             return 'block'
-        elif ((mdAttr == '1' and tag in self.spanTags) or
-              (mdAttr == 'span' and tag in self.spanAndBlocksTags)):
+        elif ((mdAttr == '1' and tag in self.span_tags) or
+              (mdAttr == 'span' and tag in self.span_and_blocks_tags)):
             return 'span'
-        elif tag in self.blockLevelTags:
+        elif tag in self.block_level_tags:
             return 'off'
         else:  # pragma: no cover
             return None
 
     def handle_starttag(self, tag, attrs):
         # Handle tags that should always be empty and do not specify a closing tag
-        if tag in self.emptyTags and (self.atLineStart() or self.intail):
+        if tag in self.empty_tags and (self.at_line_start() or self.intail):
             attrs = {key: value if value is not None else key for key, value in attrs}
             if "markdown" in attrs:
                 attrs.pop('markdown')
@@ -109,23 +109,23 @@ class HTMLExtractorExtra(HTMLExtractor):
                 data = etree.tostring(element, encoding='unicode', method='html')
             else:
                 data = self.get_starttag_text()
-            self.handleEmptyTag(data, True)
+            self.handle_empty_tag(data, True)
             return
 
         if (
-            tag in self.blockLevelTags and
-            (self.atLineStart() or self.intail or self.mdstarted and self.mdstarted[-1])
+            tag in self.block_level_tags and
+            (self.at_line_start() or self.intail or self.mdstarted and self.mdstarted[-1])
         ):
             # Valueless attribute (ex: `<tag checked>`) results in `[('checked', None)]`.
             # Convert to `{'checked': 'checked'}`.
             attrs = {key: value if value is not None else key for key, value in attrs}
-            state = self.getState(tag, attrs)
+            state = self.get_state(tag, attrs)
             if self.inraw or (state in [None, 'off'] and not self.mdstack):
                 # fall back to default behavior
                 attrs.pop('markdown', None)
                 super().handle_starttag(tag, attrs)
             else:
-                if 'p' in self.mdstack and tag in self.blockLevelTags:
+                if 'p' in self.mdstack and tag in self.block_level_tags:
                     # Close unclosed 'p' tag
                     self.handle_endtag('p')
                 self.mdstate.append(state)
@@ -149,7 +149,7 @@ class HTMLExtractorExtra(HTMLExtractor):
                     self.clear_cdata_mode()
 
     def handle_endtag(self, tag):
-        if tag in self.blockLevelTags:
+        if tag in self.block_level_tags:
             if self.inraw:
                 super().handle_endtag(tag)
             elif tag in self.mdstack:
@@ -163,7 +163,7 @@ class HTMLExtractorExtra(HTMLExtractor):
                         break
                 if not self.mdstack:
                     # Last item in stack is closed. Stash it
-                    element = self.getElement()
+                    element = self.get_element()
                     # Get last entry to see if it ends in newlines
                     # If it is an element, assume there is no newlines
                     item = self.cleandoc[-1] if self.cleandoc else ''
@@ -214,12 +214,12 @@ class HTMLExtractorExtra(HTMLExtractor):
                     self.state = []
                     # Check if element has a tail
                     if not blankLineRe.match(
-                            self.rawdata[self.lineOffset + self.offset + len(self.getEndtagText(tag)):]):
+                            self.rawdata[self.line_offset + self.offset + len(self.get_endtag_text(tag)):]):
                         # More content exists after `endtag`.
                         self.intail = True
             else:
                 # Treat orphan closing tag as a span level tag.
-                text = self.getEndtagText(tag)
+                text = self.get_endtag_text(tag)
                 if self.mdstate and self.mdstate[-1] == "off":
                     self.handle_data(self.md.htmlStash.store(text))
                 else:
@@ -229,14 +229,14 @@ class HTMLExtractorExtra(HTMLExtractor):
             if self.inraw:
                 super().handle_endtag(tag)
             else:
-                text = self.getEndtagText(tag)
+                text = self.get_endtag_text(tag)
                 if self.mdstate and self.mdstate[-1] == "off":
                     self.handle_data(self.md.htmlStash.store(text))
                 else:
                     self.handle_data(text)
 
     def handle_startendtag(self, tag, attrs):
-        if tag in self.emptyTags:
+        if tag in self.empty_tags:
             attrs = {key: value if value is not None else key for key, value in attrs}
             if "markdown" in attrs:
                 attrs.pop('markdown')
@@ -246,7 +246,7 @@ class HTMLExtractorExtra(HTMLExtractor):
                 data = self.get_starttag_text()
         else:
             data = self.get_starttag_text()
-        self.handleEmptyTag(data, isBlock=self.md.isBlockLevel(tag))
+        self.handle_empty_tag(data, is_block=self.md.is_block_level(tag))
 
     def handle_data(self, data):
         if self.intail and '\n' in data:
@@ -257,11 +257,11 @@ class HTMLExtractorExtra(HTMLExtractor):
             self.mdstarted[-1] = False
             self.treebuilder.data(data)
 
-    def handleEmptyTag(self, data, isBlock):
+    def handle_empty_tag(self, data, is_block):
         if self.inraw or not self.mdstack:
-            super().handleEmptyTag(data, isBlock)
+            super().handle_empty_tag(data, is_block)
         else:
-            if self.atLineStart() and isBlock:
+            if self.at_line_start() and is_block:
                 self.handle_data('\n' + self.md.htmlStash.store(data) + '\n\n')
             elif self.mdstate and self.mdstate[-1] == "off":
                 self.handle_data(self.md.htmlStash.store(data))
@@ -269,7 +269,7 @@ class HTMLExtractorExtra(HTMLExtractor):
                 self.handle_data(data)
 
     def parse_pi(self, i: int) -> int:
-        if self.atLineStart() or self.intail or self.mdstack:
+        if self.at_line_start() or self.intail or self.mdstack:
             # The same override exists in `HTMLExtractor` without the check
             # for `mdstack`. Therefore, use parent of `HTMLExtractor` instead.
             return super(HTMLExtractor, self).parse_pi(i)
@@ -279,7 +279,7 @@ class HTMLExtractorExtra(HTMLExtractor):
         return i + 2
 
     def parse_html_declaration(self, i: int) -> int:
-        if self.atLineStart() or self.intail or self.mdstack:
+        if self.at_line_start() or self.intail or self.mdstack:
             if self.rawdata[i:i+3] == '<![' and not self.rawdata[i:i+9] == '<![CDATA[':
                 # We have encountered the bug in #1534 (Python bug `gh-77057`).
                 # Provide an override until we drop support for Python < 3.13.
@@ -315,7 +315,7 @@ class MarkdownInHtmlProcessor(BlockProcessor):
         # Always return True. `run` will return `False` it not a valid match.
         return True
 
-    def parseElementContent(self, element: etree.Element) -> None:
+    def parse_element_content(self, element: etree.Element) -> None:
         """
         Recursively parse the text content of an `etree` Element as Markdown.
 
@@ -357,7 +357,7 @@ class MarkdownInHtmlProcessor(BlockProcessor):
                     else:
                         child.tail += block[start:end]
                     element.append(el)
-                    self.parseElementContent(el)
+                    self.parse_element_content(el)
                     child = el
                     if child.tail is None:
                         child.tail = ''
@@ -384,7 +384,7 @@ class MarkdownInHtmlProcessor(BlockProcessor):
                 element.text = ''
             element.text = util.AtomicString(element.text)
             for child in list(element):
-                self.parseElementContent(child)
+                self.parse_element_content(child)
                 if child.tail:
                     child.tail = util.AtomicString(child.tail)
 
@@ -397,7 +397,7 @@ class MarkdownInHtmlProcessor(BlockProcessor):
                 # We have a matched element. Process it.
                 block = blocks.pop(0)
                 parent.append(element)
-                self.parseElementContent(element)
+                self.parse_element_content(element)
                 # Cleanup stash. Replace element with empty string to avoid confusing postprocessor.
                 self.parser.md.htmlStash.rawHtmlBlocks.pop(index)
                 self.parser.md.htmlStash.rawHtmlBlocks.insert(index, '')
@@ -412,7 +412,7 @@ class MarkdownInHtmlProcessor(BlockProcessor):
 
 
 class MarkdownInHTMLPostprocessor(RawHtmlPostprocessor):
-    def stashToString(self, text: str | etree.Element) -> str:
+    def stash_to_string(self, text: str | etree.Element) -> str:
         """ Override default to handle any `etree` elements still in the stash. """
         if isinstance(text, etree.Element):
             return self.md.serializer(text)

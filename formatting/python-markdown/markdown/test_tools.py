@@ -17,7 +17,7 @@
 
 # License: BSD (see LICENSE.md for details).
 
-"""A collection of tools for testing the Markdown code base and extensions."""
+""" A collection of tools for testing the Markdown code base and extensions. """
 
 from __future__ import annotations
 
@@ -58,9 +58,7 @@ class TestCase(unittest.TestCase):
     default_kwargs: dict[str, Any] = {}
     """ Default options to pass to Markdown for each test. """
 
-    def assertMarkdownRenders(
-        self, source, expected, expected_attrs=None, **kwargs
-    ):
+    def assertMarkdownRenders(self, source, expected, expected_attrs=None, **kwargs):
         """
         Test that source Markdown text renders to expected output with given keywords.
 
@@ -124,41 +122,38 @@ class recursionlimit:
 
 
 class Kwargs(dict):
-    """A `dict` like class for holding keyword arguments."""
-
+    """ A `dict` like class for holding keyword arguments. """
     pass
 
 
 def _normalize_whitespace(text):
-    """Normalize whitespace for a string of HTML using `tidylib`."""
-    output, errors = tidylib.tidy_fragment(
-        text,
-        options={
-            'drop_empty_paras': 0,
-            'fix_backslash': 0,
-            'fix_bad_comments': 0,
-            'fix_uri': 0,
-            'join_styles': 0,
-            'lower_literals': 0,
-            'merge_divs': 0,
-            'output_xhtml': 1,
-            'quote_ampersand': 0,
-            'newline': 'LF',
-        },
-    )
+    """ Normalize whitespace for a string of HTML using `tidylib`. """
+    output, errors = tidylib.tidy_fragment(text, options={
+        'drop_empty_paras': 0,
+        'fix_backslash': 0,
+        'fix_bad_comments': 0,
+        'fix_uri': 0,
+        'join_styles': 0,
+        'lower_literals': 0,
+        'merge_divs': 0,
+        'output_xhtml': 1,
+        'quote_ampersand': 0,
+        'newline': 'LF'
+    })
     return output
 
 
 class LegacyTestMeta(type):
     def __new__(cls, name, bases, dct):
+
         def generate_test(infile, outfile, normalize, kwargs):
             def test(self):
-                with open(infile, encoding='utf-8') as f:
+                with open(infile, encoding="utf-8") as f:
                     input = f.read()
-                with open(outfile, encoding='utf-8') as f:
+                with open(outfile, encoding="utf-8") as f:
                     # Normalize line endings
                     # (on Windows, git may have altered line endings).
-                    expected = f.read().replace('\r\n', '\n')
+                    expected = f.read().replace("\r\n", "\n")
                 output = markdown(input, **kwargs)
                 if tidylib and normalize:
                     try:
@@ -169,7 +164,6 @@ class LegacyTestMeta(type):
                 elif normalize:
                     self.skipTest('Tidylib not available.')
                 self.assertMultiLineEqual(output, expected)
-
             return test
 
         location = dct.get('location', '')
@@ -192,13 +186,9 @@ class LegacyTestMeta(type):
                             kws.update(dct[tname])
                         test_name = 'test_%s' % tname
                         if tname not in exclude:
-                            dct[test_name] = generate_test(
-                                infile, outfile, normalize, kws
-                            )
+                            dct[test_name] = generate_test(infile, outfile, normalize, kws)
                         else:
-                            dct[test_name] = unittest.skip('Excluded')(
-                                lambda: None
-                            )
+                            dct[test_name] = unittest.skip('Excluded')(lambda: None)
 
         return type.__new__(cls, name, bases, dct)
 
@@ -231,5 +221,4 @@ class LegacyTestCase(unittest.TestCase, metaclass=LegacyTestMeta):
     a separate `Unitttest` for each set of test files using the naming scheme:
     `test_filename`. One `Unittest` will be run for each set of input and output files.
     """
-
     pass

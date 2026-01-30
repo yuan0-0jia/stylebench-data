@@ -24,6 +24,7 @@ from markdown.extensions.tables import TableExtension
 
 
 class TestTableBlocks(TestCase):
+
     def test_empty_cells(self):
         """Empty cells (`nbsp`)."""
 
@@ -58,7 +59,7 @@ Content Cell  |  
                 </table>
                 """
             ),
-            extensions=['tables'],
+            extensions=['tables']
         )
 
     def test_no_sides(self):
@@ -93,7 +94,7 @@ Content Cell  |  
                 </table>
                 """
             ),
-            extensions=['tables'],
+            extensions=['tables']
         )
 
     def test_both_sides(self):
@@ -128,7 +129,7 @@ Content Cell  |  
                 </table>
                 """
             ),
-            extensions=['tables'],
+            extensions=['tables']
         )
 
     def test_align_columns(self):
@@ -168,7 +169,7 @@ Content Cell  |  
                 </table>
                 """
             ),
-            extensions=['tables'],
+            extensions=['tables']
         )
 
     def test_styles_in_tables(self):
@@ -203,7 +204,7 @@ Content Cell  |  
                 </table>
                 """
             ),
-            extensions=['tables'],
+            extensions=['tables']
         )
 
     def test_align_three(self):
@@ -241,7 +242,7 @@ Content Cell  |  
                 </table>
                 """
             ),
-            extensions=['tables'],
+            extensions=['tables']
         )
 
     def test_three_columns(self):
@@ -279,7 +280,7 @@ Content Cell  |  
                 </table>
                 """
             ),
-            extensions=['tables'],
+            extensions=['tables']
         )
 
     def test_three_spaces_prefix(self):
@@ -297,8 +298,7 @@ Content Cell  |  
                    | ------------ | ------------- |
                    | Content Cell | Content Cell  |
                    | Content Cell | Content Cell  |
-                """
-            ),
+                """),
             self.dedent(
                 """
                 <p>Three spaces in front of a table:</p>
@@ -340,7 +340,7 @@ Content Cell  |  
                 </table>
                 """
             ),
-            extensions=['tables'],
+            extensions=['tables']
         )
 
     def test_code_block_table(self):
@@ -356,8 +356,7 @@ Content Cell  |  
 
                 | First Header | Second Header |
                 | ------------ | ------------- |
-                """
-            ),
+                """),
             self.dedent(
                 """
                 <p>Four spaces is a code block:</p>
@@ -382,7 +381,7 @@ Content Cell  |  
                 </table>
                 """
             ),
-            extensions=['tables'],
+            extensions=['tables']
         )
 
     def test_inline_code_blocks(self):
@@ -404,8 +403,7 @@ Content Cell  |  
                 words    |`` some ` | ` code `` | more words
                 words    |``` some ` | ` code ``` | more words
                 words    |```` some ` | ` code ```` | more words
-                """
-            ),
+                """),
             self.dedent(
                 """
                 <p>More inline code block tests</p>
@@ -477,7 +475,7 @@ Content Cell  |  
                 </table>
                 """
             ),
-            extensions=['tables'],
+            extensions=['tables']
         )
 
     def test_issue_440(self):
@@ -489,8 +487,7 @@ Content Cell  |  
                 foo | bar
                 --- | ---
                 foo | (`bar`) and `baz`.
-                """
-            ),
+                """),
             self.dedent(
                 """
                 <p>A test for issue #440:</p>
@@ -510,7 +507,7 @@ Content Cell  |  
                 </table>
                 """
             ),
-            extensions=['tables'],
+            extensions=['tables']
         )
 
     def test_lists_not_tables(self):
@@ -521,8 +518,7 @@ Content Cell  |  
 
                  - this | should | not
                  - be | a | table
-                """
-            ),
+                """),
             self.dedent(
                 """
                 <p>Lists are not tables</p>
@@ -532,7 +528,7 @@ Content Cell  |  
                 </ul>
                 """
             ),
-            extensions=['tables'],
+            extensions=['tables']
         )
 
     def test_issue_449(self):
@@ -586,8 +582,7 @@ Content Cell  |  
                 ------------------ | --------------
                 \`Not code\`       | \\`code`
                 \\\`Not code\\\`   | \\\\`code`
-                """
-            ),
+                """),
             self.dedent(
                 """
                 <p>Add tests for issue #449</p>
@@ -712,7 +707,7 @@ Content Cell  |  
                 </table>
                 """
             ),
-            extensions=['tables'],
+            extensions=['tables']
         )
 
     def test_single_column_tables(self):
@@ -757,8 +752,7 @@ Content Cell  |  
                 Is not a Table |
                 -------------- |
                 row
-                """
-            ),
+                """),
             self.dedent(
                 """
                 <p>Single column tables</p>
@@ -846,7 +840,7 @@ Content Cell  |  
                 row</p>
                 """
             ),
-            extensions=['tables'],
+            extensions=['tables']
         )
 
     def test_align_columns_legacy(self):
@@ -886,7 +880,7 @@ Content Cell  |  
                 </table>
                 """
             ),
-            extensions=[TableExtension(use_align_attribute=True)],
+            extensions=[TableExtension(use_align_attribute=True)]
         )
 
     def test_align_three_legacy(self):
@@ -924,5 +918,5 @@ Content Cell  |  
                 </table>
                 """
             ),
-            extensions=[TableExtension(use_align_attribute=True)],
+            extensions=[TableExtension(use_align_attribute=True)]
         )

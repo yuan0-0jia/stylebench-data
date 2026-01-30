@@ -24,7 +24,7 @@ from markdown.test_tools import TestCase
 
 class TestDefList(TestCase):
 
-    def testDefListWithOl(self):
+    def test_def_list_with_ol(self):
         self.assertMarkdownRenders(
             self.dedent(
                 '''
@@ -75,7 +75,7 @@ class TestDefList(TestCase):
             extensions=['def_list']
         )
 
-    def testDefListWithUl(self):
+    def test_def_list_with_ul(self):
         self.assertMarkdownRenders(
             self.dedent(
                 '''
@@ -126,7 +126,7 @@ class TestDefList(TestCase):
             extensions=['def_list']
         )
 
-    def testDefListWithNesting(self):
+    def test_def_list_with_nesting(self):
         self.assertMarkdownRenders(
             self.dedent(
                 '''
@@ -171,7 +171,7 @@ class TestDefList(TestCase):
             extensions=['def_list']
         )
 
-    def testDefListWithNestingSelf(self):
+    def test_def_list_with_nesting_self(self):
         self.assertMarkdownRenders(
             self.dedent(
                 '''
@@ -216,7 +216,7 @@ class TestDefList(TestCase):
             extensions=['def_list']
         )
 
-    def testDefListUnreasonableNesting(self):
+    def test_def_list_unreasonable_nesting(self):
         self.assertMarkdownRenders(
             self.dedent(
                 '''
@@ -275,7 +275,7 @@ class TestDefList(TestCase):
             extensions=['def_list']
         )
 
-    def testDefListNestedAdmontions(self):
+    def test_def_list_nested_admontions(self):
         self.assertMarkdownRenders(
             self.dedent(
                 '''

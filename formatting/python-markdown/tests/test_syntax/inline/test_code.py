@@ -23,6 +23,7 @@ from markdown.test_tools import TestCase
 
 
 class TestCode(TestCase):
+
     def test_code_comments(self):
         self.assertMarkdownRenders(
             self.dedent(
@@ -41,7 +42,7 @@ class TestCode(TestCase):
                 that is not HTML <code>--&gt;</code>
                 in a paragraph.</p>
                 """
-            ),
+            )
         )
 
     def test_code_html(self):
@@ -59,7 +60,7 @@ class TestCode(TestCase):
 
                 <p>Paragraph with code: <code>&lt;p&gt;test&lt;/p&gt;</code>.</p>
                 """
-            ),
+            )
         )
 
     def test_noname_tag(self):
@@ -76,5 +77,5 @@ class TestCode(TestCase):
                 """
                 <p><code>&lt;/&gt;</code></p>
                 """
-            ),
+            )
         )

@@ -24,259 +24,259 @@ from markdown.test_tools import TestCase
 
 class TestHorizontalRules(TestCase):
 
-    def testHrAsterisks(self):
+    def test_hr_asterisks(self):
         self.assertMarkdownRenders(
             '***',
 
             '<hr />'
         )
 
-    def testHrAsterisksSpaces(self):
+    def test_hr_asterisks_spaces(self):
         self.assertMarkdownRenders(
             '* * *',
 
             '<hr />'
         )
 
-    def testHrAsterisksLong(self):
+    def test_hr_asterisks_long(self):
         self.assertMarkdownRenders(
             '*******',
 
             '<hr />'
         )
 
-    def testHrAsterisksSpacesLong(self):
+    def test_hr_asterisks_spaces_long(self):
         self.assertMarkdownRenders(
             '* * * * * * *',
 
             '<hr />'
         )
 
-    def testHrAsterisks1Indent(self):
+    def test_hr_asterisks_1_indent(self):
         self.assertMarkdownRenders(
             ' ***',
 
             '<hr />'
         )
 
-    def testHrAsterisksSpaces1Indent(self):
+    def test_hr_asterisks_spaces_1_indent(self):
         self.assertMarkdownRenders(
             ' * * *',
 
             '<hr />'
         )
 
-    def testHrAsterisks2Indent(self):
+    def test_hr_asterisks_2_indent(self):
         self.assertMarkdownRenders(
             '  ***',
 
             '<hr />'
         )
 
-    def testHrAsterisksSpaces2Indent(self):
+    def test_hr_asterisks_spaces_2_indent(self):
         self.assertMarkdownRenders(
             '  * * *',
 
             '<hr />'
         )
 
-    def testHrAsterisks3Indent(self):
+    def test_hr_asterisks_3_indent(self):
         self.assertMarkdownRenders(
             '   ***',
 
             '<hr />'
         )
 
-    def testHrAsterisksSpaces3Indent(self):
+    def test_hr_asterisks_spaces_3_indent(self):
         self.assertMarkdownRenders(
             '   * * *',
 
             '<hr />'
         )
 
-    def testHrAsterisksTrailingSpace(self):
+    def test_hr_asterisks_trailing_space(self):
         self.assertMarkdownRenders(
             '*** ',
 
             '<hr />'
         )
 
-    def testHrAsterisksSpacesTrailingSpace(self):
+    def test_hr_asterisks_spaces_trailing_space(self):
         self.assertMarkdownRenders(
             '* * * ',
 
             '<hr />'
         )
 
-    def testHrHyphens(self):
+    def test_hr_hyphens(self):
         self.assertMarkdownRenders(
             '---',
 
             '<hr />'
         )
 
-    def testHrHyphensSpaces(self):
+    def test_hr_hyphens_spaces(self):
         self.assertMarkdownRenders(
             '- - -',
 
             '<hr />'
         )
 
-    def testHrHyphensLong(self):
+    def test_hr_hyphens_long(self):
         self.assertMarkdownRenders(
             '-------',
 
             '<hr />'
         )
 
-    def testHrHyphensSpacesLong(self):
+    def test_hr_hyphens_spaces_long(self):
         self.assertMarkdownRenders(
             '- - - - - - -',
 
             '<hr />'
         )
 
-    def testHrHyphens1Indent(self):
+    def test_hr_hyphens_1_indent(self):
         self.assertMarkdownRenders(
             ' ---',
 
             '<hr />'
         )
 
-    def testHrHyphensSpaces1Indent(self):
+    def test_hr_hyphens_spaces_1_indent(self):
         self.assertMarkdownRenders(
             ' - - -',
 
             '<hr />'
         )
 
-    def testHrHyphens2Indent(self):
+    def test_hr_hyphens_2_indent(self):
         self.assertMarkdownRenders(
             '  ---',
 
             '<hr />'
         )
 
-    def testHrHyphensSpaces2Indent(self):
+    def test_hr_hyphens_spaces_2_indent(self):
         self.assertMarkdownRenders(
             '  - - -',
 
             '<hr />'
         )
 
-    def testHrHyphens3Indent(self):
+    def test_hr_hyphens_3_indent(self):
         self.assertMarkdownRenders(
             '   ---',
 
             '<hr />'
         )
 
-    def testHrHyphensSpaces3Indent(self):
+    def test_hr_hyphens_spaces_3_indent(self):
         self.assertMarkdownRenders(
             '   - - -',
 
             '<hr />'
         )
 
-    def testHrHyphensTrailingSpace(self):
+    def test_hr_hyphens_trailing_space(self):
         self.assertMarkdownRenders(
             '--- ',
 
             '<hr />'
         )
 
-    def testHrHyphensSpacesTrailingSpace(self):
+    def test_hr_hyphens_spaces_trailing_space(self):
         self.assertMarkdownRenders(
             '- - - ',
 
             '<hr />'
         )
 
-    def testHrUnderscores(self):
+    def test_hr_underscores(self):
         self.assertMarkdownRenders(
             '___',
 
             '<hr />'
         )
 
-    def testHrUnderscoresSpaces(self):
+    def test_hr_underscores_spaces(self):
         self.assertMarkdownRenders(
             '_ _ _',
 
             '<hr />'
         )
 
-    def testHrUnderscoresLong(self):
+    def test_hr_underscores_long(self):
         self.assertMarkdownRenders(
             '_______',
 
             '<hr />'
         )
 
-    def testHrUnderscoresSpacesLong(self):
+    def test_hr_underscores_spaces_long(self):
         self.assertMarkdownRenders(
             '_ _ _ _ _ _ _',
 
             '<hr />'
         )
 
-    def testHrUnderscores1Indent(self):
+    def test_hr_underscores_1_indent(self):
         self.assertMarkdownRenders(
             ' ___',
 
             '<hr />'
         )
 
-    def testHrUnderscoresSpaces1Indent(self):
+    def test_hr_underscores_spaces_1_indent(self):
         self.assertMarkdownRenders(
             ' _ _ _',
 
             '<hr />'
         )
 
-    def testHrUnderscores2Indent(self):
+    def test_hr_underscores_2_indent(self):
         self.assertMarkdownRenders(
             '  ___',
 
             '<hr />'
         )
 
-    def testHrUnderscoresSpaces2Indent(self):
+    def test_hr_underscores_spaces_2_indent(self):
         self.assertMarkdownRenders(
             '  _ _ _',
 
             '<hr />'
         )
 
-    def testHrUnderscores3Indent(self):
+    def test_hr_underscores_3_indent(self):
         self.assertMarkdownRenders(
             '   ___',
 
             '<hr />'
         )
 
-    def testHrUnderscoresSpaces3Indent(self):
+    def test_hr_underscores_spaces_3_indent(self):
         self.assertMarkdownRenders(
             '   _ _ _',
 
             '<hr />'
         )
 
-    def testHrUnderscoresTrailingSpace(self):
+    def test_hr_underscores_trailing_space(self):
         self.assertMarkdownRenders(
             '___ ',
 
             '<hr />'
         )
 
-    def testHrUnderscoresSpacesTrailingSpace(self):
+    def test_hr_underscores_spaces_trailing_space(self):
         self.assertMarkdownRenders(
             '_ _ _ ',
 
             '<hr />'
         )
 
-    def testHrBeforeParagraph(self):
+    def test_hr_before_paragraph(self):
         self.assertMarkdownRenders(
             self.dedent(
                 """
@@ -292,7 +292,7 @@ class TestHorizontalRules(TestCase):
             )
         )
 
-    def testHrAfterParagraph(self):
+    def test_hr_after_paragraph(self):
         self.assertMarkdownRenders(
             self.dedent(
                 """
@@ -308,7 +308,7 @@ class TestHorizontalRules(TestCase):
             )
         )
 
-    def testHrAfterEmstrong(self):
+    def test_hr_after_emstrong(self):
         self.assertMarkdownRenders(
             self.dedent(
                 """
@@ -324,14 +324,14 @@ class TestHorizontalRules(TestCase):
             )
         )
 
-    def testNotHr2Asterisks(self):
+    def test_not_hr_2_asterisks(self):
         self.assertMarkdownRenders(
             '**',
 
             '<p>**</p>'
         )
 
-    def testNotHr2AsterisksSpaces(self):
+    def test_not_hr_2_asterisks_spaces(self):
         self.assertMarkdownRenders(
             '* *',
 
@@ -344,14 +344,14 @@ class TestHorizontalRules(TestCase):
             )
         )
 
-    def testNotHr2Hyphens(self):
+    def test_not_hr_2_hyphens(self):
         self.assertMarkdownRenders(
             '--',
 
             '<p>--</p>'
         )
 
-    def testNotHr2HyphensSpaces(self):
+    def test_not_hr_2_hyphens_spaces(self):
         self.assertMarkdownRenders(
             '- -',
 
@@ -364,21 +364,21 @@ class TestHorizontalRules(TestCase):
             )
         )
 
-    def testNotHr2Underscores(self):
+    def test_not_hr_2_underscores(self):
         self.assertMarkdownRenders(
             '__',
 
             '<p>__</p>'
         )
 
-    def testNotHr2UnderscoresSpaces(self):
+    def test_not_hr_2_underscores_spaces(self):
         self.assertMarkdownRenders(
             '_ _',
 
             '<p>_ _</p>'
         )
 
-    def test2ConsecutiveHr(self):
+    def test_2_consecutive_hr(self):
         self.assertMarkdownRenders(
             self.dedent(
                 """
@@ -394,7 +394,7 @@ class TestHorizontalRules(TestCase):
             )
         )
 
-    def testNotHrEndInChar(self):
+    def test_not_hr_end_in_char(self):
         self.assertMarkdownRenders(
             '--------------------------------------c',
 

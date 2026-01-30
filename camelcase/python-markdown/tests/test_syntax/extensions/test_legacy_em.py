@@ -23,42 +23,42 @@ from markdown.test_tools import TestCase
 
 
 class TestLegacyEm(TestCase):
-    def testLegacyEmphasis(self):
+    def test_legacy_emphasis(self):
         self.assertMarkdownRenders(
             '_connected_words_',
             '<p><em>connected</em>words_</p>',
             extensions=['legacy_em']
         )
 
-    def testLegacyStrong(self):
+    def test_legacy_strong(self):
         self.assertMarkdownRenders(
             '__connected__words__',
             '<p><strong>connected</strong>words__</p>',
             extensions=['legacy_em']
         )
 
-    def testComplexEmphasisUnderscore(self):
+    def test_complex_emphasis_underscore(self):
         self.assertMarkdownRenders(
             'This is text __bold _italic bold___ with more text',
             '<p>This is text <strong>bold <em>italic bold</em></strong> with more text</p>',
             extensions=['legacy_em']
         )
 
-    def testComplexEmphasisUnderscoreMidWord(self):
+    def test_complex_emphasis_underscore_mid_word(self):
         self.assertMarkdownRenders(
             'This is text __bold_italic bold___ with more text',
             '<p>This is text <strong>bold<em>italic bold</em></strong> with more text</p>',
             extensions=['legacy_em']
         )
 
-    def testComplexMultpleUnderscoreType(self):
+    def test_complex_multple_underscore_type(self):
 
         self.assertMarkdownRenders(
             'traced ___along___ bla __blocked__ if other ___or___',
             '<p>traced <strong><em>along</em></strong> bla <strong>blocked</strong> if other <strong><em>or</em></strong></p>'  # noqa: E501
         )
 
-    def testComplexMultpleUnderscoreTypeVariant2(self):
+    def test_complex_multple_underscore_type_variant2(self):
 
         self.assertMarkdownRenders(
             'on the __1-4 row__ of the AP Combat Table ___and___ receive',

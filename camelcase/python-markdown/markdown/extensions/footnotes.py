@@ -73,9 +73,9 @@ class FootnoteExtension(Extension):
         super().__init__(**kwargs)
 
         # In multiple invocations, emit links that don't get tangled.
-        self.uniquePrefix = 0
-        self.foundRefs: dict[str, int] = {}
-        self.usedRefs: set[str] = set()
+        self.unique_prefix = 0
+        self.found_refs: dict[str, int] = {}
+        self.used_refs: set[str] = set()
 
         # Backward compatibility with old '%d' placeholder
         self.setConfig('BACKLINK_TITLE', self.getConfig("BACKLINK_TITLE").replace("%d", "{}"))
@@ -115,31 +115,31 @@ class FootnoteExtension(Extension):
 
     def reset(self) -> None:
         """ Clear footnotes on reset, and prepare for distinct document. """
-        self.footnoteOrder: list[str] = []
+        self.footnote_order: list[str] = []
         self.footnotes: OrderedDict[str, str] = OrderedDict()
-        self.uniquePrefix += 1
-        self.foundRefs = {}
-        self.usedRefs = set()
+        self.unique_prefix += 1
+        self.found_refs = {}
+        self.used_refs = set()
 
-    def uniqueRef(self, reference: str, found: bool = False) -> str:
+    def unique_ref(self, reference: str, found: bool = False) -> str:
         """ Get a unique reference if there are duplicates. """
         if not found:
             return reference
 
         originalRef = reference
-        while reference in self.usedRefs:
-            ref, rest = reference.split(self.getSeparator(), 1)
+        while reference in self.used_refs:
+            ref, rest = reference.split(self.get_separator(), 1)
             m = RE_REF_ID.match(ref)
             if m:
-                reference = '%s%d%s%s' % (m.group(1), int(m.group(2))+1, self.getSeparator(), rest)
+                reference = '%s%d%s%s' % (m.group(1), int(m.group(2))+1, self.get_separator(), rest)
             else:
-                reference = '%s%d%s%s' % (ref, 2, self.getSeparator(), rest)
+                reference = '%s%d%s%s' % (ref, 2, self.get_separator(), rest)
 
-        self.usedRefs.add(reference)
-        if originalRef in self.foundRefs:
-            self.foundRefs[originalRef] += 1
+        self.used_refs.add(reference)
+        if originalRef in self.found_refs:
+            self.found_refs[originalRef] += 1
         else:
-            self.foundRefs[originalRef] = 1
+            self.found_refs[originalRef] = 1
         return reference
 
     def findFootnotesPlaceholder(
@@ -168,26 +168,26 @@ class FootnoteExtension(Extension):
 
     def addFootnoteRef(self, id: str) -> None:
         """ Store a footnote reference id in order of appearance. """
-        if id not in self.footnoteOrder:
-            self.footnoteOrder.append(id)
+        if id not in self.footnote_order:
+            self.footnote_order.append(id)
 
-    def getSeparator(self) -> str:
+    def get_separator(self) -> str:
         """ Get the footnote separator. """
         return self.getConfig("SEPARATOR")
 
     def makeFootnoteId(self, id: str) -> str:
         """ Return footnote link id. """
         if self.getConfig("UNIQUE_IDS"):
-            return 'fn%s%d-%s' % (self.getSeparator(), self.uniquePrefix, id)
+            return 'fn%s%d-%s' % (self.get_separator(), self.unique_prefix, id)
         else:
-            return 'fn{}{}'.format(self.getSeparator(), id)
+            return 'fn{}{}'.format(self.get_separator(), id)
 
     def makeFootnoteRefId(self, id: str, found: bool = False) -> str:
         """ Return footnote back-link id. """
         if self.getConfig("UNIQUE_IDS"):
-            return self.uniqueRef('fnref%s%d-%s' % (self.getSeparator(), self.uniquePrefix, id), found)
+            return self.unique_ref('fnref%s%d-%s' % (self.get_separator(), self.unique_prefix, id), found)
         else:
-            return self.uniqueRef('fnref{}{}'.format(self.getSeparator(), id), found)
+            return self.unique_ref('fnref{}{}'.format(self.get_separator(), id), found)
 
     def makeFootnotesDiv(self, root: etree.Element) -> etree.Element | None:
         """ Return `div` of footnotes as `etree` Element. """
@@ -335,7 +335,7 @@ class FootnoteInlineProcessor(InlineProcessor):
 
             if not self.footnotes.getConfig("USE_DEFINITION_ORDER"):
                 # Order by reference
-                footnoteNum = self.footnotes.footnoteOrder.index(id) + 1
+                footnoteNum = self.footnotes.footnote_order.index(id) + 1
             else:
                 # Order by definition
                 footnoteNum = list(self.footnotes.footnotes.keys()).index(id) + 1
@@ -357,18 +357,18 @@ class FootnotePostTreeprocessor(Treeprocessor):
     def __init__(self, footnotes: FootnoteExtension):
         self.footnotes = footnotes
 
-    def addDuplicates(self, li: etree.Element, duplicates: int) -> None:
+    def add_duplicates(self, li: etree.Element, duplicates: int) -> None:
         """ Adjust current `li` and add the duplicates: `fnref2`, `fnref3`, etc. """
         for link in li.iter('a'):
             # Find the link that needs to be duplicated.
             if link.attrib.get('class', '') == 'footnote-backref':
-                ref, rest = link.attrib['href'].split(self.footnotes.getSeparator(), 1)
+                ref, rest = link.attrib['href'].split(self.footnotes.get_separator(), 1)
                 # Duplicate link the number of times we need to
                 # and point the to the appropriate references.
                 links = []
                 for index in range(2, duplicates + 1):
                     sibLink = copy.deepcopy(link)
-                    sibLink.attrib['href'] = '%s%d%s%s' % (ref, index, self.footnotes.getSeparator(), rest)
+                    sibLink.attrib['href'] = '%s%d%s%s' % (ref, index, self.footnotes.get_separator(), rest)
                     links.append(sibLink)
                     self.offset += 1
                 # Add all the new duplicate links.
@@ -377,20 +377,20 @@ class FootnotePostTreeprocessor(Treeprocessor):
                     el.append(link)
                 break
 
-    def getNumDuplicates(self, li: etree.Element) -> int:
+    def get_num_duplicates(self, li: etree.Element) -> int:
         """ Get the number of duplicate refs of the footnote. """
-        fn, rest = li.attrib.get('id', '').split(self.footnotes.getSeparator(), 1)
-        linkId = '{}ref{}{}'.format(fn, self.footnotes.getSeparator(), rest)
-        return self.footnotes.foundRefs.get(linkId, 0)
+        fn, rest = li.attrib.get('id', '').split(self.footnotes.get_separator(), 1)
+        linkId = '{}ref{}{}'.format(fn, self.footnotes.get_separator(), rest)
+        return self.footnotes.found_refs.get(linkId, 0)
 
-    def handleDuplicates(self, parent: etree.Element) -> None:
+    def handle_duplicates(self, parent: etree.Element) -> None:
         """ Find duplicate footnotes and format and add the duplicates. """
         for li in list(parent):
             # Check number of duplicates footnotes and insert
             # additional links if needed.
-            count = self.getNumDuplicates(li)
+            count = self.get_num_duplicates(li)
             if count > 1:
-                self.addDuplicates(li, count)
+                self.add_duplicates(li, count)
 
     def run(self, root: etree.Element) -> None:
         """ Crawl the footnote div and add missing duplicate footnotes. """
@@ -400,7 +400,7 @@ class FootnotePostTreeprocessor(Treeprocessor):
                 # Footnotes should be under the first ordered list under
                 # the footnote div.  So once we find it, quit.
                 for ol in div.iter('ol'):
-                    self.handleDuplicates(ol)
+                    self.handle_duplicates(ol)
                     break
 
 
@@ -436,26 +436,26 @@ class FootnoteReorderingProcessor(Treeprocessor):
     def run(self, root: etree.Element) -> None:
         if not self.footnotes.footnotes:
             return
-        if self.footnotes.footnoteOrder != list(self.footnotes.footnotes.keys()):
+        if self.footnotes.footnote_order != list(self.footnotes.footnotes.keys()):
             for div in root.iter('div'):
                 if div.attrib.get('class', '') == 'footnote':
-                    self.reorderFootnotes(div)
+                    self.reorder_footnotes(div)
                     break
 
-    def reorderFootnotes(self, parent: etree.Element) -> None:
+    def reorder_footnotes(self, parent: etree.Element) -> None:
         oldList = parent.find('ol')
         parent.remove(oldList)
         items = oldList.findall('li')
 
-        def orderById(li) -> int:
-            id = li.attrib.get('id', '').split(self.footnotes.getSeparator(), 1)[-1]
+        def order_by_id(li) -> int:
+            id = li.attrib.get('id', '').split(self.footnotes.get_separator(), 1)[-1]
             return (
-                self.footnotes.footnoteOrder.index(id)
-                if id in self.footnotes.footnoteOrder
+                self.footnotes.footnote_order.index(id)
+                if id in self.footnotes.footnote_order
                 else len(self.footnotes.footnotes)
             )
 
-        items = sorted(items, key=orderById)
+        items = sorted(items, key=order_by_id)
 
         newList = etree.SubElement(parent, 'ol')
 

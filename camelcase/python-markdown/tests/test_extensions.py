@@ -243,10 +243,10 @@ Some text with a [[WikiLink]]."""
 
         from markdown.extensions.wikilinks import WikiLinkExtension
 
-        def myUrlBuilder(label, base, end):
+        def my_url_builder(label, base, end):
             return '/bar/'
 
-        md = markdown.Markdown(extensions=[WikiLinkExtension(build_url=myUrlBuilder)])
+        md = markdown.Markdown(extensions=[WikiLinkExtension(build_url=my_url_builder)])
         self.assertEqual(
             md.convert('[[foo]]'),
             '<p><a class="wikilink" href="/bar/">foo</a></p>'

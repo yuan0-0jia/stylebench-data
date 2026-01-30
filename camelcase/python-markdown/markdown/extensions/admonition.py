@@ -59,10 +59,10 @@ class AdmonitionProcessor(BlockProcessor):
 
         super().__init__(parser)
 
-        self.currentSibling: etree.Element | None = None
-        self.contentIndent = 0
+        self.current_sibling: etree.Element | None = None
+        self.content_indent = 0
 
-    def parseContent(self, parent: etree.Element, block: str) -> tuple[etree.Element | None, str, str]:
+    def parse_content(self, parent: etree.Element, block: str) -> tuple[etree.Element | None, str, str]:
         """Get sibling admonition.
 
         Retrieve the appropriate sibling element. This can get tricky when
@@ -74,11 +74,11 @@ class AdmonitionProcessor(BlockProcessor):
         theRest = ''
 
         # We already acquired the block via test
-        if self.currentSibling is not None:
-            sibling = self.currentSibling
-            block, theRest = self.detab(block, self.contentIndent)
-            self.currentSibling = None
-            self.contentIndent = 0
+        if self.current_sibling is not None:
+            sibling = self.current_sibling
+            block, theRest = self.detab(block, self.content_indent)
+            self.current_sibling = None
+            self.content_indent = 0
             return sibling, block, theRest
 
         sibling = self.lastChild(parent)
@@ -92,7 +92,7 @@ class AdmonitionProcessor(BlockProcessor):
             indent = 0
             while lastChild is not None:
                 if (
-                    sibling is not None and block.startswith(' ' * self.tabLength * 2) and
+                    sibling is not None and block.startswith(' ' * self.tab_length * 2) and
                     lastChild is not None and lastChild.tag in ('ul', 'ol', 'dl')
                 ):
 
@@ -104,19 +104,19 @@ class AdmonitionProcessor(BlockProcessor):
                     # Context has been lost at this point, so we must adjust the
                     # text's indentation level so it will be evaluated correctly
                     # under the list.
-                    block = block[self.tabLength:]
-                    indent += self.tabLength
+                    block = block[self.tab_length:]
+                    indent += self.tab_length
                 else:
                     lastChild = None
 
-            if not block.startswith(' ' * self.tabLength):
+            if not block.startswith(' ' * self.tab_length):
                 sibling = None
 
             if sibling is not None:
-                indent += self.tabLength
+                indent += self.tab_length
                 block, theRest = self.detab(oldBlock, indent)
-                self.currentSibling = sibling
-                self.contentIndent = indent
+                self.current_sibling = sibling
+                self.content_indent = indent
 
         return sibling, block, theRest
 
@@ -125,7 +125,7 @@ class AdmonitionProcessor(BlockProcessor):
         if self.RE.search(block):
             return True
         else:
-            return self.parseContent(parent, block)[0] is not None
+            return self.parse_content(parent, block)[0] is not None
 
     def run(self, parent: etree.Element, blocks: list[str]) -> None:
         block = blocks.pop(0)
@@ -137,10 +137,10 @@ class AdmonitionProcessor(BlockProcessor):
             block = block[m.end():]  # removes the first line
             block, theRest = self.detab(block)
         else:
-            sibling, block, theRest = self.parseContent(parent, block)
+            sibling, block, theRest = self.parse_content(parent, block)
 
         if m:
-            klass, title = self.getClassAndTitle(m)
+            klass, title = self.get_class_and_title(m)
             div = etree.SubElement(parent, 'div')
             div.set('class', '{} {}'.format(self.CLASSNAME, klass))
             if title:
@@ -165,7 +165,7 @@ class AdmonitionProcessor(BlockProcessor):
             # list for future processing.
             blocks.insert(0, theRest)
 
-    def getClassAndTitle(self, match: re.Match[str]) -> tuple[str, str | None]:
+    def get_class_and_title(self, match: re.Match[str]) -> tuple[str, str | None]:
         klass, title = match.group(1).lower(), match.group(2)
         klass = self.RE_SPACES.sub(' ', klass)
         if title is None:

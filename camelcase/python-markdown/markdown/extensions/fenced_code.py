@@ -24,10 +24,10 @@ from __future__ import annotations
 from textwrap import dedent
 from . import Extension
 from ..preprocessors import Preprocessor
-from .codehilite import CodeHilite, CodeHiliteExtension, parseHlLines
-from .attr_list import getAttrsAndRemainder, AttrListExtension
+from .codehilite import CodeHilite, CodeHiliteExtension, parse_hl_lines
+from .attr_list import get_attrs_and_remainder, AttrListExtension
 from ..util import parseBoolValue
-from ..serializers import _escapeAttribHtml
+from ..serializers import _escape_attrib_html
 import re
 from typing import TYPE_CHECKING, Any, Iterable
 
@@ -69,11 +69,11 @@ class FencedBlockPreprocessor(Preprocessor):
     def __init__(self, md: Markdown, config: dict[str, Any]):
         super().__init__(md)
         self.config = config
-        self.checkedForDeps = False
-        self.codehiliteConf: dict[str, Any] = {}
-        self.useAttrList = False
+        self.checked_for_deps = False
+        self.codehilite_conf: dict[str, Any] = {}
+        self.use_attr_list = False
         # List of options to convert to boolean values
-        self.boolOptions = [
+        self.bool_options = [
             'linenums',
             'guess_lang',
             'noclasses',
@@ -84,14 +84,14 @@ class FencedBlockPreprocessor(Preprocessor):
         """ Match and store Fenced Code Blocks in the `HtmlStash`. """
 
         # Check for dependent extensions
-        if not self.checkedForDeps:
+        if not self.checked_for_deps:
             for ext in self.md.registeredExtensions:
                 if isinstance(ext, CodeHiliteExtension):
-                    self.codehiliteConf = ext.getConfigs()
+                    self.codehilite_conf = ext.getConfigs()
                 if isinstance(ext, AttrListExtension):
-                    self.useAttrList = True
+                    self.use_attr_list = True
 
-            self.checkedForDeps = True
+            self.checked_for_deps = True
 
         text = "\n".join(lines)
         index = 0
@@ -100,11 +100,11 @@ class FencedBlockPreprocessor(Preprocessor):
             if m:
                 lang, id, classes, config = None, '', [], {}
                 if m.group('attrs'):
-                    attrs, remainder = getAttrsAndRemainder(m.group('attrs'))
+                    attrs, remainder = get_attrs_and_remainder(m.group('attrs'))
                     if remainder:  # Does not have correctly matching curly braces, so the syntax is invalid.
                         index = m.end('attrs')  # Explicitly skip over this, to prevent an infinite loop.
                         continue
-                    id, classes, config = self.handleAttrs(attrs)
+                    id, classes, config = self.handle_attrs(attrs)
                     if len(classes):
                         lang = classes.pop(0)
                 else:
@@ -112,12 +112,12 @@ class FencedBlockPreprocessor(Preprocessor):
                         lang = m.group('lang')
                     if m.group('hl_lines'):
                         # Support `hl_lines` outside of `attrs` for backward-compatibility
-                        config['hl_lines'] = parseHlLines(m.group('hl_lines'))
+                        config['hl_lines'] = parse_hl_lines(m.group('hl_lines'))
 
                 # If `config` is not empty, then the `codehighlite` extension
                 # is enabled, so we call it to highlight the code
-                if self.codehiliteConf and self.codehiliteConf['use_pygments'] and config.get('use_pygments', True):
-                    localConfig = self.codehiliteConf.copy()
+                if self.codehilite_conf and self.codehilite_conf['use_pygments'] and config.get('use_pygments', True):
+                    localConfig = self.codehilite_conf.copy()
                     localConfig.update(config)
                     # Combine classes with `cssclass`. Ensure `cssclass` is at end
                     # as Pygments appends a suffix under certain circumstances.
@@ -139,17 +139,17 @@ class FencedBlockPreprocessor(Preprocessor):
                     idAttr = langAttr = classAttr = kvPairs = ''
                     if lang:
                         prefix = self.config.get('lang_prefix', 'language-')
-                        langAttr = f' class="{prefix}{_escapeAttribHtml(lang)}"'
+                        langAttr = f' class="{prefix}{_escape_attrib_html(lang)}"'
                     if classes:
-                        classAttr = f' class="{_escapeAttribHtml(" ".join(classes))}"'
+                        classAttr = f' class="{_escape_attrib_html(" ".join(classes))}"'
                     if id:
-                        idAttr = f' id="{_escapeAttribHtml(id)}"'
-                    if self.useAttrList and config and not config.get('use_pygments', False):
+                        idAttr = f' id="{_escape_attrib_html(id)}"'
+                    if self.use_attr_list and config and not config.get('use_pygments', False):
                         # Only assign key/value pairs to code element if `attr_list` extension is enabled, key/value
                         # pairs were defined on the code block, and the `use_pygments` key was not set to `True`. The
                         # `use_pygments` key could be either set to `False` or not defined. It is omitted from output.
                         kvPairs = ''.join(
-                            f' {k}="{_escapeAttribHtml(v)}"' for k, v in config.items() if k != 'use_pygments'
+                            f' {k}="{_escape_attrib_html(v)}"' for k, v in config.items() if k != 'use_pygments'
                         )
                     code = self._escape(m.group('code'))
                     code = f'<pre{idAttr}{classAttr}><code{langAttr}{kvPairs}>{code}</code></pre>'
@@ -162,7 +162,7 @@ class FencedBlockPreprocessor(Preprocessor):
                 break
         return text.split("\n")
 
-    def handleAttrs(self, attrs: Iterable[tuple[str, str]]) -> tuple[str, list[str], dict[str, Any]]:
+    def handle_attrs(self, attrs: Iterable[tuple[str, str]]) -> tuple[str, list[str], dict[str, Any]]:
         """ Return tuple: `(id, [list, of, classes], {configs})` """
         id = ''
         classes = []
@@ -173,9 +173,9 @@ class FencedBlockPreprocessor(Preprocessor):
             elif k == '.':
                 classes.append(v)
             elif k == 'hl_lines':
-                configs[k] = parseHlLines(v)
-            elif k in self.boolOptions:
-                configs[k] = parseBoolValue(v, failOnErrors=False, preserveNone=True)
+                configs[k] = parse_hl_lines(v)
+            elif k in self.bool_options:
+                configs[k] = parseBoolValue(v, fail_on_errors=False, preserve_none=True)
             else:
                 configs[k] = v
         return id, classes, configs

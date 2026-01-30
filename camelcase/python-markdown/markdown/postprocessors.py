@@ -36,7 +36,7 @@ if TYPE_CHECKING:  # pragma: no cover
     from markdown import Markdown
 
 
-def buildPostprocessors(md: Markdown, **kwargs: Any) -> util.Registry[Postprocessor]:
+def build_postprocessors(md: Markdown, **kwargs: Any) -> util.Registry[Postprocessor]:
     """ Build the default postprocessors for Markdown. """
     postprocessors = util.Registry()
     postprocessors.register(RawHtmlPostprocessor(md), 'raw_html', 30)
@@ -72,23 +72,23 @@ class RawHtmlPostprocessor(Postprocessor):
 
     def run(self, text: str) -> str:
         """ Iterate over html stash and restore html. """
-        def substituteMatch(m: re.Match[str]) -> str:
+        def substitute_match(m: re.Match[str]) -> str:
             if key := m.group(1):
                 wrapped = True
             else:
                 key = m.group(2)
                 wrapped = False
-            if (key := int(key)) >= self.md.htmlStash.htmlCounter:
+            if (key := int(key)) >= self.md.htmlStash.html_counter:
                 return m.group(0)
-            html = self.stashToString(self.md.htmlStash.rawHtmlBlocks[key])
+            html = self.stash_to_string(self.md.htmlStash.rawHtmlBlocks[key])
             if not wrapped or self.isblocklevel(html):
-                return pattern.sub(substituteMatch, html)
-            return pattern.sub(substituteMatch, f"<p>{html}</p>")
+                return pattern.sub(substitute_match, html)
+            return pattern.sub(substitute_match, f"<p>{html}</p>")
 
-        if self.md.htmlStash.htmlCounter:
+        if self.md.htmlStash.html_counter:
             basePlaceholder = util.HTML_PLACEHOLDER % r'([0-9]+)'
             pattern = re.compile(f'<p>{ basePlaceholder }</p>|{ basePlaceholder }')
-            return pattern.sub(substituteMatch, text)
+            return pattern.sub(substitute_match, text)
         else:
             return text
 
@@ -99,10 +99,10 @@ class RawHtmlPostprocessor(Postprocessor):
             if m.group(1)[0] in ('!', '?', '@', '%'):
                 # Comment, PHP etc...
                 return True
-            return self.md.isBlockLevel(m.group(1))
+            return self.md.is_block_level(m.group(1))
         return False
 
-    def stashToString(self, text: str) -> str:
+    def stash_to_string(self, text: str) -> str:
         """ Convert a stashed object to a string. """
         return str(text)
 

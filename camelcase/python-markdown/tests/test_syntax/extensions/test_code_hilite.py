@@ -27,22 +27,22 @@ import xml.etree.ElementTree as etree
 
 try:
     import pygments  # noqa
-    hasPygments = True
+    has_pygments = True
 except ImportError:
-    hasPygments = False
+    has_pygments = False
 
 # The version required by the tests is the version specified and installed in the `pygments` tox environment.
 # In any environment where the `PYGMENTS_VERSION` environment variable is either not defined or doesn't
 # match the version of Pygments installed, all tests which rely in Pygments will be skipped.
-requiredPygmentsVersion = os.environ.get('PYGMENTS_VERSION', '')
+required_pygments_version = os.environ.get('PYGMENTS_VERSION', '')
 
 
 class TestCodeHiliteClass(TestCase):
     """ Test the markdown.extensions.codehilite.CodeHilite class. """
 
     def setUp(self):
-        if hasPygments and pygments.__version__ != requiredPygmentsVersion:
-            self.skipTest(f'Pygments=={requiredPygmentsVersion} is required')
+        if has_pygments and pygments.__version__ != required_pygments_version:
+            self.skipTest(f'Pygments=={required_pygments_version} is required')
 
     maxDiff = None
 
@@ -54,8 +54,8 @@ class TestCodeHiliteClass(TestCase):
         output = CodeHilite(source, **options).hilite()
         self.assertMultiLineEqual(output.strip(), expected)
 
-    def testCodehiliteDefaults(self):
-        if hasPygments:
+    def test_codehilite_defaults(self):
+        if has_pygments:
             # Odd result as no `lang` given and a single comment is not enough for guessing.
             expected = (
                 '<div class="codehilite"><pre><span></span><code><span class="err"># A Code Comment</span>\n'
@@ -68,8 +68,8 @@ class TestCodeHiliteClass(TestCase):
             )
         self.assertOutputEquals('# A Code Comment', expected)
 
-    def testCodehiliteGuessLang(self):
-        if hasPygments:
+    def test_codehilite_guess_lang(self):
+        if has_pygments:
             expected = (
                 '<div class="codehilite"><pre><span></span><code><span class="cp">&lt;?php</span> '
                 '<span class="k">print</span><span class="p">(</span><span class="s2">&quot;Hello World&quot;</span>'
@@ -84,8 +84,8 @@ class TestCodeHiliteClass(TestCase):
         # Use PHP as the the starting `<?php` tag ensures an accurate guess.
         self.assertOutputEquals('<?php print("Hello World"); ?>', expected, guess_lang=True)
 
-    def testCodehiliteGuessLangPlainText(self):
-        if hasPygments:
+    def test_codehilite_guess_lang_plain_text(self):
+        if has_pygments:
             expected = (
                 '<div class="codehilite"><pre><span></span><code><span class="err">plain text</span>\n'
                 '</code></pre></div>'
@@ -98,8 +98,8 @@ class TestCodeHiliteClass(TestCase):
         # This will be difficult to guess.
         self.assertOutputEquals('plain text', expected, guess_lang=True)
 
-    def testCodehiliteSetLang(self):
-        if hasPygments:
+    def test_codehilite_set_lang(self):
+        if has_pygments:
             # Note an extra `<span class="x">` is added to end of code block when `lang` explicitly set.
             # Compare with expected output for `test_guess_lang`. Not sure why this happens.
             expected = (
@@ -115,8 +115,8 @@ class TestCodeHiliteClass(TestCase):
             )
         self.assertOutputEquals('<?php print("Hello World"); ?>', expected, lang='php')
 
-    def testCodehiliteBadLang(self):
-        if hasPygments:
+    def test_codehilite_bad_lang(self):
+        if has_pygments:
             expected = (
                 '<div class="codehilite"><pre><span></span><code><span class="cp">&lt;?php</span> '
                 '<span class="k">print</span><span class="p">(</span><span class="s2">'
@@ -133,14 +133,14 @@ class TestCodeHiliteClass(TestCase):
         # The starting `<?php` tag ensures an accurate guess.
         self.assertOutputEquals('<?php print("Hello World"); ?>', expected, lang='unkown')
 
-    def testCodehiliteUsePygmentsFalse(self):
+    def test_codehilite_use_pygments_false(self):
         expected = (
             '<pre class="codehilite"><code class="language-php">&lt;?php print(&quot;Hello World&quot;); ?&gt;\n'
             '</code></pre>'
         )
         self.assertOutputEquals('<?php print("Hello World"); ?>', expected, lang='php', use_pygments=False)
 
-    def testCodehiliteLangPrefixEmpty(self):
+    def test_codehilite_lang_prefix_empty(self):
         expected = (
             '<pre class="codehilite"><code class="php">&lt;?php print(&quot;Hello World&quot;); ?&gt;\n'
             '</code></pre>'
@@ -149,7 +149,7 @@ class TestCodeHiliteClass(TestCase):
             '<?php print("Hello World"); ?>', expected, lang='php', use_pygments=False, lang_prefix=''
         )
 
-    def testCodehiliteLangPrefix(self):
+    def test_codehilite_lang_prefix(self):
         expected = (
             '<pre class="codehilite"><code class="lang-php">&lt;?php print(&quot;Hello World&quot;); ?&gt;\n'
             '</code></pre>'
@@ -158,8 +158,8 @@ class TestCodeHiliteClass(TestCase):
             '<?php print("Hello World"); ?>', expected, lang='php', use_pygments=False, lang_prefix='lang-'
         )
 
-    def testCodehiliteLinenosTrue(self):
-        if hasPygments:
+    def test_codehilite_linenos_true(self):
+        if has_pygments:
             expected = (
                 '<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div>'
                 '</td><td class="code"><div class="codehilite"><pre><span></span><code>plain text\n'
@@ -173,8 +173,8 @@ class TestCodeHiliteClass(TestCase):
             )
         self.assertOutputEquals('plain text', expected, lang='text', linenos=True)
 
-    def testCodehiliteLinenosFalse(self):
-        if hasPygments:
+    def test_codehilite_linenos_false(self):
+        if has_pygments:
             expected = (
                 '<div class="codehilite"><pre><span></span><code>plain text\n'
                 '</code></pre></div>'
@@ -186,8 +186,8 @@ class TestCodeHiliteClass(TestCase):
             )
         self.assertOutputEquals('plain text', expected, lang='text', linenos=False)
 
-    def testCodehiliteLinenosNone(self):
-        if hasPygments:
+    def test_codehilite_linenos_none(self):
+        if has_pygments:
             expected = (
                 '<div class="codehilite"><pre><span></span><code>plain text\n'
                 '</code></pre></div>'
@@ -199,8 +199,8 @@ class TestCodeHiliteClass(TestCase):
             )
         self.assertOutputEquals('plain text', expected, lang='text', linenos=None)
 
-    def testCodehiliteLinenosTable(self):
-        if hasPygments:
+    def test_codehilite_linenos_table(self):
+        if has_pygments:
             expected = (
                 '<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div>'
                 '</td><td class="code"><div class="codehilite"><pre><span></span><code>plain text\n'
@@ -214,8 +214,8 @@ class TestCodeHiliteClass(TestCase):
             )
         self.assertOutputEquals('plain text', expected, lang='text', linenos='table')
 
-    def testCodehiliteLinenosInline(self):
-        if hasPygments:
+    def test_codehilite_linenos_inline(self):
+        if has_pygments:
             expected = (
                 '<div class="codehilite"><pre><span></span><code><span class="linenos">1</span>plain text\n'
                 '</code></pre></div>'
@@ -227,8 +227,8 @@ class TestCodeHiliteClass(TestCase):
             )
         self.assertOutputEquals('plain text', expected, lang='text', linenos='inline')
 
-    def testCodehiliteLinenumsTrue(self):
-        if hasPygments:
+    def test_codehilite_linenums_true(self):
+        if has_pygments:
             expected = (
                 '<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div>'
                 '</td><td class="code"><div class="codehilite"><pre><span></span><code>plain text\n'
@@ -242,8 +242,8 @@ class TestCodeHiliteClass(TestCase):
             )
         self.assertOutputEquals('plain text', expected, lang='text', linenums=True)
 
-    def testCodehiliteSetCssclass(self):
-        if hasPygments:
+    def test_codehilite_set_cssclass(self):
+        if has_pygments:
             expected = (
                 '<div class="override"><pre><span></span><code>plain text\n'
                 '</code></pre></div>'
@@ -255,8 +255,8 @@ class TestCodeHiliteClass(TestCase):
             )
         self.assertOutputEquals('plain text', expected, lang='text', cssclass='override')
 
-    def testCodehiliteSetCssClass(self):
-        if hasPygments:
+    def test_codehilite_set_css_class(self):
+        if has_pygments:
             expected = (
                 '<div class="override"><pre><span></span><code>plain text\n'
                 '</code></pre></div>'
@@ -268,8 +268,8 @@ class TestCodeHiliteClass(TestCase):
             )
         self.assertOutputEquals('plain text', expected, lang='text', css_class='override')
 
-    def testCodehiliteLinenostart(self):
-        if hasPygments:
+    def test_codehilite_linenostart(self):
+        if has_pygments:
             expected = (
                 '<div class="codehilite"><pre><span></span><code><span class="linenos">42</span>plain text\n'
                 '</code></pre></div>'
@@ -282,8 +282,8 @@ class TestCodeHiliteClass(TestCase):
             )
         self.assertOutputEquals('plain text', expected, lang='text', linenos='inline', linenostart=42)
 
-    def testCodehiliteLinenosHlLines(self):
-        if hasPygments:
+    def test_codehilite_linenos_hl_lines(self):
+        if has_pygments:
             expected = (
                 '<div class="codehilite"><pre><span></span><code>'
                 '<span class="linenos">1</span><span class="hll">line 1\n'
@@ -300,8 +300,8 @@ class TestCodeHiliteClass(TestCase):
             )
         self.assertOutputEquals('line 1\nline 2\nline 3', expected, lang='text', linenos='inline', hl_lines=[1, 3])
 
-    def testCodehiliteLinenosLinenostep(self):
-        if hasPygments:
+    def test_codehilite_linenos_linenostep(self):
+        if has_pygments:
             expected = (
                 '<div class="codehilite"><pre><span></span><code><span class="linenos"> </span>line 1\n'
                 '<span class="linenos">2</span>line 2\n'
@@ -317,8 +317,8 @@ class TestCodeHiliteClass(TestCase):
             )
         self.assertOutputEquals('line 1\nline 2\nline 3', expected, lang='text', linenos='inline', linenostep=2)
 
-    def testCodehiliteLinenosLinenospecial(self):
-        if hasPygments:
+    def test_codehilite_linenos_linenospecial(self):
+        if has_pygments:
             expected = (
                 '<div class="codehilite"><pre><span></span><code><span class="linenos">1</span>line 1\n'
                 '<span class="linenos special">2</span>line 2\n'
@@ -334,8 +334,8 @@ class TestCodeHiliteClass(TestCase):
             )
         self.assertOutputEquals('line 1\nline 2\nline 3', expected, lang='text', linenos='inline', linenospecial=2)
 
-    def testCodehiliteStartinline(self):
-        if hasPygments:
+    def test_codehilite_startinline(self):
+        if has_pygments:
             expected = (
                 '<div class="codehilite"><pre><span></span><code><span class="k">print</span><span class="p">(</span>'
                 '<span class="s2">&quot;Hello World&quot;</span><span class="p">);</span>\n'
@@ -353,29 +353,29 @@ class TestCodeHiliteExtension(TestCase):
     """ Test codehilite extension. """
 
     def setUp(self):
-        if hasPygments and pygments.__version__ != requiredPygmentsVersion:
-            self.skipTest(f'Pygments=={requiredPygmentsVersion} is required')
+        if has_pygments and pygments.__version__ != required_pygments_version:
+            self.skipTest(f'Pygments=={required_pygments_version} is required')
 
         # Define a custom Pygments formatter (same example in the documentation)
-        if hasPygments:
+        if has_pygments:
             class CustomAddLangHtmlFormatter(pygments.formatters.HtmlFormatter):
-                def __init__(self, langStr='', **options):
+                def __init__(self, lang_str='', **options):
                     super().__init__(**options)
-                    self.langStr = langStr
+                    self.lang_str = lang_str
 
-                def _wrapCode(self, source):
-                    yield 0, f'<code class="{self.langStr}">'
+                def _wrap_code(self, source):
+                    yield 0, f'<code class="{self.lang_str}">'
                     yield from source
                     yield 0, '</code>'
         else:
             CustomAddLangHtmlFormatter = None
 
-        self.customPygmentsFormatter = CustomAddLangHtmlFormatter
+        self.custom_pygments_formatter = CustomAddLangHtmlFormatter
 
     maxDiff = None
 
     def testBasicCodeHilite(self):
-        if hasPygments:
+        if has_pygments:
             # Odd result as no `lang` given and a single comment is not enough for guessing.
             expected = (
                 '<div class="codehilite"><pre><span></span><code><span class="err"># A Code Comment</span>\n'
@@ -393,7 +393,7 @@ class TestCodeHiliteExtension(TestCase):
         )
 
     def testLinenumsTrue(self):
-        if hasPygments:
+        if has_pygments:
             expected = (
                 '<table class="codehilitetable"><tr>'
                 '<td class="linenos"><div class="linenodiv"><pre>1</pre></div></td>'
@@ -414,7 +414,7 @@ class TestCodeHiliteExtension(TestCase):
         )
 
     def testLinenumsFalse(self):
-        if hasPygments:
+        if has_pygments:
             expected = (
                 '<div class="codehilite"><pre><span></span><code><span class="c1"># A Code Comment</span>\n'
                 '</code></pre></div>'
@@ -434,7 +434,7 @@ class TestCodeHiliteExtension(TestCase):
         )
 
     def testLinenumsNone(self):
-        if hasPygments:
+        if has_pygments:
             expected = (
                 '<div class="codehilite"><pre><span></span><code><span class="err"># A Code Comment</span>\n'
                 '</code></pre></div>'
@@ -451,7 +451,7 @@ class TestCodeHiliteExtension(TestCase):
         )
 
     def testLinenumsNoneWithShebang(self):
-        if hasPygments:
+        if has_pygments:
             expected = (
                 '<table class="codehilitetable"><tr>'
                 '<td class="linenos"><div class="linenodiv"><pre>1</pre></div></td>'
@@ -475,7 +475,7 @@ class TestCodeHiliteExtension(TestCase):
         )
 
     def testLinenumsNoneWithColon(self):
-        if hasPygments:
+        if has_pygments:
             expected = (
                 '<div class="codehilite"><pre><span></span><code><span class="c1"># A Code Comment</span>\n'
                 '</code></pre></div>'
@@ -495,7 +495,7 @@ class TestCodeHiliteExtension(TestCase):
         )
 
     def testHighlightLinesWithColon(self):
-        if hasPygments:
+        if has_pygments:
             expected = (
                 '<div class="codehilite"><pre><span></span><code><span class="hll"><span class="c1">#line 1</span>\n'
                 '</span><span class="c1">#line 2</span>\n'
@@ -572,7 +572,7 @@ class TestCodeHiliteExtension(TestCase):
         )
 
     def testDoubleEscape(self):
-        if hasPygments:
+        if has_pygments:
             expected = (
                 '<div class="codehilite"><pre>'
                 '<span></span>'
@@ -597,7 +597,7 @@ class TestCodeHiliteExtension(TestCase):
         )
 
     def testEntitiesIntact(self):
-        if hasPygments:
+        if has_pygments:
             expected = (
                 '<div class="codehilite"><pre>'
                 '<span></span>'
@@ -620,7 +620,7 @@ class TestCodeHiliteExtension(TestCase):
         )
 
     def testHighlightAmps(self):
-        if hasPygments:
+        if has_pygments:
             expected = (
                 '<div class="codehilite"><pre><span></span><code>&amp;\n'
                 '&amp;amp;\n'
@@ -646,7 +646,7 @@ class TestCodeHiliteExtension(TestCase):
         )
 
     def testUnknownOption(self):
-        if hasPygments:
+        if has_pygments:
             # Odd result as no `lang` given and a single comment is not enough for guessing.
             expected = (
                 '<div class="codehilite"><pre><span></span><code><span class="err"># A Code Comment</span>\n'
@@ -664,7 +664,7 @@ class TestCodeHiliteExtension(TestCase):
         )
 
     def testMultipleBlocksSameStyle(self):
-        if hasPygments:
+        if has_pygments:
             # See also: https://github.com/Python-Markdown/markdown/issues/1240
             expected = (
                 '<div class="codehilite" style="background: #202020"><pre style="line-height: 125%; margin: 0;">'
@@ -696,7 +696,7 @@ class TestCodeHiliteExtension(TestCase):
         )
 
     def testFormatterLangStr(self):
-        if hasPygments:
+        if has_pygments:
             expected = (
                 '<div class="codehilite"><pre><span></span><code class="language-python">'
                 '<span class="c1"># A Code Comment</span>\n'
@@ -715,13 +715,13 @@ class TestCodeHiliteExtension(TestCase):
             extensions=[
                 CodeHiliteExtension(
                     guess_lang=False,
-                    pygments_formatter=self.customPygmentsFormatter
+                    pygments_formatter=self.custom_pygments_formatter
                 )
             ]
         )
 
     def testFormatterLangStrGuessLang(self):
-        if hasPygments:
+        if has_pygments:
             expected = (
                 '<div class="codehilite"><pre><span></span>'
                 '<code class="language-js+php"><span class="cp">&lt;?php</span> '
@@ -739,11 +739,11 @@ class TestCodeHiliteExtension(TestCase):
         self.assertMarkdownRenders(
             '\t<?php print("Hello World"); ?>',
             expected,
-            extensions=[CodeHiliteExtension(pygments_formatter=self.customPygmentsFormatter)]
+            extensions=[CodeHiliteExtension(pygments_formatter=self.custom_pygments_formatter)]
         )
 
     def testFormatterLangStrEmptyLang(self):
-        if hasPygments:
+        if has_pygments:
             expected = (
                 '<div class="codehilite"><pre><span></span>'
                 '<code class="language-text"># A Code Comment\n'
@@ -760,7 +760,7 @@ class TestCodeHiliteExtension(TestCase):
             extensions=[
                 CodeHiliteExtension(
                     guess_lang=False,
-                    pygments_formatter=self.customPygmentsFormatter,
+                    pygments_formatter=self.custom_pygments_formatter,
                 )
             ]
         )
@@ -770,16 +770,16 @@ class TestCodeHiliteExtension(TestCase):
         self.assertMarkdownRenders(
             '# Hello',
             expected,
-            extensions=[CodeHiliteExtension(), _extensionthataddsanemptycodetag()]
+            extensions=[CodeHiliteExtension(), _ExtensionThatAddsAnEmptyCodeTag()]
         )
 
 
-class _extensionthataddsanemptycodetag(extensions.Extension):
+class _ExtensionThatAddsAnEmptyCodeTag(extensions.Extension):
     def extendMarkdown(self, md):
-        md.treeprocessors.register(_addcodetagtreeprocessor(), 'add-code-tag', 40)
+        md.treeprocessors.register(_AddCodeTagTreeprocessor(), 'add-code-tag', 40)
 
 
-class _addcodetagtreeprocessor(treeprocessors.Treeprocessor):
+class _AddCodeTagTreeprocessor(treeprocessors.Treeprocessor):
     def run(self, root: etree.Element):
         pre = etree.SubElement(root, 'pre')
         etree.SubElement(pre, 'code')

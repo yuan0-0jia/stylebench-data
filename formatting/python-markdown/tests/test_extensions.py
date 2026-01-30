@@ -30,13 +30,13 @@ import markdown
 
 
 class TestExtensionClass(unittest.TestCase):
-    """Test markdown.extensions.Extension."""
+    """ Test markdown.extensions.Extension. """
 
     def setUp(self):
         class TestExtension(markdown.extensions.Extension):
             config = {
                 'foo': ['bar', 'Description of foo'],
-                'bar': ['baz', 'Description of bar'],
+                'bar': ['baz', 'Description of bar']
             }
 
         self.ext = TestExtension()
@@ -47,9 +47,7 @@ class TestExtensionClass(unittest.TestCase):
 
     def testGetConfigDefault(self):
         self.assertEqual(self.ext.getConfig('baz'), '')
-        self.assertEqual(
-            self.ext.getConfig('baz', default='missing'), 'missing'
-        )
+        self.assertEqual(self.ext.getConfig('baz', default='missing'), 'missing')
 
     def testGetConfigs(self):
         self.assertEqual(self.ext.getConfigs(), {'foo': 'bar', 'bar': 'baz'})
@@ -57,9 +55,10 @@ class TestExtensionClass(unittest.TestCase):
     def testGetConfigInfo(self):
         self.assertEqual(
             dict(self.ext.getConfigInfo()),
-            dict(
-                [('foo', 'Description of foo'), ('bar', 'Description of bar')]
-            ),
+            dict([
+                ('foo', 'Description of foo'),
+                ('bar', 'Description of bar')
+            ])
         )
 
     def testSetConfig(self):
@@ -76,80 +75,80 @@ class TestExtensionClass(unittest.TestCase):
 
 
 class TestMetaData(unittest.TestCase):
-    """Test `MetaData` extension."""
+    """ Test `MetaData` extension. """
 
     def setUp(self):
         self.md = markdown.Markdown(extensions=['meta'])
 
     def testBasicMetaData(self):
-        """Test basic metadata."""
+        """ Test basic metadata. """
 
-        text = """Title: A Test Doc.
+        text = '''Title: A Test Doc.
 Author: Waylan Limberg
         John Doe
 Blank_Data:
 
-The body. This is paragraph one."""
+The body. This is paragraph one.'''
         self.assertEqual(
-            self.md.convert(text), '<p>The body. This is paragraph one.</p>'
+            self.md.convert(text),
+            '<p>The body. This is paragraph one.</p>'
         )
         self.assertEqual(
-            self.md.Meta,
-            {
+            self.md.Meta, {
                 'author': ['Waylan Limberg', 'John Doe'],
                 'blank_data': [''],
-                'title': ['A Test Doc.'],
-            },
+                'title': ['A Test Doc.']
+            }
         )
 
     def testYamlMetaData(self):
-        """Test metadata specified as simple YAML."""
+        """ Test metadata specified as simple YAML. """
 
-        text = """---
+        text = '''---
 Title: A Test Doc.
 Author: [Waylan Limberg, John Doe]
 Blank_Data:
 ---
 
-The body. This is paragraph one."""
+The body. This is paragraph one.'''
         self.assertEqual(
-            self.md.convert(text), '<p>The body. This is paragraph one.</p>'
+            self.md.convert(text),
+            '<p>The body. This is paragraph one.</p>'
         )
         self.assertEqual(
-            self.md.Meta,
-            {
+            self.md.Meta, {
                 'author': ['[Waylan Limberg, John Doe]'],
                 'blank_data': [''],
-                'title': ['A Test Doc.'],
-            },
+                'title': ['A Test Doc.']
+            }
         )
 
     def testMissingMetaData(self):
-        """Test document without Meta Data."""
+        """ Test document without Meta Data. """
 
         text = '    Some Code - not extra lines of meta data.'
         self.assertEqual(
             self.md.convert(text),
             '<pre><code>Some Code - not extra lines of meta data.\n'
-            '</code></pre>',
+            '</code></pre>'
         )
         self.assertEqual(self.md.Meta, {})
 
     def testMetaDataWithoutNewline(self):
-        """Test document with only metadata and no newline at end."""
+        """ Test document with only metadata and no newline at end."""
         text = 'title: No newline'
         self.assertEqual(self.md.convert(text), '')
         self.assertEqual(self.md.Meta, {'title': ['No newline']})
 
     def testMetaDataReset(self):
-        """Test that reset call remove Meta entirely"""
+        """ Test that reset call remove Meta entirely """
 
-        text = """Title: A Test Doc.
+        text = '''Title: A Test Doc.
 Author: Waylan Limberg
         John Doe
 Blank_Data:
 
-The body. This is paragraph one."""
+The body. This is paragraph one.'''
         self.md.convert(text)
 
         self.md.reset()
@@ -157,47 +156,48 @@ The body. This is paragraph one."""
 
 
 class TestWikiLinks(unittest.TestCase):
-    """Test `Wikilinks` Extension."""
+    """ Test `Wikilinks` Extension. """
 
     def setUp(self):
         self.md = markdown.Markdown(extensions=['wikilinks'])
-        self.text = 'Some text with a [[WikiLink]].'
+        self.text = "Some text with a [[WikiLink]]."
 
     def testBasicWikilinks(self):
-        """Test `[[wikilinks]]`."""
+        """ Test `[[wikilinks]]`. """
 
         self.assertEqual(
             self.md.convert(self.text),
             '<p>Some text with a '
-            '<a class="wikilink" href="/WikiLink/">WikiLink</a>.</p>',
+            '<a class="wikilink" href="/WikiLink/">WikiLink</a>.</p>'
         )
 
     def testWikilinkWhitespace(self):
-        """Test whitespace in `wikilinks`."""
+        """ Test whitespace in `wikilinks`. """
         self.assertEqual(
             self.md.convert('[[ foo bar_baz ]]'),
-            '<p><a class="wikilink" href="/foo_bar_baz/">foo bar_baz</a></p>',
+            '<p><a class="wikilink" href="/foo_bar_baz/">foo bar_baz</a></p>'
         )
-        self.assertEqual(self.md.convert('foo [[ ]] bar'), '<p>foo  bar</p>')
+        self.assertEqual(
+            self.md.convert('foo [[ ]] bar'),
+            '<p>foo  bar</p>'
+        )
 
     def testSimpleSettings(self):
-        """Test Simple Settings."""
+        """ Test Simple Settings. """
 
-        self.assertEqual(
-            markdown.markdown(
-                self.text,
-                extensions=[
-                    markdown.extensions.wikilinks.WikiLinkExtension(
-                        base_url='/wiki/', end_url='.html', html_class='foo'
-                    )
-                ],
+        self.assertEqual(markdown.markdown(
+            self.text, extensions=[
+                markdown.extensions.wikilinks.WikiLinkExtension(
+                    base_url='/wiki/',
+                    end_url='.html',
+                    html_class='foo')
+                ]
             ),
             '<p>Some text with a '
-            '<a class="foo" href="/wiki/WikiLink.html">WikiLink</a>.</p>',
-        )
+            '<a class="foo" href="/wiki/WikiLink.html">WikiLink</a>.</p>')
 
     def testComplexSettings(self):
-        """Test Complex Settings."""
+        """ Test Complex Settings. """
 
         md = markdown.Markdown(
             extensions=['wikilinks'],
@@ -205,19 +205,19 @@ class TestWikiLinks(unittest.TestCase):
                 'wikilinks': [
                     ('base_url', 'http://example.com/'),
                     ('end_url', '.html'),
-                    ('html_class', ''),
+                    ('html_class', '')
                 ]
             },
-            safe_mode=True,
+            safe_mode=True
         )
         self.assertEqual(
             md.convert(self.text),
             '<p>Some text with a '
-            '<a href="http://example.com/WikiLink.html">WikiLink</a>.</p>',
+            '<a href="http://example.com/WikiLink.html">WikiLink</a>.</p>'
         )
 
     def testWikilinksMetaData(self):
-        """test `MetaData` with `Wikilinks` Extension."""
+        """ test `MetaData` with `Wikilinks` Extension. """
 
         text = """wiki_base_url: http://example.com/
 wiki_end_url:   .html
@@ -228,35 +228,33 @@ Some text with a [[WikiLink]]."""
         self.assertEqual(
             md.convert(text),
             '<p>Some text with a '
-            '<a href="http://example.com/WikiLink.html">WikiLink</a>.</p>',
+            '<a href="http://example.com/WikiLink.html">WikiLink</a>.</p>'
         )
 
         # `MetaData` should not carry over to next document:
         self.assertEqual(
-            md.convert('No [[MetaData]] here.'),
+            md.convert("No [[MetaData]] here."),
             '<p>No <a class="wikilink" href="/MetaData/">MetaData</a> '
-            'here.</p>',
+            'here.</p>'
         )
 
     def testURLCallback(self):
-        """Test used of a custom URL builder."""
+        """ Test used of a custom URL builder. """
 
         from markdown.extensions.wikilinks import WikiLinkExtension
 
         def my_url_builder(label, base, end):
             return '/bar/'
 
-        md = markdown.Markdown(
-            extensions=[WikiLinkExtension(build_url=my_url_builder)]
-        )
+        md = markdown.Markdown(extensions=[WikiLinkExtension(build_url=my_url_builder)])
         self.assertEqual(
             md.convert('[[foo]]'),
-            '<p><a class="wikilink" href="/bar/">foo</a></p>',
+            '<p><a class="wikilink" href="/bar/">foo</a></p>'
         )
 
 
 class TestAdmonition(unittest.TestCase):
-    """Test Admonition Extension."""
+    """ Test Admonition Extension. """
 
     def setUp(self):
         self.md = markdown.Markdown(extensions=['admonition'])
@@ -277,24 +275,22 @@ class TestSmarty(unittest.TestCase):
         config = {
             'smarty': [
                 ('smart_angled_quotes', True),
-                (
-                    'substitutions',
-                    {
-                        'ndash': '\u2013',
-                        'mdash': '\u2014',
-                        'ellipsis': '\u2026',
-                        'left-single-quote': '&sbquo;',  # `sb` is not a typo!
-                        'right-single-quote': '&lsquo;',
-                        'left-double-quote': '&bdquo;',
-                        'right-double-quote': '&ldquo;',
-                        'left-angle-quote': '[',
-                        'right-angle-quote': ']',
-                    },
-                ),
+                ('substitutions', {
+                    'ndash': '\u2013',
+                    'mdash': '\u2014',
+                    'ellipsis': '\u2026',
+                    'left-single-quote': '&sbquo;',  # `sb` is not a typo!
+                    'right-single-quote': '&lsquo;',
+                    'left-double-quote': '&bdquo;',
+                    'right-double-quote': '&ldquo;',
+                    'left-angle-quote': '[',
+                    'right-angle-quote': ']',
+                }),
             ]
         }
         self.md = markdown.Markdown(
-            extensions=['smarty'], extension_configs=config
+            extensions=['smarty'],
+            extension_configs=config
         )
 
     def testCustomSubstitutions(self):

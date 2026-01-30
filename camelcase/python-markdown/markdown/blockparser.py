@@ -113,7 +113,7 @@ class BlockParser:
             An element tree.
         """
         # Create an `ElementTree` from the lines
-        self.root = etree.Element(self.md.docTag)
+        self.root = etree.Element(self.md.doc_tag)
         self.parseChunk(self.root, '\n'.join(lines))
         return etree.ElementTree(self.root)
 

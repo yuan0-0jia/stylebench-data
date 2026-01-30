@@ -24,6 +24,7 @@ from markdown.test_tools import TestCase
 
 
 class TestUnorderedLists(TestCase):
+
     # TODO: Move legacy tests here
 
     def test_header_and_paragraph_no_blank_line_loose_list(self):
@@ -50,7 +51,7 @@ class TestUnorderedLists(TestCase):
                 </li>
                 </ul>
                 """
-            ),
+            )
         )
 
     # Note: This is strange. Any other element on first line of list item would get very
@@ -80,7 +81,7 @@ class TestUnorderedLists(TestCase):
                 </li>
                 </ul>
                 """
-            ),
+            )
         )
 
     # TODO: Possibly change this behavior. While this test follows the behavior
@@ -106,7 +107,7 @@ class TestUnorderedLists(TestCase):
                 Entry 2.1</li>
                 </ul>
                 """
-            ),
+            )
         )
 
     # TODO: Possibly change this behavior. While this test follows the behavior
@@ -132,5 +133,5 @@ class TestUnorderedLists(TestCase):
                 Entry 2.1</li>
                 </ul>
                 """
-            ),
+            )
         )

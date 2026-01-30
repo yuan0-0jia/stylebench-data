@@ -24,7 +24,7 @@ from markdown.test_tools import TestCase
 
 class TestCodeBlocks(TestCase):
 
-    def testSpacedCodeblock(self):
+    def test_spaced_codeblock(self):
         self.assertMarkdownRenders(
             '    # A code block.',
 
@@ -36,7 +36,7 @@ class TestCodeBlocks(TestCase):
             )
         )
 
-    def testTabbedCodeblock(self):
+    def test_tabbed_codeblock(self):
         self.assertMarkdownRenders(
             '\t# A code block.',
 
@@ -48,7 +48,7 @@ class TestCodeBlocks(TestCase):
             )
         )
 
-    def testMultilineCodeblock(self):
+    def test_multiline_codeblock(self):
         self.assertMarkdownRenders(
             '    # Line 1\n    # Line 2\n',
 
@@ -61,7 +61,7 @@ class TestCodeBlocks(TestCase):
             )
         )
 
-    def testCodeblockWithBlankline(self):
+    def test_codeblock_with_blankline(self):
         self.assertMarkdownRenders(
             '    # Line 1\n\n    # Line 2\n',
 
@@ -75,7 +75,7 @@ class TestCodeBlocks(TestCase):
             )
         )
 
-    def testCodeblockEscape(self):
+    def test_codeblock_escape(self):
         self.assertMarkdownRenders(
             '    <foo & bar>',
 
@@ -87,7 +87,7 @@ class TestCodeBlocks(TestCase):
             )
         )
 
-    def testCodeblockSecondLine(self):
+    def test_codeblock_second_line(self):
         self.assertMarkdownRenders(
             '\n    Code on the second line',
             self.dedent(

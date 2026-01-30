@@ -24,7 +24,7 @@ from markdown.test_tools import TestCase
 
 class TestAdmonition(TestCase):
 
-    def testWithLists(self):
+    def test_with_lists(self):
         self.assertMarkdownRenders(
             self.dedent(
                 '''
@@ -58,7 +58,7 @@ class TestAdmonition(TestCase):
             extensions=['admonition']
         )
 
-    def testWithBigLists(self):
+    def test_with_big_lists(self):
         self.assertMarkdownRenders(
             self.dedent(
                 '''
@@ -100,7 +100,7 @@ class TestAdmonition(TestCase):
             extensions=['admonition']
         )
 
-    def testWithComplexLists(self):
+    def test_with_complex_lists(self):
         self.assertMarkdownRenders(
             self.dedent(
                 '''
@@ -146,7 +146,7 @@ class TestAdmonition(TestCase):
             extensions=['admonition']
         )
 
-    def testDefinitionList(self):
+    def test_definition_list(self):
         self.assertMarkdownRenders(
             self.dedent(
                 '''
@@ -193,7 +193,7 @@ class TestAdmonition(TestCase):
             extensions=['admonition', 'def_list']
         )
 
-    def testWithPrecedingText(self):
+    def test_with_preceding_text(self):
         self.assertMarkdownRenders(
             self.dedent(
                 '''
@@ -214,7 +214,7 @@ class TestAdmonition(TestCase):
             extensions=['admonition']
         )
 
-    def testAdmontionDetabbing(self):
+    def test_admontion_detabbing(self):
         self.assertMarkdownRenders(
             self.dedent(
                 '''
@@ -244,7 +244,7 @@ class TestAdmonition(TestCase):
             extensions=['admonition']
         )
 
-    def testAdmonitionFirstIndented(self):
+    def test_admonition_first_indented(self):
         self.assertMarkdownRenders(
             self.dedent(
                 '''

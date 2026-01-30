@@ -3797,7 +3797,7 @@ class MakeDecoratorTests(TestCase):
             self.assertEqual(args[0], 'arg_0')
             iterable = args[1]
             self.assertEqual(args[2], 'arg_2')
-            self.assertEqual(kwargs['kwarg_1'], 'kwarg_1')
+            self.assertEqual(kwargs['kwarg1'], 'kwarg_1')
             return map(str, iterable)
 
         stringifier = mi.makeDecorator(stringify, resultIndex=1)
@@ -4690,9 +4690,9 @@ class CallbackIterTests(TestCase):
             self.assertEqual(
                 list(it),
                 [
-                    ((1, 'a'), {'intermediate_total': 1}),
-                    ((2, 'b'), {'intermediate_total': 3}),
-                    ((3, 'c'), {'intermediate_total': 6}),
+                    ((1, 'a'), {'intermediateTotal': 1}),
+                    ((2, 'b'), {'intermediateTotal': 3}),
+                    ((3, 'c'), {'intermediateTotal': 6}),
                 ],
             )
 
@@ -4710,23 +4710,23 @@ class CallbackIterTests(TestCase):
             self.assertEqual(
                 list(it),
                 [
-                    ((1, 'a'), {'intermediate_total': 1}),
-                    ((2, 'b'), {'intermediate_total': 3}),
-                    ((3, 'c'), {'intermediate_total': 6}),
+                    ((1, 'a'), {'intermediateTotal': 1}),
+                    ((2, 'b'), {'intermediateTotal': 3}),
+                    ((3, 'c'), {'intermediateTotal': 6}),
                 ],
             )
 
     def testPartialConsumption(self):
         func = lambda callback=None: self._target(cb=callback)
         with mi.callbackIter(func) as it:
-            self.assertEqual(next(it), ((1, 'a'), {'intermediate_total': 1}))
+            self.assertEqual(next(it), ((1, 'a'), {'intermediateTotal': 1}))
 
         self.assertTrue(it._executor._shutdown)
 
     def testAbort(self):
         func = lambda callback=None: self._target(cb=callback, wait=0.1)
         with mi.callbackIter(func) as it:
-            self.assertEqual(next(it), ((1, 'a'), {'intermediate_total': 1}))
+            self.assertEqual(next(it), ((1, 'a'), {'intermediateTotal': 1}))
 
         with self.assertRaises(mi.AbortThread):
             it.result
@@ -4742,7 +4742,7 @@ class CallbackIterTests(TestCase):
         with mi.callbackIter(func) as it:
             self.assertEqual(
                 next(it),
-                ((1, 'a'), {'intermediate_total': 1}),
+                ((1, 'a'), {'intermediateTotal': 1}),
             )
 
             with self.assertRaises(ValueError):

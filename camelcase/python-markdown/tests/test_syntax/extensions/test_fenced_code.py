@@ -27,14 +27,14 @@ import os
 try:
     import pygments  # noqa
     import pygments.formatters  # noqa
-    hasPygments = True
+    has_pygments = True
 except ImportError:
-    hasPygments = False
+    has_pygments = False
 
 # The version required by the tests is the version specified and installed in the `pygments` tox environment.
 # In any environment where the `PYGMENTS_VERSION` environment variable is either not defined or doesn't
 # match the version of Pygments installed, all tests which rely in Pygments will be skipped.
-requiredPygmentsVersion = os.environ.get('PYGMENTS_VERSION', '')
+required_pygments_version = os.environ.get('PYGMENTS_VERSION', '')
 
 
 class TestFencedCode(TestCase):
@@ -136,7 +136,7 @@ class TestFencedCode(TestCase):
             extensions=['fenced_code']
         )
 
-    def testFencedCodeInRawHtml(self):
+    def test_fenced_code_in_raw_html(self):
         self.assertMarkdownRenders(
             self.dedent(
                 """
@@ -440,12 +440,12 @@ class TestFencedCode(TestCase):
 class TestFencedCodeWithCodehilite(TestCase):
 
     def setUp(self):
-        if hasPygments and pygments.__version__ != requiredPygmentsVersion:
-            self.skipTest(f'Pygments=={requiredPygmentsVersion} is required')
+        if has_pygments and pygments.__version__ != required_pygments_version:
+            self.skipTest(f'Pygments=={required_pygments_version} is required')
 
-    def testShebang(self):
+    def test_shebang(self):
 
-        if hasPygments:
+        if has_pygments:
             expected = '''
             <div class="codehilite"><pre><span></span><code>#!test
             </code></pre></div>
@@ -474,7 +474,7 @@ class TestFencedCodeWithCodehilite(TestCase):
         )
 
     def testFencedCodeWithHighlightLines(self):
-        if hasPygments:
+        if has_pygments:
             expected = self.dedent(
                 '''
                 <div class="codehilite"><pre><span></span><code><span class="hll">line 1
@@ -510,7 +510,7 @@ class TestFencedCodeWithCodehilite(TestCase):
         )
 
     def testFencedLanguageAndHighlightLines(self):
-        if hasPygments:
+        if has_pygments:
             expected = (
                 '<div class="codehilite"><pre><span></span><code>'
                 '<span class="hll"><span class="n">line</span> <span class="mi">1</span>\n'
@@ -566,7 +566,7 @@ class TestFencedCodeWithCodehilite(TestCase):
         )
 
     def testFencedLanguageDoubleEscape(self):
-        if hasPygments:
+        if has_pygments:
             expected = (
                 '<div class="codehilite"><pre><span></span><code>'
                 '<span class="p">&lt;</span><span class="nt">span</span>'
@@ -597,7 +597,7 @@ class TestFencedCodeWithCodehilite(TestCase):
         )
 
     def testFencedAmps(self):
-        if hasPygments:
+        if has_pygments:
             expected = self.dedent(
                 '''
                 <div class="codehilite"><pre><span></span><code>&amp;
@@ -633,7 +633,7 @@ class TestFencedCodeWithCodehilite(TestCase):
         )
 
     def testFencedCodeWithHighlightLinesInAttr(self):
-        if hasPygments:
+        if has_pygments:
             expected = self.dedent(
                 '''
                 <div class="codehilite"><pre><span></span><code><span class="hll">line 1
@@ -669,7 +669,7 @@ class TestFencedCodeWithCodehilite(TestCase):
         )
 
     def testFencedLanguageAndHighlightLinesInAttr(self):
-        if hasPygments:
+        if has_pygments:
             expected = (
                 '<div class="codehilite"><pre><span></span><code>'
                 '<span class="hll"><span class="n">line</span> <span class="mi">1</span>\n'
@@ -743,7 +743,7 @@ class TestFencedCodeWithCodehilite(TestCase):
         )
 
     def testFencedLanguageAttrCssclass(self):
-        if hasPygments:
+        if has_pygments:
             expected = self.dedent(
                 '''
                 <div class="pygments"><pre><span></span><code><span class="c1"># Some python code</span>
@@ -768,7 +768,7 @@ class TestFencedCodeWithCodehilite(TestCase):
         )
 
     def testFencedLanguageAttrLinenums(self):
-        if hasPygments:
+        if has_pygments:
             expected = (
                 '<table class="codehilitetable"><tr>'
                 '<td class="linenos"><div class="linenodiv"><pre>1</pre></div></td>'
@@ -795,7 +795,7 @@ class TestFencedCodeWithCodehilite(TestCase):
         )
 
     def testFencedLanguageAttrGuesslang(self):
-        if hasPygments:
+        if has_pygments:
             expected = self.dedent(
                 '''
                 <div class="codehilite"><pre><span></span><code># Some python code
@@ -820,7 +820,7 @@ class TestFencedCodeWithCodehilite(TestCase):
         )
 
     def testFencedLanguageAttrNoclasses(self):
-        if hasPygments:
+        if has_pygments:
             expected = (
                 '<div class="codehilite" style="background: #f8f8f8">'
                 '<pre style="line-height: 125%; margin: 0;"><span></span><code>'
@@ -845,7 +845,7 @@ class TestFencedCodeWithCodehilite(TestCase):
         )
 
     def testFencedMultipleBlocksSameStyle(self):
-        if hasPygments:
+        if has_pygments:
             # See also: https://github.com/Python-Markdown/markdown/issues/1240
             expected = (
                 '<div class="codehilite" style="background: #202020"><pre style="line-height: 125%; margin: 0;">'
@@ -890,12 +890,12 @@ class TestFencedCodeWithCodehilite(TestCase):
         )
 
     def testCustomPygmentsFormatter(self):
-        if hasPygments:
+        if has_pygments:
             class CustomFormatter(pygments.formatters.HtmlFormatter):
                 def wrap(self, source, outfile):
-                    return self._wrap_div(self._wrapCode(source))
+                    return self._wrap_div(self._wrap_code(source))
 
-                def _wrapCode(self, source):
+                def _wrap_code(self, source):
                     yield 0, '<code>'
                     for i, t in source:
                         if i == 1:
@@ -939,14 +939,14 @@ class TestFencedCodeWithCodehilite(TestCase):
         )
 
     def testPygmentsAddLangClassFormatter(self):
-        if hasPygments:
+        if has_pygments:
             class CustomAddLangHtmlFormatter(pygments.formatters.HtmlFormatter):
-                def __init__(self, langStr='', **options):
+                def __init__(self, lang_str='', **options):
                     super().__init__(**options)
-                    self.langStr = langStr
+                    self.lang_str = lang_str
 
-                def _wrapCode(self, source):
-                    yield 0, f'<code class="{self.langStr}">'
+                def _wrap_code(self, source):
+                    yield 0, f'<code class="{self.lang_str}">'
                     yield from source
                     yield 0, '</code>'
 
@@ -985,7 +985,7 @@ class TestFencedCodeWithCodehilite(TestCase):
         )
 
     def testSvgCustomPygmentsFormatter(self):
-        if hasPygments:
+        if has_pygments:
             expected = '''
             <?xml version="1.0"?>
             <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.0//EN" "http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd">
@@ -1026,7 +1026,7 @@ class TestFencedCodeWithCodehilite(TestCase):
         )
 
     def testInvalidCustomPygmentsFormatter(self):
-        if hasPygments:
+        if has_pygments:
             expected = '''
             <div class="codehilite"><pre><span></span><code>hello world
             hello another world

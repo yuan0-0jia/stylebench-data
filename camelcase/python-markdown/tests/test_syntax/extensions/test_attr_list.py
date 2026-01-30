@@ -24,61 +24,61 @@ from markdown.test_tools import TestCase
 
 class TestAttrList(TestCase):
     maxDiff = None
-    defaultKwargs = {'extensions': ['attr_list']}
+    default_kwargs = {'extensions': ['attr_list']}
 
     # TODO: Move the rest of the `attr_list` tests here.
 
-    def testEmptyAttrList(self):
+    def test_empty_attr_list(self):
         self.assertMarkdownRenders(
             '*foo*{ }',
             '<p><em>foo</em>{ }</p>'
         )
 
-    def testCurlyAfterInline(self):
+    def test_curly_after_inline(self):
         self.assertMarkdownRenders(
             '*inline*{.a} } *text*{.a }}',
             '<p><em class="a">inline</em> } <em class="a">text</em>}</p>'
         )
 
-    def testExtraEqGetsIgnoredInsideCurlyInline(self):
+    def test_extra_eq_gets_ignored_inside_curly_inline(self):
         # Undesired behavior but kept for historic compatibility.
         self.assertMarkdownRenders(
             '*inline*{data-test="x" =a} *text*',
             '<p><em data-test="x">inline</em> <em>text</em></p>'
         )
 
-    def testCurlyAfterBlock(self):
+    def test_curly_after_block(self):
         self.assertMarkdownRenders(
             '# Heading {.a} }',
             '<h1>Heading {.a} }</h1>'
         )
 
-    def testCurlyInSingleQuote(self):
+    def test_curly_in_single_quote(self):
         self.assertMarkdownRenders(
             "# Heading {data-test='{}'}",
             '<h1 data-test="{}">Heading</h1>'
         )
 
-    def testCurlyInDoubleQuote(self):
+    def test_curly_in_double_quote(self):
         self.assertMarkdownRenders(
             '# Heading {data-test="{}"}',
             '<h1 data-test="{}">Heading</h1>'
         )
 
-    def testUnclosedQuoteIgnored(self):
+    def test_unclosed_quote_ignored(self):
         # Undesired behavior but kept for historic compatibility.
         self.assertMarkdownRenders(
             '# Heading {foo="bar}',
             '<h1 foo="&quot;bar">Heading</h1>'
         )
 
-    def testBackslashEscapeValue(self):
+    def test_backslash_escape_value(self):
         self.assertMarkdownRenders(
             '# `*Foo*` { id="\\*Foo\\*" }',
             '<h1 id="*Foo*"><code>*Foo*</code></h1>'
         )
 
-    def testTableTd(self):
+    def test_table_td(self):
         self.assertMarkdownRenders(
             self.dedent(
                 """

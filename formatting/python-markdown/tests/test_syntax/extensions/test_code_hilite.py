@@ -27,7 +27,6 @@ import xml.etree.ElementTree as etree
 
 try:
     import pygments  # noqa
-
     has_pygments = True
 except ImportError:
     has_pygments = False
@@ -39,7 +38,7 @@ required_pygments_version = os.environ.get('PYGMENTS_VERSION', '')
 
 
 class TestCodeHiliteClass(TestCase):
-    """Test the markdown.extensions.codehilite.CodeHilite class."""
+    """ Test the markdown.extensions.codehilite.CodeHilite class. """
 
     def setUp(self):
         if has_pygments and pygments.__version__ != required_pygments_version:
@@ -64,7 +63,8 @@ class TestCodeHiliteClass(TestCase):
             )
         else:
             expected = (
-                '<pre class="codehilite"><code># A Code Comment\n</code></pre>'
+                '<pre class="codehilite"><code># A Code Comment\n'
+                '</code></pre>'
             )
         self.assertOutputEquals('# A Code Comment', expected)
 
@@ -82,9 +82,7 @@ class TestCodeHiliteClass(TestCase):
                 '</code></pre>'
             )
         # Use PHP as the the starting `<?php` tag ensures an accurate guess.
-        self.assertOutputEquals(
-            '<?php print("Hello World"); ?>', expected, guess_lang=True
-        )
+        self.assertOutputEquals('<?php print("Hello World"); ?>', expected, guess_lang=True)
 
     def test_codehilite_guess_lang_plain_text(self):
         if has_pygments:
@@ -94,7 +92,8 @@ class TestCodeHiliteClass(TestCase):
             )
         else:
             expected = (
-                '<pre class="codehilite"><code>plain text\n</code></pre>'
+                '<pre class="codehilite"><code>plain text\n'
+                '</code></pre>'
             )
         # This will be difficult to guess.
         self.assertOutputEquals('plain text', expected, guess_lang=True)
@@ -114,9 +113,7 @@ class TestCodeHiliteClass(TestCase):
                 '<pre class="codehilite"><code class="language-php">&lt;?php print(&quot;Hello World&quot;); ?&gt;\n'
                 '</code></pre>'
             )
-        self.assertOutputEquals(
-            '<?php print("Hello World"); ?>', expected, lang='php'
-        )
+        self.assertOutputEquals('<?php print("Hello World"); ?>', expected, lang='php')
 
     def test_codehilite_bad_lang(self):
         if has_pygments:
@@ -134,21 +131,14 @@ class TestCodeHiliteClass(TestCase):
                 '</code></pre>'
             )
         # The starting `<?php` tag ensures an accurate guess.
-        self.assertOutputEquals(
-            '<?php print("Hello World"); ?>', expected, lang='unkown'
-        )
+        self.assertOutputEquals('<?php print("Hello World"); ?>', expected, lang='unkown')
 
     def test_codehilite_use_pygments_false(self):
         expected = (
             '<pre class="codehilite"><code class="language-php">&lt;?php print(&quot;Hello World&quot;); ?&gt;\n'
             '</code></pre>'
         )
-        self.assertOutputEquals(
-            '<?php print("Hello World"); ?>',
-            expected,
-            lang='php',
-            use_pygments=False,
-        )
+        self.assertOutputEquals('<?php print("Hello World"); ?>', expected, lang='php', use_pygments=False)
 
     def test_codehilite_lang_prefix_empty(self):
         expected = (
@@ -156,11 +146,7 @@ class TestCodeHiliteClass(TestCase):
             '</code></pre>'
         )
         self.assertOutputEquals(
-            '<?php print("Hello World"); ?>',
-            expected,
-            lang='php',
-            use_pygments=False,
-            lang_prefix='',
+            '<?php print("Hello World"); ?>', expected, lang='php', use_pygments=False, lang_prefix=''
         )
 
     def test_codehilite_lang_prefix(self):
@@ -169,11 +155,7 @@ class TestCodeHiliteClass(TestCase):
             '</code></pre>'
         )
         self.assertOutputEquals(
-            '<?php print("Hello World"); ?>',
-            expected,
-            lang='php',
-            use_pygments=False,
-            lang_prefix='lang-',
+            '<?php print("Hello World"); ?>', expected, lang='php', use_pygments=False, lang_prefix='lang-'
         )
 
     def test_codehilite_linenos_true(self):
@@ -189,9 +171,7 @@ class TestCodeHiliteClass(TestCase):
                 '<pre class="codehilite"><code class="language-text linenums">plain text\n'
                 '</code></pre>'
             )
-        self.assertOutputEquals(
-            'plain text', expected, lang='text', linenos=True
-        )
+        self.assertOutputEquals('plain text', expected, lang='text', linenos=True)
 
     def test_codehilite_linenos_false(self):
         if has_pygments:
@@ -204,9 +184,7 @@ class TestCodeHiliteClass(TestCase):
                 '<pre class="codehilite"><code class="language-text">plain text\n'
                 '</code></pre>'
             )
-        self.assertOutputEquals(
-            'plain text', expected, lang='text', linenos=False
-        )
+        self.assertOutputEquals('plain text', expected, lang='text', linenos=False)
 
     def test_codehilite_linenos_none(self):
         if has_pygments:
@@ -219,9 +197,7 @@ class TestCodeHiliteClass(TestCase):
                 '<pre class="codehilite"><code class="language-text">plain text\n'
                 '</code></pre>'
             )
-        self.assertOutputEquals(
-            'plain text', expected, lang='text', linenos=None
-        )
+        self.assertOutputEquals('plain text', expected, lang='text', linenos=None)
 
     def test_codehilite_linenos_table(self):
         if has_pygments:
@@ -236,9 +212,7 @@ class TestCodeHiliteClass(TestCase):
                 '<pre class="codehilite"><code class="language-text linenums">plain text\n'
                 '</code></pre>'
             )
-        self.assertOutputEquals(
-            'plain text', expected, lang='text', linenos='table'
-        )
+        self.assertOutputEquals('plain text', expected, lang='text', linenos='table')
 
     def test_codehilite_linenos_inline(self):
         if has_pygments:
@@ -251,9 +225,7 @@ class TestCodeHiliteClass(TestCase):
                 '<pre class="codehilite"><code class="language-text linenums">plain text\n'
                 '</code></pre>'
             )
-        self.assertOutputEquals(
-            'plain text', expected, lang='text', linenos='inline'
-        )
+        self.assertOutputEquals('plain text', expected, lang='text', linenos='inline')
 
     def test_codehilite_linenums_true(self):
         if has_pygments:
@@ -268,9 +240,7 @@ class TestCodeHiliteClass(TestCase):
                 '<pre class="codehilite"><code class="language-text linenums">plain text\n'
                 '</code></pre>'
             )
-        self.assertOutputEquals(
-            'plain text', expected, lang='text', linenums=True
-        )
+        self.assertOutputEquals('plain text', expected, lang='text', linenums=True)
 
     def test_codehilite_set_cssclass(self):
         if has_pygments:
@@ -283,9 +253,7 @@ class TestCodeHiliteClass(TestCase):
                 '<pre class="override"><code class="language-text">plain text\n'
                 '</code></pre>'
             )
-        self.assertOutputEquals(
-            'plain text', expected, lang='text', cssclass='override'
-        )
+        self.assertOutputEquals('plain text', expected, lang='text', cssclass='override')
 
     def test_codehilite_set_css_class(self):
         if has_pygments:
@@ -298,9 +266,7 @@ class TestCodeHiliteClass(TestCase):
                 '<pre class="override"><code class="language-text">plain text\n'
                 '</code></pre>'
             )
-        self.assertOutputEquals(
-            'plain text', expected, lang='text', css_class='override'
-        )
+        self.assertOutputEquals('plain text', expected, lang='text', css_class='override')
 
     def test_codehilite_linenostart(self):
         if has_pygments:
@@ -314,13 +280,7 @@ class TestCodeHiliteClass(TestCase):
                 '<pre class="codehilite"><code class="language-text linenums">plain text\n'
                 '</code></pre>'
             )
-        self.assertOutputEquals(
-            'plain text',
-            expected,
-            lang='text',
-            linenos='inline',
-            linenostart=42,
-        )
+        self.assertOutputEquals('plain text', expected, lang='text', linenos='inline', linenostart=42)
 
     def test_codehilite_linenos_hl_lines(self):
         if has_pygments:
@@ -338,13 +298,7 @@ class TestCodeHiliteClass(TestCase):
                 'line 3\n'
                 '</code></pre>'
             )
-        self.assertOutputEquals(
-            'line 1\nline 2\nline 3',
-            expected,
-            lang='text',
-            linenos='inline',
-            hl_lines=[1, 3],
-        )
+        self.assertOutputEquals('line 1\nline 2\nline 3', expected, lang='text', linenos='inline', hl_lines=[1, 3])
 
     def test_codehilite_linenos_linenostep(self):
         if has_pygments:
@@ -361,13 +315,7 @@ class TestCodeHiliteClass(TestCase):
                 'line 3\n'
                 '</code></pre>'
             )
-        self.assertOutputEquals(
-            'line 1\nline 2\nline 3',
-            expected,
-            lang='text',
-            linenos='inline',
-            linenostep=2,
-        )
+        self.assertOutputEquals('line 1\nline 2\nline 3', expected, lang='text', linenos='inline', linenostep=2)
 
     def test_codehilite_linenos_linenospecial(self):
         if has_pygments:
@@ -384,13 +332,7 @@ class TestCodeHiliteClass(TestCase):
                 'line 3\n'
                 '</code></pre>'
             )
-        self.assertOutputEquals(
-            'line 1\nline 2\nline 3',
-            expected,
-            lang='text',
-            linenos='inline',
-            linenospecial=2,
-        )
+        self.assertOutputEquals('line 1\nline 2\nline 3', expected, lang='text', linenos='inline', linenospecial=2)
 
     def test_codehilite_startinline(self):
         if has_pygments:
@@ -404,13 +346,11 @@ class TestCodeHiliteClass(TestCase):
                 '<pre class="codehilite"><code class="language-php">print(&quot;Hello World&quot;);\n'
                 '</code></pre>'
             )
-        self.assertOutputEquals(
-            'print("Hello World");', expected, lang='php', startinline=True
-        )
+        self.assertOutputEquals('print("Hello World");', expected, lang='php', startinline=True)
 
 
 class TestCodeHiliteExtension(TestCase):
-    """Test codehilite extension."""
+    """ Test codehilite extension. """
 
     def setUp(self):
         if has_pygments and pygments.__version__ != required_pygments_version:
@@ -418,10 +358,7 @@ class TestCodeHiliteExtension(TestCase):
 
         # Define a custom Pygments formatter (same example in the documentation)
         if has_pygments:
-
-            class CustomAddLangHtmlFormatter(
-                pygments.formatters.HtmlFormatter
-            ):
+            class CustomAddLangHtmlFormatter(pygments.formatters.HtmlFormatter):
                 def __init__(self, lang_str='', **options):
                     super().__init__(**options)
                     self.lang_str = lang_str
@@ -446,10 +383,13 @@ class TestCodeHiliteExtension(TestCase):
             )
         else:
             expected = (
-                '<pre class="codehilite"><code># A Code Comment\n</code></pre>'
+                '<pre class="codehilite"><code># A Code Comment\n'
+                '</code></pre>'
             )
         self.assertMarkdownRenders(
-            '\t# A Code Comment', expected, extensions=['codehilite']
+            '\t# A Code Comment',
+            expected,
+            extensions=['codehilite']
         )
 
     def testLinenumsTrue(self):
@@ -470,7 +410,7 @@ class TestCodeHiliteExtension(TestCase):
         self.assertMarkdownRenders(
             '\t# A Code Comment',
             expected,
-            extensions=[CodeHiliteExtension(linenums=True)],
+            extensions=[CodeHiliteExtension(linenums=True)]
         )
 
     def testLinenumsFalse(self):
@@ -485,9 +425,12 @@ class TestCodeHiliteExtension(TestCase):
                 '</code></pre>'
             )
         self.assertMarkdownRenders(
-            ('\t#!Python\n\t# A Code Comment'),
+            (
+                '\t#!Python\n'
+                '\t# A Code Comment'
+            ),
             expected,
-            extensions=[CodeHiliteExtension(linenums=False)],
+            extensions=[CodeHiliteExtension(linenums=False)]
         )
 
     def testLinenumsNone(self):
@@ -498,12 +441,13 @@ class TestCodeHiliteExtension(TestCase):
             )
         else:
             expected = (
-                '<pre class="codehilite"><code># A Code Comment\n</code></pre>'
+                '<pre class="codehilite"><code># A Code Comment\n'
+                '</code></pre>'
             )
         self.assertMarkdownRenders(
             '\t# A Code Comment',
             expected,
-            extensions=[CodeHiliteExtension(linenums=None)],
+            extensions=[CodeHiliteExtension(linenums=None)]
         )
 
     def testLinenumsNoneWithShebang(self):
@@ -522,9 +466,12 @@ class TestCodeHiliteExtension(TestCase):
                 '</code></pre>'
             )
         self.assertMarkdownRenders(
-            ('\t#!Python\n\t# A Code Comment'),
+            (
+                '\t#!Python\n'
+                '\t# A Code Comment'
+            ),
             expected,
-            extensions=[CodeHiliteExtension(linenums=None)],
+            extensions=[CodeHiliteExtension(linenums=None)]
         )
 
     def testLinenumsNoneWithColon(self):
@@ -539,9 +486,12 @@ class TestCodeHiliteExtension(TestCase):
                 '</code></pre>'
             )
         self.assertMarkdownRenders(
-            ('\t:::Python\n\t# A Code Comment'),
+            (
+                '\t:::Python\n'
+                '\t# A Code Comment'
+            ),
             expected,
-            extensions=[CodeHiliteExtension(linenums=None)],
+            extensions=[CodeHiliteExtension(linenums=None)]
         )
 
     def testHighlightLinesWithColon(self):
@@ -561,49 +511,64 @@ class TestCodeHiliteExtension(TestCase):
             )
         # Double quotes
         self.assertMarkdownRenders(
-            ('\t:::Python hl_lines="1"\n\t#line 1\n\t#line 2\n\t#line 3'),
+            (
+                '\t:::Python hl_lines="1"\n'
+                '\t#line 1\n'
+                '\t#line 2\n'
+                '\t#line 3'
+            ),
             expected,
-            extensions=['codehilite'],
+            extensions=['codehilite']
         )
         # Single quotes
         self.assertMarkdownRenders(
-            ("\t:::Python hl_lines='1'\n\t#line 1\n\t#line 2\n\t#line 3"),
+            (
+                "\t:::Python hl_lines='1'\n"
+                '\t#line 1\n'
+                '\t#line 2\n'
+                '\t#line 3'
+            ),
             expected,
-            extensions=['codehilite'],
+            extensions=['codehilite']
         )
 
     def testUsePygmentsFalse(self):
         self.assertMarkdownRenders(
-            ('\t:::Python\n\t# A Code Comment'),
+            (
+                '\t:::Python\n'
+                '\t# A Code Comment'
+            ),
             (
                 '<pre class="codehilite"><code class="language-python"># A Code Comment\n'
                 '</code></pre>'
             ),
-            extensions=[CodeHiliteExtension(use_pygments=False)],
+            extensions=[CodeHiliteExtension(use_pygments=False)]
         )
 
     def testLangPrefixEmpty(self):
         self.assertMarkdownRenders(
-            ('\t:::Python\n\t# A Code Comment'),
+            (
+                '\t:::Python\n'
+                '\t# A Code Comment'
+            ),
             (
                 '<pre class="codehilite"><code class="python"># A Code Comment\n'
                 '</code></pre>'
             ),
-            extensions=[
-                CodeHiliteExtension(use_pygments=False, lang_prefix='')
-            ],
+            extensions=[CodeHiliteExtension(use_pygments=False, lang_prefix='')]
         )
 
     def testLangPrefix(self):
         self.assertMarkdownRenders(
-            ('\t:::Python\n\t# A Code Comment'),
+            (
+                '\t:::Python\n'
+                '\t# A Code Comment'
+            ),
             (
                 '<pre class="codehilite"><code class="lang-python"># A Code Comment\n'
                 '</code></pre>'
             ),
-            extensions=[
-                CodeHiliteExtension(use_pygments=False, lang_prefix='lang-')
-            ],
+            extensions=[CodeHiliteExtension(use_pygments=False, lang_prefix='lang-')]
         )
 
     def testDoubleEscape(self):
@@ -623,9 +588,12 @@ class TestCodeHiliteExtension(TestCase):
                 '</code></pre>'
             )
         self.assertMarkdownRenders(
-            ('\t:::html\n\t<span>This&amp;That</span>'),
+            (
+                '\t:::html\n'
+                '\t<span>This&amp;That</span>'
+            ),
             expected,
-            extensions=['codehilite'],
+            extensions=['codehilite']
         )
 
     def testEntitiesIntact(self):
@@ -643,9 +611,12 @@ class TestCodeHiliteExtension(TestCase):
                 '</code></pre>'
             )
         self.assertMarkdownRenders(
-            ('\t:::text\n\t< &lt; and > &gt;'),
+            (
+                '\t:::text\n'
+                '\t< &lt; and > &gt;'
+            ),
             expected,
-            extensions=['codehilite'],
+            extensions=['codehilite']
         )
 
     def testHighlightAmps(self):
@@ -664,9 +635,14 @@ class TestCodeHiliteExtension(TestCase):
                 '</code></pre>'
             )
         self.assertMarkdownRenders(
-            ('\t:::text\n\t&\n\t&amp;\n\t&amp;amp;'),
+            (
+                '\t:::text\n'
+                '\t&\n'
+                '\t&amp;\n'
+                '\t&amp;amp;'
+            ),
             expected,
-            extensions=['codehilite'],
+            extensions=['codehilite']
         )
 
     def testUnknownOption(self):
@@ -678,7 +654,8 @@ class TestCodeHiliteExtension(TestCase):
             )
         else:
             expected = (
-                '<pre class="codehilite"><code># A Code Comment\n</code></pre>'
+                '<pre class="codehilite"><code># A Code Comment\n'
+                '</code></pre>'
             )
         self.assertMarkdownRenders(
             '\t# A Code Comment',
@@ -715,9 +692,7 @@ class TestCodeHiliteExtension(TestCase):
                 '\t# Second Code Block'
             ),
             expected,
-            extensions=[
-                CodeHiliteExtension(pygments_style='native', noclasses=True)
-            ],
+            extensions=[CodeHiliteExtension(pygments_style="native", noclasses=True)]
         )
 
     def testFormatterLangStr(self):
@@ -734,14 +709,15 @@ class TestCodeHiliteExtension(TestCase):
             )
 
         self.assertMarkdownRenders(
-            '\t:::Python\n\t# A Code Comment',
+            '\t:::Python\n'
+            '\t# A Code Comment',
             expected,
             extensions=[
                 CodeHiliteExtension(
                     guess_lang=False,
-                    pygments_formatter=self.custom_pygments_formatter,
+                    pygments_formatter=self.custom_pygments_formatter
                 )
-            ],
+            ]
         )
 
     def testFormatterLangStrGuessLang(self):
@@ -763,11 +739,7 @@ class TestCodeHiliteExtension(TestCase):
         self.assertMarkdownRenders(
             '\t<?php print("Hello World"); ?>',
             expected,
-            extensions=[
-                CodeHiliteExtension(
-                    pygments_formatter=self.custom_pygments_formatter
-                )
-            ],
+            extensions=[CodeHiliteExtension(pygments_formatter=self.custom_pygments_formatter)]
         )
 
     def testFormatterLangStrEmptyLang(self):
@@ -779,7 +751,8 @@ class TestCodeHiliteExtension(TestCase):
             )
         else:
             expected = (
-                '<pre class="codehilite"><code># A Code Comment\n</code></pre>'
+                '<pre class="codehilite"><code># A Code Comment\n'
+                '</code></pre>'
             )
         self.assertMarkdownRenders(
             '\t# A Code Comment',
@@ -789,7 +762,7 @@ class TestCodeHiliteExtension(TestCase):
                     guess_lang=False,
                     pygments_formatter=self.custom_pygments_formatter,
                 )
-            ],
+            ]
         )
 
     def testDoesntCrashWithEmptyCodeTag(self):
@@ -797,18 +770,13 @@ class TestCodeHiliteExtension(TestCase):
         self.assertMarkdownRenders(
             '# Hello',
             expected,
-            extensions=[
-                CodeHiliteExtension(),
-                _ExtensionThatAddsAnEmptyCodeTag(),
-            ],
+            extensions=[CodeHiliteExtension(), _ExtensionThatAddsAnEmptyCodeTag()]
         )
 
 
 class _ExtensionThatAddsAnEmptyCodeTag(extensions.Extension):
     def extendMarkdown(self, md):
-        md.treeprocessors.register(
-            _AddCodeTagTreeprocessor(), 'add-code-tag', 40
-        )
+        md.treeprocessors.register(_AddCodeTagTreeprocessor(), 'add-code-tag', 40)
 
 
 class _AddCodeTagTreeprocessor(treeprocessors.Treeprocessor):

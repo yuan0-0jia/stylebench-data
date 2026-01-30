@@ -25,9 +25,9 @@ from markdown.test_tools import TestCase
 
 class TestSmarty(TestCase):
 
-    defaultKwargs = {'extensions': ['smarty']}
+    default_kwargs = {'extensions': ['smarty']}
 
-    def testBasic(self):
+    def test_basic(self):
         self.assertMarkdownRenders(
             "It's fun. What's fun?",
             '<p>It&rsquo;s fun. What&rsquo;s fun?</p>'
@@ -85,7 +85,7 @@ class TestSmarty(TestCase):
             "<p><em>Custer</em>&rsquo;s Last Stand</p>"
         )
 
-    def testYears(self):
+    def test_years(self):
         self.assertMarkdownRenders("1440--80's", '<p>1440&ndash;80&rsquo;s</p>')
         self.assertMarkdownRenders("1440--'80s", '<p>1440&ndash;&rsquo;80s</p>')
         self.assertMarkdownRenders("1440---'80s", '<p>1440&mdash;&rsquo;80s</p>')
@@ -93,7 +93,7 @@ class TestSmarty(TestCase):
         self.assertMarkdownRenders("one two '60s", '<p>one two &rsquo;60s</p>')
         self.assertMarkdownRenders("'60s", '<p>&rsquo;60s</p>')
 
-    def testWrappingLine(self):
+    def test_wrapping_line(self):
         text = (
             "A line that 'wraps' with\n"
             "*emphasis* at the beginning of the next line."
@@ -104,7 +104,7 @@ class TestSmarty(TestCase):
         )
         self.assertMarkdownRenders(text, html)
 
-    def testEscaped(self):
+    def test_escaped(self):
         self.assertMarkdownRenders(
             'Escaped \\-- ndash',
             '<p>Escaped -- ndash</p>'
@@ -126,19 +126,19 @@ class TestSmarty(TestCase):
             "<p>'&ldquo;Real&rdquo; quotes in escaped ones'</p>"
         )
 
-    def testEscapedAttr(self):
+    def test_escaped_attr(self):
         self.assertMarkdownRenders(
             '![x\"x](x)',
             '<p><img alt="x&quot;x" src="x" /></p>'
         )
 
-    def testCodeSpans(self):
+    def test_code_spans(self):
         self.assertMarkdownRenders(
             'Skip `"code" -- --- \'spans\' ...`.',
             '<p>Skip <code>"code" -- --- \'spans\' ...</code>.</p>'
         )
 
-    def testCodeBlocks(self):
+    def test_code_blocks(self):
         text = (
             '    Also skip "code" \'blocks\'\n'
             '    foo -- bar --- baz ...'
@@ -150,13 +150,13 @@ class TestSmarty(TestCase):
         )
         self.assertMarkdownRenders(text, html)
 
-    def testHorizontalRule(self):
+    def test_horizontal_rule(self):
         self.assertMarkdownRenders('--- -- ---', '<hr />')
 
 
 class TestSmartyAngledQuotes(TestCase):
 
-    defaultKwargs = {
+    default_kwargs = {
         'extensions': ['smarty'],
         'extension_configs': {
             'smarty': {
@@ -165,7 +165,7 @@ class TestSmartyAngledQuotes(TestCase):
         },
     }
 
-    def testAngledQuotes(self):
+    def test_angled_quotes(self):
         self.assertMarkdownRenders(
             '<<hello>>',
             '<p>&laquo;hello&raquo;</p>'
@@ -182,7 +182,7 @@ class TestSmartyAngledQuotes(TestCase):
 
 class TestSmartyCustomSubstitutions(TestCase):
 
-    defaultKwargs = {
+    default_kwargs = {
         'extensions': ['smarty'],
         'extension_configs': {
             'smarty': {
@@ -202,7 +202,7 @@ class TestSmartyCustomSubstitutions(TestCase):
         },
     }
 
-    def testCustomSubstitutions(self):
+    def test_custom_substitutions(self):
         text = (
             '<< The "Unicode char of the year 2014"\n'
             "is the 'mdash': ---\n"
@@ -218,11 +218,11 @@ class TestSmartyCustomSubstitutions(TestCase):
 
 class TestSmartyAndToc(TestCase):
 
-    defaultKwargs = {
+    default_kwargs = {
         'extensions': ['smarty', 'toc'],
     }
 
-    def testSmartyAndToc(self):
+    def test_smarty_and_toc(self):
         self.assertMarkdownRenders(
             '# *Foo* --- `bar`',
             '<h1 id="foo-bar"><em>Foo</em> &mdash; <code>bar</code></h1>',

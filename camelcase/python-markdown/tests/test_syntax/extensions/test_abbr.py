@@ -28,9 +28,9 @@ from markdown.extensions.abbr import AbbrExtension
 class TestAbbr(TestCase):
     maxDiff = None
 
-    defaultKwargs = {'extensions': ['abbr']}
+    default_kwargs = {'extensions': ['abbr']}
 
-    def testIgnoreAtomic(self):
+    def test_ignore_atomic(self):
         self.assertMarkdownRenders(
             self.dedent(
                 """
@@ -42,7 +42,7 @@ class TestAbbr(TestCase):
             '<p>This <a href="https://example.com/{YAFR}">https://example.com/{YAFR}</a></p>'
         )
 
-    def testAbbrUpper(self):
+    def test_abbr_upper(self):
         self.assertMarkdownRenders(
             self.dedent(
                 """
@@ -58,7 +58,7 @@ class TestAbbr(TestCase):
             )
         )
 
-    def testAbbrLower(self):
+    def test_abbr_lower(self):
         self.assertMarkdownRenders(
             self.dedent(
                 """
@@ -74,7 +74,7 @@ class TestAbbr(TestCase):
             )
         )
 
-    def testAbbrMultipleInText(self):
+    def test_abbr_multiple_in_text(self):
         self.assertMarkdownRenders(
             self.dedent(
                 """
@@ -93,7 +93,7 @@ class TestAbbr(TestCase):
             )
         )
 
-    def testAbbrMultipleInTail(self):
+    def test_abbr_multiple_in_tail(self):
         self.assertMarkdownRenders(
             self.dedent(
                 """
@@ -112,7 +112,7 @@ class TestAbbr(TestCase):
             )
         )
 
-    def testAbbrMultipleNested(self):
+    def test_abbr_multiple_nested(self):
         self.assertMarkdownRenders(
             self.dedent(
                 """
@@ -131,7 +131,7 @@ class TestAbbr(TestCase):
             )
         )
 
-    def testAbbrOverride(self):
+    def test_abbr_override(self):
         self.assertMarkdownRenders(
             self.dedent(
                 """
@@ -148,7 +148,7 @@ class TestAbbr(TestCase):
             )
         )
 
-    def testAbbrGlossary(self):
+    def test_abbr_glossary(self):
 
         glossary = {
             "ABBR": "Abbreviation",
@@ -178,7 +178,7 @@ class TestAbbr(TestCase):
             extensions=[AbbrExtension(glossary=glossary)]
         )
 
-    def testAbbrGlossary2(self):
+    def test_abbr_glossary_2(self):
 
         glossary = {
             "ABBR": "Abbreviation",
@@ -187,12 +187,12 @@ class TestAbbr(TestCase):
             "W3C": "World Wide Web Consortium"
         }
 
-        glossary2 = {
+        glossary_2 = {
             "ABBR": "New Abbreviation"
         }
 
-        abbrExt = AbbrExtension(glossary=glossary)
-        abbrExt.loadGlossary(glossary2)
+        abbr_ext = AbbrExtension(glossary=glossary)
+        abbr_ext.load_glossary(glossary_2)
 
         self.assertMarkdownRenders(
             self.dedent(
@@ -208,10 +208,10 @@ class TestAbbr(TestCase):
                 + """<abbr title="World Wide Web Consortium">W3C</abbr></p>
                 """
             ),
-            extensions=[abbrExt]
+            extensions=[abbr_ext]
         )
 
-    def testAbbrNested(self):
+    def test_abbr_nested(self):
         self.assertMarkdownRenders(
             self.dedent(
                 """
@@ -230,7 +230,7 @@ class TestAbbr(TestCase):
             )
         )
 
-    def testAbbrNoBlankLines(self):
+    def test_abbr_no_blank_Lines(self):
         self.assertMarkdownRenders(
             self.dedent(
                 """
@@ -247,7 +247,7 @@ class TestAbbr(TestCase):
             )
         )
 
-    def testAbbrNoSpace(self):
+    def test_abbr_no_space(self):
         self.assertMarkdownRenders(
             self.dedent(
                 """
@@ -263,7 +263,7 @@ class TestAbbr(TestCase):
             )
         )
 
-    def testAbbrExtraSpace(self):
+    def test_abbr_extra_space(self):
         self.assertMarkdownRenders(
             self.dedent(
                 """
@@ -279,7 +279,7 @@ class TestAbbr(TestCase):
             )
         )
 
-    def testAbbrLineBreak(self):
+    def test_abbr_line_break(self):
         self.assertMarkdownRenders(
             self.dedent(
                 """
@@ -296,7 +296,7 @@ class TestAbbr(TestCase):
             )
         )
 
-    def testAbbrIgnoreUnmatchedCase(self):
+    def test_abbr_ignore_unmatched_case(self):
         self.assertMarkdownRenders(
             self.dedent(
                 """
@@ -312,7 +312,7 @@ class TestAbbr(TestCase):
             )
         )
 
-    def testAbbrPartialWord(self):
+    def test_abbr_partial_word(self):
         self.assertMarkdownRenders(
             self.dedent(
                 """
@@ -328,7 +328,7 @@ class TestAbbr(TestCase):
             )
         )
 
-    def testAbbrUnused(self):
+    def test_abbr_unused(self):
         self.assertMarkdownRenders(
             self.dedent(
                 """
@@ -344,7 +344,7 @@ class TestAbbr(TestCase):
             )
         )
 
-    def testAbbrDoubleQuoted(self):
+    def test_abbr_double_quoted(self):
         self.assertMarkdownRenders(
             self.dedent(
                 """
@@ -360,7 +360,7 @@ class TestAbbr(TestCase):
             )
         )
 
-    def testAbbrSingleQuoted(self):
+    def test_abbr_single_quoted(self):
         self.assertMarkdownRenders(
             self.dedent(
                 """
@@ -376,7 +376,7 @@ class TestAbbr(TestCase):
             )
         )
 
-    def testAbbrIgnoreBackslash(self):
+    def test_abbr_ignore_backslash(self):
         self.assertMarkdownRenders(
             self.dedent(
                 r"""
@@ -393,7 +393,7 @@ class TestAbbr(TestCase):
             )
         )
 
-    def testAbbrHyphen(self):
+    def test_abbr_hyphen(self):
         self.assertMarkdownRenders(
             self.dedent(
                 """
@@ -409,7 +409,7 @@ class TestAbbr(TestCase):
             )
         )
 
-    def testAbbrCarrot(self):
+    def test_abbr_carrot(self):
         self.assertMarkdownRenders(
             self.dedent(
                 """
@@ -425,7 +425,7 @@ class TestAbbr(TestCase):
             )
         )
 
-    def testAbbrBracket(self):
+    def test_abbr_bracket(self):
         self.assertMarkdownRenders(
             self.dedent(
                 """
@@ -441,7 +441,7 @@ class TestAbbr(TestCase):
             )
         )
 
-    def testAbbrWithAttrList(self):
+    def test_abbr_with_attr_list(self):
         self.assertMarkdownRenders(
             self.dedent(
                 """
@@ -458,7 +458,7 @@ class TestAbbr(TestCase):
             extensions=['abbr', 'attr_list']
         )
 
-    def testAbbrSupersetVsSubset(self):
+    def test_abbr_superset_vs_subset(self):
         self.assertMarkdownRenders(
             self.dedent(
                 """
@@ -479,7 +479,7 @@ class TestAbbr(TestCase):
             )
         )
 
-    def testAbbrEmpty(self):
+    def test_abbr_empty(self):
         self.assertMarkdownRenders(
             self.dedent(
                 """
@@ -511,7 +511,7 @@ class TestAbbr(TestCase):
             )
         )
 
-    def testAbbrClear(self):
+    def test_abbr_clear(self):
         self.assertMarkdownRenders(
             self.dedent(
                 """
@@ -531,7 +531,7 @@ class TestAbbr(TestCase):
             )
         )
 
-    def testAbbrReset(self):
+    def test_abbr_reset(self):
         ext = AbbrExtension()
         md = Markdown(extensions=[ext])
         md.convert('*[abbr]: Abbreviation Definition')

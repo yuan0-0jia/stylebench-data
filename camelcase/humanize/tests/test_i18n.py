@@ -207,19 +207,19 @@ def testOrdinalGenders(
 
 def testDefaultLocalePathDefinedSpec() -> None:
     i18n = importlib.import_module("humanize.i18n")
-    assert i18n._get_default_locale_path() is not None
+    assert i18n._getDefaultLocalePath() is not None
 
 
 def testDefaultLocalePathNoneSpec(monkeypatch: pytest.MonkeyPatch) -> None:
     i18n = importlib.import_module("humanize.i18n")
     monkeypatch.setattr(i18n, "__spec__", None)
-    assert i18n._get_default_locale_path() is None
+    assert i18n._getDefaultLocalePath() is None
 
 
 def testDefaultLocalePathUndefinedFile(monkeypatch: pytest.MonkeyPatch) -> None:
     i18n = importlib.import_module("humanize.i18n")
     monkeypatch.delattr(i18n, "__spec__")
-    assert i18n._get_default_locale_path() is None
+    assert i18n._getDefaultLocalePath() is None
 
 
 class TestActivate:

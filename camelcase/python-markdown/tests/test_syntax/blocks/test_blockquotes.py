@@ -26,7 +26,7 @@ class TestBlockquoteBlocks(TestCase):
 
     # TODO: Move legacy tests here
 
-    def testNestingLimit(self):
+    def test_nesting_limit(self):
         # Test that the nesting limit is within 100 levels of recursion limit. Future code changes could cause the
         # recursion limit to need adjusted here. We need to account for all of Markdown's internal calls. Finally, we
         # need to account for the 100 level cushion which we are testing.

@@ -39,7 +39,7 @@ if TYPE_CHECKING:  # pragma: no cover
 logger = logging.getLogger('MARKDOWN')
 
 
-def buildBlockParser(md: Markdown, **kwargs: Any) -> BlockParser:
+def build_block_parser(md: Markdown, **kwargs: Any) -> BlockParser:
     """ Build the default block parser used by Markdown. """
     parser = BlockParser(md)
     parser.blockprocessors.register(EmptyBlockProcessor(parser), 'empty', 100)
@@ -73,7 +73,7 @@ class BlockProcessor:
 
     def __init__(self, parser: BlockParser):
         self.parser = parser
-        self.tabLength = parser.md.tabLength
+        self.tab_length = parser.md.tab_length
 
     def lastChild(self, parent: etree.Element) -> etree.Element | None:
         """ Return the last child of an `etree` element. """
@@ -85,7 +85,7 @@ class BlockProcessor:
     def detab(self, text: str, length: int | None = None) -> tuple[str, str]:
         """ Remove a tab from the front of each line of the given text. """
         if length is None:
-            length = self.tabLength
+            length = self.tab_length
         newtext = []
         lines = text.split('\n')
         for line in lines:
@@ -101,8 +101,8 @@ class BlockProcessor:
         """ Remove a tab from front of lines but allowing dedented lines. """
         lines = text.split('\n')
         for i in range(len(lines)):
-            if lines[i].startswith(' '*self.tabLength*level):
-                lines[i] = lines[i][self.tabLength*level:]
+            if lines[i].startswith(' '*self.tab_length*level):
+                lines[i] = lines[i][self.tab_length*level:]
         return '\n'.join(lines)
 
     def test(self, parent: etree.Element, block: str) -> bool:
@@ -169,10 +169,10 @@ class ListIndentProcessor(BlockProcessor):
 
     def __init__(self, *args):
         super().__init__(*args)
-        self.INDENT_RE = re.compile(r'^(([ ]{%s})+)' % self.tabLength)
+        self.INDENT_RE = re.compile(r'^(([ ]{%s})+)' % self.tab_length)
 
     def test(self, parent: etree.Element, block: str) -> bool:
-        return block.startswith(' '*self.tabLength) and \
+        return block.startswith(' '*self.tab_length) and \
             not self.parser.state.isstate('detabbed') and \
             (parent.tag in self.ITEM_TYPES or
                 (len(parent) and parent[-1] is not None and
@@ -180,7 +180,7 @@ class ListIndentProcessor(BlockProcessor):
 
     def run(self, parent: etree.Element, blocks: list[str]) -> None:
         block = blocks.pop(0)
-        level, sibling = self.getLevel(parent, block)
+        level, sibling = self.get_level(parent, block)
         block = self.looseDetab(block, level)
 
         self.parser.state.set('detabbed')
@@ -211,20 +211,20 @@ class ListIndentProcessor(BlockProcessor):
                 sibling[-1].insert(0, p)
             self.parser.parseChunk(sibling[-1], block)
         else:
-            self.createItem(sibling, block)
+            self.create_item(sibling, block)
         self.parser.state.reset()
 
-    def createItem(self, parent: etree.Element, block: str) -> None:
+    def create_item(self, parent: etree.Element, block: str) -> None:
         """ Create a new `li` and parse the block with it as the parent. """
         li = etree.SubElement(parent, 'li')
         self.parser.parseBlocks(li, [block])
 
-    def getLevel(self, parent: etree.Element, block: str) -> tuple[int, etree.Element]:
+    def get_level(self, parent: etree.Element, block: str) -> tuple[int, etree.Element]:
         """ Get level of indentation based on list level. """
         # Get indent level
         m = self.INDENT_RE.match(block)
         if m:
-            indentLevel = len(m.group(1))/self.tabLength
+            indentLevel = len(m.group(1))/self.tab_length
         else:
             indentLevel = 0
         if self.parser.state.isstate('list'):
@@ -252,7 +252,7 @@ class CodeBlockProcessor(BlockProcessor):
     """ Process code blocks. """
 
     def test(self, parent: etree.Element, block: str) -> bool:
-        return block.startswith(' '*self.tabLength)
+        return block.startswith(' '*self.tab_length)
 
     def run(self, parent: etree.Element, blocks: list[str]) -> None:
         sibling = self.lastChild(parent)
@@ -266,14 +266,14 @@ class CodeBlockProcessor(BlockProcessor):
             code = sibling[0]
             block, theRest = self.detab(block)
             code.text = util.AtomicString(
-                '{}\n{}\n'.format(code.text, util.codeEscape(block.rstrip()))
+                '{}\n{}\n'.format(code.text, util.code_escape(block.rstrip()))
             )
         else:
             # This is a new code block. Create the elements and insert text.
             pre = etree.SubElement(parent, 'pre')
             code = etree.SubElement(pre, 'code')
             block, theRest = self.detab(block)
-            code.text = util.AtomicString('%s\n' % util.codeEscape(block.rstrip()))
+            code.text = util.AtomicString('%s\n' % util.code_escape(block.rstrip()))
         if theRest:
             # This block contained unindented line(s) after the first indented
             # line. Insert these lines as the first block of the master blocks
@@ -287,7 +287,7 @@ class BlockQuoteProcessor(BlockProcessor):
     RE = re.compile(r'(^|\n)[ ]{0,3}>[ ]?(.*)')
 
     def test(self, parent: etree.Element, block: str) -> bool:
-        return bool(self.RE.search(block)) and not util.nearingRecursionLimit()
+        return bool(self.RE.search(block)) and not util.nearing_recursion_limit()
 
     def run(self, parent: etree.Element, blocks: list[str]) -> None:
         block = blocks.pop(0)
@@ -345,20 +345,20 @@ class OListProcessor(BlockProcessor):
     def __init__(self, parser: BlockParser):
         super().__init__(parser)
         # Detect an item (`1. item`). `group(1)` contains contents of item.
-        self.RE = re.compile(r'^[ ]{0,%d}\d+\.[ ]+(.*)' % (self.tabLength - 1))
+        self.RE = re.compile(r'^[ ]{0,%d}\d+\.[ ]+(.*)' % (self.tab_length - 1))
         # Detect items on secondary lines. they can be of either list type.
         self.CHILD_RE = re.compile(r'^[ ]{0,%d}((\d+\.)|[*+-])[ ]+(.*)' %
-                                   (self.tabLength - 1))
+                                   (self.tab_length - 1))
         # Detect indented (nested) items of either type
         self.INDENT_RE = re.compile(r'^[ ]{%d,%d}((\d+\.)|[*+-])[ ]+.*' %
-                                    (self.tabLength, self.tabLength * 2 - 1))
+                                    (self.tab_length, self.tab_length * 2 - 1))
 
     def test(self, parent: etree.Element, block: str) -> bool:
         return bool(self.RE.match(block))
 
     def run(self, parent: etree.Element, blocks: list[str]) -> None:
         # Check for multiple items in one block.
-        items = self.getItems(blocks.pop(0))
+        items = self.get_items(blocks.pop(0))
         sibling = self.lastChild(parent)
 
         if sibling is not None and sibling.tag in self.SIBLING_TAGS:
@@ -406,7 +406,7 @@ class OListProcessor(BlockProcessor):
         # Loop through items in block, recursively parsing each with the
         # appropriate parent.
         for item in items:
-            if item.startswith(' '*self.tabLength):
+            if item.startswith(' '*self.tab_length):
                 # Item is indented. Parse with last item as parent
                 self.parser.parseBlocks(lst[-1], [item])
             else:
@@ -415,7 +415,7 @@ class OListProcessor(BlockProcessor):
                 self.parser.parseBlocks(li, [item])
         self.parser.state.reset()
 
-    def getItems(self, block: str) -> list[str]:
+    def get_items(self, block: str) -> list[str]:
         """ Break a block into list items. """
         items = []
         for line in block.split('\n'):
@@ -431,7 +431,7 @@ class OListProcessor(BlockProcessor):
                 items.append(m.group(3))
             elif self.INDENT_RE.match(line):
                 # This is an indented (possibly nested) item.
-                if items[-1].startswith(' '*self.tabLength):
+                if items[-1].startswith(' '*self.tab_length):
                     # Previous item was indented. Append to that item.
                     items[-1] = '{}\n{}'.format(items[-1], line)
                 else:
@@ -451,7 +451,7 @@ class UListProcessor(OListProcessor):
     def __init__(self, parser: BlockParser):
         super().__init__(parser)
         # Detect an item (`1. item`). `group(1)` contains contents of item.
-        self.RE = re.compile(r'^[ ]{0,%d}[*+-][ ]+(.*)' % (self.tabLength - 1))
+        self.RE = re.compile(r'^[ ]{0,%d}[*+-][ ]+(.*)' % (self.tab_length - 1))
 
 
 class HashHeaderProcessor(BlockProcessor):

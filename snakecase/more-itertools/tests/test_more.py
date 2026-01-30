@@ -3797,7 +3797,7 @@ class MakeDecoratorTests(TestCase):
             self.assertEqual(args[0], 'arg_0')
             iterable = args[1]
             self.assertEqual(args[2], 'arg_2')
-            self.assertEqual(kwargs['kwarg_1'], 'kwarg_1')
+            self.assertEqual(kwargs['kwarg1'], 'kwarg_1')
             return map(str, iterable)
 
         stringifier = mi.make_decorator(stringify, result_index=1)

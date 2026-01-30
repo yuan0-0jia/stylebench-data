@@ -36,7 +36,7 @@ if TYPE_CHECKING:  # pragma: no cover
     from markdown import Markdown
 
 
-def buildTreeprocessors(md: Markdown, **kwargs: Any) -> util.Registry[Treeprocessor]:
+def build_treeprocessors(md: Markdown, **kwargs: Any) -> util.Registry[Treeprocessor]:
     """ Build the default  `treeprocessors` for Markdown. """
     treeprocessors = util.Registry()
     treeprocessors.register(InlineProcessor(md), 'inline', 20)
@@ -78,22 +78,22 @@ class InlineProcessor(Treeprocessor):
     """
 
     def __init__(self, md: Markdown):
-        self.__placeholderPrefix = util.INLINE_PLACEHOLDER_PREFIX
-        self.__placeholderSuffix = util.ETX
-        self.__placeholderLength = 4 + len(self.__placeholderPrefix) \
-                                      + len(self.__placeholderSuffix)
-        self.__placeholderRe = util.INLINE_PLACEHOLDER_RE
+        self.__placeholder_prefix = util.INLINE_PLACEHOLDER_PREFIX
+        self.__placeholder_suffix = util.ETX
+        self.__placeholder_length = 4 + len(self.__placeholder_prefix) \
+                                      + len(self.__placeholder_suffix)
+        self.__placeholder_re = util.INLINE_PLACEHOLDER_RE
         self.md = md
         self.inlinePatterns = md.inlinePatterns
         self.ancestors: list[str] = []
 
-    def __makeplaceholder(self, type: str) -> tuple[str, str]:
+    def __makePlaceholder(self, type: str) -> tuple[str, str]:
         """ Generate a placeholder """
-        id = "%04d" % len(self.stashedNodes)
+        id = "%04d" % len(self.stashed_nodes)
         hash = util.INLINE_PLACEHOLDER % id
         return hash, id
 
-    def __findplaceholder(self, data: str, index: int) -> tuple[str | None, int]:
+    def __findPlaceholder(self, data: str, index: int) -> tuple[str | None, int]:
         """
         Extract id from data string, start from index.
 
@@ -105,19 +105,19 @@ class InlineProcessor(Treeprocessor):
             Placeholder id and string index, after the found placeholder.
 
         """
-        m = self.__placeholderRe.search(data, index)
+        m = self.__placeholder_re.search(data, index)
         if m:
             return m.group(1), m.end()
         else:
             return None, index + 1
 
-    def __stashnode(self, node: etree.Element | str, type: str) -> str:
+    def __stashNode(self, node: etree.Element | str, type: str) -> str:
         """ Add node to stash. """
-        placeholder, id = self.__makeplaceholder(type)
-        self.stashedNodes[id] = node
+        placeholder, id = self.__makePlaceholder(type)
+        self.stashed_nodes[id] = node
         return placeholder
 
-    def __handleinline(self, data: str, patternIndex: int = 0) -> str:
+    def __handleInline(self, data: str, patternIndex: int = 0) -> str:
         """
         Process string with inline patterns and replace it with placeholders.
 
@@ -133,14 +133,14 @@ class InlineProcessor(Treeprocessor):
             startIndex = 0
             count = len(self.inlinePatterns)
             while patternIndex < count:
-                data, matched, startIndex = self.__applypattern(
+                data, matched, startIndex = self.__applyPattern(
                     self.inlinePatterns[patternIndex], data, patternIndex, startIndex
                 )
                 if not matched:
                     patternIndex += 1
         return data
 
-    def __processelementtext(self, node: etree.Element, subnode: etree.Element, isText: bool = True) -> None:
+    def __processElementText(self, node: etree.Element, subnode: etree.Element, isText: bool = True) -> None:
         """
         Process placeholders in `Element.text` or `Element.tail`
         of Elements popped from `self.stashed_nodes`.
@@ -158,7 +158,7 @@ class InlineProcessor(Treeprocessor):
             text = subnode.tail
             subnode.tail = None
 
-        childResult = self.__processplaceholders(text, subnode, isText)
+        childResult = self.__processPlaceholders(text, subnode, isText)
 
         if not isText and node is not subnode:
             pos = list(node).index(subnode) + 1
@@ -169,7 +169,7 @@ class InlineProcessor(Treeprocessor):
         for newChild in childResult:
             node.insert(pos, newChild[0])
 
-    def __processplaceholders(
+    def __processPlaceholders(
         self,
         data: str | None,
         parent: etree.Element,
@@ -207,12 +207,12 @@ class InlineProcessor(Treeprocessor):
         result = []
         strartIndex = 0
         while data:
-            index = data.find(self.__placeholderPrefix, strartIndex)
+            index = data.find(self.__placeholder_prefix, strartIndex)
             if index != -1:
-                id, phEndIndex = self.__findplaceholder(data, index)
+                id, phEndIndex = self.__findPlaceholder(data, index)
 
-                if id in self.stashedNodes:
-                    node = self.stashedNodes.get(id)
+                if id in self.stashed_nodes:
+                    node = self.stashed_nodes.get(id)
 
                     if index > 0:
                         text = data[strartIndex:index]
@@ -222,12 +222,12 @@ class InlineProcessor(Treeprocessor):
                         for child in [node] + list(node):
                             if child.tail:
                                 if child.tail.strip():
-                                    self.__processelementtext(
+                                    self.__processElementText(
                                         node, child, False
                                     )
                             if child.text:
                                 if child.text.strip():
-                                    self.__processelementtext(child, child)
+                                    self.__processElementText(child, child)
                     else:  # it's just a string
                         linkText(node)
                         strartIndex = phEndIndex
@@ -237,7 +237,7 @@ class InlineProcessor(Treeprocessor):
                     result.append((node, self.ancestors[:]))
 
                 else:  # wrong placeholder
-                    end = index + len(self.__placeholderPrefix)
+                    end = index + len(self.__placeholder_prefix)
                     linkText(data[strartIndex:end])
                     strartIndex = end
             else:
@@ -250,7 +250,7 @@ class InlineProcessor(Treeprocessor):
 
         return result
 
-    def __applypattern(
+    def __applyPattern(
         self,
         pattern: inlinepatterns.Pattern,
         data: str,
@@ -311,16 +311,16 @@ class InlineProcessor(Treeprocessor):
                     if not isString(node):
                         if child.text:
                             self.ancestors.append(child.tag.lower())
-                            child.text = self.__handleinline(
+                            child.text = self.__handleInline(
                                 child.text, patternIndex + 1
                             )
                             self.ancestors.pop()
                         if child.tail:
-                            child.tail = self.__handleinline(
+                            child.tail = self.__handleInline(
                                 child.tail, patternIndex
                             )
 
-        placeholder = self.__stashnode(node, pattern.type())
+        placeholder = self.__stashNode(node, pattern.type())
 
         if newStyle:
             return "{}{}{}".format(data[:start],
@@ -330,13 +330,13 @@ class InlineProcessor(Treeprocessor):
                                      match.group(1),
                                      placeholder, match.groups()[-1]), True, 0
 
-    def __buildAncestors(self, parent: etree.Element | None, parents: list[str]) -> None:
+    def __build_ancestors(self, parent: etree.Element | None, parents: list[str]) -> None:
         """Build the ancestor list."""
         ancestors = []
         while parent is not None:
             if parent is not None:
                 ancestors.append(parent.tag.lower())
-            parent = self.parentMap.get(parent)
+            parent = self.parent_map.get(parent)
         ancestors.reverse()
         parents.extend(ancestors)
 
@@ -358,20 +358,20 @@ class InlineProcessor(Treeprocessor):
             An element tree object with applied inline patterns.
 
         """
-        self.stashedNodes: dict[str, etree.Element | str] = {}
+        self.stashed_nodes: dict[str, etree.Element | str] = {}
 
         # Ensure a valid parent list, but copy passed in lists
         # to ensure we don't have the user accidentally change it on us.
         treeParents = [] if ancestors is None else ancestors[:]
 
-        self.parentMap = {c: p for p in tree.iter() for c in p}
+        self.parent_map = {c: p for p in tree.iter() for c in p}
         stack = [(tree, treeParents)]
 
         while stack:
             currElement, parents = stack.pop(0)
 
             self.ancestors = parents
-            self.__buildAncestors(currElement, self.ancestors)
+            self.__build_ancestors(currElement, self.ancestors)
 
             insertQueue = []
             for child in currElement:
@@ -381,28 +381,28 @@ class InlineProcessor(Treeprocessor):
                     self.ancestors.append(child.tag.lower())
                     text = child.text
                     child.text = None
-                    lst = self.__processplaceholders(
-                        self.__handleinline(text), child
+                    lst = self.__processPlaceholders(
+                        self.__handleInline(text), child
                     )
                     for item in lst:
-                        self.parentMap[item[0]] = child
+                        self.parent_map[item[0]] = child
                     stack += lst
                     insertQueue.append((child, lst))
                     self.ancestors.pop()
                 if child.tail:
-                    tail = self.__handleinline(child.tail)
+                    tail = self.__handleInline(child.tail)
                     dumby = etree.Element('d')
                     child.tail = None
-                    tailResult = self.__processplaceholders(tail, dumby, False)
+                    tailResult = self.__processPlaceholders(tail, dumby, False)
                     if dumby.tail:
                         child.tail = dumby.tail
                     pos = list(currElement).index(child) + 1
                     tailResult.reverse()
                     for newChild in tailResult:
-                        self.parentMap[newChild[0]] = currElement
+                        self.parent_map[newChild[0]] = currElement
                         currElement.insert(pos, newChild[0])
                 if len(child):
-                    self.parentMap[child] = currElement
+                    self.parent_map[child] = currElement
                     stack.append((child, self.ancestors[:]))
 
             for element, lst in insertQueue:
@@ -415,24 +415,24 @@ class InlineProcessor(Treeprocessor):
 class PrettifyTreeprocessor(Treeprocessor):
     """ Add line breaks to the html document. """
 
-    def _prettifyetree(self, elem: etree.Element) -> None:
+    def _prettifyETree(self, elem: etree.Element) -> None:
         """ Recursively add line breaks to `ElementTree` children. """
 
         i = "\n"
-        if self.md.isBlockLevel(elem.tag) and elem.tag not in ['code', 'pre']:
+        if self.md.is_block_level(elem.tag) and elem.tag not in ['code', 'pre']:
             if (not elem.text or not elem.text.strip()) \
-                    and len(elem) and self.md.isBlockLevel(elem[0].tag):
+                    and len(elem) and self.md.is_block_level(elem[0].tag):
                 elem.text = i
             for e in elem:
-                if self.md.isBlockLevel(e.tag):
-                    self._prettifyetree(e)
+                if self.md.is_block_level(e.tag):
+                    self._prettifyETree(e)
         if not elem.tail or not elem.tail.strip():
             elem.tail = i
 
     def run(self, root: etree.Element) -> None:
         """ Add line breaks to `Element` object and its children. """
 
-        self._prettifyetree(root)
+        self._prettifyETree(root)
         # Do `<br />`'s separately as they are often in the middle of
         # inline content and missed by `_prettifyETree`.
         brs = root.iter('br')

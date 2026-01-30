@@ -109,7 +109,7 @@ class Extension:
         if isinstance(self.config[key][0], bool):
             value = parseBoolValue(value)
         if self.config[key][0] is None:
-            value = parseBoolValue(value, preserveNone=True)
+            value = parseBoolValue(value, preserve_none=True)
         self.config[key][0] = value
 
     def setConfigs(self, items: Mapping[str, Any] | Iterable[tuple[str, Any]]) -> None:

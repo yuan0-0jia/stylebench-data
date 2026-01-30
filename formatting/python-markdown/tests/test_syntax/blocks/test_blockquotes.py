@@ -23,6 +23,7 @@ from markdown.test_tools import TestCase, recursionlimit
 
 
 class TestBlockquoteBlocks(TestCase):
+
     # TODO: Move legacy tests here
 
     def test_nesting_limit(self):
@@ -46,5 +47,5 @@ class TestBlockquoteBlocks(TestCase):
                     </blockquote>
                     </blockquote>
                     """
-                ),
+                )
             )

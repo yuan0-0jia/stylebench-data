@@ -24,10 +24,10 @@ from markdown.test_tools import TestCase
 
 class TestFootnotes(TestCase):
 
-    defaultKwargs = {'extensions': ['footnotes']}
+    default_kwargs = {'extensions': ['footnotes']}
     maxDiff = None
 
-    def testBasicFootnote(self):
+    def test_basic_footnote(self):
         self.assertMarkdownRenders(
             self.dedent(
                 """
@@ -48,7 +48,7 @@ class TestFootnotes(TestCase):
             '</div>'
         )
 
-    def testMultipleFootnotes(self):
+    def test_multiple_footnotes(self):
         self.assertMarkdownRenders(
             self.dedent(
                 """
@@ -77,7 +77,7 @@ class TestFootnotes(TestCase):
             '</div>'
         )
 
-    def testMultipleFootnotesMultiline(self):
+    def test_multiple_footnotes_multiline(self):
         self.assertMarkdownRenders(
             self.dedent(
                 """
@@ -107,7 +107,7 @@ class TestFootnotes(TestCase):
             '</div>'
         )
 
-    def testFootnoteMultiLine(self):
+    def test_footnote_multi_line(self):
         self.assertMarkdownRenders(
             self.dedent(
                 """
@@ -128,7 +128,7 @@ class TestFootnotes(TestCase):
             '</div>'
         )
 
-    def testFootnoteMultiLineLazyIndent(self):
+    def test_footnote_multi_line_lazy_indent(self):
         self.assertMarkdownRenders(
             self.dedent(
                 """
@@ -149,7 +149,7 @@ class TestFootnotes(TestCase):
             '</div>'
         )
 
-    def testFootnoteMultiLineComplex(self):
+    def test_footnote_multi_line_complex(self):
         self.assertMarkdownRenders(
             self.dedent(
                 """
@@ -180,7 +180,7 @@ class TestFootnotes(TestCase):
             '</div>'
         )
 
-    def testFootnoteMultpleComplex(self):
+    def test_footnote_multple_complex(self):
         self.assertMarkdownRenders(
             self.dedent(
                 """
@@ -223,7 +223,7 @@ class TestFootnotes(TestCase):
             '</div>'
         )
 
-    def testFootnoteMultpleComplexNoBlankLineBetween(self):
+    def test_footnote_multple_complex_no_blank_line_between(self):
         self.assertMarkdownRenders(
             self.dedent(
                 """
@@ -265,7 +265,7 @@ class TestFootnotes(TestCase):
             '</div>'
         )
 
-    def testBacklinkText(self):
+    def test_backlink_text(self):
         """Test back-link configuration."""
 
         self.assertMarkdownRenders(
@@ -283,7 +283,7 @@ class TestFootnotes(TestCase):
             extension_configs={'footnotes': {'BACKLINK_TEXT': 'back'}}
         )
 
-    def testFootnoteSeparator(self):
+    def test_footnote_separator(self):
         """Test separator configuration."""
 
         self.assertMarkdownRenders(
@@ -301,7 +301,7 @@ class TestFootnotes(TestCase):
             extension_configs={'footnotes': {'SEPARATOR': '-'}}
         )
 
-    def testBacklinkTitle(self):
+    def test_backlink_title(self):
         """Test back-link title configuration without placeholder."""
 
         self.assertMarkdownRenders(
@@ -319,7 +319,7 @@ class TestFootnotes(TestCase):
             extension_configs={'footnotes': {'BACKLINK_TITLE': 'Jump back to footnote'}}
         )
 
-    def testSuperscriptText(self):
+    def test_superscript_text(self):
         """Test superscript text configuration."""
 
         self.assertMarkdownRenders(
@@ -337,7 +337,7 @@ class TestFootnotes(TestCase):
             extension_configs={'footnotes': {'SUPERSCRIPT_TEXT': '[{}]'}}
         )
 
-    def testFootnoteOrderByDocOrder(self):
+    def test_footnote_order_by_doc_order(self):
         """Test that footnotes occur in order of reference appearance when so configured."""
 
         self.assertMarkdownRenders(
@@ -368,7 +368,7 @@ class TestFootnotes(TestCase):
             extension_configs={'footnotes': {'USE_DEFINITION_ORDER': False}}
         )
 
-    def testFootnoteOrderTricky(self):
+    def test_footnote_order_tricky(self):
         """Test a tricky sequence of footnote references."""
 
         self.assertMarkdownRenders(
@@ -402,7 +402,7 @@ class TestFootnotes(TestCase):
             '</div>'
         )
 
-    def testFootnoteOrderByDefinition(self):
+    def test_footnote_order_by_definition(self):
         """Test that footnotes occur in order of definition occurrence when so configured."""
 
         self.assertMarkdownRenders(
@@ -433,7 +433,7 @@ class TestFootnotes(TestCase):
             extension_configs={'footnotes': {'USE_DEFINITION_ORDER': True}}
         )
 
-    def testFootnoteReferenceWithinCodeSpan(self):
+    def test_footnote_reference_within_code_span(self):
         """Test footnote reference within a code span."""
 
         self.assertMarkdownRenders(
@@ -441,7 +441,7 @@ class TestFootnotes(TestCase):
             '<p>A <code>code span with a footnote[^1] reference</code>.</p>'
         )
 
-    def testFootnoteReferenceWithinLink(self):
+    def test_footnote_reference_within_link(self):
         """Test footnote reference within a link."""
 
         self.assertMarkdownRenders(
@@ -449,7 +449,7 @@ class TestFootnotes(TestCase):
             '<p>A <a href="http://example.com">link with a footnote[^1] reference</a>.</p>'
         )
 
-    def testFootnoteReferenceWithinFootnoteDefinition(self):
+    def test_footnote_reference_within_footnote_definition(self):
         """Test footnote definition containing another footnote reference."""
 
         self.assertMarkdownRenders(
@@ -478,7 +478,7 @@ class TestFootnotes(TestCase):
             '</div>'
         )
 
-    def testFootnoteReferenceWithinBlockquote(self):
+    def test_footnote_reference_within_blockquote(self):
         """Test footnote reference within a blockquote."""
 
         self.assertMarkdownRenders(
@@ -504,7 +504,7 @@ class TestFootnotes(TestCase):
             '</div>'
         )
 
-    def testFootnoteReferenceWithinList(self):
+    def test_footnote_reference_within_list(self):
         """Test footnote reference within a list item."""
 
         self.assertMarkdownRenders(
@@ -532,7 +532,7 @@ class TestFootnotes(TestCase):
             '</div>'
         )
 
-    def testFootnoteReferencesWithinLooseList(self):
+    def test_footnote_references_within_loose_list(self):
         """Test footnote references within loose list items."""
 
         self.assertMarkdownRenders(
@@ -569,7 +569,7 @@ class TestFootnotes(TestCase):
             '</div>'
         )
 
-    def testFootnoteReferenceWithinHtml(self):
+    def test_footnote_reference_within_html(self):
         """Test footnote reference within HTML tags."""
 
         self.assertMarkdownRenders(
@@ -594,7 +594,7 @@ class TestFootnotes(TestCase):
             '</div>'
         )
 
-    def testDuplicateFootnoteReferences(self):
+    def test_duplicate_footnote_references(self):
         """Test multiple references to the same footnote."""
 
         self.assertMarkdownRenders(
@@ -622,7 +622,7 @@ class TestFootnotes(TestCase):
             '</div>'
         )
 
-    def testFootnoteReferenceWithoutDefinition(self):
+    def test_footnote_reference_without_definition(self):
         """Test footnote reference without corresponding definition."""
 
         self.assertMarkdownRenders(
@@ -630,7 +630,7 @@ class TestFootnotes(TestCase):
             '<p>This has a missing footnote[^missing].</p>'
         )
 
-    def testFootnoteDefinitionWithoutReference(self):
+    def test_footnote_definition_without_reference(self):
         """Test footnote definition without corresponding reference."""
 
         self.assertMarkdownRenders(
@@ -653,7 +653,7 @@ class TestFootnotes(TestCase):
             '</div>'
         )
 
-    def testFootnoteIdWithSpecialChars(self):
+    def test_footnote_id_with_special_chars(self):
         """Test footnote id containing special and Unicode characters."""
 
         self.assertMarkdownRenders(

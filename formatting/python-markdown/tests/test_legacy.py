@@ -27,9 +27,7 @@ import warnings
 warnings.simplefilter('error')
 # Except for the warnings that shouldn't
 warnings.filterwarnings('default', category=PendingDeprecationWarning)
-warnings.filterwarnings(
-    'default', category=DeprecationWarning, module='markdown'
-)
+warnings.filterwarnings('default', category=DeprecationWarning, module='markdown')
 
 parent_test_dir = os.path.abspath(os.path.dirname(__file__))
 
@@ -70,7 +68,6 @@ class TestPhp(LegacyTestCase):
     PHP-Specific Bugs: Not sure what to make of the escaping stuff here.
     Why is PHP not removing a backslash?
     """
-
     location = os.path.join(parent_test_dir, 'php')
     normalize = True
     input_ext = '.text'
@@ -86,7 +83,7 @@ class TestPhp(LegacyTestCase):
         'Mixed_OLs_and_ULs',
         'Emphasis',
         'Code_block_in_a_list_item',
-        'PHP_Specific_Bugs',
+        'PHP_Specific_Bugs'
     ]
 
 
@@ -111,7 +108,6 @@ class TestPl2007(LegacyTestCase):
 
     Code Spans: more backticks in raw html attributes TODO: fix me
     """
-
     location = os.path.join(parent_test_dir, 'pl/Tests_2007')
     normalize = True
     input_ext = '.text'
@@ -120,7 +116,7 @@ class TestPl2007(LegacyTestCase):
         'Code_Blocks',
         'Links,_reference_style',
         'Backslash_escapes',
-        'Code_Spans',
+        'Code_Spans'
     ]
 
 
@@ -139,11 +135,13 @@ class TestExtensions(LegacyTestCase):
     toc_out_of_order = Kwargs(extensions=['toc'])
 
     toc_nested = Kwargs(
-        extensions=['toc'], extension_configs={'toc': {'permalink': True}}
+        extensions=['toc'],
+        extension_configs={'toc': {'permalink': True}}
     )
 
     toc_nested2 = Kwargs(
-        extensions=['toc'], extension_configs={'toc': {'permalink': '[link]'}}
+        extensions=['toc'],
+        extension_configs={'toc': {'permalink': "[link]"}}
     )
 
     toc_nested_list = Kwargs(extensions=['toc'])
@@ -174,6 +172,10 @@ class TestExtensionsExtra(LegacyTestCase):
     extra_config = Kwargs(
         extensions=['extra'],
         extension_configs={
-            'extra': {'footnotes': {'PLACE_MARKER': '~~~placemarker~~~'}}
-        },
+            'extra': {
+                'footnotes': {
+                    'PLACE_MARKER': '~~~placemarker~~~'
+                }
+            }
+        }
     )

@@ -106,12 +106,12 @@ class HTMLExtractor(htmlparser.HTMLParser):
             kwargs['convert_charrefs'] = False
 
         # Block tags that should contain no content (self closing)
-        self.emptyTags = set(['hr'])
+        self.empty_tags = set(['hr'])
 
-        self.linenoStartCache = [0]
+        self.lineno_start_cache = [0]
 
-        self.overrideCommentUpdate = False
-        self.overrideCommentStart = 0
+        self.override_comment_update = False
+        self.override_comment_start = 0
 
         # This calls self.reset
         super().__init__(*args, **kwargs)
@@ -124,9 +124,9 @@ class HTMLExtractor(htmlparser.HTMLParser):
         self.stack: list[str] = []  # When `inraw==True`, stack contains a list of tags
         self._cache: list[str] = []
         self.cleandoc: list[str] = []
-        self.linenoStartCache = [0]
-        self.overrideCommentStart = 0
-        self.overrideCommentUpdate = False
+        self.lineno_start_cache = [0]
+        self.override_comment_start = 0
+        self.override_comment_update = False
 
         super().reset()
 
@@ -146,19 +146,19 @@ class HTMLExtractor(htmlparser.HTMLParser):
             self._cache = []
 
     @property
-    def lineOffset(self) -> int:
+    def line_offset(self) -> int:
         """Returns char index in `self.rawdata` for the start of the current line. """
-        for ii in range(len(self.linenoStartCache)-1, self.lineno-1):
-            lastLineStartPos = self.linenoStartCache[ii]
+        for ii in range(len(self.lineno_start_cache)-1, self.lineno-1):
+            lastLineStartPos = self.lineno_start_cache[ii]
             lfPos = self.rawdata.find('\n', lastLineStartPos)
             if lfPos == -1:
                 # No more newlines found. Use end of raw data as start of line beyond end.
                 lfPos = len(self.rawdata)
-            self.linenoStartCache.append(lfPos+1)
+            self.lineno_start_cache.append(lfPos+1)
 
-        return self.linenoStartCache[self.lineno-1]
+        return self.lineno_start_cache[self.lineno-1]
 
-    def atLineStart(self) -> bool:
+    def at_line_start(self) -> bool:
         """
         Returns True if current position is at start of line.
 
@@ -169,16 +169,16 @@ class HTMLExtractor(htmlparser.HTMLParser):
         if self.offset > 3:
             return False
         # Confirm up to first 3 chars are whitespace
-        return self.rawdata[self.lineOffset:self.lineOffset + self.offset].strip() == ''
+        return self.rawdata[self.line_offset:self.line_offset + self.offset].strip() == ''
 
-    def getEndtagText(self, tag: str) -> str:
+    def get_endtag_text(self, tag: str) -> str:
         """
         Returns the text of the end tag.
 
         If it fails to extract the actual text from the raw data, it builds a closing tag with `tag`.
         """
         # Attempt to extract actual tag from raw source text
-        start = self.lineOffset + self.offset
+        start = self.line_offset + self.offset
         m = htmlparser.endendtag.search(self.rawdata, start)
         if m:
             return self.rawdata[start:m.end()]
@@ -188,11 +188,11 @@ class HTMLExtractor(htmlparser.HTMLParser):
 
     def handle_starttag(self, tag: str, attrs: Sequence[tuple[str, str]]):
         # Handle tags that should always be empty and do not specify a closing tag
-        if tag in self.emptyTags:
+        if tag in self.empty_tags:
             self.handle_startendtag(tag, attrs)
             return
 
-        if self.md.isBlockLevel(tag) and (self.intail or (self.atLineStart() and not self.inraw)):
+        if self.md.is_block_level(tag) and (self.intail or (self.at_line_start() and not self.inraw)):
             # Started a new raw block. Prepare stack.
             self.inraw = True
             self.cleandoc.append('\n')
@@ -208,7 +208,7 @@ class HTMLExtractor(htmlparser.HTMLParser):
                 self.clear_cdata_mode()
 
     def handle_endtag(self, tag: str):
-        text = self.getEndtagText(tag)
+        text = self.get_endtag_text(tag)
 
         if self.inraw:
             self._cache.append(text)
@@ -219,7 +219,7 @@ class HTMLExtractor(htmlparser.HTMLParser):
                         break
             if len(self.stack) == 0:
                 # End of raw block.
-                if blankLineRe.match(self.rawdata[self.lineOffset + self.offset + len(text):]):
+                if blankLineRe.match(self.rawdata[self.line_offset + self.offset + len(text):]):
                     # Preserve blank line and end of raw block.
                     self._cache.append('\n')
                 else:
@@ -242,14 +242,14 @@ class HTMLExtractor(htmlparser.HTMLParser):
         else:
             self.cleandoc.append(data)
 
-    def handleEmptyTag(self, data: str, isBlock: bool):
+    def handle_empty_tag(self, data: str, is_block: bool):
         """ Handle empty tags (`<data>`). """
         if self.inraw or self.intail:
             # Append this to the existing raw block
             self._cache.append(data)
-        elif self.atLineStart() and isBlock:
+        elif self.at_line_start() and is_block:
             # Handle this as a standalone raw block
-            if blankLineRe.match(self.rawdata[self.lineOffset + self.offset + len(data):]):
+            if blankLineRe.match(self.rawdata[self.line_offset + self.offset + len(data):]):
                 # Preserve blank line after tag in raw block.
                 data += '\n'
             else:
@@ -266,13 +266,13 @@ class HTMLExtractor(htmlparser.HTMLParser):
             self.cleandoc.append(data)
 
     def handle_startendtag(self, tag: str, attrs):
-        self.handleEmptyTag(self.get_starttag_text(), isBlock=self.md.isBlockLevel(tag))
+        self.handle_empty_tag(self.get_starttag_text(), is_block=self.md.is_block_level(tag))
 
     def handle_charref(self, name: str):
-        self.handleEmptyTag('&#{};'.format(name), isBlock=False)
+        self.handle_empty_tag('&#{};'.format(name), is_block=False)
 
     def handle_entityref(self, name: str):
-        self.handleEmptyTag('&{};'.format(name), isBlock=False)
+        self.handle_empty_tag('&{};'.format(name), is_block=False)
 
     def handle_comment(self, data: str):
         # Check if the comment is unclosed, if so, we need to override position
@@ -280,30 +280,30 @@ class HTMLExtractor(htmlparser.HTMLParser):
         i = j - 2
         if self.rawdata[i:j] == '</':
             self.handle_data('<')
-            self.overrideCommentStart = i
-            self.overrideCommentUpdate = True
+            self.override_comment_start = i
+            self.override_comment_update = True
             return
-        self.handleEmptyTag('<!--{}-->'.format(data), isBlock=True)
+        self.handle_empty_tag('<!--{}-->'.format(data), is_block=True)
 
     def updatepos(self, i: int, j: int) -> int:
-        if self.overrideCommentUpdate:
-            self.overrideCommentUpdate = False
-            i = self.overrideCommentStart
-            j = self.overrideCommentStart + 1
+        if self.override_comment_update:
+            self.override_comment_update = False
+            i = self.override_comment_start
+            j = self.override_comment_start + 1
         return super().updatepos(i, j)
 
     def handle_decl(self, data: str):
-        self.handleEmptyTag('<!{}>'.format(data), isBlock=True)
+        self.handle_empty_tag('<!{}>'.format(data), is_block=True)
 
     def handle_pi(self, data: str):
-        self.handleEmptyTag('<?{}?>'.format(data), isBlock=True)
+        self.handle_empty_tag('<?{}?>'.format(data), is_block=True)
 
     def unknown_decl(self, data: str):
         end = ']]>' if data.startswith('CDATA[') else ']>'
-        self.handleEmptyTag('<![{}{}'.format(data, end), isBlock=True)
+        self.handle_empty_tag('<![{}{}'.format(data, end), is_block=True)
 
     def parse_pi(self, i: int) -> int:
-        if self.atLineStart() or self.intail:
+        if self.at_line_start() or self.intail:
             return super().parse_pi(i)
         # This is not the beginning of a raw block so treat as plain data
         # and avoid consuming any tags which may follow (see #1066).
@@ -325,7 +325,7 @@ class HTMLExtractor(htmlparser.HTMLParser):
         return match.end()
 
     def parse_html_declaration(self, i: int) -> int:
-        if self.atLineStart() or self.intail:
+        if self.at_line_start() or self.intail:
             if self.rawdata[i:i+3] == '<![' and not self.rawdata[i:i+9] == '<![CDATA[':
                 # We have encountered the bug in #1534 (Python bug `gh-77057`).
                 # Provide an override until we drop support for Python < 3.13.
@@ -346,18 +346,18 @@ class HTMLExtractor(htmlparser.HTMLParser):
         pos = super().parse_bogus_comment(i, report)
         if pos == -1:  # pragma: no cover
             return -1
-        self.handleEmptyTag(self.rawdata[i:pos], isBlock=False)
+        self.handle_empty_tag(self.rawdata[i:pos], is_block=False)
         return pos
 
     # The rest has been copied from base class in standard lib to address #1036.
     # As `__startag_text` is private, all references to it must be in this subclass.
     # The last few lines of `parse_starttag` are reversed so that `handle_starttag`
     # can override `cdata_mode` in certain situations (in a code span).
-    __starttagText: str | None = None
+    __starttag_text: str | None = None
 
     def get_starttag_text(self) -> str:
         """Return full source of start tag: `<...>`."""
-        return self.__starttagText
+        return self.__starttag_text
 
     def parse_starttag(self, i: int) -> int:  # pragma: no cover
         # Treat `</>` as normal data as it is not a real tag.
@@ -365,13 +365,13 @@ class HTMLExtractor(htmlparser.HTMLParser):
             self.handle_data(self.rawdata[i:i + 3])
             return i + 3
 
-        self.__starttagText = None
+        self.__starttag_text = None
         endpos = self.check_for_whole_start_tag(i)
         if endpos < 0:
             self.handle_data(self.rawdata[i:i + 1])
             return i + 1
         rawdata = self.rawdata
-        self.__starttagText = rawdata[i:endpos]
+        self.__starttag_text = rawdata[i:endpos]
 
         # Now parse the data between `i+1` and `j` into a tag and `attrs`
         attrs = []
@@ -397,12 +397,12 @@ class HTMLExtractor(htmlparser.HTMLParser):
         end = rawdata[k:endpos].strip()
         if end not in (">", "/>"):
             lineno, offset = self.getpos()
-            if "\n" in self.__starttagText:
-                lineno = lineno + self.__starttagText.count("\n")
-                offset = len(self.__starttagText) \
-                         - self.__starttagText.rfind("\n")  # noqa: E127
+            if "\n" in self.__starttag_text:
+                lineno = lineno + self.__starttag_text.count("\n")
+                offset = len(self.__starttag_text) \
+                         - self.__starttag_text.rfind("\n")  # noqa: E127
             else:
-                offset = offset + len(self.__starttagText)
+                offset = offset + len(self.__starttag_text)
             self.handle_data(rawdata[i:endpos])
             return endpos
         if end.endswith('/>'):

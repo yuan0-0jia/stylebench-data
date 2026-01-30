@@ -24,21 +24,21 @@ from markdown.test_tools import TestCase
 
 class TestParagraphBlocks(TestCase):
 
-    def testSimpleParagraph(self):
+    def test_simple_paragraph(self):
         self.assertMarkdownRenders(
             'A simple paragraph.',
 
             '<p>A simple paragraph.</p>'
         )
 
-    def testBlankLineBeforeParagraph(self):
+    def test_blank_line_before_paragraph(self):
         self.assertMarkdownRenders(
             '\nA paragraph preceded by a blank line.',
 
             '<p>A paragraph preceded by a blank line.</p>'
         )
 
-    def testMultilineParagraph(self):
+    def test_multiline_paragraph(self):
         self.assertMarkdownRenders(
             self.dedent(
                 """
@@ -56,7 +56,7 @@ class TestParagraphBlocks(TestCase):
             )
         )
 
-    def testParagraphLongLine(self):
+    def test_paragraph_long_line(self):
         self.assertMarkdownRenders(
             'A very long long long long long long long long long long long long long long long long long long long '
             'long long long long long long long long long long long long long paragraph on 1 line.',
@@ -65,7 +65,7 @@ class TestParagraphBlocks(TestCase):
             'long long long long long long long long long long long long long long paragraph on 1 line.</p>'
         )
 
-    def test2ParagraphsLongLine(self):
+    def test_2_paragraphs_long_line(self):
         self.assertMarkdownRenders(
             'A very long long long long long long long long long long long long long long long long long long long '
             'long long long long long long long long long long long long long paragraph on 1 line.\n\n'
@@ -79,7 +79,7 @@ class TestParagraphBlocks(TestCase):
             'long paragraph on 1 line.</p>'
         )
 
-    def testConsecutiveParagraphs(self):
+    def test_consecutive_paragraphs(self):
         self.assertMarkdownRenders(
             self.dedent(
                 """
@@ -96,7 +96,7 @@ class TestParagraphBlocks(TestCase):
             )
         )
 
-    def testConsecutiveParagraphsTab(self):
+    def test_consecutive_paragraphs_tab(self):
         self.assertMarkdownRenders(
             self.dedent(
                 """
@@ -113,7 +113,7 @@ class TestParagraphBlocks(TestCase):
             )
         )
 
-    def testConsecutiveParagraphsSpace(self):
+    def test_consecutive_paragraphs_space(self):
         self.assertMarkdownRenders(
             self.dedent(
                 """
@@ -130,7 +130,7 @@ class TestParagraphBlocks(TestCase):
             )
         )
 
-    def testConsecutiveMultilineParagraphs(self):
+    def test_consecutive_multiline_paragraphs(self):
         self.assertMarkdownRenders(
             self.dedent(
                 """
@@ -151,42 +151,42 @@ class TestParagraphBlocks(TestCase):
             )
         )
 
-    def testParagraphLeadingSpace(self):
+    def test_paragraph_leading_space(self):
         self.assertMarkdownRenders(
             ' A paragraph with 1 leading space.',
 
             '<p>A paragraph with 1 leading space.</p>'
         )
 
-    def testParagraph2LeadingSpaces(self):
+    def test_paragraph_2_leading_spaces(self):
         self.assertMarkdownRenders(
             '  A paragraph with 2 leading spaces.',
 
             '<p>A paragraph with 2 leading spaces.</p>'
         )
 
-    def testParagraph3LeadingSpaces(self):
+    def test_paragraph_3_leading_spaces(self):
         self.assertMarkdownRenders(
             '   A paragraph with 3 leading spaces.',
 
             '<p>A paragraph with 3 leading spaces.</p>'
         )
 
-    def testParagraphTrailingLeadingSpace(self):
+    def test_paragraph_trailing_leading_space(self):
         self.assertMarkdownRenders(
             ' A paragraph with 1 trailing and 1 leading space. ',
 
             '<p>A paragraph with 1 trailing and 1 leading space. </p>'
         )
 
-    def testParagraphTrailingTab(self):
+    def test_paragraph_trailing_tab(self):
         self.assertMarkdownRenders(
             'A paragraph with 1 trailing tab.\t',
 
             '<p>A paragraph with 1 trailing tab.    </p>'
         )
 
-    def testParagraphsCr(self):
+    def test_paragraphs_CR(self):
         self.assertMarkdownRenders(
             'Paragraph 1, line 1.\rParagraph 1, line 2.\r\rParagraph 2, line 1.\rParagraph 2, line 2.\r',
 
@@ -200,7 +200,7 @@ class TestParagraphBlocks(TestCase):
             )
         )
 
-    def testParagraphsLf(self):
+    def test_paragraphs_LF(self):
         self.assertMarkdownRenders(
             'Paragraph 1, line 1.\nParagraph 1, line 2.\n\nParagraph 2, line 1.\nParagraph 2, line 2.\n',
 
@@ -214,7 +214,7 @@ class TestParagraphBlocks(TestCase):
             )
         )
 
-    def testParagraphsCrLf(self):
+    def test_paragraphs_CR_LF(self):
         self.assertMarkdownRenders(
             'Paragraph 1, line 1.\r\nParagraph 1, line 2.\r\n\r\nParagraph 2, line 1.\r\nParagraph 2, line 2.\r\n',
 
@@ -228,7 +228,7 @@ class TestParagraphBlocks(TestCase):
             )
         )
 
-    def testParagraphsNoList(self):
+    def test_paragraphs_no_list(self):
         self.assertMarkdownRenders(
             self.dedent(
                 """

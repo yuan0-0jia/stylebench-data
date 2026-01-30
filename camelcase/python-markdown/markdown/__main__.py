@@ -42,7 +42,7 @@ from logging import DEBUG, WARNING, CRITICAL
 logger = logging.getLogger('MARKDOWN')
 
 
-def parseOptions(args=None, values=None):
+def parse_options(args=None, values=None):
     """
     Define and parse `optparse` options for command-line usage.
     """
@@ -127,7 +127,7 @@ def run():  # pragma: no cover
     """Run Markdown from the command line."""
 
     # Parse options and adjust logging level if necessary
-    options, loggingLevel = parseOptions()
+    options, loggingLevel = parse_options()
     if not options:
         sys.exit(2)
     logger.setLevel(loggingLevel)

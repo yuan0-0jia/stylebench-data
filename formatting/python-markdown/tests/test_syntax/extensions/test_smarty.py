@@ -24,75 +24,71 @@ from markdown.test_tools import TestCase
 
 
 class TestSmarty(TestCase):
+
     default_kwargs = {'extensions': ['smarty']}
 
     def test_basic(self):
         self.assertMarkdownRenders(
-            "It's fun. What's fun?", '<p>It&rsquo;s fun. What&rsquo;s fun?</p>'
+            "It's fun. What's fun?",
+            '<p>It&rsquo;s fun. What&rsquo;s fun?</p>'
         )
         self.assertMarkdownRenders(
             '"Isn\'t this fun"? --- she said...',
-            '<p>&ldquo;Isn&rsquo;t this fun&rdquo;? &mdash; she said&hellip;</p>',
+            '<p>&ldquo;Isn&rsquo;t this fun&rdquo;? &mdash; she said&hellip;</p>'
         )
         self.assertMarkdownRenders(
             '"\'Quoted\' words in a larger quote."',
-            '<p>&ldquo;&lsquo;Quoted&rsquo; words in a larger quote.&rdquo;</p>',
+            '<p>&ldquo;&lsquo;Quoted&rsquo; words in a larger quote.&rdquo;</p>'
         )
         self.assertMarkdownRenders(
             '\'Quoted "words" in a larger quote.\'',
-            '<p>&lsquo;Quoted &ldquo;words&rdquo; in a larger quote.&rsquo;</p>',
+            '<p>&lsquo;Quoted &ldquo;words&rdquo; in a larger quote.&rsquo;</p>'
         )
         self.assertMarkdownRenders(
             '"Quoted words at the \'end.\'"',
-            '<p>&ldquo;Quoted words at the &lsquo;end.&rsquo;&rdquo;</p>',
+            '<p>&ldquo;Quoted words at the &lsquo;end.&rsquo;&rdquo;</p>'
         )
         self.assertMarkdownRenders(
             '\'Quoted words at the "end."\'',
-            '<p>&lsquo;Quoted words at the &ldquo;end.&rdquo;&rsquo;</p>',
+            '<p>&lsquo;Quoted words at the &ldquo;end.&rdquo;&rsquo;</p>'
         )
         self.assertMarkdownRenders(
             '(He replied, "She said \'Hello.\'")',
-            '<p>(He replied, &ldquo;She said &lsquo;Hello.&rsquo;&rdquo;)</p>',
+            '<p>(He replied, &ldquo;She said &lsquo;Hello.&rsquo;&rdquo;)</p>'
         )
         self.assertMarkdownRenders(
             '<span>He replied, "She said \'Hello.\'"</span>',
-            '<p><span>He replied, &ldquo;She said &lsquo;Hello.&rsquo;&rdquo;</span></p>',
+            '<p><span>He replied, &ldquo;She said &lsquo;Hello.&rsquo;&rdquo;</span></p>'
         )
         self.assertMarkdownRenders(
             '"quoted" text and **bold "quoted" text**',
-            '<p>&ldquo;quoted&rdquo; text and <strong>bold &ldquo;quoted&rdquo; text</strong></p>',
+            '<p>&ldquo;quoted&rdquo; text and <strong>bold &ldquo;quoted&rdquo; text</strong></p>'
         )
         self.assertMarkdownRenders(
             "'quoted' text and **bold 'quoted' text**",
-            '<p>&lsquo;quoted&rsquo; text and <strong>bold &lsquo;quoted&rsquo; text</strong></p>',
+            '<p>&lsquo;quoted&rsquo; text and <strong>bold &lsquo;quoted&rsquo; text</strong></p>'
         )
         self.assertMarkdownRenders(
             'em-dashes (---) and ellipes (...)',
-            '<p>em-dashes (&mdash;) and ellipes (&hellip;)</p>',
+            '<p>em-dashes (&mdash;) and ellipes (&hellip;)</p>'
         )
         self.assertMarkdownRenders(
             '"[Link](http://example.com)" --- she said.',
-            '<p>&ldquo;<a href="http://example.com">Link</a>&rdquo; &mdash; she said.</p>',
+            '<p>&ldquo;<a href="http://example.com">Link</a>&rdquo; &mdash; she said.</p>'
         )
         self.assertMarkdownRenders(
             '"Ellipsis within quotes..."',
-            '<p>&ldquo;Ellipsis within quotes&hellip;&rdquo;</p>',
+            '<p>&ldquo;Ellipsis within quotes&hellip;&rdquo;</p>'
         )
         self.assertMarkdownRenders(
             "*Custer*'s Last Stand",
-            '<p><em>Custer</em>&rsquo;s Last Stand</p>',
+            "<p><em>Custer</em>&rsquo;s Last Stand</p>"
         )
 
     def test_years(self):
-        self.assertMarkdownRenders(
-            "1440--80's", '<p>1440&ndash;80&rsquo;s</p>'
-        )
-        self.assertMarkdownRenders(
-            "1440--'80s", '<p>1440&ndash;&rsquo;80s</p>'
-        )
-        self.assertMarkdownRenders(
-            "1440---'80s", '<p>1440&mdash;&rsquo;80s</p>'
-        )
+        self.assertMarkdownRenders("1440--80's", '<p>1440&ndash;80&rsquo;s</p>')
+        self.assertMarkdownRenders("1440--'80s", '<p>1440&ndash;&rsquo;80s</p>')
+        self.assertMarkdownRenders("1440---'80s", '<p>1440&mdash;&rsquo;80s</p>')
         self.assertMarkdownRenders("1960's", '<p>1960&rsquo;s</p>')
         self.assertMarkdownRenders("one two '60s", '<p>one two &rsquo;60s</p>')
         self.assertMarkdownRenders("'60s", '<p>&rsquo;60s</p>')
@@ -100,7 +96,7 @@ class TestSmarty(TestCase):
     def test_wrapping_line(self):
         text = (
             "A line that 'wraps' with\n"
-            '*emphasis* at the beginning of the next line.'
+            "*emphasis* at the beginning of the next line."
         )
         html = (
             '<p>A line that &lsquo;wraps&rsquo; with\n'
@@ -110,36 +106,43 @@ class TestSmarty(TestCase):
 
     def test_escaped(self):
         self.assertMarkdownRenders(
-            'Escaped \\-- ndash', '<p>Escaped -- ndash</p>'
+            'Escaped \\-- ndash',
+            '<p>Escaped -- ndash</p>'
         )
         self.assertMarkdownRenders(
-            '\\\'Escaped\\\' \\"quotes\\"', '<p>\'Escaped\' "quotes"</p>'
+            '\\\'Escaped\\\' \\"quotes\\"',
+            '<p>\'Escaped\' "quotes"</p>'
         )
         self.assertMarkdownRenders(
-            'Escaped ellipsis\\...', '<p>Escaped ellipsis...</p>'
+            'Escaped ellipsis\\...',
+            '<p>Escaped ellipsis...</p>'
         )
         self.assertMarkdownRenders(
             '\'Escaped \\"quotes\\" in real ones\'',
-            '<p>&lsquo;Escaped "quotes" in real ones&rsquo;</p>',
+            '<p>&lsquo;Escaped "quotes" in real ones&rsquo;</p>'
         )
         self.assertMarkdownRenders(
             '\\\'"Real" quotes in escaped ones\\\'',
-            "<p>'&ldquo;Real&rdquo; quotes in escaped ones'</p>",
+            "<p>'&ldquo;Real&rdquo; quotes in escaped ones'</p>"
         )
 
     def test_escaped_attr(self):
         self.assertMarkdownRenders(
-            '![x"x](x)', '<p><img alt="x&quot;x" src="x" /></p>'
+            '![x\"x](x)',
+            '<p><img alt="x&quot;x" src="x" /></p>'
         )
 
     def test_code_spans(self):
         self.assertMarkdownRenders(
             'Skip `"code" -- --- \'spans\' ...`.',
-            '<p>Skip <code>"code" -- --- \'spans\' ...</code>.</p>',
+            '<p>Skip <code>"code" -- --- \'spans\' ...</code>.</p>'
         )
 
     def test_code_blocks(self):
-        text = '    Also skip "code" \'blocks\'\n    foo -- bar --- baz ...'
+        text = (
+            '    Also skip "code" \'blocks\'\n'
+            '    foo -- bar --- baz ...'
+        )
         html = (
             '<pre><code>Also skip "code" \'blocks\'\n'
             'foo -- bar --- baz ...\n'
@@ -152,23 +155,33 @@ class TestSmarty(TestCase):
 
 
 class TestSmartyAngledQuotes(TestCase):
+
     default_kwargs = {
         'extensions': ['smarty'],
-        'extension_configs': {'smarty': {'smart_angled_quotes': True}},
+        'extension_configs': {
+            'smarty': {
+                'smart_angled_quotes': True,
+            },
+        },
     }
 
     def test_angled_quotes(self):
-        self.assertMarkdownRenders('<<hello>>', '<p>&laquo;hello&raquo;</p>')
         self.assertMarkdownRenders(
-            'Кавычки-<<ёлочки>>', '<p>Кавычки-&laquo;ёлочки&raquo;</p>'
+            '<<hello>>',
+            '<p>&laquo;hello&raquo;</p>'
+        )
+        self.assertMarkdownRenders(
+            'Кавычки-<<ёлочки>>',
+            '<p>Кавычки-&laquo;ёлочки&raquo;</p>'
         )
         self.assertMarkdownRenders(
             'Anführungszeichen->>Chevrons<<',
-            '<p>Anführungszeichen-&raquo;Chevrons&laquo;</p>',
+            '<p>Anführungszeichen-&raquo;Chevrons&laquo;</p>'
         )
 
 
 class TestSmartyCustomSubstitutions(TestCase):
+
     default_kwargs = {
         'extensions': ['smarty'],
         'extension_configs': {
@@ -185,7 +198,7 @@ class TestSmartyCustomSubstitutions(TestCase):
                     'left-angle-quote': '[',
                     'right-angle-quote': ']',
                 },
-            }
+            },
         },
     }
 
@@ -204,7 +217,10 @@ class TestSmartyCustomSubstitutions(TestCase):
 
 
 class TestSmartyAndToc(TestCase):
-    default_kwargs = {'extensions': ['smarty', 'toc']}
+
+    default_kwargs = {
+        'extensions': ['smarty', 'toc'],
+    }
 
     def test_smarty_and_toc(self):
         self.assertMarkdownRenders(
@@ -219,7 +235,7 @@ class TestSmartyAndToc(TestCase):
                         'html': '<em>Foo</em> &mdash; <code>bar</code>',
                         'data-toc-label': '',
                         'children': [],
-                    }
-                ]
+                    },
+                ],
             },
         )

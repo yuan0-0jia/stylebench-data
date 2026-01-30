@@ -24,7 +24,7 @@ from markdown.test_tools import TestCase
 
 class TestAutomaticLinks(TestCase):
 
-    def testEmailAddress(self):
+    def test_email_address(self):
         self.assertMarkdownRenders(
             'asdfasdfadsfasd <yuri@freewisdom.org> or you can say ',
             '<p>asdfasdfadsfasd <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#121;&#117;&#114;'
@@ -33,7 +33,7 @@ class TestAutomaticLinks(TestCase):
             '&#111;&#109;&#46;&#111;&#114;&#103;</a> or you can say </p>'
         )
 
-    def testMailtoEmailAddress(self):
+    def test_mailto_email_address(self):
         self.assertMarkdownRenders(
             'instead <mailto:yuri@freewisdom.org>',
             '<p>instead <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#121;&#117;&#114;&#105;&#64;'
@@ -42,7 +42,7 @@ class TestAutomaticLinks(TestCase):
             '&#46;&#111;&#114;&#103;</a></p>'
         )
 
-    def testEmailAddressWithAmpersand(self):
+    def test_email_address_with_ampersand(self):
         self.assertMarkdownRenders(
             '<bob&sue@example.com>',
             '<p><a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#98;&#111;&#98;&#38;&#115;&#117;&#101;'
@@ -50,13 +50,13 @@ class TestAutomaticLinks(TestCase):
             '&#115;&#117;&#101;&#64;&#101;&#120;&#97;&#109;&#112;&#108;&#101;&#46;&#99;&#111;&#109;</a></p>'
         )
 
-    def testInvalidEmailAddressLocalPart(self):
+    def test_invalid_email_address_local_part(self):
         self.assertMarkdownRenders(
             'Missing local-part <@domain>',
             '<p>Missing local-part &lt;@domain&gt;</p>'
         )
 
-    def testInvalidEmailAddressDomain(self):
+    def test_invalid_email_address_domain(self):
         self.assertMarkdownRenders(
             'Missing domain <local-part@>',
             '<p>Missing domain &lt;local-part@&gt;</p>'

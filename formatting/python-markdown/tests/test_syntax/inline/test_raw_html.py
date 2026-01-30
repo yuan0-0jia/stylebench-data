@@ -24,31 +24,19 @@ from markdown.test_tools import TestCase
 
 class TestRawHtml(TestCase):
     def test_inline_html_angle_brackets(self):
-        self.assertMarkdownRenders(
-            '<span>e<c</span>', '<p><span>e&lt;c</span></p>'
-        )
-        self.assertMarkdownRenders(
-            '<span>e>c</span>', '<p><span>e&gt;c</span></p>'
-        )
-        self.assertMarkdownRenders(
-            '<span>e < c</span>', '<p><span>e &lt; c</span></p>'
-        )
-        self.assertMarkdownRenders(
-            '<span>e > c</span>', '<p><span>e &gt; c</span></p>'
-        )
+        self.assertMarkdownRenders("<span>e<c</span>", "<p><span>e&lt;c</span></p>")
+        self.assertMarkdownRenders("<span>e>c</span>", "<p><span>e&gt;c</span></p>")
+        self.assertMarkdownRenders("<span>e < c</span>", "<p><span>e &lt; c</span></p>")
+        self.assertMarkdownRenders("<span>e > c</span>", "<p><span>e &gt; c</span></p>")
 
     def test_inline_html_backslashes(self):
-        self.assertMarkdownRenders(
-            '<img src="..\\..\\foo.png">', '<p><img src="..\\..\\foo.png"></p>'
-        )
+        self.assertMarkdownRenders('<img src="..\\..\\foo.png">', '<p><img src="..\\..\\foo.png"></p>')
 
     def test_noname_tag(self):
-        self.assertMarkdownRenders(
-            '<span></></span>', '<p><span>&lt;/&gt;</span></p>'
-        )
+        self.assertMarkdownRenders('<span></></span>', '<p><span>&lt;/&gt;</span></p>')
 
     def test_markdown_nested_in_inline_comment(self):
         self.assertMarkdownRenders(
             'Example: <!-- [**Bold link**](http://example.com) -->',
-            '<p>Example: <!-- <a href="http://example.com"><strong>Bold link</strong></a> --></p>',
+            '<p>Example: <!-- <a href="http://example.com"><strong>Bold link</strong></a> --></p>'
         )

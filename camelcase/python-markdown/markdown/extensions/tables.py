@@ -63,7 +63,7 @@ class TableProcessor(BlockProcessor):
                 self.border |= PIPE_LEFT
             if self.RE_END_BORDER.search(header0) is not None:
                 self.border |= PIPE_RIGHT
-            row = self._splitRow(header0)
+            row = self._split_row(header0)
             row0Len = len(row)
             isTable = row0Len > 1
 
@@ -77,7 +77,7 @@ class TableProcessor(BlockProcessor):
                         break
 
             if isTable:
-                row = self._splitRow(rows[1])
+                row = self._split_row(rows[1])
                 isTable = (len(row) == row0Len) and set(''.join(row)) <= set('|:- ')
                 if isTable:
                     self.separator = row
@@ -106,16 +106,16 @@ class TableProcessor(BlockProcessor):
         # Build table
         table = etree.SubElement(parent, 'table')
         thead = etree.SubElement(table, 'thead')
-        self._buildRow(header, thead, align)
+        self._build_row(header, thead, align)
         tbody = etree.SubElement(table, 'tbody')
         if len(rows) == 0:
             # Handle empty table
-            self._buildEmptyRow(tbody, align)
+            self._build_empty_row(tbody, align)
         else:
             for row in rows:
-                self._buildRow(row.strip(' '), tbody, align)
+                self._build_row(row.strip(' '), tbody, align)
 
-    def _buildEmptyRow(self, parent: etree.Element, align: Sequence[str | None]) -> None:
+    def _build_empty_row(self, parent: etree.Element, align: Sequence[str | None]) -> None:
         """Build an empty row."""
         tr = etree.SubElement(parent, 'tr')
         count = len(align)
@@ -123,13 +123,13 @@ class TableProcessor(BlockProcessor):
             etree.SubElement(tr, 'td')
             count -= 1
 
-    def _buildRow(self, row: str, parent: etree.Element, align: Sequence[str | None]) -> None:
+    def _build_row(self, row: str, parent: etree.Element, align: Sequence[str | None]) -> None:
         """ Given a row of text, build table cells. """
         tr = etree.SubElement(parent, 'tr')
         tag = 'td'
         if parent.tag == 'thead':
             tag = 'th'
-        cells = self._splitRow(row)
+        cells = self._split_row(row)
         # We use align here rather than cells to ensure every row
         # contains the same number of columns.
         for i, a in enumerate(align):
@@ -144,7 +144,7 @@ class TableProcessor(BlockProcessor):
                 else:
                     c.set('style', f'text-align: {a};')
 
-    def _splitRow(self, row: str) -> list[str]:
+    def _split_row(self, row: str) -> list[str]:
         """ split a row of text into list of cells. """
         if self.border:
             if row.startswith('|'):
