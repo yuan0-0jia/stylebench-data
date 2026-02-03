@@ -419,55 +419,61 @@
       "bug_id": "validators-original-001",
       "file_path": "src/validators/country.py",
       "line_number": 305,
-      "mutation_type": "eq_ne",
+      "mutation_type": "comparison",
       "original_text": "==",
       "mutated_text": "!=",
-      "context": "...type(value)) == \"invalid\":         return False      if iso_format == \"alpha2\":..."
+      "context": "...type(value)) == \"invalid\":         return False      if iso_format == \"alpha2\":...",
+      "mutation_type_original": "eq_ne"
     },
     {
       "bug_id": "validators-original-002",
       "file_path": "src/validators/country.py",
       "line_number": 305,
-      "mutation_type": "eq_ne",
+      "mutation_type": "comparison",
       "original_text": "==",
       "mutated_text": "!=",
-      "context": "...if iso_format == \"alpha2\":         return (             value.upper() in set(_alp..."
+      "context": "...if iso_format == \"alpha2\":         return (             value.upper() in set(_alp...",
+      "mutation_type_original": "eq_ne"
     },
     {
       "bug_id": "validators-original-003",
       "file_path": "src/validators/country.py",
       "line_number": 308,
-      "mutation_type": "eq_ne",
+      "mutation_type": "comparison",
       "original_text": "==",
       "mutated_text": "!=",
-      "context": "...value.upper() in set(_alpha3_to_alpha2.values())             if ignore_case..."
+      "context": "...value.upper() in set(_alpha3_to_alpha2.values())             if ignore_case...",
+      "mutation_type_original": "eq_ne"
     },
     {
       "bug_id": "validators-original-004",
       "file_path": "src/validators/country.py",
       "line_number": 314,
-      "mutation_type": "eq_ne",
+      "mutation_type": "comparison",
       "original_text": "==",
       "mutated_text": "!=",
-      "context": "...() in _alpha3_to_alpha2 if ignore_case else value in _alpha3_to_alpha2      return..."
+      "context": "...() in _alpha3_to_alpha2 if ignore_case else value in _alpha3_to_alpha2      return...",
+      "mutation_type_original": "eq_ne"
     },
     {
       "bug_id": "validators-original-005",
       "file_path": "src/validators/country.py",
       "line_number": 317,
-      "mutation_type": "eq_ne",
+      "mutation_type": "comparison",
       "original_text": "==",
       "mutated_text": "!=",
-      "context": "...f currency(value: str, /, *, skip_symbols: bool = True, ignore_case: bool = False)..."
+      "context": "...f currency(value: str, /, *, skip_symbols: bool = True, ignore_case: bool = False)...",
+      "mutation_type_original": "eq_ne"
     },
     {
       "bug_id": "validators-original-006",
       "file_path": "src/validators/country.py",
       "line_number": 352,
-      "mutation_type": "eq_ne",
+      "mutation_type": "comparison",
       "original_text": "!=",
       "mutated_text": "==",
-      "context": "...value.upper() in _currency_iso4217 if ignore_case else value in _currency_iso4217"
+      "context": "...value.upper() in _currency_iso4217 if ignore_case else value in _currency_iso4217",
+      "mutation_type_original": "eq_ne"
     },
     {
       "bug_id": "validators-original-007",
@@ -527,343 +533,381 @@
       "bug_id": "validators-original-013",
       "file_path": "src/validators/country.py",
       "line_number": 317,
-      "mutation_type": "true_false",
+      "mutation_type": "logic",
       "original_text": "False",
       "mutated_text": "True",
-      "context": "...str, /, *, skip_symbols: bool = True, ignore_case: bool = False):     \"\"\"Validates gi..."
+      "context": "...str, /, *, skip_symbols: bool = True, ignore_case: bool = False):     \"\"\"Validates gi...",
+      "mutation_type_original": "true_false"
     },
     {
       "bug_id": "validators-original-014",
       "file_path": "src/validators/country.py",
       "line_number": 321,
-      "mutation_type": "true_false",
+      "mutation_type": "logic",
       "original_text": "True",
       "mutated_text": "False",
-      "context": "...\"\"Validates given currency code.      This performs [ISO 4217][1] currency code/symb..."
+      "context": "...\"\"Validates given currency code.      This performs [ISO 4217][1] currency code/symb...",
+      "mutation_type_original": "true_false"
     },
     {
       "bug_id": "validators-original-015",
       "file_path": "src/validators/country.py",
       "line_number": 321,
-      "mutation_type": "true_false",
+      "mutation_type": "logic",
       "original_text": "False",
       "mutated_text": "True",
-      "context": "...code.      This performs [ISO 4217][1] currency code/symbol validation.      [1]: ht..."
+      "context": "...code.      This performs [ISO 4217][1] currency code/symbol validation.      [1]: ht...",
+      "mutation_type_original": "true_false"
     },
     {
       "bug_id": "validators-original-016",
       "file_path": "src/validators/country.py",
       "line_number": 347,
-      "mutation_type": "true_false",
+      "mutation_type": "logic",
       "original_text": "False",
       "mutated_text": "True",
-      "context": "...e in _currency_symbols:         return True      if len(value) != 3:         return F..."
+      "context": "...e in _currency_symbols:         return True      if len(value) != 3:         return F...",
+      "mutation_type_original": "true_false"
     },
     {
       "bug_id": "validators-original-017",
       "file_path": "src/validators/country.py",
       "line_number": 353,
-      "mutation_type": "true_false",
+      "mutation_type": "logic",
       "original_text": "False",
       "mutated_text": "True",
-      "context": "...rency_iso4217 if ignore_case else value in _currency_iso4217"
+      "context": "...rency_iso4217 if ignore_case else value in _currency_iso4217",
+      "mutation_type_original": "true_false"
     },
     {
       "bug_id": "validators-original-018",
       "file_path": "src/validators/country.py",
       "line_number": 237,
-      "mutation_type": "return_none",
+      "mutation_type": "return_value",
       "original_text": "\"invalid\"",
       "mutated_text": "None",
-      "context": "...ng_code(value: str, /):     \"\"\"Validates given calling code.      This performs country's callin..."
+      "context": "...ng_code(value: str, /):     \"\"\"Validates given calling code.      This performs country's callin...",
+      "mutation_type_original": "return_none"
     },
     {
       "bug_id": "validators-original-019",
       "file_path": "src/validators/country.py",
       "line_number": 263,
-      "mutation_type": "return_none",
+      "mutation_type": "return_value",
       "original_text": "value in set(_calling_codes.values())",
       "mutated_text": "None",
-      "context": "...es())   @validator def country_code(value: str, /, *, iso_format: str = \"auto\", ignore_case: bool = False):     \"\"\"Validates..."
+      "context": "...es())   @validator def country_code(value: str, /, *, iso_format: str = \"auto\", ignore_case: bool = False):     \"\"\"Validates...",
+      "mutation_type_original": "return_none"
     },
     {
       "bug_id": "validators-original-020",
       "file_path": "src/validators/country.py",
       "line_number": 315,
-      "mutation_type": "return_none",
+      "mutation_type": "return_value",
       "original_text": "value.upper() in _alpha3_to_alpha2 if ignore_case else value in _alpha3_to_alpha2",
       "mutated_text": "None",
-      "context": "...a2 if ignore_case else value in _alpha3_to_alpha2      return value in _numeric if iso_format == \"numeric\" else False   @validator def currency(value: str, /, *, skip_s..."
+      "context": "...a2 if ignore_case else value in _alpha3_to_alpha2      return value in _numeric if iso_format == \"numeric\" else False   @validator def currency(value: str, /, *, skip_s...",
+      "mutation_type_original": "return_none"
     },
     {
       "bug_id": "validators-original-021",
       "file_path": "src/validators/country.py",
       "line_number": 355,
-      "mutation_type": "return_none",
+      "mutation_type": "return_value",
       "original_text": "value.upper() in _currency_iso4217 if ignore_case else value in _currency_iso4217",
       "mutated_text": "None",
-      "context": "...17 if ignore_case else value in _currency_iso4217"
+      "context": "...17 if ignore_case else value in _currency_iso4217",
+      "mutation_type_original": "return_none"
     },
     {
       "bug_id": "validators-original-022",
       "file_path": "src/validators/country.py",
       "line_number": 302,
-      "mutation_type": "lt_gt",
+      "mutation_type": "comparison",
       "original_text": "<",
       "mutated_text": ">",
-      "context": "...format == \"auto\" and (iso_format := _get_code_type(value)) == \"invalid\":..."
+      "context": "...format == \"auto\" and (iso_format := _get_code_type(value)) == \"invalid\":...",
+      "mutation_type_original": "lt_gt"
     },
     {
       "bug_id": "validators-original-023",
       "file_path": "src/validators/country.py",
       "line_number": 310,
-      "mutation_type": "in_not_in",
+      "mutation_type": "logic",
       "original_text": "in",
       "mutated_text": "not in",
-      "context": "...if ignore_case             else value in set(_alpha3_to_alpha2.values())..."
+      "context": "...if ignore_case             else value in set(_alpha3_to_alpha2.values())...",
+      "mutation_type_original": "in_not_in"
     },
     {
       "bug_id": "validators-original-024",
       "file_path": "src/validators/country.py",
       "line_number": 349,
-      "mutation_type": "in_not_in",
+      "mutation_type": "logic",
       "original_text": "in",
       "mutated_text": "not in",
-      "context": "...ue      if len(value) != 3:         return False      return value.upper() in _cur..."
+      "context": "...ue      if len(value) != 3:         return False      return value.upper() in _cur...",
+      "mutation_type_original": "in_not_in"
     },
     {
       "bug_id": "validators-original-025",
       "file_path": "src/validators/country.py",
       "line_number": 302,
-      "mutation_type": "plus_one",
+      "mutation_type": "boundary",
       "original_text": "4",
       "mutated_text": "5",
-      "context": "...rmat == \"auto\" and (iso_format := _get_code_type(value)) == \"invalid\":         re..."
+      "context": "...rmat == \"auto\" and (iso_format := _get_code_type(value)) == \"invalid\":         re...",
+      "mutation_type_original": "plus_one"
     },
     {
       "bug_id": "validators-original-026",
       "file_path": "src/validators/country.py",
       "line_number": 352,
-      "mutation_type": "plus_one",
+      "mutation_type": "boundary",
       "original_text": "3",
       "mutated_text": "4",
-      "context": "...ue.upper() in _currency_iso4217 if ignore_case else value in _currency_iso4217"
+      "context": "...ue.upper() in _currency_iso4217 if ignore_case else value in _currency_iso4217",
+      "mutation_type_original": "plus_one"
     },
     {
       "bug_id": "validators-original-027",
       "file_path": "src/validators/country.py",
       "line_number": 233,
-      "mutation_type": "minus_one",
+      "mutation_type": "boundary",
       "original_text": "2",
       "mutated_text": "1",
-      "context": "...if len(format_type) == 3:             return \"alpha3\"     return \"invalid\"   @val..."
+      "context": "...if len(format_type) == 3:             return \"alpha3\"     return \"invalid\"   @val...",
+      "mutation_type_original": "minus_one"
     },
     {
       "bug_id": "validators-original-028",
       "file_path": "src/validators/country.py",
       "line_number": 235,
-      "mutation_type": "minus_one",
+      "mutation_type": "boundary",
       "original_text": "3",
       "mutated_text": "2",
-      "context": "...rn \"invalid\"   @validator def calling_code(value: str, /):     \"\"\"Validates given..."
+      "context": "...rn \"invalid\"   @validator def calling_code(value: str, /):     \"\"\"Validates given...",
+      "mutation_type_original": "minus_one"
     },
     {
       "bug_id": "validators-original-029",
       "file_path": "src/validators/country.py",
       "line_number": 302,
-      "mutation_type": "minus_one",
+      "mutation_type": "boundary",
       "original_text": "1",
       "mutated_text": "0",
-      "context": "...se      if iso_format == \"auto\" and (iso_format := _get_code_type(value)) == \"inv..."
+      "context": "...se      if iso_format == \"auto\" and (iso_format := _get_code_type(value)) == \"inv...",
+      "mutation_type_original": "minus_one"
     },
     {
       "bug_id": "validators-original-030",
       "file_path": "src/validators/country.py",
       "line_number": 302,
-      "mutation_type": "minus_one",
+      "mutation_type": "boundary",
       "original_text": "4",
       "mutated_text": "3",
-      "context": "...rmat == \"auto\" and (iso_format := _get_code_type(value)) == \"invalid\":         re..."
+      "context": "...rmat == \"auto\" and (iso_format := _get_code_type(value)) == \"invalid\":         re...",
+      "mutation_type_original": "minus_one"
     },
     {
       "bug_id": "validators-original-031",
       "file_path": "src/validators/country.py",
       "line_number": 352,
-      "mutation_type": "minus_one",
+      "mutation_type": "boundary",
       "original_text": "3",
       "mutated_text": "2",
-      "context": "...ue.upper() in _currency_iso4217 if ignore_case else value in _currency_iso4217"
+      "context": "...ue.upper() in _currency_iso4217 if ignore_case else value in _currency_iso4217",
+      "mutation_type_original": "minus_one"
     },
     {
       "bug_id": "validators-original-032",
       "file_path": "src/validators/crypto_addresses/btc_address.py",
       "line_number": 23,
-      "mutation_type": "eq_ne",
+      "mutation_type": "comparison",
       "original_text": "==",
       "mutated_text": "!=",
-      "context": "...decoded_bytes[-4:]     return checksum == sha256(sha256(header).digest()).digest(..."
+      "context": "...decoded_bytes[-4:]     return checksum == sha256(sha256(header).digest()).digest(...",
+      "mutation_type_original": "eq_ne"
     },
     {
       "bug_id": "validators-original-033",
       "file_path": "src/validators/crypto_addresses/btc_address.py",
       "line_number": 20,
-      "mutation_type": "true_false",
+      "mutation_type": "logic",
       "original_text": "False",
       "mutated_text": "True",
-      "context": "...r) not in range(25, 35):         return False     decoded_bytes = _decode_base58(addr..."
+      "context": "...r) not in range(25, 35):         return False     decoded_bytes = _decode_base58(addr...",
+      "mutation_type_original": "true_false"
     },
     {
       "bug_id": "validators-original-034",
       "file_path": "src/validators/crypto_addresses/btc_address.py",
       "line_number": 49,
-      "mutation_type": "true_false",
+      "mutation_type": "logic",
       "original_text": "False",
       "mutated_text": "True",
-      "context": "...\"\"\"     if not value:         return False      return (         # segwit pattern..."
+      "context": "...\"\"\"     if not value:         return False      return (         # segwit pattern...",
+      "mutation_type_original": "true_false"
     },
     {
       "bug_id": "validators-original-035",
       "file_path": "src/validators/crypto_addresses/btc_address.py",
       "line_number": 14,
-      "mutation_type": "return_none",
+      "mutation_type": "return_value",
       "original_text": "sum((58**enm) * alphabet.index(idx) for enm, idx in enumerate(addr[::-1]))",
       "mutated_text": "None",
-      "context": "...RSTUVWXYZabcdefghijkmnopqrstuvwxyz\"     return sum((58**enm) * alphabet.index(idx) for enm, idx in enumerate(addr[::-1]))   def _validate_old_btc_address(addr: s..."
+      "context": "...RSTUVWXYZabcdefghijkmnopqrstuvwxyz\"     return sum((58**enm) * alphabet.index(idx) for enm, idx in enumerate(addr[::-1]))   def _validate_old_btc_address(addr: s...",
+      "mutation_type_original": "return_none"
     },
     {
       "bug_id": "validators-original-036",
       "file_path": "src/validators/crypto_addresses/btc_address.py",
       "line_number": 20,
-      "mutation_type": "return_none",
+      "mutation_type": "return_value",
       "original_text": "False",
       "mutated_text": "None",
-      "context": "...len(addr) not in range(25, 35):         return False     decoded_bytes = _decode_base58(addr..."
+      "context": "...len(addr) not in range(25, 35):         return False     decoded_bytes = _decode_base58(addr...",
+      "mutation_type_original": "return_none"
     },
     {
       "bug_id": "validators-original-037",
       "file_path": "src/validators/crypto_addresses/btc_address.py",
       "line_number": 23,
-      "mutation_type": "return_none",
+      "mutation_type": "return_value",
       "original_text": "checksum == sha256(sha256(header).digest()).digest()[:4]",
       "mutated_text": "None",
-      "context": "...oded_bytes[:-4], decoded_bytes[-4:]     return checksum == sha256(sha256(header).digest()).digest()[:4]   @validator def btc_address(value: str..."
+      "context": "...oded_bytes[:-4], decoded_bytes[-4:]     return checksum == sha256(sha256(header).digest()).digest()[:4]   @validator def btc_address(value: str...",
+      "mutation_type_original": "return_none"
     },
     {
       "bug_id": "validators-original-038",
       "file_path": "src/validators/crypto_addresses/btc_address.py",
       "line_number": 49,
-      "mutation_type": "return_none",
+      "mutation_type": "return_value",
       "original_text": "False",
       "mutated_text": "None",
-      "context": "...ress.     \"\"\"     if not value:         return False      return (         # segwit pattern..."
+      "context": "...ress.     \"\"\"     if not value:         return False      return (         # segwit pattern...",
+      "mutation_type_original": "return_none"
     },
     {
       "bug_id": "validators-original-039",
       "file_path": "src/validators/crypto_addresses/btc_address.py",
       "line_number": 51,
-      "mutation_type": "return_none",
+      "mutation_type": "return_value",
       "original_text": "(\n        # segwit pattern\n        re.compile(r\"^(bc|tc)[0-3][02-9ac-hj-np-z]{14,74}$\").match(value)\n        if value[:2] in (\"bc\", \"tb\")\n        else _validate_old_btc_address(value)\n    )",
       "mutated_text": "None",
-      "context": "...if not value:         return False      return (         # segwit pattern         re.compile(r\"^(bc|tc)[0-3][02-9ac-hj-np-z]{14,74}$\").match(value)         if value[:2] in (\"bc\", \"tb\")         else _validate_old_btc_address(value)     )"
+      "context": "...if not value:         return False      return (         # segwit pattern         re.compile(r\"^(bc|tc)[0-3][02-9ac-hj-np-z]{14,74}$\").match(value)         if value[:2] in (\"bc\", \"tb\")         else _validate_old_btc_address(value)     )",
+      "mutation_type_original": "return_none"
     },
     {
       "bug_id": "validators-original-040",
       "file_path": "src/validators/crypto_addresses/btc_address.py",
       "line_number": 19,
-      "mutation_type": "in_not_in",
+      "mutation_type": "logic",
       "original_text": "not in",
       "mutated_text": "in",
-      "context": "...P2SH type address.\"\"\"     if len(addr) not in range(25, 35):         return False..."
+      "context": "...P2SH type address.\"\"\"     if len(addr) not in range(25, 35):         return False...",
+      "mutation_type_original": "in_not_in"
     },
     {
       "bug_id": "validators-original-041",
       "file_path": "src/validators/crypto_addresses/btc_address.py",
       "line_number": 54,
-      "mutation_type": "in_not_in",
+      "mutation_type": "logic",
       "original_text": "in",
       "mutated_text": "not in",
-      "context": "...4}$\").match(value)         if value[:2] in (\"bc\", \"tb\")         else _validate_old..."
+      "context": "...4}$\").match(value)         if value[:2] in (\"bc\", \"tb\")         else _validate_old...",
+      "mutation_type_original": "in_not_in"
     },
     {
       "bug_id": "validators-original-042",
       "file_path": "src/validators/crypto_addresses/btc_address.py",
       "line_number": 14,
-      "mutation_type": "mul_div",
+      "mutation_type": "arithmetic",
       "original_text": "*",
       "mutated_text": "/",
-      "context": "...nopqrstuvwxyz\"     return sum((58**enm) * alphabet.index(idx) for enm, idx in enu..."
+      "context": "...nopqrstuvwxyz\"     return sum((58**enm) * alphabet.index(idx) for enm, idx in enu...",
+      "mutation_type_original": "mul_div"
     },
     {
       "bug_id": "validators-original-043",
       "file_path": "src/validators/crypto_addresses/btc_address.py",
       "line_number": 14,
-      "mutation_type": "plus_one",
+      "mutation_type": "boundary",
       "original_text": "58",
       "mutated_text": "59",
-      "context": "...defghijkmnopqrstuvwxyz\"     return sum((58**enm) * alphabet.index(idx) for enm, id..."
+      "context": "...defghijkmnopqrstuvwxyz\"     return sum((58**enm) * alphabet.index(idx) for enm, id...",
+      "mutation_type_original": "plus_one"
     },
     {
       "bug_id": "validators-original-044",
       "file_path": "src/validators/crypto_addresses/btc_address.py",
       "line_number": 14,
-      "mutation_type": "plus_one",
+      "mutation_type": "boundary",
       "original_text": "1",
       "mutated_text": "2",
-      "context": "...(idx) for enm, idx in enumerate(addr[::-1]))   def _validate_old_btc_address(addr..."
+      "context": "...(idx) for enm, idx in enumerate(addr[::-1]))   def _validate_old_btc_address(addr...",
+      "mutation_type_original": "plus_one"
     },
     {
       "bug_id": "validators-original-045",
       "file_path": "src/validators/crypto_addresses/btc_address.py",
       "line_number": 19,
-      "mutation_type": "plus_one",
+      "mutation_type": "boundary",
       "original_text": "25",
       "mutated_text": "26",
-      "context": "...dress.\"\"\"     if len(addr) not in range(25, 35):         return False     decoded_..."
+      "context": "...dress.\"\"\"     if len(addr) not in range(25, 35):         return False     decoded_...",
+      "mutation_type_original": "plus_one"
     },
     {
       "bug_id": "validators-original-046",
       "file_path": "src/validators/crypto_addresses/btc_address.py",
       "line_number": 19,
-      "mutation_type": "plus_one",
+      "mutation_type": "boundary",
       "original_text": "35",
       "mutated_text": "36",
-      "context": "...s.\"\"\"     if len(addr) not in range(25, 35):         return False     decoded_byte..."
+      "context": "...s.\"\"\"     if len(addr) not in range(25, 35):         return False     decoded_byte...",
+      "mutation_type_original": "plus_one"
     },
     {
       "bug_id": "validators-original-047",
       "file_path": "src/validators/crypto_addresses/btc_address.py",
       "line_number": 21,
-      "mutation_type": "plus_one",
+      "mutation_type": "boundary",
       "original_text": "25",
       "mutated_text": "26",
-      "context": "...d_bytes = _decode_base58(addr).to_bytes(25, \"big\")     header, checksum = decoded_..."
+      "context": "...d_bytes = _decode_base58(addr).to_bytes(25, \"big\")     header, checksum = decoded_...",
+      "mutation_type_original": "plus_one"
     },
     {
       "bug_id": "validators-original-048",
       "file_path": "src/validators/crypto_addresses/btc_address.py",
       "line_number": 22,
-      "mutation_type": "plus_one",
+      "mutation_type": "boundary",
       "original_text": "4",
       "mutated_text": "5",
-      "context": "...header, checksum = decoded_bytes[:-4], decoded_bytes[-4:]     return checksu..."
+      "context": "...header, checksum = decoded_bytes[:-4], decoded_bytes[-4:]     return checksu...",
+      "mutation_type_original": "plus_one"
     },
     {
       "bug_id": "validators-original-049",
       "file_path": "src/validators/crypto_addresses/btc_address.py",
       "line_number": 22,
-      "mutation_type": "plus_one",
+      "mutation_type": "boundary",
       "original_text": "4",
       "mutated_text": "5",
-      "context": "...um = decoded_bytes[:-4], decoded_bytes[-4:]     return checksum == sha256(sha256(..."
+      "context": "...um = decoded_bytes[:-4], decoded_bytes[-4:]     return checksum == sha256(sha256(...",
+      "mutation_type_original": "plus_one"
     },
     {
       "bug_id": "validators-original-050",
       "file_path": "src/validators/crypto_addresses/btc_address.py",
       "line_number": 23,
-      "mutation_type": "plus_one",
+      "mutation_type": "boundary",
       "original_text": "4",
       "mutated_text": "5",
-      "context": "...a256(sha256(header).digest()).digest()[:4]   @validator def btc_address(value: st..."
+      "context": "...a256(sha256(header).digest()).digest()[:4]   @validator def btc_address(value: st...",
+      "mutation_type_original": "plus_one"
     }
   ]
 }
