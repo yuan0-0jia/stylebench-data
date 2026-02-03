@@ -1,11 +1,12 @@
 {
   "repo": "python-markdown",
   "style": "camelcase",
-  "generated_at": "2026-01-30T11:54:24.898445",
+  "generated_at": "2026-02-02T15:56:52.313778",
   "test_command": [
     "uv",
     "run",
     "pytest",
+    "/Users/yuan/stylebench-data/camelcase/python-markdown/tests",
     "-x",
     "-q",
     "--tb=short",
@@ -16,401 +17,401 @@
   "bugs": [
     {
       "bug_id": "python-markdown-camelcase-001",
-      "test_output": "....................................................................F\n=================================== FAILURES ===================================\n___________________ TestCliOptionParsing.testEncodingOption ____________________\ntests/test_apis.py:810: in testEncodingOption\n    self.assertEqual(options, self.default_options)\nE   AssertionError: {'inp[24 chars]e, 'extensions': [], 'extension_configs': {}, [59 chars]alse} != {'inp[24 chars]e, 'encoding': 'utf-8', 'output_format': 'xhtm[58 chars]: {}}\nE     {'encoding': 'utf-8',\nE      'extension_configs': {},\nE      'extensions': [],\nE      'input': None,\nE   -  'lazy_ol': False,\nE   ?             ^^^^\nE   \nE   +  'lazy_ol': True,\nE   ?             ^^^\nE   \nE      'output': None,\nE      'output_format': 'xhtml'}\n=========================== short test summary info ============================\nFAILED tests/test_apis.py::TestCliOptionParsing::testEncodingOption - Asserti...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 68 passed in 0.15s\n",
+      "test_output": ".....F\n=================================== FAILURES ===================================\n______________________ TestMarkdownBasics.testSimpleInput ______________________\n/Users/yuan/stylebench-data/camelcase/python-markdown/tests/test_apis.py:59: in testSimpleInput\n    self.assertEqual(self.md.convert('foo'), '<p>foo</p>')\n                     ^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/markdown/core.py:357: in convert\n    root = self.parser.parseDocument(self.lines).getroot()\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/markdown/blockparser.py:117: in parseDocument\n    self.parseChunk(self.root, '\\n'.join(lines))\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/markdown/blockparser.py:136: in parseChunk\n    self.parseBlocks(parent, text.split('\\n\\n'))\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/markdown/blockparser.py:158: in parseBlocks\n    if processor.run(parent, blocks) is not False:\n       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/markdown/blockprocessors.py:587: in run\n    block = blocks.pop(0)\n            ^^^^^^^^^^\nE   AttributeError: 'xml.etree.ElementTree.Element' object has no attribute 'pop'\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/tests/test_apis.py::TestMarkdownBasics::testSimpleInput\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 5 passed in 0.21s\n   Building markdown @ file:///private/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1\n      Built markdown @ file:///private/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1\nUninstalled 1 package in 2ms\nInstalled 1 package in 3ms\n",
       "failing_tests": [
-        "tests/test_apis.py::TestCliOptionParsing::testEncodingOption"
+        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/tests/test_apis.py::TestMarkdownBasics::testSimpleInput"
       ],
       "exit_code": 1
     },
     {
       "bug_id": "python-markdown-camelcase-002",
-      "test_output": "........................................................................ [  8%]\n..........F\n=================================== FAILURES ===================================\n_____________________ TestCliOptionParsing.testQuietOption _____________________\ntests/test_apis.py:781: in testQuietOption\n    self.assertGreater(logging_level, CRITICAL)\nE   AssertionError: 40 not greater than 50\n=========================== short test summary info ============================\nFAILED tests/test_apis.py::TestCliOptionParsing::testQuietOption - AssertionE...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 82 passed in 0.14s\n",
+      "test_output": ".....F\n=================================== FAILURES ===================================\n______________________ TestMarkdownBasics.testSimpleInput ______________________\n/Users/yuan/stylebench-data/camelcase/python-markdown/tests/test_apis.py:59: in testSimpleInput\n    self.assertEqual(self.md.convert('foo'), '<p>foo</p>')\n                     ^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/markdown/core.py:357: in convert\n    root = self.parser.parseDocument(self.lines).getroot()\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/markdown/blockparser.py:117: in parseDocument\n    self.parseChunk(self.root, '\\n'.join(lines))\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/markdown/blockparser.py:136: in parseChunk\n    self.parseBlocks(parent, text.split('\\n\\n'))\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/markdown/blockparser.py:158: in parseBlocks\n    if processor.run(parent, blocks) is not False:\n       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/markdown/blockprocessors.py:587: in run\n    block = blocks.pop(0)\n            ^^^^^^^^^^\nE   AttributeError: 'xml.etree.ElementTree.Element' object has no attribute 'pop'\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/tests/test_apis.py::TestMarkdownBasics::testSimpleInput\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 5 passed in 0.22s\n",
       "failing_tests": [
-        "tests/test_apis.py::TestCliOptionParsing::testQuietOption"
+        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/tests/test_apis.py::TestMarkdownBasics::testSimpleInput"
       ],
       "exit_code": 1
     },
     {
       "bug_id": "python-markdown-camelcase-003",
-      "test_output": "........................................................................ [  8%]\n..........F\n=================================== FAILURES ===================================\n_____________________ TestCliOptionParsing.testQuietOption _____________________\ntests/test_apis.py:781: in testQuietOption\n    self.assertGreater(logging_level, CRITICAL)\nE   AssertionError: 40 not greater than 50\n=========================== short test summary info ============================\nFAILED tests/test_apis.py::TestCliOptionParsing::testQuietOption - AssertionE...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 82 passed in 0.14s\n",
+      "test_output": ".....F\n=================================== FAILURES ===================================\n______________________ TestMarkdownBasics.testSimpleInput ______________________\n/Users/yuan/stylebench-data/camelcase/python-markdown/tests/test_apis.py:59: in testSimpleInput\n    self.assertEqual(self.md.convert('foo'), '<p>foo</p>')\n                     ^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/markdown/core.py:357: in convert\n    root = self.parser.parseDocument(self.lines).getroot()\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/markdown/blockparser.py:117: in parseDocument\n    self.parseChunk(self.root, '\\n'.join(lines))\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/markdown/blockparser.py:136: in parseChunk\n    self.parseBlocks(parent, text.split('\\n\\n'))\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/markdown/blockparser.py:158: in parseBlocks\n    if processor.run(parent, blocks) is not False:\n       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/markdown/blockprocessors.py:587: in run\n    block = blocks.pop(0)\n            ^^^^^^^^^^\nE   AttributeError: 'xml.etree.ElementTree.Element' object has no attribute 'pop'\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/tests/test_apis.py::TestMarkdownBasics::testSimpleInput\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 5 passed in 0.16s\n",
       "failing_tests": [
-        "tests/test_apis.py::TestCliOptionParsing::testQuietOption"
+        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/tests/test_apis.py::TestMarkdownBasics::testSimpleInput"
       ],
       "exit_code": 1
     },
     {
       "bug_id": "python-markdown-camelcase-004",
-      "test_output": "........................................................................ [  8%]\n........................................................................ [ 16%]\n.......................F\n=================================== FAILURES ===================================\n_____________________________ TestMisc.test_lists7 _____________________________\nmarkdown/test_tools.py:166: in test\n    self.assertMultiLineEqual(output, expected)\nE   AssertionError: '<ul>[140 chars]i>\\n<p></p>\\n<p></p>\\n<p></p>\\n<ul>\\n<li>\\n<p>[955 chars]/ul>' != '<ul>[140 chars]i>\\n<ul>\\n<li>\\n<p>item 4-1</p>\\n</li>\\n<li>\\n[901 chars]/ul>'\nE   Diff is 1255 characters long. Set self.maxDiff to None to see it.\n=========================== short test summary info ============================\nFAILED tests/test_legacy.py::TestMisc::test_lists7 - AssertionError: '<ul>[14...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 167 passed in 0.29s\n",
+      "test_output": ".....F\n=================================== FAILURES ===================================\n______________________ TestMarkdownBasics.testSimpleInput ______________________\n/Users/yuan/stylebench-data/camelcase/python-markdown/tests/test_apis.py:59: in testSimpleInput\n    self.assertEqual(self.md.convert('foo'), '<p>foo</p>')\n                     ^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/markdown/core.py:357: in convert\n    root = self.parser.parseDocument(self.lines).getroot()\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/markdown/blockparser.py:117: in parseDocument\n    self.parseChunk(self.root, '\\n'.join(lines))\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/markdown/blockparser.py:136: in parseChunk\n    self.parseBlocks(parent, text.split('\\n\\n'))\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/markdown/blockparser.py:158: in parseBlocks\n    if processor.run(parent, blocks) is not False:\n       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/markdown/blockprocessors.py:587: in run\n    block = blocks.pop(0)\n            ^^^^^^^^^^\nE   AttributeError: 'xml.etree.ElementTree.Element' object has no attribute 'pop'\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/tests/test_apis.py::TestMarkdownBasics::testSimpleInput\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 5 passed in 0.14s\n",
       "failing_tests": [
-        "tests/test_legacy.py::TestMisc::test_lists7"
+        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/tests/test_apis.py::TestMarkdownBasics::testSimpleInput"
       ],
       "exit_code": 1
     },
     {
       "bug_id": "python-markdown-camelcase-005",
-      "test_output": "....................................................................F\n=================================== FAILURES ===================================\n___________________ TestCliOptionParsing.testEncodingOption ____________________\ntests/test_apis.py:808: in testEncodingOption\n    options, logging_level = parse_options(['-e', 'utf-8'])\n                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nmarkdown/__main__.py:95: in parse_options\n    inputFile = args[0]\n                ^^^^^^^\nE   IndexError: list index out of range\n=========================== short test summary info ============================\nFAILED tests/test_apis.py::TestCliOptionParsing::testEncodingOption - IndexEr...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 68 passed in 0.13s\n",
+      "test_output": ".....F\n=================================== FAILURES ===================================\n______________________ TestMarkdownBasics.testSimpleInput ______________________\n/Users/yuan/stylebench-data/camelcase/python-markdown/tests/test_apis.py:59: in testSimpleInput\n    self.assertEqual(self.md.convert('foo'), '<p>foo</p>')\n                     ^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/markdown/core.py:357: in convert\n    root = self.parser.parseDocument(self.lines).getroot()\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/markdown/blockparser.py:117: in parseDocument\n    self.parseChunk(self.root, '\\n'.join(lines))\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/markdown/blockparser.py:136: in parseChunk\n    self.parseBlocks(parent, text.split('\\n\\n'))\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/markdown/blockparser.py:158: in parseBlocks\n    if processor.run(parent, blocks) is not False:\n       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/markdown/blockprocessors.py:587: in run\n    block = blocks.pop(0)\n            ^^^^^^^^^^\nE   AttributeError: 'xml.etree.ElementTree.Element' object has no attribute 'pop'\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/tests/test_apis.py::TestMarkdownBasics::testSimpleInput\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 5 passed in 0.15s\n",
       "failing_tests": [
-        "tests/test_apis.py::TestCliOptionParsing::testEncodingOption"
+        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/tests/test_apis.py::TestMarkdownBasics::testSimpleInput"
       ],
       "exit_code": 1
     },
     {
       "bug_id": "python-markdown-camelcase-006",
-      "test_output": "....................................................................F\n=================================== FAILURES ===================================\n___________________ TestCliOptionParsing.testEncodingOption ____________________\ntests/test_apis.py:808: in testEncodingOption\n    options, logging_level = parse_options(['-e', 'utf-8'])\n                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nmarkdown/__main__.py:95: in parse_options\n    inputFile = args[0]\n                ^^^^^^^\nE   IndexError: list index out of range\n=========================== short test summary info ============================\nFAILED tests/test_apis.py::TestCliOptionParsing::testEncodingOption - IndexEr...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 68 passed in 0.13s\n",
+      "test_output": ".....F\n=================================== FAILURES ===================================\n______________________ TestMarkdownBasics.testSimpleInput ______________________\n/Users/yuan/stylebench-data/camelcase/python-markdown/tests/test_apis.py:59: in testSimpleInput\n    self.assertEqual(self.md.convert('foo'), '<p>foo</p>')\n                     ^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/markdown/core.py:357: in convert\n    root = self.parser.parseDocument(self.lines).getroot()\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/markdown/blockparser.py:117: in parseDocument\n    self.parseChunk(self.root, '\\n'.join(lines))\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/markdown/blockparser.py:136: in parseChunk\n    self.parseBlocks(parent, text.split('\\n\\n'))\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/markdown/blockparser.py:158: in parseBlocks\n    if processor.run(parent, blocks) is not False:\n       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/markdown/blockprocessors.py:587: in run\n    block = blocks.pop(0)\n            ^^^^^^^^^^\nE   AttributeError: 'xml.etree.ElementTree.Element' object has no attribute 'pop'\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/tests/test_apis.py::TestMarkdownBasics::testSimpleInput\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 5 passed in 0.14s\n",
       "failing_tests": [
-        "tests/test_apis.py::TestCliOptionParsing::testEncodingOption"
+        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/tests/test_apis.py::TestMarkdownBasics::testSimpleInput"
       ],
       "exit_code": 1
     },
     {
       "bug_id": "python-markdown-camelcase-007",
-      "test_output": "....................................................................F\n=================================== FAILURES ===================================\n___________________ TestCliOptionParsing.testEncodingOption ____________________\ntests/test_apis.py:808: in testEncodingOption\n    options, logging_level = parse_options(['-e', 'utf-8'])\n                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nmarkdown/__main__.py:95: in parse_options\n    inputFile = args[0]\n                ^^^^^^^\nE   IndexError: list index out of range\n=========================== short test summary info ============================\nFAILED tests/test_apis.py::TestCliOptionParsing::testEncodingOption - IndexEr...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 68 passed in 0.13s\n",
+      "test_output": ".....F\n=================================== FAILURES ===================================\n______________________ TestMarkdownBasics.testSimpleInput ______________________\n/Users/yuan/stylebench-data/camelcase/python-markdown/tests/test_apis.py:59: in testSimpleInput\n    self.assertEqual(self.md.convert('foo'), '<p>foo</p>')\n                     ^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/markdown/core.py:357: in convert\n    root = self.parser.parseDocument(self.lines).getroot()\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/markdown/blockparser.py:117: in parseDocument\n    self.parseChunk(self.root, '\\n'.join(lines))\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/markdown/blockparser.py:136: in parseChunk\n    self.parseBlocks(parent, text.split('\\n\\n'))\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/markdown/blockparser.py:158: in parseBlocks\n    if processor.run(parent, blocks) is not False:\n       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/markdown/blockprocessors.py:587: in run\n    block = blocks.pop(0)\n            ^^^^^^^^^^\nE   AttributeError: 'xml.etree.ElementTree.Element' object has no attribute 'pop'\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/tests/test_apis.py::TestMarkdownBasics::testSimpleInput\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 5 passed in 0.13s\n",
       "failing_tests": [
-        "tests/test_apis.py::TestCliOptionParsing::testEncodingOption"
+        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/tests/test_apis.py::TestMarkdownBasics::testSimpleInput"
       ],
       "exit_code": 1
     },
     {
       "bug_id": "python-markdown-camelcase-008",
-      "test_output": "........................................................................ [  8%]\n..F\n=================================== FAILURES ===================================\n______________ TestCliOptionParsing.testInputAndOutputFileOptions ______________\ntests/test_apis.py:802: in testInputAndOutputFileOptions\n    options, logging_level = parse_options(['-f', 'foo.html', 'foo.txt'])\n                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nmarkdown/__main__.py:95: in parse_options\n    inputFile = args[1]\n                ^^^^^^^\nE   IndexError: list index out of range\n=========================== short test summary info ============================\nFAILED tests/test_apis.py::TestCliOptionParsing::testInputAndOutputFileOptions\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 74 passed in 0.14s\n",
+      "test_output": ".....F\n=================================== FAILURES ===================================\n______________________ TestMarkdownBasics.testSimpleInput ______________________\n/Users/yuan/stylebench-data/camelcase/python-markdown/tests/test_apis.py:59: in testSimpleInput\n    self.assertEqual(self.md.convert('foo'), '<p>foo</p>')\n                     ^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/markdown/core.py:357: in convert\n    root = self.parser.parseDocument(self.lines).getroot()\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/markdown/blockparser.py:117: in parseDocument\n    self.parseChunk(self.root, '\\n'.join(lines))\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/markdown/blockparser.py:136: in parseChunk\n    self.parseBlocks(parent, text.split('\\n\\n'))\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/markdown/blockparser.py:158: in parseBlocks\n    if processor.run(parent, blocks) is not False:\n       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/markdown/blockprocessors.py:587: in run\n    block = blocks.pop(0)\n            ^^^^^^^^^^\nE   AttributeError: 'xml.etree.ElementTree.Element' object has no attribute 'pop'\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/tests/test_apis.py::TestMarkdownBasics::testSimpleInput\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 5 passed in 0.12s\n",
       "failing_tests": [
-        "tests/test_apis.py::TestCliOptionParsing::testInputAndOutputFileOptions"
+        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/tests/test_apis.py::TestMarkdownBasics::testSimpleInput"
       ],
       "exit_code": 1
     },
     {
       "bug_id": "python-markdown-camelcase-009",
-      "test_output": "........................................................................ [  8%]\n........................................................................ [ 16%]\n.......................F\n=================================== FAILURES ===================================\n_____________________________ TestMisc.test_lists7 _____________________________\nmarkdown/test_tools.py:166: in test\n    self.assertMultiLineEqual(output, expected)\nE   AssertionError: '<ul>[140 chars]i>\\n<p></p>\\n<p></p>\\n<p></p>\\n<ul>\\n<li>\\n<p>[955 chars]/ul>' != '<ul>[140 chars]i>\\n<ul>\\n<li>\\n<p>item 4-1</p>\\n</li>\\n<li>\\n[901 chars]/ul>'\nE   Diff is 1255 characters long. Set self.maxDiff to None to see it.\n=========================== short test summary info ============================\nFAILED tests/test_legacy.py::TestMisc::test_lists7 - AssertionError: '<ul>[14...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 167 passed in 0.21s\n",
+      "test_output": ".....F\n=================================== FAILURES ===================================\n______________________ TestMarkdownBasics.testSimpleInput ______________________\n/Users/yuan/stylebench-data/camelcase/python-markdown/tests/test_apis.py:59: in testSimpleInput\n    self.assertEqual(self.md.convert('foo'), '<p>foo</p>')\n                     ^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/markdown/core.py:357: in convert\n    root = self.parser.parseDocument(self.lines).getroot()\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/markdown/blockparser.py:117: in parseDocument\n    self.parseChunk(self.root, '\\n'.join(lines))\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/markdown/blockparser.py:136: in parseChunk\n    self.parseBlocks(parent, text.split('\\n\\n'))\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/markdown/blockparser.py:158: in parseBlocks\n    if processor.run(parent, blocks) is not False:\n       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/markdown/blockprocessors.py:587: in run\n    block = blocks.pop(0)\n            ^^^^^^^^^^\nE   AttributeError: 'xml.etree.ElementTree.Element' object has no attribute 'pop'\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/tests/test_apis.py::TestMarkdownBasics::testSimpleInput\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 5 passed in 0.12s\n",
       "failing_tests": [
-        "tests/test_legacy.py::TestMisc::test_lists7"
+        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/tests/test_apis.py::TestMarkdownBasics::testSimpleInput"
       ],
       "exit_code": 1
     },
     {
       "bug_id": "python-markdown-camelcase-010",
-      "test_output": ".......................................................................F [  8%]\n\n=================================== FAILURES ===================================\n___________ TestCliOptionParsing.testExtensionConfigOptionBadFormat ____________\nmarkdown/__main__.py:106: in parse_options\n    extensionConfigs = yaml_load(fp)\n                       ^^^^^^^^^^^^^\n.venv/lib/python3.11/site-packages/yaml/__init__.py:145: in unsafe_load\n    return load(stream, UnsafeLoader)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^\n.venv/lib/python3.11/site-packages/yaml/__init__.py:81: in load\n    return loader.get_single_data()\n           ^^^^^^^^^^^^^^^^^^^^^^^^\n.venv/lib/python3.11/site-packages/yaml/constructor.py:49: in get_single_data\n    node = self.get_single_node()\n           ^^^^^^^^^^^^^^^^^^^^^^\n.venv/lib/python3.11/site-packages/yaml/composer.py:39: in get_single_node\n    if not self.check_event(StreamEndEvent):\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n.venv/lib/python3.11/site-packages/yaml/parser.py:98: in check_event\n    self.current_event = self.state()\n                         ^^^^^^^^^^^^\n.venv/lib/python3.11/site-packages/yaml/parser.py:171: in parse_document_start\n    raise ParserError(None, None,\nE   yaml.parser.ParserError: expected '<document start>', but found '<scalar>'\nE     in \"/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpcah5hn9u.yml\", line 3, column 1\n\nDuring handling of the above exception, another exception occurred:\ntests/test_apis.py:902: in testExtensionConfigOptionBadFormat\n    self.assertRaises(yaml.YAMLError, parse_options, ['-c', self.tempfile])\nmarkdown/__main__.py:110: in parse_options\n    e.args = (message,) - e.args[1:]\n             ^^^^^^^^^^^^^^^^^^^^^^^\nE   TypeError: unsupported operand type(s) for -: 'tuple' and 'tuple'\n=========================== short test summary info ============================\nFAILED tests/test_apis.py::TestCliOptionParsing::testExtensionConfigOptionBadFormat\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 71 passed in 0.27s\n",
+      "test_output": ".....F\n=================================== FAILURES ===================================\n______________________ TestMarkdownBasics.testSimpleInput ______________________\n/Users/yuan/stylebench-data/camelcase/python-markdown/tests/test_apis.py:59: in testSimpleInput\n    self.assertEqual(self.md.convert('foo'), '<p>foo</p>')\n                     ^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/markdown/core.py:357: in convert\n    root = self.parser.parseDocument(self.lines).getroot()\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/markdown/blockparser.py:117: in parseDocument\n    self.parseChunk(self.root, '\\n'.join(lines))\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/markdown/blockparser.py:136: in parseChunk\n    self.parseBlocks(parent, text.split('\\n\\n'))\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/markdown/blockparser.py:158: in parseBlocks\n    if processor.run(parent, blocks) is not False:\n       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/markdown/blockprocessors.py:587: in run\n    block = blocks.pop(0)\n            ^^^^^^^^^^\nE   AttributeError: 'xml.etree.ElementTree.Element' object has no attribute 'pop'\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/tests/test_apis.py::TestMarkdownBasics::testSimpleInput\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 5 passed in 0.15s\n",
       "failing_tests": [
-        "tests/test_apis.py::TestCliOptionParsing::testExtensionConfigOptionBadFormat"
+        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/tests/test_apis.py::TestMarkdownBasics::testSimpleInput"
       ],
       "exit_code": 1
     },
     {
       "bug_id": "python-markdown-camelcase-011",
-      "test_output": "........................................................................ [  8%]\n........................................................................ [ 16%]\n.......................F\n=================================== FAILURES ===================================\n_____________________________ TestMisc.test_lists7 _____________________________\nmarkdown/test_tools.py:166: in test\n    self.assertMultiLineEqual(output, expected)\nE   AssertionError: '<ul>[140 chars]i>\\n<p></p>\\n<p></p>\\n<p></p>\\n<ul>\\n<li>\\n<p>[955 chars]/ul>' != '<ul>[140 chars]i>\\n<ul>\\n<li>\\n<p>item 4-1</p>\\n</li>\\n<li>\\n[901 chars]/ul>'\nE   Diff is 1255 characters long. Set self.maxDiff to None to see it.\n=========================== short test summary info ============================\nFAILED tests/test_legacy.py::TestMisc::test_lists7 - AssertionError: '<ul>[14...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 167 passed in 0.28s\n",
+      "test_output": ".....F\n=================================== FAILURES ===================================\n______________________ TestMarkdownBasics.testSimpleInput ______________________\n/Users/yuan/stylebench-data/camelcase/python-markdown/tests/test_apis.py:59: in testSimpleInput\n    self.assertEqual(self.md.convert('foo'), '<p>foo</p>')\n                     ^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/markdown/core.py:357: in convert\n    root = self.parser.parseDocument(self.lines).getroot()\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/markdown/blockparser.py:117: in parseDocument\n    self.parseChunk(self.root, '\\n'.join(lines))\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/markdown/blockparser.py:136: in parseChunk\n    self.parseBlocks(parent, text.split('\\n\\n'))\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/markdown/blockparser.py:158: in parseBlocks\n    if processor.run(parent, blocks) is not False:\n       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/markdown/blockprocessors.py:587: in run\n    block = blocks.pop(0)\n            ^^^^^^^^^^\nE   AttributeError: 'xml.etree.ElementTree.Element' object has no attribute 'pop'\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/tests/test_apis.py::TestMarkdownBasics::testSimpleInput\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 5 passed in 0.12s\n",
       "failing_tests": [
-        "tests/test_legacy.py::TestMisc::test_lists7"
+        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/tests/test_apis.py::TestMarkdownBasics::testSimpleInput"
       ],
       "exit_code": 1
     },
     {
       "bug_id": "python-markdown-camelcase-012",
-      "test_output": "........................................................................ [  8%]\n........................................................................ [ 16%]\n.......................F\n=================================== FAILURES ===================================\n_____________________________ TestMisc.test_lists7 _____________________________\nmarkdown/test_tools.py:166: in test\n    self.assertMultiLineEqual(output, expected)\nE   AssertionError: '<ul>[140 chars]i>\\n<p></p>\\n<p></p>\\n<p></p>\\n<ul>\\n<li>\\n<p>[955 chars]/ul>' != '<ul>[140 chars]i>\\n<ul>\\n<li>\\n<p>item 4-1</p>\\n</li>\\n<li>\\n[901 chars]/ul>'\nE   Diff is 1255 characters long. Set self.maxDiff to None to see it.\n=========================== short test summary info ============================\nFAILED tests/test_legacy.py::TestMisc::test_lists7 - AssertionError: '<ul>[14...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 167 passed in 0.35s\n",
+      "test_output": ".....F\n=================================== FAILURES ===================================\n______________________ TestMarkdownBasics.testSimpleInput ______________________\n/Users/yuan/stylebench-data/camelcase/python-markdown/tests/test_apis.py:59: in testSimpleInput\n    self.assertEqual(self.md.convert('foo'), '<p>foo</p>')\n                     ^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/markdown/core.py:357: in convert\n    root = self.parser.parseDocument(self.lines).getroot()\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/markdown/blockparser.py:117: in parseDocument\n    self.parseChunk(self.root, '\\n'.join(lines))\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/markdown/blockparser.py:136: in parseChunk\n    self.parseBlocks(parent, text.split('\\n\\n'))\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/markdown/blockparser.py:158: in parseBlocks\n    if processor.run(parent, blocks) is not False:\n       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/markdown/blockprocessors.py:587: in run\n    block = blocks.pop(0)\n            ^^^^^^^^^^\nE   AttributeError: 'xml.etree.ElementTree.Element' object has no attribute 'pop'\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/tests/test_apis.py::TestMarkdownBasics::testSimpleInput\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 5 passed in 0.14s\n",
       "failing_tests": [
-        "tests/test_legacy.py::TestMisc::test_lists7"
+        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/tests/test_apis.py::TestMarkdownBasics::testSimpleInput"
       ],
       "exit_code": 1
     },
     {
       "bug_id": "python-markdown-camelcase-013",
-      "test_output": "....................................................................F\n=================================== FAILURES ===================================\n___________________ TestCliOptionParsing.testEncodingOption ____________________\ntests/test_apis.py:808: in testEncodingOption\n    options, logging_level = parse_options(['-e', 'utf-8'])\n    ^^^^^^^^^^^^^^^^^^^^^^\nE   TypeError: cannot unpack non-iterable NoneType object\n=========================== short test summary info ============================\nFAILED tests/test_apis.py::TestCliOptionParsing::testEncodingOption - TypeErr...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 68 passed in 0.15s\n",
+      "test_output": ".....F\n=================================== FAILURES ===================================\n______________________ TestMarkdownBasics.testSimpleInput ______________________\n/Users/yuan/stylebench-data/camelcase/python-markdown/tests/test_apis.py:59: in testSimpleInput\n    self.assertEqual(self.md.convert('foo'), '<p>foo</p>')\n                     ^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/markdown/core.py:357: in convert\n    root = self.parser.parseDocument(self.lines).getroot()\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/markdown/blockparser.py:117: in parseDocument\n    self.parseChunk(self.root, '\\n'.join(lines))\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/markdown/blockparser.py:136: in parseChunk\n    self.parseBlocks(parent, text.split('\\n\\n'))\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/markdown/blockparser.py:158: in parseBlocks\n    if processor.run(parent, blocks) is not False:\n       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/markdown/blockprocessors.py:587: in run\n    block = blocks.pop(0)\n            ^^^^^^^^^^\nE   AttributeError: 'xml.etree.ElementTree.Element' object has no attribute 'pop'\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/tests/test_apis.py::TestMarkdownBasics::testSimpleInput\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 5 passed in 0.13s\n",
       "failing_tests": [
-        "tests/test_apis.py::TestCliOptionParsing::testEncodingOption"
+        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/tests/test_apis.py::TestMarkdownBasics::testSimpleInput"
       ],
       "exit_code": 1
     },
     {
       "bug_id": "python-markdown-camelcase-014",
-      "test_output": "........................................................................ [  8%]\n........................................................................ [ 16%]\n.......................F\n=================================== FAILURES ===================================\n_____________________________ TestMisc.test_lists7 _____________________________\nmarkdown/test_tools.py:166: in test\n    self.assertMultiLineEqual(output, expected)\nE   AssertionError: '<ul>[140 chars]i>\\n<p></p>\\n<p></p>\\n<p></p>\\n<ul>\\n<li>\\n<p>[955 chars]/ul>' != '<ul>[140 chars]i>\\n<ul>\\n<li>\\n<p>item 4-1</p>\\n</li>\\n<li>\\n[901 chars]/ul>'\nE   Diff is 1255 characters long. Set self.maxDiff to None to see it.\n=========================== short test summary info ============================\nFAILED tests/test_legacy.py::TestMisc::test_lists7 - AssertionError: '<ul>[14...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 167 passed in 0.25s\n",
+      "test_output": ".....F\n=================================== FAILURES ===================================\n______________________ TestMarkdownBasics.testSimpleInput ______________________\n/Users/yuan/stylebench-data/camelcase/python-markdown/tests/test_apis.py:59: in testSimpleInput\n    self.assertEqual(self.md.convert('foo'), '<p>foo</p>')\n                     ^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/markdown/core.py:357: in convert\n    root = self.parser.parseDocument(self.lines).getroot()\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/markdown/blockparser.py:117: in parseDocument\n    self.parseChunk(self.root, '\\n'.join(lines))\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/markdown/blockparser.py:136: in parseChunk\n    self.parseBlocks(parent, text.split('\\n\\n'))\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/markdown/blockparser.py:158: in parseBlocks\n    if processor.run(parent, blocks) is not False:\n       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/markdown/blockprocessors.py:587: in run\n    block = blocks.pop(0)\n            ^^^^^^^^^^\nE   AttributeError: 'xml.etree.ElementTree.Element' object has no attribute 'pop'\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/tests/test_apis.py::TestMarkdownBasics::testSimpleInput\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 5 passed in 0.13s\n",
       "failing_tests": [
-        "tests/test_legacy.py::TestMisc::test_lists7"
+        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/tests/test_apis.py::TestMarkdownBasics::testSimpleInput"
       ],
       "exit_code": 1
     },
     {
       "bug_id": "python-markdown-camelcase-015",
-      "test_output": "........................................................................ [  8%]\n........................................................................ [ 16%]\n.......................F\n=================================== FAILURES ===================================\n_____________________________ TestMisc.test_lists7 _____________________________\nmarkdown/test_tools.py:166: in test\n    self.assertMultiLineEqual(output, expected)\nE   AssertionError: '<ul>[140 chars]i>\\n<p></p>\\n<p></p>\\n<p></p>\\n<ul>\\n<li>\\n<p>[955 chars]/ul>' != '<ul>[140 chars]i>\\n<ul>\\n<li>\\n<p>item 4-1</p>\\n</li>\\n<li>\\n[901 chars]/ul>'\nE   Diff is 1255 characters long. Set self.maxDiff to None to see it.\n=========================== short test summary info ============================\nFAILED tests/test_legacy.py::TestMisc::test_lists7 - AssertionError: '<ul>[14...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 167 passed in 0.23s\n",
+      "test_output": ".....F\n=================================== FAILURES ===================================\n______________________ TestMarkdownBasics.testSimpleInput ______________________\n/Users/yuan/stylebench-data/camelcase/python-markdown/tests/test_apis.py:59: in testSimpleInput\n    self.assertEqual(self.md.convert('foo'), '<p>foo</p>')\n                     ^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/markdown/core.py:357: in convert\n    root = self.parser.parseDocument(self.lines).getroot()\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/markdown/blockparser.py:117: in parseDocument\n    self.parseChunk(self.root, '\\n'.join(lines))\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/markdown/blockparser.py:136: in parseChunk\n    self.parseBlocks(parent, text.split('\\n\\n'))\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/markdown/blockparser.py:158: in parseBlocks\n    if processor.run(parent, blocks) is not False:\n       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/markdown/blockprocessors.py:587: in run\n    block = blocks.pop(0)\n            ^^^^^^^^^^\nE   AttributeError: 'xml.etree.ElementTree.Element' object has no attribute 'pop'\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/tests/test_apis.py::TestMarkdownBasics::testSimpleInput\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 5 passed in 0.14s\n",
       "failing_tests": [
-        "tests/test_legacy.py::TestMisc::test_lists7"
+        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/tests/test_apis.py::TestMarkdownBasics::testSimpleInput"
       ],
       "exit_code": 1
     },
     {
       "bug_id": "python-markdown-camelcase-016",
-      "test_output": "........................................................................ [  8%]\n........................................................................ [ 16%]\n.......................F\n=================================== FAILURES ===================================\n_____________________________ TestMisc.test_lists7 _____________________________\nmarkdown/test_tools.py:166: in test\n    self.assertMultiLineEqual(output, expected)\nE   AssertionError: '<ul>[140 chars]i>\\n<p></p>\\n<p></p>\\n<p></p>\\n<ul>\\n<li>\\n<p>[955 chars]/ul>' != '<ul>[140 chars]i>\\n<ul>\\n<li>\\n<p>item 4-1</p>\\n</li>\\n<li>\\n[901 chars]/ul>'\nE   Diff is 1255 characters long. Set self.maxDiff to None to see it.\n=========================== short test summary info ============================\nFAILED tests/test_legacy.py::TestMisc::test_lists7 - AssertionError: '<ul>[14...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 167 passed in 0.25s\n",
+      "test_output": ".....F\n=================================== FAILURES ===================================\n______________________ TestMarkdownBasics.testSimpleInput ______________________\n/Users/yuan/stylebench-data/camelcase/python-markdown/tests/test_apis.py:59: in testSimpleInput\n    self.assertEqual(self.md.convert('foo'), '<p>foo</p>')\n                     ^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/markdown/core.py:357: in convert\n    root = self.parser.parseDocument(self.lines).getroot()\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/markdown/blockparser.py:117: in parseDocument\n    self.parseChunk(self.root, '\\n'.join(lines))\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/markdown/blockparser.py:136: in parseChunk\n    self.parseBlocks(parent, text.split('\\n\\n'))\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/markdown/blockparser.py:158: in parseBlocks\n    if processor.run(parent, blocks) is not False:\n       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/markdown/blockprocessors.py:587: in run\n    block = blocks.pop(0)\n            ^^^^^^^^^^\nE   AttributeError: 'xml.etree.ElementTree.Element' object has no attribute 'pop'\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/tests/test_apis.py::TestMarkdownBasics::testSimpleInput\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 5 passed in 0.16s\n",
       "failing_tests": [
-        "tests/test_legacy.py::TestMisc::test_lists7"
+        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/tests/test_apis.py::TestMarkdownBasics::testSimpleInput"
       ],
       "exit_code": 1
     },
     {
       "bug_id": "python-markdown-camelcase-017",
-      "test_output": "........................................................................ [  8%]\n........................................................................ [ 16%]\n.......................F\n=================================== FAILURES ===================================\n_____________________________ TestMisc.test_lists7 _____________________________\nmarkdown/test_tools.py:166: in test\n    self.assertMultiLineEqual(output, expected)\nE   AssertionError: '<ul>[140 chars]i>\\n<p></p>\\n<p></p>\\n<p></p>\\n<ul>\\n<li>\\n<p>[955 chars]/ul>' != '<ul>[140 chars]i>\\n<ul>\\n<li>\\n<p>item 4-1</p>\\n</li>\\n<li>\\n[901 chars]/ul>'\nE   Diff is 1255 characters long. Set self.maxDiff to None to see it.\n=========================== short test summary info ============================\nFAILED tests/test_legacy.py::TestMisc::test_lists7 - AssertionError: '<ul>[14...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 167 passed in 0.27s\n",
+      "test_output": ".....F\n=================================== FAILURES ===================================\n______________________ TestMarkdownBasics.testSimpleInput ______________________\n/Users/yuan/stylebench-data/camelcase/python-markdown/tests/test_apis.py:59: in testSimpleInput\n    self.assertEqual(self.md.convert('foo'), '<p>foo</p>')\n                     ^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/markdown/core.py:357: in convert\n    root = self.parser.parseDocument(self.lines).getroot()\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/markdown/blockparser.py:117: in parseDocument\n    self.parseChunk(self.root, '\\n'.join(lines))\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/markdown/blockparser.py:136: in parseChunk\n    self.parseBlocks(parent, text.split('\\n\\n'))\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/markdown/blockparser.py:158: in parseBlocks\n    if processor.run(parent, blocks) is not False:\n       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/markdown/blockprocessors.py:587: in run\n    block = blocks.pop(0)\n            ^^^^^^^^^^\nE   AttributeError: 'xml.etree.ElementTree.Element' object has no attribute 'pop'\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/tests/test_apis.py::TestMarkdownBasics::testSimpleInput\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 5 passed in 0.12s\n",
       "failing_tests": [
-        "tests/test_legacy.py::TestMisc::test_lists7"
+        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/tests/test_apis.py::TestMarkdownBasics::testSimpleInput"
       ],
       "exit_code": 1
     },
     {
       "bug_id": "python-markdown-camelcase-018",
-      "test_output": "........................................................................ [  8%]\n........................................................................ [ 16%]\n.......................F\n=================================== FAILURES ===================================\n_____________________________ TestMisc.test_lists7 _____________________________\nmarkdown/test_tools.py:166: in test\n    self.assertMultiLineEqual(output, expected)\nE   AssertionError: '<ul>[140 chars]i>\\n<p></p>\\n<p></p>\\n<p></p>\\n<ul>\\n<li>\\n<p>[955 chars]/ul>' != '<ul>[140 chars]i>\\n<ul>\\n<li>\\n<p>item 4-1</p>\\n</li>\\n<li>\\n[901 chars]/ul>'\nE   Diff is 1255 characters long. Set self.maxDiff to None to see it.\n=========================== short test summary info ============================\nFAILED tests/test_legacy.py::TestMisc::test_lists7 - AssertionError: '<ul>[14...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 167 passed in 0.25s\n",
+      "test_output": ".....F\n=================================== FAILURES ===================================\n______________________ TestMarkdownBasics.testSimpleInput ______________________\n/Users/yuan/stylebench-data/camelcase/python-markdown/tests/test_apis.py:59: in testSimpleInput\n    self.assertEqual(self.md.convert('foo'), '<p>foo</p>')\n                     ^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/markdown/core.py:357: in convert\n    root = self.parser.parseDocument(self.lines).getroot()\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/markdown/blockparser.py:117: in parseDocument\n    self.parseChunk(self.root, '\\n'.join(lines))\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/markdown/blockparser.py:136: in parseChunk\n    self.parseBlocks(parent, text.split('\\n\\n'))\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/markdown/blockparser.py:158: in parseBlocks\n    if processor.run(parent, blocks) is not False:\n       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/markdown/blockprocessors.py:587: in run\n    block = blocks.pop(0)\n            ^^^^^^^^^^\nE   AttributeError: 'xml.etree.ElementTree.Element' object has no attribute 'pop'\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/tests/test_apis.py::TestMarkdownBasics::testSimpleInput\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 5 passed in 0.13s\n",
       "failing_tests": [
-        "tests/test_legacy.py::TestMisc::test_lists7"
+        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/tests/test_apis.py::TestMarkdownBasics::testSimpleInput"
       ],
       "exit_code": 1
     },
     {
       "bug_id": "python-markdown-camelcase-019",
-      "test_output": "........................................................................ [  8%]\n........................................................................ [ 16%]\n.......................F\n=================================== FAILURES ===================================\n_____________________________ TestMisc.test_lists7 _____________________________\nmarkdown/test_tools.py:166: in test\n    self.assertMultiLineEqual(output, expected)\nE   AssertionError: '<ul>[140 chars]i>\\n<p></p>\\n<p></p>\\n<p></p>\\n<ul>\\n<li>\\n<p>[955 chars]/ul>' != '<ul>[140 chars]i>\\n<ul>\\n<li>\\n<p>item 4-1</p>\\n</li>\\n<li>\\n[901 chars]/ul>'\nE   Diff is 1255 characters long. Set self.maxDiff to None to see it.\n=========================== short test summary info ============================\nFAILED tests/test_legacy.py::TestMisc::test_lists7 - AssertionError: '<ul>[14...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 167 passed in 0.33s\n",
+      "test_output": ".....F\n=================================== FAILURES ===================================\n______________________ TestMarkdownBasics.testSimpleInput ______________________\n/Users/yuan/stylebench-data/camelcase/python-markdown/tests/test_apis.py:59: in testSimpleInput\n    self.assertEqual(self.md.convert('foo'), '<p>foo</p>')\n                     ^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/markdown/core.py:357: in convert\n    root = self.parser.parseDocument(self.lines).getroot()\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/markdown/blockparser.py:117: in parseDocument\n    self.parseChunk(self.root, '\\n'.join(lines))\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/markdown/blockparser.py:136: in parseChunk\n    self.parseBlocks(parent, text.split('\\n\\n'))\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/markdown/blockparser.py:158: in parseBlocks\n    if processor.run(parent, blocks) is not False:\n       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/markdown/blockprocessors.py:587: in run\n    block = blocks.pop(0)\n            ^^^^^^^^^^\nE   AttributeError: 'xml.etree.ElementTree.Element' object has no attribute 'pop'\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/tests/test_apis.py::TestMarkdownBasics::testSimpleInput\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 5 passed in 0.24s\n",
       "failing_tests": [
-        "tests/test_legacy.py::TestMisc::test_lists7"
+        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/tests/test_apis.py::TestMarkdownBasics::testSimpleInput"
       ],
       "exit_code": 1
     },
     {
       "bug_id": "python-markdown-camelcase-020",
-      "test_output": "........................................................................ [  8%]\n........................................................................ [ 16%]\n.......................F\n=================================== FAILURES ===================================\n_____________________________ TestMisc.test_lists7 _____________________________\nmarkdown/test_tools.py:166: in test\n    self.assertMultiLineEqual(output, expected)\nE   AssertionError: '<ul>[140 chars]i>\\n<p></p>\\n<p></p>\\n<p></p>\\n<ul>\\n<li>\\n<p>[955 chars]/ul>' != '<ul>[140 chars]i>\\n<ul>\\n<li>\\n<p>item 4-1</p>\\n</li>\\n<li>\\n[901 chars]/ul>'\nE   Diff is 1255 characters long. Set self.maxDiff to None to see it.\n=========================== short test summary info ============================\nFAILED tests/test_legacy.py::TestMisc::test_lists7 - AssertionError: '<ul>[14...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 167 passed in 0.24s\n",
+      "test_output": ".....F\n=================================== FAILURES ===================================\n______________________ TestMarkdownBasics.testSimpleInput ______________________\n/Users/yuan/stylebench-data/camelcase/python-markdown/tests/test_apis.py:59: in testSimpleInput\n    self.assertEqual(self.md.convert('foo'), '<p>foo</p>')\n                     ^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/markdown/core.py:357: in convert\n    root = self.parser.parseDocument(self.lines).getroot()\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/markdown/blockparser.py:117: in parseDocument\n    self.parseChunk(self.root, '\\n'.join(lines))\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/markdown/blockparser.py:136: in parseChunk\n    self.parseBlocks(parent, text.split('\\n\\n'))\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/markdown/blockparser.py:158: in parseBlocks\n    if processor.run(parent, blocks) is not False:\n       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/markdown/blockprocessors.py:587: in run\n    block = blocks.pop(0)\n            ^^^^^^^^^^\nE   AttributeError: 'xml.etree.ElementTree.Element' object has no attribute 'pop'\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/tests/test_apis.py::TestMarkdownBasics::testSimpleInput\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 5 passed in 0.33s\n",
       "failing_tests": [
-        "tests/test_legacy.py::TestMisc::test_lists7"
+        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/tests/test_apis.py::TestMarkdownBasics::testSimpleInput"
       ],
       "exit_code": 1
     },
     {
       "bug_id": "python-markdown-camelcase-021",
-      "test_output": "........................................................................ [  8%]\n........................................................................ [ 16%]\n.......................F\n=================================== FAILURES ===================================\n_____________________________ TestMisc.test_lists7 _____________________________\nmarkdown/test_tools.py:166: in test\n    self.assertMultiLineEqual(output, expected)\nE   AssertionError: '<ul>[140 chars]i>\\n<p></p>\\n<p></p>\\n<p></p>\\n<ul>\\n<li>\\n<p>[955 chars]/ul>' != '<ul>[140 chars]i>\\n<ul>\\n<li>\\n<p>item 4-1</p>\\n</li>\\n<li>\\n[901 chars]/ul>'\nE   Diff is 1255 characters long. Set self.maxDiff to None to see it.\n=========================== short test summary info ============================\nFAILED tests/test_legacy.py::TestMisc::test_lists7 - AssertionError: '<ul>[14...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 167 passed in 0.28s\n",
+      "test_output": ".....F\n=================================== FAILURES ===================================\n______________________ TestMarkdownBasics.testSimpleInput ______________________\n/Users/yuan/stylebench-data/camelcase/python-markdown/tests/test_apis.py:59: in testSimpleInput\n    self.assertEqual(self.md.convert('foo'), '<p>foo</p>')\n                     ^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/markdown/core.py:357: in convert\n    root = self.parser.parseDocument(self.lines).getroot()\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/markdown/blockparser.py:117: in parseDocument\n    self.parseChunk(self.root, '\\n'.join(lines))\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/markdown/blockparser.py:136: in parseChunk\n    self.parseBlocks(parent, text.split('\\n\\n'))\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/markdown/blockparser.py:158: in parseBlocks\n    if processor.run(parent, blocks) is not False:\n       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/markdown/blockprocessors.py:587: in run\n    block = blocks.pop(0)\n            ^^^^^^^^^^\nE   AttributeError: 'xml.etree.ElementTree.Element' object has no attribute 'pop'\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/tests/test_apis.py::TestMarkdownBasics::testSimpleInput\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 5 passed in 0.25s\n",
       "failing_tests": [
-        "tests/test_legacy.py::TestMisc::test_lists7"
+        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/tests/test_apis.py::TestMarkdownBasics::testSimpleInput"
       ],
       "exit_code": 1
     },
     {
       "bug_id": "python-markdown-camelcase-022",
-      "test_output": "........................................................................ [  8%]\n........................................................................ [ 16%]\n.......................F\n=================================== FAILURES ===================================\n_____________________________ TestMisc.test_lists7 _____________________________\nmarkdown/test_tools.py:166: in test\n    self.assertMultiLineEqual(output, expected)\nE   AssertionError: '<ul>[140 chars]i>\\n<p></p>\\n<p></p>\\n<p></p>\\n<ul>\\n<li>\\n<p>[955 chars]/ul>' != '<ul>[140 chars]i>\\n<ul>\\n<li>\\n<p>item 4-1</p>\\n</li>\\n<li>\\n[901 chars]/ul>'\nE   Diff is 1255 characters long. Set self.maxDiff to None to see it.\n=========================== short test summary info ============================\nFAILED tests/test_legacy.py::TestMisc::test_lists7 - AssertionError: '<ul>[14...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 167 passed in 0.25s\n",
+      "test_output": ".....F\n=================================== FAILURES ===================================\n______________________ TestMarkdownBasics.testSimpleInput ______________________\n/Users/yuan/stylebench-data/camelcase/python-markdown/tests/test_apis.py:59: in testSimpleInput\n    self.assertEqual(self.md.convert('foo'), '<p>foo</p>')\n                     ^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/markdown/core.py:357: in convert\n    root = self.parser.parseDocument(self.lines).getroot()\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/markdown/blockparser.py:117: in parseDocument\n    self.parseChunk(self.root, '\\n'.join(lines))\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/markdown/blockparser.py:136: in parseChunk\n    self.parseBlocks(parent, text.split('\\n\\n'))\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/markdown/blockparser.py:158: in parseBlocks\n    if processor.run(parent, blocks) is not False:\n       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/markdown/blockprocessors.py:587: in run\n    block = blocks.pop(0)\n            ^^^^^^^^^^\nE   AttributeError: 'xml.etree.ElementTree.Element' object has no attribute 'pop'\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/tests/test_apis.py::TestMarkdownBasics::testSimpleInput\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 5 passed in 0.33s\n",
       "failing_tests": [
-        "tests/test_legacy.py::TestMisc::test_lists7"
+        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/tests/test_apis.py::TestMarkdownBasics::testSimpleInput"
       ],
       "exit_code": 1
     },
     {
       "bug_id": "python-markdown-camelcase-023",
-      "test_output": "........................................................................ [  8%]\n........................................................................ [ 16%]\n.......................F\n=================================== FAILURES ===================================\n_____________________________ TestMisc.test_lists7 _____________________________\nmarkdown/test_tools.py:166: in test\n    self.assertMultiLineEqual(output, expected)\nE   AssertionError: '<ul>[140 chars]i>\\n<p></p>\\n<p></p>\\n<p></p>\\n<ul>\\n<li>\\n<p>[955 chars]/ul>' != '<ul>[140 chars]i>\\n<ul>\\n<li>\\n<p>item 4-1</p>\\n</li>\\n<li>\\n[901 chars]/ul>'\nE   Diff is 1255 characters long. Set self.maxDiff to None to see it.\n=========================== short test summary info ============================\nFAILED tests/test_legacy.py::TestMisc::test_lists7 - AssertionError: '<ul>[14...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 167 passed in 0.25s\n",
+      "test_output": ".....F\n=================================== FAILURES ===================================\n______________________ TestMarkdownBasics.testSimpleInput ______________________\n/Users/yuan/stylebench-data/camelcase/python-markdown/tests/test_apis.py:59: in testSimpleInput\n    self.assertEqual(self.md.convert('foo'), '<p>foo</p>')\n                     ^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/markdown/core.py:357: in convert\n    root = self.parser.parseDocument(self.lines).getroot()\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/markdown/blockparser.py:117: in parseDocument\n    self.parseChunk(self.root, '\\n'.join(lines))\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/markdown/blockparser.py:136: in parseChunk\n    self.parseBlocks(parent, text.split('\\n\\n'))\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/markdown/blockparser.py:158: in parseBlocks\n    if processor.run(parent, blocks) is not False:\n       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/markdown/blockprocessors.py:587: in run\n    block = blocks.pop(0)\n            ^^^^^^^^^^\nE   AttributeError: 'xml.etree.ElementTree.Element' object has no attribute 'pop'\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/tests/test_apis.py::TestMarkdownBasics::testSimpleInput\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 5 passed in 0.31s\n",
       "failing_tests": [
-        "tests/test_legacy.py::TestMisc::test_lists7"
+        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/tests/test_apis.py::TestMarkdownBasics::testSimpleInput"
       ],
       "exit_code": 1
     },
     {
       "bug_id": "python-markdown-camelcase-024",
-      "test_output": "........................................................................ [  8%]\n........................................................................ [ 16%]\n.......................F\n=================================== FAILURES ===================================\n_____________________________ TestMisc.test_lists7 _____________________________\nmarkdown/test_tools.py:166: in test\n    self.assertMultiLineEqual(output, expected)\nE   AssertionError: '<ul>[140 chars]i>\\n<p></p>\\n<p></p>\\n<p></p>\\n<ul>\\n<li>\\n<p>[955 chars]/ul>' != '<ul>[140 chars]i>\\n<ul>\\n<li>\\n<p>item 4-1</p>\\n</li>\\n<li>\\n[901 chars]/ul>'\nE   Diff is 1255 characters long. Set self.maxDiff to None to see it.\n=========================== short test summary info ============================\nFAILED tests/test_legacy.py::TestMisc::test_lists7 - AssertionError: '<ul>[14...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 167 passed in 0.21s\n",
+      "test_output": ".....F\n=================================== FAILURES ===================================\n______________________ TestMarkdownBasics.testSimpleInput ______________________\n/Users/yuan/stylebench-data/camelcase/python-markdown/tests/test_apis.py:59: in testSimpleInput\n    self.assertEqual(self.md.convert('foo'), '<p>foo</p>')\n                     ^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/markdown/core.py:357: in convert\n    root = self.parser.parseDocument(self.lines).getroot()\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/markdown/blockparser.py:117: in parseDocument\n    self.parseChunk(self.root, '\\n'.join(lines))\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/markdown/blockparser.py:136: in parseChunk\n    self.parseBlocks(parent, text.split('\\n\\n'))\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/markdown/blockparser.py:158: in parseBlocks\n    if processor.run(parent, blocks) is not False:\n       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/markdown/blockprocessors.py:587: in run\n    block = blocks.pop(0)\n            ^^^^^^^^^^\nE   AttributeError: 'xml.etree.ElementTree.Element' object has no attribute 'pop'\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/tests/test_apis.py::TestMarkdownBasics::testSimpleInput\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 5 passed in 0.31s\n",
       "failing_tests": [
-        "tests/test_legacy.py::TestMisc::test_lists7"
+        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/tests/test_apis.py::TestMarkdownBasics::testSimpleInput"
       ],
       "exit_code": 1
     },
     {
       "bug_id": "python-markdown-camelcase-025",
-      "test_output": "........................................................................ [  8%]\n........................................................................ [ 16%]\n.......................F\n=================================== FAILURES ===================================\n_____________________________ TestMisc.test_lists7 _____________________________\nmarkdown/test_tools.py:166: in test\n    self.assertMultiLineEqual(output, expected)\nE   AssertionError: '<ul>[140 chars]i>\\n<p></p>\\n<p></p>\\n<p></p>\\n<ul>\\n<li>\\n<p>[955 chars]/ul>' != '<ul>[140 chars]i>\\n<ul>\\n<li>\\n<p>item 4-1</p>\\n</li>\\n<li>\\n[901 chars]/ul>'\nE   Diff is 1255 characters long. Set self.maxDiff to None to see it.\n=========================== short test summary info ============================\nFAILED tests/test_legacy.py::TestMisc::test_lists7 - AssertionError: '<ul>[14...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 167 passed in 0.21s\n",
+      "test_output": ".....F\n=================================== FAILURES ===================================\n______________________ TestMarkdownBasics.testSimpleInput ______________________\n/Users/yuan/stylebench-data/camelcase/python-markdown/tests/test_apis.py:59: in testSimpleInput\n    self.assertEqual(self.md.convert('foo'), '<p>foo</p>')\n                     ^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/markdown/core.py:357: in convert\n    root = self.parser.parseDocument(self.lines).getroot()\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/markdown/blockparser.py:117: in parseDocument\n    self.parseChunk(self.root, '\\n'.join(lines))\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/markdown/blockparser.py:136: in parseChunk\n    self.parseBlocks(parent, text.split('\\n\\n'))\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/markdown/blockparser.py:158: in parseBlocks\n    if processor.run(parent, blocks) is not False:\n       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/markdown/blockprocessors.py:587: in run\n    block = blocks.pop(0)\n            ^^^^^^^^^^\nE   AttributeError: 'xml.etree.ElementTree.Element' object has no attribute 'pop'\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/tests/test_apis.py::TestMarkdownBasics::testSimpleInput\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 5 passed in 0.16s\n",
       "failing_tests": [
-        "tests/test_legacy.py::TestMisc::test_lists7"
+        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/tests/test_apis.py::TestMarkdownBasics::testSimpleInput"
       ],
       "exit_code": 1
     },
     {
       "bug_id": "python-markdown-camelcase-026",
-      "test_output": "........................................................................ [  8%]\n........................................................................ [ 16%]\n.......................F\n=================================== FAILURES ===================================\n_____________________________ TestMisc.test_lists7 _____________________________\nmarkdown/test_tools.py:166: in test\n    self.assertMultiLineEqual(output, expected)\nE   AssertionError: '<ul>[140 chars]i>\\n<p></p>\\n<p></p>\\n<p></p>\\n<ul>\\n<li>\\n<p>[955 chars]/ul>' != '<ul>[140 chars]i>\\n<ul>\\n<li>\\n<p>item 4-1</p>\\n</li>\\n<li>\\n[901 chars]/ul>'\nE   Diff is 1255 characters long. Set self.maxDiff to None to see it.\n=========================== short test summary info ============================\nFAILED tests/test_legacy.py::TestMisc::test_lists7 - AssertionError: '<ul>[14...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 167 passed in 0.21s\n",
+      "test_output": ".....F\n=================================== FAILURES ===================================\n______________________ TestMarkdownBasics.testSimpleInput ______________________\n/Users/yuan/stylebench-data/camelcase/python-markdown/tests/test_apis.py:59: in testSimpleInput\n    self.assertEqual(self.md.convert('foo'), '<p>foo</p>')\n                     ^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/markdown/core.py:357: in convert\n    root = self.parser.parseDocument(self.lines).getroot()\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/markdown/blockparser.py:117: in parseDocument\n    self.parseChunk(self.root, '\\n'.join(lines))\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/markdown/blockparser.py:136: in parseChunk\n    self.parseBlocks(parent, text.split('\\n\\n'))\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/markdown/blockparser.py:158: in parseBlocks\n    if processor.run(parent, blocks) is not False:\n       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/markdown/blockprocessors.py:587: in run\n    block = blocks.pop(0)\n            ^^^^^^^^^^\nE   AttributeError: 'xml.etree.ElementTree.Element' object has no attribute 'pop'\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/tests/test_apis.py::TestMarkdownBasics::testSimpleInput\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 5 passed in 0.14s\n",
       "failing_tests": [
-        "tests/test_legacy.py::TestMisc::test_lists7"
+        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/tests/test_apis.py::TestMarkdownBasics::testSimpleInput"
       ],
       "exit_code": 1
     },
     {
       "bug_id": "python-markdown-camelcase-027",
-      "test_output": "........................................................................ [  8%]\n........................................................................ [ 16%]\n.......................F\n=================================== FAILURES ===================================\n_____________________________ TestMisc.test_lists7 _____________________________\nmarkdown/test_tools.py:166: in test\n    self.assertMultiLineEqual(output, expected)\nE   AssertionError: '<ul>[140 chars]i>\\n<p></p>\\n<p></p>\\n<p></p>\\n<ul>\\n<li>\\n<p>[955 chars]/ul>' != '<ul>[140 chars]i>\\n<ul>\\n<li>\\n<p>item 4-1</p>\\n</li>\\n<li>\\n[901 chars]/ul>'\nE   Diff is 1255 characters long. Set self.maxDiff to None to see it.\n=========================== short test summary info ============================\nFAILED tests/test_legacy.py::TestMisc::test_lists7 - AssertionError: '<ul>[14...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 167 passed in 0.22s\n",
+      "test_output": ".....F\n=================================== FAILURES ===================================\n______________________ TestMarkdownBasics.testSimpleInput ______________________\n/Users/yuan/stylebench-data/camelcase/python-markdown/tests/test_apis.py:59: in testSimpleInput\n    self.assertEqual(self.md.convert('foo'), '<p>foo</p>')\n                     ^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/markdown/core.py:357: in convert\n    root = self.parser.parseDocument(self.lines).getroot()\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/markdown/blockparser.py:117: in parseDocument\n    self.parseChunk(self.root, '\\n'.join(lines))\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/markdown/blockparser.py:136: in parseChunk\n    self.parseBlocks(parent, text.split('\\n\\n'))\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/markdown/blockparser.py:158: in parseBlocks\n    if processor.run(parent, blocks) is not False:\n       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/markdown/blockprocessors.py:587: in run\n    block = blocks.pop(0)\n            ^^^^^^^^^^\nE   AttributeError: 'xml.etree.ElementTree.Element' object has no attribute 'pop'\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/tests/test_apis.py::TestMarkdownBasics::testSimpleInput\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 5 passed in 0.13s\n",
       "failing_tests": [
-        "tests/test_legacy.py::TestMisc::test_lists7"
+        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/tests/test_apis.py::TestMarkdownBasics::testSimpleInput"
       ],
       "exit_code": 1
     },
     {
       "bug_id": "python-markdown-camelcase-028",
-      "test_output": "........................................................................ [  8%]\n........................................................................ [ 16%]\n.......................F\n=================================== FAILURES ===================================\n_____________________________ TestMisc.test_lists7 _____________________________\nmarkdown/test_tools.py:166: in test\n    self.assertMultiLineEqual(output, expected)\nE   AssertionError: '<ul>[140 chars]i>\\n<p></p>\\n<p></p>\\n<p></p>\\n<ul>\\n<li>\\n<p>[955 chars]/ul>' != '<ul>[140 chars]i>\\n<ul>\\n<li>\\n<p>item 4-1</p>\\n</li>\\n<li>\\n[901 chars]/ul>'\nE   Diff is 1255 characters long. Set self.maxDiff to None to see it.\n=========================== short test summary info ============================\nFAILED tests/test_legacy.py::TestMisc::test_lists7 - AssertionError: '<ul>[14...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 167 passed in 0.20s\n",
+      "test_output": ".....F\n=================================== FAILURES ===================================\n______________________ TestMarkdownBasics.testSimpleInput ______________________\n/Users/yuan/stylebench-data/camelcase/python-markdown/tests/test_apis.py:59: in testSimpleInput\n    self.assertEqual(self.md.convert('foo'), '<p>foo</p>')\n                     ^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/markdown/core.py:357: in convert\n    root = self.parser.parseDocument(self.lines).getroot()\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/markdown/blockparser.py:117: in parseDocument\n    self.parseChunk(self.root, '\\n'.join(lines))\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/markdown/blockparser.py:136: in parseChunk\n    self.parseBlocks(parent, text.split('\\n\\n'))\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/markdown/blockparser.py:158: in parseBlocks\n    if processor.run(parent, blocks) is not False:\n       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/markdown/blockprocessors.py:587: in run\n    block = blocks.pop(0)\n            ^^^^^^^^^^\nE   AttributeError: 'xml.etree.ElementTree.Element' object has no attribute 'pop'\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/tests/test_apis.py::TestMarkdownBasics::testSimpleInput\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 5 passed in 0.13s\n",
       "failing_tests": [
-        "tests/test_legacy.py::TestMisc::test_lists7"
+        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/tests/test_apis.py::TestMarkdownBasics::testSimpleInput"
       ],
       "exit_code": 1
     },
     {
       "bug_id": "python-markdown-camelcase-029",
-      "test_output": "........................................................................ [  8%]\n........................................................................ [ 16%]\n.......................F\n=================================== FAILURES ===================================\n_____________________________ TestMisc.test_lists7 _____________________________\nmarkdown/test_tools.py:166: in test\n    self.assertMultiLineEqual(output, expected)\nE   AssertionError: '<ul>[140 chars]i>\\n<p></p>\\n<p></p>\\n<p></p>\\n<ul>\\n<li>\\n<p>[955 chars]/ul>' != '<ul>[140 chars]i>\\n<ul>\\n<li>\\n<p>item 4-1</p>\\n</li>\\n<li>\\n[901 chars]/ul>'\nE   Diff is 1255 characters long. Set self.maxDiff to None to see it.\n=========================== short test summary info ============================\nFAILED tests/test_legacy.py::TestMisc::test_lists7 - AssertionError: '<ul>[14...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 167 passed in 0.20s\n",
+      "test_output": ".....F\n=================================== FAILURES ===================================\n______________________ TestMarkdownBasics.testSimpleInput ______________________\n/Users/yuan/stylebench-data/camelcase/python-markdown/tests/test_apis.py:59: in testSimpleInput\n    self.assertEqual(self.md.convert('foo'), '<p>foo</p>')\n                     ^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/markdown/core.py:357: in convert\n    root = self.parser.parseDocument(self.lines).getroot()\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/markdown/blockparser.py:117: in parseDocument\n    self.parseChunk(self.root, '\\n'.join(lines))\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/markdown/blockparser.py:136: in parseChunk\n    self.parseBlocks(parent, text.split('\\n\\n'))\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/markdown/blockparser.py:158: in parseBlocks\n    if processor.run(parent, blocks) is not False:\n       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/markdown/blockprocessors.py:587: in run\n    block = blocks.pop(0)\n            ^^^^^^^^^^\nE   AttributeError: 'xml.etree.ElementTree.Element' object has no attribute 'pop'\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/tests/test_apis.py::TestMarkdownBasics::testSimpleInput\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 5 passed in 0.18s\n",
       "failing_tests": [
-        "tests/test_legacy.py::TestMisc::test_lists7"
+        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/tests/test_apis.py::TestMarkdownBasics::testSimpleInput"
       ],
       "exit_code": 1
     },
     {
       "bug_id": "python-markdown-camelcase-030",
-      "test_output": "........................................................................ [  8%]\n........................................................................ [ 16%]\n.......................F\n=================================== FAILURES ===================================\n_____________________________ TestMisc.test_lists7 _____________________________\nmarkdown/test_tools.py:166: in test\n    self.assertMultiLineEqual(output, expected)\nE   AssertionError: '<ul>[140 chars]i>\\n<p></p>\\n<p></p>\\n<p></p>\\n<ul>\\n<li>\\n<p>[955 chars]/ul>' != '<ul>[140 chars]i>\\n<ul>\\n<li>\\n<p>item 4-1</p>\\n</li>\\n<li>\\n[901 chars]/ul>'\nE   Diff is 1255 characters long. Set self.maxDiff to None to see it.\n=========================== short test summary info ============================\nFAILED tests/test_legacy.py::TestMisc::test_lists7 - AssertionError: '<ul>[14...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 167 passed in 0.23s\n",
+      "test_output": ".....F\n=================================== FAILURES ===================================\n______________________ TestMarkdownBasics.testSimpleInput ______________________\n/Users/yuan/stylebench-data/camelcase/python-markdown/tests/test_apis.py:59: in testSimpleInput\n    self.assertEqual(self.md.convert('foo'), '<p>foo</p>')\n                     ^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/markdown/core.py:357: in convert\n    root = self.parser.parseDocument(self.lines).getroot()\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/markdown/blockparser.py:117: in parseDocument\n    self.parseChunk(self.root, '\\n'.join(lines))\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/markdown/blockparser.py:136: in parseChunk\n    self.parseBlocks(parent, text.split('\\n\\n'))\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/markdown/blockparser.py:158: in parseBlocks\n    if processor.run(parent, blocks) is not False:\n       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/markdown/blockprocessors.py:587: in run\n    block = blocks.pop(0)\n            ^^^^^^^^^^\nE   AttributeError: 'xml.etree.ElementTree.Element' object has no attribute 'pop'\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/tests/test_apis.py::TestMarkdownBasics::testSimpleInput\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 5 passed in 0.12s\n",
       "failing_tests": [
-        "tests/test_legacy.py::TestMisc::test_lists7"
+        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/tests/test_apis.py::TestMarkdownBasics::testSimpleInput"
       ],
       "exit_code": 1
     },
     {
       "bug_id": "python-markdown-camelcase-031",
-      "test_output": "........................................................................ [  8%]\n........................................................................ [ 16%]\n.......................F\n=================================== FAILURES ===================================\n_____________________________ TestMisc.test_lists7 _____________________________\nmarkdown/test_tools.py:166: in test\n    self.assertMultiLineEqual(output, expected)\nE   AssertionError: '<ul>[140 chars]i>\\n<p></p>\\n<p></p>\\n<p></p>\\n<ul>\\n<li>\\n<p>[955 chars]/ul>' != '<ul>[140 chars]i>\\n<ul>\\n<li>\\n<p>item 4-1</p>\\n</li>\\n<li>\\n[901 chars]/ul>'\nE   Diff is 1255 characters long. Set self.maxDiff to None to see it.\n=========================== short test summary info ============================\nFAILED tests/test_legacy.py::TestMisc::test_lists7 - AssertionError: '<ul>[14...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 167 passed in 0.20s\n",
+      "test_output": ".....F\n=================================== FAILURES ===================================\n______________________ TestMarkdownBasics.testSimpleInput ______________________\n/Users/yuan/stylebench-data/camelcase/python-markdown/tests/test_apis.py:59: in testSimpleInput\n    self.assertEqual(self.md.convert('foo'), '<p>foo</p>')\n                     ^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/markdown/core.py:357: in convert\n    root = self.parser.parseDocument(self.lines).getroot()\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/markdown/blockparser.py:117: in parseDocument\n    self.parseChunk(self.root, '\\n'.join(lines))\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/markdown/blockparser.py:136: in parseChunk\n    self.parseBlocks(parent, text.split('\\n\\n'))\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/markdown/blockparser.py:158: in parseBlocks\n    if processor.run(parent, blocks) is not False:\n       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/markdown/blockprocessors.py:587: in run\n    block = blocks.pop(0)\n            ^^^^^^^^^^\nE   AttributeError: 'xml.etree.ElementTree.Element' object has no attribute 'pop'\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/tests/test_apis.py::TestMarkdownBasics::testSimpleInput\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 5 passed in 0.16s\n",
       "failing_tests": [
-        "tests/test_legacy.py::TestMisc::test_lists7"
+        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/tests/test_apis.py::TestMarkdownBasics::testSimpleInput"
       ],
       "exit_code": 1
     },
     {
       "bug_id": "python-markdown-camelcase-032",
-      "test_output": "........................................................................ [  8%]\n........................................................................ [ 16%]\n.......................F\n=================================== FAILURES ===================================\n_____________________________ TestMisc.test_lists7 _____________________________\nmarkdown/test_tools.py:166: in test\n    self.assertMultiLineEqual(output, expected)\nE   AssertionError: '<ul>[140 chars]i>\\n<p></p>\\n<p></p>\\n<p></p>\\n<ul>\\n<li>\\n<p>[955 chars]/ul>' != '<ul>[140 chars]i>\\n<ul>\\n<li>\\n<p>item 4-1</p>\\n</li>\\n<li>\\n[901 chars]/ul>'\nE   Diff is 1255 characters long. Set self.maxDiff to None to see it.\n=========================== short test summary info ============================\nFAILED tests/test_legacy.py::TestMisc::test_lists7 - AssertionError: '<ul>[14...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 167 passed in 0.20s\n",
+      "test_output": ".....F\n=================================== FAILURES ===================================\n______________________ TestMarkdownBasics.testSimpleInput ______________________\n/Users/yuan/stylebench-data/camelcase/python-markdown/tests/test_apis.py:59: in testSimpleInput\n    self.assertEqual(self.md.convert('foo'), '<p>foo</p>')\n                     ^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/markdown/core.py:357: in convert\n    root = self.parser.parseDocument(self.lines).getroot()\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/markdown/blockparser.py:117: in parseDocument\n    self.parseChunk(self.root, '\\n'.join(lines))\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/markdown/blockparser.py:136: in parseChunk\n    self.parseBlocks(parent, text.split('\\n\\n'))\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/markdown/blockparser.py:158: in parseBlocks\n    if processor.run(parent, blocks) is not False:\n       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/markdown/blockprocessors.py:587: in run\n    block = blocks.pop(0)\n            ^^^^^^^^^^\nE   AttributeError: 'xml.etree.ElementTree.Element' object has no attribute 'pop'\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/tests/test_apis.py::TestMarkdownBasics::testSimpleInput\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 5 passed in 0.14s\n",
       "failing_tests": [
-        "tests/test_legacy.py::TestMisc::test_lists7"
+        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/tests/test_apis.py::TestMarkdownBasics::testSimpleInput"
       ],
       "exit_code": 1
     },
     {
       "bug_id": "python-markdown-camelcase-033",
-      "test_output": "........................................................................ [  8%]\n........................................................................ [ 16%]\n.......................F\n=================================== FAILURES ===================================\n_____________________________ TestMisc.test_lists7 _____________________________\nmarkdown/test_tools.py:166: in test\n    self.assertMultiLineEqual(output, expected)\nE   AssertionError: '<ul>[140 chars]i>\\n<p></p>\\n<p></p>\\n<p></p>\\n<ul>\\n<li>\\n<p>[955 chars]/ul>' != '<ul>[140 chars]i>\\n<ul>\\n<li>\\n<p>item 4-1</p>\\n</li>\\n<li>\\n[901 chars]/ul>'\nE   Diff is 1255 characters long. Set self.maxDiff to None to see it.\n=========================== short test summary info ============================\nFAILED tests/test_legacy.py::TestMisc::test_lists7 - AssertionError: '<ul>[14...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 167 passed in 0.20s\n",
+      "test_output": "F\n=================================== FAILURES ===================================\n______________________ TestMarkdownBasics.testBlankInput _______________________\n/Users/yuan/stylebench-data/camelcase/python-markdown/tests/test_apis.py:47: in setUp\n    self.md = markdown.Markdown()\n              ^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/markdown/core.py:122: in __init__\n    self.build_parser()\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/markdown/core.py:153: in build_parser\n    self.parser = build_block_parser(self)\n                  ^^^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/markdown/blockprocessors.py:46: in build_block_parser\n    parser.blockprocessors.register(ListIndentProcessor(parser), 'indent', 90)\n                                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/markdown/blockprocessors.py:172: in __init__\n    self.INDENT_RE = re.compile(r'^(([ ]{%s})+)' % self.tab_length)\n                                                   ^^^^^^^^^^^^^^^\nE   AttributeError: 'ListIndentProcessor' object has no attribute 'tab_length'\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/tests/test_apis.py::TestMarkdownBasics::testBlankInput\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed in 0.13s\n",
       "failing_tests": [
-        "tests/test_legacy.py::TestMisc::test_lists7"
+        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/tests/test_apis.py::TestMarkdownBasics::testBlankInput"
       ],
       "exit_code": 1
     },
     {
       "bug_id": "python-markdown-camelcase-034",
-      "test_output": "........................................................................ [  8%]\n........................................................................ [ 16%]\n.......................F\n=================================== FAILURES ===================================\n_____________________________ TestMisc.test_lists7 _____________________________\nmarkdown/test_tools.py:166: in test\n    self.assertMultiLineEqual(output, expected)\nE   AssertionError: '<ul>[140 chars]i>\\n<p></p>\\n<p></p>\\n<p></p>\\n<ul>\\n<li>\\n<p>[955 chars]/ul>' != '<ul>[140 chars]i>\\n<ul>\\n<li>\\n<p>item 4-1</p>\\n</li>\\n<li>\\n[901 chars]/ul>'\nE   Diff is 1255 characters long. Set self.maxDiff to None to see it.\n=========================== short test summary info ============================\nFAILED tests/test_legacy.py::TestMisc::test_lists7 - AssertionError: '<ul>[14...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 167 passed in 0.20s\n",
+      "test_output": "F\n=================================== FAILURES ===================================\n______________________ TestMarkdownBasics.testBlankInput _______________________\n/Users/yuan/stylebench-data/camelcase/python-markdown/tests/test_apis.py:47: in setUp\n    self.md = markdown.Markdown()\n              ^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/markdown/core.py:122: in __init__\n    self.build_parser()\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/markdown/core.py:153: in build_parser\n    self.parser = build_block_parser(self)\n                  ^^^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/markdown/blockprocessors.py:45: in build_block_parser\n    parser.blockprocessors.register(EmptyBlockProcessor(parser), 'empty', 100)\n                                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/markdown/blockprocessors.py:76: in __init__\n    self.tab_length = self.md.tab_length\n                      ^^^^^^^\nE   AttributeError: 'EmptyBlockProcessor' object has no attribute 'md'\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/tests/test_apis.py::TestMarkdownBasics::testBlankInput\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed in 0.14s\n",
       "failing_tests": [
-        "tests/test_legacy.py::TestMisc::test_lists7"
+        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/tests/test_apis.py::TestMarkdownBasics::testBlankInput"
       ],
       "exit_code": 1
     },
     {
       "bug_id": "python-markdown-camelcase-035",
-      "test_output": "........................................................................ [  8%]\n........................................................................ [ 16%]\n.......................F\n=================================== FAILURES ===================================\n_____________________________ TestMisc.test_lists7 _____________________________\nmarkdown/test_tools.py:166: in test\n    self.assertMultiLineEqual(output, expected)\nE   AssertionError: '<ul>[140 chars]i>\\n<p></p>\\n<p></p>\\n<p></p>\\n<ul>\\n<li>\\n<p>[955 chars]/ul>' != '<ul>[140 chars]i>\\n<ul>\\n<li>\\n<p>item 4-1</p>\\n</li>\\n<li>\\n[901 chars]/ul>'\nE   Diff is 1255 characters long. Set self.maxDiff to None to see it.\n=========================== short test summary info ============================\nFAILED tests/test_legacy.py::TestMisc::test_lists7 - AssertionError: '<ul>[14...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 167 passed in 0.20s\n",
+      "test_output": "F\n=================================== FAILURES ===================================\n______________________ TestMarkdownBasics.testBlankInput _______________________\n/Users/yuan/stylebench-data/camelcase/python-markdown/tests/test_apis.py:47: in setUp\n    self.md = markdown.Markdown()\n              ^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/markdown/core.py:122: in __init__\n    self.build_parser()\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/markdown/core.py:153: in build_parser\n    self.parser = build_block_parser(self)\n                  ^^^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/markdown/blockprocessors.py:45: in build_block_parser\n    parser.blockprocessors.register(EmptyBlockProcessor(parser), 'empty', 100)\n                                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/markdown/blockprocessors.py:76: in __init__\n    self.tab_length = parser.md.tab_length\n                      ^^^^^^^\nE   AttributeError: 'EmptyBlockProcessor' object has no attribute 'md'\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/tests/test_apis.py::TestMarkdownBasics::testBlankInput\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed in 0.12s\n",
       "failing_tests": [
-        "tests/test_legacy.py::TestMisc::test_lists7"
+        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/tests/test_apis.py::TestMarkdownBasics::testBlankInput"
       ],
       "exit_code": 1
     },
     {
       "bug_id": "python-markdown-camelcase-036",
-      "test_output": "........................................................................ [  8%]\n........................................................................ [ 16%]\n.......................F\n=================================== FAILURES ===================================\n_____________________________ TestMisc.test_lists7 _____________________________\nmarkdown/test_tools.py:166: in test\n    self.assertMultiLineEqual(output, expected)\nE   AssertionError: '<ul>[140 chars]i>\\n<p></p>\\n<p></p>\\n<p></p>\\n<ul>\\n<li>\\n<p>[955 chars]/ul>' != '<ul>[140 chars]i>\\n<ul>\\n<li>\\n<p>item 4-1</p>\\n</li>\\n<li>\\n[901 chars]/ul>'\nE   Diff is 1255 characters long. Set self.maxDiff to None to see it.\n=========================== short test summary info ============================\nFAILED tests/test_legacy.py::TestMisc::test_lists7 - AssertionError: '<ul>[14...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 167 passed in 0.20s\n",
+      "test_output": "F\n=================================== FAILURES ===================================\n______________________ TestMarkdownBasics.testBlankInput _______________________\n/Users/yuan/stylebench-data/camelcase/python-markdown/tests/test_apis.py:47: in setUp\n    self.md = markdown.Markdown()\n              ^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/markdown/core.py:122: in __init__\n    self.build_parser()\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/markdown/core.py:153: in build_parser\n    self.parser = build_block_parser(self)\n                  ^^^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/markdown/blockprocessors.py:45: in build_block_parser\n    parser.blockprocessors.register(EmptyBlockProcessor(parser), 'empty', 100)\n                                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/markdown/blockprocessors.py:76: in __init__\n    self.tab_length = parser.md.tab_length\n                      ^^^^^^^\nE   AttributeError: 'EmptyBlockProcessor' object has no attribute 'md'\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/tests/test_apis.py::TestMarkdownBasics::testBlankInput\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed in 0.13s\n",
       "failing_tests": [
-        "tests/test_legacy.py::TestMisc::test_lists7"
+        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/tests/test_apis.py::TestMarkdownBasics::testBlankInput"
       ],
       "exit_code": 1
     },
     {
       "bug_id": "python-markdown-camelcase-037",
-      "test_output": "........................................................................ [  8%]\n........................................................................ [ 16%]\n.......................F\n=================================== FAILURES ===================================\n_____________________________ TestMisc.test_lists7 _____________________________\nmarkdown/test_tools.py:166: in test\n    self.assertMultiLineEqual(output, expected)\nE   AssertionError: '<ul>[140 chars]i>\\n<p></p>\\n<p></p>\\n<p></p>\\n<ul>\\n<li>\\n<p>[955 chars]/ul>' != '<ul>[140 chars]i>\\n<ul>\\n<li>\\n<p>item 4-1</p>\\n</li>\\n<li>\\n[901 chars]/ul>'\nE   Diff is 1255 characters long. Set self.maxDiff to None to see it.\n=========================== short test summary info ============================\nFAILED tests/test_legacy.py::TestMisc::test_lists7 - AssertionError: '<ul>[14...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 167 passed in 0.21s\n",
+      "test_output": "F\n=================================== FAILURES ===================================\n______________________ TestMarkdownBasics.testBlankInput _______________________\n/Users/yuan/stylebench-data/camelcase/python-markdown/tests/test_apis.py:47: in setUp\n    self.md = markdown.Markdown()\n              ^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/markdown/core.py:122: in __init__\n    self.build_parser()\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/markdown/core.py:153: in build_parser\n    self.parser = build_block_parser(self)\n                  ^^^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/markdown/blockprocessors.py:45: in build_block_parser\n    parser.blockprocessors.register(EmptyBlockProcessor(parser), 'empty', 100)\n                                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/markdown/blockprocessors.py:76: in __init__\n    self.tab_length = parser.md.tab_length\n                      ^^^^^^^\nE   AttributeError: 'EmptyBlockProcessor' object has no attribute 'md'\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/tests/test_apis.py::TestMarkdownBasics::testBlankInput\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed in 0.13s\n",
       "failing_tests": [
-        "tests/test_legacy.py::TestMisc::test_lists7"
+        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/tests/test_apis.py::TestMarkdownBasics::testBlankInput"
       ],
       "exit_code": 1
     },
     {
       "bug_id": "python-markdown-camelcase-038",
-      "test_output": "........................................................................ [  8%]\n........................................................................ [ 16%]\n.......................F\n=================================== FAILURES ===================================\n_____________________________ TestMisc.test_lists7 _____________________________\nmarkdown/test_tools.py:166: in test\n    self.assertMultiLineEqual(output, expected)\nE   AssertionError: '<ul>[140 chars]i>\\n<p></p>\\n<p></p>\\n<p></p>\\n<ul>\\n<li>\\n<p>[955 chars]/ul>' != '<ul>[140 chars]i>\\n<ul>\\n<li>\\n<p>item 4-1</p>\\n</li>\\n<li>\\n[901 chars]/ul>'\nE   Diff is 1255 characters long. Set self.maxDiff to None to see it.\n=========================== short test summary info ============================\nFAILED tests/test_legacy.py::TestMisc::test_lists7 - AssertionError: '<ul>[14...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 167 passed in 0.21s\n",
+      "test_output": ".....F\n=================================== FAILURES ===================================\n______________________ TestMarkdownBasics.testSimpleInput ______________________\n/Users/yuan/stylebench-data/camelcase/python-markdown/tests/test_apis.py:59: in testSimpleInput\n    self.assertEqual(self.md.convert('foo'), '<p>foo</p>')\n                     ^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/markdown/core.py:357: in convert\n    root = self.parser.parseDocument(self.lines).getroot()\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/markdown/blockparser.py:117: in parseDocument\n    self.parseChunk(self.root, '\\n'.join(lines))\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/markdown/blockparser.py:136: in parseChunk\n    self.parseBlocks(parent, text.split('\\n\\n'))\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/markdown/blockparser.py:158: in parseBlocks\n    if processor.run(parent, blocks) is not False:\n       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/markdown/blockprocessors.py:587: in run\n    block = blocks.pop(0)\n            ^^^^^^^^^^\nE   AttributeError: 'xml.etree.ElementTree.Element' object has no attribute 'pop'\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/tests/test_apis.py::TestMarkdownBasics::testSimpleInput\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 5 passed in 0.15s\n",
       "failing_tests": [
-        "tests/test_legacy.py::TestMisc::test_lists7"
+        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/tests/test_apis.py::TestMarkdownBasics::testSimpleInput"
       ],
       "exit_code": 1
     },
     {
       "bug_id": "python-markdown-camelcase-039",
-      "test_output": "........................................................................ [  8%]\n........................................................................ [ 16%]\n.......................F\n=================================== FAILURES ===================================\n_____________________________ TestMisc.test_lists7 _____________________________\nmarkdown/test_tools.py:166: in test\n    self.assertMultiLineEqual(output, expected)\nE   AssertionError: '<ul>[140 chars]i>\\n<p></p>\\n<p></p>\\n<p></p>\\n<ul>\\n<li>\\n<p>[955 chars]/ul>' != '<ul>[140 chars]i>\\n<ul>\\n<li>\\n<p>item 4-1</p>\\n</li>\\n<li>\\n[901 chars]/ul>'\nE   Diff is 1255 characters long. Set self.maxDiff to None to see it.\n=========================== short test summary info ============================\nFAILED tests/test_legacy.py::TestMisc::test_lists7 - AssertionError: '<ul>[14...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 167 passed in 0.20s\n",
+      "test_output": ".....F\n=================================== FAILURES ===================================\n______________________ TestMarkdownBasics.testSimpleInput ______________________\n/Users/yuan/stylebench-data/camelcase/python-markdown/tests/test_apis.py:59: in testSimpleInput\n    self.assertEqual(self.md.convert('foo'), '<p>foo</p>')\n                     ^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/markdown/core.py:357: in convert\n    root = self.parser.parseDocument(self.lines).getroot()\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/markdown/blockparser.py:117: in parseDocument\n    self.parseChunk(self.root, '\\n'.join(lines))\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/markdown/blockparser.py:136: in parseChunk\n    self.parseBlocks(parent, text.split('\\n\\n'))\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/markdown/blockparser.py:158: in parseBlocks\n    if processor.run(parent, blocks) is not False:\n       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/markdown/blockprocessors.py:587: in run\n    block = blocks.pop(0)\n            ^^^^^^^^^^\nE   AttributeError: 'xml.etree.ElementTree.Element' object has no attribute 'pop'\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/tests/test_apis.py::TestMarkdownBasics::testSimpleInput\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 5 passed in 0.14s\n",
       "failing_tests": [
-        "tests/test_legacy.py::TestMisc::test_lists7"
+        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/tests/test_apis.py::TestMarkdownBasics::testSimpleInput"
       ],
       "exit_code": 1
     },
     {
       "bug_id": "python-markdown-camelcase-040",
-      "test_output": "........................................................................ [  8%]\n........................................................................ [ 16%]\n.......................F\n=================================== FAILURES ===================================\n_____________________________ TestMisc.test_lists7 _____________________________\nmarkdown/test_tools.py:166: in test\n    self.assertMultiLineEqual(output, expected)\nE   AssertionError: '<ul>[140 chars]i>\\n<p></p>\\n<p></p>\\n<p></p>\\n<ul>\\n<li>\\n<p>[955 chars]/ul>' != '<ul>[140 chars]i>\\n<ul>\\n<li>\\n<p>item 4-1</p>\\n</li>\\n<li>\\n[901 chars]/ul>'\nE   Diff is 1255 characters long. Set self.maxDiff to None to see it.\n=========================== short test summary info ============================\nFAILED tests/test_legacy.py::TestMisc::test_lists7 - AssertionError: '<ul>[14...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 167 passed in 0.21s\n",
+      "test_output": ".....F\n=================================== FAILURES ===================================\n______________________ TestMarkdownBasics.testSimpleInput ______________________\n/Users/yuan/stylebench-data/camelcase/python-markdown/tests/test_apis.py:59: in testSimpleInput\n    self.assertEqual(self.md.convert('foo'), '<p>foo</p>')\n                     ^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/markdown/core.py:357: in convert\n    root = self.parser.parseDocument(self.lines).getroot()\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/markdown/blockparser.py:117: in parseDocument\n    self.parseChunk(self.root, '\\n'.join(lines))\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/markdown/blockparser.py:136: in parseChunk\n    self.parseBlocks(parent, text.split('\\n\\n'))\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/markdown/blockparser.py:158: in parseBlocks\n    if processor.run(parent, blocks) is not False:\n       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/markdown/blockprocessors.py:587: in run\n    block = blocks.pop(0)\n            ^^^^^^^^^^\nE   AttributeError: 'xml.etree.ElementTree.Element' object has no attribute 'pop'\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/tests/test_apis.py::TestMarkdownBasics::testSimpleInput\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 5 passed in 0.14s\n",
       "failing_tests": [
-        "tests/test_legacy.py::TestMisc::test_lists7"
+        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/tests/test_apis.py::TestMarkdownBasics::testSimpleInput"
       ],
       "exit_code": 1
     },
     {
       "bug_id": "python-markdown-camelcase-041",
-      "test_output": "........................................................................ [  8%]\n........................................................................ [ 16%]\n.......................F\n=================================== FAILURES ===================================\n_____________________________ TestMisc.test_lists7 _____________________________\nmarkdown/test_tools.py:166: in test\n    self.assertMultiLineEqual(output, expected)\nE   AssertionError: '<ul>[140 chars]i>\\n<p></p>\\n<p></p>\\n<p></p>\\n<ul>\\n<li>\\n<p>[955 chars]/ul>' != '<ul>[140 chars]i>\\n<ul>\\n<li>\\n<p>item 4-1</p>\\n</li>\\n<li>\\n[901 chars]/ul>'\nE   Diff is 1255 characters long. Set self.maxDiff to None to see it.\n=========================== short test summary info ============================\nFAILED tests/test_legacy.py::TestMisc::test_lists7 - AssertionError: '<ul>[14...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 167 passed in 0.20s\n",
+      "test_output": ".....F\n=================================== FAILURES ===================================\n______________________ TestMarkdownBasics.testSimpleInput ______________________\n/Users/yuan/stylebench-data/camelcase/python-markdown/tests/test_apis.py:59: in testSimpleInput\n    self.assertEqual(self.md.convert('foo'), '<p>foo</p>')\n                     ^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/markdown/core.py:357: in convert\n    root = self.parser.parseDocument(self.lines).getroot()\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/markdown/blockparser.py:117: in parseDocument\n    self.parseChunk(self.root, '\\n'.join(lines))\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/markdown/blockparser.py:136: in parseChunk\n    self.parseBlocks(parent, text.split('\\n\\n'))\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/markdown/blockparser.py:158: in parseBlocks\n    if processor.run(parent, blocks) is not False:\n       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/markdown/blockprocessors.py:587: in run\n    block = blocks.pop(0)\n            ^^^^^^^^^^\nE   AttributeError: 'xml.etree.ElementTree.Element' object has no attribute 'pop'\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/tests/test_apis.py::TestMarkdownBasics::testSimpleInput\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 5 passed in 0.13s\n",
       "failing_tests": [
-        "tests/test_legacy.py::TestMisc::test_lists7"
+        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/tests/test_apis.py::TestMarkdownBasics::testSimpleInput"
       ],
       "exit_code": 1
     },
     {
       "bug_id": "python-markdown-camelcase-042",
-      "test_output": "........................................................................ [  8%]\n........................................................................ [ 16%]\n.......................F\n=================================== FAILURES ===================================\n_____________________________ TestMisc.test_lists7 _____________________________\nmarkdown/test_tools.py:166: in test\n    self.assertMultiLineEqual(output, expected)\nE   AssertionError: '<ul>[140 chars]i>\\n<p></p>\\n<p></p>\\n<p></p>\\n<ul>\\n<li>\\n<p>[955 chars]/ul>' != '<ul>[140 chars]i>\\n<ul>\\n<li>\\n<p>item 4-1</p>\\n</li>\\n<li>\\n[901 chars]/ul>'\nE   Diff is 1255 characters long. Set self.maxDiff to None to see it.\n=========================== short test summary info ============================\nFAILED tests/test_legacy.py::TestMisc::test_lists7 - AssertionError: '<ul>[14...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 167 passed in 0.21s\n",
+      "test_output": ".....F\n=================================== FAILURES ===================================\n______________________ TestMarkdownBasics.testSimpleInput ______________________\n/Users/yuan/stylebench-data/camelcase/python-markdown/tests/test_apis.py:59: in testSimpleInput\n    self.assertEqual(self.md.convert('foo'), '<p>foo</p>')\n                     ^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/markdown/core.py:357: in convert\n    root = self.parser.parseDocument(self.lines).getroot()\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/markdown/blockparser.py:117: in parseDocument\n    self.parseChunk(self.root, '\\n'.join(lines))\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/markdown/blockparser.py:136: in parseChunk\n    self.parseBlocks(parent, text.split('\\n\\n'))\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/markdown/blockparser.py:158: in parseBlocks\n    if processor.run(parent, blocks) is not False:\n       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/markdown/blockprocessors.py:587: in run\n    block = blocks.pop(0)\n            ^^^^^^^^^^\nE   AttributeError: 'xml.etree.ElementTree.Element' object has no attribute 'pop'\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/tests/test_apis.py::TestMarkdownBasics::testSimpleInput\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 5 passed in 0.15s\n",
       "failing_tests": [
-        "tests/test_legacy.py::TestMisc::test_lists7"
+        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/tests/test_apis.py::TestMarkdownBasics::testSimpleInput"
       ],
       "exit_code": 1
     },
     {
       "bug_id": "python-markdown-camelcase-043",
-      "test_output": ".............F\n=================================== FAILURES ===================================\n_______________________ TestBlockParserState.testIsSate ________________________\ntests/test_apis.py:168: in testIsSate\n    self.assertEqual(self.state.isstate('a_state'), True)\nE   AssertionError: None != True\n=========================== short test summary info ============================\nFAILED tests/test_apis.py::TestBlockParserState::testIsSate - AssertionError:...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 13 passed in 0.12s\n",
+      "test_output": ".....F\n=================================== FAILURES ===================================\n______________________ TestMarkdownBasics.testSimpleInput ______________________\n/Users/yuan/stylebench-data/camelcase/python-markdown/tests/test_apis.py:59: in testSimpleInput\n    self.assertEqual(self.md.convert('foo'), '<p>foo</p>')\n                     ^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/markdown/core.py:357: in convert\n    root = self.parser.parseDocument(self.lines).getroot()\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/markdown/blockparser.py:117: in parseDocument\n    self.parseChunk(self.root, '\\n'.join(lines))\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/markdown/blockparser.py:136: in parseChunk\n    self.parseBlocks(parent, text.split('\\n\\n'))\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/markdown/blockparser.py:158: in parseBlocks\n    if processor.run(parent, blocks) is not False:\n       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/markdown/blockprocessors.py:587: in run\n    block = blocks.pop(0)\n            ^^^^^^^^^^\nE   AttributeError: 'xml.etree.ElementTree.Element' object has no attribute 'pop'\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/tests/test_apis.py::TestMarkdownBasics::testSimpleInput\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 5 passed in 0.16s\n",
       "failing_tests": [
-        "tests/test_apis.py::TestBlockParserState::testIsSate"
+        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/tests/test_apis.py::TestMarkdownBasics::testSimpleInput"
       ],
       "exit_code": 1
     },
     {
       "bug_id": "python-markdown-camelcase-044",
-      "test_output": ".............F\n=================================== FAILURES ===================================\n_______________________ TestBlockParserState.testIsSate ________________________\ntests/test_apis.py:168: in testIsSate\n    self.assertEqual(self.state.isstate('a_state'), True)\nE   AssertionError: False != True\n=========================== short test summary info ============================\nFAILED tests/test_apis.py::TestBlockParserState::testIsSate - AssertionError:...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 13 passed in 0.12s\n",
+      "test_output": ".....F\n=================================== FAILURES ===================================\n______________________ TestMarkdownBasics.testSimpleInput ______________________\n/Users/yuan/stylebench-data/camelcase/python-markdown/tests/test_apis.py:59: in testSimpleInput\n    self.assertEqual(self.md.convert('foo'), '<p>foo</p>')\n                     ^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/markdown/core.py:357: in convert\n    root = self.parser.parseDocument(self.lines).getroot()\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/markdown/blockparser.py:117: in parseDocument\n    self.parseChunk(self.root, '\\n'.join(lines))\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/markdown/blockparser.py:136: in parseChunk\n    self.parseBlocks(parent, text.split('\\n\\n'))\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/markdown/blockparser.py:158: in parseBlocks\n    if processor.run(parent, blocks) is not False:\n       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/markdown/blockprocessors.py:587: in run\n    block = blocks.pop(0)\n            ^^^^^^^^^^\nE   AttributeError: 'xml.etree.ElementTree.Element' object has no attribute 'pop'\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/tests/test_apis.py::TestMarkdownBasics::testSimpleInput\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 5 passed in 0.16s\n",
       "failing_tests": [
-        "tests/test_apis.py::TestBlockParserState::testIsSate"
+        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/tests/test_apis.py::TestMarkdownBasics::testSimpleInput"
       ],
       "exit_code": 1
     },
     {
       "bug_id": "python-markdown-camelcase-045",
-      "test_output": ".............F\n=================================== FAILURES ===================================\n_______________________ TestBlockParserState.testIsSate ________________________\ntests/test_apis.py:168: in testIsSate\n    self.assertEqual(self.state.isstate('a_state'), True)\nE   AssertionError: False != True\n=========================== short test summary info ============================\nFAILED tests/test_apis.py::TestBlockParserState::testIsSate - AssertionError:...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 13 passed in 0.12s\n",
+      "test_output": ".....F\n=================================== FAILURES ===================================\n______________________ TestMarkdownBasics.testSimpleInput ______________________\n/Users/yuan/stylebench-data/camelcase/python-markdown/tests/test_apis.py:59: in testSimpleInput\n    self.assertEqual(self.md.convert('foo'), '<p>foo</p>')\n                     ^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/markdown/core.py:357: in convert\n    root = self.parser.parseDocument(self.lines).getroot()\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/markdown/blockparser.py:117: in parseDocument\n    self.parseChunk(self.root, '\\n'.join(lines))\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/markdown/blockparser.py:136: in parseChunk\n    self.parseBlocks(parent, text.split('\\n\\n'))\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/markdown/blockparser.py:158: in parseBlocks\n    if processor.run(parent, blocks) is not False:\n       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/markdown/blockprocessors.py:587: in run\n    block = blocks.pop(0)\n            ^^^^^^^^^^\nE   AttributeError: 'xml.etree.ElementTree.Element' object has no attribute 'pop'\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/tests/test_apis.py::TestMarkdownBasics::testSimpleInput\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 5 passed in 0.13s\n",
       "failing_tests": [
-        "tests/test_apis.py::TestBlockParserState::testIsSate"
+        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/tests/test_apis.py::TestMarkdownBasics::testSimpleInput"
       ],
       "exit_code": 1
     },
     {
       "bug_id": "python-markdown-camelcase-046",
-      "test_output": ".............F\n=================================== FAILURES ===================================\n_______________________ TestBlockParserState.testIsSate ________________________\ntests/test_apis.py:170: in testIsSate\n    self.assertEqual(self.state.isstate('state2'), True)\nE   AssertionError: False != True\n=========================== short test summary info ============================\nFAILED tests/test_apis.py::TestBlockParserState::testIsSate - AssertionError:...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 13 passed in 0.11s\n",
+      "test_output": ".....F\n=================================== FAILURES ===================================\n______________________ TestMarkdownBasics.testSimpleInput ______________________\n/Users/yuan/stylebench-data/camelcase/python-markdown/tests/test_apis.py:59: in testSimpleInput\n    self.assertEqual(self.md.convert('foo'), '<p>foo</p>')\n                     ^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/markdown/core.py:357: in convert\n    root = self.parser.parseDocument(self.lines).getroot()\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/markdown/blockparser.py:117: in parseDocument\n    self.parseChunk(self.root, '\\n'.join(lines))\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/markdown/blockparser.py:136: in parseChunk\n    self.parseBlocks(parent, text.split('\\n\\n'))\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/markdown/blockparser.py:158: in parseBlocks\n    if processor.run(parent, blocks) is not False:\n       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/markdown/blockprocessors.py:587: in run\n    block = blocks.pop(0)\n            ^^^^^^^^^^\nE   AttributeError: 'xml.etree.ElementTree.Element' object has no attribute 'pop'\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/tests/test_apis.py::TestMarkdownBasics::testSimpleInput\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 5 passed in 0.12s\n",
       "failing_tests": [
-        "tests/test_apis.py::TestBlockParserState::testIsSate"
+        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/tests/test_apis.py::TestMarkdownBasics::testSimpleInput"
       ],
       "exit_code": 1
     },
     {
       "bug_id": "python-markdown-camelcase-047",
-      "test_output": ".............F\n=================================== FAILURES ===================================\n_______________________ TestBlockParserState.testIsSate ________________________\ntests/test_apis.py:166: in testIsSate\n    self.assertEqual(self.state.isstate('anything'), False)\nE   AssertionError: None != False\n=========================== short test summary info ============================\nFAILED tests/test_apis.py::TestBlockParserState::testIsSate - AssertionError:...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 13 passed in 0.12s\n",
+      "test_output": ".....F\n=================================== FAILURES ===================================\n______________________ TestMarkdownBasics.testSimpleInput ______________________\n/Users/yuan/stylebench-data/camelcase/python-markdown/tests/test_apis.py:59: in testSimpleInput\n    self.assertEqual(self.md.convert('foo'), '<p>foo</p>')\n                     ^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/markdown/core.py:357: in convert\n    root = self.parser.parseDocument(self.lines).getroot()\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/markdown/blockparser.py:117: in parseDocument\n    self.parseChunk(self.root, '\\n'.join(lines))\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/markdown/blockparser.py:136: in parseChunk\n    self.parseBlocks(parent, text.split('\\n\\n'))\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/markdown/blockparser.py:158: in parseBlocks\n    if processor.run(parent, blocks) is not False:\n       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/markdown/blockprocessors.py:587: in run\n    block = blocks.pop(0)\n            ^^^^^^^^^^\nE   AttributeError: 'xml.etree.ElementTree.Element' object has no attribute 'pop'\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/tests/test_apis.py::TestMarkdownBasics::testSimpleInput\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 5 passed in 0.13s\n",
       "failing_tests": [
-        "tests/test_apis.py::TestBlockParserState::testIsSate"
+        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/tests/test_apis.py::TestMarkdownBasics::testSimpleInput"
       ],
       "exit_code": 1
     },
     {
       "bug_id": "python-markdown-camelcase-048",
-      "test_output": ".............F\n=================================== FAILURES ===================================\n_______________________ TestBlockParserState.testIsSate ________________________\ntests/test_apis.py:166: in testIsSate\n    self.assertEqual(self.state.isstate('anything'), False)\nE   AssertionError: None != False\n=========================== short test summary info ============================\nFAILED tests/test_apis.py::TestBlockParserState::testIsSate - AssertionError:...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 13 passed in 0.11s\n",
+      "test_output": ".....F\n=================================== FAILURES ===================================\n______________________ TestMarkdownBasics.testSimpleInput ______________________\n/Users/yuan/stylebench-data/camelcase/python-markdown/tests/test_apis.py:59: in testSimpleInput\n    self.assertEqual(self.md.convert('foo'), '<p>foo</p>')\n                     ^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/markdown/core.py:357: in convert\n    root = self.parser.parseDocument(self.lines).getroot()\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/markdown/blockparser.py:117: in parseDocument\n    self.parseChunk(self.root, '\\n'.join(lines))\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/markdown/blockparser.py:136: in parseChunk\n    self.parseBlocks(parent, text.split('\\n\\n'))\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/markdown/blockparser.py:158: in parseBlocks\n    if processor.run(parent, blocks) is not False:\n       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/markdown/blockprocessors.py:587: in run\n    block = blocks.pop(0)\n            ^^^^^^^^^^\nE   AttributeError: 'xml.etree.ElementTree.Element' object has no attribute 'pop'\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/tests/test_apis.py::TestMarkdownBasics::testSimpleInput\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 5 passed in 0.12s\n",
       "failing_tests": [
-        "tests/test_apis.py::TestBlockParserState::testIsSate"
+        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/tests/test_apis.py::TestMarkdownBasics::testSimpleInput"
       ],
       "exit_code": 1
     },
     {
       "bug_id": "python-markdown-camelcase-049",
-      "test_output": ".....F\n=================================== FAILURES ===================================\n______________________ TestMarkdownBasics.testSimpleInput ______________________\ntests/test_apis.py:59: in testSimpleInput\n    self.assertEqual(self.md.convert('foo'), '<p>foo</p>')\n                     ^^^^^^^^^^^^^^^^^^^^^^\nmarkdown/core.py:357: in convert\n    root = self.parser.parseDocument(self.lines).getroot()\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nE   AttributeError: 'NoneType' object has no attribute 'getroot'\n=========================== short test summary info ============================\nFAILED tests/test_apis.py::TestMarkdownBasics::testSimpleInput - AttributeErr...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 5 passed in 0.12s\n",
+      "test_output": ".....F\n=================================== FAILURES ===================================\n______________________ TestMarkdownBasics.testSimpleInput ______________________\n/Users/yuan/stylebench-data/camelcase/python-markdown/tests/test_apis.py:59: in testSimpleInput\n    self.assertEqual(self.md.convert('foo'), '<p>foo</p>')\n                     ^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/markdown/core.py:357: in convert\n    root = self.parser.parseDocument(self.lines).getroot()\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/markdown/blockparser.py:117: in parseDocument\n    self.parseChunk(self.root, '\\n'.join(lines))\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/markdown/blockparser.py:136: in parseChunk\n    self.parseBlocks(parent, text.split('\\n\\n'))\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/markdown/blockparser.py:158: in parseBlocks\n    if processor.run(parent, blocks) is not False:\n       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/markdown/blockprocessors.py:587: in run\n    block = blocks.pop(0)\n            ^^^^^^^^^^\nE   AttributeError: 'xml.etree.ElementTree.Element' object has no attribute 'pop'\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/tests/test_apis.py::TestMarkdownBasics::testSimpleInput\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 5 passed in 0.13s\n",
       "failing_tests": [
-        "tests/test_apis.py::TestMarkdownBasics::testSimpleInput"
+        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/tests/test_apis.py::TestMarkdownBasics::testSimpleInput"
       ],
       "exit_code": 1
     },
     {
       "bug_id": "python-markdown-camelcase-050",
-      "test_output": ".....F\n=================================== FAILURES ===================================\n______________________ TestMarkdownBasics.testSimpleInput ______________________\ntests/test_apis.py:59: in testSimpleInput\n    self.assertEqual(self.md.convert('foo'), '<p>foo</p>')\n                     ^^^^^^^^^^^^^^^^^^^^^^\nmarkdown/core.py:357: in convert\n    root = self.parser.parseDocument(self.lines).getroot()\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nmarkdown/blockparser.py:117: in parseDocument\n    self.parseChunk(self.root, '\\n'.join(lines))\nmarkdown/blockparser.py:136: in parseChunk\n    self.parseBlocks(parent, text.split('\\n\\n'))\nmarkdown/blockparser.py:157: in parseBlocks\n    if processor.test(parent, blocks[1]):\n                              ^^^^^^^^^\nE   IndexError: list index out of range\n=========================== short test summary info ============================\nFAILED tests/test_apis.py::TestMarkdownBasics::testSimpleInput - IndexError: ...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 5 passed in 0.12s\n",
+      "test_output": ".....F\n=================================== FAILURES ===================================\n______________________ TestMarkdownBasics.testSimpleInput ______________________\n/Users/yuan/stylebench-data/camelcase/python-markdown/tests/test_apis.py:59: in testSimpleInput\n    self.assertEqual(self.md.convert('foo'), '<p>foo</p>')\n                     ^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/markdown/core.py:357: in convert\n    root = self.parser.parseDocument(self.lines).getroot()\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/markdown/blockparser.py:117: in parseDocument\n    self.parseChunk(self.root, '\\n'.join(lines))\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/markdown/blockparser.py:136: in parseChunk\n    self.parseBlocks(parent, text.split('\\n\\n'))\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/markdown/blockparser.py:158: in parseBlocks\n    if processor.run(parent, blocks) is not False:\n       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/markdown/blockprocessors.py:587: in run\n    block = blocks.pop(0)\n            ^^^^^^^^^^\nE   AttributeError: 'xml.etree.ElementTree.Element' object has no attribute 'pop'\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/tests/test_apis.py::TestMarkdownBasics::testSimpleInput\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 5 passed in 0.16s\n",
       "failing_tests": [
-        "tests/test_apis.py::TestMarkdownBasics::testSimpleInput"
+        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpf77ilwj4/worker_1/tests/test_apis.py::TestMarkdownBasics::testSimpleInput"
       ],
       "exit_code": 1
     }
@@ -418,231 +419,6 @@
   "_hidden": [
     {
       "bug_id": "python-markdown-camelcase-001",
-      "file_path": "markdown/__main__.py",
-      "line_number": 65,
-      "mutation_type": "true_false",
-      "original_text": "True",
-      "mutated_text": "False",
-      "context": "...action='store_false', default=True,                       help=\"Observe nu..."
-    },
-    {
-      "bug_id": "python-markdown-camelcase-002",
-      "file_path": "markdown/__main__.py",
-      "line_number": 81,
-      "mutation_type": "add_sub",
-      "original_text": "+",
-      "mutated_text": "-",
-      "context": "...action=\"store_const\", const=CRITICAL+10, dest=\"verbose\",..."
-    },
-    {
-      "bug_id": "python-markdown-camelcase-003",
-      "file_path": "markdown/__main__.py",
-      "line_number": 81,
-      "mutation_type": "plus_one",
-      "original_text": "10",
-      "mutated_text": "11",
-      "context": "...action=\"store_const\", const=CRITICAL+10, dest=\"verbose\",..."
-    },
-    {
-      "bug_id": "python-markdown-camelcase-004",
-      "file_path": "markdown/__main__.py",
-      "line_number": 81,
-      "mutation_type": "minus_one",
-      "original_text": "10",
-      "mutated_text": "9",
-      "context": "...action=\"store_const\", const=CRITICAL+10, dest=\"verbose\",..."
-    },
-    {
-      "bug_id": "python-markdown-camelcase-005",
-      "file_path": "markdown/__main__.py",
-      "line_number": 92,
-      "mutation_type": "eq_ne",
-      "original_text": "==",
-      "mutated_text": "!=",
-      "context": "...se_args(args, values)      if len(args) == 0:         inputFile = None     else:..."
-    },
-    {
-      "bug_id": "python-markdown-camelcase-006",
-      "file_path": "markdown/__main__.py",
-      "line_number": 92,
-      "mutation_type": "plus_one",
-      "original_text": "0",
-      "mutated_text": "1",
-      "context": "...args(args, values)      if len(args) == 0:         inputFile = None     else:..."
-    },
-    {
-      "bug_id": "python-markdown-camelcase-007",
-      "file_path": "markdown/__main__.py",
-      "line_number": 92,
-      "mutation_type": "minus_one",
-      "original_text": "0",
-      "mutated_text": "-1",
-      "context": "...args(args, values)      if len(args) == 0:         inputFile = None     else:..."
-    },
-    {
-      "bug_id": "python-markdown-camelcase-008",
-      "file_path": "markdown/__main__.py",
-      "line_number": 95,
-      "mutation_type": "plus_one",
-      "original_text": "0",
-      "mutated_text": "1",
-      "context": "...None     else:         inputFile = args[0]      if not options.extensions:..."
-    },
-    {
-      "bug_id": "python-markdown-camelcase-009",
-      "file_path": "markdown/__main__.py",
-      "line_number": 95,
-      "mutation_type": "minus_one",
-      "original_text": "0",
-      "mutated_text": "-1",
-      "context": "...None     else:         inputFile = args[0]      if not options.extensions:..."
-    },
-    {
-      "bug_id": "python-markdown-camelcase-010",
-      "file_path": "markdown/__main__.py",
-      "line_number": 110,
-      "mutation_type": "add_sub",
-      "original_text": "+",
-      "mutated_text": "-",
-      "context": "...ile                 e.args = (message,) + e.args[1:]                 raise      o..."
-    },
-    {
-      "bug_id": "python-markdown-camelcase-011",
-      "file_path": "markdown/__main__.py",
-      "line_number": 110,
-      "mutation_type": "plus_one",
-      "original_text": "1",
-      "mutated_text": "2",
-      "context": "...e.args = (message,) + e.args[1:]                 raise      opts = {..."
-    },
-    {
-      "bug_id": "python-markdown-camelcase-012",
-      "file_path": "markdown/__main__.py",
-      "line_number": 110,
-      "mutation_type": "minus_one",
-      "original_text": "1",
-      "mutated_text": "0",
-      "context": "...e.args = (message,) + e.args[1:]                 raise      opts = {..."
-    },
-    {
-      "bug_id": "python-markdown-camelcase-013",
-      "file_path": "markdown/__main__.py",
-      "line_number": 123,
-      "mutation_type": "return_none",
-      "original_text": "opts, options.verbose",
-      "mutated_text": "None",
-      "context": "...'lazy_ol': options.lazy_ol     }      return opts, options.verbose   def run():  # pragma: no cover     \"\"..."
-    },
-    {
-      "bug_id": "python-markdown-camelcase-014",
-      "file_path": "markdown/__main__.py",
-      "line_number": 132,
-      "mutation_type": "plus_one",
-      "original_text": "2",
-      "mutated_text": "3",
-      "context": "...()     if not options:         sys.exit(2)     logger.setLevel(loggingLevel)..."
-    },
-    {
-      "bug_id": "python-markdown-camelcase-015",
-      "file_path": "markdown/__main__.py",
-      "line_number": 132,
-      "mutation_type": "minus_one",
-      "original_text": "2",
-      "mutated_text": "1",
-      "context": "...()     if not options:         sys.exit(2)     logger.setLevel(loggingLevel)..."
-    },
-    {
-      "bug_id": "python-markdown-camelcase-016",
-      "file_path": "markdown/__main__.py",
-      "line_number": 136,
-      "mutation_type": "le_ge",
-      "original_text": "<=",
-      "mutated_text": ">=",
-      "context": "...ler(consoleHandler)     if loggingLevel <= WARNING:         # Ensure deprecation w..."
-    },
-    {
-      "bug_id": "python-markdown-camelcase-017",
-      "file_path": "markdown/__main__.py",
-      "line_number": 139,
-      "mutation_type": "true_false",
-      "original_text": "True",
-      "mutated_text": "False",
-      "context": "...fault')         logging.captureWarnings(True)         warnLogger = logging.getLogger..."
-    },
-    {
-      "bug_id": "python-markdown-camelcase-018",
-      "file_path": "markdown/__meta__.py",
-      "line_number": 31,
-      "mutation_type": "plus_one",
-      "original_text": "3",
-      "mutated_text": "4",
-      "context": "...mport annotations   __version_info__ = (3, 10, 0, 'final', 0)   def _get_version(..."
-    },
-    {
-      "bug_id": "python-markdown-camelcase-019",
-      "file_path": "markdown/__meta__.py",
-      "line_number": 31,
-      "mutation_type": "minus_one",
-      "original_text": "3",
-      "mutated_text": "2",
-      "context": "...mport annotations   __version_info__ = (3, 10, 0, 'final', 0)   def _get_version(..."
-    },
-    {
-      "bug_id": "python-markdown-camelcase-020",
-      "file_path": "markdown/__meta__.py",
-      "line_number": 31,
-      "mutation_type": "plus_one",
-      "original_text": "10",
-      "mutated_text": "11",
-      "context": "...rt annotations   __version_info__ = (3, 10, 0, 'final', 0)   def _get_version(vers..."
-    },
-    {
-      "bug_id": "python-markdown-camelcase-021",
-      "file_path": "markdown/__meta__.py",
-      "line_number": 31,
-      "mutation_type": "minus_one",
-      "original_text": "10",
-      "mutated_text": "9",
-      "context": "...rt annotations   __version_info__ = (3, 10, 0, 'final', 0)   def _get_version(vers..."
-    },
-    {
-      "bug_id": "python-markdown-camelcase-022",
-      "file_path": "markdown/__meta__.py",
-      "line_number": 31,
-      "mutation_type": "plus_one",
-      "original_text": "0",
-      "mutated_text": "1",
-      "context": "...nnotations   __version_info__ = (3, 10, 0, 'final', 0)   def _get_version(version..."
-    },
-    {
-      "bug_id": "python-markdown-camelcase-023",
-      "file_path": "markdown/__meta__.py",
-      "line_number": 31,
-      "mutation_type": "minus_one",
-      "original_text": "0",
-      "mutated_text": "-1",
-      "context": "...nnotations   __version_info__ = (3, 10, 0, 'final', 0)   def _get_version(version..."
-    },
-    {
-      "bug_id": "python-markdown-camelcase-024",
-      "file_path": "markdown/__meta__.py",
-      "line_number": 31,
-      "mutation_type": "plus_one",
-      "original_text": "0",
-      "mutated_text": "1",
-      "context": "...__version_info__ = (3, 10, 0, 'final', 0)   def _get_version(version_info):..."
-    },
-    {
-      "bug_id": "python-markdown-camelcase-025",
-      "file_path": "markdown/__meta__.py",
-      "line_number": 31,
-      "mutation_type": "minus_one",
-      "original_text": "0",
-      "mutated_text": "-1",
-      "context": "...__version_info__ = (3, 10, 0, 'final', 0)   def _get_version(version_info):..."
-    },
-    {
-      "bug_id": "python-markdown-camelcase-026",
       "file_path": "markdown/__meta__.py",
       "line_number": 39,
       "mutation_type": "eq_ne",
@@ -651,61 +427,7 @@
       "context": "...nal')      parts = 2 if version_info[2] == 0 else 3     v = '.'.join(map(str, vers..."
     },
     {
-      "bug_id": "python-markdown-camelcase-027",
-      "file_path": "markdown/__meta__.py",
-      "line_number": 39,
-      "mutation_type": "plus_one",
-      "original_text": "2",
-      "mutated_text": "3",
-      "context": "...'final')      parts = 2 if version_info[2] == 0 else 3     v = '.'.join(map(str,..."
-    },
-    {
-      "bug_id": "python-markdown-camelcase-028",
-      "file_path": "markdown/__meta__.py",
-      "line_number": 39,
-      "mutation_type": "minus_one",
-      "original_text": "2",
-      "mutated_text": "1",
-      "context": "...'final')      parts = 2 if version_info[2] == 0 else 3     v = '.'.join(map(str,..."
-    },
-    {
-      "bug_id": "python-markdown-camelcase-029",
-      "file_path": "markdown/__meta__.py",
-      "line_number": 39,
-      "mutation_type": "plus_one",
-      "original_text": "0",
-      "mutated_text": "1",
-      "context": "...')      parts = 2 if version_info[2] == 0 else 3     v = '.'.join(map(str, versio..."
-    },
-    {
-      "bug_id": "python-markdown-camelcase-030",
-      "file_path": "markdown/__meta__.py",
-      "line_number": 39,
-      "mutation_type": "minus_one",
-      "original_text": "0",
-      "mutated_text": "-1",
-      "context": "...')      parts = 2 if version_info[2] == 0 else 3     v = '.'.join(map(str, versio..."
-    },
-    {
-      "bug_id": "python-markdown-camelcase-031",
-      "file_path": "markdown/__meta__.py",
-      "line_number": 39,
-      "mutation_type": "plus_one",
-      "original_text": "3",
-      "mutated_text": "4",
-      "context": "...parts = 2 if version_info[2] == 0 else 3     v = '.'.join(map(str, version_info[..."
-    },
-    {
-      "bug_id": "python-markdown-camelcase-032",
-      "file_path": "markdown/__meta__.py",
-      "line_number": 39,
-      "mutation_type": "minus_one",
-      "original_text": "3",
-      "mutated_text": "2",
-      "context": "...parts = 2 if version_info[2] == 0 else 3     v = '.'.join(map(str, version_info[..."
-    },
-    {
-      "bug_id": "python-markdown-camelcase-033",
+      "bug_id": "python-markdown-camelcase-002",
       "file_path": "markdown/__meta__.py",
       "line_number": 42,
       "mutation_type": "eq_ne",
@@ -714,52 +436,7 @@
       "context": "..._info[:parts]))      if version_info[3] == 'dev':         v += '.dev' + str(versio..."
     },
     {
-      "bug_id": "python-markdown-camelcase-034",
-      "file_path": "markdown/__meta__.py",
-      "line_number": 42,
-      "mutation_type": "plus_one",
-      "original_text": "3",
-      "mutated_text": "4",
-      "context": "...ion_info[:parts]))      if version_info[3] == 'dev':         v += '.dev' + str(ve..."
-    },
-    {
-      "bug_id": "python-markdown-camelcase-035",
-      "file_path": "markdown/__meta__.py",
-      "line_number": 42,
-      "mutation_type": "minus_one",
-      "original_text": "3",
-      "mutated_text": "2",
-      "context": "...ion_info[:parts]))      if version_info[3] == 'dev':         v += '.dev' + str(ve..."
-    },
-    {
-      "bug_id": "python-markdown-camelcase-036",
-      "file_path": "markdown/__meta__.py",
-      "line_number": 43,
-      "mutation_type": "add_sub",
-      "original_text": "+",
-      "mutated_text": "-",
-      "context": "...n_info[3] == 'dev':         v += '.dev' + str(version_info[4])     elif version_i..."
-    },
-    {
-      "bug_id": "python-markdown-camelcase-037",
-      "file_path": "markdown/__meta__.py",
-      "line_number": 43,
-      "mutation_type": "plus_one",
-      "original_text": "4",
-      "mutated_text": "5",
-      "context": "...v += '.dev' + str(version_info[4])     elif version_info[3] != 'final':..."
-    },
-    {
-      "bug_id": "python-markdown-camelcase-038",
-      "file_path": "markdown/__meta__.py",
-      "line_number": 43,
-      "mutation_type": "minus_one",
-      "original_text": "4",
-      "mutated_text": "3",
-      "context": "...v += '.dev' + str(version_info[4])     elif version_info[3] != 'final':..."
-    },
-    {
-      "bug_id": "python-markdown-camelcase-039",
+      "bug_id": "python-markdown-camelcase-003",
       "file_path": "markdown/__meta__.py",
       "line_number": 44,
       "mutation_type": "eq_ne",
@@ -768,25 +445,7 @@
       "context": "...rsion_info[4])     elif version_info[3] != 'final':         mapping = {'alpha': 'a..."
     },
     {
-      "bug_id": "python-markdown-camelcase-040",
-      "file_path": "markdown/__meta__.py",
-      "line_number": 46,
-      "mutation_type": "plus_one",
-      "original_text": "4",
-      "mutated_text": "5",
-      "context": "...ing[version_info[3]] + str(version_info[4])      return v   __version__ = _get_ve..."
-    },
-    {
-      "bug_id": "python-markdown-camelcase-041",
-      "file_path": "markdown/__meta__.py",
-      "line_number": 46,
-      "mutation_type": "minus_one",
-      "original_text": "4",
-      "mutated_text": "3",
-      "context": "...ing[version_info[3]] + str(version_info[4])      return v   __version__ = _get_ve..."
-    },
-    {
-      "bug_id": "python-markdown-camelcase-042",
+      "bug_id": "python-markdown-camelcase-004",
       "file_path": "markdown/__meta__.py",
       "line_number": 48,
       "mutation_type": "return_none",
@@ -795,76 +454,418 @@
       "context": "...on_info[3]] + str(version_info[4])      return v   __version__ = _get_version(__version_..."
     },
     {
-      "bug_id": "python-markdown-camelcase-043",
-      "file_path": "markdown/blockparser.py",
-      "line_number": 70,
-      "mutation_type": "return_none",
-      "original_text": "self[-1] == state",
-      "mutated_text": "None",
-      "context": ".... \"\"\"         if len(self):             return self[-1] == state         else:             return False..."
+      "bug_id": "python-markdown-camelcase-005",
+      "file_path": "markdown/__meta__.py",
+      "line_number": 43,
+      "mutation_type": "add_sub",
+      "original_text": "+",
+      "mutated_text": "-",
+      "context": "...n_info[3] == 'dev':         v += '.dev' + str(version_info[4])     elif version_i..."
     },
     {
-      "bug_id": "python-markdown-camelcase-044",
-      "file_path": "markdown/blockparser.py",
-      "line_number": 70,
-      "mutation_type": "eq_ne",
-      "original_text": "==",
-      "mutated_text": "!=",
-      "context": "...len(self):             return self[-1] == state         else:             return..."
+      "bug_id": "python-markdown-camelcase-006",
+      "file_path": "markdown/__meta__.py",
+      "line_number": 46,
+      "mutation_type": "add_sub",
+      "original_text": "+",
+      "mutated_text": "-",
+      "context": "...}         v += mapping[version_info[3]] + str(version_info[4])      return v   __..."
     },
     {
-      "bug_id": "python-markdown-camelcase-045",
-      "file_path": "markdown/blockparser.py",
-      "line_number": 70,
+      "bug_id": "python-markdown-camelcase-007",
+      "file_path": "markdown/__meta__.py",
+      "line_number": 31,
       "mutation_type": "plus_one",
-      "original_text": "1",
-      "mutated_text": "2",
-      "context": "...if len(self):             return self[-1] == state         else:             ret..."
+      "original_text": "3",
+      "mutated_text": "4",
+      "context": "...mport annotations   __version_info__ = (3, 10, 0, 'final', 0)   def _get_version(..."
     },
     {
-      "bug_id": "python-markdown-camelcase-046",
-      "file_path": "markdown/blockparser.py",
-      "line_number": 70,
-      "mutation_type": "minus_one",
-      "original_text": "1",
-      "mutated_text": "0",
-      "context": "...if len(self):             return self[-1] == state         else:             ret..."
+      "bug_id": "python-markdown-camelcase-008",
+      "file_path": "markdown/__meta__.py",
+      "line_number": 31,
+      "mutation_type": "plus_one",
+      "original_text": "10",
+      "mutated_text": "11",
+      "context": "...rt annotations   __version_info__ = (3, 10, 0, 'final', 0)   def _get_version(vers..."
     },
     {
-      "bug_id": "python-markdown-camelcase-047",
-      "file_path": "markdown/blockparser.py",
-      "line_number": 72,
-      "mutation_type": "return_none",
-      "original_text": "False",
-      "mutated_text": "None",
-      "context": "...[-1] == state         else:             return False   class BlockParser:     \"\"\" Parse Mark..."
-    },
-    {
-      "bug_id": "python-markdown-camelcase-048",
-      "file_path": "markdown/blockparser.py",
-      "line_number": 72,
-      "mutation_type": "true_false",
-      "original_text": "False",
-      "mutated_text": "True",
-      "context": "...state         else:             return False   class BlockParser:     \"\"\" Parse Mark..."
-    },
-    {
-      "bug_id": "python-markdown-camelcase-049",
-      "file_path": "markdown/blockparser.py",
-      "line_number": 118,
-      "mutation_type": "return_none",
-      "original_text": "etree.ElementTree(self.root)",
-      "mutated_text": "None",
-      "context": "...nk(self.root, '\\n'.join(lines))         return etree.ElementTree(self.root)      def parseChunk(self, parent: etree..."
-    },
-    {
-      "bug_id": "python-markdown-camelcase-050",
-      "file_path": "markdown/blockparser.py",
-      "line_number": 157,
+      "bug_id": "python-markdown-camelcase-009",
+      "file_path": "markdown/__meta__.py",
+      "line_number": 31,
       "mutation_type": "plus_one",
       "original_text": "0",
       "mutated_text": "1",
-      "context": "...if processor.test(parent, blocks[0]):                     if processor.run..."
+      "context": "...nnotations   __version_info__ = (3, 10, 0, 'final', 0)   def _get_version(version..."
+    },
+    {
+      "bug_id": "python-markdown-camelcase-010",
+      "file_path": "markdown/__meta__.py",
+      "line_number": 31,
+      "mutation_type": "plus_one",
+      "original_text": "0",
+      "mutated_text": "1",
+      "context": "...__version_info__ = (3, 10, 0, 'final', 0)   def _get_version(version_info):..."
+    },
+    {
+      "bug_id": "python-markdown-camelcase-011",
+      "file_path": "markdown/__meta__.py",
+      "line_number": 36,
+      "mutation_type": "plus_one",
+      "original_text": "5",
+      "mutated_text": "6",
+      "context": "...nfo`. \"     assert len(version_info) == 5     assert version_info[3] in ('dev', '..."
+    },
+    {
+      "bug_id": "python-markdown-camelcase-012",
+      "file_path": "markdown/__meta__.py",
+      "line_number": 39,
+      "mutation_type": "plus_one",
+      "original_text": "3",
+      "mutated_text": "4",
+      "context": "...parts = 2 if version_info[2] == 0 else 3     v = '.'.join(map(str, version_info[..."
+    },
+    {
+      "bug_id": "python-markdown-camelcase-013",
+      "file_path": "markdown/__meta__.py",
+      "line_number": 42,
+      "mutation_type": "plus_one",
+      "original_text": "3",
+      "mutated_text": "4",
+      "context": "...ion_info[:parts]))      if version_info[3] == 'dev':         v += '.dev' + str(ve..."
+    },
+    {
+      "bug_id": "python-markdown-camelcase-014",
+      "file_path": "markdown/__meta__.py",
+      "line_number": 43,
+      "mutation_type": "plus_one",
+      "original_text": "4",
+      "mutated_text": "5",
+      "context": "...v += '.dev' + str(version_info[4])     elif version_info[3] != 'final':..."
+    },
+    {
+      "bug_id": "python-markdown-camelcase-015",
+      "file_path": "markdown/__meta__.py",
+      "line_number": 31,
+      "mutation_type": "minus_one",
+      "original_text": "10",
+      "mutated_text": "9",
+      "context": "...rt annotations   __version_info__ = (3, 10, 0, 'final', 0)   def _get_version(vers..."
+    },
+    {
+      "bug_id": "python-markdown-camelcase-016",
+      "file_path": "markdown/__meta__.py",
+      "line_number": 31,
+      "mutation_type": "minus_one",
+      "original_text": "0",
+      "mutated_text": "-1",
+      "context": "...nnotations   __version_info__ = (3, 10, 0, 'final', 0)   def _get_version(version..."
+    },
+    {
+      "bug_id": "python-markdown-camelcase-017",
+      "file_path": "markdown/__meta__.py",
+      "line_number": 31,
+      "mutation_type": "minus_one",
+      "original_text": "0",
+      "mutated_text": "-1",
+      "context": "...__version_info__ = (3, 10, 0, 'final', 0)   def _get_version(version_info):..."
+    },
+    {
+      "bug_id": "python-markdown-camelcase-018",
+      "file_path": "markdown/__meta__.py",
+      "line_number": 39,
+      "mutation_type": "minus_one",
+      "original_text": "0",
+      "mutated_text": "-1",
+      "context": "...')      parts = 2 if version_info[2] == 0 else 3     v = '.'.join(map(str, versio..."
+    },
+    {
+      "bug_id": "python-markdown-camelcase-019",
+      "file_path": "markdown/__meta__.py",
+      "line_number": 39,
+      "mutation_type": "minus_one",
+      "original_text": "3",
+      "mutated_text": "2",
+      "context": "...parts = 2 if version_info[2] == 0 else 3     v = '.'.join(map(str, version_info[..."
+    },
+    {
+      "bug_id": "python-markdown-camelcase-020",
+      "file_path": "markdown/__meta__.py",
+      "line_number": 42,
+      "mutation_type": "minus_one",
+      "original_text": "3",
+      "mutated_text": "2",
+      "context": "...ion_info[:parts]))      if version_info[3] == 'dev':         v += '.dev' + str(ve..."
+    },
+    {
+      "bug_id": "python-markdown-camelcase-021",
+      "file_path": "markdown/__meta__.py",
+      "line_number": 43,
+      "mutation_type": "minus_one",
+      "original_text": "4",
+      "mutated_text": "3",
+      "context": "...v += '.dev' + str(version_info[4])     elif version_info[3] != 'final':..."
+    },
+    {
+      "bug_id": "python-markdown-camelcase-022",
+      "file_path": "markdown/blockprocessors.py",
+      "line_number": 261,
+      "mutation_type": "eq_ne",
+      "original_text": "==",
+      "mutated_text": "!=",
+      "context": "...if (sibling is not None and sibling.tag == \"pre\" and            len(sibling) and s..."
+    },
+    {
+      "bug_id": "python-markdown-camelcase-023",
+      "file_path": "markdown/blockprocessors.py",
+      "line_number": 262,
+      "mutation_type": "eq_ne",
+      "original_text": "==",
+      "mutated_text": "!=",
+      "context": "...len(sibling) and sibling[0].tag == \"code\"):             # The previous blo..."
+    },
+    {
+      "bug_id": "python-markdown-camelcase-024",
+      "file_path": "markdown/blockprocessors.py",
+      "line_number": 304,
+      "mutation_type": "eq_ne",
+      "original_text": "==",
+      "mutated_text": "!=",
+      "context": "...if sibling is not None and sibling.tag == \"blockquote\":             # Previous bl..."
+    },
+    {
+      "bug_id": "python-markdown-camelcase-025",
+      "file_path": "markdown/blockprocessors.py",
+      "line_number": 319,
+      "mutation_type": "eq_ne",
+      "original_text": "==",
+      "mutated_text": "!=",
+      "context": "....RE.match(line)         if line.strip() == \">\":             return \"\"         elif..."
+    },
+    {
+      "bug_id": "python-markdown-camelcase-026",
+      "file_path": "markdown/blockprocessors.py",
+      "line_number": 402,
+      "mutation_type": "eq_ne",
+      "original_text": "!=",
+      "mutated_text": "==",
+      "context": "...if not self.LAZY_OL and self.STARTSWITH != '1':                 lst.attrib['start'..."
+    },
+    {
+      "bug_id": "python-markdown-camelcase-027",
+      "file_path": "markdown/blockprocessors.py",
+      "line_number": 426,
+      "mutation_type": "eq_ne",
+      "original_text": "==",
+      "mutated_text": "!=",
+      "context": "...if not items and self.TAG == 'ol':                     # Detect the..."
+    },
+    {
+      "bug_id": "python-markdown-camelcase-028",
+      "file_path": "markdown/blockprocessors.py",
+      "line_number": 569,
+      "mutation_type": "eq_ne",
+      "original_text": "==",
+      "mutated_text": "!=",
+      "context": "...if (sibling is not None and sibling.tag == 'pre' and            len(sibling) and s..."
+    },
+    {
+      "bug_id": "python-markdown-camelcase-029",
+      "file_path": "markdown/blockprocessors.py",
+      "line_number": 570,
+      "mutation_type": "eq_ne",
+      "original_text": "==",
+      "mutated_text": "!=",
+      "context": "...len(sibling) and sibling[0].tag == 'code'):             # Last block is a..."
+    },
+    {
+      "bug_id": "python-markdown-camelcase-030",
+      "file_path": "markdown/blockprocessors.py",
+      "line_number": 75,
+      "mutation_type": "var_swap",
+      "original_text": "self",
+      "mutated_text": "parser",
+      "context": "...t__(self, parser: BlockParser):         self.parser = parser         self.tab_length..."
+    },
+    {
+      "bug_id": "python-markdown-camelcase-031",
+      "file_path": "markdown/blockprocessors.py",
+      "line_number": 75,
+      "mutation_type": "var_swap",
+      "original_text": "parser",
+      "mutated_text": "self",
+      "context": "...elf, parser: BlockParser):         self.parser = parser         self.tab_length = pars..."
+    },
+    {
+      "bug_id": "python-markdown-camelcase-032",
+      "file_path": "markdown/blockprocessors.py",
+      "line_number": 75,
+      "mutation_type": "var_swap",
+      "original_text": "parser",
+      "mutated_text": "self",
+      "context": "...er: BlockParser):         self.parser = parser         self.tab_length = parser.md.tab..."
+    },
+    {
+      "bug_id": "python-markdown-camelcase-033",
+      "file_path": "markdown/blockprocessors.py",
+      "line_number": 76,
+      "mutation_type": "var_swap",
+      "original_text": "self",
+      "mutated_text": "parser",
+      "context": "...):         self.parser = parser         self.tab_length = parser.md.tab_length..."
+    },
+    {
+      "bug_id": "python-markdown-camelcase-034",
+      "file_path": "markdown/blockprocessors.py",
+      "line_number": 76,
+      "mutation_type": "var_swap",
+      "original_text": "parser",
+      "mutated_text": "self",
+      "context": "...rser = parser         self.tab_length = parser.md.tab_length      def lastChild(self,..."
+    },
+    {
+      "bug_id": "python-markdown-camelcase-035",
+      "file_path": "markdown/blockprocessors.py",
+      "line_number": 80,
+      "mutation_type": "var_swap",
+      "original_text": "parent",
+      "mutated_text": "self",
+      "context": "...an `etree` element. \"\"\"         if len(parent):             return parent[-1]..."
+    },
+    {
+      "bug_id": "python-markdown-camelcase-036",
+      "file_path": "markdown/blockprocessors.py",
+      "line_number": 81,
+      "mutation_type": "var_swap",
+      "original_text": "parent",
+      "mutated_text": "self",
+      "context": "...if len(parent):             return parent[-1]         else:             return No..."
+    },
+    {
+      "bug_id": "python-markdown-camelcase-037",
+      "file_path": "markdown/blockprocessors.py",
+      "line_number": 87,
+      "mutation_type": "var_swap",
+      "original_text": "length",
+      "mutated_text": "self",
+      "context": "...line of the given text. \"\"\"         if length is None:             length = self.tab_..."
+    },
+    {
+      "bug_id": "python-markdown-camelcase-038",
+      "file_path": "markdown/blockprocessors.py",
+      "line_number": 87,
+      "mutation_type": "var_swap",
+      "original_text": "length",
+      "mutated_text": "text",
+      "context": "...line of the given text. \"\"\"         if length is None:             length = self.tab_..."
+    },
+    {
+      "bug_id": "python-markdown-camelcase-039",
+      "file_path": "markdown/blockprocessors.py",
+      "line_number": 88,
+      "mutation_type": "var_swap",
+      "original_text": "self",
+      "mutated_text": "text",
+      "context": "...if length is None:             length = self.tab_length         newtext = []..."
+    },
+    {
+      "bug_id": "python-markdown-camelcase-040",
+      "file_path": "markdown/blockprocessors.py",
+      "line_number": 88,
+      "mutation_type": "var_swap",
+      "original_text": "self",
+      "mutated_text": "length",
+      "context": "...if length is None:             length = self.tab_length         newtext = []..."
+    },
+    {
+      "bug_id": "python-markdown-camelcase-041",
+      "file_path": "markdown/blockprocessors.py",
+      "line_number": 90,
+      "mutation_type": "var_swap",
+      "original_text": "text",
+      "mutated_text": "self",
+      "context": "...th         newtext = []         lines = text.split('\\n')         for line in lines:..."
+    },
+    {
+      "bug_id": "python-markdown-camelcase-042",
+      "file_path": "markdown/blockprocessors.py",
+      "line_number": 90,
+      "mutation_type": "var_swap",
+      "original_text": "text",
+      "mutated_text": "length",
+      "context": "...th         newtext = []         lines = text.split('\\n')         for line in lines:..."
+    },
+    {
+      "bug_id": "python-markdown-camelcase-043",
+      "file_path": "markdown/blockprocessors.py",
+      "line_number": 92,
+      "mutation_type": "var_swap",
+      "original_text": "length",
+      "mutated_text": "self",
+      "context": "...s:             if line.startswith(' ' * length):                 newtext.append(line[l..."
+    },
+    {
+      "bug_id": "python-markdown-camelcase-044",
+      "file_path": "markdown/blockprocessors.py",
+      "line_number": 92,
+      "mutation_type": "var_swap",
+      "original_text": "length",
+      "mutated_text": "text",
+      "context": "...s:             if line.startswith(' ' * length):                 newtext.append(line[l..."
+    },
+    {
+      "bug_id": "python-markdown-camelcase-045",
+      "file_path": "markdown/blockprocessors.py",
+      "line_number": 93,
+      "mutation_type": "var_swap",
+      "original_text": "length",
+      "mutated_text": "self",
+      "context": "...h):                 newtext.append(line[length:])             elif not line.strip():..."
+    },
+    {
+      "bug_id": "python-markdown-camelcase-046",
+      "file_path": "markdown/blockprocessors.py",
+      "line_number": 93,
+      "mutation_type": "var_swap",
+      "original_text": "length",
+      "mutated_text": "text",
+      "context": "...h):                 newtext.append(line[length:])             elif not line.strip():..."
+    },
+    {
+      "bug_id": "python-markdown-camelcase-047",
+      "file_path": "markdown/blockprocessors.py",
+      "line_number": 102,
+      "mutation_type": "var_swap",
+      "original_text": "text",
+      "mutated_text": "self",
+      "context": "...ing dedented lines. \"\"\"         lines = text.split('\\n')         for i in range(len(..."
+    },
+    {
+      "bug_id": "python-markdown-camelcase-048",
+      "file_path": "markdown/blockprocessors.py",
+      "line_number": 102,
+      "mutation_type": "var_swap",
+      "original_text": "text",
+      "mutated_text": "level",
+      "context": "...ing dedented lines. \"\"\"         lines = text.split('\\n')         for i in range(len(..."
+    },
+    {
+      "bug_id": "python-markdown-camelcase-049",
+      "file_path": "markdown/blockprocessors.py",
+      "line_number": 104,
+      "mutation_type": "var_swap",
+      "original_text": "self",
+      "mutated_text": "text",
+      "context": "...if lines[i].startswith(' '*self.tab_length*level):                 line..."
+    },
+    {
+      "bug_id": "python-markdown-camelcase-050",
+      "file_path": "markdown/blockprocessors.py",
+      "line_number": 104,
+      "mutation_type": "var_swap",
+      "original_text": "self",
+      "mutated_text": "level",
+      "context": "...if lines[i].startswith(' '*self.tab_length*level):                 line..."
     }
   ]
 }

@@ -1,11 +1,12 @@
 {
   "repo": "more-itertools",
   "style": "original",
-  "generated_at": "2026-01-29T11:20:20.535482",
+  "generated_at": "2026-02-02T15:36:17.291537",
   "test_command": [
     "uv",
     "run",
     "pytest",
+    "/Users/yuan/stylebench-data/original/more-itertools/tests",
     "-x",
     "-q",
     "--tb=short",
@@ -14,7 +15,7 @@
   "bugs": [
     {
       "bug_id": "more-itertools-original-001",
-      "test_output": "...F\n=================================== FAILURES ===================================\n_____________________ ChunkedTests.test_strict_being_true ______________________\ntests/test_more.py:93: in test_strict_being_true\n    list(mi.chunked('ABCDEF', 3, strict=True)),\n    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nmore_itertools/more.py:236: in ret\n    raise ValueError('iterable is not divisible by n.')\nE   ValueError: iterable is not divisible by n.\n=========================== short test summary info ============================\nFAILED tests/test_more.py::ChunkedTests::test_strict_being_true - ValueError:...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 3 passed in 0.19s\n",
+      "test_output": "...F\n=================================== FAILURES ===================================\n_____________________ ChunkedTests.test_strict_being_true ______________________\ntests/test_more.py:93: in test_strict_being_true\n    list(mi.chunked('ABCDEF', 3, strict=True)),\n    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nmore_itertools/more.py:236: in ret\n    raise ValueError('iterable is not divisible by n.')\nE   ValueError: iterable is not divisible by n.\n=========================== short test summary info ============================\nFAILED tests/test_more.py::ChunkedTests::test_strict_being_true - ValueError:...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 3 passed in 0.33s\n",
       "failing_tests": [
         "tests/test_more.py::ChunkedTests::test_strict_being_true"
       ],
@@ -22,233 +23,393 @@
     },
     {
       "bug_id": "more-itertools-original-002",
-      "test_output": "...F\n=================================== FAILURES ===================================\n_____________________ ChunkedTests.test_strict_being_true ______________________\ntests/test_more.py:93: in test_strict_being_true\n    list(mi.chunked('ABCDEF', 3, strict=True)),\n    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nmore_itertools/more.py:236: in ret\n    raise ValueError('iterable is not divisible by n.')\nE   ValueError: iterable is not divisible by n.\n=========================== short test summary info ============================\nFAILED tests/test_more.py::ChunkedTests::test_strict_being_true - ValueError:...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 3 passed in 0.18s\n",
+      "test_output": ".....................................F\n=================================== FAILURES ===================================\n_____________________ DistinctPermutationsTests.test_basic _____________________\ntests/test_more.py:492: in test_basic\n    actual = list(mi.distinct_permutations(iterable))\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nmore_itertools/more.py:791: in _partial\n    pivot = tail[-1]\n            ^^^^^^^^\nE   IndexError: list index out of range\n=========================== short test summary info ============================\nFAILED tests/test_more.py::DistinctPermutationsTests::test_basic - IndexError...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 37 passed, 13 subtests passed in 0.20s\n",
       "failing_tests": [
-        "tests/test_more.py::ChunkedTests::test_strict_being_true"
+        "tests/test_more.py::DistinctPermutationsTests::test_basic"
       ],
       "exit_code": 1
     },
     {
       "bug_id": "more-itertools-original-003",
-      "test_output": "..............F\n=================================== FAILURES ===================================\n__________________________ NthOrLastTests.test_basic ___________________________\ntests/test_more.py:198: in test_basic\n    self.assertEqual(mi.nth_or_last(range(3), 1), 1)\nE   AssertionError: 2 != 1\n=========================== short test summary info ============================\nFAILED tests/test_more.py::NthOrLastTests::test_basic - AssertionError: 2 != 1\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 14 passed, 13 subtests passed in 0.15s\n",
+      "test_output": ".....................................F\n=================================== FAILURES ===================================\n_____________________ DistinctPermutationsTests.test_basic _____________________\ntests/test_more.py:492: in test_basic\n    actual = list(mi.distinct_permutations(iterable))\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nmore_itertools/more.py:791: in _partial\n    pivot = tail[-1]\n            ^^^^^^^^\nE   IndexError: list index out of range\n=========================== short test summary info ============================\nFAILED tests/test_more.py::DistinctPermutationsTests::test_basic - IndexError...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 37 passed, 13 subtests passed in 0.20s\n",
       "failing_tests": [
-        "tests/test_more.py::NthOrLastTests::test_basic"
+        "tests/test_more.py::DistinctPermutationsTests::test_basic"
       ],
       "exit_code": 1
     },
     {
       "bug_id": "more-itertools-original-004",
-      "test_output": "..............F\n=================================== FAILURES ===================================\n__________________________ NthOrLastTests.test_basic ___________________________\ntests/test_more.py:198: in test_basic\n    self.assertEqual(mi.nth_or_last(range(3), 1), 1)\nE   AssertionError: 2 != 1\n=========================== short test summary info ============================\nFAILED tests/test_more.py::NthOrLastTests::test_basic - AssertionError: 2 != 1\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 14 passed, 13 subtests passed in 0.14s\n",
+      "test_output": ".....................................F\n=================================== FAILURES ===================================\n_____________________ DistinctPermutationsTests.test_basic _____________________\ntests/test_more.py:492: in test_basic\n    actual = list(mi.distinct_permutations(iterable))\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nmore_itertools/more.py:791: in _partial\n    pivot = tail[-1]\n            ^^^^^^^^\nE   IndexError: list index out of range\n=========================== short test summary info ============================\nFAILED tests/test_more.py::DistinctPermutationsTests::test_basic - IndexError...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 37 passed, 13 subtests passed in 0.18s\n",
       "failing_tests": [
-        "tests/test_more.py::NthOrLastTests::test_basic"
+        "tests/test_more.py::DistinctPermutationsTests::test_basic"
       ],
       "exit_code": 1
     },
     {
       "bug_id": "more-itertools-original-005",
-      "test_output": "..............F\n=================================== FAILURES ===================================\n__________________________ NthOrLastTests.test_basic ___________________________\ntests/test_more.py:198: in test_basic\n    self.assertEqual(mi.nth_or_last(range(3), 1), 1)\nE   AssertionError: 2 != 1\n=========================== short test summary info ============================\nFAILED tests/test_more.py::NthOrLastTests::test_basic - AssertionError: 2 != 1\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 14 passed, 13 subtests passed in 0.13s\n",
+      "test_output": "................................................................F\n=================================== FAILURES ===================================\n______________________ UniqueToEachTests.test_all_unique _______________________\ntests/test_more.py:793: in test_all_unique\n    self.assertEqual(mi.unique_to_each(*iterables), iterables)\nE   AssertionError: Lists differ: [[], [], []] != [[1, 2], [3, 4, 5], [6, 7, 8]]\nE   \nE   First differing element 0:\nE   []\nE   [1, 2]\nE   \nE   - [[], [], []]\nE   + [[1, 2], [3, 4, 5], [6, 7, 8]]\n=========================== short test summary info ============================\nFAILED tests/test_more.py::UniqueToEachTests::test_all_unique - AssertionErro...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 64 passed, 48 subtests passed in 0.28s\n",
       "failing_tests": [
-        "tests/test_more.py::NthOrLastTests::test_basic"
+        "tests/test_more.py::UniqueToEachTests::test_all_unique"
       ],
       "exit_code": 1
     },
     {
       "bug_id": "more-itertools-original-006",
-      "test_output": "....................F\n=================================== FAILURES ===================================\n____________________ PeekableTests.test_multi_prepend_peek _____________________\ntests/test_more.py:393: in test_multi_prepend_peek\n    self.assertEqual(it.peek(), 10)\nE   AssertionError: 2 != 10\n=========================== short test summary info ============================\nFAILED tests/test_more.py::PeekableTests::test_multi_prepend_peek - Assertion...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 20 passed, 13 subtests passed in 0.16s\n",
+      "test_output": "................................................................F\n=================================== FAILURES ===================================\n______________________ UniqueToEachTests.test_all_unique _______________________\ntests/test_more.py:793: in test_all_unique\n    self.assertEqual(mi.unique_to_each(*iterables), iterables)\nE   AssertionError: Lists differ: [[], [], []] != [[1, 2], [3, 4, 5], [6, 7, 8]]\nE   \nE   First differing element 0:\nE   []\nE   [1, 2]\nE   \nE   - [[], [], []]\nE   + [[1, 2], [3, 4, 5], [6, 7, 8]]\n=========================== short test summary info ============================\nFAILED tests/test_more.py::UniqueToEachTests::test_all_unique - AssertionErro...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 64 passed, 48 subtests passed in 0.27s\n",
       "failing_tests": [
-        "tests/test_more.py::PeekableTests::test_multi_prepend_peek"
+        "tests/test_more.py::UniqueToEachTests::test_all_unique"
       ],
       "exit_code": 1
     },
     {
       "bug_id": "more-itertools-original-007",
-      "test_output": ".............................F\n=================================== FAILURES ===================================\n______________________ PeekableTests.test_prepend_slicing ______________________\ntests/test_more.py:420: in test_prepend_slicing\n    self.assertEqual(p[1:8], pseq[1:8])\n                     ^^^^^^\nmore_itertools/more.py:470: in __getitem__\n    return self._get_slice(index)\n           ^^^^^^^^^^^^^^^^^^^^^^\nmore_itertools/more.py:452: in _get_slice\n    raise ValueError('slice step cannot be zero')\nE   ValueError: slice step cannot be zero\n=========================== short test summary info ============================\nFAILED tests/test_more.py::PeekableTests::test_prepend_slicing - ValueError: ...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 29 passed, 13 subtests passed in 0.20s\n",
+      "test_output": ".................................................................................. [ 11%]\n.F\n=================================== FAILURES ===================================\n____________________________ BucketTests.test_basic ____________________________\ntests/test_more.py:981: in test_basic\n    self.assertEqual(list(D[10]), [10, 11, 12])\nE   AssertionError: Lists differ: [20, 10, 30, 21, 11, 31, 22, 12, 23, 33] != [10, 11, 12]\nE   \nE   First differing element 0:\nE   20\nE   10\nE   \nE   First list contains 7 additional elements.\nE   First extra element 3:\nE   21\nE   \nE   - [20, 10, 30, 21, 11, 31, 22, 12, 23, 33]\nE   + [10, 11, 12]\n=========================== short test summary info ============================\nFAILED tests/test_more.py::BucketTests::test_basic - AssertionError: Lists di...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 83 passed, 62 subtests passed in 0.29s\n",
       "failing_tests": [
-        "tests/test_more.py::PeekableTests::test_prepend_slicing"
+        "tests/test_more.py::BucketTests::test_basic"
       ],
       "exit_code": 1
     },
     {
       "bug_id": "more-itertools-original-008",
-      "test_output": ".............................F\n=================================== FAILURES ===================================\n______________________ PeekableTests.test_prepend_slicing ______________________\ntests/test_more.py:420: in test_prepend_slicing\n    self.assertEqual(p[1:8], pseq[1:8])\n                     ^^^^^^\nmore_itertools/more.py:470: in __getitem__\n    return self._get_slice(index)\n           ^^^^^^^^^^^^^^^^^^^^^^\nmore_itertools/more.py:452: in _get_slice\n    raise ValueError('slice step cannot be zero')\nE   ValueError: slice step cannot be zero\n=========================== short test summary info ============================\nFAILED tests/test_more.py::PeekableTests::test_prepend_slicing - ValueError: ...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 29 passed, 13 subtests passed in 0.20s\n",
+      "test_output": ".................................................................................. [ 11%]\n.F\n=================================== FAILURES ===================================\n____________________________ BucketTests.test_basic ____________________________\ntests/test_more.py:981: in test_basic\n    self.assertEqual(list(D[10]), [10, 11, 12])\nE   AssertionError: Lists differ: [20, 10, 30, 21, 11, 31, 22, 12, 23, 33] != [10, 11, 12]\nE   \nE   First differing element 0:\nE   20\nE   10\nE   \nE   First list contains 7 additional elements.\nE   First extra element 3:\nE   21\nE   \nE   - [20, 10, 30, 21, 11, 31, 22, 12, 23, 33]\nE   + [10, 11, 12]\n=========================== short test summary info ============================\nFAILED tests/test_more.py::BucketTests::test_basic - AssertionError: Lists di...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 83 passed, 62 subtests passed in 0.28s\n",
       "failing_tests": [
-        "tests/test_more.py::PeekableTests::test_prepend_slicing"
+        "tests/test_more.py::BucketTests::test_basic"
       ],
       "exit_code": 1
     },
     {
       "bug_id": "more-itertools-original-009",
-      "test_output": ".............................F\n=================================== FAILURES ===================================\n______________________ PeekableTests.test_prepend_slicing ______________________\ntests/test_more.py:420: in test_prepend_slicing\n    self.assertEqual(p[1:8], pseq[1:8])\n                     ^^^^^^\nmore_itertools/more.py:470: in __getitem__\n    return self._get_slice(index)\n           ^^^^^^^^^^^^^^^^^^^^^^\nmore_itertools/more.py:452: in _get_slice\n    raise ValueError('slice step cannot be zero')\nE   ValueError: slice step cannot be zero\n=========================== short test summary info ============================\nFAILED tests/test_more.py::PeekableTests::test_prepend_slicing - ValueError: ...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 29 passed, 13 subtests passed in 0.20s\n",
+      "test_output": ".................................................................................. [ 11%]\n.F\n=================================== FAILURES ===================================\n____________________________ BucketTests.test_basic ____________________________\ntests/test_more.py:981: in test_basic\n    self.assertEqual(list(D[10]), [10, 11, 12])\nE   AssertionError: Lists differ: [20, 10, 30, 21, 11, 31, 22, 12, 23, 33] != [10, 11, 12]\nE   \nE   First differing element 0:\nE   20\nE   10\nE   \nE   First list contains 7 additional elements.\nE   First extra element 3:\nE   21\nE   \nE   - [20, 10, 30, 21, 11, 31, 22, 12, 23, 33]\nE   + [10, 11, 12]\n=========================== short test summary info ============================\nFAILED tests/test_more.py::BucketTests::test_basic - AssertionError: Lists di...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 83 passed, 62 subtests passed in 0.27s\n",
       "failing_tests": [
-        "tests/test_more.py::PeekableTests::test_prepend_slicing"
+        "tests/test_more.py::BucketTests::test_basic"
       ],
       "exit_code": 1
     },
     {
       "bug_id": "more-itertools-original-010",
-      "test_output": ".................................F\n=================================== FAILURES ===================================\n_______________________ PeekableTests.test_slicing_error _______________________\ntests/test_more.py:329: in test_slicing_error\n    self.assertEqual(old_cache, list(p._cache))\nE   AssertionError: Lists differ: ['0'] != ['0', '1', '2', '3', '4', '5', '6', '7']\nE   \nE   Second list contains 7 additional elements.\nE   First extra element 1:\nE   '1'\nE   \nE   - ['0']\nE   + ['0', '1', '2', '3', '4', '5', '6', '7']\n=========================== short test summary info ============================\nFAILED tests/test_more.py::PeekableTests::test_slicing_error - AssertionError...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 33 passed, 13 subtests passed in 0.16s\n",
+      "test_output": ".................................................................................. [ 11%]\n....................................................F\n=================================== FAILURES ===================================\n______________________ SplitBeforeTest.test_ends_with_sep ______________________\ntests/test_more.py:1473: in test_ends_with_sep\n    self.assertEqual(actual, expected)\nE   AssertionError: Lists differ: [['o', 'o'], ['x', 'o', 'o', 'x']] != [['o', 'o'], ['x', 'o', 'o'], ['x']]\nE   \nE   First differing element 1:\nE   ['x', 'o', 'o', 'x']\nE   ['x', 'o', 'o']\nE   \nE   Second list contains 1 additional elements.\nE   First extra element 2:\nE   ['x']\nE   \nE   - [['o', 'o'], ['x', 'o', 'o', 'x']]\nE   + [['o', 'o'], ['x', 'o', 'o'], ['x']]\nE   ?                            +  +\n=========================== short test summary info ============================\nFAILED tests/test_more.py::SplitBeforeTest::test_ends_with_sep - AssertionErr...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 134 passed, 77 subtests passed in 0.31s\n",
       "failing_tests": [
-        "tests/test_more.py::PeekableTests::test_slicing_error"
+        "tests/test_more.py::SplitBeforeTest::test_ends_with_sep"
       ],
       "exit_code": 1
     },
     {
       "bug_id": "more-itertools-original-011",
-      "test_output": ".............................F\n=================================== FAILURES ===================================\n______________________ PeekableTests.test_prepend_slicing ______________________\ntests/test_more.py:426: in test_prepend_slicing\n    self.assertEqual(p[::-1], pseq[::-1])\n                     ^^^^^^^\nmore_itertools/more.py:470: in __getitem__\n    return self._get_slice(index)\n           ^^^^^^^^^^^^^^^^^^^^^^\nmore_itertools/more.py:452: in _get_slice\n    raise ValueError('slice step cannot be zero')\nE   ValueError: slice step cannot be zero\n=========================== short test summary info ============================\nFAILED tests/test_more.py::PeekableTests::test_prepend_slicing - ValueError: ...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 29 passed, 13 subtests passed in 0.20s\n",
+      "test_output": ".................................................................................. [ 11%]\n....................................................F\n=================================== FAILURES ===================================\n______________________ SplitBeforeTest.test_ends_with_sep ______________________\ntests/test_more.py:1473: in test_ends_with_sep\n    self.assertEqual(actual, expected)\nE   AssertionError: Lists differ: [['o', 'o'], ['x', 'o', 'o', 'x']] != [['o', 'o'], ['x', 'o', 'o'], ['x']]\nE   \nE   First differing element 1:\nE   ['x', 'o', 'o', 'x']\nE   ['x', 'o', 'o']\nE   \nE   Second list contains 1 additional elements.\nE   First extra element 2:\nE   ['x']\nE   \nE   - [['o', 'o'], ['x', 'o', 'o', 'x']]\nE   + [['o', 'o'], ['x', 'o', 'o'], ['x']]\nE   ?                            +  +\n=========================== short test summary info ============================\nFAILED tests/test_more.py::SplitBeforeTest::test_ends_with_sep - AssertionErr...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 134 passed, 77 subtests passed in 0.30s\n",
       "failing_tests": [
-        "tests/test_more.py::PeekableTests::test_prepend_slicing"
+        "tests/test_more.py::SplitBeforeTest::test_ends_with_sep"
       ],
       "exit_code": 1
     },
     {
       "bug_id": "more-itertools-original-012",
-      "test_output": ".............................F\n=================================== FAILURES ===================================\n______________________ PeekableTests.test_prepend_slicing ______________________\ntests/test_more.py:426: in test_prepend_slicing\n    self.assertEqual(p[::-1], pseq[::-1])\n                     ^^^^^^^\nmore_itertools/more.py:470: in __getitem__\n    return self._get_slice(index)\n           ^^^^^^^^^^^^^^^^^^^^^^\nmore_itertools/more.py:452: in _get_slice\n    raise ValueError('slice step cannot be zero')\nE   ValueError: slice step cannot be zero\n=========================== short test summary info ============================\nFAILED tests/test_more.py::PeekableTests::test_prepend_slicing - ValueError: ...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 29 passed, 13 subtests passed in 0.19s\n",
+      "test_output": ".................................................................................. [ 11%]\n......................................................... [ 19%]\nF\n=================================== FAILURES ===================================\n________________________ SplitAfterTest.test_max_split _________________________\ntests/test_more.py:1574: in test_max_split\n    self.assertEqual(actual, expected)\nE   AssertionError: Lists differ: [['a', ','], ['b', ',', 'c', ',', 'd']] != [['a', ','], ['b', ','], ['c', ','], ['d']]\nE   \nE   First differing element 1:\nE   ['b', ',', 'c', ',', 'd']\nE   ['b', ',']\nE   \nE   Second list contains 2 additional elements.\nE   First extra element 2:\nE   ['c', ',']\nE   \nE   - [['a', ','], ['b', ',', 'c', ',', 'd']]\nE   + [['a', ','], ['b', ','], ['c', ','], ['d']]\nE   ?                       +  +        +  +\n=========================== short test summary info ============================\nFAILED tests/test_more.py::SplitAfterTest::test_max_split - AssertionError: L...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 139 passed, 77 subtests passed in 0.31s\n",
       "failing_tests": [
-        "tests/test_more.py::PeekableTests::test_prepend_slicing"
+        "tests/test_more.py::SplitAfterTest::test_max_split"
       ],
       "exit_code": 1
     },
     {
       "bug_id": "more-itertools-original-013",
-      "test_output": ".............................F\n=================================== FAILURES ===================================\n______________________ PeekableTests.test_prepend_slicing ______________________\ntests/test_more.py:426: in test_prepend_slicing\n    self.assertEqual(p[::-1], pseq[::-1])\n                     ^^^^^^^\nmore_itertools/more.py:470: in __getitem__\n    return self._get_slice(index)\n           ^^^^^^^^^^^^^^^^^^^^^^\nmore_itertools/more.py:452: in _get_slice\n    raise ValueError('slice step cannot be zero')\nE   ValueError: slice step cannot be zero\n=========================== short test summary info ============================\nFAILED tests/test_more.py::PeekableTests::test_prepend_slicing - ValueError: ...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 29 passed, 13 subtests passed in 0.19s\n",
+      "test_output": ".................................................................................. [ 11%]\n......................................................... [ 19%]\nF\n=================================== FAILURES ===================================\n________________________ SplitAfterTest.test_max_split _________________________\ntests/test_more.py:1574: in test_max_split\n    self.assertEqual(actual, expected)\nE   AssertionError: Lists differ: [['a', ','], ['b', ',', 'c', ',', 'd']] != [['a', ','], ['b', ','], ['c', ','], ['d']]\nE   \nE   First differing element 1:\nE   ['b', ',', 'c', ',', 'd']\nE   ['b', ',']\nE   \nE   Second list contains 2 additional elements.\nE   First extra element 2:\nE   ['c', ',']\nE   \nE   - [['a', ','], ['b', ',', 'c', ',', 'd']]\nE   + [['a', ','], ['b', ','], ['c', ','], ['d']]\nE   ?                       +  +        +  +\n=========================== short test summary info ============================\nFAILED tests/test_more.py::SplitAfterTest::test_max_split - AssertionError: L...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 139 passed, 77 subtests passed in 0.30s\n",
       "failing_tests": [
-        "tests/test_more.py::PeekableTests::test_prepend_slicing"
+        "tests/test_more.py::SplitAfterTest::test_max_split"
       ],
       "exit_code": 1
     },
     {
       "bug_id": "more-itertools-original-014",
-      "test_output": "..................................F\n=================================== FAILURES ===================================\n_______________________ PeekableTests.test_slicing_reset _______________________\ntests/test_more.py:314: in test_slicing_reset\n    self.assertEqual(actual, expected, slice_args)\nE   AssertionError: Lists differ: [] != ['5', '4', '3', '2']\nE   \nE   Second list contains 4 additional elements.\nE   First extra element 0:\nE   '5'\nE   \nE   - []\nE   + ['5', '4', '3', '2'] : (None, 0, -1)\n=========================== short test summary info ============================\nFAILED tests/test_more.py::PeekableTests::test_slicing_reset - AssertionError...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 34 passed, 13 subtests passed in 0.17s\n",
+      "test_output": ".................................................................................. [ 11%]\n......................................................... [ 19%]\n.....F\n=================================== FAILURES ===================================\n_____________ SplitWhenTests.test_after_emulation_starts_with_sep ______________\ntests/test_more.py:1608: in test_after_emulation_starts_with_sep\n    self.assertEqual(actual, expected)\nE   AssertionError: Lists differ: [['x'], ['o', 'o', 'x', 'o', 'o']] != [['x'], ['o', 'o', 'x'], ['o', 'o']]\nE   \nE   First differing element 1:\nE   ['o', 'o', 'x', 'o', 'o']\nE   ['o', 'o', 'x']\nE   \nE   Second list contains 1 additional elements.\nE   First extra element 2:\nE   ['o', 'o']\nE   \nE   - [['x'], ['o', 'o', 'x', 'o', 'o']]\nE   + [['x'], ['o', 'o', 'x'], ['o', 'o']]\nE   ?                       +  +\n=========================== short test summary info ============================\nFAILED tests/test_more.py::SplitWhenTests::test_after_emulation_starts_with_sep\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 144 passed, 77 subtests passed in 0.31s\n",
       "failing_tests": [
-        "tests/test_more.py::PeekableTests::test_slicing_reset"
+        "tests/test_more.py::SplitWhenTests::test_after_emulation_starts_with_sep"
       ],
       "exit_code": 1
     },
     {
       "bug_id": "more-itertools-original-015",
-      "test_output": "..................................F\n=================================== FAILURES ===================================\n_______________________ PeekableTests.test_slicing_reset _______________________\ntests/test_more.py:314: in test_slicing_reset\n    self.assertEqual(actual, expected, slice_args)\nE   AssertionError: Lists differ: [] != ['2']\nE   \nE   Second list contains 1 additional elements.\nE   First extra element 0:\nE   '2'\nE   \nE   - []\nE   + ['2'] : (-4, 0, -1)\n=========================== short test summary info ============================\nFAILED tests/test_more.py::PeekableTests::test_slicing_reset - AssertionError...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 34 passed, 13 subtests passed in 0.17s\n",
+      "test_output": ".................................................................................. [ 11%]\n......................................................... [ 19%]\n.....F\n=================================== FAILURES ===================================\n_____________ SplitWhenTests.test_after_emulation_starts_with_sep ______________\ntests/test_more.py:1608: in test_after_emulation_starts_with_sep\n    self.assertEqual(actual, expected)\nE   AssertionError: Lists differ: [['x'], ['o', 'o', 'x', 'o', 'o']] != [['x'], ['o', 'o', 'x'], ['o', 'o']]\nE   \nE   First differing element 1:\nE   ['o', 'o', 'x', 'o', 'o']\nE   ['o', 'o', 'x']\nE   \nE   Second list contains 1 additional elements.\nE   First extra element 2:\nE   ['o', 'o']\nE   \nE   - [['x'], ['o', 'o', 'x', 'o', 'o']]\nE   + [['x'], ['o', 'o', 'x'], ['o', 'o']]\nE   ?                       +  +\n=========================== short test summary info ============================\nFAILED tests/test_more.py::SplitWhenTests::test_after_emulation_starts_with_sep\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 144 passed, 77 subtests passed in 0.30s\n",
       "failing_tests": [
-        "tests/test_more.py::PeekableTests::test_slicing_reset"
+        "tests/test_more.py::SplitWhenTests::test_after_emulation_starts_with_sep"
       ],
       "exit_code": 1
     },
     {
       "bug_id": "more-itertools-original-016",
-      "test_output": "..................................F\n=================================== FAILURES ===================================\n_______________________ PeekableTests.test_slicing_reset _______________________\ntests/test_more.py:314: in test_slicing_reset\n    self.assertEqual(actual, expected, slice_args)\nE   AssertionError: Lists differ: [] != ['2']\nE   \nE   Second list contains 1 additional elements.\nE   First extra element 0:\nE   '2'\nE   \nE   - []\nE   + ['2'] : (-4, 0, -1)\n=========================== short test summary info ============================\nFAILED tests/test_more.py::PeekableTests::test_slicing_reset - AssertionError...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 34 passed, 13 subtests passed in 0.16s\n",
+      "test_output": ".................................................................................. [ 11%]\n......................................................... [ 19%]\n..........................................................F\n=================================== FAILURES ===================================\n______________________ SortTogetherTest.test_key_function ______________________\ntests/test_more.py:2176: in test_key_function\n    mi.sort_together(iterables, key=lambda x: x),\n    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nmore_itertools/more.py:1960: in sort_together\n    reordered = sorted(transposed, key=key_argument, reverse=reverse)\n                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nmore_itertools/more.py:1955: in <lambda>\n    key_argument = lambda zipped_items: key(\nE   TypeError: SortTogetherTest.test_key_function.<locals>.<lambda>() takes 1 positional argument but 2 were given\n=========================== short test summary info ============================\nFAILED tests/test_more.py::SortTogetherTest::test_key_function - TypeError: S...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 197 passed, 77 subtests passed in 0.37s\n",
       "failing_tests": [
-        "tests/test_more.py::PeekableTests::test_slicing_reset"
+        "tests/test_more.py::SortTogetherTest::test_key_function"
       ],
       "exit_code": 1
     },
     {
       "bug_id": "more-itertools-original-017",
-      "test_output": "..................................F\n=================================== FAILURES ===================================\n_______________________ PeekableTests.test_slicing_reset _______________________\ntests/test_more.py:314: in test_slicing_reset\n    self.assertEqual(actual, expected, slice_args)\nE   AssertionError: Lists differ: [] != ['2']\nE   \nE   Second list contains 1 additional elements.\nE   First extra element 0:\nE   '2'\nE   \nE   - []\nE   + ['2'] : (-4, 0, -1)\n=========================== short test summary info ============================\nFAILED tests/test_more.py::PeekableTests::test_slicing_reset - AssertionError...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 34 passed, 13 subtests passed in 0.15s\n",
+      "test_output": ".................................................................................. [ 11%]\n......................................................... [ 19%]\n..........................................................F\n=================================== FAILURES ===================================\n______________________ SortTogetherTest.test_key_function ______________________\ntests/test_more.py:2176: in test_key_function\n    mi.sort_together(iterables, key=lambda x: x),\n    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nmore_itertools/more.py:1960: in sort_together\n    reordered = sorted(transposed, key=key_argument, reverse=reverse)\n                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nmore_itertools/more.py:1955: in <lambda>\n    key_argument = lambda zipped_items: key(\nE   TypeError: SortTogetherTest.test_key_function.<locals>.<lambda>() takes 1 positional argument but 2 were given\n=========================== short test summary info ============================\nFAILED tests/test_more.py::SortTogetherTest::test_key_function - TypeError: S...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 197 passed, 77 subtests passed in 0.34s\n",
       "failing_tests": [
-        "tests/test_more.py::PeekableTests::test_slicing_reset"
+        "tests/test_more.py::SortTogetherTest::test_key_function"
       ],
       "exit_code": 1
     },
     {
       "bug_id": "more-itertools-original-018",
-      "test_output": "..................................F\n=================================== FAILURES ===================================\n_______________________ PeekableTests.test_slicing_reset _______________________\ntests/test_more.py:314: in test_slicing_reset\n    self.assertEqual(actual, expected, slice_args)\nE   AssertionError: Lists differ: [] != ['5', '4', '3', '2']\nE   \nE   Second list contains 4 additional elements.\nE   First extra element 0:\nE   '5'\nE   \nE   - []\nE   + ['5', '4', '3', '2'] : (-1, 0, -1)\n=========================== short test summary info ============================\nFAILED tests/test_more.py::PeekableTests::test_slicing_reset - AssertionError...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 34 passed, 13 subtests passed in 0.16s\n",
+      "test_output": ".................................................................................. [ 11%]\n......................................................... [ 19%]\n........................................................................ [ 30%]\n..............F\n=================================== FAILURES ===================================\n_______________________ NumericRangeTests.test_arg_count _______________________\ntests/test_more.py:2626: in test_arg_count\n    mi.numeric_range(*args)\nmore_itertools/more.py:2255: in __init__\n    self._start, self._stop = args\n    ^^^^^^^^^^^^^^^^^^^^^^^\nE   ValueError: not enough values to unpack (expected 2, got 0)\n=========================== short test summary info ============================\nFAILED tests/test_more.py::NumericRangeTests::test_arg_count - ValueError: no...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 225 passed, 77 subtests passed in 0.36s\n",
       "failing_tests": [
-        "tests/test_more.py::PeekableTests::test_slicing_reset"
+        "tests/test_more.py::NumericRangeTests::test_arg_count"
       ],
       "exit_code": 1
     },
     {
       "bug_id": "more-itertools-original-019",
-      "test_output": "..................................F\n=================================== FAILURES ===================================\n_______________________ PeekableTests.test_slicing_reset _______________________\ntests/test_more.py:314: in test_slicing_reset\n    self.assertEqual(actual, expected, slice_args)\nE   AssertionError: Lists differ: [] != ['1']\nE   \nE   Second list contains 1 additional elements.\nE   First extra element 0:\nE   '1'\nE   \nE   - []\nE   + ['1'] : (0, -4, 1)\n=========================== short test summary info ============================\nFAILED tests/test_more.py::PeekableTests::test_slicing_reset - AssertionError...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 34 passed, 13 subtests passed in 0.17s\n",
+      "test_output": ".................................................................................. [ 11%]\n......................................................... [ 19%]\n........................................................................ [ 30%]\n..............F\n=================================== FAILURES ===================================\n_______________________ NumericRangeTests.test_arg_count _______________________\ntests/test_more.py:2626: in test_arg_count\n    mi.numeric_range(*args)\nmore_itertools/more.py:2255: in __init__\n    self._start, self._stop = args\n    ^^^^^^^^^^^^^^^^^^^^^^^\nE   ValueError: not enough values to unpack (expected 2, got 0)\n=========================== short test summary info ============================\nFAILED tests/test_more.py::NumericRangeTests::test_arg_count - ValueError: no...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 225 passed, 77 subtests passed in 0.36s\n",
       "failing_tests": [
-        "tests/test_more.py::PeekableTests::test_slicing_reset"
+        "tests/test_more.py::NumericRangeTests::test_arg_count"
       ],
       "exit_code": 1
     },
     {
       "bug_id": "more-itertools-original-020",
-      "test_output": "..................................F\n=================================== FAILURES ===================================\n_______________________ PeekableTests.test_slicing_reset _______________________\ntests/test_more.py:314: in test_slicing_reset\n    self.assertEqual(actual, expected, slice_args)\nE   AssertionError: Lists differ: [] != ['1']\nE   \nE   Second list contains 1 additional elements.\nE   First extra element 0:\nE   '1'\nE   \nE   - []\nE   + ['1'] : (0, -4, 1)\n=========================== short test summary info ============================\nFAILED tests/test_more.py::PeekableTests::test_slicing_reset - AssertionError...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 34 passed, 13 subtests passed in 0.15s\n",
+      "test_output": ".................................................................................. [ 11%]\n......................................................... [ 19%]\n........................................................................ [ 30%]\n..............F\n=================================== FAILURES ===================================\n_______________________ NumericRangeTests.test_arg_count _______________________\nTypeError: numeric_range expected at most 3 arguments, got 0\n\nDuring handling of the above exception, another exception occurred:\ntests/test_more.py:2625: in test_arg_count\n    with self.assertRaisesRegex(TypeError, message):\nE   AssertionError: \"numeric_range expected at least 1 argument, got 0\" does not match \"numeric_range expected at most 3 arguments, got 0\"\n=========================== short test summary info ============================\nFAILED tests/test_more.py::NumericRangeTests::test_arg_count - AssertionError...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 225 passed, 77 subtests passed in 0.34s\n",
       "failing_tests": [
-        "tests/test_more.py::PeekableTests::test_slicing_reset"
+        "tests/test_more.py::NumericRangeTests::test_arg_count"
       ],
       "exit_code": 1
     },
     {
       "bug_id": "more-itertools-original-021",
-      "test_output": "..................................F\n=================================== FAILURES ===================================\n_______________________ PeekableTests.test_slicing_reset _______________________\ntests/test_more.py:314: in test_slicing_reset\n    self.assertEqual(actual, expected, slice_args)\nE   AssertionError: Lists differ: [] != ['1', '2', '3', '4']\nE   \nE   Second list contains 4 additional elements.\nE   First extra element 0:\nE   '1'\nE   \nE   - []\nE   + ['1', '2', '3', '4'] : (0, -1, 1)\n=========================== short test summary info ============================\nFAILED tests/test_more.py::PeekableTests::test_slicing_reset - AssertionError...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 34 passed, 13 subtests passed in 0.16s\n",
+      "test_output": ".................................................................................. [ 11%]\n......................................................... [ 19%]\n........................................................................ [ 30%]\n..............F\n=================================== FAILURES ===================================\n_______________________ NumericRangeTests.test_arg_count _______________________\nTypeError: numeric_range expected at most 3 arguments, got 0\n\nDuring handling of the above exception, another exception occurred:\ntests/test_more.py:2625: in test_arg_count\n    with self.assertRaisesRegex(TypeError, message):\nE   AssertionError: \"numeric_range expected at least 1 argument, got 0\" does not match \"numeric_range expected at most 3 arguments, got 0\"\n=========================== short test summary info ============================\nFAILED tests/test_more.py::NumericRangeTests::test_arg_count - AssertionError...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 225 passed, 77 subtests passed in 0.32s\n",
       "failing_tests": [
-        "tests/test_more.py::PeekableTests::test_slicing_reset"
+        "tests/test_more.py::NumericRangeTests::test_arg_count"
       ],
       "exit_code": 1
     },
     {
       "bug_id": "more-itertools-original-022",
-      "test_output": "..................................F\n=================================== FAILURES ===================================\n_______________________ PeekableTests.test_slicing_reset _______________________\ntests/test_more.py:314: in test_slicing_reset\n    self.assertEqual(actual, expected, slice_args)\nE   AssertionError: Lists differ: [] != ['2']\nE   \nE   Second list contains 1 additional elements.\nE   First extra element 0:\nE   '2'\nE   \nE   - []\nE   + ['2'] : (1, 0, -1)\n=========================== short test summary info ============================\nFAILED tests/test_more.py::PeekableTests::test_slicing_reset - AssertionError...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 34 passed, 13 subtests passed in 0.17s\n",
+      "test_output": ".................................................................................. [ 11%]\n......................................................... [ 19%]\n........................................................................ [ 30%]\n..................F\n=================================== FAILURES ===================================\n_______________________ NumericRangeTests.test_contains ________________________\ntests/test_more.py:2710: in test_contains\n    self.assertTrue(v in r)\nE   AssertionError: False is not true\n=========================== short test summary info ============================\nFAILED tests/test_more.py::NumericRangeTests::test_contains - AssertionError:...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 229 passed, 77 subtests passed in 0.34s\n",
       "failing_tests": [
-        "tests/test_more.py::PeekableTests::test_slicing_reset"
+        "tests/test_more.py::NumericRangeTests::test_contains"
       ],
       "exit_code": 1
     },
     {
       "bug_id": "more-itertools-original-023",
-      "test_output": "..................................F\n=================================== FAILURES ===================================\n_______________________ PeekableTests.test_slicing_reset _______________________\ntests/test_more.py:314: in test_slicing_reset\n    self.assertEqual(actual, expected, slice_args)\nE   AssertionError: Lists differ: [] != ['2']\nE   \nE   Second list contains 1 additional elements.\nE   First extra element 0:\nE   '2'\nE   \nE   - []\nE   + ['2'] : (1, 0, -1)\n=========================== short test summary info ============================\nFAILED tests/test_more.py::PeekableTests::test_slicing_reset - AssertionError...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 34 passed, 13 subtests passed in 0.15s\n",
+      "test_output": ".................................................................................. [ 11%]\n......................................................... [ 19%]\n........................................................................ [ 30%]\n..................F\n=================================== FAILURES ===================================\n_______________________ NumericRangeTests.test_contains ________________________\ntests/test_more.py:2710: in test_contains\n    self.assertTrue(v in r)\nE   AssertionError: False is not true\n=========================== short test summary info ============================\nFAILED tests/test_more.py::NumericRangeTests::test_contains - AssertionError:...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 229 passed, 77 subtests passed in 0.34s\n",
       "failing_tests": [
-        "tests/test_more.py::PeekableTests::test_slicing_reset"
+        "tests/test_more.py::NumericRangeTests::test_contains"
       ],
       "exit_code": 1
     },
     {
       "bug_id": "more-itertools-original-024",
-      "test_output": "..................................F\n=================================== FAILURES ===================================\n_______________________ PeekableTests.test_slicing_reset _______________________\ntests/test_more.py:314: in test_slicing_reset\n    self.assertEqual(actual, expected, slice_args)\nE   AssertionError: Lists differ: [] != ['2']\nE   \nE   Second list contains 1 additional elements.\nE   First extra element 0:\nE   '2'\nE   \nE   - []\nE   + ['2'] : (1, 0, -1)\n=========================== short test summary info ============================\nFAILED tests/test_more.py::PeekableTests::test_slicing_reset - AssertionError...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 34 passed, 13 subtests passed in 0.14s\n",
+      "test_output": ".................................................................................. [ 11%]\n......................................................... [ 19%]\n........................................................................ [ 30%]\n....................F\n=================================== FAILURES ===================================\n__________________________ NumericRangeTests.test_eq ___________________________\ntests/test_more.py:2744: in test_eq\n    self.assertEqual(\nE   AssertionError: numeric_range(0, 5, 2) != numeric_range(0, 6, 2)\n=========================== short test summary info ============================\nFAILED tests/test_more.py::NumericRangeTests::test_eq - AssertionError: numer...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 231 passed, 77 subtests passed in 0.33s\n",
       "failing_tests": [
-        "tests/test_more.py::PeekableTests::test_slicing_reset"
+        "tests/test_more.py::NumericRangeTests::test_eq"
       ],
       "exit_code": 1
     },
     {
       "bug_id": "more-itertools-original-025",
-      "test_output": "..................F\n=================================== FAILURES ===================================\n_________________________ PeekableTests.test_indexing __________________________\ntests/test_more.py:264: in test_indexing\n    self.assertEqual(p[2], 'd')\n                     ^^^^\nmore_itertools/more.py:478: in __getitem__\n    return self._cache[index]\n           ^^^^^^^^^^^^^^^^^^\nE   IndexError: deque index out of range\n=========================== short test summary info ============================\nFAILED tests/test_more.py::PeekableTests::test_indexing - IndexError: deque i...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 18 passed, 13 subtests passed in 0.19s\n",
+      "test_output": ".................................................................................. [ 11%]\n......................................................... [ 19%]\n........................................................................ [ 30%]\n....................F\n=================================== FAILURES ===================================\n__________________________ NumericRangeTests.test_eq ___________________________\ntests/test_more.py:2744: in test_eq\n    self.assertEqual(\nE   AssertionError: numeric_range(0, 5, 2) != numeric_range(0, 6, 2)\n=========================== short test summary info ============================\nFAILED tests/test_more.py::NumericRangeTests::test_eq - AssertionError: numer...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 231 passed, 77 subtests passed in 0.32s\n",
       "failing_tests": [
-        "tests/test_more.py::PeekableTests::test_indexing"
+        "tests/test_more.py::NumericRangeTests::test_eq"
       ],
       "exit_code": 1
     },
     {
       "bug_id": "more-itertools-original-026",
-      "test_output": "..................F\n=================================== FAILURES ===================================\n_________________________ PeekableTests.test_indexing __________________________\ntests/test_more.py:264: in test_indexing\n    self.assertEqual(p[2], 'd')\n                     ^^^^\nmore_itertools/more.py:478: in __getitem__\n    return self._cache[index]\n           ^^^^^^^^^^^^^^^^^^\nE   IndexError: deque index out of range\n=========================== short test summary info ============================\nFAILED tests/test_more.py::PeekableTests::test_indexing - IndexError: deque i...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 18 passed, 13 subtests passed in 0.18s\n",
+      "test_output": ".................................................................................. [ 11%]\n......................................................... [ 19%]\n........................................................................ [ 30%]\n....................F\n=================================== FAILURES ===================================\n__________________________ NumericRangeTests.test_eq ___________________________\ntests/test_more.py:2744: in test_eq\n    self.assertEqual(\nE   AssertionError: numeric_range(0, 5, 2) != numeric_range(0, 6, 2)\n=========================== short test summary info ============================\nFAILED tests/test_more.py::NumericRangeTests::test_eq - AssertionError: numer...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 231 passed, 77 subtests passed in 0.33s\n",
       "failing_tests": [
-        "tests/test_more.py::PeekableTests::test_indexing"
+        "tests/test_more.py::NumericRangeTests::test_eq"
       ],
       "exit_code": 1
     },
     {
       "bug_id": "more-itertools-original-027",
-      "test_output": "..................F\n=================================== FAILURES ===================================\n_________________________ PeekableTests.test_indexing __________________________\ntests/test_more.py:264: in test_indexing\n    self.assertEqual(p[2], 'd')\n                     ^^^^\nmore_itertools/more.py:478: in __getitem__\n    return self._cache[index]\n           ^^^^^^^^^^^^^^^^^^\nE   IndexError: deque index out of range\n=========================== short test summary info ============================\nFAILED tests/test_more.py::PeekableTests::test_indexing - IndexError: deque i...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 18 passed, 13 subtests passed in 0.17s\n",
+      "test_output": ".................................................................................. [ 11%]\n......................................................... [ 19%]\n........................................................................ [ 30%]\n....................F\n=================================== FAILURES ===================================\n__________________________ NumericRangeTests.test_eq ___________________________\ntests/test_more.py:2744: in test_eq\n    self.assertEqual(\nE   AssertionError: numeric_range(0, 5, 2) != numeric_range(0, 6, 2)\n=========================== short test summary info ============================\nFAILED tests/test_more.py::NumericRangeTests::test_eq - AssertionError: numer...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 231 passed, 77 subtests passed in 0.32s\n",
       "failing_tests": [
-        "tests/test_more.py::PeekableTests::test_indexing"
+        "tests/test_more.py::NumericRangeTests::test_eq"
       ],
       "exit_code": 1
     },
     {
       "bug_id": "more-itertools-original-028",
-      "test_output": "...............................................F\n=================================== FAILURES ===================================\n_____________________________ IlenTests.test_ilen ______________________________\ntests/test_more.py:633: in test_ilen\n    self.assertEqual(\nE   AssertionError: 22 != 11\n=========================== short test summary info ============================\nFAILED tests/test_more.py::IlenTests::test_ilen - AssertionError: 22 != 11\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 47 passed, 41 subtests passed in 0.28s\n",
+      "test_output": ".................................................................................. [ 11%]\n......................................................... [ 19%]\n........................................................................ [ 30%]\n........................F\n=================================== FAILURES ===================================\n_________________________ NumericRangeTests.test_index _________________________\ntests/test_more.py:3064: in test_index\n    self.assertEqual(i, mi.numeric_range(*args).index(v))\n                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nmore_itertools/more.py:2396: in index\n    raise ValueError(f\"{value} is not in numeric range\")\nE   ValueError: 0.0 is not in numeric range\n=========================== short test summary info ============================\nFAILED tests/test_more.py::NumericRangeTests::test_index - ValueError: 0.0 is...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 235 passed, 77 subtests passed in 0.37s\n",
       "failing_tests": [
-        "tests/test_more.py::IlenTests::test_ilen"
+        "tests/test_more.py::NumericRangeTests::test_index"
       ],
       "exit_code": 1
     },
     {
       "bug_id": "more-itertools-original-029",
-      "test_output": "...............................................F\n=================================== FAILURES ===================================\n_____________________________ IlenTests.test_ilen ______________________________\ntests/test_more.py:633: in test_ilen\n    self.assertEqual(\nE   AssertionError: 22 != 11\n=========================== short test summary info ============================\nFAILED tests/test_more.py::IlenTests::test_ilen - AssertionError: 22 != 11\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 47 passed, 41 subtests passed in 0.26s\n",
+      "test_output": ".................................................................................. [ 11%]\n......................................................... [ 19%]\n........................................................................ [ 30%]\n........................F\n=================================== FAILURES ===================================\n_________________________ NumericRangeTests.test_index _________________________\ntests/test_more.py:3064: in test_index\n    self.assertEqual(i, mi.numeric_range(*args).index(v))\n                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nmore_itertools/more.py:2396: in index\n    raise ValueError(f\"{value} is not in numeric range\")\nE   ValueError: 0.0 is not in numeric range\n=========================== short test summary info ============================\nFAILED tests/test_more.py::NumericRangeTests::test_index - ValueError: 0.0 is...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 235 passed, 77 subtests passed in 0.37s\n",
       "failing_tests": [
-        "tests/test_more.py::IlenTests::test_ilen"
+        "tests/test_more.py::NumericRangeTests::test_index"
       ],
       "exit_code": 1
     },
     {
       "bug_id": "more-itertools-original-030",
-      "test_output": ".......................................................F\n=================================== FAILURES ===================================\n____________________________ OneTests.test_too_long ____________________________\ntests/test_more.py:723: in test_too_long\n    self.assertRaises(ValueError, lambda: mi.one(it))  # burn 0 and 1\n    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\ntests/test_more.py:723: in <lambda>\n    self.assertRaises(ValueError, lambda: mi.one(it))  # burn 0 and 1\n                                          ^^^^^^^^^^\nmore_itertools/more.py:626: in one\n    raise too_long and ValueError(msg)\nE   TypeError: exceptions must derive from BaseException\n=========================== short test summary info ============================\nFAILED tests/test_more.py::OneTests::test_too_long - TypeError: exceptions mu...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 55 passed, 48 subtests passed in 0.31s\n",
+      "test_output": ".................................................................................. [ 11%]\n......................................................... [ 19%]\n........................................................................ [ 30%]\n.................................................. [ 37%]\n..................................F\n=================================== FAILURES ===================================\n_____________________ CircularShiftsTests.test_duplicates ______________________\ntests/test_more.py:3748: in test_duplicates\n    list(mi.circular_shifts([0, 1, 0, 1])),\n    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nmore_itertools/more.py:3121: in circular_shifts\n    raise ValueError('Steps should be a non-zero integer')\nE   ValueError: Steps should be a non-zero integer\n=========================== short test summary info ============================\nFAILED tests/test_more.py::CircularShiftsTests::test_duplicates - ValueError:...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 295 passed, 2043 subtests passed in 0.47s\n",
       "failing_tests": [
-        "tests/test_more.py::OneTests::test_too_long"
+        "tests/test_more.py::CircularShiftsTests::test_duplicates"
+      ],
+      "exit_code": 1
+    },
+    {
+      "bug_id": "more-itertools-original-031",
+      "test_output": ".................................................................................. [ 11%]\n......................................................... [ 19%]\n........................................................................ [ 30%]\n.................................................. [ 37%]\n....................................................................F [ 47%]\n\n=================================== FAILURES ===================================\n______________________ SetPartitionsTests.test_found_all _______________________\ntests/test_more.py:4133: in test_found_all\n    self.assertEqual(\nE   AssertionError: Froze[26 chars]([0, 4], FrozenSet([1, 2], FrozenSet([3]], Fro[1503 chars][0]]] != Froze[26 chars]([0, 2, 3, 1, 4]]]\n=========================== short test summary info ============================\nFAILED tests/test_more.py::SetPartitionsTests::test_found_all - AssertionErro...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 329 passed, 2046 subtests passed in 0.44s\n",
+      "failing_tests": [
+        "tests/test_more.py::SetPartitionsTests::test_found_all"
+      ],
+      "exit_code": 1
+    },
+    {
+      "bug_id": "more-itertools-original-032",
+      "test_output": ".................................................................................. [ 11%]\n......................................................... [ 19%]\n........................................................................ [ 30%]\n.................................................. [ 37%]\n....................................................................F [ 47%]\n\n=================================== FAILURES ===================================\n______________________ SetPartitionsTests.test_found_all _______________________\ntests/test_more.py:4133: in test_found_all\n    self.assertEqual(\nE   AssertionError: Froze[24 chars]et([0, 4], FrozenSet([1, 2], FrozenSet([3]], F[1505 chars][0]]] != Froze[24 chars]et([0], FrozenSet([1], FrozenSet([4], FrozenSe[17 chars][2]]]\n=========================== short test summary info ============================\nFAILED tests/test_more.py::SetPartitionsTests::test_found_all - AssertionErro...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 329 passed, 2046 subtests passed in 0.44s\n",
+      "failing_tests": [
+        "tests/test_more.py::SetPartitionsTests::test_found_all"
+      ],
+      "exit_code": 1
+    },
+    {
+      "bug_id": "more-itertools-original-033",
+      "test_output": ".................................................................................. [ 11%]\n......................................................... [ 19%]\n........................................................................ [ 30%]\n.................................................. [ 37%]\n....................................................................F [ 47%]\n\n=================================== FAILURES ===================================\n______________________ SetPartitionsTests.test_found_all _______________________\ntests/test_more.py:4133: in test_found_all\n    self.assertEqual(\nE   AssertionError: Froze[24 chars]et([0, 4], FrozenSet([1, 2], FrozenSet([3]], F[1505 chars][0]]] != Froze[24 chars]et([0], FrozenSet([1], FrozenSet([4], FrozenSe[17 chars][2]]]\n=========================== short test summary info ============================\nFAILED tests/test_more.py::SetPartitionsTests::test_found_all - AssertionErro...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 329 passed, 2046 subtests passed in 0.43s\n",
+      "failing_tests": [
+        "tests/test_more.py::SetPartitionsTests::test_found_all"
+      ],
+      "exit_code": 1
+    },
+    {
+      "bug_id": "more-itertools-original-034",
+      "test_output": ".................................................................................. [ 11%]\n......................................................... [ 19%]\n........................................................................ [ 30%]\n.................................................. [ 37%]\n..................................................................... [ 47%]\n..................................... [ 52%]\n.F\n=================================== FAILURES ===================================\n_________________________ SampleTests.test_counts_all __________________________\ntests/test_more.py:4512: in test_counts_all\n    self.assertEqual(actual, expected)\nE   AssertionError: Counter() != Counter({'z': 20, 'y': 10, 'x': 4, 'u': 1})\n=========================== short test summary info ============================\nFAILED tests/test_more.py::SampleTests::test_counts_all - AssertionError: Cou...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 368 passed, 2081 subtests passed in 0.66s\n",
+      "failing_tests": [
+        "tests/test_more.py::SampleTests::test_counts_all"
+      ],
+      "exit_code": 1
+    },
+    {
+      "bug_id": "more-itertools-original-035",
+      "test_output": ".................................................................................. [ 11%]\n......................................................... [ 19%]\n........................................................................ [ 30%]\n.................................................. [ 37%]\n..................................................................... [ 47%]\n..................................... [ 52%]\n.................................... [ 57%]\n.............................................................................................. [ 70%]\n............................................................ [ 79%]\n...........................................................................................F\n=================================== FAILURES ===================================\n________________________ NthPermutationTests.test_long _________________________\ntests/test_recipes.py:735: in test_long\n    self.assertEqual(actual, expected)\nE   AssertionError: Tuples differ: (0, 1, 2, 3) != (0, 32, 133, 129)\nE   \nE   First differing element 1:\nE   1\nE   32\nE   \nE   - (0, 1, 2, 3)\nE   + (0, 32, 133, 129)\n=========================== short test summary info ============================\nFAILED tests/test_recipes.py::NthPermutationTests::test_long - AssertionError...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 648 passed, 10055 subtests passed in 3.49s\n",
+      "failing_tests": [
+        "tests/test_recipes.py::NthPermutationTests::test_long"
+      ],
+      "exit_code": 1
+    },
+    {
+      "bug_id": "more-itertools-original-036",
+      "test_output": ".................................................................................. [ 11%]\n......................................................... [ 19%]\n........................................................................ [ 30%]\n.................................................. [ 37%]\n..................................................................... [ 47%]\n..................................... [ 52%]\n.................................... [ 57%]\n......F\n=================================== FAILURES ===================================\n_________________________ ProductIndexTests.test_basic _________________________\ntests/test_more.py:4943: in test_basic\n    actual = mi.product_index(element, *iterables)\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nmore_itertools/more.py:4320: in product_index\n    raise ValueError('element is not a product of args')\nE   ValueError: element is not a product of args\n=========================== short test summary info ============================\nFAILED tests/test_more.py::ProductIndexTests::test_basic - ValueError: elemen...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 409 passed, 2117 subtests passed in 1.01s\n",
+      "failing_tests": [
+        "tests/test_more.py::ProductIndexTests::test_basic"
+      ],
+      "exit_code": 1
+    },
+    {
+      "bug_id": "more-itertools-original-037",
+      "test_output": ".................................................................................. [ 11%]\n......................................................... [ 19%]\n........................................................................ [ 30%]\n.................................................. [ 37%]\n..................................................................... [ 47%]\n..................................... [ 52%]\n.................................... [ 57%]\n................F\n=================================== FAILURES ===================================\n___________________ CombinationIndexTests.test_invalid_match ___________________\ntests/test_more.py:5049: in test_invalid_match\n    with self.assertRaises(ValueError):\nE   AssertionError: ValueError not raised\n=========================== short test summary info ============================\nFAILED tests/test_more.py::CombinationIndexTests::test_invalid_match - Assert...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 419 passed, 2117 subtests passed in 0.97s\n",
+      "failing_tests": [
+        "tests/test_more.py::CombinationIndexTests::test_invalid_match"
+      ],
+      "exit_code": 1
+    },
+    {
+      "bug_id": "more-itertools-original-038",
+      "test_output": ".................................................................................. [ 11%]\n......................................................... [ 19%]\n........................................................................ [ 30%]\n.................................................. [ 37%]\n..................................................................... [ 47%]\n..................................... [ 52%]\n.................................... [ 57%]\n........................F\n=================================== FAILURES ===================================\n___________ CombinationWithReplacementIndexTests.test_invalid_match ____________\ntests/test_more.py:5108: in test_invalid_match\n    with self.assertRaises(ValueError):\nE   AssertionError: ValueError not raised\n=========================== short test summary info ============================\nFAILED tests/test_more.py::CombinationWithReplacementIndexTests::test_invalid_match\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 427 passed, 2117 subtests passed in 0.97s\n",
+      "failing_tests": [
+        "tests/test_more.py::CombinationWithReplacementIndexTests::test_invalid_match"
+      ],
+      "exit_code": 1
+    },
+    {
+      "bug_id": "more-itertools-original-039",
+      "test_output": ".................................................................................. [ 11%]\n......................................................... [ 19%]\n........................................................................ [ 30%]\n.................................................. [ 37%]\n..................................................................... [ 47%]\n..................................... [ 52%]\n.................................... [ 57%]\n.......................................................................F\n=================================== FAILURES ===================================\n________________________ ClassifyUniqueTests.test_basic ________________________\ntests/test_more.py:5568: in test_basic\n    self.assertEqual(\nE   AssertionError: Lists differ: [('m'[16 chars]'i', False, True), ('s', False, True), ('s', T[151 chars]lse)] != [('m'[16 chars]'i', True, True), ('s', True, True), ('s', Fal[147 chars]lse)]\nE   \nE   First differing element 1:\nE   ('i', False, True)\nE   ('i', True, True)\nE   \nE     [('m', True, True),\nE   -  ('i', False, True),\nE   ?        ^^^^\nE   \nE   +  ('i', True, True),\nE   ?        ^^^\nE   \nE   +  ('s', True, True),\nE   -  ('s', False, True),\nE   ?               ^^^\nE   \nE   +  ('s', False, False),\nE   ?               ^^^^\nE   \nE   +  ('i', True, False),\nE      ('s', True, False),\nE   -  ('i', False, False),\nE      ('s', False, False),\nE   -  ('s', True, False),\nE   ?    ^\nE   \nE   +  ('i', True, False),\nE   ?    ^\nE   \nE   +  ('p', True, True),\nE   -  ('i', False, False),\nE   ?    ^\nE   \nE   +  ('p', False, False),\nE   ?    ^\nE   \nE   -  ('p', False, True),\nE   -  ('p', True, False),\nE   ?    ^               ^\nE   \nE   +  ('i', True, False)]\nE   ?    ^               ^\nE   \nE   -  ('i', False, False)]\n=========================== short test summary info ============================\nFAILED tests/test_more.py::ClassifyUniqueTests::test_basic - AssertionError: ...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 474 passed, 2239 subtests passed in 1.01s\n",
+      "failing_tests": [
+        "tests/test_more.py::ClassifyUniqueTests::test_basic"
+      ],
+      "exit_code": 1
+    },
+    {
+      "bug_id": "more-itertools-original-040",
+      "test_output": ".................................................................................. [ 11%]\n......................................................... [ 19%]\n........................................................................ [ 30%]\n.................................................. [ 37%]\n..................................................................... [ 47%]\n..................................... [ 52%]\n.................................... [ 57%]\n.............................................................................................. [ 70%]\n...............F\n=================================== FAILURES ===================================\n_________________________ GrayProductTests.test_basic __________________________\ntests/test_more.py:5947: in test_basic\n    self.assertEqual(\nE   AssertionError: Tuples differ: (('a', 1),) != (('a', 1), ('b', 1), ('c', 1), ('c', 2), ('b', 2), ('a', 2))\nE   \nE   Second tuple contains 5 additional elements.\nE   First extra element 1:\nE   ('b', 1)\nE   \nE   - (('a', 1),)\nE   + (('a', 1), ('b', 1), ('c', 1), ('c', 2), ('b', 2), ('a', 2))\n=========================== short test summary info ============================\nFAILED tests/test_more.py::GrayProductTests::test_basic - AssertionError: Tup...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 512 passed, 2245 subtests passed in 1.02s\n",
+      "failing_tests": [
+        "tests/test_more.py::GrayProductTests::test_basic"
+      ],
+      "exit_code": 1
+    },
+    {
+      "bug_id": "more-itertools-original-041",
+      "test_output": ".................................................................................. [ 11%]\n......................................................... [ 19%]\n........................................................................ [ 30%]\n.................................................. [ 37%]\n..................................................................... [ 47%]\n..................................... [ 52%]\n.................................... [ 57%]\n.............................................................................................. [ 70%]\n...............F\n=================================== FAILURES ===================================\n_________________________ GrayProductTests.test_basic __________________________\ntests/test_more.py:5947: in test_basic\n    self.assertEqual(\nE   AssertionError: Tuples differ: (('a', 1), ('b', 1), ('b', 2), ('a', 2), ('c', 2)) != (('a', 1), ('b', 1), ('c', 1), ('c', 2), ('b', 2), ('a', 2))\nE   \nE   First differing element 2:\nE   ('b', 2)\nE   ('c', 1)\nE   \nE   Second tuple contains 1 additional elements.\nE   First extra element 5:\nE   ('a', 2)\nE   \nE   - (('a', 1), ('b', 1), ('b', 2), ('a', 2), ('c', 2))\nE   + (('a', 1), ('b', 1), ('c', 1), ('c', 2), ('b', 2), ('a', 2))\n=========================== short test summary info ============================\nFAILED tests/test_more.py::GrayProductTests::test_basic - AssertionError: Tup...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 512 passed, 2245 subtests passed in 1.00s\n",
+      "failing_tests": [
+        "tests/test_more.py::GrayProductTests::test_basic"
+      ],
+      "exit_code": 1
+    },
+    {
+      "bug_id": "more-itertools-original-042",
+      "test_output": ".................................................................................. [ 11%]\n......................................................... [ 19%]\n........................................................................ [ 30%]\n.................................................. [ 37%]\n..................................................................... [ 47%]\n..................................... [ 52%]\n.................................... [ 57%]\n.............................................................................................. [ 70%]\n...............F\n=================================== FAILURES ===================================\n_________________________ GrayProductTests.test_basic __________________________\ntests/test_more.py:5948: in test_basic\n    tuple(mi.gray_product(('a', 'b', 'c'), range(1, 3))),\n    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nmore_itertools/more.py:4882: in gray_product\n    yield tuple(all_iterables[i][a[i]] for i in range(iterable_count))\n          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nmore_itertools/more.py:4882: in <genexpr>\n    yield tuple(all_iterables[i][a[i]] for i in range(iterable_count))\n                ^^^^^^^^^^^^^^^^^^^^^^\nE   IndexError: tuple index out of range\n=========================== short test summary info ============================\nFAILED tests/test_more.py::GrayProductTests::test_basic - IndexError: tuple i...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 512 passed, 2245 subtests passed in 1.05s\n",
+      "failing_tests": [
+        "tests/test_more.py::GrayProductTests::test_basic"
+      ],
+      "exit_code": 1
+    },
+    {
+      "bug_id": "more-itertools-original-043",
+      "test_output": ".................................................................................. [ 11%]\n......................................................... [ 19%]\n........................................................................ [ 30%]\n.................................................. [ 37%]\n..................................................................... [ 47%]\n..................................... [ 52%]\n.................................... [ 57%]\n.............................................................................................. [ 70%]\n............................................................ [ 79%]\n....................................................................................F\n=================================== FAILURES ===================================\n______________________ TestRandomDerangement.test_basics _______________________\ntests/test_recipes.py:684: in test_basics\n    self.assertEqual(mi.random_derangement(''), ())\n                     ^^^^^^^^^^^^^^^^^^^^^^^^^\nmore_itertools/recipes.py:1407: in random_derangement\n    re!=rn ()\n    ^^\nE   NameError: name 're' is not defined\n=========================== short test summary info ============================\nFAILED tests/test_recipes.py::TestRandomDerangement::test_basics - NameError:...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 641 passed, 10055 subtests passed in 3.49s\n",
+      "failing_tests": [
+        "tests/test_recipes.py::TestRandomDerangement::test_basics"
+      ],
+      "exit_code": 1
+    },
+    {
+      "bug_id": "more-itertools-original-044",
+      "test_output": ".................................................................................. [ 11%]\n......................................................... [ 19%]\n........................................................................ [ 30%]\n.................................................. [ 37%]\n..................................................................... [ 47%]\n..................................... [ 52%]\n.................................... [ 57%]\n.............................................................................................. [ 70%]\n.............................................F\n=================================== FAILURES ===================================\n___________________ DiscreteFourierTransformTests.test_basic ___________________\ntests/test_more.py:6294: in test_basic\n    self.assertTrue(all(map(cmath.isclose, mi.dft(xarr), Xarr)))\nE   AssertionError: False is not true\n=========================== short test summary info ============================\nFAILED tests/test_more.py::DiscreteFourierTransformTests::test_basic - Assert...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 542 passed, 2245 subtests passed in 1.03s\n",
+      "failing_tests": [
+        "tests/test_more.py::DiscreteFourierTransformTests::test_basic"
+      ],
+      "exit_code": 1
+    },
+    {
+      "bug_id": "more-itertools-original-045",
+      "test_output": ".................................................................................. [ 11%]\n......................................................... [ 19%]\n........................................................................ [ 30%]\n.................................................. [ 37%]\n..................................................................... [ 47%]\n..................................... [ 52%]\n.................................... [ 57%]\n.............................................................................................. [ 70%]\n.............................................F\n=================================== FAILURES ===================================\n___________________ DiscreteFourierTransformTests.test_basic ___________________\ntests/test_more.py:6294: in test_basic\n    self.assertTrue(all(map(cmath.isclose, mi.dft(xarr), Xarr)))\nE   AssertionError: False is not true\n=========================== short test summary info ============================\nFAILED tests/test_more.py::DiscreteFourierTransformTests::test_basic - Assert...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 542 passed, 2245 subtests passed in 1.03s\n",
+      "failing_tests": [
+        "tests/test_more.py::DiscreteFourierTransformTests::test_basic"
+      ],
+      "exit_code": 1
+    },
+    {
+      "bug_id": "more-itertools-original-046",
+      "test_output": ".................................................................................. [ 11%]\n......................................................... [ 19%]\n........................................................................ [ 30%]\n.................................................. [ 37%]\n..................................................................... [ 47%]\n..................................... [ 52%]\n.................................... [ 57%]\n.............................................................................................. [ 70%]\n.............................................F\n=================================== FAILURES ===================================\n___________________ DiscreteFourierTransformTests.test_basic ___________________\ntests/test_more.py:6294: in test_basic\n    self.assertTrue(all(map(cmath.isclose, mi.dft(xarr), Xarr)))\nE   AssertionError: False is not true\n=========================== short test summary info ============================\nFAILED tests/test_more.py::DiscreteFourierTransformTests::test_basic - Assert...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 542 passed, 2245 subtests passed in 1.02s\n",
+      "failing_tests": [
+        "tests/test_more.py::DiscreteFourierTransformTests::test_basic"
+      ],
+      "exit_code": 1
+    },
+    {
+      "bug_id": "more-itertools-original-047",
+      "test_output": ".................................................................................. [ 11%]\n......................................................... [ 19%]\n........................................................................ [ 30%]\n.................................................. [ 37%]\n..................................................................... [ 47%]\n..................................... [ 52%]\n.................................... [ 57%]\n.............................................................................................. [ 70%]\n.............................................F\n=================================== FAILURES ===================================\n___________________ DiscreteFourierTransformTests.test_basic ___________________\ntests/test_more.py:6294: in test_basic\n    self.assertTrue(all(map(cmath.isclose, mi.dft(xarr), Xarr)))\nE   AssertionError: False is not true\n=========================== short test summary info ============================\nFAILED tests/test_more.py::DiscreteFourierTransformTests::test_basic - Assert...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 542 passed, 2245 subtests passed in 1.04s\n",
+      "failing_tests": [
+        "tests/test_more.py::DiscreteFourierTransformTests::test_basic"
+      ],
+      "exit_code": 1
+    },
+    {
+      "bug_id": "more-itertools-original-048",
+      "test_output": "F\n=================================== FAILURES ===================================\n____________________________ ChunkedTests.test_even ____________________________\ntests/test_more.py:54: in test_even\n    list(mi.chunked('ABCDEF', 3)), [['A', 'B', 'C'], ['D', 'E', 'F']]\n    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nmore_itertools/recipes.py:118: in take\n    return list(islice(iterable, n))\n                ^^^^^^^^^^^^^^^^^^^\nE   ValueError: Stop argument for islice() must be None or an integer: 0 <= x <= sys.maxsize.\n=========================== short test summary info ============================\nFAILED tests/test_more.py::ChunkedTests::test_even - ValueError: Stop argumen...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed in 0.17s\n",
+      "failing_tests": [
+        "tests/test_more.py::ChunkedTests::test_even"
+      ],
+      "exit_code": 1
+    },
+    {
+      "bug_id": "more-itertools-original-049",
+      "test_output": "F\n=================================== FAILURES ===================================\n____________________________ ChunkedTests.test_even ____________________________\ntests/test_more.py:53: in test_even\n    self.assertEqual(\nE   AssertionError: Lists differ: [] != [['A', 'B', 'C'], ['D', 'E', 'F']]\nE   \nE   Second list contains 2 additional elements.\nE   First extra element 0:\nE   ['A', 'B', 'C']\nE   \nE   - []\nE   + [['A', 'B', 'C'], ['D', 'E', 'F']]\n=========================== short test summary info ============================\nFAILED tests/test_more.py::ChunkedTests::test_even - AssertionError: Lists di...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed in 0.16s\n",
+      "failing_tests": [
+        "tests/test_more.py::ChunkedTests::test_even"
+      ],
+      "exit_code": 1
+    },
+    {
+      "bug_id": "more-itertools-original-050",
+      "test_output": "F\n=================================== FAILURES ===================================\n____________________________ ChunkedTests.test_even ____________________________\ntests/test_more.py:54: in test_even\n    list(mi.chunked('ABCDEF', 3)), [['A', 'B', 'C'], ['D', 'E', 'F']]\n         ^^^^^^^^^^^^^^^^^^^^^^^\nmore_itertools/more.py:228: in chunked\n    iterator = iter(partial(take, n, iter(n)), [])\n                                     ^^^^^^^\nE   TypeError: 'int' object is not iterable\n=========================== short test summary info ============================\nFAILED tests/test_more.py::ChunkedTests::test_even - TypeError: 'int' object ...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed in 0.19s\n",
+      "failing_tests": [
+        "tests/test_more.py::ChunkedTests::test_even"
       ],
       "exit_code": 1
     }
@@ -266,263 +427,443 @@
     {
       "bug_id": "more-itertools-original-002",
       "file_path": "more_itertools/more.py",
-      "line_number": 285,
-      "mutation_type": "plus_one",
-      "original_text": "1",
-      "mutated_text": "2",
-      "context": "...Sequence):             return iterable[-1]         # Work around https://bugs.pyt..."
+      "line_number": 846,
+      "mutation_type": "eq_ne",
+      "original_text": "==",
+      "mutated_text": "!=",
+      "context": "...tial, ... )     algorithm = _full if (r == size) else partial(_partial, r=r)..."
     },
     {
       "bug_id": "more-itertools-original-003",
       "file_path": "more_itertools/more.py",
-      "line_number": 313,
-      "mutation_type": "plus_one",
-      "original_text": "1",
-      "mutated_text": "2",
-      "context": "...\"\"     return last(islice(iterable, n + 1), default=default)   class peekable:..."
+      "line_number": 933,
+      "mutation_type": "eq_ne",
+      "original_text": "==",
+      "mutated_text": "!=",
+      "context": "...None, 3, 4, None, 5]      \"\"\"     if n == 0:         raise ValueError('n must be..."
     },
     {
       "bug_id": "more-itertools-original-004",
       "file_path": "more_itertools/more.py",
-      "line_number": 313,
-      "mutation_type": "minus_one",
-      "original_text": "1",
-      "mutated_text": "0",
-      "context": "...\"\"     return last(islice(iterable, n + 1), default=default)   class peekable:..."
+      "line_number": 935,
+      "mutation_type": "eq_ne",
+      "original_text": "==",
+      "mutated_text": "!=",
+      "context": "...ValueError('n must be > 0')     elif n == 1:         # interleave(repeat(e), iter..."
     },
     {
       "bug_id": "more-itertools-original-005",
       "file_path": "more_itertools/more.py",
-      "line_number": 403,
-      "mutation_type": "plus_one",
-      "original_text": "0",
-      "mutated_text": "1",
-      "context": "...turn default         return self._cache[0]      def prepend(self, *items):..."
+      "line_number": 977,
+      "mutation_type": "eq_ne",
+      "original_text": "==",
+      "mutated_text": "!=",
+      "context": "...or element in counts if counts[element] == 1}     return [list(filter(uniques.__co..."
     },
     {
       "bug_id": "more-itertools-original-006",
       "file_path": "more_itertools/more.py",
-      "line_number": 403,
-      "mutation_type": "minus_one",
-      "original_text": "0",
-      "mutated_text": "-1",
-      "context": "...turn default         return self._cache[0]      def prepend(self, *items):..."
+      "line_number": 1010,
+      "mutation_type": "eq_ne",
+      "original_text": "==",
+      "mutated_text": "!=",
+      "context": "...e ValueError('n must be >= 0')     if n == 0:         yield ()         return..."
     },
     {
       "bug_id": "more-itertools-original-007",
       "file_path": "more_itertools/more.py",
-      "line_number": 444,
-      "mutation_type": "minus_one",
-      "original_text": "1",
-      "mutated_text": "0",
-      "context": "...ze the slice's arguments         step = 1 if (index.step is None) else index.step..."
+      "line_number": 1170,
+      "mutation_type": "eq_ne",
+      "original_text": "==",
+      "mutated_text": "!=",
+      "context": "...item)                     if item_value == value:                         yield it..."
     },
     {
       "bug_id": "more-itertools-original-008",
       "file_path": "more_itertools/more.py",
-      "line_number": 445,
-      "mutation_type": "lt_gt",
-      "original_text": ">",
-      "mutated_text": "<",
-      "context": "...s None) else index.step         if step > 0:             start = 0 if (index.star..."
+      "line_number": 1296,
+      "mutation_type": "eq_ne",
+      "original_text": "!=",
+      "mutated_text": "==",
+      "context": "...'             )     elif len(iterables) != len(lengths):         raise ValueError(..."
     },
     {
       "bug_id": "more-itertools-original-009",
       "file_path": "more_itertools/more.py",
-      "line_number": 445,
-      "mutation_type": "plus_one",
-      "original_text": "0",
-      "mutated_text": "1",
-      "context": "...None) else index.step         if step > 0:             start = 0 if (index.start..."
+      "line_number": 1499,
+      "mutation_type": "eq_ne",
+      "original_text": "!=",
+      "mutated_text": "==",
+      "context": "...terator:                 if len(_slice) != n:                     raise ValueError..."
     },
     {
       "bug_id": "more-itertools-original-010",
       "file_path": "more_itertools/more.py",
-      "line_number": 445,
-      "mutation_type": "minus_one",
-      "original_text": "0",
-      "mutated_text": "-1",
-      "context": "...None) else index.step         if step > 0:             start = 0 if (index.start..."
+      "line_number": 1577,
+      "mutation_type": "eq_ne",
+      "original_text": "==",
+      "mutated_text": "!=",
+      "context": "...yield buf             if maxsplit == 1:                 yield [item, *it]..."
     },
     {
       "bug_id": "more-itertools-original-011",
       "file_path": "more_itertools/more.py",
-      "line_number": 448,
-      "mutation_type": "lt_gt",
-      "original_text": "<",
-      "mutated_text": ">",
-      "context": "...None) else index.stop         elif step < 0:             start = -1 if (index.sta..."
+      "line_number": 1604,
+      "mutation_type": "eq_ne",
+      "original_text": "==",
+      "mutated_text": "!=",
+      "context": "..., 6, 7, 8, 9]]      \"\"\"     if maxsplit == 0:         yield list(iterable)..."
     },
     {
       "bug_id": "more-itertools-original-012",
       "file_path": "more_itertools/more.py",
-      "line_number": 448,
-      "mutation_type": "plus_one",
-      "original_text": "0",
-      "mutated_text": "1",
-      "context": "...ne) else index.stop         elif step < 0:             start = -1 if (index.start..."
+      "line_number": 1614,
+      "mutation_type": "eq_ne",
+      "original_text": "==",
+      "mutated_text": "!=",
+      "context": "...yield buf             if maxsplit == 1:                 buf = list(it)..."
     },
     {
       "bug_id": "more-itertools-original-013",
       "file_path": "more_itertools/more.py",
-      "line_number": 448,
-      "mutation_type": "minus_one",
-      "original_text": "0",
-      "mutated_text": "-1",
-      "context": "...ne) else index.stop         elif step < 0:             start = -1 if (index.start..."
+      "line_number": 1644,
+      "mutation_type": "eq_ne",
+      "original_text": "==",
+      "mutated_text": "!=",
+      "context": "...5], [2, 4, 2]]      \"\"\"     if maxsplit == 0:         yield list(iterable)..."
     },
     {
       "bug_id": "more-itertools-original-014",
       "file_path": "more_itertools/more.py",
-      "line_number": 449,
-      "mutation_type": "minus_one",
-      "original_text": "1",
-      "mutated_text": "0",
-      "context": "...elif step < 0:             start = -1 if (index.start is None) else index.sta..."
+      "line_number": 1658,
+      "mutation_type": "eq_ne",
+      "original_text": "==",
+      "mutated_text": "!=",
+      "context": "...yield buf             if maxsplit == 1:                 yield [next_item, *i..."
     },
     {
       "bug_id": "more-itertools-original-015",
       "file_path": "more_itertools/more.py",
-      "line_number": 456,
-      "mutation_type": "and_or",
-      "original_text": "or",
-      "mutated_text": "and",
-      "context": "...the right side.         if (start < 0) or (stop < 0):             self._cache.ext..."
+      "line_number": 1874,
+      "mutation_type": "eq_ne",
+      "original_text": "!=",
+      "mutated_text": "==",
+      "context": "...r value.      \"\"\"     if len(iterables) != len(offsets):         raise ValueError(..."
     },
     {
       "bug_id": "more-itertools-original-016",
       "file_path": "more_itertools/more.py",
-      "line_number": 456,
-      "mutation_type": "lt_gt",
-      "original_text": "<",
-      "mutated_text": ">",
-      "context": "...from the right side.         if (start < 0) or (stop < 0):             self._cac..."
+      "line_number": 1946,
+      "mutation_type": "eq_ne",
+      "original_text": "==",
+      "mutated_text": "!=",
+      "context": "...list(key_list)         if len(key_list) == 1:             # if key_list contains a..."
     },
     {
       "bug_id": "more-itertools-original-017",
       "file_path": "more_itertools/more.py",
-      "line_number": 456,
-      "mutation_type": "plus_one",
-      "original_text": "0",
-      "mutated_text": "1",
-      "context": "...rom the right side.         if (start < 0) or (stop < 0):             self._cache..."
+      "line_number": 2250,
+      "mutation_type": "eq_ne",
+      "original_text": "==",
+      "mutated_text": "!=",
+      "context": "...argc = len(args)         if argc == 1:             (self._stop,) = args..."
     },
     {
       "bug_id": "more-itertools-original-018",
       "file_path": "more_itertools/more.py",
-      "line_number": 456,
-      "mutation_type": "minus_one",
-      "original_text": "0",
-      "mutated_text": "-1",
-      "context": "...rom the right side.         if (start < 0) or (stop < 0):             self._cache..."
+      "line_number": 2254,
+      "mutation_type": "eq_ne",
+      "original_text": "==",
+      "mutated_text": "!=",
+      "context": "...top - self._start)(1)         elif argc == 2:             self._start, self._stop..."
     },
     {
       "bug_id": "more-itertools-original-019",
       "file_path": "more_itertools/more.py",
-      "line_number": 456,
-      "mutation_type": "lt_gt",
-      "original_text": "<",
-      "mutated_text": ">",
-      "context": "...t side.         if (start < 0) or (stop < 0):             self._cache.extend(self..."
+      "line_number": 2257,
+      "mutation_type": "eq_ne",
+      "original_text": "==",
+      "mutated_text": "!=",
+      "context": "...top - self._start)(1)         elif argc == 3:             self._start, self._stop,..."
     },
     {
       "bug_id": "more-itertools-original-020",
       "file_path": "more_itertools/more.py",
-      "line_number": 456,
-      "mutation_type": "plus_one",
-      "original_text": "0",
-      "mutated_text": "1",
-      "context": "...side.         if (start < 0) or (stop < 0):             self._cache.extend(self._..."
+      "line_number": 2259,
+      "mutation_type": "eq_ne",
+      "original_text": "==",
+      "mutated_text": "!=",
+      "context": "...op, self._step = args         elif argc == 0:             raise TypeError(..."
     },
     {
       "bug_id": "more-itertools-original-021",
       "file_path": "more_itertools/more.py",
-      "line_number": 456,
-      "mutation_type": "minus_one",
-      "original_text": "0",
-      "mutated_text": "-1",
-      "context": "...side.         if (start < 0) or (stop < 0):             self._cache.extend(self._..."
+      "line_number": 2269,
+      "mutation_type": "eq_ne",
+      "original_text": "==",
+      "mutated_text": "!=",
+      "context": "...pe(self._step)(0)         if self._step == self._zero:             raise ValueErro..."
     },
     {
       "bug_id": "more-itertools-original-022",
       "file_path": "more_itertools/more.py",
-      "line_number": 461,
-      "mutation_type": "minus_one",
-      "original_text": "1",
-      "mutated_text": "0",
-      "context": "...n = min(max(start, stop) + 1, maxsize)             cache_len = len(s..."
+      "line_number": 2282,
+      "mutation_type": "eq_ne",
+      "original_text": "==",
+      "mutated_text": "!=",
+      "context": "...eturn (elem - self._start) % self._step == self._zero         else:             if..."
     },
     {
       "bug_id": "more-itertools-original-023",
       "file_path": "more_itertools/more.py",
-      "line_number": 463,
-      "mutation_type": "le_ge",
-      "original_text": ">=",
-      "mutated_text": "<=",
-      "context": "...len = len(self._cache)             if n >= cache_len:                 self._cache...."
+      "line_number": 2285,
+      "mutation_type": "eq_ne",
+      "original_text": "==",
+      "mutated_text": "!=",
+      "context": "...rn (self._start - elem) % (-self._step) == self._zero          return False      d..."
     },
     {
       "bug_id": "more-itertools-original-024",
       "file_path": "more_itertools/more.py",
-      "line_number": 473,
-      "mutation_type": "lt_gt",
-      "original_text": "<",
-      "mutated_text": ">",
-      "context": "...len = len(self._cache)         if index < 0:             self._cache.extend(self...."
+      "line_number": 2297,
+      "mutation_type": "eq_ne",
+      "original_text": "==",
+      "mutated_text": "!=",
+      "context": "...eturn (                     self._start == other._start                     and se..."
     },
     {
       "bug_id": "more-itertools-original-025",
       "file_path": "more_itertools/more.py",
-      "line_number": 475,
-      "mutation_type": "le_ge",
-      "original_text": ">=",
-      "mutated_text": "<=",
-      "context": "...che.extend(self._it)         elif index >= cache_len:             self._cache.exte..."
+      "line_number": 2298,
+      "mutation_type": "eq_ne",
+      "original_text": "==",
+      "mutated_text": "!=",
+      "context": "...tart                     and self._step == other._step                     and sel..."
     },
     {
       "bug_id": "more-itertools-original-026",
       "file_path": "more_itertools/more.py",
-      "line_number": 476,
-      "mutation_type": "plus_one",
-      "original_text": "1",
-      "mutated_text": "2",
-      "context": "...._cache.extend(islice(self._it, index + 1 - cache_len))          return self._cac..."
+      "line_number": 2299,
+      "mutation_type": "eq_ne",
+      "original_text": "==",
+      "mutated_text": "!=",
+      "context": "...and self._get_by_index(-1) == other._get_by_index(-1)..."
     },
     {
       "bug_id": "more-itertools-original-027",
       "file_path": "more_itertools/more.py",
-      "line_number": 476,
-      "mutation_type": "minus_one",
-      "original_text": "1",
-      "mutated_text": "0",
-      "context": "...._cache.extend(islice(self._it, index + 1 - cache_len))          return self._cac..."
+      "line_number": 2362,
+      "mutation_type": "eq_ne",
+      "original_text": "!=",
+      "mutated_text": "==",
+      "context": "...step)             return int(q) + int(r != self._zero)      def __reduce__(self):..."
     },
     {
       "bug_id": "more-itertools-original-028",
       "file_path": "more_itertools/more.py",
-      "line_number": 535,
-      "mutation_type": "plus_one",
-      "original_text": "1",
-      "mutated_text": "2",
-      "context": "...autiful.     return sum(compress(repeat(1), zip(iterable)))   def iterate(func, s..."
+      "line_number": 2388,
+      "mutation_type": "eq_ne",
+      "original_text": "==",
+      "mutated_text": "!=",
+      "context": "...start, self._step)                 if r == self._zero:                     return..."
     },
     {
       "bug_id": "more-itertools-original-029",
       "file_path": "more_itertools/more.py",
-      "line_number": 535,
-      "mutation_type": "minus_one",
-      "original_text": "1",
-      "mutated_text": "0",
-      "context": "...autiful.     return sum(compress(repeat(1), zip(iterable)))   def iterate(func, s..."
+      "line_number": 2393,
+      "mutation_type": "eq_ne",
+      "original_text": "==",
+      "mutated_text": "!=",
+      "context": "...alue, -self._step)                 if r == self._zero:                     return..."
     },
     {
       "bug_id": "more-itertools-original-030",
       "file_path": "more_itertools/more.py",
-      "line_number": 626,
-      "mutation_type": "and_or",
-      "original_text": "or",
-      "mutated_text": "and",
-      "context": "...)             raise too_long or ValueError(msg)         return first..."
+      "line_number": 3120,
+      "mutation_type": "eq_ne",
+      "original_text": "==",
+      "mutated_text": "!=",
+      "context": "...buffer = deque(iterable)     if steps == 0:         raise ValueError('Steps shou..."
+    },
+    {
+      "bug_id": "more-itertools-original-031",
+      "file_path": "more_itertools/more.py",
+      "line_number": 3452,
+      "mutation_type": "eq_ne",
+      "original_text": "==",
+      "mutated_text": "!=",
+      "context": "...(L, k):         n = len(L)         if k == 1:             yield [L]         elif n..."
+    },
+    {
+      "bug_id": "more-itertools-original-032",
+      "file_path": "more_itertools/more.py",
+      "line_number": 3454,
+      "mutation_type": "eq_ne",
+      "original_text": "==",
+      "mutated_text": "!=",
+      "context": "...1:             yield [L]         elif n == k:             yield [[s] for s in L]..."
+    },
+    {
+      "bug_id": "more-itertools-original-033",
+      "file_path": "more_itertools/more.py",
+      "line_number": 3516,
+      "mutation_type": "eq_ne",
+      "original_text": "==",
+      "mutated_text": "!=",
+      "context": "...__(self):         if self.limit_seconds == 0:             self.timed_out = True..."
+    },
+    {
+      "bug_id": "more-itertools-original-034",
+      "file_path": "more_itertools/more.py",
+      "line_number": 3888,
+      "mutation_type": "eq_ne",
+      "original_text": "==",
+      "mutated_text": "!=",
+      "context": "...ror('k must be non-negative')      if k == 0:         return []      if weights is..."
+    },
+    {
+      "bug_id": "more-itertools-original-035",
+      "file_path": "more_itertools/more.py",
+      "line_number": 4214,
+      "mutation_type": "eq_ne",
+      "original_text": "==",
+      "mutated_text": "!=",
+      "context": "...result[n - d] = i         if q == 0:             break      return tuple(..."
+    },
+    {
+      "bug_id": "more-itertools-original-036",
+      "file_path": "more_itertools/more.py",
+      "line_number": 4319,
+      "mutation_type": "eq_ne",
+      "original_text": "!=",
+      "mutated_text": "==",
+      "context": "...erables)) * repeat     if len(elements) != len(pools):         raise ValueError('e..."
+    },
+    {
+      "bug_id": "more-itertools-original-037",
+      "file_path": "more_itertools/more.py",
+      "line_number": 4349,
+      "mutation_type": "eq_ne",
+      "original_text": "==",
+      "mutated_text": "!=",
+      "context": "...ble)     for n, x in pool:         if x == y:             indexes.append(n)..."
+    },
+    {
+      "bug_id": "more-itertools-original-038",
+      "file_path": "more_itertools/more.py",
+      "line_number": 4396,
+      "mutation_type": "eq_ne",
+      "original_text": "==",
+      "mutated_text": "!=",
+      "context": "..., x in enumerate(pool):         while x == y:             indexes.append(n)..."
+    },
+    {
+      "bug_id": "more-itertools-original-039",
+      "file_path": "more_itertools/more.py",
+      "line_number": 4707,
+      "mutation_type": "eq_ne",
+      "original_text": "!=",
+      "mutated_text": "==",
+      "context": "...is_unique_justseen = not i or previous != k         previous = k         is_uniqu..."
+    },
+    {
+      "bug_id": "more-itertools-original-040",
+      "file_path": "more_itertools/more.py",
+      "line_number": 4885,
+      "mutation_type": "eq_ne",
+      "original_text": "==",
+      "mutated_text": "!=",
+      "context": "...j = f[0]         f[0] = 0         if j == iterable_count:             break..."
+    },
+    {
+      "bug_id": "more-itertools-original-041",
+      "file_path": "more_itertools/more.py",
+      "line_number": 4888,
+      "mutation_type": "eq_ne",
+      "original_text": "==",
+      "mutated_text": "!=",
+      "context": "...a[j] = a[j] + o[j]         if a[j] == 0 or a[j] == len(all_iterables[j]) - 1:..."
+    },
+    {
+      "bug_id": "more-itertools-original-042",
+      "file_path": "more_itertools/more.py",
+      "line_number": 4888,
+      "mutation_type": "eq_ne",
+      "original_text": "==",
+      "mutated_text": "!=",
+      "context": "...[j] + o[j]         if a[j] == 0 or a[j] == len(all_iterables[j]) - 1:..."
+    },
+    {
+      "bug_id": "more-itertools-original-043",
+      "file_path": "more_itertools/recipes.py",
+      "line_number": 1406,
+      "mutation_type": "eq_ne",
+      "original_text": "==",
+      "mutated_text": "!=",
+      "context": "...if len(seq) == 0:             return ()         raise IndexError('No deran..."
+    },
+    {
+      "bug_id": "more-itertools-original-044",
+      "file_path": "more_itertools/more.py",
+      "line_number": 197,
+      "mutation_type": "var_swap",
+      "original_text": "x",
+      "mutated_text": "y",
+      "context": "...ation.\"         xx_hi, xx_lo = dl_split(x)         yy_hi, yy_lo = dl_split(y)..."
+    },
+    {
+      "bug_id": "more-itertools-original-045",
+      "file_path": "more_itertools/more.py",
+      "line_number": 198,
+      "mutation_type": "var_swap",
+      "original_text": "y",
+      "mutated_text": "x",
+      "context": "...plit(x)         yy_hi, yy_lo = dl_split(y)         p = xx_hi * yy_hi         q =..."
+    },
+    {
+      "bug_id": "more-itertools-original-046",
+      "file_path": "more_itertools/more.py",
+      "line_number": 206,
+      "mutation_type": "var_swap",
+      "original_text": "p",
+      "mutated_text": "q",
+      "context": "...rn fsum(chain.from_iterable(map(dl_mul, p, q)))   def chunked(iterable, n, strict..."
+    },
+    {
+      "bug_id": "more-itertools-original-047",
+      "file_path": "more_itertools/more.py",
+      "line_number": 206,
+      "mutation_type": "var_swap",
+      "original_text": "q",
+      "mutated_text": "p",
+      "context": "...fsum(chain.from_iterable(map(dl_mul, p, q)))   def chunked(iterable, n, strict=Fa..."
+    },
+    {
+      "bug_id": "more-itertools-original-048",
+      "file_path": "more_itertools/more.py",
+      "line_number": 228,
+      "mutation_type": "var_swap",
+      "original_text": "n",
+      "mutated_text": "iterable",
+      "context": "...\"\"\"     iterator = iter(partial(take, n, iter(iterable)), [])     if strict:..."
+    },
+    {
+      "bug_id": "more-itertools-original-049",
+      "file_path": "more_itertools/more.py",
+      "line_number": 228,
+      "mutation_type": "var_swap",
+      "original_text": "n",
+      "mutated_text": "strict",
+      "context": "...\"\"\"     iterator = iter(partial(take, n, iter(iterable)), [])     if strict:..."
+    },
+    {
+      "bug_id": "more-itertools-original-050",
+      "file_path": "more_itertools/more.py",
+      "line_number": 228,
+      "mutation_type": "var_swap",
+      "original_text": "iterable",
+      "mutated_text": "n",
+      "context": "...iterator = iter(partial(take, n, iter(iterable)), [])     if strict:         if n is N..."
     }
   ]
 }

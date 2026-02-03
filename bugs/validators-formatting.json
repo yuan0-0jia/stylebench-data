@@ -1,11 +1,12 @@
 {
   "repo": "validators",
   "style": "formatting",
-  "generated_at": "2026-01-29T14:18:26.719850",
+  "generated_at": "2026-02-02T15:34:30.918174",
   "test_command": [
     "uv",
     "run",
     "pytest",
+    "/Users/yuan/stylebench-data/formatting/validators/tests",
     "-x",
     "-q",
     "--tb=short",
@@ -14,241 +15,401 @@
   "bugs": [
     {
       "bug_id": "validators-formatting-001",
-      "test_output": "........................................................................ [  8%]\n........................................................................ [ 16%]\n........................................................................ [ 24%]\n.........................F\n=================================== FAILURES ===================================\n__________________ test_returns_true_on_valid_range[12-11-13] __________________\ntests/test_between.py:29: in test_returns_true_on_valid_range\n    assert between(value, min_val=min_val, max_val=max_val)\nE   AssertionError: assert ValidationError(func=between, args={'reason': '`min_val` cannot be greater than `max_val`', 'value': 12, 'min_val': 11, 'max_val': 13})\nE    +  where ValidationError(func=between, args={'reason': '`min_val` cannot be greater than `max_val`', 'value': 12, 'min_val': 11, 'max_val': 13}) = between(12, min_val=11, max_val=13)\n=========================== short test summary info ============================\nFAILED tests/test_between.py::test_returns_true_on_valid_range[12-11-13] - As...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 241 passed in 0.26s\n",
+      "test_output": ".........................F\n=================================== FAILURES ===================================\n__ test_returns_true_on_valid_btc_address[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2] __\n/Users/yuan/stylebench-data/formatting/validators/tests/crypto_addresses/test_btc_address.py:24: in test_returns_true_on_valid_btc_address\n    assert btc_address(value)\nE   AssertionError: assert ValidationError(func=btc_address, args={'value': '1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2'})\nE    +  where ValidationError(func=btc_address, args={'value': '1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2'}) = btc_address('1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2')\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpdtaqcn6z/worker_1/tests/crypto_addresses/test_btc_address.py::test_returns_true_on_valid_btc_address[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2]\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 25 passed in 0.16s\n",
       "failing_tests": [
-        "tests/test_between.py::test_returns_true_on_valid_range[12-11-13]"
+        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpdtaqcn6z/worker_1/tests/crypto_addresses/test_btc_address.py::test_returns_true_on_valid_btc_address[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2]"
       ],
       "exit_code": 1
     },
     {
       "bug_id": "validators-formatting-002",
-      "test_output": "........................................................................ [  8%]\n........................................................................ [ 16%]\n........................................................................ [ 24%]\n.........................F\n=================================== FAILURES ===================================\n__________________ test_returns_true_on_valid_range[12-11-13] __________________\ntests/test_between.py:29: in test_returns_true_on_valid_range\n    assert between(value, min_val=min_val, max_val=max_val)\nE   AssertionError: assert ValidationError(func=between, args={'value': 12, 'min_val': 11, 'max_val': 13})\nE    +  where ValidationError(func=between, args={'value': 12, 'min_val': 11, 'max_val': 13}) = between(12, min_val=11, max_val=13)\n=========================== short test summary info ============================\nFAILED tests/test_between.py::test_returns_true_on_valid_range[12-11-13] - As...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 241 passed in 0.14s\n",
+      "test_output": ".........................F\n=================================== FAILURES ===================================\n__ test_returns_true_on_valid_btc_address[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2] __\n/Users/yuan/stylebench-data/formatting/validators/tests/crypto_addresses/test_btc_address.py:24: in test_returns_true_on_valid_btc_address\n    assert btc_address(value)\nE   AssertionError: assert ValidationError(func=btc_address, args={'value': '1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2'})\nE    +  where ValidationError(func=btc_address, args={'value': '1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2'}) = btc_address('1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2')\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpdtaqcn6z/worker_1/tests/crypto_addresses/test_btc_address.py::test_returns_true_on_valid_btc_address[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2]\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 25 passed in 0.08s\n",
       "failing_tests": [
-        "tests/test_between.py::test_returns_true_on_valid_range[12-11-13]"
+        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpdtaqcn6z/worker_1/tests/crypto_addresses/test_btc_address.py::test_returns_true_on_valid_btc_address[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2]"
       ],
       "exit_code": 1
     },
     {
       "bug_id": "validators-formatting-003",
-      "test_output": "........................................................................ [  8%]\n........................................................................ [ 16%]\n........................................................................ [ 24%]\n.........................F\n=================================== FAILURES ===================================\n__________________ test_returns_true_on_valid_range[12-11-13] __________________\ntests/test_between.py:29: in test_returns_true_on_valid_range\n    assert between(value, min_val=min_val, max_val=max_val)\nE   AssertionError: assert ValidationError(func=between, args={'value': 12, 'min_val': 11, 'max_val': 13})\nE    +  where ValidationError(func=between, args={'value': 12, 'min_val': 11, 'max_val': 13}) = between(12, min_val=11, max_val=13)\n=========================== short test summary info ============================\nFAILED tests/test_between.py::test_returns_true_on_valid_range[12-11-13] - As...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 241 passed in 0.14s\n",
+      "test_output": ".........................F\n=================================== FAILURES ===================================\n__ test_returns_true_on_valid_btc_address[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2] __\n/Users/yuan/stylebench-data/formatting/validators/tests/crypto_addresses/test_btc_address.py:24: in test_returns_true_on_valid_btc_address\n    assert btc_address(value)\nE   AssertionError: assert ValidationError(func=btc_address, args={'value': '1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2'})\nE    +  where ValidationError(func=btc_address, args={'value': '1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2'}) = btc_address('1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2')\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpdtaqcn6z/worker_1/tests/crypto_addresses/test_btc_address.py::test_returns_true_on_valid_btc_address[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2]\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 25 passed in 0.08s\n",
       "failing_tests": [
-        "tests/test_between.py::test_returns_true_on_valid_range[12-11-13]"
+        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpdtaqcn6z/worker_1/tests/crypto_addresses/test_btc_address.py::test_returns_true_on_valid_btc_address[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2]"
       ],
       "exit_code": 1
     },
     {
       "bug_id": "validators-formatting-004",
-      "test_output": "........................................................................ [  8%]\n........................................................................ [ 16%]\n........................................................................ [ 24%]\n.......................................F\n=================================== FAILURES ===================================\n___________ test_returns_true_on_valid_card_number[4242424242424242] ___________\ntests/test_card.py:43: in test_returns_true_on_valid_card_number\n    assert card_number(value)\nE   AssertionError: assert ValidationError(func=card_number, args={'value': '4242424242424242'})\nE    +  where ValidationError(func=card_number, args={'value': '4242424242424242'}) = card_number('4242424242424242')\n=========================== short test summary info ============================\nFAILED tests/test_card.py::test_returns_true_on_valid_card_number[4242424242424242]\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 255 passed in 0.20s\n",
+      "test_output": ".........................F\n=================================== FAILURES ===================================\n__ test_returns_true_on_valid_btc_address[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2] __\n/Users/yuan/stylebench-data/formatting/validators/tests/crypto_addresses/test_btc_address.py:24: in test_returns_true_on_valid_btc_address\n    assert btc_address(value)\nE   AssertionError: assert ValidationError(func=btc_address, args={'value': '1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2'})\nE    +  where ValidationError(func=btc_address, args={'value': '1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2'}) = btc_address('1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2')\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpdtaqcn6z/worker_1/tests/crypto_addresses/test_btc_address.py::test_returns_true_on_valid_btc_address[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2]\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 25 passed in 0.09s\n",
       "failing_tests": [
-        "tests/test_card.py::test_returns_true_on_valid_card_number[4242424242424242]"
+        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpdtaqcn6z/worker_1/tests/crypto_addresses/test_btc_address.py::test_returns_true_on_valid_btc_address[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2]"
       ],
       "exit_code": 1
     },
     {
       "bug_id": "validators-formatting-005",
-      "test_output": "........................................................................ [  8%]\n........................................................................ [ 16%]\n........................................................................ [ 24%]\n.......................................F\n=================================== FAILURES ===================================\n___________ test_returns_true_on_valid_card_number[4242424242424242] ___________\ntests/test_card.py:43: in test_returns_true_on_valid_card_number\n    assert card_number(value)\nE   AssertionError: assert ValidationError(func=card_number, args={'value': '4242424242424242'})\nE    +  where ValidationError(func=card_number, args={'value': '4242424242424242'}) = card_number('4242424242424242')\n=========================== short test summary info ============================\nFAILED tests/test_card.py::test_returns_true_on_valid_card_number[4242424242424242]\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 255 passed in 0.15s\n",
+      "test_output": ".........................F\n=================================== FAILURES ===================================\n__ test_returns_true_on_valid_btc_address[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2] __\n/Users/yuan/stylebench-data/formatting/validators/tests/crypto_addresses/test_btc_address.py:24: in test_returns_true_on_valid_btc_address\n    assert btc_address(value)\nE   AssertionError: assert ValidationError(func=btc_address, args={'value': '1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2'})\nE    +  where ValidationError(func=btc_address, args={'value': '1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2'}) = btc_address('1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2')\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpdtaqcn6z/worker_1/tests/crypto_addresses/test_btc_address.py::test_returns_true_on_valid_btc_address[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2]\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 25 passed in 0.09s\n",
       "failing_tests": [
-        "tests/test_card.py::test_returns_true_on_valid_card_number[4242424242424242]"
+        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpdtaqcn6z/worker_1/tests/crypto_addresses/test_btc_address.py::test_returns_true_on_valid_btc_address[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2]"
       ],
       "exit_code": 1
     },
     {
       "bug_id": "validators-formatting-006",
-      "test_output": "........................................................................ [  8%]\n........................................................................ [ 16%]\n........................................................................ [ 24%]\n.......................................F\n=================================== FAILURES ===================================\n___________ test_returns_true_on_valid_card_number[4242424242424242] ___________\ntests/test_card.py:43: in test_returns_true_on_valid_card_number\n    assert card_number(value)\nE   AssertionError: assert ValidationError(func=card_number, args={'value': '4242424242424242'})\nE    +  where ValidationError(func=card_number, args={'value': '4242424242424242'}) = card_number('4242424242424242')\n=========================== short test summary info ============================\nFAILED tests/test_card.py::test_returns_true_on_valid_card_number[4242424242424242]\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 255 passed in 0.15s\n",
+      "test_output": ".........................F\n=================================== FAILURES ===================================\n__ test_returns_true_on_valid_btc_address[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2] __\n/Users/yuan/stylebench-data/formatting/validators/tests/crypto_addresses/test_btc_address.py:24: in test_returns_true_on_valid_btc_address\n    assert btc_address(value)\nE   AssertionError: assert ValidationError(func=btc_address, args={'value': '1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2'})\nE    +  where ValidationError(func=btc_address, args={'value': '1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2'}) = btc_address('1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2')\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpdtaqcn6z/worker_1/tests/crypto_addresses/test_btc_address.py::test_returns_true_on_valid_btc_address[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2]\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 25 passed in 0.08s\n",
       "failing_tests": [
-        "tests/test_card.py::test_returns_true_on_valid_card_number[4242424242424242]"
+        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpdtaqcn6z/worker_1/tests/crypto_addresses/test_btc_address.py::test_returns_true_on_valid_btc_address[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2]"
       ],
       "exit_code": 1
     },
     {
       "bug_id": "validators-formatting-007",
-      "test_output": "........................................................................ [  8%]\n........................................................................ [ 16%]\n........................................................................ [ 24%]\n.......................................F\n=================================== FAILURES ===================================\n___________ test_returns_true_on_valid_card_number[4242424242424242] ___________\ntests/test_card.py:43: in test_returns_true_on_valid_card_number\n    assert card_number(value)\nE   AssertionError: assert ValidationError(func=card_number, args={'value': '4242424242424242'})\nE    +  where ValidationError(func=card_number, args={'value': '4242424242424242'}) = card_number('4242424242424242')\n=========================== short test summary info ============================\nFAILED tests/test_card.py::test_returns_true_on_valid_card_number[4242424242424242]\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 255 passed in 0.14s\n",
+      "test_output": ".........................F\n=================================== FAILURES ===================================\n__ test_returns_true_on_valid_btc_address[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2] __\n/Users/yuan/stylebench-data/formatting/validators/tests/crypto_addresses/test_btc_address.py:24: in test_returns_true_on_valid_btc_address\n    assert btc_address(value)\nE   AssertionError: assert ValidationError(func=btc_address, args={'value': '1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2'})\nE    +  where ValidationError(func=btc_address, args={'value': '1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2'}) = btc_address('1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2')\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpdtaqcn6z/worker_1/tests/crypto_addresses/test_btc_address.py::test_returns_true_on_valid_btc_address[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2]\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 25 passed in 0.09s\n",
       "failing_tests": [
-        "tests/test_card.py::test_returns_true_on_valid_card_number[4242424242424242]"
+        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpdtaqcn6z/worker_1/tests/crypto_addresses/test_btc_address.py::test_returns_true_on_valid_btc_address[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2]"
       ],
       "exit_code": 1
     },
     {
       "bug_id": "validators-formatting-008",
-      "test_output": "........................................................................ [  8%]\n........................................................................ [ 16%]\n........................................................................ [ 24%]\n.......................................F\n=================================== FAILURES ===================================\n___________ test_returns_true_on_valid_card_number[4242424242424242] ___________\ntests/test_card.py:43: in test_returns_true_on_valid_card_number\n    assert card_number(value)\nE   AssertionError: assert ValidationError(func=card_number, args={'value': '4242424242424242'})\nE    +  where ValidationError(func=card_number, args={'value': '4242424242424242'}) = card_number('4242424242424242')\n=========================== short test summary info ============================\nFAILED tests/test_card.py::test_returns_true_on_valid_card_number[4242424242424242]\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 255 passed in 0.15s\n",
+      "test_output": ".........................F\n=================================== FAILURES ===================================\n__ test_returns_true_on_valid_btc_address[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2] __\n/Users/yuan/stylebench-data/formatting/validators/tests/crypto_addresses/test_btc_address.py:24: in test_returns_true_on_valid_btc_address\n    assert btc_address(value)\nE   AssertionError: assert ValidationError(func=btc_address, args={'value': '1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2'})\nE    +  where ValidationError(func=btc_address, args={'value': '1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2'}) = btc_address('1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2')\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpdtaqcn6z/worker_1/tests/crypto_addresses/test_btc_address.py::test_returns_true_on_valid_btc_address[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2]\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 25 passed in 0.09s\n",
       "failing_tests": [
-        "tests/test_card.py::test_returns_true_on_valid_card_number[4242424242424242]"
+        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpdtaqcn6z/worker_1/tests/crypto_addresses/test_btc_address.py::test_returns_true_on_valid_btc_address[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2]"
       ],
       "exit_code": 1
     },
     {
       "bug_id": "validators-formatting-009",
-      "test_output": "........................................................................ [  8%]\n........................................................................ [ 16%]\n........................................................................ [ 24%]\n.......................................F\n=================================== FAILURES ===================================\n___________ test_returns_true_on_valid_card_number[4242424242424242] ___________\ntests/test_card.py:43: in test_returns_true_on_valid_card_number\n    assert card_number(value)\nE   AssertionError: assert ValidationError(func=card_number, args={'value': '4242424242424242'})\nE    +  where ValidationError(func=card_number, args={'value': '4242424242424242'}) = card_number('4242424242424242')\n=========================== short test summary info ============================\nFAILED tests/test_card.py::test_returns_true_on_valid_card_number[4242424242424242]\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 255 passed in 0.14s\n",
+      "test_output": ".........................F\n=================================== FAILURES ===================================\n__ test_returns_true_on_valid_btc_address[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2] __\n/Users/yuan/stylebench-data/formatting/validators/tests/crypto_addresses/test_btc_address.py:24: in test_returns_true_on_valid_btc_address\n    assert btc_address(value)\nE   AssertionError: assert ValidationError(func=btc_address, args={'value': '1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2'})\nE    +  where ValidationError(func=btc_address, args={'value': '1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2'}) = btc_address('1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2')\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpdtaqcn6z/worker_1/tests/crypto_addresses/test_btc_address.py::test_returns_true_on_valid_btc_address[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2]\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 25 passed in 0.09s\n",
       "failing_tests": [
-        "tests/test_card.py::test_returns_true_on_valid_card_number[4242424242424242]"
+        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpdtaqcn6z/worker_1/tests/crypto_addresses/test_btc_address.py::test_returns_true_on_valid_btc_address[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2]"
       ],
       "exit_code": 1
     },
     {
       "bug_id": "validators-formatting-010",
-      "test_output": "........................................................................ [  8%]\n........................................................................ [ 16%]\n........................................................................ [ 24%]\n.......................................F\n=================================== FAILURES ===================================\n___________ test_returns_true_on_valid_card_number[4242424242424242] ___________\ntests/test_card.py:43: in test_returns_true_on_valid_card_number\n    assert card_number(value)\nE   AssertionError: assert ValidationError(func=card_number, args={'value': '4242424242424242'})\nE    +  where ValidationError(func=card_number, args={'value': '4242424242424242'}) = card_number('4242424242424242')\n=========================== short test summary info ============================\nFAILED tests/test_card.py::test_returns_true_on_valid_card_number[4242424242424242]\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 255 passed in 0.14s\n",
+      "test_output": ".........................F\n=================================== FAILURES ===================================\n__ test_returns_true_on_valid_btc_address[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2] __\n/Users/yuan/stylebench-data/formatting/validators/tests/crypto_addresses/test_btc_address.py:24: in test_returns_true_on_valid_btc_address\n    assert btc_address(value)\nE   AssertionError: assert ValidationError(func=btc_address, args={'value': '1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2'})\nE    +  where ValidationError(func=btc_address, args={'value': '1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2'}) = btc_address('1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2')\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpdtaqcn6z/worker_1/tests/crypto_addresses/test_btc_address.py::test_returns_true_on_valid_btc_address[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2]\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 25 passed in 0.08s\n",
       "failing_tests": [
-        "tests/test_card.py::test_returns_true_on_valid_card_number[4242424242424242]"
+        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpdtaqcn6z/worker_1/tests/crypto_addresses/test_btc_address.py::test_returns_true_on_valid_btc_address[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2]"
       ],
       "exit_code": 1
     },
     {
       "bug_id": "validators-formatting-011",
-      "test_output": "........................................................................ [  8%]\n........................................................................ [ 16%]\n........................................................................ [ 24%]\n........................................F\n=================================== FAILURES ===================================\n___________ test_returns_true_on_valid_card_number[4000002760003184] ___________\ntests/test_card.py:43: in test_returns_true_on_valid_card_number\n    assert card_number(value)\nE   AssertionError: assert ValidationError(func=card_number, args={'value': '4000002760003184'})\nE    +  where ValidationError(func=card_number, args={'value': '4000002760003184'}) = card_number('4000002760003184')\n=========================== short test summary info ============================\nFAILED tests/test_card.py::test_returns_true_on_valid_card_number[4000002760003184]\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 256 passed in 0.14s\n",
+      "test_output": ".........................F\n=================================== FAILURES ===================================\n__ test_returns_true_on_valid_btc_address[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2] __\n/Users/yuan/stylebench-data/formatting/validators/tests/crypto_addresses/test_btc_address.py:24: in test_returns_true_on_valid_btc_address\n    assert btc_address(value)\nE   AssertionError: assert ValidationError(func=btc_address, args={'value': '1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2'})\nE    +  where ValidationError(func=btc_address, args={'value': '1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2'}) = btc_address('1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2')\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpdtaqcn6z/worker_1/tests/crypto_addresses/test_btc_address.py::test_returns_true_on_valid_btc_address[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2]\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 25 passed in 0.08s\n",
       "failing_tests": [
-        "tests/test_card.py::test_returns_true_on_valid_card_number[4000002760003184]"
+        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpdtaqcn6z/worker_1/tests/crypto_addresses/test_btc_address.py::test_returns_true_on_valid_btc_address[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2]"
       ],
       "exit_code": 1
     },
     {
       "bug_id": "validators-formatting-012",
-      "test_output": "........................................................................ [  8%]\n........................................................................ [ 16%]\n........................................................................ [ 24%]\n.......................................F\n=================================== FAILURES ===================================\n___________ test_returns_true_on_valid_card_number[4242424242424242] ___________\ntests/test_card.py:43: in test_returns_true_on_valid_card_number\n    assert card_number(value)\nE   AssertionError: assert ValidationError(func=card_number, args={'value': '4242424242424242'})\nE    +  where ValidationError(func=card_number, args={'value': '4242424242424242'}) = card_number('4242424242424242')\n=========================== short test summary info ============================\nFAILED tests/test_card.py::test_returns_true_on_valid_card_number[4242424242424242]\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 255 passed in 0.15s\n",
+      "test_output": ".........................F\n=================================== FAILURES ===================================\n__ test_returns_true_on_valid_btc_address[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2] __\n/Users/yuan/stylebench-data/formatting/validators/tests/crypto_addresses/test_btc_address.py:24: in test_returns_true_on_valid_btc_address\n    assert btc_address(value)\nE   AssertionError: assert ValidationError(func=btc_address, args={'value': '1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2'})\nE    +  where ValidationError(func=btc_address, args={'value': '1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2'}) = btc_address('1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2')\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpdtaqcn6z/worker_1/tests/crypto_addresses/test_btc_address.py::test_returns_true_on_valid_btc_address[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2]\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 25 passed in 0.09s\n",
       "failing_tests": [
-        "tests/test_card.py::test_returns_true_on_valid_card_number[4242424242424242]"
+        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpdtaqcn6z/worker_1/tests/crypto_addresses/test_btc_address.py::test_returns_true_on_valid_btc_address[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2]"
       ],
       "exit_code": 1
     },
     {
       "bug_id": "validators-formatting-013",
-      "test_output": "........................................................................ [  8%]\n........................................................................ [ 16%]\n........................................................................ [ 24%]\n.......................................F\n=================================== FAILURES ===================================\n___________ test_returns_true_on_valid_card_number[4242424242424242] ___________\ntests/test_card.py:43: in test_returns_true_on_valid_card_number\n    assert card_number(value)\nE   AssertionError: assert ValidationError(func=card_number, args={'value': '4242424242424242'})\nE    +  where ValidationError(func=card_number, args={'value': '4242424242424242'}) = card_number('4242424242424242')\n=========================== short test summary info ============================\nFAILED tests/test_card.py::test_returns_true_on_valid_card_number[4242424242424242]\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 255 passed in 0.14s\n",
+      "test_output": ".........................F\n=================================== FAILURES ===================================\n__ test_returns_true_on_valid_btc_address[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2] __\n/Users/yuan/stylebench-data/formatting/validators/tests/crypto_addresses/test_btc_address.py:24: in test_returns_true_on_valid_btc_address\n    assert btc_address(value)\nE   AssertionError: assert ValidationError(func=btc_address, args={'value': '1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2'})\nE    +  where ValidationError(func=btc_address, args={'value': '1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2'}) = btc_address('1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2')\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpdtaqcn6z/worker_1/tests/crypto_addresses/test_btc_address.py::test_returns_true_on_valid_btc_address[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2]\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 25 passed in 0.09s\n",
       "failing_tests": [
-        "tests/test_card.py::test_returns_true_on_valid_card_number[4242424242424242]"
+        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpdtaqcn6z/worker_1/tests/crypto_addresses/test_btc_address.py::test_returns_true_on_valid_btc_address[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2]"
       ],
       "exit_code": 1
     },
     {
       "bug_id": "validators-formatting-014",
-      "test_output": "........................................................................ [  8%]\n........................................................................ [ 16%]\n........................................................................ [ 24%]\n.......................................F\n=================================== FAILURES ===================================\n___________ test_returns_true_on_valid_card_number[4242424242424242] ___________\ntests/test_card.py:43: in test_returns_true_on_valid_card_number\n    assert card_number(value)\nE   AssertionError: assert ValidationError(func=card_number, args={'value': '4242424242424242'})\nE    +  where ValidationError(func=card_number, args={'value': '4242424242424242'}) = card_number('4242424242424242')\n=========================== short test summary info ============================\nFAILED tests/test_card.py::test_returns_true_on_valid_card_number[4242424242424242]\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 255 passed in 0.20s\n",
+      "test_output": ".........................F\n=================================== FAILURES ===================================\n__ test_returns_true_on_valid_btc_address[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2] __\n/Users/yuan/stylebench-data/formatting/validators/tests/crypto_addresses/test_btc_address.py:24: in test_returns_true_on_valid_btc_address\n    assert btc_address(value)\nE   AssertionError: assert ValidationError(func=btc_address, args={'value': '1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2'})\nE    +  where ValidationError(func=btc_address, args={'value': '1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2'}) = btc_address('1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2')\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpdtaqcn6z/worker_1/tests/crypto_addresses/test_btc_address.py::test_returns_true_on_valid_btc_address[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2]\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 25 passed in 0.09s\n",
       "failing_tests": [
-        "tests/test_card.py::test_returns_true_on_valid_card_number[4242424242424242]"
+        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpdtaqcn6z/worker_1/tests/crypto_addresses/test_btc_address.py::test_returns_true_on_valid_btc_address[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2]"
       ],
       "exit_code": 1
     },
     {
       "bug_id": "validators-formatting-015",
-      "test_output": "........................................................................ [  8%]\n........................................................................ [ 16%]\n........................................................................ [ 24%]\n.......................................F\n=================================== FAILURES ===================================\n___________ test_returns_true_on_valid_card_number[4242424242424242] ___________\ntests/test_card.py:43: in test_returns_true_on_valid_card_number\n    assert card_number(value)\nE   AssertionError: assert ValidationError(func=card_number, args={'value': '4242424242424242'})\nE    +  where ValidationError(func=card_number, args={'value': '4242424242424242'}) = card_number('4242424242424242')\n=========================== short test summary info ============================\nFAILED tests/test_card.py::test_returns_true_on_valid_card_number[4242424242424242]\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 255 passed in 0.15s\n",
+      "test_output": ".........................F\n=================================== FAILURES ===================================\n__ test_returns_true_on_valid_btc_address[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2] __\n/Users/yuan/stylebench-data/formatting/validators/tests/crypto_addresses/test_btc_address.py:24: in test_returns_true_on_valid_btc_address\n    assert btc_address(value)\nE   AssertionError: assert ValidationError(func=btc_address, args={'value': '1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2'})\nE    +  where ValidationError(func=btc_address, args={'value': '1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2'}) = btc_address('1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2')\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpdtaqcn6z/worker_1/tests/crypto_addresses/test_btc_address.py::test_returns_true_on_valid_btc_address[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2]\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 25 passed in 0.08s\n",
       "failing_tests": [
-        "tests/test_card.py::test_returns_true_on_valid_card_number[4242424242424242]"
+        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpdtaqcn6z/worker_1/tests/crypto_addresses/test_btc_address.py::test_returns_true_on_valid_btc_address[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2]"
       ],
       "exit_code": 1
     },
     {
       "bug_id": "validators-formatting-016",
-      "test_output": "........................................................................ [  8%]\n........................................................................ [ 16%]\n........................................................................ [ 24%]\n.......................................F\n=================================== FAILURES ===================================\n___________ test_returns_true_on_valid_card_number[4242424242424242] ___________\ntests/test_card.py:43: in test_returns_true_on_valid_card_number\n    assert card_number(value)\nE   AssertionError: assert ValidationError(func=card_number, args={'value': '4242424242424242'})\nE    +  where ValidationError(func=card_number, args={'value': '4242424242424242'}) = card_number('4242424242424242')\n=========================== short test summary info ============================\nFAILED tests/test_card.py::test_returns_true_on_valid_card_number[4242424242424242]\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 255 passed in 0.14s\n",
+      "test_output": ".........................F\n=================================== FAILURES ===================================\n__ test_returns_true_on_valid_btc_address[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2] __\n/Users/yuan/stylebench-data/formatting/validators/tests/crypto_addresses/test_btc_address.py:24: in test_returns_true_on_valid_btc_address\n    assert btc_address(value)\nE   AssertionError: assert ValidationError(func=btc_address, args={'value': '1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2'})\nE    +  where ValidationError(func=btc_address, args={'value': '1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2'}) = btc_address('1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2')\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpdtaqcn6z/worker_1/tests/crypto_addresses/test_btc_address.py::test_returns_true_on_valid_btc_address[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2]\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 25 passed in 0.09s\n",
       "failing_tests": [
-        "tests/test_card.py::test_returns_true_on_valid_card_number[4242424242424242]"
+        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpdtaqcn6z/worker_1/tests/crypto_addresses/test_btc_address.py::test_returns_true_on_valid_btc_address[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2]"
       ],
       "exit_code": 1
     },
     {
       "bug_id": "validators-formatting-017",
-      "test_output": "........................................................................ [  8%]\n........................................................................ [ 16%]\n........................................................................ [ 24%]\n.......................................F\n=================================== FAILURES ===================================\n___________ test_returns_true_on_valid_card_number[4242424242424242] ___________\ntests/test_card.py:43: in test_returns_true_on_valid_card_number\n    assert card_number(value)\nE   AssertionError: assert ValidationError(func=card_number, args={'value': '4242424242424242'})\nE    +  where ValidationError(func=card_number, args={'value': '4242424242424242'}) = card_number('4242424242424242')\n=========================== short test summary info ============================\nFAILED tests/test_card.py::test_returns_true_on_valid_card_number[4242424242424242]\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 255 passed in 0.18s\n",
+      "test_output": ".........................F\n=================================== FAILURES ===================================\n__ test_returns_true_on_valid_btc_address[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2] __\n/Users/yuan/stylebench-data/formatting/validators/tests/crypto_addresses/test_btc_address.py:24: in test_returns_true_on_valid_btc_address\n    assert btc_address(value)\nE   AssertionError: assert ValidationError(func=btc_address, args={'value': '1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2'})\nE    +  where ValidationError(func=btc_address, args={'value': '1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2'}) = btc_address('1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2')\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpdtaqcn6z/worker_1/tests/crypto_addresses/test_btc_address.py::test_returns_true_on_valid_btc_address[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2]\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 25 passed in 0.09s\n",
       "failing_tests": [
-        "tests/test_card.py::test_returns_true_on_valid_card_number[4242424242424242]"
+        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpdtaqcn6z/worker_1/tests/crypto_addresses/test_btc_address.py::test_returns_true_on_valid_btc_address[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2]"
       ],
       "exit_code": 1
     },
     {
       "bug_id": "validators-formatting-018",
-      "test_output": "........................................................................ [  8%]\n........................................................................ [ 16%]\n........................................................................ [ 24%]\n.......................................F\n=================================== FAILURES ===================================\n___________ test_returns_true_on_valid_card_number[4242424242424242] ___________\ntests/test_card.py:43: in test_returns_true_on_valid_card_number\n    assert card_number(value)\nE   AssertionError: assert ValidationError(func=card_number, args={'value': '4242424242424242'})\nE    +  where ValidationError(func=card_number, args={'value': '4242424242424242'}) = card_number('4242424242424242')\n=========================== short test summary info ============================\nFAILED tests/test_card.py::test_returns_true_on_valid_card_number[4242424242424242]\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 255 passed in 0.15s\n",
+      "test_output": ".........................F\n=================================== FAILURES ===================================\n__ test_returns_true_on_valid_btc_address[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2] __\n/Users/yuan/stylebench-data/formatting/validators/tests/crypto_addresses/test_btc_address.py:24: in test_returns_true_on_valid_btc_address\n    assert btc_address(value)\nE   AssertionError: assert ValidationError(func=btc_address, args={'value': '1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2'})\nE    +  where ValidationError(func=btc_address, args={'value': '1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2'}) = btc_address('1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2')\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpdtaqcn6z/worker_1/tests/crypto_addresses/test_btc_address.py::test_returns_true_on_valid_btc_address[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2]\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 25 passed in 0.08s\n",
       "failing_tests": [
-        "tests/test_card.py::test_returns_true_on_valid_card_number[4242424242424242]"
+        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpdtaqcn6z/worker_1/tests/crypto_addresses/test_btc_address.py::test_returns_true_on_valid_btc_address[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2]"
       ],
       "exit_code": 1
     },
     {
       "bug_id": "validators-formatting-019",
-      "test_output": "........................................................................ [  8%]\n........................................................................ [ 16%]\n........................................................................ [ 24%]\n.......................................F\n=================================== FAILURES ===================================\n___________ test_returns_true_on_valid_card_number[4242424242424242] ___________\ntests/test_card.py:43: in test_returns_true_on_valid_card_number\n    assert card_number(value)\nE   AssertionError: assert ValidationError(func=card_number, args={'value': '4242424242424242'})\nE    +  where ValidationError(func=card_number, args={'value': '4242424242424242'}) = card_number('4242424242424242')\n=========================== short test summary info ============================\nFAILED tests/test_card.py::test_returns_true_on_valid_card_number[4242424242424242]\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 255 passed in 0.15s\n",
+      "test_output": ".........................F\n=================================== FAILURES ===================================\n__ test_returns_true_on_valid_btc_address[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2] __\n/Users/yuan/stylebench-data/formatting/validators/tests/crypto_addresses/test_btc_address.py:24: in test_returns_true_on_valid_btc_address\n    assert btc_address(value)\nE   AssertionError: assert ValidationError(func=btc_address, args={'value': '1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2'})\nE    +  where ValidationError(func=btc_address, args={'value': '1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2'}) = btc_address('1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2')\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpdtaqcn6z/worker_1/tests/crypto_addresses/test_btc_address.py::test_returns_true_on_valid_btc_address[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2]\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 25 passed in 0.09s\n",
       "failing_tests": [
-        "tests/test_card.py::test_returns_true_on_valid_card_number[4242424242424242]"
+        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpdtaqcn6z/worker_1/tests/crypto_addresses/test_btc_address.py::test_returns_true_on_valid_btc_address[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2]"
       ],
       "exit_code": 1
     },
     {
       "bug_id": "validators-formatting-020",
-      "test_output": "........................................................................ [  8%]\n........................................................................ [ 16%]\n........................................................................ [ 24%]\n.......................................F\n=================================== FAILURES ===================================\n___________ test_returns_true_on_valid_card_number[4242424242424242] ___________\ntests/test_card.py:43: in test_returns_true_on_valid_card_number\n    assert card_number(value)\nE   AssertionError: assert ValidationError(func=card_number, args={'value': '4242424242424242'})\nE    +  where ValidationError(func=card_number, args={'value': '4242424242424242'}) = card_number('4242424242424242')\n=========================== short test summary info ============================\nFAILED tests/test_card.py::test_returns_true_on_valid_card_number[4242424242424242]\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 255 passed in 0.19s\n",
+      "test_output": ".........................F\n=================================== FAILURES ===================================\n__ test_returns_true_on_valid_btc_address[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2] __\n/Users/yuan/stylebench-data/formatting/validators/tests/crypto_addresses/test_btc_address.py:24: in test_returns_true_on_valid_btc_address\n    assert btc_address(value)\nE   AssertionError: assert ValidationError(func=btc_address, args={'value': '1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2'})\nE    +  where ValidationError(func=btc_address, args={'value': '1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2'}) = btc_address('1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2')\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpdtaqcn6z/worker_1/tests/crypto_addresses/test_btc_address.py::test_returns_true_on_valid_btc_address[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2]\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 25 passed in 0.09s\n",
       "failing_tests": [
-        "tests/test_card.py::test_returns_true_on_valid_card_number[4242424242424242]"
+        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpdtaqcn6z/worker_1/tests/crypto_addresses/test_btc_address.py::test_returns_true_on_valid_btc_address[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2]"
       ],
       "exit_code": 1
     },
     {
       "bug_id": "validators-formatting-021",
-      "test_output": "........................................................................ [  8%]\n........................................................................ [ 16%]\n........................................................................ [ 24%]\n...........................................................F\n=================================== FAILURES ===================================\n_____________ test_returns_failed_on_valid_visa[5555555555554444] ______________\ntests/test_card.py:77: in test_returns_failed_on_valid_visa\n    assert isinstance(visa(value), ValidationError)\nE   AssertionError: assert False\nE    +  where False = isinstance(True, ValidationError)\nE    +    where True = visa('5555555555554444')\n=========================== short test summary info ============================\nFAILED tests/test_card.py::test_returns_failed_on_valid_visa[5555555555554444]\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 275 passed in 0.17s\n",
+      "test_output": ".........................F\n=================================== FAILURES ===================================\n__ test_returns_true_on_valid_btc_address[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2] __\n/Users/yuan/stylebench-data/formatting/validators/tests/crypto_addresses/test_btc_address.py:24: in test_returns_true_on_valid_btc_address\n    assert btc_address(value)\nE   AssertionError: assert ValidationError(func=btc_address, args={'value': '1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2'})\nE    +  where ValidationError(func=btc_address, args={'value': '1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2'}) = btc_address('1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2')\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpdtaqcn6z/worker_1/tests/crypto_addresses/test_btc_address.py::test_returns_true_on_valid_btc_address[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2]\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 25 passed in 0.08s\n",
       "failing_tests": [
-        "tests/test_card.py::test_returns_failed_on_valid_visa[5555555555554444]"
+        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpdtaqcn6z/worker_1/tests/crypto_addresses/test_btc_address.py::test_returns_true_on_valid_btc_address[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2]"
       ],
       "exit_code": 1
     },
     {
       "bug_id": "validators-formatting-022",
-      "test_output": "........................................................................ [  8%]\n........................................................................ [ 16%]\n........................................................................ [ 24%]\n...........................................................F\n=================================== FAILURES ===================================\n_____________ test_returns_failed_on_valid_visa[5555555555554444] ______________\ntests/test_card.py:77: in test_returns_failed_on_valid_visa\n    assert isinstance(visa(value), ValidationError)\nE   AssertionError: assert False\nE    +  where False = isinstance(True, ValidationError)\nE    +    where True = visa('5555555555554444')\n=========================== short test summary info ============================\nFAILED tests/test_card.py::test_returns_failed_on_valid_visa[5555555555554444]\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 275 passed in 0.16s\n",
+      "test_output": ".........................F\n=================================== FAILURES ===================================\n__ test_returns_true_on_valid_btc_address[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2] __\n/Users/yuan/stylebench-data/formatting/validators/tests/crypto_addresses/test_btc_address.py:24: in test_returns_true_on_valid_btc_address\n    assert btc_address(value)\nE   AssertionError: assert ValidationError(func=btc_address, args={'value': '1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2'})\nE    +  where ValidationError(func=btc_address, args={'value': '1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2'}) = btc_address('1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2')\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpdtaqcn6z/worker_1/tests/crypto_addresses/test_btc_address.py::test_returns_true_on_valid_btc_address[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2]\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 25 passed in 0.08s\n",
       "failing_tests": [
-        "tests/test_card.py::test_returns_failed_on_valid_visa[5555555555554444]"
+        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpdtaqcn6z/worker_1/tests/crypto_addresses/test_btc_address.py::test_returns_true_on_valid_btc_address[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2]"
       ],
       "exit_code": 1
     },
     {
       "bug_id": "validators-formatting-023",
-      "test_output": "........................................................................ [  8%]\n........................................................................ [ 16%]\n........................................................................ [ 24%]\n.........................................................F\n=================================== FAILURES ===================================\n______________ test_returns_true_on_valid_visa[4242424242424242] _______________\ntests/test_card.py:63: in test_returns_true_on_valid_visa\n    assert visa(value)\nE   AssertionError: assert ValidationError(func=visa, args={'value': '4242424242424242'})\nE    +  where ValidationError(func=visa, args={'value': '4242424242424242'}) = visa('4242424242424242')\n=========================== short test summary info ============================\nFAILED tests/test_card.py::test_returns_true_on_valid_visa[4242424242424242]\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 273 passed in 0.20s\n",
+      "test_output": ".........................F\n=================================== FAILURES ===================================\n__ test_returns_true_on_valid_btc_address[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2] __\n/Users/yuan/stylebench-data/formatting/validators/tests/crypto_addresses/test_btc_address.py:24: in test_returns_true_on_valid_btc_address\n    assert btc_address(value)\nE   AssertionError: assert ValidationError(func=btc_address, args={'value': '1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2'})\nE    +  where ValidationError(func=btc_address, args={'value': '1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2'}) = btc_address('1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2')\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpdtaqcn6z/worker_1/tests/crypto_addresses/test_btc_address.py::test_returns_true_on_valid_btc_address[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2]\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 25 passed in 0.09s\n",
       "failing_tests": [
-        "tests/test_card.py::test_returns_true_on_valid_visa[4242424242424242]"
+        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpdtaqcn6z/worker_1/tests/crypto_addresses/test_btc_address.py::test_returns_true_on_valid_btc_address[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2]"
       ],
       "exit_code": 1
     },
     {
       "bug_id": "validators-formatting-024",
-      "test_output": "........................................................................ [  8%]\n........................................................................ [ 16%]\n........................................................................ [ 24%]\n.........................................................F\n=================================== FAILURES ===================================\n______________ test_returns_true_on_valid_visa[4242424242424242] _______________\ntests/test_card.py:63: in test_returns_true_on_valid_visa\n    assert visa(value)\nE   AssertionError: assert ValidationError(func=visa, args={'value': '4242424242424242'})\nE    +  where ValidationError(func=visa, args={'value': '4242424242424242'}) = visa('4242424242424242')\n=========================== short test summary info ============================\nFAILED tests/test_card.py::test_returns_true_on_valid_visa[4242424242424242]\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 273 passed in 0.17s\n",
+      "test_output": ".........................F\n=================================== FAILURES ===================================\n__ test_returns_true_on_valid_btc_address[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2] __\n/Users/yuan/stylebench-data/formatting/validators/tests/crypto_addresses/test_btc_address.py:24: in test_returns_true_on_valid_btc_address\n    assert btc_address(value)\nE   AssertionError: assert ValidationError(func=btc_address, args={'value': '1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2'})\nE    +  where ValidationError(func=btc_address, args={'value': '1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2'}) = btc_address('1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2')\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpdtaqcn6z/worker_1/tests/crypto_addresses/test_btc_address.py::test_returns_true_on_valid_btc_address[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2]\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 25 passed in 0.08s\n",
       "failing_tests": [
-        "tests/test_card.py::test_returns_true_on_valid_visa[4242424242424242]"
+        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpdtaqcn6z/worker_1/tests/crypto_addresses/test_btc_address.py::test_returns_true_on_valid_btc_address[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2]"
       ],
       "exit_code": 1
     },
     {
       "bug_id": "validators-formatting-025",
-      "test_output": "........................................................................ [  8%]\n........................................................................ [ 16%]\n........................................................................ [ 24%]\n.........................................................F\n=================================== FAILURES ===================================\n______________ test_returns_true_on_valid_visa[4242424242424242] _______________\ntests/test_card.py:63: in test_returns_true_on_valid_visa\n    assert visa(value)\nE   AssertionError: assert ValidationError(func=visa, args={'value': '4242424242424242'})\nE    +  where ValidationError(func=visa, args={'value': '4242424242424242'}) = visa('4242424242424242')\n=========================== short test summary info ============================\nFAILED tests/test_card.py::test_returns_true_on_valid_visa[4242424242424242]\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 273 passed in 0.18s\n",
+      "test_output": ".........................F\n=================================== FAILURES ===================================\n__ test_returns_true_on_valid_btc_address[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2] __\n/Users/yuan/stylebench-data/formatting/validators/tests/crypto_addresses/test_btc_address.py:24: in test_returns_true_on_valid_btc_address\n    assert btc_address(value)\nE   AssertionError: assert ValidationError(func=btc_address, args={'value': '1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2'})\nE    +  where ValidationError(func=btc_address, args={'value': '1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2'}) = btc_address('1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2')\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpdtaqcn6z/worker_1/tests/crypto_addresses/test_btc_address.py::test_returns_true_on_valid_btc_address[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2]\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 25 passed in 0.08s\n",
       "failing_tests": [
-        "tests/test_card.py::test_returns_true_on_valid_visa[4242424242424242]"
+        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpdtaqcn6z/worker_1/tests/crypto_addresses/test_btc_address.py::test_returns_true_on_valid_btc_address[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2]"
       ],
       "exit_code": 1
     },
     {
       "bug_id": "validators-formatting-026",
-      "test_output": "........................................................................ [  8%]\n........................................................................ [ 16%]\n........................................................................ [ 24%]\n.......................................................................F [ 32%]\n\n=================================== FAILURES ===================================\n__________ test_returns_failed_on_valid_mastercard[4242424242424242] ___________\ntests/test_card.py:97: in test_returns_failed_on_valid_mastercard\n    assert isinstance(mastercard(value), ValidationError)\nE   AssertionError: assert False\nE    +  where False = isinstance(True, ValidationError)\nE    +    where True = mastercard('4242424242424242')\n=========================== short test summary info ============================\nFAILED tests/test_card.py::test_returns_failed_on_valid_mastercard[4242424242424242]\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 287 passed in 0.16s\n",
+      "test_output": ".........................F\n=================================== FAILURES ===================================\n__ test_returns_true_on_valid_btc_address[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2] __\n/Users/yuan/stylebench-data/formatting/validators/tests/crypto_addresses/test_btc_address.py:24: in test_returns_true_on_valid_btc_address\n    assert btc_address(value)\nE   AssertionError: assert ValidationError(func=btc_address, args={'value': '1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2'})\nE    +  where ValidationError(func=btc_address, args={'value': '1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2'}) = btc_address('1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2')\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpdtaqcn6z/worker_1/tests/crypto_addresses/test_btc_address.py::test_returns_true_on_valid_btc_address[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2]\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 25 passed in 0.09s\n",
       "failing_tests": [
-        "tests/test_card.py::test_returns_failed_on_valid_mastercard[4242424242424242]"
+        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpdtaqcn6z/worker_1/tests/crypto_addresses/test_btc_address.py::test_returns_true_on_valid_btc_address[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2]"
       ],
       "exit_code": 1
     },
     {
       "bug_id": "validators-formatting-027",
-      "test_output": "........................................................................ [  8%]\n........................................................................ [ 16%]\n........................................................................ [ 24%]\n.......................................................................F [ 32%]\n\n=================================== FAILURES ===================================\n__________ test_returns_failed_on_valid_mastercard[4242424242424242] ___________\ntests/test_card.py:97: in test_returns_failed_on_valid_mastercard\n    assert isinstance(mastercard(value), ValidationError)\nE   AssertionError: assert False\nE    +  where False = isinstance(True, ValidationError)\nE    +    where True = mastercard('4242424242424242')\n=========================== short test summary info ============================\nFAILED tests/test_card.py::test_returns_failed_on_valid_mastercard[4242424242424242]\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 287 passed in 0.16s\n",
+      "test_output": ".........................F\n=================================== FAILURES ===================================\n__ test_returns_true_on_valid_btc_address[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2] __\n/Users/yuan/stylebench-data/formatting/validators/tests/crypto_addresses/test_btc_address.py:24: in test_returns_true_on_valid_btc_address\n    assert btc_address(value)\nE   AssertionError: assert ValidationError(func=btc_address, args={'value': '1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2'})\nE    +  where ValidationError(func=btc_address, args={'value': '1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2'}) = btc_address('1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2')\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpdtaqcn6z/worker_1/tests/crypto_addresses/test_btc_address.py::test_returns_true_on_valid_btc_address[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2]\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 25 passed in 0.09s\n",
       "failing_tests": [
-        "tests/test_card.py::test_returns_failed_on_valid_mastercard[4242424242424242]"
+        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpdtaqcn6z/worker_1/tests/crypto_addresses/test_btc_address.py::test_returns_true_on_valid_btc_address[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2]"
       ],
       "exit_code": 1
     },
     {
       "bug_id": "validators-formatting-028",
-      "test_output": "........................................................................ [  8%]\n........................................................................ [ 16%]\n........................................................................ [ 24%]\n.....................................................................F\n=================================== FAILURES ===================================\n___________ test_returns_true_on_valid_mastercard[5555555555554444] ____________\ntests/test_card.py:83: in test_returns_true_on_valid_mastercard\n    assert mastercard(value)\nE   AssertionError: assert ValidationError(func=mastercard, args={'value': '5555555555554444'})\nE    +  where ValidationError(func=mastercard, args={'value': '5555555555554444'}) = mastercard('5555555555554444')\n=========================== short test summary info ============================\nFAILED tests/test_card.py::test_returns_true_on_valid_mastercard[5555555555554444]\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 285 passed in 0.16s\n",
+      "test_output": ".........................F\n=================================== FAILURES ===================================\n__ test_returns_true_on_valid_btc_address[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2] __\n/Users/yuan/stylebench-data/formatting/validators/tests/crypto_addresses/test_btc_address.py:24: in test_returns_true_on_valid_btc_address\n    assert btc_address(value)\nE   AssertionError: assert ValidationError(func=btc_address, args={'value': '1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2'})\nE    +  where ValidationError(func=btc_address, args={'value': '1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2'}) = btc_address('1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2')\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpdtaqcn6z/worker_1/tests/crypto_addresses/test_btc_address.py::test_returns_true_on_valid_btc_address[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2]\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 25 passed in 0.09s\n",
       "failing_tests": [
-        "tests/test_card.py::test_returns_true_on_valid_mastercard[5555555555554444]"
+        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpdtaqcn6z/worker_1/tests/crypto_addresses/test_btc_address.py::test_returns_true_on_valid_btc_address[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2]"
       ],
       "exit_code": 1
     },
     {
       "bug_id": "validators-formatting-029",
-      "test_output": "........................................................................ [  8%]\n........................................................................ [ 16%]\n........................................................................ [ 24%]\n.....................................................................F\n=================================== FAILURES ===================================\n___________ test_returns_true_on_valid_mastercard[5555555555554444] ____________\ntests/test_card.py:83: in test_returns_true_on_valid_mastercard\n    assert mastercard(value)\nE   AssertionError: assert ValidationError(func=mastercard, args={'value': '5555555555554444'})\nE    +  where ValidationError(func=mastercard, args={'value': '5555555555554444'}) = mastercard('5555555555554444')\n=========================== short test summary info ============================\nFAILED tests/test_card.py::test_returns_true_on_valid_mastercard[5555555555554444]\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 285 passed in 0.16s\n",
+      "test_output": ".........................F\n=================================== FAILURES ===================================\n__ test_returns_true_on_valid_btc_address[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2] __\n/Users/yuan/stylebench-data/formatting/validators/tests/crypto_addresses/test_btc_address.py:24: in test_returns_true_on_valid_btc_address\n    assert btc_address(value)\nE   AssertionError: assert ValidationError(func=btc_address, args={'value': '1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2'})\nE    +  where ValidationError(func=btc_address, args={'value': '1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2'}) = btc_address('1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2')\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpdtaqcn6z/worker_1/tests/crypto_addresses/test_btc_address.py::test_returns_true_on_valid_btc_address[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2]\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 25 passed in 0.08s\n",
       "failing_tests": [
-        "tests/test_card.py::test_returns_true_on_valid_mastercard[5555555555554444]"
+        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpdtaqcn6z/worker_1/tests/crypto_addresses/test_btc_address.py::test_returns_true_on_valid_btc_address[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2]"
       ],
       "exit_code": 1
     },
     {
       "bug_id": "validators-formatting-030",
-      "test_output": "........................................................................ [  8%]\n........................................................................ [ 16%]\n........................................................................ [ 24%]\n.....................................................................F\n=================================== FAILURES ===================================\n___________ test_returns_true_on_valid_mastercard[5555555555554444] ____________\ntests/test_card.py:83: in test_returns_true_on_valid_mastercard\n    assert mastercard(value)\nE   AssertionError: assert ValidationError(func=mastercard, args={'value': '5555555555554444'})\nE    +  where ValidationError(func=mastercard, args={'value': '5555555555554444'}) = mastercard('5555555555554444')\n=========================== short test summary info ============================\nFAILED tests/test_card.py::test_returns_true_on_valid_mastercard[5555555555554444]\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 285 passed in 0.16s\n",
+      "test_output": ".........................F\n=================================== FAILURES ===================================\n__ test_returns_true_on_valid_btc_address[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2] __\n/Users/yuan/stylebench-data/formatting/validators/tests/crypto_addresses/test_btc_address.py:24: in test_returns_true_on_valid_btc_address\n    assert btc_address(value)\nE   AssertionError: assert ValidationError(func=btc_address, args={'value': '1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2'})\nE    +  where ValidationError(func=btc_address, args={'value': '1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2'}) = btc_address('1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2')\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpdtaqcn6z/worker_1/tests/crypto_addresses/test_btc_address.py::test_returns_true_on_valid_btc_address[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2]\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 25 passed in 0.08s\n",
       "failing_tests": [
-        "tests/test_card.py::test_returns_true_on_valid_mastercard[5555555555554444]"
+        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpdtaqcn6z/worker_1/tests/crypto_addresses/test_btc_address.py::test_returns_true_on_valid_btc_address[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2]"
+      ],
+      "exit_code": 1
+    },
+    {
+      "bug_id": "validators-formatting-031",
+      "test_output": ".........................F\n=================================== FAILURES ===================================\n__ test_returns_true_on_valid_btc_address[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2] __\n/Users/yuan/stylebench-data/formatting/validators/tests/crypto_addresses/test_btc_address.py:24: in test_returns_true_on_valid_btc_address\n    assert btc_address(value)\nE   AssertionError: assert ValidationError(func=btc_address, args={'value': '1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2'})\nE    +  where ValidationError(func=btc_address, args={'value': '1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2'}) = btc_address('1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2')\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpdtaqcn6z/worker_1/tests/crypto_addresses/test_btc_address.py::test_returns_true_on_valid_btc_address[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2]\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 25 passed in 0.09s\n",
+      "failing_tests": [
+        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpdtaqcn6z/worker_1/tests/crypto_addresses/test_btc_address.py::test_returns_true_on_valid_btc_address[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2]"
+      ],
+      "exit_code": 1
+    },
+    {
+      "bug_id": "validators-formatting-032",
+      "test_output": ".........................F\n=================================== FAILURES ===================================\n__ test_returns_true_on_valid_btc_address[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2] __\n/Users/yuan/stylebench-data/formatting/validators/tests/crypto_addresses/test_btc_address.py:24: in test_returns_true_on_valid_btc_address\n    assert btc_address(value)\nE   AssertionError: assert ValidationError(func=btc_address, args={'value': '1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2'})\nE    +  where ValidationError(func=btc_address, args={'value': '1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2'}) = btc_address('1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2')\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpdtaqcn6z/worker_1/tests/crypto_addresses/test_btc_address.py::test_returns_true_on_valid_btc_address[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2]\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 25 passed in 0.08s\n",
+      "failing_tests": [
+        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpdtaqcn6z/worker_1/tests/crypto_addresses/test_btc_address.py::test_returns_true_on_valid_btc_address[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2]"
+      ],
+      "exit_code": 1
+    },
+    {
+      "bug_id": "validators-formatting-033",
+      "test_output": ".........................F\n=================================== FAILURES ===================================\n__ test_returns_true_on_valid_btc_address[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2] __\n/Users/yuan/stylebench-data/formatting/validators/tests/crypto_addresses/test_btc_address.py:24: in test_returns_true_on_valid_btc_address\n    assert btc_address(value)\nE   AssertionError: assert ValidationError(func=btc_address, args={'value': '1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2'})\nE    +  where ValidationError(func=btc_address, args={'value': '1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2'}) = btc_address('1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2')\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpdtaqcn6z/worker_1/tests/crypto_addresses/test_btc_address.py::test_returns_true_on_valid_btc_address[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2]\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 25 passed in 0.08s\n",
+      "failing_tests": [
+        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpdtaqcn6z/worker_1/tests/crypto_addresses/test_btc_address.py::test_returns_true_on_valid_btc_address[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2]"
+      ],
+      "exit_code": 1
+    },
+    {
+      "bug_id": "validators-formatting-034",
+      "test_output": ".........................F\n=================================== FAILURES ===================================\n__ test_returns_true_on_valid_btc_address[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2] __\n/Users/yuan/stylebench-data/formatting/validators/tests/crypto_addresses/test_btc_address.py:24: in test_returns_true_on_valid_btc_address\n    assert btc_address(value)\nE   AssertionError: assert ValidationError(func=btc_address, args={'value': '1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2'})\nE    +  where ValidationError(func=btc_address, args={'value': '1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2'}) = btc_address('1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2')\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpdtaqcn6z/worker_1/tests/crypto_addresses/test_btc_address.py::test_returns_true_on_valid_btc_address[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2]\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 25 passed in 0.08s\n",
+      "failing_tests": [
+        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpdtaqcn6z/worker_1/tests/crypto_addresses/test_btc_address.py::test_returns_true_on_valid_btc_address[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2]"
+      ],
+      "exit_code": 1
+    },
+    {
+      "bug_id": "validators-formatting-035",
+      "test_output": ".........................F\n=================================== FAILURES ===================================\n__ test_returns_true_on_valid_btc_address[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2] __\n/Users/yuan/stylebench-data/formatting/validators/tests/crypto_addresses/test_btc_address.py:24: in test_returns_true_on_valid_btc_address\n    assert btc_address(value)\nE   AssertionError: assert ValidationError(func=btc_address, args={'value': '1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2'})\nE    +  where ValidationError(func=btc_address, args={'value': '1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2'}) = btc_address('1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2')\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpdtaqcn6z/worker_1/tests/crypto_addresses/test_btc_address.py::test_returns_true_on_valid_btc_address[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2]\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 25 passed in 0.10s\n",
+      "failing_tests": [
+        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpdtaqcn6z/worker_1/tests/crypto_addresses/test_btc_address.py::test_returns_true_on_valid_btc_address[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2]"
+      ],
+      "exit_code": 1
+    },
+    {
+      "bug_id": "validators-formatting-036",
+      "test_output": ".........................F\n=================================== FAILURES ===================================\n__ test_returns_true_on_valid_btc_address[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2] __\n/Users/yuan/stylebench-data/formatting/validators/tests/crypto_addresses/test_btc_address.py:24: in test_returns_true_on_valid_btc_address\n    assert btc_address(value)\nE   AssertionError: assert ValidationError(func=btc_address, args={'value': '1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2'})\nE    +  where ValidationError(func=btc_address, args={'value': '1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2'}) = btc_address('1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2')\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpdtaqcn6z/worker_1/tests/crypto_addresses/test_btc_address.py::test_returns_true_on_valid_btc_address[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2]\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 25 passed in 0.09s\n",
+      "failing_tests": [
+        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpdtaqcn6z/worker_1/tests/crypto_addresses/test_btc_address.py::test_returns_true_on_valid_btc_address[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2]"
+      ],
+      "exit_code": 1
+    },
+    {
+      "bug_id": "validators-formatting-037",
+      "test_output": ".............................F\n=================================== FAILURES ===================================\n_ test_returns_failed_validation_on_invalid_btc_address[ff3Cwgr2g7vsi1bXDUkpEnVoRLA9w4FZfC69] _\n/Users/yuan/stylebench-data/formatting/validators/tests/crypto_addresses/test_btc_address.py:40: in test_returns_failed_validation_on_invalid_btc_address\n    assert isinstance(btc_address(value), ValidationError)\nE   AssertionError: assert False\nE    +  where False = isinstance(True, ValidationError)\nE    +    where True = btc_address('ff3Cwgr2g7vsi1bXDUkpEnVoRLA9w4FZfC69')\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpdtaqcn6z/worker_1/tests/crypto_addresses/test_btc_address.py::test_returns_failed_validation_on_invalid_btc_address[ff3Cwgr2g7vsi1bXDUkpEnVoRLA9w4FZfC69]\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 29 passed in 0.09s\n",
+      "failing_tests": [
+        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpdtaqcn6z/worker_1/tests/crypto_addresses/test_btc_address.py::test_returns_failed_validation_on_invalid_btc_address[ff3Cwgr2g7vsi1bXDUkpEnVoRLA9w4FZfC69]"
+      ],
+      "exit_code": 1
+    },
+    {
+      "bug_id": "validators-formatting-038",
+      "test_output": ".............................F\n=================================== FAILURES ===================================\n_ test_returns_failed_validation_on_invalid_btc_address[ff3Cwgr2g7vsi1bXDUkpEnVoRLA9w4FZfC69] _\n/Users/yuan/stylebench-data/formatting/validators/tests/crypto_addresses/test_btc_address.py:40: in test_returns_failed_validation_on_invalid_btc_address\n    assert isinstance(btc_address(value), ValidationError)\nE   AssertionError: assert False\nE    +  where False = isinstance(True, ValidationError)\nE    +    where True = btc_address('ff3Cwgr2g7vsi1bXDUkpEnVoRLA9w4FZfC69')\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpdtaqcn6z/worker_1/tests/crypto_addresses/test_btc_address.py::test_returns_failed_validation_on_invalid_btc_address[ff3Cwgr2g7vsi1bXDUkpEnVoRLA9w4FZfC69]\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 29 passed in 0.09s\n",
+      "failing_tests": [
+        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpdtaqcn6z/worker_1/tests/crypto_addresses/test_btc_address.py::test_returns_failed_validation_on_invalid_btc_address[ff3Cwgr2g7vsi1bXDUkpEnVoRLA9w4FZfC69]"
+      ],
+      "exit_code": 1
+    },
+    {
+      "bug_id": "validators-formatting-039",
+      "test_output": ".........................F\n=================================== FAILURES ===================================\n__ test_returns_true_on_valid_btc_address[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2] __\n/Users/yuan/stylebench-data/formatting/validators/tests/crypto_addresses/test_btc_address.py:24: in test_returns_true_on_valid_btc_address\n    assert btc_address(value)\n           ^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpdtaqcn6z/worker_1/src/validators/utils.py:103: in wrapper\n    if func(*args, **kwargs)\n       ^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpdtaqcn6z/worker_1/src/validators/crypto_addresses/btc_address.py:55: in btc_address\n    else _validate_old_btc_address(value)\n         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpdtaqcn6z/worker_1/src/validators/crypto_addresses/btc_address.py:21: in _validate_old_btc_address\n    decoded_bytes = _decode_base58(addr).to_bytes(25, 'big')\n                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nE   AttributeError: 'NoneType' object has no attribute 'to_bytes'\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpdtaqcn6z/worker_1/tests/crypto_addresses/test_btc_address.py::test_returns_true_on_valid_btc_address[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2]\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 25 passed in 0.09s\n",
+      "failing_tests": [
+        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpdtaqcn6z/worker_1/tests/crypto_addresses/test_btc_address.py::test_returns_true_on_valid_btc_address[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2]"
+      ],
+      "exit_code": 1
+    },
+    {
+      "bug_id": "validators-formatting-040",
+      "test_output": "...................................F\n=================================== FAILURES ===================================\n_ test_returns_true_on_valid_eth_address[0x5AEDA56215b167893e80B4fE645BA6d5Bab767DE] _\n/Users/yuan/stylebench-data/formatting/validators/tests/crypto_addresses/test_eth_address.py:25: in test_returns_true_on_valid_eth_address\n    assert eth_address(value)\nE   AssertionError: assert ValidationError(func=eth_address, args={'value': '0x5AEDA56215b167893e80B4fE645BA6d5Bab767DE'})\nE    +  where ValidationError(func=eth_address, args={'value': '0x5AEDA56215b167893e80B4fE645BA6d5Bab767DE'}) = eth_address('0x5AEDA56215b167893e80B4fE645BA6d5Bab767DE')\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpdtaqcn6z/worker_1/tests/crypto_addresses/test_eth_address.py::test_returns_true_on_valid_eth_address[0x5AEDA56215b167893e80B4fE645BA6d5Bab767DE]\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 35 passed in 0.12s\n",
+      "failing_tests": [
+        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpdtaqcn6z/worker_1/tests/crypto_addresses/test_eth_address.py::test_returns_true_on_valid_eth_address[0x5AEDA56215b167893e80B4fE645BA6d5Bab767DE]"
+      ],
+      "exit_code": 1
+    },
+    {
+      "bug_id": "validators-formatting-041",
+      "test_output": ".........................F\n=================================== FAILURES ===================================\n__ test_returns_true_on_valid_btc_address[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2] __\n/Users/yuan/stylebench-data/formatting/validators/tests/crypto_addresses/test_btc_address.py:24: in test_returns_true_on_valid_btc_address\n    assert btc_address(value)\nE   AssertionError: assert ValidationError(func=btc_address, args={'value': '1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2'})\nE    +  where ValidationError(func=btc_address, args={'value': '1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2'}) = btc_address('1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2')\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpdtaqcn6z/worker_1/tests/crypto_addresses/test_btc_address.py::test_returns_true_on_valid_btc_address[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2]\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 25 passed in 0.09s\n",
+      "failing_tests": [
+        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpdtaqcn6z/worker_1/tests/crypto_addresses/test_btc_address.py::test_returns_true_on_valid_btc_address[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2]"
+      ],
+      "exit_code": 1
+    },
+    {
+      "bug_id": "validators-formatting-042",
+      "test_output": "...................................F\n=================================== FAILURES ===================================\n_ test_returns_true_on_valid_eth_address[0x5AEDA56215b167893e80B4fE645BA6d5Bab767DE] _\n/Users/yuan/stylebench-data/formatting/validators/tests/crypto_addresses/test_eth_address.py:25: in test_returns_true_on_valid_eth_address\n    assert eth_address(value)\nE   AssertionError: assert ValidationError(func=eth_address, args={'value': '0x5AEDA56215b167893e80B4fE645BA6d5Bab767DE'})\nE    +  where ValidationError(func=eth_address, args={'value': '0x5AEDA56215b167893e80B4fE645BA6d5Bab767DE'}) = eth_address('0x5AEDA56215b167893e80B4fE645BA6d5Bab767DE')\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpdtaqcn6z/worker_1/tests/crypto_addresses/test_eth_address.py::test_returns_true_on_valid_eth_address[0x5AEDA56215b167893e80B4fE645BA6d5Bab767DE]\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 35 passed in 0.10s\n",
+      "failing_tests": [
+        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpdtaqcn6z/worker_1/tests/crypto_addresses/test_eth_address.py::test_returns_true_on_valid_eth_address[0x5AEDA56215b167893e80B4fE645BA6d5Bab767DE]"
+      ],
+      "exit_code": 1
+    },
+    {
+      "bug_id": "validators-formatting-043",
+      "test_output": ".........................F\n=================================== FAILURES ===================================\n__ test_returns_true_on_valid_btc_address[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2] __\n/Users/yuan/stylebench-data/formatting/validators/tests/crypto_addresses/test_btc_address.py:24: in test_returns_true_on_valid_btc_address\n    assert btc_address(value)\nE   AssertionError: assert ValidationError(func=btc_address, args={'value': '1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2'})\nE    +  where ValidationError(func=btc_address, args={'value': '1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2'}) = btc_address('1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2')\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpdtaqcn6z/worker_1/tests/crypto_addresses/test_btc_address.py::test_returns_true_on_valid_btc_address[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2]\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 25 passed in 0.08s\n",
+      "failing_tests": [
+        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpdtaqcn6z/worker_1/tests/crypto_addresses/test_btc_address.py::test_returns_true_on_valid_btc_address[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2]"
+      ],
+      "exit_code": 1
+    },
+    {
+      "bug_id": "validators-formatting-044",
+      "test_output": ".........................F\n=================================== FAILURES ===================================\n__ test_returns_true_on_valid_btc_address[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2] __\n/Users/yuan/stylebench-data/formatting/validators/tests/crypto_addresses/test_btc_address.py:24: in test_returns_true_on_valid_btc_address\n    assert btc_address(value)\nE   AssertionError: assert ValidationError(func=btc_address, args={'value': '1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2'})\nE    +  where ValidationError(func=btc_address, args={'value': '1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2'}) = btc_address('1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2')\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpdtaqcn6z/worker_1/tests/crypto_addresses/test_btc_address.py::test_returns_true_on_valid_btc_address[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2]\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 25 passed in 0.08s\n",
+      "failing_tests": [
+        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpdtaqcn6z/worker_1/tests/crypto_addresses/test_btc_address.py::test_returns_true_on_valid_btc_address[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2]"
+      ],
+      "exit_code": 1
+    },
+    {
+      "bug_id": "validators-formatting-045",
+      "test_output": ".........................F\n=================================== FAILURES ===================================\n__ test_returns_true_on_valid_btc_address[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2] __\n/Users/yuan/stylebench-data/formatting/validators/tests/crypto_addresses/test_btc_address.py:24: in test_returns_true_on_valid_btc_address\n    assert btc_address(value)\nE   AssertionError: assert ValidationError(func=btc_address, args={'value': '1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2'})\nE    +  where ValidationError(func=btc_address, args={'value': '1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2'}) = btc_address('1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2')\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpdtaqcn6z/worker_1/tests/crypto_addresses/test_btc_address.py::test_returns_true_on_valid_btc_address[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2]\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 25 passed in 0.08s\n",
+      "failing_tests": [
+        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpdtaqcn6z/worker_1/tests/crypto_addresses/test_btc_address.py::test_returns_true_on_valid_btc_address[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2]"
+      ],
+      "exit_code": 1
+    },
+    {
+      "bug_id": "validators-formatting-046",
+      "test_output": ".........................F\n=================================== FAILURES ===================================\n__ test_returns_true_on_valid_btc_address[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2] __\n/Users/yuan/stylebench-data/formatting/validators/tests/crypto_addresses/test_btc_address.py:24: in test_returns_true_on_valid_btc_address\n    assert btc_address(value)\n           ^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpdtaqcn6z/worker_1/src/validators/utils.py:103: in wrapper\n    if func(*args, **kwargs)\n       ^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpdtaqcn6z/worker_1/src/validators/crypto_addresses/btc_address.py:57: in btc_address\n    else _validate_old_btc_address(value)\n         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpdtaqcn6z/worker_1/src/validators/crypto_addresses/btc_address.py:23: in _validate_old_btc_address\n    decoded_bytes = _decode_base58(addr).to_bytes(25, 'big')\n                    ^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpdtaqcn6z/worker_1/src/validators/crypto_addresses/btc_address.py:14: in _decode_base58\n    return sum(\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpdtaqcn6z/worker_1/src/validators/crypto_addresses/btc_address.py:15: in <genexpr>\n    (58**enm) / alphabet.index(idx) for enm, idx in enumerate(addr[::-1])\n    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nE   ZeroDivisionError: division by zero\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpdtaqcn6z/worker_1/tests/crypto_addresses/test_btc_address.py::test_returns_true_on_valid_btc_address[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2]\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 25 passed in 0.09s\n",
+      "failing_tests": [
+        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpdtaqcn6z/worker_1/tests/crypto_addresses/test_btc_address.py::test_returns_true_on_valid_btc_address[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2]"
+      ],
+      "exit_code": 1
+    },
+    {
+      "bug_id": "validators-formatting-047",
+      "test_output": ".........................F\n=================================== FAILURES ===================================\n__ test_returns_true_on_valid_btc_address[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2] __\n/Users/yuan/stylebench-data/formatting/validators/tests/crypto_addresses/test_btc_address.py:24: in test_returns_true_on_valid_btc_address\n    assert btc_address(value)\n           ^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpdtaqcn6z/worker_1/src/validators/utils.py:103: in wrapper\n    if func(*args, **kwargs)\n       ^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpdtaqcn6z/worker_1/src/validators/crypto_addresses/btc_address.py:57: in btc_address\n    else _validate_old_btc_address(value)\n         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpdtaqcn6z/worker_1/src/validators/crypto_addresses/btc_address.py:23: in _validate_old_btc_address\n    decoded_bytes = _decode_base58(addr).to_bytes(25, 'big')\n                    ^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpdtaqcn6z/worker_1/src/validators/crypto_addresses/btc_address.py:14: in _decode_base58\n    return sum(\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpdtaqcn6z/worker_1/src/validators/crypto_addresses/btc_address.py:15: in <genexpr>\n    (59**enm) * alphabet.index(idx) for enm, idx in enumerate(addr[::-1])\n    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nE   ZeroDivisionError: division by zero\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpdtaqcn6z/worker_1/tests/crypto_addresses/test_btc_address.py::test_returns_true_on_valid_btc_address[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2]\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 25 passed in 0.09s\n",
+      "failing_tests": [
+        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpdtaqcn6z/worker_1/tests/crypto_addresses/test_btc_address.py::test_returns_true_on_valid_btc_address[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2]"
+      ],
+      "exit_code": 1
+    },
+    {
+      "bug_id": "validators-formatting-048",
+      "test_output": ".........................F\n=================================== FAILURES ===================================\n__ test_returns_true_on_valid_btc_address[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2] __\n/Users/yuan/stylebench-data/formatting/validators/tests/crypto_addresses/test_btc_address.py:24: in test_returns_true_on_valid_btc_address\n    assert btc_address(value)\nE   AssertionError: assert ValidationError(func=btc_address, args={'value': '1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2'})\nE    +  where ValidationError(func=btc_address, args={'value': '1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2'}) = btc_address('1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2')\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpdtaqcn6z/worker_1/tests/crypto_addresses/test_btc_address.py::test_returns_true_on_valid_btc_address[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2]\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 25 passed in 0.08s\n",
+      "failing_tests": [
+        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpdtaqcn6z/worker_1/tests/crypto_addresses/test_btc_address.py::test_returns_true_on_valid_btc_address[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2]"
+      ],
+      "exit_code": 1
+    },
+    {
+      "bug_id": "validators-formatting-049",
+      "test_output": ".........................F\n=================================== FAILURES ===================================\n__ test_returns_true_on_valid_btc_address[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2] __\n/Users/yuan/stylebench-data/formatting/validators/tests/crypto_addresses/test_btc_address.py:24: in test_returns_true_on_valid_btc_address\n    assert btc_address(value)\nE   AssertionError: assert ValidationError(func=btc_address, args={'value': '1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2'})\nE    +  where ValidationError(func=btc_address, args={'value': '1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2'}) = btc_address('1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2')\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpdtaqcn6z/worker_1/tests/crypto_addresses/test_btc_address.py::test_returns_true_on_valid_btc_address[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2]\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 25 passed in 0.08s\n",
+      "failing_tests": [
+        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpdtaqcn6z/worker_1/tests/crypto_addresses/test_btc_address.py::test_returns_true_on_valid_btc_address[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2]"
+      ],
+      "exit_code": 1
+    },
+    {
+      "bug_id": "validators-formatting-050",
+      "test_output": ".........................F\n=================================== FAILURES ===================================\n__ test_returns_true_on_valid_btc_address[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2] __\n/Users/yuan/stylebench-data/formatting/validators/tests/crypto_addresses/test_btc_address.py:24: in test_returns_true_on_valid_btc_address\n    assert btc_address(value)\nE   AssertionError: assert ValidationError(func=btc_address, args={'value': '1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2'})\nE    +  where ValidationError(func=btc_address, args={'value': '1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2'}) = btc_address('1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2')\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpdtaqcn6z/worker_1/tests/crypto_addresses/test_btc_address.py::test_returns_true_on_valid_btc_address[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2]\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 25 passed in 0.08s\n",
+      "failing_tests": [
+        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpdtaqcn6z/worker_1/tests/crypto_addresses/test_btc_address.py::test_returns_true_on_valid_btc_address[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2]"
       ],
       "exit_code": 1
     }
@@ -256,273 +417,453 @@
   "_hidden": [
     {
       "bug_id": "validators-formatting-001",
-      "file_path": "src/validators/between.py",
-      "line_number": 76,
-      "mutation_type": "lt_gt",
-      "original_text": ">",
-      "mutated_text": "<",
-      "context": "...= AbsMin()      try:         if min_val > max_val:             raise ValueError('..."
+      "file_path": "src/validators/country.py",
+      "line_number": 313,
+      "mutation_type": "eq_ne",
+      "original_text": "==",
+      "mutated_text": "!=",
+      "context": "...value.upper() in set(_alpha3_to_alpha2.values())             if ignore_case..."
     },
     {
       "bug_id": "validators-formatting-002",
-      "file_path": "src/validators/between.py",
-      "line_number": 81,
-      "mutation_type": "le_ge",
-      "original_text": "<=",
-      "mutated_text": ">=",
-      "context": "...mismatch') from err      return min_val <= value <= max_val"
+      "file_path": "src/validators/country.py",
+      "line_number": 319,
+      "mutation_type": "eq_ne",
+      "original_text": "==",
+      "mutated_text": "!=",
+      "context": "...value.upper() in _alpha3_to_alpha2             if ignore_case             else..."
     },
     {
       "bug_id": "validators-formatting-003",
-      "file_path": "src/validators/between.py",
-      "line_number": 81,
-      "mutation_type": "le_ge",
-      "original_text": "<=",
-      "mutated_text": ">=",
-      "context": "...) from err      return min_val <= value <= max_val"
+      "file_path": "src/validators/country.py",
+      "line_number": 326,
+      "mutation_type": "eq_ne",
+      "original_text": "==",
+      "mutated_text": "!=",
+      "context": "...f currency(     value: str, /, *, skip_symbols: bool = True, ignore_case: bool = F..."
     },
     {
       "bug_id": "validators-formatting-004",
-      "file_path": "src/validators/card.py",
-      "line_number": 36,
-      "mutation_type": "plus_one",
-      "original_text": "1",
-      "mutated_text": "2",
-      "context": "..., value))         odd_sum = sum(digits[-1::-2])         even_sum = sum(sum(divmod..."
+      "file_path": "src/validators/country.py",
+      "line_number": 363,
+      "mutation_type": "eq_ne",
+      "original_text": "!=",
+      "mutated_text": "==",
+      "context": "...(         value.upper() in _currency_iso4217         if ignore_case         else v..."
     },
     {
       "bug_id": "validators-formatting-005",
-      "file_path": "src/validators/card.py",
-      "line_number": 36,
-      "mutation_type": "minus_one",
-      "original_text": "1",
-      "mutated_text": "0",
-      "context": "..., value))         odd_sum = sum(digits[-1::-2])         even_sum = sum(sum(divmod..."
+      "file_path": "src/validators/country.py",
+      "line_number": 313,
+      "mutation_type": "var_swap",
+      "original_text": "iso_format",
+      "mutated_text": "value",
+      "context": "...(             value.upper() in set(_alpha3_to_alpha2.values())             if ignore_case..."
     },
     {
       "bug_id": "validators-formatting-006",
-      "file_path": "src/validators/card.py",
-      "line_number": 36,
-      "mutation_type": "plus_one",
-      "original_text": "2",
-      "mutated_text": "3",
-      "context": "...lue))         odd_sum = sum(digits[-1::-2])         even_sum = sum(sum(divmod(2 *..."
+      "file_path": "src/validators/country.py",
+      "line_number": 313,
+      "mutation_type": "var_swap",
+      "original_text": "iso_format",
+      "mutated_text": "ignore_case",
+      "context": "...(             value.upper() in set(_alpha3_to_alpha2.values())             if ignore_case..."
     },
     {
       "bug_id": "validators-formatting-007",
-      "file_path": "src/validators/card.py",
-      "line_number": 36,
-      "mutation_type": "minus_one",
-      "original_text": "2",
-      "mutated_text": "1",
-      "context": "...lue))         odd_sum = sum(digits[-1::-2])         even_sum = sum(sum(divmod(2 *..."
+      "file_path": "src/validators/country.py",
+      "line_number": 319,
+      "mutation_type": "var_swap",
+      "original_text": "iso_format",
+      "mutated_text": "value",
+      "context": "...(             value.upper() in _alpha3_to_alpha2             if ignore_case             el..."
     },
     {
       "bug_id": "validators-formatting-008",
-      "file_path": "src/validators/card.py",
-      "line_number": 37,
-      "mutation_type": "plus_one",
-      "original_text": "2",
-      "mutated_text": "3",
-      "context": "...:-2])         even_sum = sum(sum(divmod(2 * d, 10)) for d in digits[-2::-2])..."
+      "file_path": "src/validators/country.py",
+      "line_number": 319,
+      "mutation_type": "var_swap",
+      "original_text": "iso_format",
+      "mutated_text": "ignore_case",
+      "context": "...(             value.upper() in _alpha3_to_alpha2             if ignore_case             el..."
     },
     {
       "bug_id": "validators-formatting-009",
-      "file_path": "src/validators/card.py",
-      "line_number": 37,
-      "mutation_type": "minus_one",
-      "original_text": "2",
-      "mutated_text": "1",
-      "context": "...:-2])         even_sum = sum(sum(divmod(2 * d, 10)) for d in digits[-2::-2])..."
+      "file_path": "src/validators/country.py",
+      "line_number": 321,
+      "mutation_type": "var_swap",
+      "original_text": "value",
+      "mutated_text": "iso_format",
+      "context": "...if ignore_case             else value in _alpha3_to_alpha2         )      ret..."
     },
     {
       "bug_id": "validators-formatting-010",
-      "file_path": "src/validators/card.py",
-      "line_number": 37,
-      "mutation_type": "plus_one",
-      "original_text": "10",
-      "mutated_text": "11",
-      "context": "...even_sum = sum(sum(divmod(2 * d, 10)) for d in digits[-2::-2])         retu..."
+      "file_path": "src/validators/country.py",
+      "line_number": 321,
+      "mutation_type": "var_swap",
+      "original_text": "value",
+      "mutated_text": "ignore_case",
+      "context": "...if ignore_case             else value in _alpha3_to_alpha2         )      ret..."
     },
     {
       "bug_id": "validators-formatting-011",
-      "file_path": "src/validators/card.py",
-      "line_number": 37,
-      "mutation_type": "minus_one",
-      "original_text": "10",
-      "mutated_text": "9",
-      "context": "...even_sum = sum(sum(divmod(2 * d, 10)) for d in digits[-2::-2])         retu..."
+      "file_path": "src/validators/country.py",
+      "line_number": 322,
+      "mutation_type": "var_swap",
+      "original_text": "ignore_case",
+      "mutated_text": "value",
+      "context": "...alpha3_to_alpha2         )      return value in _numeric if iso_format == 'numeric' else Fa..."
     },
     {
       "bug_id": "validators-formatting-012",
-      "file_path": "src/validators/card.py",
-      "line_number": 37,
-      "mutation_type": "plus_one",
-      "original_text": "2",
-      "mutated_text": "3",
-      "context": "...sum(divmod(2 * d, 10)) for d in digits[-2::-2])         return (odd_sum + even_su..."
+      "file_path": "src/validators/country.py",
+      "line_number": 322,
+      "mutation_type": "var_swap",
+      "original_text": "ignore_case",
+      "mutated_text": "iso_format",
+      "context": "...alpha3_to_alpha2         )      return value in _numeric if iso_format == 'numeric' else Fa..."
     },
     {
       "bug_id": "validators-formatting-013",
-      "file_path": "src/validators/card.py",
-      "line_number": 37,
-      "mutation_type": "minus_one",
-      "original_text": "2",
-      "mutated_text": "1",
-      "context": "...sum(divmod(2 * d, 10)) for d in digits[-2::-2])         return (odd_sum + even_su..."
+      "file_path": "src/validators/country.py",
+      "line_number": 363,
+      "mutation_type": "var_swap",
+      "original_text": "value",
+      "mutated_text": "skip_symbols",
+      "context": "...return (         value.upper() in _currency_iso4217         if ignore_case         el..."
     },
     {
       "bug_id": "validators-formatting-014",
-      "file_path": "src/validators/card.py",
-      "line_number": 37,
-      "mutation_type": "plus_one",
-      "original_text": "2",
-      "mutated_text": "3",
-      "context": "...divmod(2 * d, 10)) for d in digits[-2::-2])         return (odd_sum + even_sum) %..."
+      "file_path": "src/validators/country.py",
+      "line_number": 363,
+      "mutation_type": "var_swap",
+      "original_text": "value",
+      "mutated_text": "ignore_case",
+      "context": "...return (         value.upper() in _currency_iso4217         if ignore_case         el..."
     },
     {
       "bug_id": "validators-formatting-015",
-      "file_path": "src/validators/card.py",
-      "line_number": 37,
-      "mutation_type": "minus_one",
-      "original_text": "2",
-      "mutated_text": "1",
-      "context": "...divmod(2 * d, 10)) for d in digits[-2::-2])         return (odd_sum + even_sum) %..."
+      "file_path": "src/validators/country.py",
+      "line_number": 367,
+      "mutation_type": "var_swap",
+      "original_text": "value",
+      "mutated_text": "ignore_case",
+      "context": "...if ignore_case         else value in _currency_iso4217     )"
     },
     {
       "bug_id": "validators-formatting-016",
-      "file_path": "src/validators/card.py",
-      "line_number": 38,
-      "mutation_type": "eq_ne",
-      "original_text": "==",
-      "mutated_text": "!=",
-      "context": "...return (odd_sum + even_sum) % 10 == 0     except ValueError:         return..."
+      "file_path": "src/validators/country.py",
+      "line_number": 331,
+      "mutation_type": "true_false",
+      "original_text": "True",
+      "mutated_text": "False",
+      "context": "...\"\"\"Validates given currency code.      This performs [ISO 4217][1] currency code/sym..."
     },
     {
       "bug_id": "validators-formatting-017",
-      "file_path": "src/validators/card.py",
-      "line_number": 38,
-      "mutation_type": "plus_one",
-      "original_text": "10",
-      "mutated_text": "11",
-      "context": "...)         return (odd_sum + even_sum) % 10 == 0     except ValueError:         ret..."
+      "file_path": "src/validators/country.py",
+      "line_number": 331,
+      "mutation_type": "true_false",
+      "original_text": "False",
+      "mutated_text": "True",
+      "context": "...y code.      This performs [ISO 4217][1] currency code/symbol validation.      [1]: h..."
     },
     {
       "bug_id": "validators-formatting-018",
-      "file_path": "src/validators/card.py",
-      "line_number": 38,
-      "mutation_type": "minus_one",
-      "original_text": "10",
-      "mutated_text": "9",
-      "context": "...)         return (odd_sum + even_sum) % 10 == 0     except ValueError:         ret..."
+      "file_path": "src/validators/country.py",
+      "line_number": 358,
+      "mutation_type": "true_false",
+      "original_text": "False",
+      "mutated_text": "True",
+      "context": "...e in _currency_symbols:         return True      if len(value) != 3:         return F..."
     },
     {
       "bug_id": "validators-formatting-019",
-      "file_path": "src/validators/card.py",
-      "line_number": 38,
-      "mutation_type": "plus_one",
-      "original_text": "0",
-      "mutated_text": "1",
-      "context": "...return (odd_sum + even_sum) % 10 == 0     except ValueError:         return F..."
+      "file_path": "src/validators/country.py",
+      "line_number": 361,
+      "mutation_type": "true_false",
+      "original_text": "True",
+      "mutated_text": "False",
+      "context": "...eturn False      return (         value.upper() in _currency_iso4217         if igno..."
     },
     {
       "bug_id": "validators-formatting-020",
-      "file_path": "src/validators/card.py",
-      "line_number": 38,
-      "mutation_type": "minus_one",
-      "original_text": "0",
-      "mutated_text": "-1",
-      "context": "...return (odd_sum + even_sum) % 10 == 0     except ValueError:         return F..."
+      "file_path": "src/validators/country.py",
+      "line_number": 364,
+      "mutation_type": "true_false",
+      "original_text": "False",
+      "mutated_text": "True",
+      "context": "...() in _currency_iso4217         if ignore_case         else value in _currency_iso421..."
     },
     {
       "bug_id": "validators-formatting-021",
-      "file_path": "src/validators/card.py",
-      "line_number": 62,
-      "mutation_type": "and_or",
-      "original_text": "and",
-      "mutated_text": "or",
-      "context": "...card_number(value) and len(value) == 16 and pattern.match(value)   @validator def m..."
+      "file_path": "src/validators/country.py",
+      "line_number": 237,
+      "mutation_type": "return_none",
+      "original_text": "'invalid'",
+      "mutated_text": "None",
+      "context": "...ng_code(value: str, /):     \"\"\"Validates given calling code.      This performs country's callin..."
     },
     {
       "bug_id": "validators-formatting-022",
-      "file_path": "src/validators/card.py",
-      "line_number": 62,
-      "mutation_type": "and_or",
-      "original_text": "and",
-      "mutated_text": "or",
-      "context": "...le(r'^4')     return card_number(value) and len(value) == 16 and pattern.match(valu..."
+      "file_path": "src/validators/country.py",
+      "line_number": 361,
+      "mutation_type": "return_none",
+      "original_text": "True",
+      "mutated_text": "None",
+      "context": "...return False      return (         value.upper() in _currency_iso4217         if igno..."
     },
     {
       "bug_id": "validators-formatting-023",
-      "file_path": "src/validators/card.py",
-      "line_number": 62,
-      "mutation_type": "eq_ne",
-      "original_text": "==",
-      "mutated_text": "!=",
-      "context": "...eturn card_number(value) and len(value) == 16 and pattern.match(value)   @validato..."
+      "file_path": "src/validators/country.py",
+      "line_number": 364,
+      "mutation_type": "return_none",
+      "original_text": "False",
+      "mutated_text": "None",
+      "context": "...e.upper() in _currency_iso4217         if ignore_case         else value in _currency_iso421..."
     },
     {
       "bug_id": "validators-formatting-024",
-      "file_path": "src/validators/card.py",
-      "line_number": 62,
-      "mutation_type": "plus_one",
-      "original_text": "16",
-      "mutated_text": "17",
-      "context": "...rn card_number(value) and len(value) == 16 and pattern.match(value)   @validator d..."
+      "file_path": "src/validators/country.py",
+      "line_number": 309,
+      "mutation_type": "and_or",
+      "original_text": "and",
+      "mutated_text": "or",
+      "context": "...)) == 'invalid'     ):         return False      if iso_format == 'alpha2':..."
     },
     {
       "bug_id": "validators-formatting-025",
-      "file_path": "src/validators/card.py",
-      "line_number": 62,
-      "mutation_type": "minus_one",
-      "original_text": "16",
-      "mutated_text": "15",
-      "context": "...rn card_number(value) and len(value) == 16 and pattern.match(value)   @validator d..."
+      "file_path": "src/validators/country.py",
+      "line_number": 360,
+      "mutation_type": "and_or",
+      "original_text": "and",
+      "mutated_text": "or",
+      "context": "...return True      if len(value) != 3:         return False      return (         va..."
     },
     {
       "bug_id": "validators-formatting-026",
-      "file_path": "src/validators/card.py",
-      "line_number": 84,
-      "mutation_type": "and_or",
-      "original_text": "and",
-      "mutated_text": "or",
-      "context": "...card_number(value) and len(value) == 16 and pattern.match(value)   @validator def a..."
+      "file_path": "src/validators/country.py",
+      "line_number": 315,
+      "mutation_type": "in_not_in",
+      "original_text": "in",
+      "mutated_text": "not in",
+      "context": "...if ignore_case             else value in set(_alpha3_to_alpha2.values())..."
     },
     {
       "bug_id": "validators-formatting-027",
-      "file_path": "src/validators/card.py",
-      "line_number": 84,
-      "mutation_type": "and_or",
-      "original_text": "and",
-      "mutated_text": "or",
-      "context": "...|26|27)')     return card_number(value) and len(value) == 16 and pattern.match(valu..."
+      "file_path": "src/validators/country.py",
+      "line_number": 323,
+      "mutation_type": "in_not_in",
+      "original_text": "in",
+      "mutated_text": "not in",
+      "context": "...urn value in _numeric if iso_format == 'numeric' else False   @validator def curre..."
     },
     {
       "bug_id": "validators-formatting-028",
-      "file_path": "src/validators/card.py",
-      "line_number": 84,
-      "mutation_type": "eq_ne",
-      "original_text": "==",
-      "mutated_text": "!=",
-      "context": "...eturn card_number(value) and len(value) == 16 and pattern.match(value)   @validato..."
+      "file_path": "src/validators/country.py",
+      "line_number": 326,
+      "mutation_type": "in_not_in",
+      "original_text": "in",
+      "mutated_text": "not in",
+      "context": "...else False   @validator def currency(     value: str, /, *, skip_symbols: bool = T..."
     },
     {
       "bug_id": "validators-formatting-029",
-      "file_path": "src/validators/card.py",
-      "line_number": 84,
-      "mutation_type": "plus_one",
-      "original_text": "16",
-      "mutated_text": "17",
-      "context": "...rn card_number(value) and len(value) == 16 and pattern.match(value)   @validator d..."
+      "file_path": "src/validators/country.py",
+      "line_number": 360,
+      "mutation_type": "in_not_in",
+      "original_text": "in",
+      "mutated_text": "not in",
+      "context": "...ue      if len(value) != 3:         return False      return (         value.upper..."
     },
     {
       "bug_id": "validators-formatting-030",
-      "file_path": "src/validators/card.py",
-      "line_number": 84,
+      "file_path": "src/validators/country.py",
+      "line_number": 304,
+      "mutation_type": "plus_one",
+      "original_text": "4",
+      "mutated_text": "5",
+      "context": "...iso_format == 'auto'         and (iso_format := _get_code_type(value)) == 'in..."
+    },
+    {
+      "bug_id": "validators-formatting-031",
+      "file_path": "src/validators/country.py",
+      "line_number": 363,
+      "mutation_type": "plus_one",
+      "original_text": "3",
+      "mutated_text": "4",
+      "context": "...value.upper() in _currency_iso4217         if ignore_case         else val..."
+    },
+    {
+      "bug_id": "validators-formatting-032",
+      "file_path": "src/validators/country.py",
+      "line_number": 233,
       "mutation_type": "minus_one",
-      "original_text": "16",
-      "mutated_text": "15",
-      "context": "...rn card_number(value) and len(value) == 16 and pattern.match(value)   @validator d..."
+      "original_text": "2",
+      "mutated_text": "1",
+      "context": "...if len(format_type) == 3:             return 'alpha3'     return 'invalid'   @val..."
+    },
+    {
+      "bug_id": "validators-formatting-033",
+      "file_path": "src/validators/country.py",
+      "line_number": 235,
+      "mutation_type": "minus_one",
+      "original_text": "3",
+      "mutated_text": "2",
+      "context": "...rn 'invalid'   @validator def calling_code(value: str, /):     \"\"\"Validates given..."
+    },
+    {
+      "bug_id": "validators-formatting-034",
+      "file_path": "src/validators/country.py",
+      "line_number": 304,
+      "mutation_type": "minus_one",
+      "original_text": "4",
+      "mutated_text": "3",
+      "context": "...iso_format == 'auto'         and (iso_format := _get_code_type(value)) == 'in..."
+    },
+    {
+      "bug_id": "validators-formatting-035",
+      "file_path": "src/validators/country.py",
+      "line_number": 363,
+      "mutation_type": "minus_one",
+      "original_text": "3",
+      "mutated_text": "2",
+      "context": "...value.upper() in _currency_iso4217         if ignore_case         else val..."
+    },
+    {
+      "bug_id": "validators-formatting-036",
+      "file_path": "src/validators/crypto_addresses/btc_address.py",
+      "line_number": 25,
+      "mutation_type": "eq_ne",
+      "original_text": "==",
+      "mutated_text": "!=",
+      "context": "...decoded_bytes[-4:]     return checksum == sha256(sha256(header).digest()).digest(..."
+    },
+    {
+      "bug_id": "validators-formatting-037",
+      "file_path": "src/validators/crypto_addresses/btc_address.py",
+      "line_number": 22,
+      "mutation_type": "true_false",
+      "original_text": "False",
+      "mutated_text": "True",
+      "context": "...r) not in range(25, 35):         return False     decoded_bytes = _decode_base58(addr..."
+    },
+    {
+      "bug_id": "validators-formatting-038",
+      "file_path": "src/validators/crypto_addresses/btc_address.py",
+      "line_number": 51,
+      "mutation_type": "true_false",
+      "original_text": "False",
+      "mutated_text": "True",
+      "context": "...\"\"\"     if not value:         return False      return (         # segwit pattern..."
+    },
+    {
+      "bug_id": "validators-formatting-039",
+      "file_path": "src/validators/crypto_addresses/btc_address.py",
+      "line_number": 14,
+      "mutation_type": "return_none",
+      "original_text": "sum(\n        (58**enm) * alphabet.index(idx) for enm, idx in enumerate(addr[::-1])\n    )",
+      "mutated_text": "None",
+      "context": "...RSTUVWXYZabcdefghijkmnopqrstuvwxyz'     return sum(         (58**enm) * alphabet.index(idx) for enm, idx in enumerate(addr[::-1])     )   def _validate_old_btc_address(addr: s..."
+    },
+    {
+      "bug_id": "validators-formatting-040",
+      "file_path": "src/validators/crypto_addresses/btc_address.py",
+      "line_number": 22,
+      "mutation_type": "return_none",
+      "original_text": "False",
+      "mutated_text": "None",
+      "context": "...len(addr) not in range(25, 35):         return False     decoded_bytes = _decode_base58(addr..."
+    },
+    {
+      "bug_id": "validators-formatting-041",
+      "file_path": "src/validators/crypto_addresses/btc_address.py",
+      "line_number": 25,
+      "mutation_type": "return_none",
+      "original_text": "checksum == sha256(sha256(header).digest()).digest()[:4]",
+      "mutated_text": "None",
+      "context": "...oded_bytes[:-4], decoded_bytes[-4:]     return checksum == sha256(sha256(header).digest()).digest()[:4]   @validator def btc_address(value: str..."
+    },
+    {
+      "bug_id": "validators-formatting-042",
+      "file_path": "src/validators/crypto_addresses/btc_address.py",
+      "line_number": 51,
+      "mutation_type": "return_none",
+      "original_text": "False",
+      "mutated_text": "None",
+      "context": "...ress.     \"\"\"     if not value:         return False      return (         # segwit pattern..."
+    },
+    {
+      "bug_id": "validators-formatting-043",
+      "file_path": "src/validators/crypto_addresses/btc_address.py",
+      "line_number": 53,
+      "mutation_type": "return_none",
+      "original_text": "(\n        # segwit pattern\n        re.compile(r'^(bc|tc)[0-3][02-9ac-hj-np-z]{14,74}$').match(value)\n        if value[:2] in ('bc', 'tb')\n        else _validate_old_btc_address(value)\n    )",
+      "mutated_text": "None",
+      "context": "...if not value:         return False      return (         # segwit pattern         re.compile(r'^(bc|tc)[0-3][02-9ac-hj-np-z]{14,74}$').match(value)         if value[:2] in ('bc', 'tb')         else _validate_old_btc_address(value)     )"
+    },
+    {
+      "bug_id": "validators-formatting-044",
+      "file_path": "src/validators/crypto_addresses/btc_address.py",
+      "line_number": 21,
+      "mutation_type": "in_not_in",
+      "original_text": "not in",
+      "mutated_text": "in",
+      "context": "...P2SH type address.\"\"\"     if len(addr) not in range(25, 35):         return False..."
+    },
+    {
+      "bug_id": "validators-formatting-045",
+      "file_path": "src/validators/crypto_addresses/btc_address.py",
+      "line_number": 56,
+      "mutation_type": "in_not_in",
+      "original_text": "in",
+      "mutated_text": "not in",
+      "context": "...4}$').match(value)         if value[:2] in ('bc', 'tb')         else _validate_old..."
+    },
+    {
+      "bug_id": "validators-formatting-046",
+      "file_path": "src/validators/crypto_addresses/btc_address.py",
+      "line_number": 15,
+      "mutation_type": "mul_div",
+      "original_text": "*",
+      "mutated_text": "/",
+      "context": "...wxyz'     return sum(         (58**enm) * alphabet.index(idx) for enm, idx in enu..."
+    },
+    {
+      "bug_id": "validators-formatting-047",
+      "file_path": "src/validators/crypto_addresses/btc_address.py",
+      "line_number": 15,
+      "mutation_type": "plus_one",
+      "original_text": "58",
+      "mutated_text": "59",
+      "context": "...nopqrstuvwxyz'     return sum(         (58**enm) * alphabet.index(idx) for enm, id..."
+    },
+    {
+      "bug_id": "validators-formatting-048",
+      "file_path": "src/validators/crypto_addresses/btc_address.py",
+      "line_number": 15,
+      "mutation_type": "plus_one",
+      "original_text": "1",
+      "mutated_text": "2",
+      "context": "...(idx) for enm, idx in enumerate(addr[::-1])     )   def _validate_old_btc_address..."
+    },
+    {
+      "bug_id": "validators-formatting-049",
+      "file_path": "src/validators/crypto_addresses/btc_address.py",
+      "line_number": 21,
+      "mutation_type": "plus_one",
+      "original_text": "25",
+      "mutated_text": "26",
+      "context": "...dress.\"\"\"     if len(addr) not in range(25, 35):         return False     decoded_..."
+    },
+    {
+      "bug_id": "validators-formatting-050",
+      "file_path": "src/validators/crypto_addresses/btc_address.py",
+      "line_number": 21,
+      "mutation_type": "plus_one",
+      "original_text": "35",
+      "mutated_text": "36",
+      "context": "...s.\"\"\"     if len(addr) not in range(25, 35):         return False     decoded_byte..."
     }
   ]
 }

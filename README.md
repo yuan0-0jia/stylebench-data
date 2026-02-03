@@ -17,8 +17,13 @@ stylebench-data/
 │   └── ...
 ├── badnames/           # Descriptive names → single-letter (a, b, c)
 │   └── ...
-└── formatting/         # Compact formatting (79 char lines, single quotes)
-    └── ...
+├── formatting/         # Compact formatting (79 char lines, single quotes)
+│   └── ...
+└── bugs/               # Validated bug catalogs (991 total bugs)
+    ├── humanize-original.json
+    ├── humanize-camelcase.json
+    ├── ...
+    └── *-agent.json    # Agent-visible versions (no diff leakage)
 ```
 
 ## Source Projects
@@ -125,6 +130,50 @@ python scripts/transform.py badnames stylebench-data/original/humanize stylebenc
 
 # Formatting
 python scripts/transform.py formatting stylebench-data/original/humanize stylebench-data/formatting/humanize --style compact
+```
+
+## Bug Catalogs
+
+The `bugs/` directory contains **991 validated bugs** across all 20 repo/style combinations:
+
+| Repo | Bugs per Style | Total |
+|------|----------------|-------|
+| humanize | 30 | 150 |
+| validators | 30 | 150 |
+| python-markdown | 50 | 250 |
+| more-itertools | 30 | 150 |
+
+**Mutation type distribution**: eq_ne (45%), var_swap (16%), boundary (23%), other (16%)
+
+### Catalog Format
+
+Each `{repo}-{style}.json` contains:
+- Full bug details including mutation locations (for scoring)
+- Test failure output
+
+Each `{repo}-{style}-agent.json` contains:
+- **Agent-visible data only**: test failure output, failing test names
+- **No diff leakage**: mutation locations are hidden from agents
+
+Example agent-visible data:
+```json
+{
+  "bug_id": "humanize-camel-001",
+  "test_output": "FAILED tests/test_time.py::test_naturaldelta - AssertionError...",
+  "failing_tests": ["tests/test_time.py::test_naturaldelta"]
+}
+```
+
+### Regenerating Bug Catalogs
+
+```bash
+cd stylebench
+
+# Generate bugs for all repo/style combinations
+python scripts/generate_bugs.py --all --output ../stylebench-data/bugs/
+
+# Generate for a single variant
+python scripts/generate_bugs.py humanize camelcase --count 50
 ```
 
 ## License

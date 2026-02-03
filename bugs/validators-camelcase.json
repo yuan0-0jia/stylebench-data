@@ -1,11 +1,12 @@
 {
   "repo": "validators",
   "style": "camelcase",
-  "generated_at": "2026-01-29T14:17:57.222876",
+  "generated_at": "2026-02-02T15:25:42.458752",
   "test_command": [
     "uv",
     "run",
     "pytest",
+    "/Users/yuan/stylebench-data/camelcase/validators/tests",
     "-x",
     "-q",
     "--tb=short",
@@ -14,241 +15,401 @@
   "bugs": [
     {
       "bug_id": "validators-camelcase-001",
-      "test_output": "........................................................................ [  8%]\n........................................................................ [ 16%]\n........................................................................ [ 24%]\n.........................F\n=================================== FAILURES ===================================\n____________________ testReturnsTrueOnValidRange[12-11-13] _____________________\ntests/test_between.py:22: in testReturnsTrueOnValidRange\n    assert between(value, minVal=minVal, maxVal=maxVal)\nE   AssertionError: assert ValidationError(func=between, args={'reason': '`min_val` cannot be greater than `max_val`', 'value': 12, 'minVal': 11, 'maxVal': 13})\nE    +  where ValidationError(func=between, args={'reason': '`min_val` cannot be greater than `max_val`', 'value': 12, 'minVal': 11, 'maxVal': 13}) = between(12, minVal=11, maxVal=13)\n=========================== short test summary info ============================\nFAILED tests/test_between.py::testReturnsTrueOnValidRange[12-11-13] - Asserti...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 241 passed in 0.26s\n",
+      "test_output": "..................................................F\n=================================== FAILURES ===================================\n_____ testReturnsTrueOnValidTrxAddress[TLjfbTbpZYDQ4EoA4N5CLNgGjfbF8ZWz38] _____\n/Users/yuan/stylebench-data/camelcase/validators/tests/crypto_addresses/test_trx_address.py:29: in testReturnsTrueOnValidTrxAddress\n    assert trxAddress(value)\nE   AssertionError: assert ValidationError(func=trxAddress, args={'value': 'TLjfbTbpZYDQ4EoA4N5CLNgGjfbF8ZWz38'})\nE    +  where ValidationError(func=trxAddress, args={'value': 'TLjfbTbpZYDQ4EoA4N5CLNgGjfbF8ZWz38'}) = trxAddress('TLjfbTbpZYDQ4EoA4N5CLNgGjfbF8ZWz38')\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpz4p5e6tl/worker_1/tests/crypto_addresses/test_trx_address.py::testReturnsTrueOnValidTrxAddress[TLjfbTbpZYDQ4EoA4N5CLNgGjfbF8ZWz38]\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 50 passed in 0.18s\n",
       "failing_tests": [
-        "tests/test_between.py::testReturnsTrueOnValidRange[12-11-13]"
+        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpz4p5e6tl/worker_1/tests/crypto_addresses/test_trx_address.py::testReturnsTrueOnValidTrxAddress[TLjfbTbpZYDQ4EoA4N5CLNgGjfbF8ZWz38]"
       ],
       "exit_code": 1
     },
     {
       "bug_id": "validators-camelcase-002",
-      "test_output": "........................................................................ [  8%]\n........................................................................ [ 16%]\n........................................................................ [ 24%]\n.........................F\n=================================== FAILURES ===================================\n____________________ testReturnsTrueOnValidRange[12-11-13] _____________________\ntests/test_between.py:22: in testReturnsTrueOnValidRange\n    assert between(value, minVal=minVal, maxVal=maxVal)\nE   AssertionError: assert ValidationError(func=between, args={'reason': '`min_val` cannot be greater than `max_val`', 'value': 12, 'minVal': 11, 'maxVal': 13})\nE    +  where ValidationError(func=between, args={'reason': '`min_val` cannot be greater than `max_val`', 'value': 12, 'minVal': 11, 'maxVal': 13}) = between(12, minVal=11, maxVal=13)\n=========================== short test summary info ============================\nFAILED tests/test_between.py::testReturnsTrueOnValidRange[12-11-13] - Asserti...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 241 passed in 0.18s\n",
+      "test_output": "..................................................F\n=================================== FAILURES ===================================\n_____ testReturnsTrueOnValidTrxAddress[TLjfbTbpZYDQ4EoA4N5CLNgGjfbF8ZWz38] _____\n/Users/yuan/stylebench-data/camelcase/validators/tests/crypto_addresses/test_trx_address.py:29: in testReturnsTrueOnValidTrxAddress\n    assert trxAddress(value)\nE   AssertionError: assert ValidationError(func=trxAddress, args={'value': 'TLjfbTbpZYDQ4EoA4N5CLNgGjfbF8ZWz38'})\nE    +  where ValidationError(func=trxAddress, args={'value': 'TLjfbTbpZYDQ4EoA4N5CLNgGjfbF8ZWz38'}) = trxAddress('TLjfbTbpZYDQ4EoA4N5CLNgGjfbF8ZWz38')\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpz4p5e6tl/worker_1/tests/crypto_addresses/test_trx_address.py::testReturnsTrueOnValidTrxAddress[TLjfbTbpZYDQ4EoA4N5CLNgGjfbF8ZWz38]\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 50 passed in 0.10s\n",
       "failing_tests": [
-        "tests/test_between.py::testReturnsTrueOnValidRange[12-11-13]"
+        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpz4p5e6tl/worker_1/tests/crypto_addresses/test_trx_address.py::testReturnsTrueOnValidTrxAddress[TLjfbTbpZYDQ4EoA4N5CLNgGjfbF8ZWz38]"
       ],
       "exit_code": 1
     },
     {
       "bug_id": "validators-camelcase-003",
-      "test_output": "........................................................................ [  8%]\n........................................................................ [ 16%]\n........................................................................ [ 24%]\n.........................F\n=================================== FAILURES ===================================\n____________________ testReturnsTrueOnValidRange[12-11-13] _____________________\ntests/test_between.py:22: in testReturnsTrueOnValidRange\n    assert between(value, minVal=minVal, maxVal=maxVal)\nE   AssertionError: assert ValidationError(func=between, args={'value': 12, 'minVal': 11, 'maxVal': 13})\nE    +  where ValidationError(func=between, args={'value': 12, 'minVal': 11, 'maxVal': 13}) = between(12, minVal=11, maxVal=13)\n=========================== short test summary info ============================\nFAILED tests/test_between.py::testReturnsTrueOnValidRange[12-11-13] - Asserti...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 241 passed in 0.15s\n",
+      "test_output": "..................................................F\n=================================== FAILURES ===================================\n_____ testReturnsTrueOnValidTrxAddress[TLjfbTbpZYDQ4EoA4N5CLNgGjfbF8ZWz38] _____\n/Users/yuan/stylebench-data/camelcase/validators/tests/crypto_addresses/test_trx_address.py:29: in testReturnsTrueOnValidTrxAddress\n    assert trxAddress(value)\nE   AssertionError: assert ValidationError(func=trxAddress, args={'value': 'TLjfbTbpZYDQ4EoA4N5CLNgGjfbF8ZWz38'})\nE    +  where ValidationError(func=trxAddress, args={'value': 'TLjfbTbpZYDQ4EoA4N5CLNgGjfbF8ZWz38'}) = trxAddress('TLjfbTbpZYDQ4EoA4N5CLNgGjfbF8ZWz38')\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpz4p5e6tl/worker_1/tests/crypto_addresses/test_trx_address.py::testReturnsTrueOnValidTrxAddress[TLjfbTbpZYDQ4EoA4N5CLNgGjfbF8ZWz38]\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 50 passed in 0.10s\n",
       "failing_tests": [
-        "tests/test_between.py::testReturnsTrueOnValidRange[12-11-13]"
+        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpz4p5e6tl/worker_1/tests/crypto_addresses/test_trx_address.py::testReturnsTrueOnValidTrxAddress[TLjfbTbpZYDQ4EoA4N5CLNgGjfbF8ZWz38]"
       ],
       "exit_code": 1
     },
     {
       "bug_id": "validators-camelcase-004",
-      "test_output": "........................................................................ [  8%]\n........................................................................ [ 16%]\n........................................................................ [ 24%]\n.........................F\n=================================== FAILURES ===================================\n____________________ testReturnsTrueOnValidRange[12-11-13] _____________________\ntests/test_between.py:22: in testReturnsTrueOnValidRange\n    assert between(value, minVal=minVal, maxVal=maxVal)\nE   AssertionError: assert ValidationError(func=between, args={'value': 12, 'minVal': 11, 'maxVal': 13})\nE    +  where ValidationError(func=between, args={'value': 12, 'minVal': 11, 'maxVal': 13}) = between(12, minVal=11, maxVal=13)\n=========================== short test summary info ============================\nFAILED tests/test_between.py::testReturnsTrueOnValidRange[12-11-13] - Asserti...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 241 passed in 0.17s\n",
+      "test_output": "..................................................F\n=================================== FAILURES ===================================\n_____ testReturnsTrueOnValidTrxAddress[TLjfbTbpZYDQ4EoA4N5CLNgGjfbF8ZWz38] _____\n/Users/yuan/stylebench-data/camelcase/validators/tests/crypto_addresses/test_trx_address.py:29: in testReturnsTrueOnValidTrxAddress\n    assert trxAddress(value)\nE   AssertionError: assert ValidationError(func=trxAddress, args={'value': 'TLjfbTbpZYDQ4EoA4N5CLNgGjfbF8ZWz38'})\nE    +  where ValidationError(func=trxAddress, args={'value': 'TLjfbTbpZYDQ4EoA4N5CLNgGjfbF8ZWz38'}) = trxAddress('TLjfbTbpZYDQ4EoA4N5CLNgGjfbF8ZWz38')\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpz4p5e6tl/worker_1/tests/crypto_addresses/test_trx_address.py::testReturnsTrueOnValidTrxAddress[TLjfbTbpZYDQ4EoA4N5CLNgGjfbF8ZWz38]\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 50 passed in 0.14s\n",
       "failing_tests": [
-        "tests/test_between.py::testReturnsTrueOnValidRange[12-11-13]"
+        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpz4p5e6tl/worker_1/tests/crypto_addresses/test_trx_address.py::testReturnsTrueOnValidTrxAddress[TLjfbTbpZYDQ4EoA4N5CLNgGjfbF8ZWz38]"
       ],
       "exit_code": 1
     },
     {
       "bug_id": "validators-camelcase-005",
-      "test_output": "........................................................................ [  8%]\n........................................................................ [ 16%]\n........................................................................ [ 24%]\n.........................F\n=================================== FAILURES ===================================\n____________________ testReturnsTrueOnValidRange[12-11-13] _____________________\ntests/test_between.py:22: in testReturnsTrueOnValidRange\n    assert between(value, minVal=minVal, maxVal=maxVal)\nE   AssertionError: assert ValidationError(func=between, args={'value': 12, 'minVal': 11, 'maxVal': 13})\nE    +  where ValidationError(func=between, args={'value': 12, 'minVal': 11, 'maxVal': 13}) = between(12, minVal=11, maxVal=13)\n=========================== short test summary info ============================\nFAILED tests/test_between.py::testReturnsTrueOnValidRange[12-11-13] - Asserti...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 241 passed in 0.15s\n",
+      "test_output": "..................................................F\n=================================== FAILURES ===================================\n_____ testReturnsTrueOnValidTrxAddress[TLjfbTbpZYDQ4EoA4N5CLNgGjfbF8ZWz38] _____\n/Users/yuan/stylebench-data/camelcase/validators/tests/crypto_addresses/test_trx_address.py:29: in testReturnsTrueOnValidTrxAddress\n    assert trxAddress(value)\nE   AssertionError: assert ValidationError(func=trxAddress, args={'value': 'TLjfbTbpZYDQ4EoA4N5CLNgGjfbF8ZWz38'})\nE    +  where ValidationError(func=trxAddress, args={'value': 'TLjfbTbpZYDQ4EoA4N5CLNgGjfbF8ZWz38'}) = trxAddress('TLjfbTbpZYDQ4EoA4N5CLNgGjfbF8ZWz38')\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpz4p5e6tl/worker_1/tests/crypto_addresses/test_trx_address.py::testReturnsTrueOnValidTrxAddress[TLjfbTbpZYDQ4EoA4N5CLNgGjfbF8ZWz38]\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 50 passed in 0.10s\n",
       "failing_tests": [
-        "tests/test_between.py::testReturnsTrueOnValidRange[12-11-13]"
+        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpz4p5e6tl/worker_1/tests/crypto_addresses/test_trx_address.py::testReturnsTrueOnValidTrxAddress[TLjfbTbpZYDQ4EoA4N5CLNgGjfbF8ZWz38]"
       ],
       "exit_code": 1
     },
     {
       "bug_id": "validators-camelcase-006",
-      "test_output": "........................................................................ [  8%]\n........................................................................ [ 16%]\n........................................................................ [ 24%]\n.........................F\n=================================== FAILURES ===================================\n____________________ testReturnsTrueOnValidRange[12-11-13] _____________________\ntests/test_between.py:22: in testReturnsTrueOnValidRange\n    assert between(value, minVal=minVal, maxVal=maxVal)\nE   AssertionError: assert ValidationError(func=between, args={'value': 12, 'minVal': 11, 'maxVal': 13})\nE    +  where ValidationError(func=between, args={'value': 12, 'minVal': 11, 'maxVal': 13}) = between(12, minVal=11, maxVal=13)\n=========================== short test summary info ============================\nFAILED tests/test_between.py::testReturnsTrueOnValidRange[12-11-13] - Asserti...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 241 passed in 0.14s\n",
+      "test_output": "..................................................F\n=================================== FAILURES ===================================\n_____ testReturnsTrueOnValidTrxAddress[TLjfbTbpZYDQ4EoA4N5CLNgGjfbF8ZWz38] _____\n/Users/yuan/stylebench-data/camelcase/validators/tests/crypto_addresses/test_trx_address.py:29: in testReturnsTrueOnValidTrxAddress\n    assert trxAddress(value)\nE   AssertionError: assert ValidationError(func=trxAddress, args={'value': 'TLjfbTbpZYDQ4EoA4N5CLNgGjfbF8ZWz38'})\nE    +  where ValidationError(func=trxAddress, args={'value': 'TLjfbTbpZYDQ4EoA4N5CLNgGjfbF8ZWz38'}) = trxAddress('TLjfbTbpZYDQ4EoA4N5CLNgGjfbF8ZWz38')\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpz4p5e6tl/worker_1/tests/crypto_addresses/test_trx_address.py::testReturnsTrueOnValidTrxAddress[TLjfbTbpZYDQ4EoA4N5CLNgGjfbF8ZWz38]\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 50 passed in 0.11s\n",
       "failing_tests": [
-        "tests/test_between.py::testReturnsTrueOnValidRange[12-11-13]"
+        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpz4p5e6tl/worker_1/tests/crypto_addresses/test_trx_address.py::testReturnsTrueOnValidTrxAddress[TLjfbTbpZYDQ4EoA4N5CLNgGjfbF8ZWz38]"
       ],
       "exit_code": 1
     },
     {
       "bug_id": "validators-camelcase-007",
-      "test_output": "........................................................................ [  8%]\n........................................................................ [ 16%]\n........................................................................ [ 24%]\n.........................F\n=================================== FAILURES ===================================\n____________________ testReturnsTrueOnValidRange[12-11-13] _____________________\ntests/test_between.py:22: in testReturnsTrueOnValidRange\n    assert between(value, minVal=minVal, maxVal=maxVal)\nE   AssertionError: assert ValidationError(func=between, args={'value': 12, 'minVal': 11, 'maxVal': 13})\nE    +  where ValidationError(func=between, args={'value': 12, 'minVal': 11, 'maxVal': 13}) = between(12, minVal=11, maxVal=13)\n=========================== short test summary info ============================\nFAILED tests/test_between.py::testReturnsTrueOnValidRange[12-11-13] - Asserti...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 241 passed in 0.14s\n",
+      "test_output": "..................................................F\n=================================== FAILURES ===================================\n_____ testReturnsTrueOnValidTrxAddress[TLjfbTbpZYDQ4EoA4N5CLNgGjfbF8ZWz38] _____\n/Users/yuan/stylebench-data/camelcase/validators/tests/crypto_addresses/test_trx_address.py:29: in testReturnsTrueOnValidTrxAddress\n    assert trxAddress(value)\nE   AssertionError: assert ValidationError(func=trxAddress, args={'value': 'TLjfbTbpZYDQ4EoA4N5CLNgGjfbF8ZWz38'})\nE    +  where ValidationError(func=trxAddress, args={'value': 'TLjfbTbpZYDQ4EoA4N5CLNgGjfbF8ZWz38'}) = trxAddress('TLjfbTbpZYDQ4EoA4N5CLNgGjfbF8ZWz38')\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpz4p5e6tl/worker_1/tests/crypto_addresses/test_trx_address.py::testReturnsTrueOnValidTrxAddress[TLjfbTbpZYDQ4EoA4N5CLNgGjfbF8ZWz38]\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 50 passed in 0.11s\n",
       "failing_tests": [
-        "tests/test_between.py::testReturnsTrueOnValidRange[12-11-13]"
+        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpz4p5e6tl/worker_1/tests/crypto_addresses/test_trx_address.py::testReturnsTrueOnValidTrxAddress[TLjfbTbpZYDQ4EoA4N5CLNgGjfbF8ZWz38]"
       ],
       "exit_code": 1
     },
     {
       "bug_id": "validators-camelcase-008",
-      "test_output": "........................................................................ [  8%]\n........................................................................ [ 16%]\n........................................................................ [ 24%]\n.........................F\n=================================== FAILURES ===================================\n____________________ testReturnsTrueOnValidRange[12-11-13] _____________________\ntests/test_between.py:22: in testReturnsTrueOnValidRange\n    assert between(value, minVal=minVal, maxVal=maxVal)\nE   AssertionError: assert ValidationError(func=between, args={'value': 12, 'minVal': 11, 'maxVal': 13})\nE    +  where ValidationError(func=between, args={'value': 12, 'minVal': 11, 'maxVal': 13}) = between(12, minVal=11, maxVal=13)\n=========================== short test summary info ============================\nFAILED tests/test_between.py::testReturnsTrueOnValidRange[12-11-13] - Asserti...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 241 passed in 0.14s\n",
+      "test_output": "..................................................F\n=================================== FAILURES ===================================\n_____ testReturnsTrueOnValidTrxAddress[TLjfbTbpZYDQ4EoA4N5CLNgGjfbF8ZWz38] _____\n/Users/yuan/stylebench-data/camelcase/validators/tests/crypto_addresses/test_trx_address.py:29: in testReturnsTrueOnValidTrxAddress\n    assert trxAddress(value)\nE   AssertionError: assert ValidationError(func=trxAddress, args={'value': 'TLjfbTbpZYDQ4EoA4N5CLNgGjfbF8ZWz38'})\nE    +  where ValidationError(func=trxAddress, args={'value': 'TLjfbTbpZYDQ4EoA4N5CLNgGjfbF8ZWz38'}) = trxAddress('TLjfbTbpZYDQ4EoA4N5CLNgGjfbF8ZWz38')\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpz4p5e6tl/worker_1/tests/crypto_addresses/test_trx_address.py::testReturnsTrueOnValidTrxAddress[TLjfbTbpZYDQ4EoA4N5CLNgGjfbF8ZWz38]\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 50 passed in 0.14s\n",
       "failing_tests": [
-        "tests/test_between.py::testReturnsTrueOnValidRange[12-11-13]"
+        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpz4p5e6tl/worker_1/tests/crypto_addresses/test_trx_address.py::testReturnsTrueOnValidTrxAddress[TLjfbTbpZYDQ4EoA4N5CLNgGjfbF8ZWz38]"
       ],
       "exit_code": 1
     },
     {
       "bug_id": "validators-camelcase-009",
-      "test_output": "........................................................................ [  8%]\n........................................................................ [ 16%]\n........................................................................ [ 24%]\n.........................F\n=================================== FAILURES ===================================\n____________________ testReturnsTrueOnValidRange[12-11-13] _____________________\ntests/test_between.py:22: in testReturnsTrueOnValidRange\n    assert between(value, minVal=minVal, maxVal=maxVal)\nE   AssertionError: assert ValidationError(func=between, args={'value': 12, 'minVal': 11, 'maxVal': 13})\nE    +  where ValidationError(func=between, args={'value': 12, 'minVal': 11, 'maxVal': 13}) = between(12, minVal=11, maxVal=13)\n=========================== short test summary info ============================\nFAILED tests/test_between.py::testReturnsTrueOnValidRange[12-11-13] - Asserti...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 241 passed in 0.15s\n",
+      "test_output": "..................................................F\n=================================== FAILURES ===================================\n_____ testReturnsTrueOnValidTrxAddress[TLjfbTbpZYDQ4EoA4N5CLNgGjfbF8ZWz38] _____\n/Users/yuan/stylebench-data/camelcase/validators/tests/crypto_addresses/test_trx_address.py:29: in testReturnsTrueOnValidTrxAddress\n    assert trxAddress(value)\nE   AssertionError: assert ValidationError(func=trxAddress, args={'value': 'TLjfbTbpZYDQ4EoA4N5CLNgGjfbF8ZWz38'})\nE    +  where ValidationError(func=trxAddress, args={'value': 'TLjfbTbpZYDQ4EoA4N5CLNgGjfbF8ZWz38'}) = trxAddress('TLjfbTbpZYDQ4EoA4N5CLNgGjfbF8ZWz38')\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpz4p5e6tl/worker_1/tests/crypto_addresses/test_trx_address.py::testReturnsTrueOnValidTrxAddress[TLjfbTbpZYDQ4EoA4N5CLNgGjfbF8ZWz38]\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 50 passed in 0.12s\n",
       "failing_tests": [
-        "tests/test_between.py::testReturnsTrueOnValidRange[12-11-13]"
+        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpz4p5e6tl/worker_1/tests/crypto_addresses/test_trx_address.py::testReturnsTrueOnValidTrxAddress[TLjfbTbpZYDQ4EoA4N5CLNgGjfbF8ZWz38]"
       ],
       "exit_code": 1
     },
     {
       "bug_id": "validators-camelcase-010",
-      "test_output": "........................................................................ [  8%]\n........................................................................ [ 16%]\n........................................................................ [ 24%]\n.........................F\n=================================== FAILURES ===================================\n____________________ testReturnsTrueOnValidRange[12-11-13] _____________________\ntests/test_between.py:22: in testReturnsTrueOnValidRange\n    assert between(value, minVal=minVal, maxVal=maxVal)\nE   AssertionError: assert ValidationError(func=between, args={'value': 12, 'minVal': 11, 'maxVal': 13})\nE    +  where ValidationError(func=between, args={'value': 12, 'minVal': 11, 'maxVal': 13}) = between(12, minVal=11, maxVal=13)\n=========================== short test summary info ============================\nFAILED tests/test_between.py::testReturnsTrueOnValidRange[12-11-13] - Asserti...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 241 passed in 0.14s\n",
+      "test_output": "..................................................F\n=================================== FAILURES ===================================\n_____ testReturnsTrueOnValidTrxAddress[TLjfbTbpZYDQ4EoA4N5CLNgGjfbF8ZWz38] _____\n/Users/yuan/stylebench-data/camelcase/validators/tests/crypto_addresses/test_trx_address.py:29: in testReturnsTrueOnValidTrxAddress\n    assert trxAddress(value)\nE   AssertionError: assert ValidationError(func=trxAddress, args={'value': 'TLjfbTbpZYDQ4EoA4N5CLNgGjfbF8ZWz38'})\nE    +  where ValidationError(func=trxAddress, args={'value': 'TLjfbTbpZYDQ4EoA4N5CLNgGjfbF8ZWz38'}) = trxAddress('TLjfbTbpZYDQ4EoA4N5CLNgGjfbF8ZWz38')\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpz4p5e6tl/worker_1/tests/crypto_addresses/test_trx_address.py::testReturnsTrueOnValidTrxAddress[TLjfbTbpZYDQ4EoA4N5CLNgGjfbF8ZWz38]\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 50 passed in 0.11s\n",
       "failing_tests": [
-        "tests/test_between.py::testReturnsTrueOnValidRange[12-11-13]"
+        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpz4p5e6tl/worker_1/tests/crypto_addresses/test_trx_address.py::testReturnsTrueOnValidTrxAddress[TLjfbTbpZYDQ4EoA4N5CLNgGjfbF8ZWz38]"
       ],
       "exit_code": 1
     },
     {
       "bug_id": "validators-camelcase-011",
-      "test_output": "........................................................................ [  8%]\n........................................................................ [ 16%]\n........................................................................ [ 24%]\n.........................F\n=================================== FAILURES ===================================\n____________________ testReturnsTrueOnValidRange[12-11-13] _____________________\ntests/test_between.py:22: in testReturnsTrueOnValidRange\n    assert between(value, minVal=minVal, maxVal=maxVal)\nE   AssertionError: assert ValidationError(func=between, args={'value': 12, 'minVal': 11, 'maxVal': 13})\nE    +  where ValidationError(func=between, args={'value': 12, 'minVal': 11, 'maxVal': 13}) = between(12, minVal=11, maxVal=13)\n=========================== short test summary info ============================\nFAILED tests/test_between.py::testReturnsTrueOnValidRange[12-11-13] - Asserti...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 241 passed in 0.14s\n",
+      "test_output": "..................................................F\n=================================== FAILURES ===================================\n_____ testReturnsTrueOnValidTrxAddress[TLjfbTbpZYDQ4EoA4N5CLNgGjfbF8ZWz38] _____\n/Users/yuan/stylebench-data/camelcase/validators/tests/crypto_addresses/test_trx_address.py:29: in testReturnsTrueOnValidTrxAddress\n    assert trxAddress(value)\nE   AssertionError: assert ValidationError(func=trxAddress, args={'value': 'TLjfbTbpZYDQ4EoA4N5CLNgGjfbF8ZWz38'})\nE    +  where ValidationError(func=trxAddress, args={'value': 'TLjfbTbpZYDQ4EoA4N5CLNgGjfbF8ZWz38'}) = trxAddress('TLjfbTbpZYDQ4EoA4N5CLNgGjfbF8ZWz38')\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpz4p5e6tl/worker_1/tests/crypto_addresses/test_trx_address.py::testReturnsTrueOnValidTrxAddress[TLjfbTbpZYDQ4EoA4N5CLNgGjfbF8ZWz38]\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 50 passed in 0.10s\n",
       "failing_tests": [
-        "tests/test_between.py::testReturnsTrueOnValidRange[12-11-13]"
+        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpz4p5e6tl/worker_1/tests/crypto_addresses/test_trx_address.py::testReturnsTrueOnValidTrxAddress[TLjfbTbpZYDQ4EoA4N5CLNgGjfbF8ZWz38]"
       ],
       "exit_code": 1
     },
     {
       "bug_id": "validators-camelcase-012",
-      "test_output": "........................................................................ [  8%]\n........................................................................ [ 16%]\n........................................................................ [ 24%]\n.........................F\n=================================== FAILURES ===================================\n____________________ testReturnsTrueOnValidRange[12-11-13] _____________________\ntests/test_between.py:22: in testReturnsTrueOnValidRange\n    assert between(value, minVal=minVal, maxVal=maxVal)\nE   AssertionError: assert ValidationError(func=between, args={'value': 12, 'minVal': 11, 'maxVal': 13})\nE    +  where ValidationError(func=between, args={'value': 12, 'minVal': 11, 'maxVal': 13}) = between(12, minVal=11, maxVal=13)\n=========================== short test summary info ============================\nFAILED tests/test_between.py::testReturnsTrueOnValidRange[12-11-13] - Asserti...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 241 passed in 0.14s\n",
+      "test_output": "..................................................F\n=================================== FAILURES ===================================\n_____ testReturnsTrueOnValidTrxAddress[TLjfbTbpZYDQ4EoA4N5CLNgGjfbF8ZWz38] _____\n/Users/yuan/stylebench-data/camelcase/validators/tests/crypto_addresses/test_trx_address.py:29: in testReturnsTrueOnValidTrxAddress\n    assert trxAddress(value)\nE   AssertionError: assert ValidationError(func=trxAddress, args={'value': 'TLjfbTbpZYDQ4EoA4N5CLNgGjfbF8ZWz38'})\nE    +  where ValidationError(func=trxAddress, args={'value': 'TLjfbTbpZYDQ4EoA4N5CLNgGjfbF8ZWz38'}) = trxAddress('TLjfbTbpZYDQ4EoA4N5CLNgGjfbF8ZWz38')\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpz4p5e6tl/worker_1/tests/crypto_addresses/test_trx_address.py::testReturnsTrueOnValidTrxAddress[TLjfbTbpZYDQ4EoA4N5CLNgGjfbF8ZWz38]\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 50 passed in 0.10s\n",
       "failing_tests": [
-        "tests/test_between.py::testReturnsTrueOnValidRange[12-11-13]"
+        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpz4p5e6tl/worker_1/tests/crypto_addresses/test_trx_address.py::testReturnsTrueOnValidTrxAddress[TLjfbTbpZYDQ4EoA4N5CLNgGjfbF8ZWz38]"
       ],
       "exit_code": 1
     },
     {
       "bug_id": "validators-camelcase-013",
-      "test_output": "........................................................................ [  8%]\n........................................................................ [ 16%]\n........................................................................ [ 24%]\n.........................F\n=================================== FAILURES ===================================\n____________________ testReturnsTrueOnValidRange[12-11-13] _____________________\ntests/test_between.py:22: in testReturnsTrueOnValidRange\n    assert between(value, minVal=minVal, maxVal=maxVal)\nE   AssertionError: assert ValidationError(func=between, args={'value': 12, 'minVal': 11, 'maxVal': 13})\nE    +  where ValidationError(func=between, args={'value': 12, 'minVal': 11, 'maxVal': 13}) = between(12, minVal=11, maxVal=13)\n=========================== short test summary info ============================\nFAILED tests/test_between.py::testReturnsTrueOnValidRange[12-11-13] - Asserti...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 241 passed in 0.14s\n",
+      "test_output": "..................................................F\n=================================== FAILURES ===================================\n_____ testReturnsTrueOnValidTrxAddress[TLjfbTbpZYDQ4EoA4N5CLNgGjfbF8ZWz38] _____\n/Users/yuan/stylebench-data/camelcase/validators/tests/crypto_addresses/test_trx_address.py:29: in testReturnsTrueOnValidTrxAddress\n    assert trxAddress(value)\nE   AssertionError: assert ValidationError(func=trxAddress, args={'value': 'TLjfbTbpZYDQ4EoA4N5CLNgGjfbF8ZWz38'})\nE    +  where ValidationError(func=trxAddress, args={'value': 'TLjfbTbpZYDQ4EoA4N5CLNgGjfbF8ZWz38'}) = trxAddress('TLjfbTbpZYDQ4EoA4N5CLNgGjfbF8ZWz38')\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpz4p5e6tl/worker_1/tests/crypto_addresses/test_trx_address.py::testReturnsTrueOnValidTrxAddress[TLjfbTbpZYDQ4EoA4N5CLNgGjfbF8ZWz38]\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 50 passed in 0.10s\n",
       "failing_tests": [
-        "tests/test_between.py::testReturnsTrueOnValidRange[12-11-13]"
+        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpz4p5e6tl/worker_1/tests/crypto_addresses/test_trx_address.py::testReturnsTrueOnValidTrxAddress[TLjfbTbpZYDQ4EoA4N5CLNgGjfbF8ZWz38]"
       ],
       "exit_code": 1
     },
     {
       "bug_id": "validators-camelcase-014",
-      "test_output": "........................................................................ [  8%]\n........................................................................ [ 16%]\n........................................................................ [ 24%]\n.........................F\n=================================== FAILURES ===================================\n____________________ testReturnsTrueOnValidRange[12-11-13] _____________________\ntests/test_between.py:22: in testReturnsTrueOnValidRange\n    assert between(value, minVal=minVal, maxVal=maxVal)\nE   AssertionError: assert ValidationError(func=between, args={'value': 12, 'minVal': 11, 'maxVal': 13})\nE    +  where ValidationError(func=between, args={'value': 12, 'minVal': 11, 'maxVal': 13}) = between(12, minVal=11, maxVal=13)\n=========================== short test summary info ============================\nFAILED tests/test_between.py::testReturnsTrueOnValidRange[12-11-13] - Asserti...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 241 passed in 0.14s\n",
+      "test_output": "..................................................F\n=================================== FAILURES ===================================\n_____ testReturnsTrueOnValidTrxAddress[TLjfbTbpZYDQ4EoA4N5CLNgGjfbF8ZWz38] _____\n/Users/yuan/stylebench-data/camelcase/validators/tests/crypto_addresses/test_trx_address.py:29: in testReturnsTrueOnValidTrxAddress\n    assert trxAddress(value)\nE   AssertionError: assert ValidationError(func=trxAddress, args={'value': 'TLjfbTbpZYDQ4EoA4N5CLNgGjfbF8ZWz38'})\nE    +  where ValidationError(func=trxAddress, args={'value': 'TLjfbTbpZYDQ4EoA4N5CLNgGjfbF8ZWz38'}) = trxAddress('TLjfbTbpZYDQ4EoA4N5CLNgGjfbF8ZWz38')\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpz4p5e6tl/worker_1/tests/crypto_addresses/test_trx_address.py::testReturnsTrueOnValidTrxAddress[TLjfbTbpZYDQ4EoA4N5CLNgGjfbF8ZWz38]\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 50 passed in 0.16s\n",
       "failing_tests": [
-        "tests/test_between.py::testReturnsTrueOnValidRange[12-11-13]"
+        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpz4p5e6tl/worker_1/tests/crypto_addresses/test_trx_address.py::testReturnsTrueOnValidTrxAddress[TLjfbTbpZYDQ4EoA4N5CLNgGjfbF8ZWz38]"
       ],
       "exit_code": 1
     },
     {
       "bug_id": "validators-camelcase-015",
-      "test_output": "........................................................................ [  8%]\n........................................................................ [ 16%]\n........................................................................ [ 24%]\n.........................F\n=================================== FAILURES ===================================\n____________________ testReturnsTrueOnValidRange[12-11-13] _____________________\ntests/test_between.py:22: in testReturnsTrueOnValidRange\n    assert between(value, minVal=minVal, maxVal=maxVal)\nE   AssertionError: assert ValidationError(func=between, args={'value': 12, 'minVal': 11, 'maxVal': 13})\nE    +  where ValidationError(func=between, args={'value': 12, 'minVal': 11, 'maxVal': 13}) = between(12, minVal=11, maxVal=13)\n=========================== short test summary info ============================\nFAILED tests/test_between.py::testReturnsTrueOnValidRange[12-11-13] - Asserti...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 241 passed in 0.14s\n",
+      "test_output": "..................................................F\n=================================== FAILURES ===================================\n_____ testReturnsTrueOnValidTrxAddress[TLjfbTbpZYDQ4EoA4N5CLNgGjfbF8ZWz38] _____\n/Users/yuan/stylebench-data/camelcase/validators/tests/crypto_addresses/test_trx_address.py:29: in testReturnsTrueOnValidTrxAddress\n    assert trxAddress(value)\nE   AssertionError: assert ValidationError(func=trxAddress, args={'value': 'TLjfbTbpZYDQ4EoA4N5CLNgGjfbF8ZWz38'})\nE    +  where ValidationError(func=trxAddress, args={'value': 'TLjfbTbpZYDQ4EoA4N5CLNgGjfbF8ZWz38'}) = trxAddress('TLjfbTbpZYDQ4EoA4N5CLNgGjfbF8ZWz38')\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpz4p5e6tl/worker_1/tests/crypto_addresses/test_trx_address.py::testReturnsTrueOnValidTrxAddress[TLjfbTbpZYDQ4EoA4N5CLNgGjfbF8ZWz38]\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 50 passed in 0.11s\n",
       "failing_tests": [
-        "tests/test_between.py::testReturnsTrueOnValidRange[12-11-13]"
+        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpz4p5e6tl/worker_1/tests/crypto_addresses/test_trx_address.py::testReturnsTrueOnValidTrxAddress[TLjfbTbpZYDQ4EoA4N5CLNgGjfbF8ZWz38]"
       ],
       "exit_code": 1
     },
     {
       "bug_id": "validators-camelcase-016",
-      "test_output": "........................................................................ [  8%]\n........................................................................ [ 16%]\n........................................................................ [ 24%]\n.........................F\n=================================== FAILURES ===================================\n____________________ testReturnsTrueOnValidRange[12-11-13] _____________________\ntests/test_between.py:22: in testReturnsTrueOnValidRange\n    assert between(value, minVal=minVal, maxVal=maxVal)\nE   AssertionError: assert ValidationError(func=between, args={'value': 12, 'minVal': 11, 'maxVal': 13})\nE    +  where ValidationError(func=between, args={'value': 12, 'minVal': 11, 'maxVal': 13}) = between(12, minVal=11, maxVal=13)\n=========================== short test summary info ============================\nFAILED tests/test_between.py::testReturnsTrueOnValidRange[12-11-13] - Asserti...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 241 passed in 0.14s\n",
+      "test_output": "..................................................F\n=================================== FAILURES ===================================\n_____ testReturnsTrueOnValidTrxAddress[TLjfbTbpZYDQ4EoA4N5CLNgGjfbF8ZWz38] _____\n/Users/yuan/stylebench-data/camelcase/validators/tests/crypto_addresses/test_trx_address.py:29: in testReturnsTrueOnValidTrxAddress\n    assert trxAddress(value)\nE   AssertionError: assert ValidationError(func=trxAddress, args={'value': 'TLjfbTbpZYDQ4EoA4N5CLNgGjfbF8ZWz38'})\nE    +  where ValidationError(func=trxAddress, args={'value': 'TLjfbTbpZYDQ4EoA4N5CLNgGjfbF8ZWz38'}) = trxAddress('TLjfbTbpZYDQ4EoA4N5CLNgGjfbF8ZWz38')\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpz4p5e6tl/worker_1/tests/crypto_addresses/test_trx_address.py::testReturnsTrueOnValidTrxAddress[TLjfbTbpZYDQ4EoA4N5CLNgGjfbF8ZWz38]\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 50 passed in 0.11s\n",
       "failing_tests": [
-        "tests/test_between.py::testReturnsTrueOnValidRange[12-11-13]"
+        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpz4p5e6tl/worker_1/tests/crypto_addresses/test_trx_address.py::testReturnsTrueOnValidTrxAddress[TLjfbTbpZYDQ4EoA4N5CLNgGjfbF8ZWz38]"
       ],
       "exit_code": 1
     },
     {
       "bug_id": "validators-camelcase-017",
-      "test_output": "........................................................................ [  8%]\n........................................................................ [ 16%]\n........................................................................ [ 24%]\n.........................F\n=================================== FAILURES ===================================\n____________________ testReturnsTrueOnValidRange[12-11-13] _____________________\ntests/test_between.py:22: in testReturnsTrueOnValidRange\n    assert between(value, minVal=minVal, maxVal=maxVal)\nE   AssertionError: assert ValidationError(func=between, args={'value': 12, 'minVal': 11, 'maxVal': 13})\nE    +  where ValidationError(func=between, args={'value': 12, 'minVal': 11, 'maxVal': 13}) = between(12, minVal=11, maxVal=13)\n=========================== short test summary info ============================\nFAILED tests/test_between.py::testReturnsTrueOnValidRange[12-11-13] - Asserti...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 241 passed in 0.14s\n",
+      "test_output": "..................................................F\n=================================== FAILURES ===================================\n_____ testReturnsTrueOnValidTrxAddress[TLjfbTbpZYDQ4EoA4N5CLNgGjfbF8ZWz38] _____\n/Users/yuan/stylebench-data/camelcase/validators/tests/crypto_addresses/test_trx_address.py:29: in testReturnsTrueOnValidTrxAddress\n    assert trxAddress(value)\nE   AssertionError: assert ValidationError(func=trxAddress, args={'value': 'TLjfbTbpZYDQ4EoA4N5CLNgGjfbF8ZWz38'})\nE    +  where ValidationError(func=trxAddress, args={'value': 'TLjfbTbpZYDQ4EoA4N5CLNgGjfbF8ZWz38'}) = trxAddress('TLjfbTbpZYDQ4EoA4N5CLNgGjfbF8ZWz38')\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpz4p5e6tl/worker_1/tests/crypto_addresses/test_trx_address.py::testReturnsTrueOnValidTrxAddress[TLjfbTbpZYDQ4EoA4N5CLNgGjfbF8ZWz38]\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 50 passed in 0.11s\n",
       "failing_tests": [
-        "tests/test_between.py::testReturnsTrueOnValidRange[12-11-13]"
+        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpz4p5e6tl/worker_1/tests/crypto_addresses/test_trx_address.py::testReturnsTrueOnValidTrxAddress[TLjfbTbpZYDQ4EoA4N5CLNgGjfbF8ZWz38]"
       ],
       "exit_code": 1
     },
     {
       "bug_id": "validators-camelcase-018",
-      "test_output": "........................................................................ [  8%]\n........................................................................ [ 16%]\n........................................................................ [ 24%]\n.........................F\n=================================== FAILURES ===================================\n____________________ testReturnsTrueOnValidRange[12-11-13] _____________________\ntests/test_between.py:22: in testReturnsTrueOnValidRange\n    assert between(value, minVal=minVal, maxVal=maxVal)\nE   AssertionError: assert ValidationError(func=between, args={'value': 12, 'minVal': 11, 'maxVal': 13})\nE    +  where ValidationError(func=between, args={'value': 12, 'minVal': 11, 'maxVal': 13}) = between(12, minVal=11, maxVal=13)\n=========================== short test summary info ============================\nFAILED tests/test_between.py::testReturnsTrueOnValidRange[12-11-13] - Asserti...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 241 passed in 0.14s\n",
+      "test_output": "..................................................F\n=================================== FAILURES ===================================\n_____ testReturnsTrueOnValidTrxAddress[TLjfbTbpZYDQ4EoA4N5CLNgGjfbF8ZWz38] _____\n/Users/yuan/stylebench-data/camelcase/validators/tests/crypto_addresses/test_trx_address.py:29: in testReturnsTrueOnValidTrxAddress\n    assert trxAddress(value)\nE   AssertionError: assert ValidationError(func=trxAddress, args={'value': 'TLjfbTbpZYDQ4EoA4N5CLNgGjfbF8ZWz38'})\nE    +  where ValidationError(func=trxAddress, args={'value': 'TLjfbTbpZYDQ4EoA4N5CLNgGjfbF8ZWz38'}) = trxAddress('TLjfbTbpZYDQ4EoA4N5CLNgGjfbF8ZWz38')\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpz4p5e6tl/worker_1/tests/crypto_addresses/test_trx_address.py::testReturnsTrueOnValidTrxAddress[TLjfbTbpZYDQ4EoA4N5CLNgGjfbF8ZWz38]\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 50 passed in 0.11s\n",
       "failing_tests": [
-        "tests/test_between.py::testReturnsTrueOnValidRange[12-11-13]"
+        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpz4p5e6tl/worker_1/tests/crypto_addresses/test_trx_address.py::testReturnsTrueOnValidTrxAddress[TLjfbTbpZYDQ4EoA4N5CLNgGjfbF8ZWz38]"
       ],
       "exit_code": 1
     },
     {
       "bug_id": "validators-camelcase-019",
-      "test_output": "........................................................................ [  8%]\n........................................................................ [ 16%]\n........................................................................ [ 24%]\n.........................F\n=================================== FAILURES ===================================\n____________________ testReturnsTrueOnValidRange[12-11-13] _____________________\ntests/test_between.py:22: in testReturnsTrueOnValidRange\n    assert between(value, minVal=minVal, maxVal=maxVal)\nE   AssertionError: assert ValidationError(func=between, args={'value': 12, 'minVal': 11, 'maxVal': 13})\nE    +  where ValidationError(func=between, args={'value': 12, 'minVal': 11, 'maxVal': 13}) = between(12, minVal=11, maxVal=13)\n=========================== short test summary info ============================\nFAILED tests/test_between.py::testReturnsTrueOnValidRange[12-11-13] - Asserti...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 241 passed in 0.14s\n",
+      "test_output": "..................................................F\n=================================== FAILURES ===================================\n_____ testReturnsTrueOnValidTrxAddress[TLjfbTbpZYDQ4EoA4N5CLNgGjfbF8ZWz38] _____\n/Users/yuan/stylebench-data/camelcase/validators/tests/crypto_addresses/test_trx_address.py:29: in testReturnsTrueOnValidTrxAddress\n    assert trxAddress(value)\nE   AssertionError: assert ValidationError(func=trxAddress, args={'value': 'TLjfbTbpZYDQ4EoA4N5CLNgGjfbF8ZWz38'})\nE    +  where ValidationError(func=trxAddress, args={'value': 'TLjfbTbpZYDQ4EoA4N5CLNgGjfbF8ZWz38'}) = trxAddress('TLjfbTbpZYDQ4EoA4N5CLNgGjfbF8ZWz38')\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpz4p5e6tl/worker_1/tests/crypto_addresses/test_trx_address.py::testReturnsTrueOnValidTrxAddress[TLjfbTbpZYDQ4EoA4N5CLNgGjfbF8ZWz38]\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 50 passed in 0.10s\n",
       "failing_tests": [
-        "tests/test_between.py::testReturnsTrueOnValidRange[12-11-13]"
+        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpz4p5e6tl/worker_1/tests/crypto_addresses/test_trx_address.py::testReturnsTrueOnValidTrxAddress[TLjfbTbpZYDQ4EoA4N5CLNgGjfbF8ZWz38]"
       ],
       "exit_code": 1
     },
     {
       "bug_id": "validators-camelcase-020",
-      "test_output": "........................................................................ [  8%]\n........................................................................ [ 16%]\n........................................................................ [ 24%]\n.........................F\n=================================== FAILURES ===================================\n____________________ testReturnsTrueOnValidRange[12-11-13] _____________________\ntests/test_between.py:22: in testReturnsTrueOnValidRange\n    assert between(value, minVal=minVal, maxVal=maxVal)\nE   AssertionError: assert ValidationError(func=between, args={'value': 12, 'minVal': 11, 'maxVal': 13})\nE    +  where ValidationError(func=between, args={'value': 12, 'minVal': 11, 'maxVal': 13}) = between(12, minVal=11, maxVal=13)\n=========================== short test summary info ============================\nFAILED tests/test_between.py::testReturnsTrueOnValidRange[12-11-13] - Asserti...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 241 passed in 0.14s\n",
+      "test_output": "..................................................F\n=================================== FAILURES ===================================\n_____ testReturnsTrueOnValidTrxAddress[TLjfbTbpZYDQ4EoA4N5CLNgGjfbF8ZWz38] _____\n/Users/yuan/stylebench-data/camelcase/validators/tests/crypto_addresses/test_trx_address.py:29: in testReturnsTrueOnValidTrxAddress\n    assert trxAddress(value)\nE   AssertionError: assert ValidationError(func=trxAddress, args={'value': 'TLjfbTbpZYDQ4EoA4N5CLNgGjfbF8ZWz38'})\nE    +  where ValidationError(func=trxAddress, args={'value': 'TLjfbTbpZYDQ4EoA4N5CLNgGjfbF8ZWz38'}) = trxAddress('TLjfbTbpZYDQ4EoA4N5CLNgGjfbF8ZWz38')\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpz4p5e6tl/worker_1/tests/crypto_addresses/test_trx_address.py::testReturnsTrueOnValidTrxAddress[TLjfbTbpZYDQ4EoA4N5CLNgGjfbF8ZWz38]\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 50 passed in 0.10s\n",
       "failing_tests": [
-        "tests/test_between.py::testReturnsTrueOnValidRange[12-11-13]"
+        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpz4p5e6tl/worker_1/tests/crypto_addresses/test_trx_address.py::testReturnsTrueOnValidTrxAddress[TLjfbTbpZYDQ4EoA4N5CLNgGjfbF8ZWz38]"
       ],
       "exit_code": 1
     },
     {
       "bug_id": "validators-camelcase-021",
-      "test_output": "........................................................................ [  8%]\n........................................................................ [ 16%]\n........................................................................ [ 24%]\n.........................F\n=================================== FAILURES ===================================\n____________________ testReturnsTrueOnValidRange[12-11-13] _____________________\ntests/test_between.py:22: in testReturnsTrueOnValidRange\n    assert between(value, minVal=minVal, maxVal=maxVal)\nE   AssertionError: assert ValidationError(func=between, args={'value': 12, 'minVal': 11, 'maxVal': 13})\nE    +  where ValidationError(func=between, args={'value': 12, 'minVal': 11, 'maxVal': 13}) = between(12, minVal=11, maxVal=13)\n=========================== short test summary info ============================\nFAILED tests/test_between.py::testReturnsTrueOnValidRange[12-11-13] - Asserti...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 241 passed in 0.14s\n",
+      "test_output": "..................................................F\n=================================== FAILURES ===================================\n_____ testReturnsTrueOnValidTrxAddress[TLjfbTbpZYDQ4EoA4N5CLNgGjfbF8ZWz38] _____\n/Users/yuan/stylebench-data/camelcase/validators/tests/crypto_addresses/test_trx_address.py:29: in testReturnsTrueOnValidTrxAddress\n    assert trxAddress(value)\nE   AssertionError: assert ValidationError(func=trxAddress, args={'value': 'TLjfbTbpZYDQ4EoA4N5CLNgGjfbF8ZWz38'})\nE    +  where ValidationError(func=trxAddress, args={'value': 'TLjfbTbpZYDQ4EoA4N5CLNgGjfbF8ZWz38'}) = trxAddress('TLjfbTbpZYDQ4EoA4N5CLNgGjfbF8ZWz38')\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpz4p5e6tl/worker_1/tests/crypto_addresses/test_trx_address.py::testReturnsTrueOnValidTrxAddress[TLjfbTbpZYDQ4EoA4N5CLNgGjfbF8ZWz38]\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 50 passed in 0.14s\n",
       "failing_tests": [
-        "tests/test_between.py::testReturnsTrueOnValidRange[12-11-13]"
+        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpz4p5e6tl/worker_1/tests/crypto_addresses/test_trx_address.py::testReturnsTrueOnValidTrxAddress[TLjfbTbpZYDQ4EoA4N5CLNgGjfbF8ZWz38]"
       ],
       "exit_code": 1
     },
     {
       "bug_id": "validators-camelcase-022",
-      "test_output": "........................................................................ [  8%]\n........................................................................ [ 16%]\n........................................................................ [ 24%]\n.........................F\n=================================== FAILURES ===================================\n____________________ testReturnsTrueOnValidRange[12-11-13] _____________________\ntests/test_between.py:22: in testReturnsTrueOnValidRange\n    assert between(value, minVal=minVal, maxVal=maxVal)\nE   AssertionError: assert ValidationError(func=between, args={'value': 12, 'minVal': 11, 'maxVal': 13})\nE    +  where ValidationError(func=between, args={'value': 12, 'minVal': 11, 'maxVal': 13}) = between(12, minVal=11, maxVal=13)\n=========================== short test summary info ============================\nFAILED tests/test_between.py::testReturnsTrueOnValidRange[12-11-13] - Asserti...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 241 passed in 0.14s\n",
+      "test_output": "..................................................F\n=================================== FAILURES ===================================\n_____ testReturnsTrueOnValidTrxAddress[TLjfbTbpZYDQ4EoA4N5CLNgGjfbF8ZWz38] _____\n/Users/yuan/stylebench-data/camelcase/validators/tests/crypto_addresses/test_trx_address.py:29: in testReturnsTrueOnValidTrxAddress\n    assert trxAddress(value)\nE   AssertionError: assert ValidationError(func=trxAddress, args={'value': 'TLjfbTbpZYDQ4EoA4N5CLNgGjfbF8ZWz38'})\nE    +  where ValidationError(func=trxAddress, args={'value': 'TLjfbTbpZYDQ4EoA4N5CLNgGjfbF8ZWz38'}) = trxAddress('TLjfbTbpZYDQ4EoA4N5CLNgGjfbF8ZWz38')\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpz4p5e6tl/worker_1/tests/crypto_addresses/test_trx_address.py::testReturnsTrueOnValidTrxAddress[TLjfbTbpZYDQ4EoA4N5CLNgGjfbF8ZWz38]\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 50 passed in 0.12s\n",
       "failing_tests": [
-        "tests/test_between.py::testReturnsTrueOnValidRange[12-11-13]"
+        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpz4p5e6tl/worker_1/tests/crypto_addresses/test_trx_address.py::testReturnsTrueOnValidTrxAddress[TLjfbTbpZYDQ4EoA4N5CLNgGjfbF8ZWz38]"
       ],
       "exit_code": 1
     },
     {
       "bug_id": "validators-camelcase-023",
-      "test_output": "........................................................................ [  8%]\n........................................................................ [ 16%]\n........................................................................ [ 24%]\n.........................F\n=================================== FAILURES ===================================\n____________________ testReturnsTrueOnValidRange[12-11-13] _____________________\ntests/test_between.py:22: in testReturnsTrueOnValidRange\n    assert between(value, minVal=minVal, maxVal=maxVal)\nE   AssertionError: assert ValidationError(func=between, args={'value': 12, 'minVal': 11, 'maxVal': 13})\nE    +  where ValidationError(func=between, args={'value': 12, 'minVal': 11, 'maxVal': 13}) = between(12, minVal=11, maxVal=13)\n=========================== short test summary info ============================\nFAILED tests/test_between.py::testReturnsTrueOnValidRange[12-11-13] - Asserti...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 241 passed in 0.14s\n",
+      "test_output": "..................................................F\n=================================== FAILURES ===================================\n_____ testReturnsTrueOnValidTrxAddress[TLjfbTbpZYDQ4EoA4N5CLNgGjfbF8ZWz38] _____\n/Users/yuan/stylebench-data/camelcase/validators/tests/crypto_addresses/test_trx_address.py:29: in testReturnsTrueOnValidTrxAddress\n    assert trxAddress(value)\nE   AssertionError: assert ValidationError(func=trxAddress, args={'value': 'TLjfbTbpZYDQ4EoA4N5CLNgGjfbF8ZWz38'})\nE    +  where ValidationError(func=trxAddress, args={'value': 'TLjfbTbpZYDQ4EoA4N5CLNgGjfbF8ZWz38'}) = trxAddress('TLjfbTbpZYDQ4EoA4N5CLNgGjfbF8ZWz38')\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpz4p5e6tl/worker_1/tests/crypto_addresses/test_trx_address.py::testReturnsTrueOnValidTrxAddress[TLjfbTbpZYDQ4EoA4N5CLNgGjfbF8ZWz38]\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 50 passed in 0.12s\n",
       "failing_tests": [
-        "tests/test_between.py::testReturnsTrueOnValidRange[12-11-13]"
+        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpz4p5e6tl/worker_1/tests/crypto_addresses/test_trx_address.py::testReturnsTrueOnValidTrxAddress[TLjfbTbpZYDQ4EoA4N5CLNgGjfbF8ZWz38]"
       ],
       "exit_code": 1
     },
     {
       "bug_id": "validators-camelcase-024",
-      "test_output": "........................................................................ [  8%]\n........................................................................ [ 16%]\n........................................................................ [ 24%]\n.........................F\n=================================== FAILURES ===================================\n____________________ testReturnsTrueOnValidRange[12-11-13] _____________________\ntests/test_between.py:22: in testReturnsTrueOnValidRange\n    assert between(value, minVal=minVal, maxVal=maxVal)\nE   AssertionError: assert ValidationError(func=between, args={'value': 12, 'minVal': 11, 'maxVal': 13})\nE    +  where ValidationError(func=between, args={'value': 12, 'minVal': 11, 'maxVal': 13}) = between(12, minVal=11, maxVal=13)\n=========================== short test summary info ============================\nFAILED tests/test_between.py::testReturnsTrueOnValidRange[12-11-13] - Asserti...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 241 passed in 0.14s\n",
+      "test_output": "..................................................F\n=================================== FAILURES ===================================\n_____ testReturnsTrueOnValidTrxAddress[TLjfbTbpZYDQ4EoA4N5CLNgGjfbF8ZWz38] _____\n/Users/yuan/stylebench-data/camelcase/validators/tests/crypto_addresses/test_trx_address.py:29: in testReturnsTrueOnValidTrxAddress\n    assert trxAddress(value)\nE   AssertionError: assert ValidationError(func=trxAddress, args={'value': 'TLjfbTbpZYDQ4EoA4N5CLNgGjfbF8ZWz38'})\nE    +  where ValidationError(func=trxAddress, args={'value': 'TLjfbTbpZYDQ4EoA4N5CLNgGjfbF8ZWz38'}) = trxAddress('TLjfbTbpZYDQ4EoA4N5CLNgGjfbF8ZWz38')\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpz4p5e6tl/worker_1/tests/crypto_addresses/test_trx_address.py::testReturnsTrueOnValidTrxAddress[TLjfbTbpZYDQ4EoA4N5CLNgGjfbF8ZWz38]\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 50 passed in 0.16s\n",
       "failing_tests": [
-        "tests/test_between.py::testReturnsTrueOnValidRange[12-11-13]"
+        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpz4p5e6tl/worker_1/tests/crypto_addresses/test_trx_address.py::testReturnsTrueOnValidTrxAddress[TLjfbTbpZYDQ4EoA4N5CLNgGjfbF8ZWz38]"
       ],
       "exit_code": 1
     },
     {
       "bug_id": "validators-camelcase-025",
-      "test_output": "........................................................................ [  8%]\n........................................................................ [ 16%]\n........................................................................ [ 24%]\n.........................F\n=================================== FAILURES ===================================\n____________________ testReturnsTrueOnValidRange[12-11-13] _____________________\ntests/test_between.py:22: in testReturnsTrueOnValidRange\n    assert between(value, minVal=minVal, maxVal=maxVal)\nE   AssertionError: assert ValidationError(func=between, args={'value': 12, 'minVal': 11, 'maxVal': 13})\nE    +  where ValidationError(func=between, args={'value': 12, 'minVal': 11, 'maxVal': 13}) = between(12, minVal=11, maxVal=13)\n=========================== short test summary info ============================\nFAILED tests/test_between.py::testReturnsTrueOnValidRange[12-11-13] - Asserti...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 241 passed in 0.14s\n",
+      "test_output": "..................................................F\n=================================== FAILURES ===================================\n_____ testReturnsTrueOnValidTrxAddress[TLjfbTbpZYDQ4EoA4N5CLNgGjfbF8ZWz38] _____\n/Users/yuan/stylebench-data/camelcase/validators/tests/crypto_addresses/test_trx_address.py:29: in testReturnsTrueOnValidTrxAddress\n    assert trxAddress(value)\nE   AssertionError: assert ValidationError(func=trxAddress, args={'value': 'TLjfbTbpZYDQ4EoA4N5CLNgGjfbF8ZWz38'})\nE    +  where ValidationError(func=trxAddress, args={'value': 'TLjfbTbpZYDQ4EoA4N5CLNgGjfbF8ZWz38'}) = trxAddress('TLjfbTbpZYDQ4EoA4N5CLNgGjfbF8ZWz38')\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpz4p5e6tl/worker_1/tests/crypto_addresses/test_trx_address.py::testReturnsTrueOnValidTrxAddress[TLjfbTbpZYDQ4EoA4N5CLNgGjfbF8ZWz38]\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 50 passed in 0.11s\n",
       "failing_tests": [
-        "tests/test_between.py::testReturnsTrueOnValidRange[12-11-13]"
+        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpz4p5e6tl/worker_1/tests/crypto_addresses/test_trx_address.py::testReturnsTrueOnValidTrxAddress[TLjfbTbpZYDQ4EoA4N5CLNgGjfbF8ZWz38]"
       ],
       "exit_code": 1
     },
     {
       "bug_id": "validators-camelcase-026",
-      "test_output": "........................................................................ [  8%]\n........................................................................ [ 16%]\n........................................................................ [ 24%]\n.........................F\n=================================== FAILURES ===================================\n____________________ testReturnsTrueOnValidRange[12-11-13] _____________________\ntests/test_between.py:22: in testReturnsTrueOnValidRange\n    assert between(value, minVal=minVal, maxVal=maxVal)\nE   AssertionError: assert ValidationError(func=between, args={'value': 12, 'minVal': 11, 'maxVal': 13})\nE    +  where ValidationError(func=between, args={'value': 12, 'minVal': 11, 'maxVal': 13}) = between(12, minVal=11, maxVal=13)\n=========================== short test summary info ============================\nFAILED tests/test_between.py::testReturnsTrueOnValidRange[12-11-13] - Asserti...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 241 passed in 0.14s\n",
+      "test_output": "..................................................F\n=================================== FAILURES ===================================\n_____ testReturnsTrueOnValidTrxAddress[TLjfbTbpZYDQ4EoA4N5CLNgGjfbF8ZWz38] _____\n/Users/yuan/stylebench-data/camelcase/validators/tests/crypto_addresses/test_trx_address.py:29: in testReturnsTrueOnValidTrxAddress\n    assert trxAddress(value)\nE   AssertionError: assert ValidationError(func=trxAddress, args={'value': 'TLjfbTbpZYDQ4EoA4N5CLNgGjfbF8ZWz38'})\nE    +  where ValidationError(func=trxAddress, args={'value': 'TLjfbTbpZYDQ4EoA4N5CLNgGjfbF8ZWz38'}) = trxAddress('TLjfbTbpZYDQ4EoA4N5CLNgGjfbF8ZWz38')\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpz4p5e6tl/worker_1/tests/crypto_addresses/test_trx_address.py::testReturnsTrueOnValidTrxAddress[TLjfbTbpZYDQ4EoA4N5CLNgGjfbF8ZWz38]\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 50 passed in 0.11s\n",
       "failing_tests": [
-        "tests/test_between.py::testReturnsTrueOnValidRange[12-11-13]"
+        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpz4p5e6tl/worker_1/tests/crypto_addresses/test_trx_address.py::testReturnsTrueOnValidTrxAddress[TLjfbTbpZYDQ4EoA4N5CLNgGjfbF8ZWz38]"
       ],
       "exit_code": 1
     },
     {
       "bug_id": "validators-camelcase-027",
-      "test_output": "........................................................................ [  8%]\n........................................................................ [ 16%]\n........................................................................ [ 24%]\n.........................F\n=================================== FAILURES ===================================\n____________________ testReturnsTrueOnValidRange[12-11-13] _____________________\ntests/test_between.py:22: in testReturnsTrueOnValidRange\n    assert between(value, minVal=minVal, maxVal=maxVal)\nE   AssertionError: assert ValidationError(func=between, args={'value': 12, 'minVal': 11, 'maxVal': 13})\nE    +  where ValidationError(func=between, args={'value': 12, 'minVal': 11, 'maxVal': 13}) = between(12, minVal=11, maxVal=13)\n=========================== short test summary info ============================\nFAILED tests/test_between.py::testReturnsTrueOnValidRange[12-11-13] - Asserti...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 241 passed in 0.14s\n",
+      "test_output": "..................................................F\n=================================== FAILURES ===================================\n_____ testReturnsTrueOnValidTrxAddress[TLjfbTbpZYDQ4EoA4N5CLNgGjfbF8ZWz38] _____\n/Users/yuan/stylebench-data/camelcase/validators/tests/crypto_addresses/test_trx_address.py:29: in testReturnsTrueOnValidTrxAddress\n    assert trxAddress(value)\nE   AssertionError: assert ValidationError(func=trxAddress, args={'value': 'TLjfbTbpZYDQ4EoA4N5CLNgGjfbF8ZWz38'})\nE    +  where ValidationError(func=trxAddress, args={'value': 'TLjfbTbpZYDQ4EoA4N5CLNgGjfbF8ZWz38'}) = trxAddress('TLjfbTbpZYDQ4EoA4N5CLNgGjfbF8ZWz38')\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpz4p5e6tl/worker_1/tests/crypto_addresses/test_trx_address.py::testReturnsTrueOnValidTrxAddress[TLjfbTbpZYDQ4EoA4N5CLNgGjfbF8ZWz38]\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 50 passed in 0.13s\n",
       "failing_tests": [
-        "tests/test_between.py::testReturnsTrueOnValidRange[12-11-13]"
+        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpz4p5e6tl/worker_1/tests/crypto_addresses/test_trx_address.py::testReturnsTrueOnValidTrxAddress[TLjfbTbpZYDQ4EoA4N5CLNgGjfbF8ZWz38]"
       ],
       "exit_code": 1
     },
     {
       "bug_id": "validators-camelcase-028",
-      "test_output": "........................................................................ [  8%]\n........................................................................ [ 16%]\n........................................................................ [ 24%]\n.........................F\n=================================== FAILURES ===================================\n____________________ testReturnsTrueOnValidRange[12-11-13] _____________________\ntests/test_between.py:22: in testReturnsTrueOnValidRange\n    assert between(value, minVal=minVal, maxVal=maxVal)\nE   AssertionError: assert ValidationError(func=between, args={'value': 12, 'minVal': 11, 'maxVal': 13})\nE    +  where ValidationError(func=between, args={'value': 12, 'minVal': 11, 'maxVal': 13}) = between(12, minVal=11, maxVal=13)\n=========================== short test summary info ============================\nFAILED tests/test_between.py::testReturnsTrueOnValidRange[12-11-13] - Asserti...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 241 passed in 0.14s\n",
+      "test_output": "..................................................F\n=================================== FAILURES ===================================\n_____ testReturnsTrueOnValidTrxAddress[TLjfbTbpZYDQ4EoA4N5CLNgGjfbF8ZWz38] _____\n/Users/yuan/stylebench-data/camelcase/validators/tests/crypto_addresses/test_trx_address.py:29: in testReturnsTrueOnValidTrxAddress\n    assert trxAddress(value)\nE   AssertionError: assert ValidationError(func=trxAddress, args={'value': 'TLjfbTbpZYDQ4EoA4N5CLNgGjfbF8ZWz38'})\nE    +  where ValidationError(func=trxAddress, args={'value': 'TLjfbTbpZYDQ4EoA4N5CLNgGjfbF8ZWz38'}) = trxAddress('TLjfbTbpZYDQ4EoA4N5CLNgGjfbF8ZWz38')\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpz4p5e6tl/worker_1/tests/crypto_addresses/test_trx_address.py::testReturnsTrueOnValidTrxAddress[TLjfbTbpZYDQ4EoA4N5CLNgGjfbF8ZWz38]\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 50 passed in 0.12s\n",
       "failing_tests": [
-        "tests/test_between.py::testReturnsTrueOnValidRange[12-11-13]"
+        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpz4p5e6tl/worker_1/tests/crypto_addresses/test_trx_address.py::testReturnsTrueOnValidTrxAddress[TLjfbTbpZYDQ4EoA4N5CLNgGjfbF8ZWz38]"
       ],
       "exit_code": 1
     },
     {
       "bug_id": "validators-camelcase-029",
-      "test_output": "........................................................................ [  8%]\n........................................................................ [ 16%]\n........................................................................ [ 24%]\n.........................F\n=================================== FAILURES ===================================\n____________________ testReturnsTrueOnValidRange[12-11-13] _____________________\ntests/test_between.py:22: in testReturnsTrueOnValidRange\n    assert between(value, minVal=minVal, maxVal=maxVal)\nE   AssertionError: assert ValidationError(func=between, args={'value': 12, 'minVal': 11, 'maxVal': 13})\nE    +  where ValidationError(func=between, args={'value': 12, 'minVal': 11, 'maxVal': 13}) = between(12, minVal=11, maxVal=13)\n=========================== short test summary info ============================\nFAILED tests/test_between.py::testReturnsTrueOnValidRange[12-11-13] - Asserti...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 241 passed in 0.15s\n",
+      "test_output": "..................................................F\n=================================== FAILURES ===================================\n_____ testReturnsTrueOnValidTrxAddress[TLjfbTbpZYDQ4EoA4N5CLNgGjfbF8ZWz38] _____\n/Users/yuan/stylebench-data/camelcase/validators/tests/crypto_addresses/test_trx_address.py:29: in testReturnsTrueOnValidTrxAddress\n    assert trxAddress(value)\nE   AssertionError: assert ValidationError(func=trxAddress, args={'value': 'TLjfbTbpZYDQ4EoA4N5CLNgGjfbF8ZWz38'})\nE    +  where ValidationError(func=trxAddress, args={'value': 'TLjfbTbpZYDQ4EoA4N5CLNgGjfbF8ZWz38'}) = trxAddress('TLjfbTbpZYDQ4EoA4N5CLNgGjfbF8ZWz38')\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpz4p5e6tl/worker_1/tests/crypto_addresses/test_trx_address.py::testReturnsTrueOnValidTrxAddress[TLjfbTbpZYDQ4EoA4N5CLNgGjfbF8ZWz38]\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 50 passed in 0.10s\n",
       "failing_tests": [
-        "tests/test_between.py::testReturnsTrueOnValidRange[12-11-13]"
+        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpz4p5e6tl/worker_1/tests/crypto_addresses/test_trx_address.py::testReturnsTrueOnValidTrxAddress[TLjfbTbpZYDQ4EoA4N5CLNgGjfbF8ZWz38]"
       ],
       "exit_code": 1
     },
     {
       "bug_id": "validators-camelcase-030",
-      "test_output": "........................................................................ [  8%]\n........................................................................ [ 16%]\n........................................................................ [ 24%]\n.........................F\n=================================== FAILURES ===================================\n____________________ testReturnsTrueOnValidRange[12-11-13] _____________________\ntests/test_between.py:22: in testReturnsTrueOnValidRange\n    assert between(value, minVal=minVal, maxVal=maxVal)\nE   AssertionError: assert ValidationError(func=between, args={'value': 12, 'minVal': 11, 'maxVal': 13})\nE    +  where ValidationError(func=between, args={'value': 12, 'minVal': 11, 'maxVal': 13}) = between(12, minVal=11, maxVal=13)\n=========================== short test summary info ============================\nFAILED tests/test_between.py::testReturnsTrueOnValidRange[12-11-13] - Asserti...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 241 passed in 0.14s\n",
+      "test_output": "..................................................F\n=================================== FAILURES ===================================\n_____ testReturnsTrueOnValidTrxAddress[TLjfbTbpZYDQ4EoA4N5CLNgGjfbF8ZWz38] _____\n/Users/yuan/stylebench-data/camelcase/validators/tests/crypto_addresses/test_trx_address.py:29: in testReturnsTrueOnValidTrxAddress\n    assert trxAddress(value)\nE   AssertionError: assert ValidationError(func=trxAddress, args={'value': 'TLjfbTbpZYDQ4EoA4N5CLNgGjfbF8ZWz38'})\nE    +  where ValidationError(func=trxAddress, args={'value': 'TLjfbTbpZYDQ4EoA4N5CLNgGjfbF8ZWz38'}) = trxAddress('TLjfbTbpZYDQ4EoA4N5CLNgGjfbF8ZWz38')\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpz4p5e6tl/worker_1/tests/crypto_addresses/test_trx_address.py::testReturnsTrueOnValidTrxAddress[TLjfbTbpZYDQ4EoA4N5CLNgGjfbF8ZWz38]\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 50 passed in 0.11s\n",
       "failing_tests": [
-        "tests/test_between.py::testReturnsTrueOnValidRange[12-11-13]"
+        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpz4p5e6tl/worker_1/tests/crypto_addresses/test_trx_address.py::testReturnsTrueOnValidTrxAddress[TLjfbTbpZYDQ4EoA4N5CLNgGjfbF8ZWz38]"
+      ],
+      "exit_code": 1
+    },
+    {
+      "bug_id": "validators-camelcase-031",
+      "test_output": "..................................................F\n=================================== FAILURES ===================================\n_____ testReturnsTrueOnValidTrxAddress[TLjfbTbpZYDQ4EoA4N5CLNgGjfbF8ZWz38] _____\n/Users/yuan/stylebench-data/camelcase/validators/tests/crypto_addresses/test_trx_address.py:29: in testReturnsTrueOnValidTrxAddress\n    assert trxAddress(value)\nE   AssertionError: assert ValidationError(func=trxAddress, args={'value': 'TLjfbTbpZYDQ4EoA4N5CLNgGjfbF8ZWz38'})\nE    +  where ValidationError(func=trxAddress, args={'value': 'TLjfbTbpZYDQ4EoA4N5CLNgGjfbF8ZWz38'}) = trxAddress('TLjfbTbpZYDQ4EoA4N5CLNgGjfbF8ZWz38')\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpz4p5e6tl/worker_1/tests/crypto_addresses/test_trx_address.py::testReturnsTrueOnValidTrxAddress[TLjfbTbpZYDQ4EoA4N5CLNgGjfbF8ZWz38]\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 50 passed in 0.10s\n",
+      "failing_tests": [
+        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpz4p5e6tl/worker_1/tests/crypto_addresses/test_trx_address.py::testReturnsTrueOnValidTrxAddress[TLjfbTbpZYDQ4EoA4N5CLNgGjfbF8ZWz38]"
+      ],
+      "exit_code": 1
+    },
+    {
+      "bug_id": "validators-camelcase-032",
+      "test_output": "..................................................F\n=================================== FAILURES ===================================\n_____ testReturnsTrueOnValidTrxAddress[TLjfbTbpZYDQ4EoA4N5CLNgGjfbF8ZWz38] _____\n/Users/yuan/stylebench-data/camelcase/validators/tests/crypto_addresses/test_trx_address.py:29: in testReturnsTrueOnValidTrxAddress\n    assert trxAddress(value)\nE   AssertionError: assert ValidationError(func=trxAddress, args={'value': 'TLjfbTbpZYDQ4EoA4N5CLNgGjfbF8ZWz38'})\nE    +  where ValidationError(func=trxAddress, args={'value': 'TLjfbTbpZYDQ4EoA4N5CLNgGjfbF8ZWz38'}) = trxAddress('TLjfbTbpZYDQ4EoA4N5CLNgGjfbF8ZWz38')\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpz4p5e6tl/worker_1/tests/crypto_addresses/test_trx_address.py::testReturnsTrueOnValidTrxAddress[TLjfbTbpZYDQ4EoA4N5CLNgGjfbF8ZWz38]\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 50 passed in 0.10s\n",
+      "failing_tests": [
+        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpz4p5e6tl/worker_1/tests/crypto_addresses/test_trx_address.py::testReturnsTrueOnValidTrxAddress[TLjfbTbpZYDQ4EoA4N5CLNgGjfbF8ZWz38]"
+      ],
+      "exit_code": 1
+    },
+    {
+      "bug_id": "validators-camelcase-033",
+      "test_output": "..................................................F\n=================================== FAILURES ===================================\n_____ testReturnsTrueOnValidTrxAddress[TLjfbTbpZYDQ4EoA4N5CLNgGjfbF8ZWz38] _____\n/Users/yuan/stylebench-data/camelcase/validators/tests/crypto_addresses/test_trx_address.py:29: in testReturnsTrueOnValidTrxAddress\n    assert trxAddress(value)\nE   AssertionError: assert ValidationError(func=trxAddress, args={'value': 'TLjfbTbpZYDQ4EoA4N5CLNgGjfbF8ZWz38'})\nE    +  where ValidationError(func=trxAddress, args={'value': 'TLjfbTbpZYDQ4EoA4N5CLNgGjfbF8ZWz38'}) = trxAddress('TLjfbTbpZYDQ4EoA4N5CLNgGjfbF8ZWz38')\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpz4p5e6tl/worker_1/tests/crypto_addresses/test_trx_address.py::testReturnsTrueOnValidTrxAddress[TLjfbTbpZYDQ4EoA4N5CLNgGjfbF8ZWz38]\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 50 passed in 0.11s\n",
+      "failing_tests": [
+        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpz4p5e6tl/worker_1/tests/crypto_addresses/test_trx_address.py::testReturnsTrueOnValidTrxAddress[TLjfbTbpZYDQ4EoA4N5CLNgGjfbF8ZWz38]"
+      ],
+      "exit_code": 1
+    },
+    {
+      "bug_id": "validators-camelcase-034",
+      "test_output": "..................................................F\n=================================== FAILURES ===================================\n_____ testReturnsTrueOnValidTrxAddress[TLjfbTbpZYDQ4EoA4N5CLNgGjfbF8ZWz38] _____\n/Users/yuan/stylebench-data/camelcase/validators/tests/crypto_addresses/test_trx_address.py:29: in testReturnsTrueOnValidTrxAddress\n    assert trxAddress(value)\nE   AssertionError: assert ValidationError(func=trxAddress, args={'value': 'TLjfbTbpZYDQ4EoA4N5CLNgGjfbF8ZWz38'})\nE    +  where ValidationError(func=trxAddress, args={'value': 'TLjfbTbpZYDQ4EoA4N5CLNgGjfbF8ZWz38'}) = trxAddress('TLjfbTbpZYDQ4EoA4N5CLNgGjfbF8ZWz38')\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpz4p5e6tl/worker_1/tests/crypto_addresses/test_trx_address.py::testReturnsTrueOnValidTrxAddress[TLjfbTbpZYDQ4EoA4N5CLNgGjfbF8ZWz38]\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 50 passed in 0.11s\n",
+      "failing_tests": [
+        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpz4p5e6tl/worker_1/tests/crypto_addresses/test_trx_address.py::testReturnsTrueOnValidTrxAddress[TLjfbTbpZYDQ4EoA4N5CLNgGjfbF8ZWz38]"
+      ],
+      "exit_code": 1
+    },
+    {
+      "bug_id": "validators-camelcase-035",
+      "test_output": "..................................................F\n=================================== FAILURES ===================================\n_____ testReturnsTrueOnValidTrxAddress[TLjfbTbpZYDQ4EoA4N5CLNgGjfbF8ZWz38] _____\n/Users/yuan/stylebench-data/camelcase/validators/tests/crypto_addresses/test_trx_address.py:29: in testReturnsTrueOnValidTrxAddress\n    assert trxAddress(value)\nE   AssertionError: assert ValidationError(func=trxAddress, args={'value': 'TLjfbTbpZYDQ4EoA4N5CLNgGjfbF8ZWz38'})\nE    +  where ValidationError(func=trxAddress, args={'value': 'TLjfbTbpZYDQ4EoA4N5CLNgGjfbF8ZWz38'}) = trxAddress('TLjfbTbpZYDQ4EoA4N5CLNgGjfbF8ZWz38')\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpz4p5e6tl/worker_1/tests/crypto_addresses/test_trx_address.py::testReturnsTrueOnValidTrxAddress[TLjfbTbpZYDQ4EoA4N5CLNgGjfbF8ZWz38]\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 50 passed in 0.10s\n",
+      "failing_tests": [
+        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpz4p5e6tl/worker_1/tests/crypto_addresses/test_trx_address.py::testReturnsTrueOnValidTrxAddress[TLjfbTbpZYDQ4EoA4N5CLNgGjfbF8ZWz38]"
+      ],
+      "exit_code": 1
+    },
+    {
+      "bug_id": "validators-camelcase-036",
+      "test_output": ".........................F\n=================================== FAILURES ===================================\n_____ testReturnsTrueOnValidBtcAddress[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2] _____\n/Users/yuan/stylebench-data/camelcase/validators/tests/crypto_addresses/test_btc_address.py:24: in testReturnsTrueOnValidBtcAddress\n    assert btcAddress(value)\nE   AssertionError: assert ValidationError(func=btcAddress, args={'value': '1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2'})\nE    +  where ValidationError(func=btcAddress, args={'value': '1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2'}) = btcAddress('1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2')\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpz4p5e6tl/worker_1/tests/crypto_addresses/test_btc_address.py::testReturnsTrueOnValidBtcAddress[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2]\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 25 passed in 0.08s\n",
+      "failing_tests": [
+        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpz4p5e6tl/worker_1/tests/crypto_addresses/test_btc_address.py::testReturnsTrueOnValidBtcAddress[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2]"
+      ],
+      "exit_code": 1
+    },
+    {
+      "bug_id": "validators-camelcase-037",
+      "test_output": ".............................F\n=================================== FAILURES ===================================\n_ testReturnsFailedValidationOnInvalidBtcAddress[ff3Cwgr2g7vsi1bXDUkpEnVoRLA9w4FZfC69] _\n/Users/yuan/stylebench-data/camelcase/validators/tests/crypto_addresses/test_btc_address.py:40: in testReturnsFailedValidationOnInvalidBtcAddress\n    assert isinstance(btcAddress(value), ValidationError)\nE   AssertionError: assert False\nE    +  where False = isinstance(True, ValidationError)\nE    +    where True = btcAddress('ff3Cwgr2g7vsi1bXDUkpEnVoRLA9w4FZfC69')\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpz4p5e6tl/worker_1/tests/crypto_addresses/test_btc_address.py::testReturnsFailedValidationOnInvalidBtcAddress[ff3Cwgr2g7vsi1bXDUkpEnVoRLA9w4FZfC69]\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 29 passed in 0.08s\n",
+      "failing_tests": [
+        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpz4p5e6tl/worker_1/tests/crypto_addresses/test_btc_address.py::testReturnsFailedValidationOnInvalidBtcAddress[ff3Cwgr2g7vsi1bXDUkpEnVoRLA9w4FZfC69]"
+      ],
+      "exit_code": 1
+    },
+    {
+      "bug_id": "validators-camelcase-038",
+      "test_output": ".............................F\n=================================== FAILURES ===================================\n_ testReturnsFailedValidationOnInvalidBtcAddress[ff3Cwgr2g7vsi1bXDUkpEnVoRLA9w4FZfC69] _\n/Users/yuan/stylebench-data/camelcase/validators/tests/crypto_addresses/test_btc_address.py:40: in testReturnsFailedValidationOnInvalidBtcAddress\n    assert isinstance(btcAddress(value), ValidationError)\nE   AssertionError: assert False\nE    +  where False = isinstance(True, ValidationError)\nE    +    where True = btcAddress('ff3Cwgr2g7vsi1bXDUkpEnVoRLA9w4FZfC69')\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpz4p5e6tl/worker_1/tests/crypto_addresses/test_btc_address.py::testReturnsFailedValidationOnInvalidBtcAddress[ff3Cwgr2g7vsi1bXDUkpEnVoRLA9w4FZfC69]\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 29 passed in 0.08s\n",
+      "failing_tests": [
+        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpz4p5e6tl/worker_1/tests/crypto_addresses/test_btc_address.py::testReturnsFailedValidationOnInvalidBtcAddress[ff3Cwgr2g7vsi1bXDUkpEnVoRLA9w4FZfC69]"
+      ],
+      "exit_code": 1
+    },
+    {
+      "bug_id": "validators-camelcase-039",
+      "test_output": ".........................F\n=================================== FAILURES ===================================\n_____ testReturnsTrueOnValidBtcAddress[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2] _____\n/Users/yuan/stylebench-data/camelcase/validators/tests/crypto_addresses/test_btc_address.py:24: in testReturnsTrueOnValidBtcAddress\n    assert btcAddress(value)\n           ^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpz4p5e6tl/worker_1/src/validators/utils.py:91: in wrapper\n    if func(*args, **kwargs)\n       ^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpz4p5e6tl/worker_1/src/validators/crypto_addresses/btc_address.py:55: in btcAddress\n    else _validateOldBtcAddress(value)\n         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpz4p5e6tl/worker_1/src/validators/crypto_addresses/btc_address.py:21: in _validateOldBtcAddress\n    decodedBytes = _decodeBase58(addr).to_bytes(25, \"big\")\n                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nE   AttributeError: 'NoneType' object has no attribute 'to_bytes'\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpz4p5e6tl/worker_1/tests/crypto_addresses/test_btc_address.py::testReturnsTrueOnValidBtcAddress[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2]\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 25 passed in 0.08s\n",
+      "failing_tests": [
+        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpz4p5e6tl/worker_1/tests/crypto_addresses/test_btc_address.py::testReturnsTrueOnValidBtcAddress[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2]"
+      ],
+      "exit_code": 1
+    },
+    {
+      "bug_id": "validators-camelcase-040",
+      "test_output": "..................................................F\n=================================== FAILURES ===================================\n_____ testReturnsTrueOnValidTrxAddress[TLjfbTbpZYDQ4EoA4N5CLNgGjfbF8ZWz38] _____\n/Users/yuan/stylebench-data/camelcase/validators/tests/crypto_addresses/test_trx_address.py:29: in testReturnsTrueOnValidTrxAddress\n    assert trxAddress(value)\nE   AssertionError: assert ValidationError(func=trxAddress, args={'value': 'TLjfbTbpZYDQ4EoA4N5CLNgGjfbF8ZWz38'})\nE    +  where ValidationError(func=trxAddress, args={'value': 'TLjfbTbpZYDQ4EoA4N5CLNgGjfbF8ZWz38'}) = trxAddress('TLjfbTbpZYDQ4EoA4N5CLNgGjfbF8ZWz38')\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpz4p5e6tl/worker_1/tests/crypto_addresses/test_trx_address.py::testReturnsTrueOnValidTrxAddress[TLjfbTbpZYDQ4EoA4N5CLNgGjfbF8ZWz38]\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 50 passed in 0.10s\n",
+      "failing_tests": [
+        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpz4p5e6tl/worker_1/tests/crypto_addresses/test_trx_address.py::testReturnsTrueOnValidTrxAddress[TLjfbTbpZYDQ4EoA4N5CLNgGjfbF8ZWz38]"
+      ],
+      "exit_code": 1
+    },
+    {
+      "bug_id": "validators-camelcase-041",
+      "test_output": ".........................F\n=================================== FAILURES ===================================\n_____ testReturnsTrueOnValidBtcAddress[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2] _____\n/Users/yuan/stylebench-data/camelcase/validators/tests/crypto_addresses/test_btc_address.py:24: in testReturnsTrueOnValidBtcAddress\n    assert btcAddress(value)\nE   AssertionError: assert ValidationError(func=btcAddress, args={'value': '1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2'})\nE    +  where ValidationError(func=btcAddress, args={'value': '1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2'}) = btcAddress('1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2')\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpz4p5e6tl/worker_1/tests/crypto_addresses/test_btc_address.py::testReturnsTrueOnValidBtcAddress[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2]\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 25 passed in 0.08s\n",
+      "failing_tests": [
+        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpz4p5e6tl/worker_1/tests/crypto_addresses/test_btc_address.py::testReturnsTrueOnValidBtcAddress[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2]"
+      ],
+      "exit_code": 1
+    },
+    {
+      "bug_id": "validators-camelcase-042",
+      "test_output": "..................................................F\n=================================== FAILURES ===================================\n_____ testReturnsTrueOnValidTrxAddress[TLjfbTbpZYDQ4EoA4N5CLNgGjfbF8ZWz38] _____\n/Users/yuan/stylebench-data/camelcase/validators/tests/crypto_addresses/test_trx_address.py:29: in testReturnsTrueOnValidTrxAddress\n    assert trxAddress(value)\nE   AssertionError: assert ValidationError(func=trxAddress, args={'value': 'TLjfbTbpZYDQ4EoA4N5CLNgGjfbF8ZWz38'})\nE    +  where ValidationError(func=trxAddress, args={'value': 'TLjfbTbpZYDQ4EoA4N5CLNgGjfbF8ZWz38'}) = trxAddress('TLjfbTbpZYDQ4EoA4N5CLNgGjfbF8ZWz38')\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpz4p5e6tl/worker_1/tests/crypto_addresses/test_trx_address.py::testReturnsTrueOnValidTrxAddress[TLjfbTbpZYDQ4EoA4N5CLNgGjfbF8ZWz38]\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 50 passed in 0.10s\n",
+      "failing_tests": [
+        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpz4p5e6tl/worker_1/tests/crypto_addresses/test_trx_address.py::testReturnsTrueOnValidTrxAddress[TLjfbTbpZYDQ4EoA4N5CLNgGjfbF8ZWz38]"
+      ],
+      "exit_code": 1
+    },
+    {
+      "bug_id": "validators-camelcase-043",
+      "test_output": ".........................F\n=================================== FAILURES ===================================\n_____ testReturnsTrueOnValidBtcAddress[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2] _____\n/Users/yuan/stylebench-data/camelcase/validators/tests/crypto_addresses/test_btc_address.py:24: in testReturnsTrueOnValidBtcAddress\n    assert btcAddress(value)\nE   AssertionError: assert ValidationError(func=btcAddress, args={'value': '1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2'})\nE    +  where ValidationError(func=btcAddress, args={'value': '1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2'}) = btcAddress('1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2')\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpz4p5e6tl/worker_1/tests/crypto_addresses/test_btc_address.py::testReturnsTrueOnValidBtcAddress[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2]\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 25 passed in 0.08s\n",
+      "failing_tests": [
+        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpz4p5e6tl/worker_1/tests/crypto_addresses/test_btc_address.py::testReturnsTrueOnValidBtcAddress[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2]"
+      ],
+      "exit_code": 1
+    },
+    {
+      "bug_id": "validators-camelcase-044",
+      "test_output": ".........................F\n=================================== FAILURES ===================================\n_____ testReturnsTrueOnValidBtcAddress[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2] _____\n/Users/yuan/stylebench-data/camelcase/validators/tests/crypto_addresses/test_btc_address.py:24: in testReturnsTrueOnValidBtcAddress\n    assert btcAddress(value)\nE   AssertionError: assert ValidationError(func=btcAddress, args={'value': '1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2'})\nE    +  where ValidationError(func=btcAddress, args={'value': '1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2'}) = btcAddress('1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2')\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpz4p5e6tl/worker_1/tests/crypto_addresses/test_btc_address.py::testReturnsTrueOnValidBtcAddress[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2]\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 25 passed in 0.08s\n",
+      "failing_tests": [
+        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpz4p5e6tl/worker_1/tests/crypto_addresses/test_btc_address.py::testReturnsTrueOnValidBtcAddress[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2]"
+      ],
+      "exit_code": 1
+    },
+    {
+      "bug_id": "validators-camelcase-045",
+      "test_output": ".........................F\n=================================== FAILURES ===================================\n_____ testReturnsTrueOnValidBtcAddress[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2] _____\n/Users/yuan/stylebench-data/camelcase/validators/tests/crypto_addresses/test_btc_address.py:24: in testReturnsTrueOnValidBtcAddress\n    assert btcAddress(value)\nE   AssertionError: assert ValidationError(func=btcAddress, args={'value': '1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2'})\nE    +  where ValidationError(func=btcAddress, args={'value': '1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2'}) = btcAddress('1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2')\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpz4p5e6tl/worker_1/tests/crypto_addresses/test_btc_address.py::testReturnsTrueOnValidBtcAddress[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2]\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 25 passed in 0.08s\n",
+      "failing_tests": [
+        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpz4p5e6tl/worker_1/tests/crypto_addresses/test_btc_address.py::testReturnsTrueOnValidBtcAddress[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2]"
+      ],
+      "exit_code": 1
+    },
+    {
+      "bug_id": "validators-camelcase-046",
+      "test_output": ".........................F\n=================================== FAILURES ===================================\n_____ testReturnsTrueOnValidBtcAddress[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2] _____\n/Users/yuan/stylebench-data/camelcase/validators/tests/crypto_addresses/test_btc_address.py:24: in testReturnsTrueOnValidBtcAddress\n    assert btcAddress(value)\n           ^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpz4p5e6tl/worker_1/src/validators/utils.py:91: in wrapper\n    if func(*args, **kwargs)\n       ^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpz4p5e6tl/worker_1/src/validators/crypto_addresses/btc_address.py:55: in btcAddress\n    else _validateOldBtcAddress(value)\n         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpz4p5e6tl/worker_1/src/validators/crypto_addresses/btc_address.py:21: in _validateOldBtcAddress\n    decodedBytes = _decodeBase58(addr).to_bytes(25, \"big\")\n                   ^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpz4p5e6tl/worker_1/src/validators/crypto_addresses/btc_address.py:14: in _decodeBase58\n    return sum((58**enm) / alphabet.index(idx) for enm, idx in enumerate(addr[::-1]))\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpz4p5e6tl/worker_1/src/validators/crypto_addresses/btc_address.py:14: in <genexpr>\n    return sum((58**enm) / alphabet.index(idx) for enm, idx in enumerate(addr[::-1]))\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nE   ZeroDivisionError: division by zero\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpz4p5e6tl/worker_1/tests/crypto_addresses/test_btc_address.py::testReturnsTrueOnValidBtcAddress[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2]\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 25 passed in 0.08s\n",
+      "failing_tests": [
+        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpz4p5e6tl/worker_1/tests/crypto_addresses/test_btc_address.py::testReturnsTrueOnValidBtcAddress[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2]"
+      ],
+      "exit_code": 1
+    },
+    {
+      "bug_id": "validators-camelcase-047",
+      "test_output": ".........................F\n=================================== FAILURES ===================================\n_____ testReturnsTrueOnValidBtcAddress[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2] _____\n/Users/yuan/stylebench-data/camelcase/validators/tests/crypto_addresses/test_btc_address.py:24: in testReturnsTrueOnValidBtcAddress\n    assert btcAddress(value)\n           ^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpz4p5e6tl/worker_1/src/validators/utils.py:91: in wrapper\n    if func(*args, **kwargs)\n       ^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpz4p5e6tl/worker_1/src/validators/crypto_addresses/btc_address.py:55: in btcAddress\n    else _validateOldBtcAddress(value)\n         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpz4p5e6tl/worker_1/src/validators/crypto_addresses/btc_address.py:21: in _validateOldBtcAddress\n    decodedBytes = _decodeBase58(addr).to_bytes(25, \"big\")\n                   ^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpz4p5e6tl/worker_1/src/validators/crypto_addresses/btc_address.py:14: in _decodeBase58\n    return sum((59**enm) * alphabet.index(idx) for enm, idx in enumerate(addr[::-1]))\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpz4p5e6tl/worker_1/src/validators/crypto_addresses/btc_address.py:14: in <genexpr>\n    return sum((59**enm) * alphabet.index(idx) for enm, idx in enumerate(addr[::-1]))\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nE   ZeroDivisionError: division by zero\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpz4p5e6tl/worker_1/tests/crypto_addresses/test_btc_address.py::testReturnsTrueOnValidBtcAddress[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2]\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 25 passed in 0.08s\n",
+      "failing_tests": [
+        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpz4p5e6tl/worker_1/tests/crypto_addresses/test_btc_address.py::testReturnsTrueOnValidBtcAddress[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2]"
+      ],
+      "exit_code": 1
+    },
+    {
+      "bug_id": "validators-camelcase-048",
+      "test_output": ".........................F\n=================================== FAILURES ===================================\n_____ testReturnsTrueOnValidBtcAddress[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2] _____\n/Users/yuan/stylebench-data/camelcase/validators/tests/crypto_addresses/test_btc_address.py:24: in testReturnsTrueOnValidBtcAddress\n    assert btcAddress(value)\n           ^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpz4p5e6tl/worker_1/src/validators/utils.py:91: in wrapper\n    if func(*args, **kwargs)\n       ^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpz4p5e6tl/worker_1/src/validators/crypto_addresses/btc_address.py:55: in btcAddress\n    else _validateOldBtcAddress(value)\n         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpz4p5e6tl/worker_1/src/validators/crypto_addresses/btc_address.py:21: in _validateOldBtcAddress\n    decodedBytes = _decodeBase58(addr).to_bytes(25, \"big\")\n                   ^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpz4p5e6tl/worker_1/src/validators/crypto_addresses/btc_address.py:14: in _decodeBase58\n    return sum((58**enm) * alphabet.index(idx) for enm, idx in enumerate(addr[::-2]))\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpz4p5e6tl/worker_1/src/validators/crypto_addresses/btc_address.py:14: in <genexpr>\n    return sum((58**enm) * alphabet.index(idx) for enm, idx in enumerate(addr[::-2]))\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nE   ZeroDivisionError: division by zero\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpz4p5e6tl/worker_1/tests/crypto_addresses/test_btc_address.py::testReturnsTrueOnValidBtcAddress[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2]\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 25 passed in 0.08s\n",
+      "failing_tests": [
+        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpz4p5e6tl/worker_1/tests/crypto_addresses/test_btc_address.py::testReturnsTrueOnValidBtcAddress[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2]"
+      ],
+      "exit_code": 1
+    },
+    {
+      "bug_id": "validators-camelcase-049",
+      "test_output": "..................................................F\n=================================== FAILURES ===================================\n_____ testReturnsTrueOnValidTrxAddress[TLjfbTbpZYDQ4EoA4N5CLNgGjfbF8ZWz38] _____\n/Users/yuan/stylebench-data/camelcase/validators/tests/crypto_addresses/test_trx_address.py:29: in testReturnsTrueOnValidTrxAddress\n    assert trxAddress(value)\nE   AssertionError: assert ValidationError(func=trxAddress, args={'value': 'TLjfbTbpZYDQ4EoA4N5CLNgGjfbF8ZWz38'})\nE    +  where ValidationError(func=trxAddress, args={'value': 'TLjfbTbpZYDQ4EoA4N5CLNgGjfbF8ZWz38'}) = trxAddress('TLjfbTbpZYDQ4EoA4N5CLNgGjfbF8ZWz38')\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpz4p5e6tl/worker_1/tests/crypto_addresses/test_trx_address.py::testReturnsTrueOnValidTrxAddress[TLjfbTbpZYDQ4EoA4N5CLNgGjfbF8ZWz38]\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 50 passed in 0.10s\n",
+      "failing_tests": [
+        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpz4p5e6tl/worker_1/tests/crypto_addresses/test_trx_address.py::testReturnsTrueOnValidTrxAddress[TLjfbTbpZYDQ4EoA4N5CLNgGjfbF8ZWz38]"
+      ],
+      "exit_code": 1
+    },
+    {
+      "bug_id": "validators-camelcase-050",
+      "test_output": "..................................................F\n=================================== FAILURES ===================================\n_____ testReturnsTrueOnValidTrxAddress[TLjfbTbpZYDQ4EoA4N5CLNgGjfbF8ZWz38] _____\n/Users/yuan/stylebench-data/camelcase/validators/tests/crypto_addresses/test_trx_address.py:29: in testReturnsTrueOnValidTrxAddress\n    assert trxAddress(value)\nE   AssertionError: assert ValidationError(func=trxAddress, args={'value': 'TLjfbTbpZYDQ4EoA4N5CLNgGjfbF8ZWz38'})\nE    +  where ValidationError(func=trxAddress, args={'value': 'TLjfbTbpZYDQ4EoA4N5CLNgGjfbF8ZWz38'}) = trxAddress('TLjfbTbpZYDQ4EoA4N5CLNgGjfbF8ZWz38')\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpz4p5e6tl/worker_1/tests/crypto_addresses/test_trx_address.py::testReturnsTrueOnValidTrxAddress[TLjfbTbpZYDQ4EoA4N5CLNgGjfbF8ZWz38]\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 50 passed in 0.10s\n",
+      "failing_tests": [
+        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpz4p5e6tl/worker_1/tests/crypto_addresses/test_trx_address.py::testReturnsTrueOnValidTrxAddress[TLjfbTbpZYDQ4EoA4N5CLNgGjfbF8ZWz38]"
       ],
       "exit_code": 1
     }
@@ -256,273 +417,453 @@
   "_hidden": [
     {
       "bug_id": "validators-camelcase-001",
-      "file_path": "src/validators/between.py",
-      "line_number": 74,
-      "mutation_type": "lt_gt",
-      "original_text": ">",
-      "mutated_text": "<",
-      "context": "...= AbsMin()      try:         if minVal > maxVal:             raise ValueError(\"`..."
+      "file_path": "src/validators/country.py",
+      "line_number": 305,
+      "mutation_type": "eq_ne",
+      "original_text": "==",
+      "mutated_text": "!=",
+      "context": "...e(value)) == \"invalid\":         return False      if isoFormat == \"alpha2\":..."
     },
     {
       "bug_id": "validators-camelcase-002",
-      "file_path": "src/validators/between.py",
-      "line_number": 79,
-      "mutation_type": "le_ge",
-      "original_text": "<=",
-      "mutated_text": ">=",
-      "context": "...mismatch\") from err      return minVal <= value <= maxVal"
+      "file_path": "src/validators/country.py",
+      "line_number": 305,
+      "mutation_type": "eq_ne",
+      "original_text": "==",
+      "mutated_text": "!=",
+      "context": "...if isoFormat == \"alpha2\":         return (             value.upper() in set(_alph..."
     },
     {
       "bug_id": "validators-camelcase-003",
-      "file_path": "src/validators/between.py",
-      "line_number": 79,
-      "mutation_type": "le_ge",
-      "original_text": "<=",
-      "mutated_text": ">=",
-      "context": "...\") from err      return minVal <= value <= maxVal"
+      "file_path": "src/validators/country.py",
+      "line_number": 308,
+      "mutation_type": "eq_ne",
+      "original_text": "==",
+      "mutated_text": "!=",
+      "context": "...value.upper() in set(_alpha3ToAlpha2.values())             if ignoreCase..."
     },
     {
       "bug_id": "validators-camelcase-004",
-      "file_path": "src/validators/card.py",
-      "line_number": 36,
-      "mutation_type": "plus_one",
-      "original_text": "1",
-      "mutated_text": "2",
-      "context": "...t, value))         oddSum = sum(digits[-1::-2])         evenSum = sum(sum(divmod(..."
+      "file_path": "src/validators/country.py",
+      "line_number": 314,
+      "mutation_type": "eq_ne",
+      "original_text": "==",
+      "mutated_text": "!=",
+      "context": "...() in _alpha3ToAlpha2 if ignoreCase else value in _alpha3ToAlpha2      return valu..."
     },
     {
       "bug_id": "validators-camelcase-005",
-      "file_path": "src/validators/card.py",
-      "line_number": 36,
-      "mutation_type": "minus_one",
-      "original_text": "1",
-      "mutated_text": "0",
-      "context": "...t, value))         oddSum = sum(digits[-1::-2])         evenSum = sum(sum(divmod(..."
+      "file_path": "src/validators/country.py",
+      "line_number": 352,
+      "mutation_type": "eq_ne",
+      "original_text": "!=",
+      "mutated_text": "==",
+      "context": "...value.upper() in _currencyIso4217 if ignoreCase else value in _currencyIso4217"
     },
     {
       "bug_id": "validators-camelcase-006",
-      "file_path": "src/validators/card.py",
-      "line_number": 36,
-      "mutation_type": "plus_one",
-      "original_text": "2",
-      "mutated_text": "3",
-      "context": "...alue))         oddSum = sum(digits[-1::-2])         evenSum = sum(sum(divmod(2 *..."
+      "file_path": "src/validators/country.py",
+      "line_number": 302,
+      "mutation_type": "var_swap",
+      "original_text": "value",
+      "mutated_text": "isoFormat",
+      "context": "...if isoFormat == \"auto\" and (isoFormat := _getCodeType(value)) == \"invalid\":         r..."
     },
     {
       "bug_id": "validators-camelcase-007",
-      "file_path": "src/validators/card.py",
-      "line_number": 36,
-      "mutation_type": "minus_one",
-      "original_text": "2",
-      "mutated_text": "1",
-      "context": "...alue))         oddSum = sum(digits[-1::-2])         evenSum = sum(sum(divmod(2 *..."
+      "file_path": "src/validators/country.py",
+      "line_number": 302,
+      "mutation_type": "var_swap",
+      "original_text": "value",
+      "mutated_text": "ignoreCase",
+      "context": "...if isoFormat == \"auto\" and (isoFormat := _getCodeType(value)) == \"invalid\":         r..."
     },
     {
       "bug_id": "validators-camelcase-008",
-      "file_path": "src/validators/card.py",
-      "line_number": 37,
-      "mutation_type": "plus_one",
-      "original_text": "2",
-      "mutated_text": "3",
-      "context": "...::-2])         evenSum = sum(sum(divmod(2 * d, 10)) for d in digits[-2::-2])..."
+      "file_path": "src/validators/country.py",
+      "line_number": 305,
+      "mutation_type": "var_swap",
+      "original_text": "isoFormat",
+      "mutated_text": "value",
+      "context": "...getCodeType(value)) == \"invalid\":         return False      if isoFormat == \"alpha2\":..."
     },
     {
       "bug_id": "validators-camelcase-009",
-      "file_path": "src/validators/card.py",
-      "line_number": 37,
-      "mutation_type": "minus_one",
-      "original_text": "2",
-      "mutated_text": "1",
-      "context": "...::-2])         evenSum = sum(sum(divmod(2 * d, 10)) for d in digits[-2::-2])..."
+      "file_path": "src/validators/country.py",
+      "line_number": 305,
+      "mutation_type": "var_swap",
+      "original_text": "isoFormat",
+      "mutated_text": "ignoreCase",
+      "context": "...getCodeType(value)) == \"invalid\":         return False      if isoFormat == \"alpha2\":..."
     },
     {
       "bug_id": "validators-camelcase-010",
-      "file_path": "src/validators/card.py",
-      "line_number": 37,
-      "mutation_type": "plus_one",
-      "original_text": "10",
-      "mutated_text": "11",
-      "context": "...evenSum = sum(sum(divmod(2 * d, 10)) for d in digits[-2::-2])         retu..."
+      "file_path": "src/validators/country.py",
+      "line_number": 305,
+      "mutation_type": "var_swap",
+      "original_text": "isoFormat",
+      "mutated_text": "ignoreCase",
+      "context": "...nvalid\":         return False      if isoFormat == \"alpha2\":         return (..."
     },
     {
       "bug_id": "validators-camelcase-011",
-      "file_path": "src/validators/card.py",
-      "line_number": 37,
-      "mutation_type": "minus_one",
-      "original_text": "10",
-      "mutated_text": "9",
-      "context": "...evenSum = sum(sum(divmod(2 * d, 10)) for d in digits[-2::-2])         retu..."
+      "file_path": "src/validators/country.py",
+      "line_number": 305,
+      "mutation_type": "var_swap",
+      "original_text": "value",
+      "mutated_text": "isoFormat",
+      "context": "...lse      if isoFormat == \"alpha2\":         return (             value.upper() in set(..."
     },
     {
       "bug_id": "validators-camelcase-012",
-      "file_path": "src/validators/card.py",
-      "line_number": 37,
-      "mutation_type": "plus_one",
-      "original_text": "2",
-      "mutated_text": "3",
-      "context": "...sum(divmod(2 * d, 10)) for d in digits[-2::-2])         return (oddSum + evenSum)..."
+      "file_path": "src/validators/country.py",
+      "line_number": 305,
+      "mutation_type": "var_swap",
+      "original_text": "value",
+      "mutated_text": "ignoreCase",
+      "context": "...lse      if isoFormat == \"alpha2\":         return (             value.upper() in set(..."
     },
     {
       "bug_id": "validators-camelcase-013",
-      "file_path": "src/validators/card.py",
-      "line_number": 37,
-      "mutation_type": "minus_one",
-      "original_text": "2",
-      "mutated_text": "1",
-      "context": "...sum(divmod(2 * d, 10)) for d in digits[-2::-2])         return (oddSum + evenSum)..."
+      "file_path": "src/validators/country.py",
+      "line_number": 308,
+      "mutation_type": "var_swap",
+      "original_text": "isoFormat",
+      "mutated_text": "value",
+      "context": "...value.upper() in set(_alpha3ToAlpha2.values())             if ignoreCase..."
     },
     {
       "bug_id": "validators-camelcase-014",
-      "file_path": "src/validators/card.py",
-      "line_number": 37,
-      "mutation_type": "plus_one",
-      "original_text": "2",
-      "mutated_text": "3",
-      "context": "...divmod(2 * d, 10)) for d in digits[-2::-2])         return (oddSum + evenSum) % 1..."
+      "file_path": "src/validators/country.py",
+      "line_number": 308,
+      "mutation_type": "var_swap",
+      "original_text": "isoFormat",
+      "mutated_text": "ignoreCase",
+      "context": "...value.upper() in set(_alpha3ToAlpha2.values())             if ignoreCase..."
     },
     {
       "bug_id": "validators-camelcase-015",
-      "file_path": "src/validators/card.py",
-      "line_number": 37,
-      "mutation_type": "minus_one",
-      "original_text": "2",
-      "mutated_text": "1",
-      "context": "...divmod(2 * d, 10)) for d in digits[-2::-2])         return (oddSum + evenSum) % 1..."
+      "file_path": "src/validators/country.py",
+      "line_number": 317,
+      "mutation_type": "var_swap",
+      "original_text": "isoFormat",
+      "mutated_text": "value",
+      "context": "...lidator def currency(value: str, /, *, skipSymbols: bool = True, ignoreCase: bool = False..."
     },
     {
       "bug_id": "validators-camelcase-016",
-      "file_path": "src/validators/card.py",
-      "line_number": 38,
-      "mutation_type": "eq_ne",
-      "original_text": "==",
-      "mutated_text": "!=",
-      "context": "...return (oddSum + evenSum) % 10 == 0     except ValueError:         return..."
+      "file_path": "src/validators/country.py",
+      "line_number": 317,
+      "mutation_type": "var_swap",
+      "original_text": "isoFormat",
+      "mutated_text": "ignoreCase",
+      "context": "...lidator def currency(value: str, /, *, skipSymbols: bool = True, ignoreCase: bool = False..."
     },
     {
       "bug_id": "validators-camelcase-017",
-      "file_path": "src/validators/card.py",
-      "line_number": 38,
-      "mutation_type": "plus_one",
-      "original_text": "10",
-      "mutated_text": "11",
-      "context": "...2])         return (oddSum + evenSum) % 10 == 0     except ValueError:         ret..."
+      "file_path": "src/validators/country.py",
+      "line_number": 267,
+      "mutation_type": "true_false",
+      "original_text": "False",
+      "mutated_text": "True",
+      "context": "...code.      This performs a case-sensitive [ISO 3166][1] country code validation...."
     },
     {
       "bug_id": "validators-camelcase-018",
-      "file_path": "src/validators/card.py",
-      "line_number": 38,
-      "mutation_type": "minus_one",
-      "original_text": "10",
-      "mutated_text": "9",
-      "context": "...2])         return (oddSum + evenSum) % 10 == 0     except ValueError:         ret..."
+      "file_path": "src/validators/country.py",
+      "line_number": 303,
+      "mutation_type": "true_false",
+      "original_text": "False",
+      "mutated_text": "True",
+      "context": "...isoFormat := _getCodeType(value)) == \"invalid\":         return False      if isoForma..."
     },
     {
       "bug_id": "validators-camelcase-019",
-      "file_path": "src/validators/card.py",
-      "line_number": 38,
-      "mutation_type": "plus_one",
-      "original_text": "0",
-      "mutated_text": "1",
-      "context": "...return (oddSum + evenSum) % 10 == 0     except ValueError:         return F..."
+      "file_path": "src/validators/country.py",
+      "line_number": 306,
+      "mutation_type": "true_false",
+      "original_text": "False",
+      "mutated_text": "True",
+      "context": "...return (             value.upper() in set(_alpha3ToAlpha2.values())..."
     },
     {
       "bug_id": "validators-camelcase-020",
-      "file_path": "src/validators/card.py",
-      "line_number": 38,
-      "mutation_type": "minus_one",
-      "original_text": "0",
-      "mutated_text": "-1",
-      "context": "...return (oddSum + evenSum) % 10 == 0     except ValueError:         return F..."
+      "file_path": "src/validators/country.py",
+      "line_number": 317,
+      "mutation_type": "true_false",
+      "original_text": "False",
+      "mutated_text": "True",
+      "context": "...str, /, *, skipSymbols: bool = True, ignoreCase: bool = False):     \"\"\"Validates give..."
     },
     {
       "bug_id": "validators-camelcase-021",
-      "file_path": "src/validators/card.py",
-      "line_number": 62,
-      "mutation_type": "and_or",
-      "original_text": "and",
-      "mutated_text": "or",
-      "context": "...cardNumber(value) and len(value) == 16 and pattern.match(value)   @validator def m..."
+      "file_path": "src/validators/country.py",
+      "line_number": 321,
+      "mutation_type": "true_false",
+      "original_text": "True",
+      "mutated_text": "False",
+      "context": "...\"Validates given currency code.      This performs [ISO 4217][1] currency code/symbo..."
     },
     {
       "bug_id": "validators-camelcase-022",
-      "file_path": "src/validators/card.py",
-      "line_number": 62,
-      "mutation_type": "and_or",
-      "original_text": "and",
-      "mutated_text": "or",
-      "context": "...ile(r\"^4\")     return cardNumber(value) and len(value) == 16 and pattern.match(valu..."
+      "file_path": "src/validators/country.py",
+      "line_number": 321,
+      "mutation_type": "true_false",
+      "original_text": "False",
+      "mutated_text": "True",
+      "context": "...code.      This performs [ISO 4217][1] currency code/symbol validation.      [1]: ht..."
     },
     {
       "bug_id": "validators-camelcase-023",
-      "file_path": "src/validators/card.py",
-      "line_number": 62,
-      "mutation_type": "eq_ne",
-      "original_text": "==",
-      "mutated_text": "!=",
-      "context": "...return cardNumber(value) and len(value) == 16 and pattern.match(value)   @validato..."
+      "file_path": "src/validators/country.py",
+      "line_number": 347,
+      "mutation_type": "true_false",
+      "original_text": "False",
+      "mutated_text": "True",
+      "context": "...in _currencySymbols:         return True      if len(value) != 3:         return Fal..."
     },
     {
       "bug_id": "validators-camelcase-024",
-      "file_path": "src/validators/card.py",
-      "line_number": 62,
-      "mutation_type": "plus_one",
-      "original_text": "16",
-      "mutated_text": "17",
-      "context": "...urn cardNumber(value) and len(value) == 16 and pattern.match(value)   @validator d..."
+      "file_path": "src/validators/country.py",
+      "line_number": 237,
+      "mutation_type": "return_none",
+      "original_text": "\"invalid\"",
+      "mutated_text": "None",
+      "context": "...ngCode(value: str, /):     \"\"\"Validates given calling code.      This performs country's calling..."
     },
     {
       "bug_id": "validators-camelcase-025",
-      "file_path": "src/validators/card.py",
-      "line_number": 62,
-      "mutation_type": "minus_one",
-      "original_text": "16",
-      "mutated_text": "15",
-      "context": "...urn cardNumber(value) and len(value) == 16 and pattern.match(value)   @validator d..."
+      "file_path": "src/validators/country.py",
+      "line_number": 303,
+      "mutation_type": "return_none",
+      "original_text": "False",
+      "mutated_text": "None",
+      "context": "...\" and (isoFormat := _getCodeType(value)) == \"invalid\":         return False      if isoForma..."
     },
     {
       "bug_id": "validators-camelcase-026",
-      "file_path": "src/validators/card.py",
-      "line_number": 84,
-      "mutation_type": "and_or",
-      "original_text": "and",
-      "mutated_text": "or",
-      "context": "...cardNumber(value) and len(value) == 16 and pattern.match(value)   @validator def a..."
+      "file_path": "src/validators/country.py",
+      "line_number": 306,
+      "mutation_type": "return_none",
+      "original_text": "False",
+      "mutated_text": "None",
+      "context": "...a2\":         return (             value.upper() in set(_alpha3ToAlpha2.values())..."
     },
     {
       "bug_id": "validators-camelcase-027",
-      "file_path": "src/validators/card.py",
-      "line_number": 84,
-      "mutation_type": "and_or",
-      "original_text": "and",
-      "mutated_text": "or",
-      "context": "...5|26|27)\")     return cardNumber(value) and len(value) == 16 and pattern.match(valu..."
+      "file_path": "src/validators/country.py",
+      "line_number": 355,
+      "mutation_type": "return_none",
+      "original_text": "value.upper() in _currencyIso4217 if ignoreCase else value in _currencyIso4217",
+      "mutated_text": "None",
+      "context": "...7 if ignoreCase else value in _currencyIso4217"
     },
     {
       "bug_id": "validators-camelcase-028",
-      "file_path": "src/validators/card.py",
-      "line_number": 84,
-      "mutation_type": "eq_ne",
-      "original_text": "==",
-      "mutated_text": "!=",
-      "context": "...return cardNumber(value) and len(value) == 16 and pattern.match(value)   @validato..."
+      "file_path": "src/validators/country.py",
+      "line_number": 302,
+      "mutation_type": "lt_gt",
+      "original_text": "<",
+      "mutated_text": ">",
+      "context": "...ormat == \"auto\" and (isoFormat := _getCodeType(value)) == \"invalid\":         retu..."
     },
     {
       "bug_id": "validators-camelcase-029",
-      "file_path": "src/validators/card.py",
-      "line_number": 84,
+      "file_path": "src/validators/country.py",
+      "line_number": 302,
       "mutation_type": "plus_one",
-      "original_text": "16",
-      "mutated_text": "17",
-      "context": "...urn cardNumber(value) and len(value) == 16 and pattern.match(value)   @validator d..."
+      "original_text": "4",
+      "mutated_text": "5",
+      "context": "...mat == \"auto\" and (isoFormat := _getCodeType(value)) == \"invalid\":         return..."
     },
     {
       "bug_id": "validators-camelcase-030",
-      "file_path": "src/validators/card.py",
-      "line_number": 84,
+      "file_path": "src/validators/country.py",
+      "line_number": 352,
+      "mutation_type": "plus_one",
+      "original_text": "3",
+      "mutated_text": "4",
+      "context": "...ue.upper() in _currencyIso4217 if ignoreCase else value in _currencyIso4217"
+    },
+    {
+      "bug_id": "validators-camelcase-031",
+      "file_path": "src/validators/country.py",
+      "line_number": 233,
       "mutation_type": "minus_one",
-      "original_text": "16",
-      "mutated_text": "15",
-      "context": "...urn cardNumber(value) and len(value) == 16 and pattern.match(value)   @validator d..."
+      "original_text": "2",
+      "mutated_text": "1",
+      "context": "...if len(formatType) == 3:             return \"alpha3\"     return \"invalid\"   @vali..."
+    },
+    {
+      "bug_id": "validators-camelcase-032",
+      "file_path": "src/validators/country.py",
+      "line_number": 235,
+      "mutation_type": "minus_one",
+      "original_text": "3",
+      "mutated_text": "2",
+      "context": "...rn \"invalid\"   @validator def callingCode(value: str, /):     \"\"\"Validates given..."
+    },
+    {
+      "bug_id": "validators-camelcase-033",
+      "file_path": "src/validators/country.py",
+      "line_number": 302,
+      "mutation_type": "minus_one",
+      "original_text": "1",
+      "mutated_text": "0",
+      "context": "...se      if isoFormat == \"auto\" and (isoFormat := _getCodeType(value)) == \"invalid..."
+    },
+    {
+      "bug_id": "validators-camelcase-034",
+      "file_path": "src/validators/country.py",
+      "line_number": 302,
+      "mutation_type": "minus_one",
+      "original_text": "4",
+      "mutated_text": "3",
+      "context": "...mat == \"auto\" and (isoFormat := _getCodeType(value)) == \"invalid\":         return..."
+    },
+    {
+      "bug_id": "validators-camelcase-035",
+      "file_path": "src/validators/country.py",
+      "line_number": 352,
+      "mutation_type": "minus_one",
+      "original_text": "3",
+      "mutated_text": "2",
+      "context": "...ue.upper() in _currencyIso4217 if ignoreCase else value in _currencyIso4217"
+    },
+    {
+      "bug_id": "validators-camelcase-036",
+      "file_path": "src/validators/crypto_addresses/btc_address.py",
+      "line_number": 23,
+      "mutation_type": "eq_ne",
+      "original_text": "==",
+      "mutated_text": "!=",
+      "context": "..., decodedBytes[-4:]     return checksum == sha256(sha256(header).digest()).digest(..."
+    },
+    {
+      "bug_id": "validators-camelcase-037",
+      "file_path": "src/validators/crypto_addresses/btc_address.py",
+      "line_number": 20,
+      "mutation_type": "true_false",
+      "original_text": "False",
+      "mutated_text": "True",
+      "context": "...r) not in range(25, 35):         return False     decodedBytes = _decodeBase58(addr)...."
+    },
+    {
+      "bug_id": "validators-camelcase-038",
+      "file_path": "src/validators/crypto_addresses/btc_address.py",
+      "line_number": 49,
+      "mutation_type": "true_false",
+      "original_text": "False",
+      "mutated_text": "True",
+      "context": "...\"\"\"     if not value:         return False      return (         # segwit pattern..."
+    },
+    {
+      "bug_id": "validators-camelcase-039",
+      "file_path": "src/validators/crypto_addresses/btc_address.py",
+      "line_number": 14,
+      "mutation_type": "return_none",
+      "original_text": "sum((58**enm) * alphabet.index(idx) for enm, idx in enumerate(addr[::-1]))",
+      "mutated_text": "None",
+      "context": "...RSTUVWXYZabcdefghijkmnopqrstuvwxyz\"     return sum((58**enm) * alphabet.index(idx) for enm, idx in enumerate(addr[::-1]))   def _validateOldBtcAddress(addr: str)..."
+    },
+    {
+      "bug_id": "validators-camelcase-040",
+      "file_path": "src/validators/crypto_addresses/btc_address.py",
+      "line_number": 20,
+      "mutation_type": "return_none",
+      "original_text": "False",
+      "mutated_text": "None",
+      "context": "...len(addr) not in range(25, 35):         return False     decodedBytes = _decodeBase58(addr)...."
+    },
+    {
+      "bug_id": "validators-camelcase-041",
+      "file_path": "src/validators/crypto_addresses/btc_address.py",
+      "line_number": 23,
+      "mutation_type": "return_none",
+      "original_text": "checksum == sha256(sha256(header).digest()).digest()[:4]",
+      "mutated_text": "None",
+      "context": "...ecodedBytes[:-4], decodedBytes[-4:]     return checksum == sha256(sha256(header).digest()).digest()[:4]   @validator def btcAddress(value: str,..."
+    },
+    {
+      "bug_id": "validators-camelcase-042",
+      "file_path": "src/validators/crypto_addresses/btc_address.py",
+      "line_number": 49,
+      "mutation_type": "return_none",
+      "original_text": "False",
+      "mutated_text": "None",
+      "context": "...ress.     \"\"\"     if not value:         return False      return (         # segwit pattern..."
+    },
+    {
+      "bug_id": "validators-camelcase-043",
+      "file_path": "src/validators/crypto_addresses/btc_address.py",
+      "line_number": 51,
+      "mutation_type": "return_none",
+      "original_text": "(\n        # segwit pattern\n        re.compile(r\"^(bc|tc)[0-3][02-9ac-hj-np-z]{14,74}$\").match(value)\n        if value[:2] in (\"bc\", \"tb\")\n        else _validateOldBtcAddress(value)\n    )",
+      "mutated_text": "None",
+      "context": "...if not value:         return False      return (         # segwit pattern         re.compile(r\"^(bc|tc)[0-3][02-9ac-hj-np-z]{14,74}$\").match(value)         if value[:2] in (\"bc\", \"tb\")         else _validateOldBtcAddress(value)     )"
+    },
+    {
+      "bug_id": "validators-camelcase-044",
+      "file_path": "src/validators/crypto_addresses/btc_address.py",
+      "line_number": 19,
+      "mutation_type": "in_not_in",
+      "original_text": "not in",
+      "mutated_text": "in",
+      "context": "...P2SH type address.\"\"\"     if len(addr) not in range(25, 35):         return False..."
+    },
+    {
+      "bug_id": "validators-camelcase-045",
+      "file_path": "src/validators/crypto_addresses/btc_address.py",
+      "line_number": 54,
+      "mutation_type": "in_not_in",
+      "original_text": "in",
+      "mutated_text": "not in",
+      "context": "...4}$\").match(value)         if value[:2] in (\"bc\", \"tb\")         else _validateOldB..."
+    },
+    {
+      "bug_id": "validators-camelcase-046",
+      "file_path": "src/validators/crypto_addresses/btc_address.py",
+      "line_number": 14,
+      "mutation_type": "mul_div",
+      "original_text": "*",
+      "mutated_text": "/",
+      "context": "...nopqrstuvwxyz\"     return sum((58**enm) * alphabet.index(idx) for enm, idx in enu..."
+    },
+    {
+      "bug_id": "validators-camelcase-047",
+      "file_path": "src/validators/crypto_addresses/btc_address.py",
+      "line_number": 14,
+      "mutation_type": "plus_one",
+      "original_text": "58",
+      "mutated_text": "59",
+      "context": "...defghijkmnopqrstuvwxyz\"     return sum((58**enm) * alphabet.index(idx) for enm, id..."
+    },
+    {
+      "bug_id": "validators-camelcase-048",
+      "file_path": "src/validators/crypto_addresses/btc_address.py",
+      "line_number": 14,
+      "mutation_type": "plus_one",
+      "original_text": "1",
+      "mutated_text": "2",
+      "context": "...(idx) for enm, idx in enumerate(addr[::-1]))   def _validateOldBtcAddress(addr: s..."
+    },
+    {
+      "bug_id": "validators-camelcase-049",
+      "file_path": "src/validators/crypto_addresses/btc_address.py",
+      "line_number": 19,
+      "mutation_type": "plus_one",
+      "original_text": "25",
+      "mutated_text": "26",
+      "context": "...dress.\"\"\"     if len(addr) not in range(25, 35):         return False     decodedB..."
+    },
+    {
+      "bug_id": "validators-camelcase-050",
+      "file_path": "src/validators/crypto_addresses/btc_address.py",
+      "line_number": 19,
+      "mutation_type": "plus_one",
+      "original_text": "35",
+      "mutated_text": "36",
+      "context": "...s.\"\"\"     if len(addr) not in range(25, 35):         return False     decodedBytes..."
     }
   ]
 }

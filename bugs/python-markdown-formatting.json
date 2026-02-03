@@ -1,11 +1,12 @@
 {
   "repo": "python-markdown",
   "style": "formatting",
-  "generated_at": "2026-01-30T12:10:02.186384",
+  "generated_at": "2026-02-02T16:08:11.949579",
   "test_command": [
     "uv",
     "run",
     "pytest",
+    "/Users/yuan/stylebench-data/formatting/python-markdown/tests",
     "-x",
     "-q",
     "--tb=short",
@@ -16,137 +17,401 @@
   "bugs": [
     {
       "bug_id": "python-markdown-formatting-001",
-      "test_output": "..................................................F\n=================================== FAILURES ===================================\n________________________ testSerializers.testHTMLOutput ________________________\ntests/test_apis.py:658: in testHTMLOutput\n    self.assertEqual(\nE   AssertionError: '<p>foo<br />\\nbar</p>' != '<p>foo<br>\\nbar</p>'\nE   - <p>foo<br />\nE   ?          --\nE   + <p>foo<br>\nE     bar</p>\n=========================== short test summary info ============================\nFAILED tests/test_apis.py::testSerializers::testHTMLOutput - AssertionError: ...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 50 passed in 0.16s\n",
+      "test_output": ".....F\n=================================== FAILURES ===================================\n______________________ TestMarkdownBasics.testSimpleInput ______________________\n/Users/yuan/stylebench-data/formatting/python-markdown/tests/test_apis.py:59: in testSimpleInput\n    self.assertEqual(self.md.convert('foo'), '<p>foo</p>')\n                     ^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/markdown/core.py:393: in convert\n    root = self.parser.parseDocument(self.lines).getroot()\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/markdown/blockparser.py:117: in parseDocument\n    self.parseChunk(self.root, '\\n'.join(lines))\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/markdown/blockparser.py:136: in parseChunk\n    self.parseBlocks(parent, text.split('\\n\\n'))\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/markdown/blockparser.py:158: in parseBlocks\n    if processor.run(parent, blocks) is not False:\n       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/markdown/blockprocessors.py:681: in run\n    p = etree.SubElement(parent, 'p')\n        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nE   TypeError: SubElement() argument 1 must be xml.etree.ElementTree.Element, not list\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/tests/test_apis.py::TestMarkdownBasics::testSimpleInput\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 5 passed in 0.22s\n   Building markdown @ file:///private/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1\n      Built markdown @ file:///private/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1\nUninstalled 1 package in 3ms\nInstalled 1 package in 13ms\n",
       "failing_tests": [
-        "tests/test_apis.py::testSerializers::testHTMLOutput"
+        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/tests/test_apis.py::TestMarkdownBasics::testSimpleInput"
       ],
       "exit_code": 1
     },
     {
       "bug_id": "python-markdown-formatting-002",
-      "test_output": "..................................................F\n=================================== FAILURES ===================================\n________________________ testSerializers.testHTMLOutput ________________________\ntests/test_apis.py:658: in testHTMLOutput\n    self.assertEqual(\nE   AssertionError: '<p>foo<br />\\nbar</p>' != '<p>foo<br>\\nbar</p>'\nE   - <p>foo<br />\nE   ?          --\nE   + <p>foo<br>\nE     bar</p>\n=========================== short test summary info ============================\nFAILED tests/test_apis.py::testSerializers::testHTMLOutput - AssertionError: ...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 50 passed in 0.13s\n",
+      "test_output": ".....F\n=================================== FAILURES ===================================\n______________________ TestMarkdownBasics.testSimpleInput ______________________\n/Users/yuan/stylebench-data/formatting/python-markdown/tests/test_apis.py:59: in testSimpleInput\n    self.assertEqual(self.md.convert('foo'), '<p>foo</p>')\n                     ^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/markdown/core.py:393: in convert\n    root = self.parser.parseDocument(self.lines).getroot()\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/markdown/blockparser.py:117: in parseDocument\n    self.parseChunk(self.root, '\\n'.join(lines))\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/markdown/blockparser.py:136: in parseChunk\n    self.parseBlocks(parent, text.split('\\n\\n'))\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/markdown/blockparser.py:158: in parseBlocks\n    if processor.run(parent, blocks) is not False:\n       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/markdown/blockprocessors.py:681: in run\n    p = etree.SubElement(parent, 'p')\n        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nE   TypeError: SubElement() argument 1 must be xml.etree.ElementTree.Element, not list\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/tests/test_apis.py::TestMarkdownBasics::testSimpleInput\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 5 passed in 0.24s\n",
       "failing_tests": [
-        "tests/test_apis.py::testSerializers::testHTMLOutput"
+        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/tests/test_apis.py::TestMarkdownBasics::testSimpleInput"
       ],
       "exit_code": 1
     },
     {
       "bug_id": "python-markdown-formatting-003",
-      "test_output": "..................................................F\n=================================== FAILURES ===================================\n________________________ testSerializers.testHTMLOutput ________________________\ntests/test_apis.py:658: in testHTMLOutput\n    self.assertEqual(\nE   AssertionError: '<p>foo<br />\\nbar</p>' != '<p>foo<br>\\nbar</p>'\nE   - <p>foo<br />\nE   ?          --\nE   + <p>foo<br>\nE     bar</p>\n=========================== short test summary info ============================\nFAILED tests/test_apis.py::testSerializers::testHTMLOutput - AssertionError: ...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 50 passed in 0.12s\n",
+      "test_output": ".....F\n=================================== FAILURES ===================================\n______________________ TestMarkdownBasics.testSimpleInput ______________________\n/Users/yuan/stylebench-data/formatting/python-markdown/tests/test_apis.py:59: in testSimpleInput\n    self.assertEqual(self.md.convert('foo'), '<p>foo</p>')\n                     ^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/markdown/core.py:393: in convert\n    root = self.parser.parseDocument(self.lines).getroot()\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/markdown/blockparser.py:117: in parseDocument\n    self.parseChunk(self.root, '\\n'.join(lines))\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/markdown/blockparser.py:136: in parseChunk\n    self.parseBlocks(parent, text.split('\\n\\n'))\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/markdown/blockparser.py:158: in parseBlocks\n    if processor.run(parent, blocks) is not False:\n       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/markdown/blockprocessors.py:681: in run\n    p = etree.SubElement(parent, 'p')\n        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nE   TypeError: SubElement() argument 1 must be xml.etree.ElementTree.Element, not list\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/tests/test_apis.py::TestMarkdownBasics::testSimpleInput\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 5 passed in 0.17s\n",
       "failing_tests": [
-        "tests/test_apis.py::testSerializers::testHTMLOutput"
+        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/tests/test_apis.py::TestMarkdownBasics::testSimpleInput"
       ],
       "exit_code": 1
     },
     {
       "bug_id": "python-markdown-formatting-004",
-      "test_output": "..................................................F\n=================================== FAILURES ===================================\n________________________ testSerializers.testHTMLOutput ________________________\ntests/test_apis.py:658: in testHTMLOutput\n    self.assertEqual(\nE   AssertionError: '<p>foo<br />\\nbar</p>' != '<p>foo<br>\\nbar</p>'\nE   - <p>foo<br />\nE   ?          --\nE   + <p>foo<br>\nE     bar</p>\n=========================== short test summary info ============================\nFAILED tests/test_apis.py::testSerializers::testHTMLOutput - AssertionError: ...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 50 passed in 0.13s\n",
+      "test_output": ".....F\n=================================== FAILURES ===================================\n______________________ TestMarkdownBasics.testSimpleInput ______________________\n/Users/yuan/stylebench-data/formatting/python-markdown/tests/test_apis.py:59: in testSimpleInput\n    self.assertEqual(self.md.convert('foo'), '<p>foo</p>')\n                     ^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/markdown/core.py:393: in convert\n    root = self.parser.parseDocument(self.lines).getroot()\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/markdown/blockparser.py:117: in parseDocument\n    self.parseChunk(self.root, '\\n'.join(lines))\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/markdown/blockparser.py:136: in parseChunk\n    self.parseBlocks(parent, text.split('\\n\\n'))\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/markdown/blockparser.py:158: in parseBlocks\n    if processor.run(parent, blocks) is not False:\n       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/markdown/blockprocessors.py:681: in run\n    p = etree.SubElement(parent, 'p')\n        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nE   TypeError: SubElement() argument 1 must be xml.etree.ElementTree.Element, not list\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/tests/test_apis.py::TestMarkdownBasics::testSimpleInput\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 5 passed in 0.22s\n",
       "failing_tests": [
-        "tests/test_apis.py::testSerializers::testHTMLOutput"
+        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/tests/test_apis.py::TestMarkdownBasics::testSimpleInput"
       ],
       "exit_code": 1
     },
     {
       "bug_id": "python-markdown-formatting-005",
-      "test_output": "..................................................F\n=================================== FAILURES ===================================\n________________________ testSerializers.testHTMLOutput ________________________\ntests/test_apis.py:658: in testHTMLOutput\n    self.assertEqual(\nE   AssertionError: '<p>foo<br />\\nbar</p>' != '<p>foo<br>\\nbar</p>'\nE   - <p>foo<br />\nE   ?          --\nE   + <p>foo<br>\nE     bar</p>\n=========================== short test summary info ============================\nFAILED tests/test_apis.py::testSerializers::testHTMLOutput - AssertionError: ...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 50 passed in 0.13s\n",
+      "test_output": ".....F\n=================================== FAILURES ===================================\n______________________ TestMarkdownBasics.testSimpleInput ______________________\n/Users/yuan/stylebench-data/formatting/python-markdown/tests/test_apis.py:59: in testSimpleInput\n    self.assertEqual(self.md.convert('foo'), '<p>foo</p>')\n                     ^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/markdown/core.py:393: in convert\n    root = self.parser.parseDocument(self.lines).getroot()\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/markdown/blockparser.py:117: in parseDocument\n    self.parseChunk(self.root, '\\n'.join(lines))\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/markdown/blockparser.py:136: in parseChunk\n    self.parseBlocks(parent, text.split('\\n\\n'))\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/markdown/blockparser.py:158: in parseBlocks\n    if processor.run(parent, blocks) is not False:\n       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/markdown/blockprocessors.py:681: in run\n    p = etree.SubElement(parent, 'p')\n        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nE   TypeError: SubElement() argument 1 must be xml.etree.ElementTree.Element, not list\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/tests/test_apis.py::TestMarkdownBasics::testSimpleInput\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 5 passed in 0.17s\n",
       "failing_tests": [
-        "tests/test_apis.py::testSerializers::testHTMLOutput"
+        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/tests/test_apis.py::TestMarkdownBasics::testSimpleInput"
       ],
       "exit_code": 1
     },
     {
       "bug_id": "python-markdown-formatting-006",
-      "test_output": "..................................................F\n=================================== FAILURES ===================================\n________________________ testSerializers.testHTMLOutput ________________________\ntests/test_apis.py:658: in testHTMLOutput\n    self.assertEqual(\nE   AssertionError: '<p>foo<br />\\nbar</p>' != '<p>foo<br>\\nbar</p>'\nE   - <p>foo<br />\nE   ?          --\nE   + <p>foo<br>\nE     bar</p>\n=========================== short test summary info ============================\nFAILED tests/test_apis.py::testSerializers::testHTMLOutput - AssertionError: ...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 50 passed in 0.14s\n",
+      "test_output": ".....F\n=================================== FAILURES ===================================\n______________________ TestMarkdownBasics.testSimpleInput ______________________\n/Users/yuan/stylebench-data/formatting/python-markdown/tests/test_apis.py:59: in testSimpleInput\n    self.assertEqual(self.md.convert('foo'), '<p>foo</p>')\n                     ^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/markdown/core.py:393: in convert\n    root = self.parser.parseDocument(self.lines).getroot()\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/markdown/blockparser.py:117: in parseDocument\n    self.parseChunk(self.root, '\\n'.join(lines))\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/markdown/blockparser.py:136: in parseChunk\n    self.parseBlocks(parent, text.split('\\n\\n'))\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/markdown/blockparser.py:158: in parseBlocks\n    if processor.run(parent, blocks) is not False:\n       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/markdown/blockprocessors.py:681: in run\n    p = etree.SubElement(parent, 'p')\n        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nE   TypeError: SubElement() argument 1 must be xml.etree.ElementTree.Element, not list\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/tests/test_apis.py::TestMarkdownBasics::testSimpleInput\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 5 passed in 0.19s\n",
       "failing_tests": [
-        "tests/test_apis.py::testSerializers::testHTMLOutput"
+        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/tests/test_apis.py::TestMarkdownBasics::testSimpleInput"
       ],
       "exit_code": 1
     },
     {
       "bug_id": "python-markdown-formatting-007",
-      "test_output": "..................................................F\n=================================== FAILURES ===================================\n________________________ testSerializers.testHTMLOutput ________________________\ntests/test_apis.py:658: in testHTMLOutput\n    self.assertEqual(\nE   AssertionError: '<p>foo<br />\\nbar</p>' != '<p>foo<br>\\nbar</p>'\nE   - <p>foo<br />\nE   ?          --\nE   + <p>foo<br>\nE     bar</p>\n=========================== short test summary info ============================\nFAILED tests/test_apis.py::testSerializers::testHTMLOutput - AssertionError: ...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 50 passed in 0.13s\n",
+      "test_output": ".....F\n=================================== FAILURES ===================================\n______________________ TestMarkdownBasics.testSimpleInput ______________________\n/Users/yuan/stylebench-data/formatting/python-markdown/tests/test_apis.py:59: in testSimpleInput\n    self.assertEqual(self.md.convert('foo'), '<p>foo</p>')\n                     ^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/markdown/core.py:393: in convert\n    root = self.parser.parseDocument(self.lines).getroot()\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/markdown/blockparser.py:117: in parseDocument\n    self.parseChunk(self.root, '\\n'.join(lines))\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/markdown/blockparser.py:136: in parseChunk\n    self.parseBlocks(parent, text.split('\\n\\n'))\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/markdown/blockparser.py:158: in parseBlocks\n    if processor.run(parent, blocks) is not False:\n       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/markdown/blockprocessors.py:681: in run\n    p = etree.SubElement(parent, 'p')\n        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nE   TypeError: SubElement() argument 1 must be xml.etree.ElementTree.Element, not list\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/tests/test_apis.py::TestMarkdownBasics::testSimpleInput\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 5 passed in 0.14s\n",
       "failing_tests": [
-        "tests/test_apis.py::testSerializers::testHTMLOutput"
+        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/tests/test_apis.py::TestMarkdownBasics::testSimpleInput"
       ],
       "exit_code": 1
     },
     {
       "bug_id": "python-markdown-formatting-008",
-      "test_output": "..................................................F\n=================================== FAILURES ===================================\n________________________ testSerializers.testHTMLOutput ________________________\ntests/test_apis.py:658: in testHTMLOutput\n    self.assertEqual(\nE   AssertionError: '<p>foo<br />\\nbar</p>' != '<p>foo<br>\\nbar</p>'\nE   - <p>foo<br />\nE   ?          --\nE   + <p>foo<br>\nE     bar</p>\n=========================== short test summary info ============================\nFAILED tests/test_apis.py::testSerializers::testHTMLOutput - AssertionError: ...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 50 passed in 0.13s\n",
+      "test_output": ".....F\n=================================== FAILURES ===================================\n______________________ TestMarkdownBasics.testSimpleInput ______________________\n/Users/yuan/stylebench-data/formatting/python-markdown/tests/test_apis.py:59: in testSimpleInput\n    self.assertEqual(self.md.convert('foo'), '<p>foo</p>')\n                     ^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/markdown/core.py:393: in convert\n    root = self.parser.parseDocument(self.lines).getroot()\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/markdown/blockparser.py:117: in parseDocument\n    self.parseChunk(self.root, '\\n'.join(lines))\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/markdown/blockparser.py:136: in parseChunk\n    self.parseBlocks(parent, text.split('\\n\\n'))\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/markdown/blockparser.py:158: in parseBlocks\n    if processor.run(parent, blocks) is not False:\n       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/markdown/blockprocessors.py:681: in run\n    p = etree.SubElement(parent, 'p')\n        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nE   TypeError: SubElement() argument 1 must be xml.etree.ElementTree.Element, not list\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/tests/test_apis.py::TestMarkdownBasics::testSimpleInput\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 5 passed in 0.26s\n",
       "failing_tests": [
-        "tests/test_apis.py::testSerializers::testHTMLOutput"
+        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/tests/test_apis.py::TestMarkdownBasics::testSimpleInput"
       ],
       "exit_code": 1
     },
     {
       "bug_id": "python-markdown-formatting-009",
-      "test_output": "..................................................F\n=================================== FAILURES ===================================\n________________________ testSerializers.testHTMLOutput ________________________\ntests/test_apis.py:658: in testHTMLOutput\n    self.assertEqual(\nE   AssertionError: '<p>foo<br />\\nbar</p>' != '<p>foo<br>\\nbar</p>'\nE   - <p>foo<br />\nE   ?          --\nE   + <p>foo<br>\nE     bar</p>\n=========================== short test summary info ============================\nFAILED tests/test_apis.py::testSerializers::testHTMLOutput - AssertionError: ...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 50 passed in 0.13s\n",
+      "test_output": ".....F\n=================================== FAILURES ===================================\n______________________ TestMarkdownBasics.testSimpleInput ______________________\n/Users/yuan/stylebench-data/formatting/python-markdown/tests/test_apis.py:59: in testSimpleInput\n    self.assertEqual(self.md.convert('foo'), '<p>foo</p>')\n                     ^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/markdown/core.py:393: in convert\n    root = self.parser.parseDocument(self.lines).getroot()\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/markdown/blockparser.py:117: in parseDocument\n    self.parseChunk(self.root, '\\n'.join(lines))\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/markdown/blockparser.py:136: in parseChunk\n    self.parseBlocks(parent, text.split('\\n\\n'))\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/markdown/blockparser.py:158: in parseBlocks\n    if processor.run(parent, blocks) is not False:\n       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/markdown/blockprocessors.py:681: in run\n    p = etree.SubElement(parent, 'p')\n        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nE   TypeError: SubElement() argument 1 must be xml.etree.ElementTree.Element, not list\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/tests/test_apis.py::TestMarkdownBasics::testSimpleInput\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 5 passed in 0.19s\n",
       "failing_tests": [
-        "tests/test_apis.py::testSerializers::testHTMLOutput"
+        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/tests/test_apis.py::TestMarkdownBasics::testSimpleInput"
       ],
       "exit_code": 1
     },
     {
       "bug_id": "python-markdown-formatting-010",
-      "test_output": "..................................................F\n=================================== FAILURES ===================================\n________________________ testSerializers.testHTMLOutput ________________________\ntests/test_apis.py:658: in testHTMLOutput\n    self.assertEqual(\nE   AssertionError: '<p>foo<br />\\nbar</p>' != '<p>foo<br>\\nbar</p>'\nE   - <p>foo<br />\nE   ?          --\nE   + <p>foo<br>\nE     bar</p>\n=========================== short test summary info ============================\nFAILED tests/test_apis.py::testSerializers::testHTMLOutput - AssertionError: ...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 50 passed in 0.13s\n",
+      "test_output": ".....F\n=================================== FAILURES ===================================\n______________________ TestMarkdownBasics.testSimpleInput ______________________\n/Users/yuan/stylebench-data/formatting/python-markdown/tests/test_apis.py:59: in testSimpleInput\n    self.assertEqual(self.md.convert('foo'), '<p>foo</p>')\n                     ^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/markdown/core.py:393: in convert\n    root = self.parser.parseDocument(self.lines).getroot()\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/markdown/blockparser.py:117: in parseDocument\n    self.parseChunk(self.root, '\\n'.join(lines))\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/markdown/blockparser.py:136: in parseChunk\n    self.parseBlocks(parent, text.split('\\n\\n'))\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/markdown/blockparser.py:158: in parseBlocks\n    if processor.run(parent, blocks) is not False:\n       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/markdown/blockprocessors.py:681: in run\n    p = etree.SubElement(parent, 'p')\n        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nE   TypeError: SubElement() argument 1 must be xml.etree.ElementTree.Element, not list\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/tests/test_apis.py::TestMarkdownBasics::testSimpleInput\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 5 passed in 0.19s\n",
       "failing_tests": [
-        "tests/test_apis.py::testSerializers::testHTMLOutput"
+        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/tests/test_apis.py::TestMarkdownBasics::testSimpleInput"
       ],
       "exit_code": 1
     },
     {
       "bug_id": "python-markdown-formatting-011",
-      "test_output": "..................................................F\n=================================== FAILURES ===================================\n________________________ testSerializers.testHTMLOutput ________________________\ntests/test_apis.py:658: in testHTMLOutput\n    self.assertEqual(\nE   AssertionError: '<p>foo<br />\\nbar</p>' != '<p>foo<br>\\nbar</p>'\nE   - <p>foo<br />\nE   ?          --\nE   + <p>foo<br>\nE     bar</p>\n=========================== short test summary info ============================\nFAILED tests/test_apis.py::testSerializers::testHTMLOutput - AssertionError: ...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 50 passed in 0.13s\n",
+      "test_output": ".....F\n=================================== FAILURES ===================================\n______________________ TestMarkdownBasics.testSimpleInput ______________________\n/Users/yuan/stylebench-data/formatting/python-markdown/tests/test_apis.py:59: in testSimpleInput\n    self.assertEqual(self.md.convert('foo'), '<p>foo</p>')\n                     ^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/markdown/core.py:393: in convert\n    root = self.parser.parseDocument(self.lines).getroot()\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/markdown/blockparser.py:117: in parseDocument\n    self.parseChunk(self.root, '\\n'.join(lines))\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/markdown/blockparser.py:136: in parseChunk\n    self.parseBlocks(parent, text.split('\\n\\n'))\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/markdown/blockparser.py:158: in parseBlocks\n    if processor.run(parent, blocks) is not False:\n       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/markdown/blockprocessors.py:681: in run\n    p = etree.SubElement(parent, 'p')\n        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nE   TypeError: SubElement() argument 1 must be xml.etree.ElementTree.Element, not list\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/tests/test_apis.py::TestMarkdownBasics::testSimpleInput\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 5 passed in 0.23s\n",
       "failing_tests": [
-        "tests/test_apis.py::testSerializers::testHTMLOutput"
+        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/tests/test_apis.py::TestMarkdownBasics::testSimpleInput"
       ],
       "exit_code": 1
     },
     {
       "bug_id": "python-markdown-formatting-012",
-      "test_output": "..................................................F\n=================================== FAILURES ===================================\n________________________ testSerializers.testHTMLOutput ________________________\ntests/test_apis.py:658: in testHTMLOutput\n    self.assertEqual(\nE   AssertionError: '<p>foo<br />\\nbar</p>' != '<p>foo<br>\\nbar</p>'\nE   - <p>foo<br />\nE   ?          --\nE   + <p>foo<br>\nE     bar</p>\n=========================== short test summary info ============================\nFAILED tests/test_apis.py::testSerializers::testHTMLOutput - AssertionError: ...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 50 passed in 0.13s\n",
+      "test_output": ".....F\n=================================== FAILURES ===================================\n______________________ TestMarkdownBasics.testSimpleInput ______________________\n/Users/yuan/stylebench-data/formatting/python-markdown/tests/test_apis.py:59: in testSimpleInput\n    self.assertEqual(self.md.convert('foo'), '<p>foo</p>')\n                     ^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/markdown/core.py:393: in convert\n    root = self.parser.parseDocument(self.lines).getroot()\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/markdown/blockparser.py:117: in parseDocument\n    self.parseChunk(self.root, '\\n'.join(lines))\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/markdown/blockparser.py:136: in parseChunk\n    self.parseBlocks(parent, text.split('\\n\\n'))\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/markdown/blockparser.py:158: in parseBlocks\n    if processor.run(parent, blocks) is not False:\n       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/markdown/blockprocessors.py:681: in run\n    p = etree.SubElement(parent, 'p')\n        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nE   TypeError: SubElement() argument 1 must be xml.etree.ElementTree.Element, not list\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/tests/test_apis.py::TestMarkdownBasics::testSimpleInput\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 5 passed in 0.16s\n",
       "failing_tests": [
-        "tests/test_apis.py::testSerializers::testHTMLOutput"
+        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/tests/test_apis.py::TestMarkdownBasics::testSimpleInput"
       ],
       "exit_code": 1
     },
     {
       "bug_id": "python-markdown-formatting-013",
-      "test_output": "..................................................F\n=================================== FAILURES ===================================\n________________________ testSerializers.testHTMLOutput ________________________\ntests/test_apis.py:658: in testHTMLOutput\n    self.assertEqual(\nE   AssertionError: '<p>foo<br />\\nbar</p>' != '<p>foo<br>\\nbar</p>'\nE   - <p>foo<br />\nE   ?          --\nE   + <p>foo<br>\nE     bar</p>\n=========================== short test summary info ============================\nFAILED tests/test_apis.py::testSerializers::testHTMLOutput - AssertionError: ...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 50 passed in 0.13s\n",
+      "test_output": ".....F\n=================================== FAILURES ===================================\n______________________ TestMarkdownBasics.testSimpleInput ______________________\n/Users/yuan/stylebench-data/formatting/python-markdown/tests/test_apis.py:59: in testSimpleInput\n    self.assertEqual(self.md.convert('foo'), '<p>foo</p>')\n                     ^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/markdown/core.py:393: in convert\n    root = self.parser.parseDocument(self.lines).getroot()\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/markdown/blockparser.py:117: in parseDocument\n    self.parseChunk(self.root, '\\n'.join(lines))\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/markdown/blockparser.py:136: in parseChunk\n    self.parseBlocks(parent, text.split('\\n\\n'))\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/markdown/blockparser.py:158: in parseBlocks\n    if processor.run(parent, blocks) is not False:\n       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/markdown/blockprocessors.py:681: in run\n    p = etree.SubElement(parent, 'p')\n        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nE   TypeError: SubElement() argument 1 must be xml.etree.ElementTree.Element, not list\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/tests/test_apis.py::TestMarkdownBasics::testSimpleInput\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 5 passed in 0.14s\n",
       "failing_tests": [
-        "tests/test_apis.py::testSerializers::testHTMLOutput"
+        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/tests/test_apis.py::TestMarkdownBasics::testSimpleInput"
       ],
       "exit_code": 1
     },
     {
       "bug_id": "python-markdown-formatting-014",
-      "test_output": "..................................................F\n=================================== FAILURES ===================================\n________________________ testSerializers.testHTMLOutput ________________________\ntests/test_apis.py:658: in testHTMLOutput\n    self.assertEqual(\nE   AssertionError: '<p>foo<br />\\nbar</p>' != '<p>foo<br>\\nbar</p>'\nE   - <p>foo<br />\nE   ?          --\nE   + <p>foo<br>\nE     bar</p>\n=========================== short test summary info ============================\nFAILED tests/test_apis.py::testSerializers::testHTMLOutput - AssertionError: ...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 50 passed in 0.13s\n",
+      "test_output": ".....F\n=================================== FAILURES ===================================\n______________________ TestMarkdownBasics.testSimpleInput ______________________\n/Users/yuan/stylebench-data/formatting/python-markdown/tests/test_apis.py:59: in testSimpleInput\n    self.assertEqual(self.md.convert('foo'), '<p>foo</p>')\n                     ^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/markdown/core.py:393: in convert\n    root = self.parser.parseDocument(self.lines).getroot()\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/markdown/blockparser.py:117: in parseDocument\n    self.parseChunk(self.root, '\\n'.join(lines))\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/markdown/blockparser.py:136: in parseChunk\n    self.parseBlocks(parent, text.split('\\n\\n'))\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/markdown/blockparser.py:158: in parseBlocks\n    if processor.run(parent, blocks) is not False:\n       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/markdown/blockprocessors.py:681: in run\n    p = etree.SubElement(parent, 'p')\n        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nE   TypeError: SubElement() argument 1 must be xml.etree.ElementTree.Element, not list\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/tests/test_apis.py::TestMarkdownBasics::testSimpleInput\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 5 passed in 0.18s\n",
       "failing_tests": [
-        "tests/test_apis.py::testSerializers::testHTMLOutput"
+        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/tests/test_apis.py::TestMarkdownBasics::testSimpleInput"
       ],
       "exit_code": 1
     },
     {
       "bug_id": "python-markdown-formatting-015",
-      "test_output": "..................................................F\n=================================== FAILURES ===================================\n________________________ testSerializers.testHTMLOutput ________________________\ntests/test_apis.py:658: in testHTMLOutput\n    self.assertEqual(\nE   AssertionError: '<p>foo<br />\\nbar</p>' != '<p>foo<br>\\nbar</p>'\nE   - <p>foo<br />\nE   ?          --\nE   + <p>foo<br>\nE     bar</p>\n=========================== short test summary info ============================\nFAILED tests/test_apis.py::testSerializers::testHTMLOutput - AssertionError: ...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 50 passed in 0.13s\n",
+      "test_output": ".....F\n=================================== FAILURES ===================================\n______________________ TestMarkdownBasics.testSimpleInput ______________________\n/Users/yuan/stylebench-data/formatting/python-markdown/tests/test_apis.py:59: in testSimpleInput\n    self.assertEqual(self.md.convert('foo'), '<p>foo</p>')\n                     ^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/markdown/core.py:393: in convert\n    root = self.parser.parseDocument(self.lines).getroot()\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/markdown/blockparser.py:117: in parseDocument\n    self.parseChunk(self.root, '\\n'.join(lines))\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/markdown/blockparser.py:136: in parseChunk\n    self.parseBlocks(parent, text.split('\\n\\n'))\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/markdown/blockparser.py:158: in parseBlocks\n    if processor.run(parent, blocks) is not False:\n       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/markdown/blockprocessors.py:681: in run\n    p = etree.SubElement(parent, 'p')\n        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nE   TypeError: SubElement() argument 1 must be xml.etree.ElementTree.Element, not list\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/tests/test_apis.py::TestMarkdownBasics::testSimpleInput\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 5 passed in 0.18s\n",
       "failing_tests": [
-        "tests/test_apis.py::testSerializers::testHTMLOutput"
+        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/tests/test_apis.py::TestMarkdownBasics::testSimpleInput"
       ],
       "exit_code": 1
     },
     {
       "bug_id": "python-markdown-formatting-016",
-      "test_output": "..................................................F\n=================================== FAILURES ===================================\n________________________ testSerializers.testHTMLOutput ________________________\ntests/test_apis.py:658: in testHTMLOutput\n    self.assertEqual(\nE   AssertionError: '<p>foo<br />\\nbar</p>' != '<p>foo<br>\\nbar</p>'\nE   - <p>foo<br />\nE   ?          --\nE   + <p>foo<br>\nE     bar</p>\n=========================== short test summary info ============================\nFAILED tests/test_apis.py::testSerializers::testHTMLOutput - AssertionError: ...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 50 passed in 0.12s\n",
+      "test_output": ".....F\n=================================== FAILURES ===================================\n______________________ TestMarkdownBasics.testSimpleInput ______________________\n/Users/yuan/stylebench-data/formatting/python-markdown/tests/test_apis.py:59: in testSimpleInput\n    self.assertEqual(self.md.convert('foo'), '<p>foo</p>')\n                     ^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/markdown/core.py:393: in convert\n    root = self.parser.parseDocument(self.lines).getroot()\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/markdown/blockparser.py:117: in parseDocument\n    self.parseChunk(self.root, '\\n'.join(lines))\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/markdown/blockparser.py:136: in parseChunk\n    self.parseBlocks(parent, text.split('\\n\\n'))\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/markdown/blockparser.py:158: in parseBlocks\n    if processor.run(parent, blocks) is not False:\n       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/markdown/blockprocessors.py:681: in run\n    p = etree.SubElement(parent, 'p')\n        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nE   TypeError: SubElement() argument 1 must be xml.etree.ElementTree.Element, not list\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/tests/test_apis.py::TestMarkdownBasics::testSimpleInput\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 5 passed in 0.26s\n",
       "failing_tests": [
-        "tests/test_apis.py::testSerializers::testHTMLOutput"
+        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/tests/test_apis.py::TestMarkdownBasics::testSimpleInput"
       ],
       "exit_code": 1
     },
     {
       "bug_id": "python-markdown-formatting-017",
-      "test_output": "..................................................F\n=================================== FAILURES ===================================\n________________________ testSerializers.testHTMLOutput ________________________\ntests/test_apis.py:658: in testHTMLOutput\n    self.assertEqual(\nE   AssertionError: '<p>foo<br />\\nbar</p>' != '<p>foo<br>\\nbar</p>'\nE   - <p>foo<br />\nE   ?          --\nE   + <p>foo<br>\nE     bar</p>\n=========================== short test summary info ============================\nFAILED tests/test_apis.py::testSerializers::testHTMLOutput - AssertionError: ...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 50 passed in 0.13s\n",
+      "test_output": ".....F\n=================================== FAILURES ===================================\n______________________ TestMarkdownBasics.testSimpleInput ______________________\n/Users/yuan/stylebench-data/formatting/python-markdown/tests/test_apis.py:59: in testSimpleInput\n    self.assertEqual(self.md.convert('foo'), '<p>foo</p>')\n                     ^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/markdown/core.py:393: in convert\n    root = self.parser.parseDocument(self.lines).getroot()\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/markdown/blockparser.py:117: in parseDocument\n    self.parseChunk(self.root, '\\n'.join(lines))\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/markdown/blockparser.py:136: in parseChunk\n    self.parseBlocks(parent, text.split('\\n\\n'))\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/markdown/blockparser.py:158: in parseBlocks\n    if processor.run(parent, blocks) is not False:\n       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/markdown/blockprocessors.py:681: in run\n    p = etree.SubElement(parent, 'p')\n        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nE   TypeError: SubElement() argument 1 must be xml.etree.ElementTree.Element, not list\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/tests/test_apis.py::TestMarkdownBasics::testSimpleInput\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 5 passed in 0.17s\n",
       "failing_tests": [
-        "tests/test_apis.py::testSerializers::testHTMLOutput"
+        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/tests/test_apis.py::TestMarkdownBasics::testSimpleInput"
+      ],
+      "exit_code": 1
+    },
+    {
+      "bug_id": "python-markdown-formatting-018",
+      "test_output": ".....F\n=================================== FAILURES ===================================\n______________________ TestMarkdownBasics.testSimpleInput ______________________\n/Users/yuan/stylebench-data/formatting/python-markdown/tests/test_apis.py:59: in testSimpleInput\n    self.assertEqual(self.md.convert('foo'), '<p>foo</p>')\n                     ^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/markdown/core.py:393: in convert\n    root = self.parser.parseDocument(self.lines).getroot()\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/markdown/blockparser.py:117: in parseDocument\n    self.parseChunk(self.root, '\\n'.join(lines))\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/markdown/blockparser.py:136: in parseChunk\n    self.parseBlocks(parent, text.split('\\n\\n'))\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/markdown/blockparser.py:158: in parseBlocks\n    if processor.run(parent, blocks) is not False:\n       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/markdown/blockprocessors.py:681: in run\n    p = etree.SubElement(parent, 'p')\n        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nE   TypeError: SubElement() argument 1 must be xml.etree.ElementTree.Element, not list\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/tests/test_apis.py::TestMarkdownBasics::testSimpleInput\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 5 passed in 0.15s\n",
+      "failing_tests": [
+        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/tests/test_apis.py::TestMarkdownBasics::testSimpleInput"
+      ],
+      "exit_code": 1
+    },
+    {
+      "bug_id": "python-markdown-formatting-019",
+      "test_output": ".....F\n=================================== FAILURES ===================================\n______________________ TestMarkdownBasics.testSimpleInput ______________________\n/Users/yuan/stylebench-data/formatting/python-markdown/tests/test_apis.py:59: in testSimpleInput\n    self.assertEqual(self.md.convert('foo'), '<p>foo</p>')\n                     ^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/markdown/core.py:393: in convert\n    root = self.parser.parseDocument(self.lines).getroot()\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/markdown/blockparser.py:117: in parseDocument\n    self.parseChunk(self.root, '\\n'.join(lines))\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/markdown/blockparser.py:136: in parseChunk\n    self.parseBlocks(parent, text.split('\\n\\n'))\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/markdown/blockparser.py:158: in parseBlocks\n    if processor.run(parent, blocks) is not False:\n       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/markdown/blockprocessors.py:681: in run\n    p = etree.SubElement(parent, 'p')\n        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nE   TypeError: SubElement() argument 1 must be xml.etree.ElementTree.Element, not list\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/tests/test_apis.py::TestMarkdownBasics::testSimpleInput\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 5 passed in 0.20s\n",
+      "failing_tests": [
+        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/tests/test_apis.py::TestMarkdownBasics::testSimpleInput"
+      ],
+      "exit_code": 1
+    },
+    {
+      "bug_id": "python-markdown-formatting-020",
+      "test_output": ".....F\n=================================== FAILURES ===================================\n______________________ TestMarkdownBasics.testSimpleInput ______________________\n/Users/yuan/stylebench-data/formatting/python-markdown/tests/test_apis.py:59: in testSimpleInput\n    self.assertEqual(self.md.convert('foo'), '<p>foo</p>')\n                     ^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/markdown/core.py:393: in convert\n    root = self.parser.parseDocument(self.lines).getroot()\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/markdown/blockparser.py:117: in parseDocument\n    self.parseChunk(self.root, '\\n'.join(lines))\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/markdown/blockparser.py:136: in parseChunk\n    self.parseBlocks(parent, text.split('\\n\\n'))\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/markdown/blockparser.py:158: in parseBlocks\n    if processor.run(parent, blocks) is not False:\n       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/markdown/blockprocessors.py:681: in run\n    p = etree.SubElement(parent, 'p')\n        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nE   TypeError: SubElement() argument 1 must be xml.etree.ElementTree.Element, not list\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/tests/test_apis.py::TestMarkdownBasics::testSimpleInput\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 5 passed in 0.19s\n",
+      "failing_tests": [
+        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/tests/test_apis.py::TestMarkdownBasics::testSimpleInput"
+      ],
+      "exit_code": 1
+    },
+    {
+      "bug_id": "python-markdown-formatting-021",
+      "test_output": ".....F\n=================================== FAILURES ===================================\n______________________ TestMarkdownBasics.testSimpleInput ______________________\n/Users/yuan/stylebench-data/formatting/python-markdown/tests/test_apis.py:59: in testSimpleInput\n    self.assertEqual(self.md.convert('foo'), '<p>foo</p>')\n                     ^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/markdown/core.py:393: in convert\n    root = self.parser.parseDocument(self.lines).getroot()\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/markdown/blockparser.py:117: in parseDocument\n    self.parseChunk(self.root, '\\n'.join(lines))\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/markdown/blockparser.py:136: in parseChunk\n    self.parseBlocks(parent, text.split('\\n\\n'))\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/markdown/blockparser.py:158: in parseBlocks\n    if processor.run(parent, blocks) is not False:\n       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/markdown/blockprocessors.py:681: in run\n    p = etree.SubElement(parent, 'p')\n        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nE   TypeError: SubElement() argument 1 must be xml.etree.ElementTree.Element, not list\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/tests/test_apis.py::TestMarkdownBasics::testSimpleInput\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 5 passed in 0.14s\n",
+      "failing_tests": [
+        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/tests/test_apis.py::TestMarkdownBasics::testSimpleInput"
+      ],
+      "exit_code": 1
+    },
+    {
+      "bug_id": "python-markdown-formatting-022",
+      "test_output": ".....F\n=================================== FAILURES ===================================\n______________________ TestMarkdownBasics.testSimpleInput ______________________\n/Users/yuan/stylebench-data/formatting/python-markdown/tests/test_apis.py:59: in testSimpleInput\n    self.assertEqual(self.md.convert('foo'), '<p>foo</p>')\n                     ^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/markdown/core.py:393: in convert\n    root = self.parser.parseDocument(self.lines).getroot()\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/markdown/blockparser.py:117: in parseDocument\n    self.parseChunk(self.root, '\\n'.join(lines))\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/markdown/blockparser.py:136: in parseChunk\n    self.parseBlocks(parent, text.split('\\n\\n'))\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/markdown/blockparser.py:158: in parseBlocks\n    if processor.run(parent, blocks) is not False:\n       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/markdown/blockprocessors.py:681: in run\n    p = etree.SubElement(parent, 'p')\n        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nE   TypeError: SubElement() argument 1 must be xml.etree.ElementTree.Element, not list\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/tests/test_apis.py::TestMarkdownBasics::testSimpleInput\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 5 passed in 0.16s\n",
+      "failing_tests": [
+        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/tests/test_apis.py::TestMarkdownBasics::testSimpleInput"
+      ],
+      "exit_code": 1
+    },
+    {
+      "bug_id": "python-markdown-formatting-023",
+      "test_output": ".....F\n=================================== FAILURES ===================================\n______________________ TestMarkdownBasics.testSimpleInput ______________________\n/Users/yuan/stylebench-data/formatting/python-markdown/tests/test_apis.py:59: in testSimpleInput\n    self.assertEqual(self.md.convert('foo'), '<p>foo</p>')\n                     ^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/markdown/core.py:393: in convert\n    root = self.parser.parseDocument(self.lines).getroot()\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/markdown/blockparser.py:117: in parseDocument\n    self.parseChunk(self.root, '\\n'.join(lines))\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/markdown/blockparser.py:136: in parseChunk\n    self.parseBlocks(parent, text.split('\\n\\n'))\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/markdown/blockparser.py:158: in parseBlocks\n    if processor.run(parent, blocks) is not False:\n       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/markdown/blockprocessors.py:681: in run\n    p = etree.SubElement(parent, 'p')\n        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nE   TypeError: SubElement() argument 1 must be xml.etree.ElementTree.Element, not list\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/tests/test_apis.py::TestMarkdownBasics::testSimpleInput\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 5 passed in 0.21s\n",
+      "failing_tests": [
+        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/tests/test_apis.py::TestMarkdownBasics::testSimpleInput"
+      ],
+      "exit_code": 1
+    },
+    {
+      "bug_id": "python-markdown-formatting-024",
+      "test_output": ".....F\n=================================== FAILURES ===================================\n______________________ TestMarkdownBasics.testSimpleInput ______________________\n/Users/yuan/stylebench-data/formatting/python-markdown/tests/test_apis.py:59: in testSimpleInput\n    self.assertEqual(self.md.convert('foo'), '<p>foo</p>')\n                     ^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/markdown/core.py:393: in convert\n    root = self.parser.parseDocument(self.lines).getroot()\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/markdown/blockparser.py:117: in parseDocument\n    self.parseChunk(self.root, '\\n'.join(lines))\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/markdown/blockparser.py:136: in parseChunk\n    self.parseBlocks(parent, text.split('\\n\\n'))\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/markdown/blockparser.py:158: in parseBlocks\n    if processor.run(parent, blocks) is not False:\n       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/markdown/blockprocessors.py:681: in run\n    p = etree.SubElement(parent, 'p')\n        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nE   TypeError: SubElement() argument 1 must be xml.etree.ElementTree.Element, not list\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/tests/test_apis.py::TestMarkdownBasics::testSimpleInput\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 5 passed in 0.21s\n",
+      "failing_tests": [
+        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/tests/test_apis.py::TestMarkdownBasics::testSimpleInput"
+      ],
+      "exit_code": 1
+    },
+    {
+      "bug_id": "python-markdown-formatting-025",
+      "test_output": ".....F\n=================================== FAILURES ===================================\n______________________ TestMarkdownBasics.testSimpleInput ______________________\n/Users/yuan/stylebench-data/formatting/python-markdown/tests/test_apis.py:59: in testSimpleInput\n    self.assertEqual(self.md.convert('foo'), '<p>foo</p>')\n                     ^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/markdown/core.py:393: in convert\n    root = self.parser.parseDocument(self.lines).getroot()\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/markdown/blockparser.py:117: in parseDocument\n    self.parseChunk(self.root, '\\n'.join(lines))\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/markdown/blockparser.py:136: in parseChunk\n    self.parseBlocks(parent, text.split('\\n\\n'))\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/markdown/blockparser.py:158: in parseBlocks\n    if processor.run(parent, blocks) is not False:\n       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/markdown/blockprocessors.py:681: in run\n    p = etree.SubElement(parent, 'p')\n        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nE   TypeError: SubElement() argument 1 must be xml.etree.ElementTree.Element, not list\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/tests/test_apis.py::TestMarkdownBasics::testSimpleInput\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 5 passed in 0.17s\n",
+      "failing_tests": [
+        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/tests/test_apis.py::TestMarkdownBasics::testSimpleInput"
+      ],
+      "exit_code": 1
+    },
+    {
+      "bug_id": "python-markdown-formatting-026",
+      "test_output": ".....F\n=================================== FAILURES ===================================\n______________________ TestMarkdownBasics.testSimpleInput ______________________\n/Users/yuan/stylebench-data/formatting/python-markdown/tests/test_apis.py:59: in testSimpleInput\n    self.assertEqual(self.md.convert('foo'), '<p>foo</p>')\n                     ^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/markdown/core.py:393: in convert\n    root = self.parser.parseDocument(self.lines).getroot()\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/markdown/blockparser.py:117: in parseDocument\n    self.parseChunk(self.root, '\\n'.join(lines))\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/markdown/blockparser.py:136: in parseChunk\n    self.parseBlocks(parent, text.split('\\n\\n'))\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/markdown/blockparser.py:158: in parseBlocks\n    if processor.run(parent, blocks) is not False:\n       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/markdown/blockprocessors.py:681: in run\n    p = etree.SubElement(parent, 'p')\n        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nE   TypeError: SubElement() argument 1 must be xml.etree.ElementTree.Element, not list\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/tests/test_apis.py::TestMarkdownBasics::testSimpleInput\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 5 passed in 0.20s\n",
+      "failing_tests": [
+        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/tests/test_apis.py::TestMarkdownBasics::testSimpleInput"
+      ],
+      "exit_code": 1
+    },
+    {
+      "bug_id": "python-markdown-formatting-027",
+      "test_output": ".....F\n=================================== FAILURES ===================================\n______________________ TestMarkdownBasics.testSimpleInput ______________________\n/Users/yuan/stylebench-data/formatting/python-markdown/tests/test_apis.py:59: in testSimpleInput\n    self.assertEqual(self.md.convert('foo'), '<p>foo</p>')\n                     ^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/markdown/core.py:393: in convert\n    root = self.parser.parseDocument(self.lines).getroot()\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/markdown/blockparser.py:117: in parseDocument\n    self.parseChunk(self.root, '\\n'.join(lines))\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/markdown/blockparser.py:136: in parseChunk\n    self.parseBlocks(parent, text.split('\\n\\n'))\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/markdown/blockparser.py:158: in parseBlocks\n    if processor.run(parent, blocks) is not False:\n       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/markdown/blockprocessors.py:681: in run\n    p = etree.SubElement(parent, 'p')\n        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nE   TypeError: SubElement() argument 1 must be xml.etree.ElementTree.Element, not list\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/tests/test_apis.py::TestMarkdownBasics::testSimpleInput\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 5 passed in 0.21s\n",
+      "failing_tests": [
+        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/tests/test_apis.py::TestMarkdownBasics::testSimpleInput"
+      ],
+      "exit_code": 1
+    },
+    {
+      "bug_id": "python-markdown-formatting-028",
+      "test_output": ".....F\n=================================== FAILURES ===================================\n______________________ TestMarkdownBasics.testSimpleInput ______________________\n/Users/yuan/stylebench-data/formatting/python-markdown/tests/test_apis.py:59: in testSimpleInput\n    self.assertEqual(self.md.convert('foo'), '<p>foo</p>')\n                     ^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/markdown/core.py:393: in convert\n    root = self.parser.parseDocument(self.lines).getroot()\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/markdown/blockparser.py:117: in parseDocument\n    self.parseChunk(self.root, '\\n'.join(lines))\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/markdown/blockparser.py:136: in parseChunk\n    self.parseBlocks(parent, text.split('\\n\\n'))\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/markdown/blockparser.py:158: in parseBlocks\n    if processor.run(parent, blocks) is not False:\n       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/markdown/blockprocessors.py:681: in run\n    p = etree.SubElement(parent, 'p')\n        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nE   TypeError: SubElement() argument 1 must be xml.etree.ElementTree.Element, not list\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/tests/test_apis.py::TestMarkdownBasics::testSimpleInput\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 5 passed in 0.22s\n",
+      "failing_tests": [
+        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/tests/test_apis.py::TestMarkdownBasics::testSimpleInput"
+      ],
+      "exit_code": 1
+    },
+    {
+      "bug_id": "python-markdown-formatting-029",
+      "test_output": ".....F\n=================================== FAILURES ===================================\n______________________ TestMarkdownBasics.testSimpleInput ______________________\n/Users/yuan/stylebench-data/formatting/python-markdown/tests/test_apis.py:59: in testSimpleInput\n    self.assertEqual(self.md.convert('foo'), '<p>foo</p>')\n                     ^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/markdown/core.py:393: in convert\n    root = self.parser.parseDocument(self.lines).getroot()\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/markdown/blockparser.py:117: in parseDocument\n    self.parseChunk(self.root, '\\n'.join(lines))\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/markdown/blockparser.py:136: in parseChunk\n    self.parseBlocks(parent, text.split('\\n\\n'))\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/markdown/blockparser.py:158: in parseBlocks\n    if processor.run(parent, blocks) is not False:\n       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/markdown/blockprocessors.py:681: in run\n    p = etree.SubElement(parent, 'p')\n        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nE   TypeError: SubElement() argument 1 must be xml.etree.ElementTree.Element, not list\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/tests/test_apis.py::TestMarkdownBasics::testSimpleInput\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 5 passed in 0.26s\n",
+      "failing_tests": [
+        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/tests/test_apis.py::TestMarkdownBasics::testSimpleInput"
+      ],
+      "exit_code": 1
+    },
+    {
+      "bug_id": "python-markdown-formatting-030",
+      "test_output": ".....F\n=================================== FAILURES ===================================\n______________________ TestMarkdownBasics.testSimpleInput ______________________\n/Users/yuan/stylebench-data/formatting/python-markdown/tests/test_apis.py:59: in testSimpleInput\n    self.assertEqual(self.md.convert('foo'), '<p>foo</p>')\n                     ^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/markdown/core.py:393: in convert\n    root = self.parser.parseDocument(self.lines).getroot()\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/markdown/blockparser.py:117: in parseDocument\n    self.parseChunk(self.root, '\\n'.join(lines))\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/markdown/blockparser.py:136: in parseChunk\n    self.parseBlocks(parent, text.split('\\n\\n'))\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/markdown/blockparser.py:158: in parseBlocks\n    if processor.run(parent, blocks) is not False:\n       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/markdown/blockprocessors.py:681: in run\n    p = etree.SubElement(parent, 'p')\n        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nE   TypeError: SubElement() argument 1 must be xml.etree.ElementTree.Element, not list\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/tests/test_apis.py::TestMarkdownBasics::testSimpleInput\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 5 passed in 0.16s\n",
+      "failing_tests": [
+        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/tests/test_apis.py::TestMarkdownBasics::testSimpleInput"
+      ],
+      "exit_code": 1
+    },
+    {
+      "bug_id": "python-markdown-formatting-031",
+      "test_output": "..............................................F\n=================================== FAILURES ===================================\n_______________ testElementPreCodeTests.testPreCodeWithSpaceOnly _______________\n/Users/yuan/stylebench-data/formatting/python-markdown/tests/test_apis.py:486: in testPreCodeWithSpaceOnly\n    self.assertEqual(expected, self.prettify(xml))\nE   AssertionError: '<pre><code>\\n</code></pre>\\n' != '<pre><code> </code></pre>\\n'\nE   + <pre><code> </code></pre>\nE   - <pre><code>\nE   - </code></pre>\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/tests/test_apis.py::testElementPreCodeTests::testPreCodeWithSpaceOnly\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 46 passed in 0.20s\n",
+      "failing_tests": [
+        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/tests/test_apis.py::testElementPreCodeTests::testPreCodeWithSpaceOnly"
+      ],
+      "exit_code": 1
+    },
+    {
+      "bug_id": "python-markdown-formatting-032",
+      "test_output": "..............................................F\n=================================== FAILURES ===================================\n_______________ testElementPreCodeTests.testPreCodeWithSpaceOnly _______________\n/Users/yuan/stylebench-data/formatting/python-markdown/tests/test_apis.py:486: in testPreCodeWithSpaceOnly\n    self.assertEqual(expected, self.prettify(xml))\nE   AssertionError: '<pre><code>\\n</code></pre>\\n' != '<pre><code> </code></pre>\\n'\nE   + <pre><code> </code></pre>\nE   - <pre><code>\nE   - </code></pre>\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/tests/test_apis.py::testElementPreCodeTests::testPreCodeWithSpaceOnly\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 46 passed in 0.19s\n",
+      "failing_tests": [
+        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/tests/test_apis.py::testElementPreCodeTests::testPreCodeWithSpaceOnly"
+      ],
+      "exit_code": 1
+    },
+    {
+      "bug_id": "python-markdown-formatting-033",
+      "test_output": "..............................................F\n=================================== FAILURES ===================================\n_______________ testElementPreCodeTests.testPreCodeWithSpaceOnly _______________\n/Users/yuan/stylebench-data/formatting/python-markdown/tests/test_apis.py:486: in testPreCodeWithSpaceOnly\n    self.assertEqual(expected, self.prettify(xml))\nE   AssertionError: '<pre><code>\\n</code></pre>\\n' != '<pre><code> </code></pre>\\n'\nE   + <pre><code> </code></pre>\nE   - <pre><code>\nE   - </code></pre>\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/tests/test_apis.py::testElementPreCodeTests::testPreCodeWithSpaceOnly\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 46 passed in 0.18s\n",
+      "failing_tests": [
+        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/tests/test_apis.py::testElementPreCodeTests::testPreCodeWithSpaceOnly"
+      ],
+      "exit_code": 1
+    },
+    {
+      "bug_id": "python-markdown-formatting-034",
+      "test_output": "..............................................F\n=================================== FAILURES ===================================\n_______________ testElementPreCodeTests.testPreCodeWithSpaceOnly _______________\n/Users/yuan/stylebench-data/formatting/python-markdown/tests/test_apis.py:486: in testPreCodeWithSpaceOnly\n    self.assertEqual(expected, self.prettify(xml))\nE   AssertionError: '<pre><code>\\n</code></pre>\\n' != '<pre><code> </code></pre>\\n'\nE   + <pre><code> </code></pre>\nE   - <pre><code>\nE   - </code></pre>\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/tests/test_apis.py::testElementPreCodeTests::testPreCodeWithSpaceOnly\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 46 passed in 0.14s\n",
+      "failing_tests": [
+        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/tests/test_apis.py::testElementPreCodeTests::testPreCodeWithSpaceOnly"
+      ],
+      "exit_code": 1
+    },
+    {
+      "bug_id": "python-markdown-formatting-035",
+      "test_output": "..............................................F\n=================================== FAILURES ===================================\n_______________ testElementPreCodeTests.testPreCodeWithSpaceOnly _______________\n/Users/yuan/stylebench-data/formatting/python-markdown/tests/test_apis.py:486: in testPreCodeWithSpaceOnly\n    self.assertEqual(expected, self.prettify(xml))\nE   AssertionError: '<pre><code>\\n</code></pre>\\n' != '<pre><code> </code></pre>\\n'\nE   + <pre><code> </code></pre>\nE   - <pre><code>\nE   - </code></pre>\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/tests/test_apis.py::testElementPreCodeTests::testPreCodeWithSpaceOnly\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 46 passed in 0.26s\n",
+      "failing_tests": [
+        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/tests/test_apis.py::testElementPreCodeTests::testPreCodeWithSpaceOnly"
+      ],
+      "exit_code": 1
+    },
+    {
+      "bug_id": "python-markdown-formatting-036",
+      "test_output": "..............................................F\n=================================== FAILURES ===================================\n_______________ testElementPreCodeTests.testPreCodeWithSpaceOnly _______________\n/Users/yuan/stylebench-data/formatting/python-markdown/tests/test_apis.py:486: in testPreCodeWithSpaceOnly\n    self.assertEqual(expected, self.prettify(xml))\nE   AssertionError: '<pre><code>\\n</code></pre>\\n' != '<pre><code> </code></pre>\\n'\nE   + <pre><code> </code></pre>\nE   - <pre><code>\nE   - </code></pre>\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/tests/test_apis.py::testElementPreCodeTests::testPreCodeWithSpaceOnly\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 46 passed in 0.23s\n",
+      "failing_tests": [
+        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/tests/test_apis.py::testElementPreCodeTests::testPreCodeWithSpaceOnly"
+      ],
+      "exit_code": 1
+    },
+    {
+      "bug_id": "python-markdown-formatting-037",
+      "test_output": "..............................................F\n=================================== FAILURES ===================================\n_______________ testElementPreCodeTests.testPreCodeWithSpaceOnly _______________\n/Users/yuan/stylebench-data/formatting/python-markdown/tests/test_apis.py:486: in testPreCodeWithSpaceOnly\n    self.assertEqual(expected, self.prettify(xml))\nE   AssertionError: '<pre><code>\\n</code></pre>\\n' != '<pre><code> </code></pre>\\n'\nE   + <pre><code> </code></pre>\nE   - <pre><code>\nE   - </code></pre>\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/tests/test_apis.py::testElementPreCodeTests::testPreCodeWithSpaceOnly\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 46 passed in 0.15s\n",
+      "failing_tests": [
+        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/tests/test_apis.py::testElementPreCodeTests::testPreCodeWithSpaceOnly"
+      ],
+      "exit_code": 1
+    },
+    {
+      "bug_id": "python-markdown-formatting-038",
+      "test_output": "..............................................F\n=================================== FAILURES ===================================\n_______________ testElementPreCodeTests.testPreCodeWithSpaceOnly _______________\n/Users/yuan/stylebench-data/formatting/python-markdown/tests/test_apis.py:486: in testPreCodeWithSpaceOnly\n    self.assertEqual(expected, self.prettify(xml))\nE   AssertionError: '<pre><code>\\n</code></pre>\\n' != '<pre><code> </code></pre>\\n'\nE   + <pre><code> </code></pre>\nE   - <pre><code>\nE   - </code></pre>\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/tests/test_apis.py::testElementPreCodeTests::testPreCodeWithSpaceOnly\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 46 passed in 0.17s\n",
+      "failing_tests": [
+        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/tests/test_apis.py::testElementPreCodeTests::testPreCodeWithSpaceOnly"
+      ],
+      "exit_code": 1
+    },
+    {
+      "bug_id": "python-markdown-formatting-039",
+      "test_output": ".....F\n=================================== FAILURES ===================================\n______________________ TestMarkdownBasics.testSimpleInput ______________________\n/Users/yuan/stylebench-data/formatting/python-markdown/tests/test_apis.py:59: in testSimpleInput\n    self.assertEqual(self.md.convert('foo'), '<p>foo</p>')\n                     ^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/markdown/core.py:393: in convert\n    root = self.parser.parseDocument(self.lines).getroot()\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/markdown/blockparser.py:117: in parseDocument\n    self.parseChunk(self.root, '\\n'.join(lines))\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/markdown/blockparser.py:136: in parseChunk\n    self.parseBlocks(parent, text.split('\\n\\n'))\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/markdown/blockparser.py:158: in parseBlocks\n    if processor.run(parent, blocks) is not False:\n       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/markdown/blockprocessors.py:657: in run\n    if self.parser.state.isstate('list'):\n       ^^^^^^^^^^^\nE   AttributeError: 'ParagraphProcessor' object has no attribute 'parser'\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/tests/test_apis.py::TestMarkdownBasics::testSimpleInput\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 5 passed in 0.21s\n",
+      "failing_tests": [
+        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/tests/test_apis.py::TestMarkdownBasics::testSimpleInput"
+      ],
+      "exit_code": 1
+    },
+    {
+      "bug_id": "python-markdown-formatting-040",
+      "test_output": ".....F\n=================================== FAILURES ===================================\n______________________ TestMarkdownBasics.testSimpleInput ______________________\n/Users/yuan/stylebench-data/formatting/python-markdown/tests/test_apis.py:59: in testSimpleInput\n    self.assertEqual(self.md.convert('foo'), '<p>foo</p>')\n                     ^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/markdown/core.py:393: in convert\n    root = self.parser.parseDocument(self.lines).getroot()\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/markdown/blockparser.py:117: in parseDocument\n    self.parseChunk(self.root, '\\n'.join(lines))\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/markdown/blockparser.py:136: in parseChunk\n    self.parseBlocks(parent, text.split('\\n\\n'))\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/markdown/blockparser.py:158: in parseBlocks\n    if processor.run(parent, blocks) is not False:\n       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/markdown/blockprocessors.py:657: in run\n    if self.parser.state.isstate('list'):\n       ^^^^^^^^^^^\nE   AttributeError: 'ParagraphProcessor' object has no attribute 'parser'\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/tests/test_apis.py::TestMarkdownBasics::testSimpleInput\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 5 passed in 0.24s\n",
+      "failing_tests": [
+        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/tests/test_apis.py::TestMarkdownBasics::testSimpleInput"
+      ],
+      "exit_code": 1
+    },
+    {
+      "bug_id": "python-markdown-formatting-041",
+      "test_output": ".....F\n=================================== FAILURES ===================================\n______________________ TestMarkdownBasics.testSimpleInput ______________________\n/Users/yuan/stylebench-data/formatting/python-markdown/tests/test_apis.py:59: in testSimpleInput\n    self.assertEqual(self.md.convert('foo'), '<p>foo</p>')\n                     ^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/markdown/core.py:393: in convert\n    root = self.parser.parseDocument(self.lines).getroot()\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/markdown/blockparser.py:117: in parseDocument\n    self.parseChunk(self.root, '\\n'.join(lines))\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/markdown/blockparser.py:136: in parseChunk\n    self.parseBlocks(parent, text.split('\\n\\n'))\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/markdown/blockparser.py:158: in parseBlocks\n    if processor.run(parent, blocks) is not False:\n       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/markdown/blockprocessors.py:657: in run\n    if self.parser.state.isstate('list'):\n       ^^^^^^^^^^^^^^^^^\nE   AttributeError: 'ParagraphProcessor' object has no attribute 'state'\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/tests/test_apis.py::TestMarkdownBasics::testSimpleInput\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 5 passed in 0.23s\n",
+      "failing_tests": [
+        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/tests/test_apis.py::TestMarkdownBasics::testSimpleInput"
+      ],
+      "exit_code": 1
+    },
+    {
+      "bug_id": "python-markdown-formatting-042",
+      "test_output": "F\n=================================== FAILURES ===================================\n______________________ TestMarkdownBasics.testBlankInput _______________________\n/Users/yuan/stylebench-data/formatting/python-markdown/tests/test_apis.py:47: in setUp\n    self.md = markdown.Markdown()\n              ^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/markdown/core.py:145: in __init__\n    self.build_parser()\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/markdown/core.py:178: in build_parser\n    self.parser = build_block_parser(self)\n                  ^^^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/markdown/blockprocessors.py:46: in build_block_parser\n    parser.blockprocessors.register(ListIndentProcessor(parser), 'indent', 90)\n                                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/markdown/blockprocessors.py:180: in __init__\n    self.INDENT_RE = re.compile(r'^(([ ]{%s})+)' % self.tab_length)\n                                                   ^^^^^^^^^^^^^^^\nE   AttributeError: 'ListIndentProcessor' object has no attribute 'tab_length'\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/tests/test_apis.py::TestMarkdownBasics::testBlankInput\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed in 0.34s\n",
+      "failing_tests": [
+        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/tests/test_apis.py::TestMarkdownBasics::testBlankInput"
+      ],
+      "exit_code": 1
+    },
+    {
+      "bug_id": "python-markdown-formatting-043",
+      "test_output": "F\n=================================== FAILURES ===================================\n______________________ TestMarkdownBasics.testBlankInput _______________________\n/Users/yuan/stylebench-data/formatting/python-markdown/tests/test_apis.py:47: in setUp\n    self.md = markdown.Markdown()\n              ^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/markdown/core.py:145: in __init__\n    self.build_parser()\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/markdown/core.py:178: in build_parser\n    self.parser = build_block_parser(self)\n                  ^^^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/markdown/blockprocessors.py:45: in build_block_parser\n    parser.blockprocessors.register(EmptyBlockProcessor(parser), 'empty', 100)\n                                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/markdown/blockprocessors.py:84: in __init__\n    self.tab_length = self.md.tab_length\n                      ^^^^^^^\nE   AttributeError: 'EmptyBlockProcessor' object has no attribute 'md'\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/tests/test_apis.py::TestMarkdownBasics::testBlankInput\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed in 0.18s\n",
+      "failing_tests": [
+        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/tests/test_apis.py::TestMarkdownBasics::testBlankInput"
+      ],
+      "exit_code": 1
+    },
+    {
+      "bug_id": "python-markdown-formatting-044",
+      "test_output": ".....F\n=================================== FAILURES ===================================\n______________________ TestMarkdownBasics.testSimpleInput ______________________\n/Users/yuan/stylebench-data/formatting/python-markdown/tests/test_apis.py:59: in testSimpleInput\n    self.assertEqual(self.md.convert('foo'), '<p>foo</p>')\n                     ^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/markdown/core.py:393: in convert\n    root = self.parser.parseDocument(self.lines).getroot()\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/markdown/blockparser.py:117: in parseDocument\n    self.parseChunk(self.root, '\\n'.join(lines))\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/markdown/blockparser.py:136: in parseChunk\n    self.parseBlocks(parent, text.split('\\n\\n'))\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/markdown/blockparser.py:158: in parseBlocks\n    if processor.run(parent, blocks) is not False:\n       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/markdown/blockprocessors.py:603: in run\n    sibling = self.lastChild(parent)\n              ^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/markdown/blockprocessors.py:88: in lastChild\n    if len(self):\n       ^^^^^^^^^\nE   TypeError: object of type 'EmptyBlockProcessor' has no len()\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/tests/test_apis.py::TestMarkdownBasics::testSimpleInput\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 5 passed in 0.21s\n",
+      "failing_tests": [
+        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/tests/test_apis.py::TestMarkdownBasics::testSimpleInput"
+      ],
+      "exit_code": 1
+    },
+    {
+      "bug_id": "python-markdown-formatting-045",
+      "test_output": ".....F\n=================================== FAILURES ===================================\n______________________ TestMarkdownBasics.testSimpleInput ______________________\n/Users/yuan/stylebench-data/formatting/python-markdown/tests/test_apis.py:59: in testSimpleInput\n    self.assertEqual(self.md.convert('foo'), '<p>foo</p>')\n                     ^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/markdown/core.py:393: in convert\n    root = self.parser.parseDocument(self.lines).getroot()\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/markdown/blockparser.py:117: in parseDocument\n    self.parseChunk(self.root, '\\n'.join(lines))\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/markdown/blockparser.py:136: in parseChunk\n    self.parseBlocks(parent, text.split('\\n\\n'))\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/markdown/blockparser.py:158: in parseBlocks\n    if processor.run(parent, blocks) is not False:\n       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/markdown/blockprocessors.py:603: in run\n    sibling = self.lastChild(parent)\n              ^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/markdown/blockprocessors.py:88: in lastChild\n    if len(parent):\n       ^^^^^^^^^\nE   TypeError: object of type 'EmptyBlockProcessor' has no len()\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/tests/test_apis.py::TestMarkdownBasics::testSimpleInput\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 5 passed in 0.14s\n",
+      "failing_tests": [
+        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/tests/test_apis.py::TestMarkdownBasics::testSimpleInput"
+      ],
+      "exit_code": 1
+    },
+    {
+      "bug_id": "python-markdown-formatting-046",
+      "test_output": "...........F\n=================================== FAILURES ===================================\n______________________ TestBlockParser.testParseDocument _______________________\n/Users/yuan/stylebench-data/formatting/python-markdown/tests/test_apis.py:138: in testParseDocument\n    tree = self.parser.parseDocument(lines)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/markdown/blockparser.py:117: in parseDocument\n    self.parseChunk(self.root, '\\n'.join(lines))\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/markdown/blockparser.py:136: in parseChunk\n    self.parseBlocks(parent, text.split('\\n\\n'))\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/markdown/blockparser.py:158: in parseBlocks\n    if processor.run(parent, blocks) is not False:\n       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/markdown/blockprocessors.py:297: in run\n    block, theRest = self.detab(block)\n                     ^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/markdown/blockprocessors.py:100: in detab\n    if line.startswith(' ' * length):\n                       ^^^^^^^^^^^^\nE   TypeError: can't multiply sequence by non-int of type 'NoneType'\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/tests/test_apis.py::TestBlockParser::testParseDocument\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 11 passed in 0.17s\n",
+      "failing_tests": [
+        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/tests/test_apis.py::TestBlockParser::testParseDocument"
+      ],
+      "exit_code": 1
+    },
+    {
+      "bug_id": "python-markdown-formatting-047",
+      "test_output": "...........F\n=================================== FAILURES ===================================\n______________________ TestBlockParser.testParseDocument _______________________\n/Users/yuan/stylebench-data/formatting/python-markdown/tests/test_apis.py:138: in testParseDocument\n    tree = self.parser.parseDocument(lines)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/markdown/blockparser.py:117: in parseDocument\n    self.parseChunk(self.root, '\\n'.join(lines))\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/markdown/blockparser.py:136: in parseChunk\n    self.parseBlocks(parent, text.split('\\n\\n'))\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/markdown/blockparser.py:158: in parseBlocks\n    if processor.run(parent, blocks) is not False:\n       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/markdown/blockprocessors.py:297: in run\n    block, theRest = self.detab(block)\n                     ^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/markdown/blockprocessors.py:100: in detab\n    if line.startswith(' ' * length):\n                       ^^^^^^^^^^^^\nE   TypeError: can't multiply sequence by non-int of type 'NoneType'\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/tests/test_apis.py::TestBlockParser::testParseDocument\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 11 passed in 0.16s\n",
+      "failing_tests": [
+        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/tests/test_apis.py::TestBlockParser::testParseDocument"
+      ],
+      "exit_code": 1
+    },
+    {
+      "bug_id": "python-markdown-formatting-048",
+      "test_output": "...........F\n=================================== FAILURES ===================================\n______________________ TestBlockParser.testParseDocument _______________________\n/Users/yuan/stylebench-data/formatting/python-markdown/tests/test_apis.py:138: in testParseDocument\n    tree = self.parser.parseDocument(lines)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/markdown/blockparser.py:117: in parseDocument\n    self.parseChunk(self.root, '\\n'.join(lines))\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/markdown/blockparser.py:136: in parseChunk\n    self.parseBlocks(parent, text.split('\\n\\n'))\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/markdown/blockparser.py:158: in parseBlocks\n    if processor.run(parent, blocks) is not False:\n       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/markdown/blockprocessors.py:297: in run\n    block, theRest = self.detab(block)\n                     ^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/markdown/blockprocessors.py:96: in detab\n    length = text.tab_length\n             ^^^^^^^^^^^^^^^\nE   AttributeError: 'str' object has no attribute 'tab_length'\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/tests/test_apis.py::TestBlockParser::testParseDocument\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 11 passed in 0.15s\n",
+      "failing_tests": [
+        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/tests/test_apis.py::TestBlockParser::testParseDocument"
+      ],
+      "exit_code": 1
+    },
+    {
+      "bug_id": "python-markdown-formatting-049",
+      "test_output": "...........F\n=================================== FAILURES ===================================\n______________________ TestBlockParser.testParseDocument _______________________\n/Users/yuan/stylebench-data/formatting/python-markdown/tests/test_apis.py:138: in testParseDocument\n    tree = self.parser.parseDocument(lines)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/markdown/blockparser.py:117: in parseDocument\n    self.parseChunk(self.root, '\\n'.join(lines))\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/markdown/blockparser.py:136: in parseChunk\n    self.parseBlocks(parent, text.split('\\n\\n'))\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/markdown/blockparser.py:158: in parseBlocks\n    if processor.run(parent, blocks) is not False:\n       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/markdown/blockprocessors.py:297: in run\n    block, theRest = self.detab(block)\n                     ^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/markdown/blockprocessors.py:96: in detab\n    length = length.tab_length\n             ^^^^^^^^^^^^^^^^^\nE   AttributeError: 'NoneType' object has no attribute 'tab_length'\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/tests/test_apis.py::TestBlockParser::testParseDocument\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 11 passed in 0.18s\n",
+      "failing_tests": [
+        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/tests/test_apis.py::TestBlockParser::testParseDocument"
+      ],
+      "exit_code": 1
+    },
+    {
+      "bug_id": "python-markdown-formatting-050",
+      "test_output": "...........F\n=================================== FAILURES ===================================\n______________________ TestBlockParser.testParseDocument _______________________\n/Users/yuan/stylebench-data/formatting/python-markdown/tests/test_apis.py:138: in testParseDocument\n    tree = self.parser.parseDocument(lines)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/markdown/blockparser.py:117: in parseDocument\n    self.parseChunk(self.root, '\\n'.join(lines))\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/markdown/blockparser.py:136: in parseChunk\n    self.parseBlocks(parent, text.split('\\n\\n'))\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/markdown/blockparser.py:158: in parseBlocks\n    if processor.run(parent, blocks) is not False:\n       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/markdown/blockprocessors.py:297: in run\n    block, theRest = self.detab(block)\n                     ^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/markdown/blockprocessors.py:98: in detab\n    lines = self.split('\\n')\n            ^^^^^^^^^^\nE   AttributeError: 'CodeBlockProcessor' object has no attribute 'split'\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/tests/test_apis.py::TestBlockParser::testParseDocument\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 11 passed in 0.37s\n",
+      "failing_tests": [
+        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpbbjxxlbi/worker_1/tests/test_apis.py::TestBlockParser::testParseDocument"
       ],
       "exit_code": 1
     }
@@ -154,156 +419,453 @@
   "_hidden": [
     {
       "bug_id": "python-markdown-formatting-001",
-      "file_path": "markdown/__main__.py",
-      "line_number": 86,
-      "mutation_type": "true_false",
-      "original_text": "True",
-      "mutated_text": "False",
-      "context": "...action='store_false',         default=True,         help='Observe number of first..."
-    },
-    {
-      "bug_id": "python-markdown-formatting-002",
-      "file_path": "markdown/__main__.py",
-      "line_number": 117,
-      "mutation_type": "add_sub",
-      "original_text": "+",
-      "mutated_text": "-",
-      "context": "...n='store_const',         const=CRITICAL + 10,         dest='verbose',         hel..."
-    },
-    {
-      "bug_id": "python-markdown-formatting-003",
-      "file_path": "markdown/__main__.py",
-      "line_number": 117,
-      "mutation_type": "plus_one",
-      "original_text": "10",
-      "mutated_text": "11",
-      "context": "...'store_const',         const=CRITICAL + 10,         dest='verbose',         help='..."
-    },
-    {
-      "bug_id": "python-markdown-formatting-004",
-      "file_path": "markdown/__main__.py",
-      "line_number": 117,
-      "mutation_type": "minus_one",
-      "original_text": "10",
-      "mutated_text": "9",
-      "context": "...'store_const',         const=CRITICAL + 10,         dest='verbose',         help='..."
-    },
-    {
-      "bug_id": "python-markdown-formatting-005",
-      "file_path": "markdown/__main__.py",
-      "line_number": 139,
+      "file_path": "markdown/__meta__.py",
+      "line_number": 39,
       "mutation_type": "eq_ne",
       "original_text": "==",
       "mutated_text": "!=",
-      "context": "...se_args(args, values)      if len(args) == 0:         input_file = None     else:..."
+      "context": "...nal')      parts = 2 if version_info[2] == 0 else 3     v = '.'.join(map(str, vers..."
     },
     {
-      "bug_id": "python-markdown-formatting-006",
-      "file_path": "markdown/__main__.py",
-      "line_number": 139,
-      "mutation_type": "plus_one",
-      "original_text": "0",
-      "mutated_text": "1",
-      "context": "...args(args, values)      if len(args) == 0:         input_file = None     else:..."
+      "bug_id": "python-markdown-formatting-002",
+      "file_path": "markdown/__meta__.py",
+      "line_number": 42,
+      "mutation_type": "eq_ne",
+      "original_text": "==",
+      "mutated_text": "!=",
+      "context": "..._info[:parts]))      if version_info[3] == 'dev':         v += '.dev' + str(versio..."
     },
     {
-      "bug_id": "python-markdown-formatting-007",
-      "file_path": "markdown/__main__.py",
-      "line_number": 139,
-      "mutation_type": "minus_one",
-      "original_text": "0",
-      "mutated_text": "-1",
-      "context": "...args(args, values)      if len(args) == 0:         input_file = None     else:..."
+      "bug_id": "python-markdown-formatting-003",
+      "file_path": "markdown/__meta__.py",
+      "line_number": 48,
+      "mutation_type": "return_none",
+      "original_text": "v",
+      "mutated_text": "None",
+      "context": "...on_info[3]] + str(version_info[4])      return v   __version__ = _get_version(__version_..."
     },
     {
-      "bug_id": "python-markdown-formatting-008",
-      "file_path": "markdown/__main__.py",
-      "line_number": 142,
-      "mutation_type": "plus_one",
-      "original_text": "0",
-      "mutated_text": "1",
-      "context": "...one     else:         input_file = args[0]      if not options.extensions:..."
-    },
-    {
-      "bug_id": "python-markdown-formatting-009",
-      "file_path": "markdown/__main__.py",
-      "line_number": 142,
-      "mutation_type": "minus_one",
-      "original_text": "0",
-      "mutated_text": "-1",
-      "context": "...one     else:         input_file = args[0]      if not options.extensions:..."
-    },
-    {
-      "bug_id": "python-markdown-formatting-010",
-      "file_path": "markdown/__main__.py",
-      "line_number": 159,
+      "bug_id": "python-markdown-formatting-004",
+      "file_path": "markdown/__meta__.py",
+      "line_number": 43,
       "mutation_type": "add_sub",
       "original_text": "+",
       "mutated_text": "-",
-      "context": "...)                 e.args = (message,) + e.args[1:]                 raise      o..."
+      "context": "...n_info[3] == 'dev':         v += '.dev' + str(version_info[4])     elif version_i..."
     },
     {
-      "bug_id": "python-markdown-formatting-011",
-      "file_path": "markdown/__main__.py",
-      "line_number": 159,
+      "bug_id": "python-markdown-formatting-005",
+      "file_path": "markdown/__meta__.py",
+      "line_number": 46,
+      "mutation_type": "add_sub",
+      "original_text": "+",
+      "mutated_text": "-",
+      "context": "...}         v += mapping[version_info[3]] + str(version_info[4])      return v   __..."
+    },
+    {
+      "bug_id": "python-markdown-formatting-006",
+      "file_path": "markdown/__meta__.py",
+      "line_number": 31,
       "mutation_type": "plus_one",
-      "original_text": "1",
-      "mutated_text": "2",
-      "context": "...e.args = (message,) + e.args[1:]                 raise      opts = {..."
+      "original_text": "3",
+      "mutated_text": "4",
+      "context": "...mport annotations   __version_info__ = (3, 10, 0, 'final', 0)   def _get_version(..."
     },
     {
-      "bug_id": "python-markdown-formatting-012",
-      "file_path": "markdown/__main__.py",
-      "line_number": 159,
-      "mutation_type": "minus_one",
-      "original_text": "1",
-      "mutated_text": "0",
-      "context": "...e.args = (message,) + e.args[1:]                 raise      opts = {..."
+      "bug_id": "python-markdown-formatting-007",
+      "file_path": "markdown/__meta__.py",
+      "line_number": 31,
+      "mutation_type": "plus_one",
+      "original_text": "10",
+      "mutated_text": "11",
+      "context": "...rt annotations   __version_info__ = (3, 10, 0, 'final', 0)   def _get_version(vers..."
     },
     {
-      "bug_id": "python-markdown-formatting-013",
-      "file_path": "markdown/__main__.py",
-      "line_number": 172,
-      "mutation_type": "return_none",
-      "original_text": "opts, options.verbose",
-      "mutated_text": "None",
-      "context": "...'lazy_ol': options.lazy_ol,     }      return opts, options.verbose   def run():  # pragma: no cover     \"\"..."
+      "bug_id": "python-markdown-formatting-008",
+      "file_path": "markdown/__meta__.py",
+      "line_number": 31,
+      "mutation_type": "plus_one",
+      "original_text": "0",
+      "mutated_text": "1",
+      "context": "...nnotations   __version_info__ = (3, 10, 0, 'final', 0)   def _get_version(version..."
     },
     {
-      "bug_id": "python-markdown-formatting-014",
-      "file_path": "markdown/__main__.py",
-      "line_number": 181,
+      "bug_id": "python-markdown-formatting-009",
+      "file_path": "markdown/__meta__.py",
+      "line_number": 31,
+      "mutation_type": "plus_one",
+      "original_text": "0",
+      "mutated_text": "1",
+      "context": "...__version_info__ = (3, 10, 0, 'final', 0)   def _get_version(version_info):..."
+    },
+    {
+      "bug_id": "python-markdown-formatting-010",
+      "file_path": "markdown/__meta__.py",
+      "line_number": 39,
       "mutation_type": "plus_one",
       "original_text": "2",
       "mutated_text": "3",
-      "context": "...()     if not options:         sys.exit(2)     logger.setLevel(logging_level)..."
+      "context": "...'final')      parts = 2 if version_info[2] == 0 else 3     v = '.'.join(map(str,..."
+    },
+    {
+      "bug_id": "python-markdown-formatting-011",
+      "file_path": "markdown/__meta__.py",
+      "line_number": 39,
+      "mutation_type": "plus_one",
+      "original_text": "0",
+      "mutated_text": "1",
+      "context": "...')      parts = 2 if version_info[2] == 0 else 3     v = '.'.join(map(str, versio..."
+    },
+    {
+      "bug_id": "python-markdown-formatting-012",
+      "file_path": "markdown/__meta__.py",
+      "line_number": 39,
+      "mutation_type": "plus_one",
+      "original_text": "3",
+      "mutated_text": "4",
+      "context": "...parts = 2 if version_info[2] == 0 else 3     v = '.'.join(map(str, version_info[..."
+    },
+    {
+      "bug_id": "python-markdown-formatting-013",
+      "file_path": "markdown/__meta__.py",
+      "line_number": 42,
+      "mutation_type": "plus_one",
+      "original_text": "3",
+      "mutated_text": "4",
+      "context": "...ion_info[:parts]))      if version_info[3] == 'dev':         v += '.dev' + str(ve..."
+    },
+    {
+      "bug_id": "python-markdown-formatting-014",
+      "file_path": "markdown/__meta__.py",
+      "line_number": 43,
+      "mutation_type": "plus_one",
+      "original_text": "4",
+      "mutated_text": "5",
+      "context": "...v += '.dev' + str(version_info[4])     elif version_info[3] != 'final':..."
     },
     {
       "bug_id": "python-markdown-formatting-015",
-      "file_path": "markdown/__main__.py",
-      "line_number": 181,
-      "mutation_type": "minus_one",
-      "original_text": "2",
-      "mutated_text": "1",
-      "context": "...()     if not options:         sys.exit(2)     logger.setLevel(logging_level)..."
+      "file_path": "markdown/__meta__.py",
+      "line_number": 44,
+      "mutation_type": "plus_one",
+      "original_text": "3",
+      "mutated_text": "4",
+      "context": "...(version_info[4])     elif version_info[3] != 'final':         mapping = {'alpha'..."
     },
     {
       "bug_id": "python-markdown-formatting-016",
-      "file_path": "markdown/__main__.py",
-      "line_number": 185,
-      "mutation_type": "le_ge",
-      "original_text": "<=",
-      "mutated_text": ">=",
-      "context": "...r(console_handler)     if logging_level <= WARNING:         # Ensure deprecation w..."
+      "file_path": "markdown/__meta__.py",
+      "line_number": 46,
+      "mutation_type": "plus_one",
+      "original_text": "3",
+      "mutated_text": "4",
+      "context": "...'rc'}         v += mapping[version_info[3]] + str(version_info[4])      return v..."
     },
     {
       "bug_id": "python-markdown-formatting-017",
-      "file_path": "markdown/__main__.py",
-      "line_number": 188,
-      "mutation_type": "true_false",
-      "original_text": "True",
-      "mutated_text": "False",
-      "context": "...fault')         logging.captureWarnings(True)         warn_logger = logging.getLogge..."
+      "file_path": "markdown/__meta__.py",
+      "line_number": 46,
+      "mutation_type": "plus_one",
+      "original_text": "4",
+      "mutated_text": "5",
+      "context": "...ing[version_info[3]] + str(version_info[4])      return v   __version__ = _get_ve..."
+    },
+    {
+      "bug_id": "python-markdown-formatting-018",
+      "file_path": "markdown/__meta__.py",
+      "line_number": 31,
+      "mutation_type": "minus_one",
+      "original_text": "3",
+      "mutated_text": "2",
+      "context": "...mport annotations   __version_info__ = (3, 10, 0, 'final', 0)   def _get_version(..."
+    },
+    {
+      "bug_id": "python-markdown-formatting-019",
+      "file_path": "markdown/__meta__.py",
+      "line_number": 31,
+      "mutation_type": "minus_one",
+      "original_text": "10",
+      "mutated_text": "9",
+      "context": "...rt annotations   __version_info__ = (3, 10, 0, 'final', 0)   def _get_version(vers..."
+    },
+    {
+      "bug_id": "python-markdown-formatting-020",
+      "file_path": "markdown/__meta__.py",
+      "line_number": 31,
+      "mutation_type": "minus_one",
+      "original_text": "0",
+      "mutated_text": "-1",
+      "context": "...nnotations   __version_info__ = (3, 10, 0, 'final', 0)   def _get_version(version..."
+    },
+    {
+      "bug_id": "python-markdown-formatting-021",
+      "file_path": "markdown/__meta__.py",
+      "line_number": 31,
+      "mutation_type": "minus_one",
+      "original_text": "0",
+      "mutated_text": "-1",
+      "context": "...__version_info__ = (3, 10, 0, 'final', 0)   def _get_version(version_info):..."
+    },
+    {
+      "bug_id": "python-markdown-formatting-022",
+      "file_path": "markdown/__meta__.py",
+      "line_number": 39,
+      "mutation_type": "minus_one",
+      "original_text": "2",
+      "mutated_text": "1",
+      "context": "...a', 'beta', 'rc', 'final')      parts = 2 if version_info[2] == 0 else 3     v =..."
+    },
+    {
+      "bug_id": "python-markdown-formatting-023",
+      "file_path": "markdown/__meta__.py",
+      "line_number": 39,
+      "mutation_type": "minus_one",
+      "original_text": "2",
+      "mutated_text": "1",
+      "context": "...'final')      parts = 2 if version_info[2] == 0 else 3     v = '.'.join(map(str,..."
+    },
+    {
+      "bug_id": "python-markdown-formatting-024",
+      "file_path": "markdown/__meta__.py",
+      "line_number": 39,
+      "mutation_type": "minus_one",
+      "original_text": "0",
+      "mutated_text": "-1",
+      "context": "...')      parts = 2 if version_info[2] == 0 else 3     v = '.'.join(map(str, versio..."
+    },
+    {
+      "bug_id": "python-markdown-formatting-025",
+      "file_path": "markdown/__meta__.py",
+      "line_number": 39,
+      "mutation_type": "minus_one",
+      "original_text": "3",
+      "mutated_text": "2",
+      "context": "...parts = 2 if version_info[2] == 0 else 3     v = '.'.join(map(str, version_info[..."
+    },
+    {
+      "bug_id": "python-markdown-formatting-026",
+      "file_path": "markdown/__meta__.py",
+      "line_number": 42,
+      "mutation_type": "minus_one",
+      "original_text": "3",
+      "mutated_text": "2",
+      "context": "...ion_info[:parts]))      if version_info[3] == 'dev':         v += '.dev' + str(ve..."
+    },
+    {
+      "bug_id": "python-markdown-formatting-027",
+      "file_path": "markdown/__meta__.py",
+      "line_number": 43,
+      "mutation_type": "minus_one",
+      "original_text": "4",
+      "mutated_text": "3",
+      "context": "...v += '.dev' + str(version_info[4])     elif version_info[3] != 'final':..."
+    },
+    {
+      "bug_id": "python-markdown-formatting-028",
+      "file_path": "markdown/__meta__.py",
+      "line_number": 44,
+      "mutation_type": "minus_one",
+      "original_text": "3",
+      "mutated_text": "2",
+      "context": "...(version_info[4])     elif version_info[3] != 'final':         mapping = {'alpha'..."
+    },
+    {
+      "bug_id": "python-markdown-formatting-029",
+      "file_path": "markdown/__meta__.py",
+      "line_number": 46,
+      "mutation_type": "minus_one",
+      "original_text": "3",
+      "mutated_text": "2",
+      "context": "...'rc'}         v += mapping[version_info[3]] + str(version_info[4])      return v..."
+    },
+    {
+      "bug_id": "python-markdown-formatting-030",
+      "file_path": "markdown/__meta__.py",
+      "line_number": 46,
+      "mutation_type": "minus_one",
+      "original_text": "4",
+      "mutated_text": "3",
+      "context": "...ing[version_info[3]] + str(version_info[4])      return v   __version__ = _get_ve..."
+    },
+    {
+      "bug_id": "python-markdown-formatting-031",
+      "file_path": "markdown/blockprocessors.py",
+      "line_number": 281,
+      "mutation_type": "eq_ne",
+      "original_text": "==",
+      "mutated_text": "!=",
+      "context": "...is not None             and sibling.tag == 'pre'             and len(sibling)..."
+    },
+    {
+      "bug_id": "python-markdown-formatting-032",
+      "file_path": "markdown/blockprocessors.py",
+      "line_number": 283,
+      "mutation_type": "eq_ne",
+      "original_text": "==",
+      "mutated_text": "!=",
+      "context": "...sibling)             and sibling[0].tag == 'code'         ):             # The pre..."
+    },
+    {
+      "bug_id": "python-markdown-formatting-033",
+      "file_path": "markdown/blockprocessors.py",
+      "line_number": 330,
+      "mutation_type": "eq_ne",
+      "original_text": "==",
+      "mutated_text": "!=",
+      "context": "...if sibling is not None and sibling.tag == 'blockquote':             # Previous bl..."
+    },
+    {
+      "bug_id": "python-markdown-formatting-034",
+      "file_path": "markdown/blockprocessors.py",
+      "line_number": 345,
+      "mutation_type": "eq_ne",
+      "original_text": "==",
+      "mutated_text": "!=",
+      "context": "....RE.match(line)         if line.strip() == '>':             return ''         elif..."
+    },
+    {
+      "bug_id": "python-markdown-formatting-035",
+      "file_path": "markdown/blockprocessors.py",
+      "line_number": 433,
+      "mutation_type": "eq_ne",
+      "original_text": "!=",
+      "mutated_text": "==",
+      "context": "...if not self.LAZY_OL and self.STARTSWITH != '1':                 lst.attrib['start'..."
+    },
+    {
+      "bug_id": "python-markdown-formatting-036",
+      "file_path": "markdown/blockprocessors.py",
+      "line_number": 457,
+      "mutation_type": "eq_ne",
+      "original_text": "==",
+      "mutated_text": "!=",
+      "context": "...if not items and self.TAG == 'ol':                     # Detect the..."
+    },
+    {
+      "bug_id": "python-markdown-formatting-037",
+      "file_path": "markdown/blockprocessors.py",
+      "line_number": 606,
+      "mutation_type": "eq_ne",
+      "original_text": "==",
+      "mutated_text": "!=",
+      "context": "...is not None             and sibling.tag == 'pre'             and len(sibling)..."
+    },
+    {
+      "bug_id": "python-markdown-formatting-038",
+      "file_path": "markdown/blockprocessors.py",
+      "line_number": 608,
+      "mutation_type": "eq_ne",
+      "original_text": "==",
+      "mutated_text": "!=",
+      "context": "...sibling)             and sibling[0].tag == 'code'         ):             # Last bl..."
+    },
+    {
+      "bug_id": "python-markdown-formatting-039",
+      "file_path": "markdown/blockprocessors.py",
+      "line_number": 83,
+      "mutation_type": "var_swap",
+      "original_text": "self",
+      "mutated_text": "parser",
+      "context": "...t__(self, parser: BlockParser):         self.parser = parser         self.tab_length..."
+    },
+    {
+      "bug_id": "python-markdown-formatting-040",
+      "file_path": "markdown/blockprocessors.py",
+      "line_number": 83,
+      "mutation_type": "var_swap",
+      "original_text": "parser",
+      "mutated_text": "self",
+      "context": "...elf, parser: BlockParser):         self.parser = parser         self.tab_length = pars..."
+    },
+    {
+      "bug_id": "python-markdown-formatting-041",
+      "file_path": "markdown/blockprocessors.py",
+      "line_number": 83,
+      "mutation_type": "var_swap",
+      "original_text": "parser",
+      "mutated_text": "self",
+      "context": "...er: BlockParser):         self.parser = parser         self.tab_length = parser.md.tab..."
+    },
+    {
+      "bug_id": "python-markdown-formatting-042",
+      "file_path": "markdown/blockprocessors.py",
+      "line_number": 84,
+      "mutation_type": "var_swap",
+      "original_text": "self",
+      "mutated_text": "parser",
+      "context": "...):         self.parser = parser         self.tab_length = parser.md.tab_length..."
+    },
+    {
+      "bug_id": "python-markdown-formatting-043",
+      "file_path": "markdown/blockprocessors.py",
+      "line_number": 84,
+      "mutation_type": "var_swap",
+      "original_text": "parser",
+      "mutated_text": "self",
+      "context": "...rser = parser         self.tab_length = parser.md.tab_length      def lastChild(self,..."
+    },
+    {
+      "bug_id": "python-markdown-formatting-044",
+      "file_path": "markdown/blockprocessors.py",
+      "line_number": 88,
+      "mutation_type": "var_swap",
+      "original_text": "parent",
+      "mutated_text": "self",
+      "context": "...f an `etree` element.\"\"\"         if len(parent):             return parent[-1]..."
+    },
+    {
+      "bug_id": "python-markdown-formatting-045",
+      "file_path": "markdown/blockprocessors.py",
+      "line_number": 89,
+      "mutation_type": "var_swap",
+      "original_text": "parent",
+      "mutated_text": "self",
+      "context": "...if len(parent):             return parent[-1]         else:             return No..."
+    },
+    {
+      "bug_id": "python-markdown-formatting-046",
+      "file_path": "markdown/blockprocessors.py",
+      "line_number": 95,
+      "mutation_type": "var_swap",
+      "original_text": "length",
+      "mutated_text": "self",
+      "context": "...h line of the given text.\"\"\"         if length is None:             length = self.tab_..."
+    },
+    {
+      "bug_id": "python-markdown-formatting-047",
+      "file_path": "markdown/blockprocessors.py",
+      "line_number": 95,
+      "mutation_type": "var_swap",
+      "original_text": "length",
+      "mutated_text": "text",
+      "context": "...h line of the given text.\"\"\"         if length is None:             length = self.tab_..."
+    },
+    {
+      "bug_id": "python-markdown-formatting-048",
+      "file_path": "markdown/blockprocessors.py",
+      "line_number": 96,
+      "mutation_type": "var_swap",
+      "original_text": "self",
+      "mutated_text": "text",
+      "context": "...if length is None:             length = self.tab_length         newtext = []..."
+    },
+    {
+      "bug_id": "python-markdown-formatting-049",
+      "file_path": "markdown/blockprocessors.py",
+      "line_number": 96,
+      "mutation_type": "var_swap",
+      "original_text": "self",
+      "mutated_text": "length",
+      "context": "...if length is None:             length = self.tab_length         newtext = []..."
+    },
+    {
+      "bug_id": "python-markdown-formatting-050",
+      "file_path": "markdown/blockprocessors.py",
+      "line_number": 98,
+      "mutation_type": "var_swap",
+      "original_text": "text",
+      "mutated_text": "self",
+      "context": "...th         newtext = []         lines = text.split('\\n')         for line in lines:..."
     }
   ]
 }
