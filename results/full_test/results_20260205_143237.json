@@ -1,0 +1,152 @@
+{
+  "metadata": {
+    "catalog": "/Users/yuan/stylebench-data/bugs/python-markdown-original.json",
+    "repo": "/Users/yuan/stylebench-data/original/python-markdown",
+    "repo_name": "python-markdown",
+    "timestamp": "2026-02-05T14:32:37.616062",
+    "total_trials": 5
+  },
+  "results": [
+    {
+      "bug_id": "python-markdown-original-001",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 776,
+      "tests_failed": 0,
+      "tests_total": 776,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-05T14:31:06.499326",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "markdown/__main__.py"
+        ],
+        "patch": "(restored to original)",
+        "tokens_used": 0,
+        "time_seconds": 21.37015700340271,
+        "error": null,
+        "agent_output": "The test passes. The bug was a simple logic inversion on line 92: `!= 0` was used instead of `== 0`, causing `input_file = None` when args existed and an `IndexError` when they didn't.\n"
+      }
+    },
+    {
+      "bug_id": "python-markdown-original-002",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 776,
+      "tests_failed": 0,
+      "tests_total": 776,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-05T14:31:27.484630",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "markdown/__main__.py"
+        ],
+        "patch": "(restored to original)",
+        "tokens_used": 0,
+        "time_seconds": 17.810487031936646,
+        "error": null,
+        "agent_output": "The fix: changed the duplicate `values` parameter to `args` on line 45. The function body already references `args` (e.g., `parser.parse_args(args, values)` on line 90), so the first parameter was incorrectly named `values` instead of `args`.\n"
+      }
+    },
+    {
+      "bug_id": "python-markdown-original-003",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 776,
+      "tests_failed": 0,
+      "tests_total": 776,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-05T14:31:52.485625",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "markdown/__main__.py"
+        ],
+        "patch": "(restored to original)",
+        "tokens_used": 0,
+        "time_seconds": 21.638055086135864,
+        "error": null,
+        "agent_output": "The fix: the first parameter was `values=None` (duplicate) instead of `args=None`. This matches line 90 where `parser.parse_args(args, values)` is called with both `args` and `values`, and matches how the tests call `parse_options([...])` passing a list as the first argument (the args to parse).\n"
+      }
+    },
+    {
+      "bug_id": "python-markdown-original-004",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 776,
+      "tests_failed": 0,
+      "tests_total": 776,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-05T14:32:12.898608",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "markdown/__main__.py"
+        ],
+        "patch": "(restored to original)",
+        "tokens_used": 0,
+        "time_seconds": 17.30903387069702,
+        "error": null,
+        "agent_output": "The fix: restored the second parameter name from `args` back to `values` on line 45 of `markdown/__main__.py`, resolving the `SyntaxError: duplicate argument 'args' in function definition`.\n"
+      }
+    },
+    {
+      "bug_id": "python-markdown-original-005",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 776,
+      "tests_failed": 0,
+      "tests_total": 776,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-05T14:32:37.424129",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "markdown/__main__.py"
+        ],
+        "patch": "(restored to original)",
+        "tokens_used": 0,
+        "time_seconds": 21.219727754592896,
+        "error": null,
+        "agent_output": "The fix: changed the duplicate `values` parameter to `args` on line 45. The function signature was `parse_options(values=None, values=None)` which is a syntax error due to the duplicate parameter name. The correct signature is `parse_options(args=None, values=None)`, as the function body uses `args` on line 90 in `parser.parse_args(args, values)`.\n"
+      }
+    }
+  ],
+  "summary": {
+    "by_agent": {
+      "claude": {
+        "total": 5,
+        "passed": 5
+      }
+    },
+    "by_mode": {
+      "with_tests": {
+        "total": 5,
+        "passed": 5
+      }
+    },
+    "by_evaluation": {
+      "PASS": 5,
+      "FAIL": 0,
+      "ERROR": 0,
+      "TIMEOUT": 0,
+      "NO_FIX": 0
+    }
+  }
+}

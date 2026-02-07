@@ -1,417 +1,402 @@
 {
-  "repo": "python-markdown",
-  "style": "original",
-  "generated_at": "2026-02-03T15:47:50.119195",
-  "test_command": [
-    "uv",
-    "run",
-    "pytest",
-    "/Users/yuan/stylebench-data/original/python-markdown/tests",
-    "-x",
-    "-q",
-    "--tb=short",
-    "--color=no",
-    "--ignore",
-    "/Users/yuan/stylebench-data/original/python-markdown/tests/test_syntax/extensions/test_md_in_html.py"
-  ],
   "bugs": [
     {
       "bug_id": "python-markdown-original-001",
-      "test_output": "....................................................................F\n=================================== FAILURES ===================================\n___________________ TestCliOptionParsing.testEncodingOption ____________________\n/Users/yuan/stylebench-data/original/python-markdown/tests/test_apis.py:808: in testEncodingOption\n    options, logging_level = parse_options(['-e', 'utf-8'])\n                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpirnuo9o1/worker_0/markdown/__main__.py:95: in parse_options\n    input_file = args[0]\n                 ^^^^^^^\nE   IndexError: list index out of range\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpirnuo9o1/worker_0/tests/test_apis.py::TestCliOptionParsing::testEncodingOption\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 68 passed in 0.13s\nwarning: `VIRTUAL_ENV=/Users/yuan/stylebench/.venv` does not match the project environment path `.venv` and will be ignored; use `--active` to target the active environment instead\n",
+      "test_output": "F\n=================================== FAILURES ===================================\n______________________ TestMarkdownBasics.testBlankInput _______________________\ntests/test_apis.py:47: in setUp\n    self.md = markdown.Markdown()\n              ^^^^^^^^^^^^^^^^^^^\nmarkdown/core.py:122: in __init__\n    self.build_parser()\nmarkdown/core.py:153: in build_parser\n    self.parser = build_block_parser(self)\n                  ^^^^^^^^^^^^^^^^^^^^^^^^\nmarkdown/blockprocessors.py:45: in build_block_parser\n    parser.blockprocessors.register(EmptyBlockProcessor(parser), 'empty', 100)\n    ^^^^^^^^^^^^^^^^^^^^^^\nE   AttributeError: 'BlockParser' object has no attribute 'blockprocessors'\n=========================== short test summary info ============================\nFAILED tests/test_apis.py::TestMarkdownBasics::testBlankInput - AttributeErro...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed in 0.12s\n",
       "failing_tests": [
-        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpirnuo9o1/worker_0/tests/test_apis.py::TestCliOptionParsing::testEncodingOption"
+        "tests/test_apis.py::TestMarkdownBasics::testBlankInput"
       ],
       "exit_code": 1
     },
     {
       "bug_id": "python-markdown-original-002",
-      "test_output": "....................................................................F\n=================================== FAILURES ===================================\n___________________ TestCliOptionParsing.testEncodingOption ____________________\n/Users/yuan/stylebench-data/original/python-markdown/tests/test_apis.py:810: in testEncodingOption\n    self.assertEqual(options, self.default_options)\nE   AssertionError: {'input': '-e', 'output': None, 'extensions': [], '[82 chars]True} != {'input': None, 'output': None, 'encoding': 'utf-8'[82 chars]: {}}\nE     {'encoding': 'utf-8',\nE      'extension_configs': {},\nE      'extensions': [],\nE   -  'input': '-e',\nE   ?           ^^ -\nE   \nE   +  'input': None,\nE   ?           ^^^\nE   \nE      'lazy_ol': True,\nE      'output': None,\nE      'output_format': 'xhtml'}\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpirnuo9o1/worker_0/tests/test_apis.py::TestCliOptionParsing::testEncodingOption\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 68 passed in 0.13s\nwarning: `VIRTUAL_ENV=/Users/yuan/stylebench/.venv` does not match the project environment path `.venv` and will be ignored; use `--active` to target the active environment instead\n",
+      "test_output": "F\n=================================== FAILURES ===================================\n______________________ TestMarkdownBasics.testBlankInput _______________________\ntests/test_apis.py:47: in setUp\n    self.md = markdown.Markdown()\n              ^^^^^^^^^^^^^^^^^^^\nmarkdown/core.py:122: in __init__\n    self.build_parser()\nmarkdown/core.py:153: in build_parser\n    self.parser = build_block_parser(self)\n                  ^^^^^^^^^^^^^^^^^^^^^^^^\nmarkdown/blockprocessors.py:45: in build_block_parser\n    parser.blockprocessors.register(EmptyBlockProcessor(parser), 'empty', 100)\n                                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^\nmarkdown/blockprocessors.py:76: in __init__\n    self.tab_length = parser.md.tab_length\n                      ^^^^^^^^^\nE   AttributeError: 'BlockParser' object has no attribute 'md'\n=========================== short test summary info ============================\nFAILED tests/test_apis.py::TestMarkdownBasics::testBlankInput - AttributeErro...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed in 0.11s\n",
       "failing_tests": [
-        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpirnuo9o1/worker_0/tests/test_apis.py::TestCliOptionParsing::testEncodingOption"
+        "tests/test_apis.py::TestMarkdownBasics::testBlankInput"
       ],
       "exit_code": 1
     },
     {
       "bug_id": "python-markdown-original-003",
-      "test_output": "....................................................................F\n=================================== FAILURES ===================================\n___________________ TestCliOptionParsing.testEncodingOption ____________________\n/Users/yuan/stylebench-data/original/python-markdown/tests/test_apis.py:810: in testEncodingOption\n    self.assertEqual(options, self.default_options)\nE   AssertionError: {'input': '-e', 'output': None, 'extensions': [], '[82 chars]True} != {'input': None, 'output': None, 'encoding': 'utf-8'[82 chars]: {}}\nE     {'encoding': 'utf-8',\nE      'extension_configs': {},\nE      'extensions': [],\nE   -  'input': '-e',\nE   ?           ^^ -\nE   \nE   +  'input': None,\nE   ?           ^^^\nE   \nE      'lazy_ol': True,\nE      'output': None,\nE      'output_format': 'xhtml'}\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpirnuo9o1/worker_0/tests/test_apis.py::TestCliOptionParsing::testEncodingOption\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 68 passed in 0.13s\nwarning: `VIRTUAL_ENV=/Users/yuan/stylebench/.venv` does not match the project environment path `.venv` and will be ignored; use `--active` to target the active environment instead\n",
+      "test_output": "F\n=================================== FAILURES ===================================\n______________________ TestMarkdownBasics.testBlankInput _______________________\ntests/test_apis.py:47: in setUp\n    self.md = markdown.Markdown()\n              ^^^^^^^^^^^^^^^^^^^\nmarkdown/core.py:122: in __init__\n    self.build_parser()\nmarkdown/core.py:153: in build_parser\n    self.parser = build_block_parser(self)\n                  ^^^^^^^^^^^^^^^^^^^^^^^^\nmarkdown/blockprocessors.py:45: in build_block_parser\n    parser.blockprocessors.register(EmptyBlockProcessor(parser), 'empty', 100)\n                                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^\nmarkdown/blockprocessors.py:76: in __init__\n    self.tab_length = parser.md.tab_length\n                      ^^^^^^^^^\nE   AttributeError: 'BlockParser' object has no attribute 'md'\n=========================== short test summary info ============================\nFAILED tests/test_apis.py::TestMarkdownBasics::testBlankInput - AttributeErro...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed in 0.11s\n",
       "failing_tests": [
-        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpirnuo9o1/worker_0/tests/test_apis.py::TestCliOptionParsing::testEncodingOption"
+        "tests/test_apis.py::TestMarkdownBasics::testBlankInput"
       ],
       "exit_code": 1
     },
     {
       "bug_id": "python-markdown-original-004",
-      "test_output": "....................................................................F\n=================================== FAILURES ===================================\n___________________ TestCliOptionParsing.testEncodingOption ____________________\n/Users/yuan/stylebench-data/original/python-markdown/tests/test_apis.py:808: in testEncodingOption\n    options, logging_level = parse_options(['-e', 'utf-8'])\n                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpirnuo9o1/worker_0/markdown/__main__.py:90: in parse_options\n    (options, args) = parser.parse_args(args, args)\n                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n/Users/yuan/.local/share/uv/python/cpython-3.11.14-macos-aarch64-none/lib/python3.11/optparse.py:1387: in parse_args\n    stop = self._process_args(largs, rargs, values)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n/Users/yuan/.local/share/uv/python/cpython-3.11.14-macos-aarch64-none/lib/python3.11/optparse.py:1431: in _process_args\n    self._process_short_opts(rargs, values)\n/Users/yuan/.local/share/uv/python/cpython-3.11.14-macos-aarch64-none/lib/python3.11/optparse.py:1536: in _process_short_opts\n    option.process(opt, value, values, self)\n/Users/yuan/.local/share/uv/python/cpython-3.11.14-macos-aarch64-none/lib/python3.11/optparse.py:784: in process\n    return self.take_action(\n/Users/yuan/.local/share/uv/python/cpython-3.11.14-macos-aarch64-none/lib/python3.11/optparse.py:789: in take_action\n    setattr(values, dest, value)\nE   AttributeError: 'list' object has no attribute 'encoding'\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpirnuo9o1/worker_0/tests/test_apis.py::TestCliOptionParsing::testEncodingOption\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 68 passed in 0.15s\nwarning: `VIRTUAL_ENV=/Users/yuan/stylebench/.venv` does not match the project environment path `.venv` and will be ignored; use `--active` to target the active environment instead\n",
+      "test_output": "F\n=================================== FAILURES ===================================\n______________________ TestMarkdownBasics.testBlankInput _______________________\ntests/test_apis.py:47: in setUp\n    self.md = markdown.Markdown()\n              ^^^^^^^^^^^^^^^^^^^\nmarkdown/core.py:122: in __init__\n    self.build_parser()\nmarkdown/core.py:153: in build_parser\n    self.parser = build_block_parser(self)\n                  ^^^^^^^^^^^^^^^^^^^^^^^^\nmarkdown/blockprocessors.py:46: in build_block_parser\n    parser.blockprocessors.register(ListIndentProcessor(parser), 'indent', 90)\n                                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^\nmarkdown/blockprocessors.py:172: in __init__\n    self.INDENT_RE = re.compile(r'^(([ ]{%s})+)' % self.tab_length)\n                                                   ^^^^^^^^^^^^^^^\nE   AttributeError: 'ListIndentProcessor' object has no attribute 'tab_length'\n=========================== short test summary info ============================\nFAILED tests/test_apis.py::TestMarkdownBasics::testBlankInput - AttributeErro...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed in 0.11s\n",
       "failing_tests": [
-        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpirnuo9o1/worker_0/tests/test_apis.py::TestCliOptionParsing::testEncodingOption"
+        "tests/test_apis.py::TestMarkdownBasics::testBlankInput"
       ],
       "exit_code": 1
     },
     {
       "bug_id": "python-markdown-original-005",
-      "test_output": "....................................................................F\n=================================== FAILURES ===================================\n___________________ TestCliOptionParsing.testEncodingOption ____________________\n/Users/yuan/stylebench-data/original/python-markdown/tests/test_apis.py:808: in testEncodingOption\n    options, logging_level = parse_options(['-e', 'utf-8'])\n                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpirnuo9o1/worker_0/markdown/__main__.py:92: in parse_options\n    if len(values) == 0:\n       ^^^^^^^^^^^\nE   TypeError: object of type 'NoneType' has no len()\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpirnuo9o1/worker_0/tests/test_apis.py::TestCliOptionParsing::testEncodingOption\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 68 passed in 0.14s\nwarning: `VIRTUAL_ENV=/Users/yuan/stylebench/.venv` does not match the project environment path `.venv` and will be ignored; use `--active` to target the active environment instead\n",
+      "test_output": "F\n=================================== FAILURES ===================================\n______________________ TestMarkdownBasics.testBlankInput _______________________\ntests/test_apis.py:47: in setUp\n    self.md = markdown.Markdown()\n              ^^^^^^^^^^^^^^^^^^^\nmarkdown/core.py:122: in __init__\n    self.build_parser()\nmarkdown/core.py:153: in build_parser\n    self.parser = build_block_parser(self)\n                  ^^^^^^^^^^^^^^^^^^^^^^^^\nmarkdown/blockprocessors.py:45: in build_block_parser\n    parser.blockprocessors.register(EmptyBlockProcessor(parser), 'empty', 100)\n                                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^\nmarkdown/blockprocessors.py:76: in __init__\n    self.tab_length = self.md.tab_length\n                      ^^^^^^^\nE   AttributeError: 'EmptyBlockProcessor' object has no attribute 'md'\n=========================== short test summary info ============================\nFAILED tests/test_apis.py::TestMarkdownBasics::testBlankInput - AttributeErro...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed in 0.11s\n",
       "failing_tests": [
-        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpirnuo9o1/worker_0/tests/test_apis.py::TestCliOptionParsing::testEncodingOption"
+        "tests/test_apis.py::TestMarkdownBasics::testBlankInput"
       ],
       "exit_code": 1
     },
     {
       "bug_id": "python-markdown-original-006",
-      "test_output": "....................................................................F\n=================================== FAILURES ===================================\n___________________ TestCliOptionParsing.testEncodingOption ____________________\n/Users/yuan/stylebench-data/original/python-markdown/tests/test_apis.py:808: in testEncodingOption\n    options, logging_level = parse_options(['-e', 'utf-8'])\n                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpirnuo9o1/worker_0/markdown/__main__.py:92: in parse_options\n    if len(args) == 0:\n       ^^^^^^^^^^^\nE   TypeError: object of type 'NoneType' has no len()\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpirnuo9o1/worker_0/tests/test_apis.py::TestCliOptionParsing::testEncodingOption\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 68 passed in 0.13s\nwarning: `VIRTUAL_ENV=/Users/yuan/stylebench/.venv` does not match the project environment path `.venv` and will be ignored; use `--active` to target the active environment instead\n",
+      "test_output": "F\n=================================== FAILURES ===================================\n______________________ TestMarkdownBasics.testBlankInput _______________________\ntests/test_apis.py:47: in setUp\n    self.md = markdown.Markdown()\n              ^^^^^^^^^^^^^^^^^^^\nmarkdown/core.py:122: in __init__\n    self.build_parser()\nmarkdown/core.py:153: in build_parser\n    self.parser = build_block_parser(self)\n                  ^^^^^^^^^^^^^^^^^^^^^^^^\nmarkdown/blockprocessors.py:45: in build_block_parser\n    parser.blockprocessors.register(EmptyBlockProcessor(parser), 'empty', 100)\n                                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^\nmarkdown/blockprocessors.py:76: in __init__\n    self.tab_length = parser.md.tab_length\n                      ^^^^^^^\nE   AttributeError: 'EmptyBlockProcessor' object has no attribute 'md'\n=========================== short test summary info ============================\nFAILED tests/test_apis.py::TestMarkdownBasics::testBlankInput - AttributeErro...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed in 0.11s\n",
       "failing_tests": [
-        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpirnuo9o1/worker_0/tests/test_apis.py::TestCliOptionParsing::testEncodingOption"
+        "tests/test_apis.py::TestMarkdownBasics::testBlankInput"
       ],
       "exit_code": 1
     },
     {
       "bug_id": "python-markdown-original-007",
-      "test_output": "....................................................................F\n=================================== FAILURES ===================================\n___________________ TestCliOptionParsing.testEncodingOption ____________________\n/Users/yuan/stylebench-data/original/python-markdown/tests/test_apis.py:808: in testEncodingOption\n    options, logging_level = parse_options(['-e', 'utf-8'])\n                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpirnuo9o1/worker_0/markdown/__main__.py:92: in parse_options\n    if len(args) == 0:\n       ^^^^^^^^^^^\nE   TypeError: object of type 'NoneType' has no len()\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpirnuo9o1/worker_0/tests/test_apis.py::TestCliOptionParsing::testEncodingOption\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 68 passed in 0.13s\nwarning: `VIRTUAL_ENV=/Users/yuan/stylebench/.venv` does not match the project environment path `.venv` and will be ignored; use `--active` to target the active environment instead\n",
+      "test_output": "F\n=================================== FAILURES ===================================\n______________________ TestMarkdownBasics.testBlankInput _______________________\ntests/test_apis.py:47: in setUp\n    self.md = markdown.Markdown()\n              ^^^^^^^^^^^^^^^^^^^\nmarkdown/core.py:122: in __init__\n    self.build_parser()\nmarkdown/core.py:153: in build_parser\n    self.parser = build_block_parser(self)\n                  ^^^^^^^^^^^^^^^^^^^^^^^^\nmarkdown/blockprocessors.py:51: in build_block_parser\n    parser.blockprocessors.register(OListProcessor(parser), 'olist', 40)\n                                    ^^^^^^^^^^^^^^^^^^^^^^\nmarkdown/blockprocessors.py:346: in __init__\n    super().__init__(self)\nmarkdown/blockprocessors.py:76: in __init__\n    self.tab_length = parser.md.tab_length\n                      ^^^^^^^^^\nE   AttributeError: 'OListProcessor' object has no attribute 'md'\n=========================== short test summary info ============================\nFAILED tests/test_apis.py::TestMarkdownBasics::testBlankInput - AttributeErro...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed in 0.12s\n",
       "failing_tests": [
-        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpirnuo9o1/worker_0/tests/test_apis.py::TestCliOptionParsing::testEncodingOption"
+        "tests/test_apis.py::TestMarkdownBasics::testBlankInput"
       ],
       "exit_code": 1
     },
     {
       "bug_id": "python-markdown-original-008",
-      "test_output": ".......................................................................F [  8%]\n\n=================================== FAILURES ===================================\n___________ TestCliOptionParsing.testExtensionConfigOptionBadFormat ____________\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpirnuo9o1/worker_0/markdown/__main__.py:106: in parse_options\n    extension_configs = yaml_load(fp)\n                        ^^^^^^^^^^^^^\n/Users/yuan/stylebench-data/original/python-markdown/.venv/lib/python3.11/site-packages/yaml/__init__.py:145: in unsafe_load\n    return load(stream, UnsafeLoader)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^\n/Users/yuan/stylebench-data/original/python-markdown/.venv/lib/python3.11/site-packages/yaml/__init__.py:81: in load\n    return loader.get_single_data()\n           ^^^^^^^^^^^^^^^^^^^^^^^^\n/Users/yuan/stylebench-data/original/python-markdown/.venv/lib/python3.11/site-packages/yaml/constructor.py:49: in get_single_data\n    node = self.get_single_node()\n           ^^^^^^^^^^^^^^^^^^^^^^\n/Users/yuan/stylebench-data/original/python-markdown/.venv/lib/python3.11/site-packages/yaml/composer.py:39: in get_single_node\n    if not self.check_event(StreamEndEvent):\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n/Users/yuan/stylebench-data/original/python-markdown/.venv/lib/python3.11/site-packages/yaml/parser.py:98: in check_event\n    self.current_event = self.state()\n                         ^^^^^^^^^^^^\n/Users/yuan/stylebench-data/original/python-markdown/.venv/lib/python3.11/site-packages/yaml/parser.py:171: in parse_document_start\n    raise ParserError(None, None,\nE   yaml.parser.ParserError: expected '<document start>', but found '<scalar>'\nE     in \"/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmps1p62ajm.yml\", line 3, column 1\n\nDuring handling of the above exception, another exception occurred:\n/Users/yuan/stylebench-data/original/python-markdown/tests/test_apis.py:902: in testExtensionConfigOptionBadFormat\n    self.assertRaises(yaml.YAMLError, parse_options, ['-c', self.tempfile])\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpirnuo9o1/worker_0/markdown/__main__.py:110: in parse_options\n    e.args = (message,) + e.values[1:]\n                          ^^^^^^^^\nE   AttributeError: 'ParserError' object has no attribute 'values'\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpirnuo9o1/worker_0/tests/test_apis.py::TestCliOptionParsing::testExtensionConfigOptionBadFormat\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 71 passed in 0.15s\nwarning: `VIRTUAL_ENV=/Users/yuan/stylebench/.venv` does not match the project environment path `.venv` and will be ignored; use `--active` to target the active environment instead\n",
+      "test_output": "F\n=================================== FAILURES ===================================\n______________________ TestMarkdownBasics.testBlankInput _______________________\ntests/test_apis.py:47: in setUp\n    self.md = markdown.Markdown()\n              ^^^^^^^^^^^^^^^^^^^\nmarkdown/core.py:122: in __init__\n    self.build_parser()\nmarkdown/core.py:153: in build_parser\n    self.parser = build_block_parser(self)\n                  ^^^^^^^^^^^^^^^^^^^^^^^^\nmarkdown/blockprocessors.py:51: in build_block_parser\n    parser.blockprocessors.register(OListProcessor(parser), 'olist', 40)\n                                    ^^^^^^^^^^^^^^^^^^^^^^\nmarkdown/blockprocessors.py:348: in __init__\n    self.RE = re.compile(r'^[ ]{0,%d}\\d+\\.[ ]+(.*)' % (parser.tab_length - 1))\n                                                       ^^^^^^^^^^^^^^^^^\nE   AttributeError: 'BlockParser' object has no attribute 'tab_length'\n=========================== short test summary info ============================\nFAILED tests/test_apis.py::TestMarkdownBasics::testBlankInput - AttributeErro...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed in 0.11s\n",
       "failing_tests": [
-        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpirnuo9o1/worker_0/tests/test_apis.py::TestCliOptionParsing::testExtensionConfigOptionBadFormat"
+        "tests/test_apis.py::TestMarkdownBasics::testBlankInput"
       ],
       "exit_code": 1
     },
     {
       "bug_id": "python-markdown-original-009",
-      "test_output": "....................................................................F\n=================================== FAILURES ===================================\n___________________ TestCliOptionParsing.testEncodingOption ____________________\n/Users/yuan/stylebench-data/original/python-markdown/tests/test_apis.py:810: in testEncodingOption\n    self.assertEqual(options, self.default_options)\nE   AssertionError: {'inp[24 chars]e, 'extensions': [], 'extension_configs': {}, [59 chars]alse} != {'inp[24 chars]e, 'encoding': 'utf-8', 'output_format': 'xhtm[58 chars]: {}}\nE     {'encoding': 'utf-8',\nE      'extension_configs': {},\nE      'extensions': [],\nE      'input': None,\nE   -  'lazy_ol': False,\nE   ?             ^^^^\nE   \nE   +  'lazy_ol': True,\nE   ?             ^^^\nE   \nE      'output': None,\nE      'output_format': 'xhtml'}\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpirnuo9o1/worker_0/tests/test_apis.py::TestCliOptionParsing::testEncodingOption\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 68 passed in 0.13s\nwarning: `VIRTUAL_ENV=/Users/yuan/stylebench/.venv` does not match the project environment path `.venv` and will be ignored; use `--active` to target the active environment instead\n",
+      "test_output": "F\n=================================== FAILURES ===================================\n______________________ TestMarkdownBasics.testBlankInput _______________________\ntests/test_apis.py:47: in setUp\n    self.md = markdown.Markdown()\n              ^^^^^^^^^^^^^^^^^^^\nmarkdown/core.py:122: in __init__\n    self.build_parser()\nmarkdown/core.py:153: in build_parser\n    self.parser = build_block_parser(self)\n                  ^^^^^^^^^^^^^^^^^^^^^^^^\nmarkdown/blockprocessors.py:51: in build_block_parser\n    parser.blockprocessors.register(OListProcessor(parser), 'olist', 40)\n                                    ^^^^^^^^^^^^^^^^^^^^^^\nmarkdown/blockprocessors.py:348: in __init__\n    self.RE = re.compile(r'^[ ]{0,%d}\\d+\\.[ ]+(.*)' % (self.tab_length - 1))\n                                                       ^^^^^^^^^^^^^^^^^\nE   AttributeError: 'BlockParser' object has no attribute 'tab_length'\n=========================== short test summary info ============================\nFAILED tests/test_apis.py::TestMarkdownBasics::testBlankInput - AttributeErro...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed in 0.11s\n",
       "failing_tests": [
-        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpirnuo9o1/worker_0/tests/test_apis.py::TestCliOptionParsing::testEncodingOption"
+        "tests/test_apis.py::TestMarkdownBasics::testBlankInput"
       ],
       "exit_code": 1
     },
     {
       "bug_id": "python-markdown-original-010",
-      "test_output": "....................................................................F\n=================================== FAILURES ===================================\n___________________ TestCliOptionParsing.testEncodingOption ____________________\n/Users/yuan/stylebench-data/original/python-markdown/tests/test_apis.py:810: in testEncodingOption\n    self.assertEqual(options, self.default_options)\nE   AssertionError: {'inp[24 chars]e, 'extensions': [], 'extension_configs': {}, [59 chars]alse} != {'inp[24 chars]e, 'encoding': 'utf-8', 'output_format': 'xhtm[58 chars]: {}}\nE     {'encoding': 'utf-8',\nE      'extension_configs': {},\nE      'extensions': [],\nE      'input': None,\nE   -  'lazy_ol': False,\nE   ?             ^^^^\nE   \nE   +  'lazy_ol': True,\nE   ?             ^^^\nE   \nE      'output': None,\nE      'output_format': 'xhtml'}\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpirnuo9o1/worker_0/tests/test_apis.py::TestCliOptionParsing::testEncodingOption\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 68 passed in 0.13s\nwarning: `VIRTUAL_ENV=/Users/yuan/stylebench/.venv` does not match the project environment path `.venv` and will be ignored; use `--active` to target the active environment instead\n",
+      "test_output": "F\n=================================== FAILURES ===================================\n______________________ TestMarkdownBasics.testBlankInput _______________________\ntests/test_apis.py:47: in setUp\n    self.md = markdown.Markdown()\n              ^^^^^^^^^^^^^^^^^^^\nmarkdown/core.py:122: in __init__\n    self.build_parser()\nmarkdown/core.py:153: in build_parser\n    self.parser = build_block_parser(self)\n                  ^^^^^^^^^^^^^^^^^^^^^^^^\nmarkdown/blockprocessors.py:51: in build_block_parser\n    parser.blockprocessors.register(OListProcessor(parser), 'olist', 40)\n                                    ^^^^^^^^^^^^^^^^^^^^^^\nmarkdown/blockprocessors.py:348: in __init__\n    self.RE = re.compile(r'^[ ]{0,%d}\\d+\\.[ ]+(.*)' % (self.tab_length - 1))\n                                                       ^^^^^^^^^^^^^^^^^\nE   AttributeError: 'BlockParser' object has no attribute 'tab_length'\n=========================== short test summary info ============================\nFAILED tests/test_apis.py::TestMarkdownBasics::testBlankInput - AttributeErro...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed in 0.11s\n",
       "failing_tests": [
-        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpirnuo9o1/worker_0/tests/test_apis.py::TestCliOptionParsing::testEncodingOption"
+        "tests/test_apis.py::TestMarkdownBasics::testBlankInput"
       ],
       "exit_code": 1
     },
     {
       "bug_id": "python-markdown-original-011",
-      "test_output": "....................................................................F\n=================================== FAILURES ===================================\n___________________ TestCliOptionParsing.testEncodingOption ____________________\n/Users/yuan/stylebench-data/original/python-markdown/tests/test_apis.py:808: in testEncodingOption\n    options, logging_level = parse_options(['-e', 'utf-8'])\n    ^^^^^^^^^^^^^^^^^^^^^^\nE   TypeError: cannot unpack non-iterable NoneType object\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpirnuo9o1/worker_0/tests/test_apis.py::TestCliOptionParsing::testEncodingOption\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 68 passed in 0.13s\nwarning: `VIRTUAL_ENV=/Users/yuan/stylebench/.venv` does not match the project environment path `.venv` and will be ignored; use `--active` to target the active environment instead\n",
+      "test_output": "F\n=================================== FAILURES ===================================\n______________________ TestMarkdownBasics.testBlankInput _______________________\ntests/test_apis.py:47: in setUp\n    self.md = markdown.Markdown()\n              ^^^^^^^^^^^^^^^^^^^\nmarkdown/core.py:122: in __init__\n    self.build_parser()\nmarkdown/core.py:153: in build_parser\n    self.parser = build_block_parser(self)\n                  ^^^^^^^^^^^^^^^^^^^^^^^^\nmarkdown/blockprocessors.py:51: in build_block_parser\n    parser.blockprocessors.register(OListProcessor(parser), 'olist', 40)\n                                    ^^^^^^^^^^^^^^^^^^^^^^\nmarkdown/blockprocessors.py:348: in __init__\n    self.RE = re.compile(r'^[ ]{0,%d}\\d+\\.[ ]+(.*)' % (self.tab_length - 1))\n                                                       ^^^^^^^^^^^^^^^^^\nE   AttributeError: 'BlockParser' object has no attribute 'tab_length'\n=========================== short test summary info ============================\nFAILED tests/test_apis.py::TestMarkdownBasics::testBlankInput - AttributeErro...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed in 0.11s\n",
       "failing_tests": [
-        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpirnuo9o1/worker_0/tests/test_apis.py::TestCliOptionParsing::testEncodingOption"
+        "tests/test_apis.py::TestMarkdownBasics::testBlankInput"
       ],
       "exit_code": 1
     },
     {
       "bug_id": "python-markdown-original-012",
-      "test_output": "....................................................................F\n=================================== FAILURES ===================================\n___________________ TestCliOptionParsing.testEncodingOption ____________________\n/Users/yuan/stylebench-data/original/python-markdown/tests/test_apis.py:808: in testEncodingOption\n    options, logging_level = parse_options(['-e', 'utf-8'])\n                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpirnuo9o1/worker_0/markdown/__main__.py:93: in parse_options\n    input_file = args[0]\n                 ^^^^^^^\nE   IndexError: list index out of range\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpirnuo9o1/worker_0/tests/test_apis.py::TestCliOptionParsing::testEncodingOption\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 68 passed in 0.13s\nwarning: `VIRTUAL_ENV=/Users/yuan/stylebench/.venv` does not match the project environment path `.venv` and will be ignored; use `--active` to target the active environment instead\n",
+      "test_output": "F\n=================================== FAILURES ===================================\n______________________ TestMarkdownBasics.testBlankInput _______________________\ntests/test_apis.py:47: in setUp\n    self.md = markdown.Markdown()\n              ^^^^^^^^^^^^^^^^^^^\nmarkdown/core.py:122: in __init__\n    self.build_parser()\nmarkdown/core.py:153: in build_parser\n    self.parser = build_block_parser(self)\n                  ^^^^^^^^^^^^^^^^^^^^^^^^\nmarkdown/blockprocessors.py:51: in build_block_parser\n    parser.blockprocessors.register(OListProcessor(parser), 'olist', 40)\n                                    ^^^^^^^^^^^^^^^^^^^^^^\nmarkdown/blockprocessors.py:354: in __init__\n    (parser.tab_length, self.tab_length * 2 - 1))\n     ^^^^^^^^^^^^^^^^^\nE   AttributeError: 'BlockParser' object has no attribute 'tab_length'\n=========================== short test summary info ============================\nFAILED tests/test_apis.py::TestMarkdownBasics::testBlankInput - AttributeErro...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed in 0.11s\n",
       "failing_tests": [
-        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpirnuo9o1/worker_0/tests/test_apis.py::TestCliOptionParsing::testEncodingOption"
+        "tests/test_apis.py::TestMarkdownBasics::testBlankInput"
       ],
       "exit_code": 1
     },
     {
       "bug_id": "python-markdown-original-013",
-      "test_output": "....................................................................F\n=================================== FAILURES ===================================\n___________________ TestCliOptionParsing.testEncodingOption ____________________\n/Users/yuan/stylebench-data/original/python-markdown/tests/test_apis.py:808: in testEncodingOption\n    options, logging_level = parse_options(['-e', 'utf-8'])\n                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpirnuo9o1/worker_0/markdown/__main__.py:93: in parse_options\n    input_file = None\n                 ^^^^^\nE   IndexError: list index out of range\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpirnuo9o1/worker_0/tests/test_apis.py::TestCliOptionParsing::testEncodingOption\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 68 passed in 0.13s\nwarning: `VIRTUAL_ENV=/Users/yuan/stylebench/.venv` does not match the project environment path `.venv` and will be ignored; use `--active` to target the active environment instead\n",
+      "test_output": "F\n=================================== FAILURES ===================================\n______________________ TestMarkdownBasics.testBlankInput _______________________\ntests/test_apis.py:47: in setUp\n    self.md = markdown.Markdown()\n              ^^^^^^^^^^^^^^^^^^^\nmarkdown/core.py:122: in __init__\n    self.build_parser()\nmarkdown/core.py:153: in build_parser\n    self.parser = build_block_parser(self)\n                  ^^^^^^^^^^^^^^^^^^^^^^^^\nmarkdown/blockprocessors.py:51: in build_block_parser\n    parser.blockprocessors.register(OListProcessor(parser), 'olist', 40)\n                                    ^^^^^^^^^^^^^^^^^^^^^^\nmarkdown/blockprocessors.py:354: in __init__\n    (self.tab_length, parser.tab_length * 2 - 1))\n     ^^^^^^^^^^^^^^^^^\nE   AttributeError: 'BlockParser' object has no attribute 'tab_length'\n=========================== short test summary info ============================\nFAILED tests/test_apis.py::TestMarkdownBasics::testBlankInput - AttributeErro...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed in 0.11s\n",
       "failing_tests": [
-        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpirnuo9o1/worker_0/tests/test_apis.py::TestCliOptionParsing::testEncodingOption"
+        "tests/test_apis.py::TestMarkdownBasics::testBlankInput"
       ],
       "exit_code": 1
     },
     {
       "bug_id": "python-markdown-original-014",
-      "test_output": "....................................................................F\n=================================== FAILURES ===================================\n___________________ TestCliOptionParsing.testEncodingOption ____________________\n/Users/yuan/stylebench-data/original/python-markdown/tests/test_apis.py:808: in testEncodingOption\n    options, logging_level = parse_options(['-e', 'utf-8'])\n                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpirnuo9o1/worker_0/markdown/__main__.py:93: in parse_options\n    input_file = None\n                 ^^^^^\nE   IndexError: list index out of range\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpirnuo9o1/worker_0/tests/test_apis.py::TestCliOptionParsing::testEncodingOption\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 68 passed in 0.13s\nwarning: `VIRTUAL_ENV=/Users/yuan/stylebench/.venv` does not match the project environment path `.venv` and will be ignored; use `--active` to target the active environment instead\n",
+      "test_output": "F\n=================================== FAILURES ===================================\n______________________ TestMarkdownBasics.testBlankInput _______________________\ntests/test_apis.py:47: in setUp\n    self.md = markdown.Markdown()\n              ^^^^^^^^^^^^^^^^^^^\nmarkdown/core.py:122: in __init__\n    self.build_parser()\nmarkdown/core.py:153: in build_parser\n    self.parser = build_block_parser(self)\n                  ^^^^^^^^^^^^^^^^^^^^^^^^\nmarkdown/blockprocessors.py:51: in build_block_parser\n    parser.blockprocessors.register(OListProcessor(parser), 'olist', 40)\n                                    ^^^^^^^^^^^^^^^^^^^^^^\nmarkdown/blockprocessors.py:354: in __init__\n    (self.tab_length, self.tab_length * 2 - 1))\n     ^^^^^^^^^^^^^^^^^\nE   AttributeError: 'BlockParser' object has no attribute 'tab_length'\n=========================== short test summary info ============================\nFAILED tests/test_apis.py::TestMarkdownBasics::testBlankInput - AttributeErro...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed in 0.11s\n",
       "failing_tests": [
-        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpirnuo9o1/worker_0/tests/test_apis.py::TestCliOptionParsing::testEncodingOption"
+        "tests/test_apis.py::TestMarkdownBasics::testBlankInput"
       ],
       "exit_code": 1
     },
     {
       "bug_id": "python-markdown-original-015",
-      "test_output": ".......................................................................F [  8%]\n\n=================================== FAILURES ===================================\n___________ TestCliOptionParsing.testExtensionConfigOptionBadFormat ____________\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpirnuo9o1/worker_0/markdown/__main__.py:106: in parse_options\n    extension_configs = yaml_load(fp)\n                        ^^^^^^^^^^^^^\n/Users/yuan/stylebench-data/original/python-markdown/.venv/lib/python3.11/site-packages/yaml/__init__.py:145: in unsafe_load\n    return load(stream, UnsafeLoader)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^\n/Users/yuan/stylebench-data/original/python-markdown/.venv/lib/python3.11/site-packages/yaml/__init__.py:81: in load\n    return loader.get_single_data()\n           ^^^^^^^^^^^^^^^^^^^^^^^^\n/Users/yuan/stylebench-data/original/python-markdown/.venv/lib/python3.11/site-packages/yaml/constructor.py:49: in get_single_data\n    node = self.get_single_node()\n           ^^^^^^^^^^^^^^^^^^^^^^\n/Users/yuan/stylebench-data/original/python-markdown/.venv/lib/python3.11/site-packages/yaml/composer.py:39: in get_single_node\n    if not self.check_event(StreamEndEvent):\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n/Users/yuan/stylebench-data/original/python-markdown/.venv/lib/python3.11/site-packages/yaml/parser.py:98: in check_event\n    self.current_event = self.state()\n                         ^^^^^^^^^^^^\n/Users/yuan/stylebench-data/original/python-markdown/.venv/lib/python3.11/site-packages/yaml/parser.py:171: in parse_document_start\n    raise ParserError(None, None,\nE   yaml.parser.ParserError: expected '<document start>', but found '<scalar>'\nE     in \"/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpzqi2_262.yml\", line 3, column 1\n\nDuring handling of the above exception, another exception occurred:\n/Users/yuan/stylebench-data/original/python-markdown/tests/test_apis.py:902: in testExtensionConfigOptionBadFormat\n    self.assertRaises(yaml.YAMLError, parse_options, ['-c', self.tempfile])\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpirnuo9o1/worker_0/markdown/__main__.py:110: in parse_options\n    e.args = (message,) - e.args[1:]\n             ^^^^^^^^^^^^^^^^^^^^^^^\nE   TypeError: unsupported operand type(s) for -: 'tuple' and 'tuple'\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpirnuo9o1/worker_0/tests/test_apis.py::TestCliOptionParsing::testExtensionConfigOptionBadFormat\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 71 passed in 0.15s\nwarning: `VIRTUAL_ENV=/Users/yuan/stylebench/.venv` does not match the project environment path `.venv` and will be ignored; use `--active` to target the active environment instead\n",
+      "test_output": "F\n=================================== FAILURES ===================================\n______________________ TestMarkdownBasics.testBlankInput _______________________\ntests/test_apis.py:47: in setUp\n    self.md = markdown.Markdown()\n              ^^^^^^^^^^^^^^^^^^^\nmarkdown/core.py:122: in __init__\n    self.build_parser()\nmarkdown/core.py:153: in build_parser\n    self.parser = build_block_parser(self)\n                  ^^^^^^^^^^^^^^^^^^^^^^^^\nmarkdown/blockprocessors.py:52: in build_block_parser\n    parser.blockprocessors.register(UListProcessor(parser), 'ulist', 30)\n                                    ^^^^^^^^^^^^^^^^^^^^^^\nmarkdown/blockprocessors.py:452: in __init__\n    super().__init__(self)\nmarkdown/blockprocessors.py:346: in __init__\n    super().__init__(parser)\nmarkdown/blockprocessors.py:76: in __init__\n    self.tab_length = parser.md.tab_length\n                      ^^^^^^^^^\nE   AttributeError: 'UListProcessor' object has no attribute 'md'\n=========================== short test summary info ============================\nFAILED tests/test_apis.py::TestMarkdownBasics::testBlankInput - AttributeErro...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed in 0.11s\n",
       "failing_tests": [
-        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpirnuo9o1/worker_0/tests/test_apis.py::TestCliOptionParsing::testExtensionConfigOptionBadFormat"
+        "tests/test_apis.py::TestMarkdownBasics::testBlankInput"
       ],
       "exit_code": 1
     },
     {
       "bug_id": "python-markdown-original-016",
-      "test_output": ".......................................................................F [  8%]\n\n=================================== FAILURES ===================================\n___________ TestCliOptionParsing.testExtensionConfigOptionBadFormat ____________\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpirnuo9o1/worker_0/markdown/__main__.py:106: in parse_options\n    extension_configs = yaml_load(fp)\n                        ^^^^^^^^^^^^^\n/Users/yuan/stylebench-data/original/python-markdown/.venv/lib/python3.11/site-packages/yaml/__init__.py:145: in unsafe_load\n    return load(stream, UnsafeLoader)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^\n/Users/yuan/stylebench-data/original/python-markdown/.venv/lib/python3.11/site-packages/yaml/__init__.py:81: in load\n    return loader.get_single_data()\n           ^^^^^^^^^^^^^^^^^^^^^^^^\n/Users/yuan/stylebench-data/original/python-markdown/.venv/lib/python3.11/site-packages/yaml/constructor.py:49: in get_single_data\n    node = self.get_single_node()\n           ^^^^^^^^^^^^^^^^^^^^^^\n/Users/yuan/stylebench-data/original/python-markdown/.venv/lib/python3.11/site-packages/yaml/composer.py:39: in get_single_node\n    if not self.check_event(StreamEndEvent):\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n/Users/yuan/stylebench-data/original/python-markdown/.venv/lib/python3.11/site-packages/yaml/parser.py:98: in check_event\n    self.current_event = self.state()\n                         ^^^^^^^^^^^^\n/Users/yuan/stylebench-data/original/python-markdown/.venv/lib/python3.11/site-packages/yaml/parser.py:171: in parse_document_start\n    raise ParserError(None, None,\nE   yaml.parser.ParserError: expected '<document start>', but found '<scalar>'\nE     in \"/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmp9w50c1xf.yml\", line 3, column 1\n\nDuring handling of the above exception, another exception occurred:\n/Users/yuan/stylebench-data/original/python-markdown/tests/test_apis.py:902: in testExtensionConfigOptionBadFormat\n    self.assertRaises(yaml.YAMLError, parse_options, ['-c', self.tempfile])\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpirnuo9o1/worker_0/markdown/__main__.py:110: in parse_options\n    e.args = (message,) + e.args[1:]\n             ^^^^^^^^^^^^^^^^^^^^^^^\nE   TypeError: unsupported operand type(s) for -: 'tuple' and 'tuple'\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpirnuo9o1/worker_0/tests/test_apis.py::TestCliOptionParsing::testExtensionConfigOptionBadFormat\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 71 passed in 0.15s\nwarning: `VIRTUAL_ENV=/Users/yuan/stylebench/.venv` does not match the project environment path `.venv` and will be ignored; use `--active` to target the active environment instead\n",
+      "test_output": "F\n=================================== FAILURES ===================================\n______________________ TestMarkdownBasics.testBlankInput _______________________\ntests/test_apis.py:47: in setUp\n    self.md = markdown.Markdown()\n              ^^^^^^^^^^^^^^^^^^^\nmarkdown/core.py:126: in __init__\n    self.registerExtensions(extensions=kwargs.get('extensions', []),\nmarkdown/core.py:177: in registerExtensions\n    for ext in self:\nE   TypeError: 'Markdown' object is not iterable\n=========================== short test summary info ============================\nFAILED tests/test_apis.py::TestMarkdownBasics::testBlankInput - TypeError: 'M...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed in 0.11s\n",
       "failing_tests": [
-        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpirnuo9o1/worker_0/tests/test_apis.py::TestCliOptionParsing::testExtensionConfigOptionBadFormat"
+        "tests/test_apis.py::TestMarkdownBasics::testBlankInput"
       ],
       "exit_code": 1
     },
     {
       "bug_id": "python-markdown-original-017",
-      "test_output": ".......................................................................F [  8%]\n\n=================================== FAILURES ===================================\n___________ TestCliOptionParsing.testExtensionConfigOptionBadFormat ____________\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpirnuo9o1/worker_0/markdown/__main__.py:106: in parse_options\n    extension_configs = yaml_load(fp)\n                        ^^^^^^^^^^^^^\n/Users/yuan/stylebench-data/original/python-markdown/.venv/lib/python3.11/site-packages/yaml/__init__.py:145: in unsafe_load\n    return load(stream, UnsafeLoader)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^\n/Users/yuan/stylebench-data/original/python-markdown/.venv/lib/python3.11/site-packages/yaml/__init__.py:81: in load\n    return loader.get_single_data()\n           ^^^^^^^^^^^^^^^^^^^^^^^^\n/Users/yuan/stylebench-data/original/python-markdown/.venv/lib/python3.11/site-packages/yaml/constructor.py:49: in get_single_data\n    node = self.get_single_node()\n           ^^^^^^^^^^^^^^^^^^^^^^\n/Users/yuan/stylebench-data/original/python-markdown/.venv/lib/python3.11/site-packages/yaml/composer.py:39: in get_single_node\n    if not self.check_event(StreamEndEvent):\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n/Users/yuan/stylebench-data/original/python-markdown/.venv/lib/python3.11/site-packages/yaml/parser.py:98: in check_event\n    self.current_event = self.state()\n                         ^^^^^^^^^^^^\n/Users/yuan/stylebench-data/original/python-markdown/.venv/lib/python3.11/site-packages/yaml/parser.py:171: in parse_document_start\n    raise ParserError(None, None,\nE   yaml.parser.ParserError: expected '<document start>', but found '<scalar>'\nE     in \"/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpvcc9pbqm.yml\", line 3, column 1\n\nDuring handling of the above exception, another exception occurred:\n/Users/yuan/stylebench-data/original/python-markdown/tests/test_apis.py:902: in testExtensionConfigOptionBadFormat\n    self.assertRaises(yaml.YAMLError, parse_options, ['-c', self.tempfile])\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpirnuo9o1/worker_0/markdown/__main__.py:110: in parse_options\n    e.args = (message,) + e.args[1:]\n             ^^^^^^^^^^^^^^^^^^^^^^^\nE   TypeError: unsupported operand type(s) for -: 'tuple' and 'tuple'\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpirnuo9o1/worker_0/tests/test_apis.py::TestCliOptionParsing::testExtensionConfigOptionBadFormat\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 71 passed in 0.15s\nwarning: `VIRTUAL_ENV=/Users/yuan/stylebench/.venv` does not match the project environment path `.venv` and will be ignored; use `--active` to target the active environment instead\n",
+      "test_output": ".F\n=================================== FAILURES ===================================\n_________________ TestMarkdownBasics.testDotNotationExtension __________________\ntests/test_apis.py:72: in testDotNotationExtension\n    markdown.Markdown(extensions=['markdown.extensions.footnotes'])\nmarkdown/core.py:126: in __init__\n    self.registerExtensions(extensions=kwargs.get('extensions', []),\nmarkdown/core.py:179: in registerExtensions\n    ext = extensions.build_extension(ext, configs.get(ext, {}))\n          ^^^^^^^^^^^^^^^^^^^^^^^^^^\nE   AttributeError: 'list' object has no attribute 'build_extension'\n=========================== short test summary info ============================\nFAILED tests/test_apis.py::TestMarkdownBasics::testDotNotationExtension - Att...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 1 passed in 0.11s\n",
       "failing_tests": [
-        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpirnuo9o1/worker_0/tests/test_apis.py::TestCliOptionParsing::testExtensionConfigOptionBadFormat"
+        "tests/test_apis.py::TestMarkdownBasics::testDotNotationExtension"
       ],
       "exit_code": 1
     },
     {
       "bug_id": "python-markdown-original-018",
-      "test_output": ".......................................................................F [  8%]\n\n=================================== FAILURES ===================================\n___________ TestCliOptionParsing.testExtensionConfigOptionBadFormat ____________\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpirnuo9o1/worker_0/markdown/__main__.py:106: in parse_options\n    extension_configs = yaml_load(fp)\n                        ^^^^^^^^^^^^^\n/Users/yuan/stylebench-data/original/python-markdown/.venv/lib/python3.11/site-packages/yaml/__init__.py:145: in unsafe_load\n    return load(stream, UnsafeLoader)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^\n/Users/yuan/stylebench-data/original/python-markdown/.venv/lib/python3.11/site-packages/yaml/__init__.py:81: in load\n    return loader.get_single_data()\n           ^^^^^^^^^^^^^^^^^^^^^^^^\n/Users/yuan/stylebench-data/original/python-markdown/.venv/lib/python3.11/site-packages/yaml/constructor.py:49: in get_single_data\n    node = self.get_single_node()\n           ^^^^^^^^^^^^^^^^^^^^^^\n/Users/yuan/stylebench-data/original/python-markdown/.venv/lib/python3.11/site-packages/yaml/composer.py:39: in get_single_node\n    if not self.check_event(StreamEndEvent):\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n/Users/yuan/stylebench-data/original/python-markdown/.venv/lib/python3.11/site-packages/yaml/parser.py:98: in check_event\n    self.current_event = self.state()\n                         ^^^^^^^^^^^^\n/Users/yuan/stylebench-data/original/python-markdown/.venv/lib/python3.11/site-packages/yaml/parser.py:171: in parse_document_start\n    raise ParserError(None, None,\nE   yaml.parser.ParserError: expected '<document start>', but found '<scalar>'\nE     in \"/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpcxo1ljnb.yml\", line 3, column 1\n\nDuring handling of the above exception, another exception occurred:\n/Users/yuan/stylebench-data/original/python-markdown/tests/test_apis.py:902: in testExtensionConfigOptionBadFormat\n    self.assertRaises(yaml.YAMLError, parse_options, ['-c', self.tempfile])\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpirnuo9o1/worker_0/markdown/__main__.py:110: in parse_options\n    e.args = (message,) + e.args[1:]\n             ^^^^^^^^^^^^^^^^^^^^^^^\nE   TypeError: unsupported operand type(s) for -: 'tuple' and 'tuple'\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpirnuo9o1/worker_0/tests/test_apis.py::TestCliOptionParsing::testExtensionConfigOptionBadFormat\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 71 passed in 0.15s\nwarning: `VIRTUAL_ENV=/Users/yuan/stylebench/.venv` does not match the project environment path `.venv` and will be ignored; use `--active` to target the active environment instead\n",
+      "test_output": ".F\n=================================== FAILURES ===================================\n_________________ TestMarkdownBasics.testDotNotationExtension __________________\ntests/test_apis.py:72: in testDotNotationExtension\n    markdown.Markdown(extensions=['markdown.extensions.footnotes'])\nmarkdown/core.py:126: in __init__\n    self.registerExtensions(extensions=kwargs.get('extensions', []),\nmarkdown/core.py:179: in registerExtensions\n    ext = configs.build_extension(ext, configs.get(ext, {}))\n          ^^^^^^^^^^^^^^^^^^^^^^^\nE   AttributeError: 'dict' object has no attribute 'build_extension'\n=========================== short test summary info ============================\nFAILED tests/test_apis.py::TestMarkdownBasics::testDotNotationExtension - Att...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 1 passed in 0.11s\n",
       "failing_tests": [
-        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpirnuo9o1/worker_0/tests/test_apis.py::TestCliOptionParsing::testExtensionConfigOptionBadFormat"
+        "tests/test_apis.py::TestMarkdownBasics::testDotNotationExtension"
       ],
       "exit_code": 1
     },
     {
       "bug_id": "python-markdown-original-019",
-      "test_output": "....................................................................F\n=================================== FAILURES ===================================\n___________________ TestCliOptionParsing.testEncodingOption ____________________\n/Users/yuan/stylebench-data/original/python-markdown/tests/test_apis.py:808: in testEncodingOption\n    options, logging_level = parse_options(['-e', 'utf-8'])\n                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpirnuo9o1/worker_0/markdown/__main__.py:95: in parse_options\n    input_file = args[0]\n                 ^^^^^^^\nE   IndexError: list index out of range\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpirnuo9o1/worker_0/tests/test_apis.py::TestCliOptionParsing::testEncodingOption\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 68 passed in 0.24s\nwarning: `VIRTUAL_ENV=/Users/yuan/stylebench/.venv` does not match the project environment path `.venv` and will be ignored; use `--active` to target the active environment instead\n",
+      "test_output": ".F\n=================================== FAILURES ===================================\n_________________ TestMarkdownBasics.testDotNotationExtension __________________\ntests/test_apis.py:72: in testDotNotationExtension\n    markdown.Markdown(extensions=['markdown.extensions.footnotes'])\nmarkdown/core.py:126: in __init__\n    self.registerExtensions(extensions=kwargs.get('extensions', []),\nmarkdown/core.py:179: in registerExtensions\n    ext = self.build_extension(ext, self.get(ext, {}))\n                                    ^^^^^^^^\nE   AttributeError: 'Markdown' object has no attribute 'get'\n=========================== short test summary info ============================\nFAILED tests/test_apis.py::TestMarkdownBasics::testDotNotationExtension - Att...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 1 passed in 0.11s\n",
       "failing_tests": [
-        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpirnuo9o1/worker_0/tests/test_apis.py::TestCliOptionParsing::testEncodingOption"
+        "tests/test_apis.py::TestMarkdownBasics::testDotNotationExtension"
       ],
       "exit_code": 1
     },
     {
       "bug_id": "python-markdown-original-020",
-      "test_output": "........................................................................ [  8%]\n........................................................................ [ 16%]\n............................................ssssssssssssssssssssssssssss [ 24%]\nssssssssssssssssss..s......................F\n=================================== FAILURES ===================================\n_________________________ TestVersion.test_get_version _________________________\n/Users/yuan/stylebench-data/original/python-markdown/tests/test_meta.py:10: in test_get_version\n    self.assertEqual(_get_version((1, 1, 2, 'dev', 0)), \"1.1.2.dev0\")\nE   AssertionError: '1.1.dev0' != '1.1.2.dev0'\nE   - 1.1.dev0\nE   + 1.1.2.dev0\nE   ?    ++\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpirnuo9o1/worker_1/tests/test_meta.py::TestVersion::test_get_version\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 212 passed, 47 skipped in 0.58s\nwarning: `VIRTUAL_ENV=/Users/yuan/stylebench/.venv` does not match the project environment path `.venv` and will be ignored; use `--active` to target the active environment instead\n   Building markdown @ file:///private/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpirnuo9o1/worker_1\n      Built markdown @ file:///private/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpirnuo9o1/worker_1\nUninstalled 1 package in 3ms\nInstalled 1 package in 4ms\n",
+      "test_output": ".F\n=================================== FAILURES ===================================\n_________________ TestMarkdownBasics.testDotNotationExtension __________________\ntests/test_apis.py:72: in testDotNotationExtension\n    markdown.Markdown(extensions=['markdown.extensions.footnotes'])\nmarkdown/core.py:126: in __init__\n    self.registerExtensions(extensions=kwargs.get('extensions', []),\nmarkdown/core.py:179: in registerExtensions\n    ext = self.build_extension(ext, extensions.get(ext, {}))\n                                    ^^^^^^^^^^^^^^\nE   AttributeError: 'list' object has no attribute 'get'\n=========================== short test summary info ============================\nFAILED tests/test_apis.py::TestMarkdownBasics::testDotNotationExtension - Att...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 1 passed in 0.11s\n",
       "failing_tests": [
-        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpirnuo9o1/worker_1/tests/test_meta.py::TestVersion::test_get_version"
+        "tests/test_apis.py::TestMarkdownBasics::testDotNotationExtension"
       ],
       "exit_code": 1
     },
     {
       "bug_id": "python-markdown-original-021",
-      "test_output": "........................................................................ [  8%]\n........................................................................ [ 16%]\n............................................ssssssssssssssssssssssssssss [ 24%]\nssssssssssssssssss..s......................F\n=================================== FAILURES ===================================\n_________________________ TestVersion.test_get_version _________________________\n/Users/yuan/stylebench-data/original/python-markdown/tests/test_meta.py:10: in test_get_version\n    self.assertEqual(_get_version((1, 1, 2, 'dev', 0)), \"1.1.2.dev0\")\n                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpirnuo9o1/worker_1/markdown/__meta__.py:46: in _get_version\n    v += mapping[version_info[3]] + str(version_info[4])\n         ^^^^^^^^^^^^^^^^^^^^^^^^\nE   KeyError: 'dev'\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpirnuo9o1/worker_1/tests/test_meta.py::TestVersion::test_get_version\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 212 passed, 47 skipped in 0.60s\nwarning: `VIRTUAL_ENV=/Users/yuan/stylebench/.venv` does not match the project environment path `.venv` and will be ignored; use `--active` to target the active environment instead\n",
+      "test_output": ".F\n=================================== FAILURES ===================================\n_________________ TestMarkdownBasics.testDotNotationExtension __________________\ntests/test_apis.py:72: in testDotNotationExtension\n    markdown.Markdown(extensions=['markdown.extensions.footnotes'])\nmarkdown/core.py:126: in __init__\n    self.registerExtensions(extensions=kwargs.get('extensions', []),\nmarkdown/core.py:181: in registerExtensions\n    ext.extendMarkdown(extensions)\nmarkdown/extensions/footnotes.py:87: in extendMarkdown\n    md.registerExtension(self)\n    ^^^^^^^^^^^^^^^^^^^^\nE   AttributeError: 'list' object has no attribute 'registerExtension'\n=========================== short test summary info ============================\nFAILED tests/test_apis.py::TestMarkdownBasics::testDotNotationExtension - Att...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 1 passed in 0.12s\n",
       "failing_tests": [
-        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpirnuo9o1/worker_1/tests/test_meta.py::TestVersion::test_get_version"
+        "tests/test_apis.py::TestMarkdownBasics::testDotNotationExtension"
       ],
       "exit_code": 1
     },
     {
       "bug_id": "python-markdown-original-022",
-      "test_output": "........................................................................ [  8%]\n........................................................................ [ 16%]\n............................................ssssssssssssssssssssssssssss [ 24%]\nssssssssssssssssss..s.....................F\n=================================== FAILURES ===================================\n______________________ TestVersion.test__version__IsValid ______________________\n/Users/yuan/stylebench-data/original/python-markdown/tests/test_meta.py:24: in test__version__IsValid\n    self.assertEqual(__version__, str(packaging.version.Version(__version__)))\n                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n/Users/yuan/stylebench-data/original/python-markdown/.venv/lib/python3.11/site-packages/packaging/version.py:359: in __init__\n    match = self._regex.fullmatch(version)\n            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nE   TypeError: expected string or bytes-like object, got 'NoneType'\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpirnuo9o1/worker_1/tests/test_meta.py::TestVersion::test__version__IsValid\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 211 passed, 47 skipped in 0.60s\nwarning: `VIRTUAL_ENV=/Users/yuan/stylebench/.venv` does not match the project environment path `.venv` and will be ignored; use `--active` to target the active environment instead\n",
+      "test_output": ".F\n=================================== FAILURES ===================================\n_________________ TestMarkdownBasics.testDotNotationExtension __________________\ntests/test_apis.py:72: in testDotNotationExtension\n    markdown.Markdown(extensions=['markdown.extensions.footnotes'])\nmarkdown/core.py:126: in __init__\n    self.registerExtensions(extensions=kwargs.get('extensions', []),\nmarkdown/core.py:181: in registerExtensions\n    ext.extendMarkdown(configs)\nmarkdown/extensions/footnotes.py:87: in extendMarkdown\n    md.registerExtension(self)\n    ^^^^^^^^^^^^^^^^^^^^\nE   AttributeError: 'dict' object has no attribute 'registerExtension'\n=========================== short test summary info ============================\nFAILED tests/test_apis.py::TestMarkdownBasics::testDotNotationExtension - Att...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 1 passed in 0.11s\n",
       "failing_tests": [
-        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpirnuo9o1/worker_1/tests/test_meta.py::TestVersion::test__version__IsValid"
+        "tests/test_apis.py::TestMarkdownBasics::testDotNotationExtension"
       ],
       "exit_code": 1
     },
     {
       "bug_id": "python-markdown-original-023",
-      "test_output": "........................................................................ [  8%]\n........................................................................ [ 16%]\n............................................ssssssssssssssssssssssssssss [ 24%]\nssssssssssssssssss..s......................F\n=================================== FAILURES ===================================\n_________________________ TestVersion.test_get_version _________________________\n/Users/yuan/stylebench-data/original/python-markdown/tests/test_meta.py:10: in test_get_version\n    self.assertEqual(_get_version((1, 1, 2, 'dev', 0)), \"1.1.2.dev0\")\n                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpirnuo9o1/worker_1/markdown/__meta__.py:43: in _get_version\n    v += '.dev' - str(version_info[4])\n         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nE   TypeError: unsupported operand type(s) for -: 'str' and 'str'\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpirnuo9o1/worker_1/tests/test_meta.py::TestVersion::test_get_version\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 212 passed, 47 skipped in 0.59s\nwarning: `VIRTUAL_ENV=/Users/yuan/stylebench/.venv` does not match the project environment path `.venv` and will be ignored; use `--active` to target the active environment instead\n",
+      "test_output": ".F\n=================================== FAILURES ===================================\n_________________ TestMarkdownBasics.testDotNotationExtension __________________\ntests/test_apis.py:72: in testDotNotationExtension\n    markdown.Markdown(extensions=['markdown.extensions.footnotes'])\nmarkdown/core.py:126: in __init__\n    self.registerExtensions(extensions=kwargs.get('extensions', []),\nmarkdown/core.py:179: in registerExtensions\n    ext = self.build_extension(ext, configs.get(ext, {}))\n          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nmarkdown/core.py:214: in build_extension\n    configs = dict(self)\n              ^^^^^^^^^^\nE   TypeError: 'Markdown' object is not iterable\n=========================== short test summary info ============================\nFAILED tests/test_apis.py::TestMarkdownBasics::testDotNotationExtension - Typ...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 1 passed in 0.11s\n",
       "failing_tests": [
-        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpirnuo9o1/worker_1/tests/test_meta.py::TestVersion::test_get_version"
+        "tests/test_apis.py::TestMarkdownBasics::testDotNotationExtension"
       ],
       "exit_code": 1
     },
     {
       "bug_id": "python-markdown-original-024",
-      "test_output": "........................................................................ [  8%]\n........................................................................ [ 16%]\n............................................ssssssssssssssssssssssssssss [ 24%]\nssssssssssssssssss..s......................F\n=================================== FAILURES ===================================\n_________________________ TestVersion.test_get_version _________________________\n/Users/yuan/stylebench-data/original/python-markdown/tests/test_meta.py:11: in test_get_version\n    self.assertEqual(_get_version((1, 1, 2, 'alpha', 1)), \"1.1.2a1\")\n                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpirnuo9o1/worker_1/markdown/__meta__.py:46: in _get_version\n    v += mapping[version_info[3]] - str(version_info[4])\n         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nE   TypeError: unsupported operand type(s) for -: 'str' and 'str'\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpirnuo9o1/worker_1/tests/test_meta.py::TestVersion::test_get_version\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 212 passed, 47 skipped in 0.59s\nwarning: `VIRTUAL_ENV=/Users/yuan/stylebench/.venv` does not match the project environment path `.venv` and will be ignored; use `--active` to target the active environment instead\n",
+      "test_output": ".F\n=================================== FAILURES ===================================\n_________________ TestMarkdownBasics.testDotNotationExtension __________________\ntests/test_apis.py:72: in testDotNotationExtension\n    markdown.Markdown(extensions=['markdown.extensions.footnotes'])\nmarkdown/core.py:126: in __init__\n    self.registerExtensions(extensions=kwargs.get('extensions', []),\nmarkdown/core.py:179: in registerExtensions\n    ext = self.build_extension(ext, configs.get(ext, {}))\n          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nmarkdown/core.py:214: in build_extension\n    configs = dict(ext_name)\n              ^^^^^^^^^^^^^^\nE   ValueError: dictionary update sequence element #0 has length 1; 2 is required\n=========================== short test summary info ============================\nFAILED tests/test_apis.py::TestMarkdownBasics::testDotNotationExtension - Val...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 1 passed in 0.11s\n",
       "failing_tests": [
-        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpirnuo9o1/worker_1/tests/test_meta.py::TestVersion::test_get_version"
+        "tests/test_apis.py::TestMarkdownBasics::testDotNotationExtension"
       ],
       "exit_code": 1
     },
     {
       "bug_id": "python-markdown-original-025",
-      "test_output": "........................................................................ [  8%]\n........................................................................ [ 16%]\n............................................ssssssssssssssssssssssssssss [ 24%]\nssssssssssssssssss..s......................F\n=================================== FAILURES ===================================\n_________________________ TestVersion.test_get_version _________________________\n/Users/yuan/stylebench-data/original/python-markdown/tests/test_meta.py:11: in test_get_version\n    self.assertEqual(_get_version((1, 1, 2, 'alpha', 1)), \"1.1.2a1\")\n                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpirnuo9o1/worker_1/markdown/__meta__.py:46: in _get_version\n    v += mapping[version_info[3]] + str(version_info[4])\n         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nE   TypeError: unsupported operand type(s) for -: 'str' and 'str'\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpirnuo9o1/worker_1/tests/test_meta.py::TestVersion::test_get_version\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 212 passed, 47 skipped in 0.72s\nwarning: `VIRTUAL_ENV=/Users/yuan/stylebench/.venv` does not match the project environment path `.venv` and will be ignored; use `--active` to target the active environment instead\n",
+      "test_output": "...F\n=================================== FAILURES ===================================\n__________________ TestMarkdownBasics.testEntryPointExtension __________________\ntests/test_apis.py:68: in testEntryPointExtension\n    markdown.Markdown(extensions=['footnotes'])\nmarkdown/core.py:126: in __init__\n    self.registerExtensions(extensions=kwargs.get('extensions', []),\nmarkdown/core.py:179: in registerExtensions\n    ext = self.build_extension(ext, configs.get(ext, {}))\n          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nmarkdown/core.py:225: in build_extension\n    module = importlib.import_module(ext_name)\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n../../../.local/share/uv/python/cpython-3.11.14-macos-aarch64-none/lib/python3.11/importlib/__init__.py:126: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n<frozen importlib._bootstrap>:1204: in _gcd_import\n    ???\n<frozen importlib._bootstrap>:1176: in _find_and_load\n    ???\n<frozen importlib._bootstrap>:1140: in _find_and_load_unlocked\n    ???\nE   ModuleNotFoundError: No module named 'footnotes'\n=========================== short test summary info ============================\nFAILED tests/test_apis.py::TestMarkdownBasics::testEntryPointExtension - Modu...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 3 passed in 0.11s\n",
       "failing_tests": [
-        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpirnuo9o1/worker_1/tests/test_meta.py::TestVersion::test_get_version"
+        "tests/test_apis.py::TestMarkdownBasics::testEntryPointExtension"
       ],
       "exit_code": 1
     },
     {
       "bug_id": "python-markdown-original-026",
-      "test_output": "........................................................................ [  8%]\n........................................................................ [ 16%]\n............................................ssssssssssssssssssssssssssss [ 24%]\nssssssssssssssssss..s......................F\n=================================== FAILURES ===================================\n_________________________ TestVersion.test_get_version _________________________\n/Users/yuan/stylebench-data/original/python-markdown/tests/test_meta.py:12: in test_get_version\n    self.assertEqual(_get_version((1, 2, 0, 'beta', 2)), \"1.2b2\")\nE   AssertionError: '1.2.0b2' != '1.2b2'\nE   - 1.2.0b2\nE   ?    --\nE   + 1.2b2\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpirnuo9o1/worker_1/tests/test_meta.py::TestVersion::test_get_version\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 212 passed, 47 skipped in 0.76s\nwarning: `VIRTUAL_ENV=/Users/yuan/stylebench/.venv` does not match the project environment path `.venv` and will be ignored; use `--active` to target the active environment instead\n",
+      "test_output": "...F\n=================================== FAILURES ===================================\n__________________ TestMarkdownBasics.testEntryPointExtension __________________\ntests/test_apis.py:68: in testEntryPointExtension\n    markdown.Markdown(extensions=['footnotes'])\nmarkdown/core.py:126: in __init__\n    self.registerExtensions(extensions=kwargs.get('extensions', []),\nmarkdown/core.py:179: in registerExtensions\n    ext = self.build_extension(ext, configs.get(ext, {}))\n          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nmarkdown/core.py:225: in build_extension\n    module = importlib.import_module(ext_name)\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n../../../.local/share/uv/python/cpython-3.11.14-macos-aarch64-none/lib/python3.11/importlib/__init__.py:126: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n<frozen importlib._bootstrap>:1204: in _gcd_import\n    ???\n<frozen importlib._bootstrap>:1176: in _find_and_load\n    ???\n<frozen importlib._bootstrap>:1140: in _find_and_load_unlocked\n    ???\nE   ModuleNotFoundError: No module named 'footnotes'\n=========================== short test summary info ============================\nFAILED tests/test_apis.py::TestMarkdownBasics::testEntryPointExtension - Modu...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 3 passed in 0.14s\n",
       "failing_tests": [
-        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpirnuo9o1/worker_1/tests/test_meta.py::TestVersion::test_get_version"
+        "tests/test_apis.py::TestMarkdownBasics::testEntryPointExtension"
       ],
       "exit_code": 1
     },
     {
       "bug_id": "python-markdown-original-027",
-      "test_output": "........................................................................ [  8%]\n........................................................................ [ 16%]\n............................................ssssssssssssssssssssssssssss [ 24%]\nssssssssssssssssss..s......................F\n=================================== FAILURES ===================================\n_________________________ TestVersion.test_get_version _________________________\n/Users/yuan/stylebench-data/original/python-markdown/tests/test_meta.py:12: in test_get_version\n    self.assertEqual(_get_version((1, 2, 0, 'beta', 2)), \"1.2b2\")\nE   AssertionError: '1.2.0b2' != '1.2b2'\nE   - 1.2.0b2\nE   ?    --\nE   + 1.2b2\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpirnuo9o1/worker_1/tests/test_meta.py::TestVersion::test_get_version\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 212 passed, 47 skipped in 0.84s\nwarning: `VIRTUAL_ENV=/Users/yuan/stylebench/.venv` does not match the project environment path `.venv` and will be ignored; use `--active` to target the active environment instead\n",
+      "test_output": "...F\n=================================== FAILURES ===================================\n__________________ TestMarkdownBasics.testEntryPointExtension __________________\ntests/test_apis.py:68: in testEntryPointExtension\n    markdown.Markdown(extensions=['footnotes'])\nmarkdown/core.py:126: in __init__\n    self.registerExtensions(extensions=kwargs.get('extensions', []),\nmarkdown/core.py:179: in registerExtensions\n    ext = self.build_extension(ext, configs.get(ext, {}))\n          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nmarkdown/core.py:219: in build_extension\n    return ext(**self)\n           ^^^^^^^^^^^\nE   TypeError: markdown.extensions.footnotes.FootnoteExtension() argument after ** must be a mapping, not Markdown\n=========================== short test summary info ============================\nFAILED tests/test_apis.py::TestMarkdownBasics::testEntryPointExtension - Type...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 3 passed in 0.11s\n",
       "failing_tests": [
-        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpirnuo9o1/worker_1/tests/test_meta.py::TestVersion::test_get_version"
+        "tests/test_apis.py::TestMarkdownBasics::testEntryPointExtension"
       ],
       "exit_code": 1
     },
     {
       "bug_id": "python-markdown-original-028",
-      "test_output": "........................................................................ [  8%]\n........................................................................ [ 16%]\n............................................ssssssssssssssssssssssssssss [ 24%]\nssssssssssssssssss..s......................F\n=================================== FAILURES ===================================\n_________________________ TestVersion.test_get_version _________________________\n/Users/yuan/stylebench-data/original/python-markdown/tests/test_meta.py:10: in test_get_version\n    self.assertEqual(_get_version((1, 1, 2, 'dev', 0)), \"1.1.2.dev0\")\nE   AssertionError: '1.1.2.dev.dev0' != '1.1.2.dev0'\nE   - 1.1.2.dev.dev0\nE   ?          ----\nE   + 1.1.2.dev0\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpirnuo9o1/worker_1/tests/test_meta.py::TestVersion::test_get_version\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 212 passed, 47 skipped in 0.63s\nwarning: `VIRTUAL_ENV=/Users/yuan/stylebench/.venv` does not match the project environment path `.venv` and will be ignored; use `--active` to target the active environment instead\n",
+      "test_output": "...F\n=================================== FAILURES ===================================\n__________________ TestMarkdownBasics.testEntryPointExtension __________________\ntests/test_apis.py:68: in testEntryPointExtension\n    markdown.Markdown(extensions=['footnotes'])\nmarkdown/core.py:126: in __init__\n    self.registerExtensions(extensions=kwargs.get('extensions', []),\nmarkdown/core.py:179: in registerExtensions\n    ext = self.build_extension(ext, configs.get(ext, {}))\n          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nmarkdown/core.py:219: in build_extension\n    return ext(**ext_name)\n           ^^^^^^^^^^^^^^^\nE   TypeError: markdown.extensions.footnotes.FootnoteExtension() argument after ** must be a mapping, not str\n=========================== short test summary info ============================\nFAILED tests/test_apis.py::TestMarkdownBasics::testEntryPointExtension - Type...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 3 passed in 0.11s\n",
       "failing_tests": [
-        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpirnuo9o1/worker_1/tests/test_meta.py::TestVersion::test_get_version"
+        "tests/test_apis.py::TestMarkdownBasics::testEntryPointExtension"
       ],
       "exit_code": 1
     },
     {
       "bug_id": "python-markdown-original-029",
-      "test_output": "........................................................................ [  8%]\n........................................................................ [ 16%]\n............................................ssssssssssssssssssssssssssss [ 24%]\nssssssssssssssssss..s......................F\n=================================== FAILURES ===================================\n_________________________ TestVersion.test_get_version _________________________\n/Users/yuan/stylebench-data/original/python-markdown/tests/test_meta.py:10: in test_get_version\n    self.assertEqual(_get_version((1, 1, 2, 'dev', 0)), \"1.1.2.dev0\")\nE   AssertionError: '1.1.2.dev.dev0' != '1.1.2.dev0'\nE   - 1.1.2.dev.dev0\nE   ?          ----\nE   + 1.1.2.dev0\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpirnuo9o1/worker_1/tests/test_meta.py::TestVersion::test_get_version\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 212 passed, 47 skipped in 0.61s\nwarning: `VIRTUAL_ENV=/Users/yuan/stylebench/.venv` does not match the project environment path `.venv` and will be ignored; use `--active` to target the active environment instead\n",
+      "test_output": "..F\n=================================== FAILURES ===================================\n_____________ TestMarkdownBasics.testDotNotationExtensionWithClass _____________\ntests/test_apis.py:76: in testDotNotationExtensionWithClass\n    markdown.Markdown(extensions=['markdown.extensions.footnotes:FootnoteExtension'])\nmarkdown/core.py:126: in __init__\n    self.registerExtensions(extensions=kwargs.get('extensions', []),\nmarkdown/core.py:179: in registerExtensions\n    ext = self.build_extension(ext, configs.get(ext, {}))\n          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nmarkdown/core.py:225: in build_extension\n    module = importlib.import_module(ext_name)\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n../../../.local/share/uv/python/cpython-3.11.14-macos-aarch64-none/lib/python3.11/importlib/__init__.py:126: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n<frozen importlib._bootstrap>:1204: in _gcd_import\n    ???\n<frozen importlib._bootstrap>:1176: in _find_and_load\n    ???\n<frozen importlib._bootstrap>:1140: in _find_and_load_unlocked\n    ???\nE   ModuleNotFoundError: No module named 'markdown.extensions.footnotes:FootnoteExtension'\n=========================== short test summary info ============================\nFAILED tests/test_apis.py::TestMarkdownBasics::testDotNotationExtensionWithClass\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 2 passed in 0.11s\n",
       "failing_tests": [
-        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpirnuo9o1/worker_1/tests/test_meta.py::TestVersion::test_get_version"
+        "tests/test_apis.py::TestMarkdownBasics::testDotNotationExtensionWithClass"
       ],
       "exit_code": 1
     },
     {
       "bug_id": "python-markdown-original-030",
-      "test_output": "........................................................................ [  8%]\n........................................................................ [ 16%]\n............................................ssssssssssssssssssssssssssss [ 24%]\nssssssssssssssssss..s......................F\n=================================== FAILURES ===================================\n_________________________ TestVersion.test_get_version _________________________\n/Users/yuan/stylebench-data/original/python-markdown/tests/test_meta.py:10: in test_get_version\n    self.assertEqual(_get_version((1, 1, 2, 'dev', 0)), \"1.1.2.dev0\")\n                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpirnuo9o1/worker_1/markdown/__meta__.py:43: in _get_version\n    v += '.dev' + str(version_info[5])\n                      ^^^^^^^^^^^^^^^\nE   IndexError: tuple index out of range\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpirnuo9o1/worker_1/tests/test_meta.py::TestVersion::test_get_version\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 212 passed, 47 skipped in 0.69s\nwarning: `VIRTUAL_ENV=/Users/yuan/stylebench/.venv` does not match the project environment path `.venv` and will be ignored; use `--active` to target the active environment instead\n",
+      "test_output": ".F\n=================================== FAILURES ===================================\n_________________ TestMarkdownBasics.testDotNotationExtension __________________\ntests/test_apis.py:72: in testDotNotationExtension\n    markdown.Markdown(extensions=['markdown.extensions.footnotes'])\nmarkdown/core.py:126: in __init__\n    self.registerExtensions(extensions=kwargs.get('extensions', []),\nmarkdown/core.py:179: in registerExtensions\n    ext = self.build_extension(ext, configs.get(ext, {}))\n          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nmarkdown/core.py:240: in build_extension\n    return module.makeExtension(**configs)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nE   TypeError: markdown.extensions.footnotes.makeExtension() argument after ** must be a mapping, not str\n=========================== short test summary info ============================\nFAILED tests/test_apis.py::TestMarkdownBasics::testDotNotationExtension - Typ...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 1 passed in 0.11s\n",
       "failing_tests": [
-        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpirnuo9o1/worker_1/tests/test_meta.py::TestVersion::test_get_version"
+        "tests/test_apis.py::TestMarkdownBasics::testDotNotationExtension"
       ],
       "exit_code": 1
     },
     {
       "bug_id": "python-markdown-original-031",
-      "test_output": "........................................................................ [  8%]\n........................................................................ [ 16%]\n............................................ssssssssssssssssssssssssssss [ 24%]\nssssssssssssssssss..s......................F\n=================================== FAILURES ===================================\n_________________________ TestVersion.test_get_version _________________________\n/Users/yuan/stylebench-data/original/python-markdown/tests/test_meta.py:11: in test_get_version\n    self.assertEqual(_get_version((1, 1, 2, 'alpha', 1)), \"1.1.2a1\")\n                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpirnuo9o1/worker_1/markdown/__meta__.py:46: in _get_version\n    v += mapping[version_info[3]] + str(version_info[5])\n                                        ^^^^^^^^^^^^^^^\nE   IndexError: tuple index out of range\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpirnuo9o1/worker_1/tests/test_meta.py::TestVersion::test_get_version\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 212 passed, 47 skipped in 0.64s\nwarning: `VIRTUAL_ENV=/Users/yuan/stylebench/.venv` does not match the project environment path `.venv` and will be ignored; use `--active` to target the active environment instead\n",
+      "test_output": "..F\n=================================== FAILURES ===================================\n_____________ TestMarkdownBasics.testDotNotationExtensionWithClass _____________\ntests/test_apis.py:76: in testDotNotationExtensionWithClass\n    markdown.Markdown(extensions=['markdown.extensions.footnotes:FootnoteExtension'])\nmarkdown/core.py:126: in __init__\n    self.registerExtensions(extensions=kwargs.get('extensions', []),\nmarkdown/core.py:179: in registerExtensions\n    ext = self.build_extension(ext, configs.get(ext, {}))\n          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nmarkdown/core.py:222: in build_extension\n    ext_name, class_name = self.split(':', 1) if ':' in ext_name else (ext_name, '')\n                           ^^^^^^^^^^\nE   AttributeError: 'Markdown' object has no attribute 'split'\n=========================== short test summary info ============================\nFAILED tests/test_apis.py::TestMarkdownBasics::testDotNotationExtensionWithClass\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 2 passed in 0.11s\n",
       "failing_tests": [
-        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpirnuo9o1/worker_1/tests/test_meta.py::TestVersion::test_get_version"
+        "tests/test_apis.py::TestMarkdownBasics::testDotNotationExtensionWithClass"
       ],
       "exit_code": 1
     },
     {
       "bug_id": "python-markdown-original-032",
-      "test_output": "........................................................................ [  8%]\n........................................................................ [ 16%]\n............................................ssssssssssssssssssssssssssss [ 24%]\nssssssssssssssssss..s......................F\n=================================== FAILURES ===================================\n_________________________ TestVersion.test_get_version _________________________\n/Users/yuan/stylebench-data/original/python-markdown/tests/test_meta.py:11: in test_get_version\n    self.assertEqual(_get_version((1, 1, 2, 'alpha', 1)), \"1.1.2a1\")\n                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpirnuo9o1/worker_1/markdown/__meta__.py:46: in _get_version\n    v += mapping[version_info[3]] + str(version_info[4])\n                                        ^^^^^^^^^^^^^^^\nE   IndexError: tuple index out of range\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpirnuo9o1/worker_1/tests/test_meta.py::TestVersion::test_get_version\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 212 passed, 47 skipped in 0.62s\nwarning: `VIRTUAL_ENV=/Users/yuan/stylebench/.venv` does not match the project environment path `.venv` and will be ignored; use `--active` to target the active environment instead\n",
+      "test_output": "..F\n=================================== FAILURES ===================================\n_____________ TestMarkdownBasics.testDotNotationExtensionWithClass _____________\ntests/test_apis.py:76: in testDotNotationExtensionWithClass\n    markdown.Markdown(extensions=['markdown.extensions.footnotes:FootnoteExtension'])\nmarkdown/core.py:126: in __init__\n    self.registerExtensions(extensions=kwargs.get('extensions', []),\nmarkdown/core.py:179: in registerExtensions\n    ext = self.build_extension(ext, configs.get(ext, {}))\n          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nmarkdown/core.py:222: in build_extension\n    ext_name, class_name = configs.split(':', 1) if ':' in ext_name else (ext_name, '')\n                           ^^^^^^^^^^^^^\nE   AttributeError: 'dict' object has no attribute 'split'\n=========================== short test summary info ============================\nFAILED tests/test_apis.py::TestMarkdownBasics::testDotNotationExtensionWithClass\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 2 passed in 0.11s\n",
       "failing_tests": [
-        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpirnuo9o1/worker_1/tests/test_meta.py::TestVersion::test_get_version"
+        "tests/test_apis.py::TestMarkdownBasics::testDotNotationExtensionWithClass"
       ],
       "exit_code": 1
     },
     {
       "bug_id": "python-markdown-original-033",
-      "test_output": "........................................................................ [  8%]\n........................................................................ [ 16%]\n............................................ssssssssssssssssssssssssssss [ 24%]\nssssssssssssssssss..s.....................F\n=================================== FAILURES ===================================\n______________________ TestVersion.test__version__IsValid ______________________\n/Users/yuan/stylebench-data/original/python-markdown/tests/test_meta.py:24: in test__version__IsValid\n    self.assertEqual(__version__, str(packaging.version.Version(__version__)))\n                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n/Users/yuan/stylebench-data/original/python-markdown/.venv/lib/python3.11/site-packages/packaging/version.py:361: in __init__\n    raise InvalidVersion(f\"Invalid version: {version!r}\")\nE   packaging.version.InvalidVersion: Invalid version: '3.10.-1'\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpirnuo9o1/worker_1/tests/test_meta.py::TestVersion::test__version__IsValid\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 211 passed, 47 skipped in 0.61s\nwarning: `VIRTUAL_ENV=/Users/yuan/stylebench/.venv` does not match the project environment path `.venv` and will be ignored; use `--active` to target the active environment instead\n",
+      "test_output": ".F\n=================================== FAILURES ===================================\n_________________ TestMarkdownBasics.testDotNotationExtension __________________\ntests/test_apis.py:72: in testDotNotationExtension\n    markdown.Markdown(extensions=['markdown.extensions.footnotes'])\nmarkdown/core.py:126: in __init__\n    self.registerExtensions(extensions=kwargs.get('extensions', []),\nmarkdown/core.py:179: in registerExtensions\n    ext = self.build_extension(ext, configs.get(ext, {}))\n          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nmarkdown/core.py:222: in build_extension\n    ext_name, class_name = ext_name.split(':', 1) if ':' in self else (ext_name, '')\n                                                     ^^^^^^^^^^^\nE   TypeError: argument of type 'Markdown' is not iterable\n=========================== short test summary info ============================\nFAILED tests/test_apis.py::TestMarkdownBasics::testDotNotationExtension - Typ...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 1 passed in 0.11s\n",
       "failing_tests": [
-        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpirnuo9o1/worker_1/tests/test_meta.py::TestVersion::test__version__IsValid"
+        "tests/test_apis.py::TestMarkdownBasics::testDotNotationExtension"
       ],
       "exit_code": 1
     },
     {
       "bug_id": "python-markdown-original-034",
-      "test_output": "........................................................................ [  8%]\n........................................................................ [ 16%]\n............................................ssssssssssssssssssssssssssss [ 24%]\nssssssssssssssssss..s......................F\n=================================== FAILURES ===================================\n_________________________ TestVersion.test_get_version _________________________\n/Users/yuan/stylebench-data/original/python-markdown/tests/test_meta.py:12: in test_get_version\n    self.assertEqual(_get_version((1, 2, 0, 'beta', 2)), \"1.2b2\")\nE   AssertionError: '1.2.0b2' != '1.2b2'\nE   - 1.2.0b2\nE   ?    --\nE   + 1.2b2\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpirnuo9o1/worker_1/tests/test_meta.py::TestVersion::test_get_version\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 212 passed, 47 skipped in 0.59s\nwarning: `VIRTUAL_ENV=/Users/yuan/stylebench/.venv` does not match the project environment path `.venv` and will be ignored; use `--active` to target the active environment instead\n",
+      "test_output": "..F\n=================================== FAILURES ===================================\n_____________ TestMarkdownBasics.testDotNotationExtensionWithClass _____________\ntests/test_apis.py:76: in testDotNotationExtensionWithClass\n    markdown.Markdown(extensions=['markdown.extensions.footnotes:FootnoteExtension'])\nmarkdown/core.py:126: in __init__\n    self.registerExtensions(extensions=kwargs.get('extensions', []),\nmarkdown/core.py:179: in registerExtensions\n    ext = self.build_extension(ext, configs.get(ext, {}))\n          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nmarkdown/core.py:225: in build_extension\n    module = importlib.import_module(ext_name)\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n../../../.local/share/uv/python/cpython-3.11.14-macos-aarch64-none/lib/python3.11/importlib/__init__.py:126: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n<frozen importlib._bootstrap>:1204: in _gcd_import\n    ???\n<frozen importlib._bootstrap>:1176: in _find_and_load\n    ???\n<frozen importlib._bootstrap>:1140: in _find_and_load_unlocked\n    ???\nE   ModuleNotFoundError: No module named 'markdown.extensions.footnotes:FootnoteExtension'\n=========================== short test summary info ============================\nFAILED tests/test_apis.py::TestMarkdownBasics::testDotNotationExtensionWithClass\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 2 passed in 0.11s\n",
       "failing_tests": [
-        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpirnuo9o1/worker_1/tests/test_meta.py::TestVersion::test_get_version"
+        "tests/test_apis.py::TestMarkdownBasics::testDotNotationExtensionWithClass"
       ],
       "exit_code": 1
     },
     {
       "bug_id": "python-markdown-original-035",
-      "test_output": "........................................................................ [  8%]\n........................................................................ [ 16%]\n............................................ssssssssssssssssssssssssssss [ 24%]\nssssssssssssssssss..s......................F\n=================================== FAILURES ===================================\n_________________________ TestVersion.test_get_version _________________________\n/Users/yuan/stylebench-data/original/python-markdown/tests/test_meta.py:12: in test_get_version\n    self.assertEqual(_get_version((1, 2, 0, 'beta', 2)), \"1.2b2\")\nE   AssertionError: '1.2.0b2' != '1.2b2'\nE   - 1.2.0b2\nE   ?    --\nE   + 1.2b2\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpirnuo9o1/worker_1/tests/test_meta.py::TestVersion::test_get_version\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 212 passed, 47 skipped in 0.60s\nwarning: `VIRTUAL_ENV=/Users/yuan/stylebench/.venv` does not match the project environment path `.venv` and will be ignored; use `--active` to target the active environment instead\n",
+      "test_output": ".F\n=================================== FAILURES ===================================\n_________________ TestMarkdownBasics.testDotNotationExtension __________________\ntests/test_apis.py:72: in testDotNotationExtension\n    markdown.Markdown(extensions=['markdown.extensions.footnotes'])\nmarkdown/core.py:126: in __init__\n    self.registerExtensions(extensions=kwargs.get('extensions', []),\nmarkdown/core.py:179: in registerExtensions\n    ext = self.build_extension(ext, configs.get(ext, {}))\n          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nmarkdown/core.py:225: in build_extension\n    module = importlib.import_module(ext_name)\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n../../../.local/share/uv/python/cpython-3.11.14-macos-aarch64-none/lib/python3.11/importlib/__init__.py:117: in import_module\n    if name.startswith('.'):\n       ^^^^^^^^^^^^^^^\nE   AttributeError: 'Markdown' object has no attribute 'startswith'\n=========================== short test summary info ============================\nFAILED tests/test_apis.py::TestMarkdownBasics::testDotNotationExtension - Att...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 1 passed in 0.11s\n",
       "failing_tests": [
-        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpirnuo9o1/worker_1/tests/test_meta.py::TestVersion::test_get_version"
+        "tests/test_apis.py::TestMarkdownBasics::testDotNotationExtension"
       ],
       "exit_code": 1
     },
     {
       "bug_id": "python-markdown-original-036",
-      "test_output": "........................................................................ [  8%]\n........................................................................ [ 16%]\n............................................ssssssssssssssssssssssssssss [ 24%]\nssssssssssssssssss..s......................F\n=================================== FAILURES ===================================\n_________________________ TestVersion.test_get_version _________________________\n/Users/yuan/stylebench-data/original/python-markdown/tests/test_meta.py:10: in test_get_version\n    self.assertEqual(_get_version((1, 1, 2, 'dev', 0)), \"1.1.2.dev0\")\nE   AssertionError: '1.1.dev0' != '1.1.2.dev0'\nE   - 1.1.dev0\nE   + 1.1.2.dev0\nE   ?    ++\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpirnuo9o1/worker_1/tests/test_meta.py::TestVersion::test_get_version\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 212 passed, 47 skipped in 0.57s\nwarning: `VIRTUAL_ENV=/Users/yuan/stylebench/.venv` does not match the project environment path `.venv` and will be ignored; use `--active` to target the active environment instead\n",
+      "test_output": ".F\n=================================== FAILURES ===================================\n_________________ TestMarkdownBasics.testDotNotationExtension __________________\ntests/test_apis.py:72: in testDotNotationExtension\n    markdown.Markdown(extensions=['markdown.extensions.footnotes'])\nmarkdown/core.py:126: in __init__\n    self.registerExtensions(extensions=kwargs.get('extensions', []),\nmarkdown/core.py:179: in registerExtensions\n    ext = self.build_extension(ext, configs.get(ext, {}))\n          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nmarkdown/core.py:225: in build_extension\n    module = importlib.import_module(ext_name)\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n../../../.local/share/uv/python/cpython-3.11.14-macos-aarch64-none/lib/python3.11/importlib/__init__.py:117: in import_module\n    if name.startswith('.'):\n       ^^^^^^^^^^^^^^^\nE   AttributeError: 'dict' object has no attribute 'startswith'\n=========================== short test summary info ============================\nFAILED tests/test_apis.py::TestMarkdownBasics::testDotNotationExtension - Att...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 1 passed in 0.11s\n",
       "failing_tests": [
-        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpirnuo9o1/worker_1/tests/test_meta.py::TestVersion::test_get_version"
+        "tests/test_apis.py::TestMarkdownBasics::testDotNotationExtension"
       ],
       "exit_code": 1
     },
     {
       "bug_id": "python-markdown-original-037",
-      "test_output": "........................................................................ [  8%]\n........................................................................ [ 16%]\n............................................ssssssssssssssssssssssssssss [ 24%]\nssssssssssssssssss..s......................F\n=================================== FAILURES ===================================\n_________________________ TestVersion.test_get_version _________________________\n/Users/yuan/stylebench-data/original/python-markdown/tests/test_meta.py:10: in test_get_version\n    self.assertEqual(_get_version((1, 1, 2, 'dev', 0)), \"1.1.2.dev0\")\n                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpirnuo9o1/worker_1/markdown/__meta__.py:46: in _get_version\n    v += mapping[version_info[3]] + str(version_info[4])\n         ^^^^^^^^^^^^^^^^^^^^^^^^\nE   KeyError: 'dev'\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpirnuo9o1/worker_1/tests/test_meta.py::TestVersion::test_get_version\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 212 passed, 47 skipped in 0.60s\nwarning: `VIRTUAL_ENV=/Users/yuan/stylebench/.venv` does not match the project environment path `.venv` and will be ignored; use `--active` to target the active environment instead\n",
+      "test_output": ".F\n=================================== FAILURES ===================================\n_________________ TestMarkdownBasics.testDotNotationExtension __________________\ntests/test_apis.py:72: in testDotNotationExtension\n    markdown.Markdown(extensions=['markdown.extensions.footnotes'])\nmarkdown/core.py:126: in __init__\n    self.registerExtensions(extensions=kwargs.get('extensions', []),\nmarkdown/core.py:179: in registerExtensions\n    ext = self.build_extension(ext, configs.get(ext, {}))\n          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nmarkdown/core.py:225: in build_extension\n    module = importlib.import_module(self)\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n../../../.local/share/uv/python/cpython-3.11.14-macos-aarch64-none/lib/python3.11/importlib/__init__.py:117: in import_module\n    if name.startswith('.'):\n       ^^^^^^^^^^^^^^^\nE   AttributeError: 'Markdown' object has no attribute 'startswith'\n=========================== short test summary info ============================\nFAILED tests/test_apis.py::TestMarkdownBasics::testDotNotationExtension - Att...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 1 passed in 0.11s\n",
       "failing_tests": [
-        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpirnuo9o1/worker_1/tests/test_meta.py::TestVersion::test_get_version"
+        "tests/test_apis.py::TestMarkdownBasics::testDotNotationExtension"
       ],
       "exit_code": 1
     },
     {
       "bug_id": "python-markdown-original-038",
-      "test_output": "........................................................................ [  8%]\n........................................................................ [ 16%]\n............................................ssssssssssssssssssssssssssss [ 24%]\nssssssssssssssssss..s......................F\n=================================== FAILURES ===================================\n_________________________ TestVersion.test_get_version _________________________\n/Users/yuan/stylebench-data/original/python-markdown/tests/test_meta.py:10: in test_get_version\n    self.assertEqual(_get_version((1, 1, 2, 'dev', 0)), \"1.1.2.dev0\")\nE   AssertionError: '1.1.2.devdev' != '1.1.2.dev0'\nE   - 1.1.2.devdev\nE   ?          ^^^\nE   + 1.1.2.dev0\nE   ?          ^\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpirnuo9o1/worker_1/tests/test_meta.py::TestVersion::test_get_version\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 212 passed, 47 skipped in 0.60s\nwarning: `VIRTUAL_ENV=/Users/yuan/stylebench/.venv` does not match the project environment path `.venv` and will be ignored; use `--active` to target the active environment instead\n",
+      "test_output": ".F\n=================================== FAILURES ===================================\n_________________ TestMarkdownBasics.testDotNotationExtension __________________\ntests/test_apis.py:72: in testDotNotationExtension\n    markdown.Markdown(extensions=['markdown.extensions.footnotes'])\nmarkdown/core.py:126: in __init__\n    self.registerExtensions(extensions=kwargs.get('extensions', []),\nmarkdown/core.py:179: in registerExtensions\n    ext = self.build_extension(ext, configs.get(ext, {}))\n          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nmarkdown/core.py:225: in build_extension\n    module = importlib.import_module(configs)\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n../../../.local/share/uv/python/cpython-3.11.14-macos-aarch64-none/lib/python3.11/importlib/__init__.py:117: in import_module\n    if name.startswith('.'):\n       ^^^^^^^^^^^^^^^\nE   AttributeError: 'dict' object has no attribute 'startswith'\n=========================== short test summary info ============================\nFAILED tests/test_apis.py::TestMarkdownBasics::testDotNotationExtension - Att...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 1 passed in 0.11s\n",
       "failing_tests": [
-        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpirnuo9o1/worker_1/tests/test_meta.py::TestVersion::test_get_version"
+        "tests/test_apis.py::TestMarkdownBasics::testDotNotationExtension"
       ],
       "exit_code": 1
     },
     {
       "bug_id": "python-markdown-original-039",
-      "test_output": "........................................................................ [  8%]\n........................................................................ [ 16%]\n............................................ssssssssssssssssssssssssssss [ 24%]\nssssssssssssssssss..s......................F\n=================================== FAILURES ===================================\n_________________________ TestVersion.test_get_version _________________________\n/Users/yuan/stylebench-data/original/python-markdown/tests/test_meta.py:10: in test_get_version\n    self.assertEqual(_get_version((1, 1, 2, 'dev', 0)), \"1.1.2.dev0\")\nE   AssertionError: '1.1.2.devdev' != '1.1.2.dev0'\nE   - 1.1.2.devdev\nE   ?          ^^^\nE   + 1.1.2.dev0\nE   ?          ^\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpirnuo9o1/worker_1/tests/test_meta.py::TestVersion::test_get_version\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 212 passed, 47 skipped in 0.59s\nwarning: `VIRTUAL_ENV=/Users/yuan/stylebench/.venv` does not match the project environment path `.venv` and will be ignored; use `--active` to target the active environment instead\n",
+      "test_output": "..F\n=================================== FAILURES ===================================\n_____________ TestMarkdownBasics.testDotNotationExtensionWithClass _____________\ntests/test_apis.py:76: in testDotNotationExtensionWithClass\n    markdown.Markdown(extensions=['markdown.extensions.footnotes:FootnoteExtension'])\nmarkdown/core.py:126: in __init__\n    self.registerExtensions(extensions=kwargs.get('extensions', []),\nmarkdown/core.py:179: in registerExtensions\n    ext = self.build_extension(ext, configs.get(ext, {}))\n          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nmarkdown/core.py:236: in build_extension\n    return getattr(module, class_name)(**self)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nE   TypeError: markdown.extensions.footnotes.FootnoteExtension() argument after ** must be a mapping, not Markdown\n=========================== short test summary info ============================\nFAILED tests/test_apis.py::TestMarkdownBasics::testDotNotationExtensionWithClass\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 2 passed in 0.11s\n",
       "failing_tests": [
-        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpirnuo9o1/worker_1/tests/test_meta.py::TestVersion::test_get_version"
+        "tests/test_apis.py::TestMarkdownBasics::testDotNotationExtensionWithClass"
       ],
       "exit_code": 1
     },
     {
       "bug_id": "python-markdown-original-040",
-      "test_output": "........................................................................ [  8%]\n........................................................................ [ 16%]\n............................................ssssssssssssssssssssssssssss [ 24%]\nssssssssssssssssss..s......................F\n=================================== FAILURES ===================================\n_________________________ TestVersion.test_get_version _________________________\n/Users/yuan/stylebench-data/original/python-markdown/tests/test_meta.py:11: in test_get_version\n    self.assertEqual(_get_version((1, 1, 2, 'alpha', 1)), \"1.1.2a1\")\n                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpirnuo9o1/worker_1/markdown/__meta__.py:46: in _get_version\n    v += mapping[version_info[2]] + str(version_info[4])\n         ^^^^^^^^^^^^^^^^^^^^^^^^\nE   KeyError: 2\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpirnuo9o1/worker_1/tests/test_meta.py::TestVersion::test_get_version\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 212 passed, 47 skipped in 0.59s\nwarning: `VIRTUAL_ENV=/Users/yuan/stylebench/.venv` does not match the project environment path `.venv` and will be ignored; use `--active` to target the active environment instead\n",
+      "test_output": "..F\n=================================== FAILURES ===================================\n_____________ TestMarkdownBasics.testDotNotationExtensionWithClass _____________\ntests/test_apis.py:76: in testDotNotationExtensionWithClass\n    markdown.Markdown(extensions=['markdown.extensions.footnotes:FootnoteExtension'])\nmarkdown/core.py:126: in __init__\n    self.registerExtensions(extensions=kwargs.get('extensions', []),\nmarkdown/core.py:179: in registerExtensions\n    ext = self.build_extension(ext, configs.get(ext, {}))\n          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nmarkdown/core.py:236: in build_extension\n    return getattr(module, class_name)(**ext_name)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nE   TypeError: markdown.extensions.footnotes.FootnoteExtension() argument after ** must be a mapping, not str\n=========================== short test summary info ============================\nFAILED tests/test_apis.py::TestMarkdownBasics::testDotNotationExtensionWithClass\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 2 passed in 0.11s\n",
       "failing_tests": [
-        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpirnuo9o1/worker_1/tests/test_meta.py::TestVersion::test_get_version"
+        "tests/test_apis.py::TestMarkdownBasics::testDotNotationExtensionWithClass"
       ],
       "exit_code": 1
     },
     {
       "bug_id": "python-markdown-original-041",
-      "test_output": "........................................................................ [  8%]\n........................................................................ [ 16%]\n............................................ssssssssssssssssssssssssssss [ 24%]\nssssssssssssssssss..s......................F\n=================================== FAILURES ===================================\n_________________________ TestVersion.test_get_version _________________________\n/Users/yuan/stylebench-data/original/python-markdown/tests/test_meta.py:11: in test_get_version\n    self.assertEqual(_get_version((1, 1, 2, 'alpha', 1)), \"1.1.2a1\")\nE   AssertionError: '1.1.2aalpha' != '1.1.2a1'\nE   - 1.1.2aalpha\nE   + 1.1.2a1\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpirnuo9o1/worker_1/tests/test_meta.py::TestVersion::test_get_version\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 212 passed, 47 skipped in 0.54s\nwarning: `VIRTUAL_ENV=/Users/yuan/stylebench/.venv` does not match the project environment path `.venv` and will be ignored; use `--active` to target the active environment instead\n",
+      "test_output": ".F\n=================================== FAILURES ===================================\n_________________ TestMarkdownBasics.testDotNotationExtension __________________\ntests/test_apis.py:72: in testDotNotationExtension\n    markdown.Markdown(extensions=['markdown.extensions.footnotes'])\nmarkdown/core.py:126: in __init__\n    self.registerExtensions(extensions=kwargs.get('extensions', []),\nmarkdown/core.py:179: in registerExtensions\n    ext = self.build_extension(ext, configs.get(ext, {}))\n          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nmarkdown/core.py:240: in build_extension\n    return module.makeExtension(**self)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nE   TypeError: markdown.extensions.footnotes.makeExtension() argument after ** must be a mapping, not Markdown\n=========================== short test summary info ============================\nFAILED tests/test_apis.py::TestMarkdownBasics::testDotNotationExtension - Typ...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 1 passed in 0.11s\n",
       "failing_tests": [
-        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpirnuo9o1/worker_1/tests/test_meta.py::TestVersion::test_get_version"
+        "tests/test_apis.py::TestMarkdownBasics::testDotNotationExtension"
       ],
       "exit_code": 1
     },
     {
       "bug_id": "python-markdown-original-042",
-      "test_output": "........................................................................ [  8%]\n.......................................F\n=================================== FAILURES ===================================\n_______________________ TestBasic.test_backlash_escapes ________________________\n/Users/yuan/stylebench-data/original/python-markdown/markdown/test_tools.py:166: in test\n    self.assertMultiLineEqual(output, expected)\nE   AssertionError: '<p>T[456 chars]\\\\\\\\n</code></pre>\\n<pre><code>Backtick: \\\\`\\n[1220 chars]</p>' != '<p>T[456 chars]\\\\\\\\n\\nBacktick: \\\\`\\n\\nAsterisk: \\\\*\\n\\nUnder[860 chars]</p>'\nE   Diff is 2087 characters long. Set self.maxDiff to None to see it.\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpirnuo9o1/worker_1/tests/test_legacy.py::TestBasic::test_backlash_escapes\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 111 passed in 0.16s\nwarning: `VIRTUAL_ENV=/Users/yuan/stylebench/.venv` does not match the project environment path `.venv` and will be ignored; use `--active` to target the active environment instead\n",
+      "test_output": ".F\n=================================== FAILURES ===================================\n_________________ TestMarkdownBasics.testDotNotationExtension __________________\ntests/test_apis.py:72: in testDotNotationExtension\n    markdown.Markdown(extensions=['markdown.extensions.footnotes'])\nmarkdown/core.py:126: in __init__\n    self.registerExtensions(extensions=kwargs.get('extensions', []),\nmarkdown/core.py:179: in registerExtensions\n    ext = self.build_extension(ext, configs.get(ext, {}))\n          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nmarkdown/core.py:240: in build_extension\n    return module.makeExtension(**ext_name)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nE   TypeError: markdown.extensions.footnotes.makeExtension() argument after ** must be a mapping, not str\n=========================== short test summary info ============================\nFAILED tests/test_apis.py::TestMarkdownBasics::testDotNotationExtension - Typ...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 1 passed in 0.11s\n",
       "failing_tests": [
-        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpirnuo9o1/worker_1/tests/test_legacy.py::TestBasic::test_backlash_escapes"
+        "tests/test_apis.py::TestMarkdownBasics::testDotNotationExtension"
       ],
       "exit_code": 1
     },
     {
       "bug_id": "python-markdown-original-043",
-      "test_output": "........................................................................ [  8%]\n.......................................F\n=================================== FAILURES ===================================\n_______________________ TestBasic.test_backlash_escapes ________________________\n/Users/yuan/stylebench-data/original/python-markdown/markdown/test_tools.py:166: in test\n    self.assertMultiLineEqual(output, expected)\nE   AssertionError: '<p>T[456 chars]\\\\\\\\n</code></pre>\\n<pre><code>Backtick: \\\\`\\n[1220 chars]</p>' != '<p>T[456 chars]\\\\\\\\n\\nBacktick: \\\\`\\n\\nAsterisk: \\\\*\\n\\nUnder[860 chars]</p>'\nE   Diff is 2087 characters long. Set self.maxDiff to None to see it.\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpirnuo9o1/worker_1/tests/test_legacy.py::TestBasic::test_backlash_escapes\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 111 passed in 0.15s\nwarning: `VIRTUAL_ENV=/Users/yuan/stylebench/.venv` does not match the project environment path `.venv` and will be ignored; use `--active` to target the active environment instead\n",
+      "test_output": ".F\n=================================== FAILURES ===================================\n_________________ TestMarkdownBasics.testDotNotationExtension __________________\ntests/test_apis.py:72: in testDotNotationExtension\n    markdown.Markdown(extensions=['markdown.extensions.footnotes'])\nmarkdown/core.py:126: in __init__\n    self.registerExtensions(extensions=kwargs.get('extensions', []),\nmarkdown/core.py:181: in registerExtensions\n    ext.extendMarkdown(self)\nmarkdown/extensions/footnotes.py:87: in extendMarkdown\n    md.registerExtension(self)\nmarkdown/core.py:260: in registerExtension\n    extension.registeredExtensions.append(extension)\n    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nE   AttributeError: 'FootnoteExtension' object has no attribute 'registeredExtensions'\n=========================== short test summary info ============================\nFAILED tests/test_apis.py::TestMarkdownBasics::testDotNotationExtension - Att...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 1 passed in 0.11s\n",
       "failing_tests": [
-        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpirnuo9o1/worker_1/tests/test_legacy.py::TestBasic::test_backlash_escapes"
+        "tests/test_apis.py::TestMarkdownBasics::testDotNotationExtension"
       ],
       "exit_code": 1
     },
     {
       "bug_id": "python-markdown-original-044",
-      "test_output": "........................................................................ [  8%]\n.......................................F\n=================================== FAILURES ===================================\n_______________________ TestBasic.test_backlash_escapes ________________________\n/Users/yuan/stylebench-data/original/python-markdown/markdown/test_tools.py:166: in test\n    self.assertMultiLineEqual(output, expected)\nE   AssertionError: '<p>T[456 chars]\\\\\\\\n</code></pre>\\n<pre><code>Backtick: \\\\`\\n[1220 chars]</p>' != '<p>T[456 chars]\\\\\\\\n\\nBacktick: \\\\`\\n\\nAsterisk: \\\\*\\n\\nUnder[860 chars]</p>'\nE   Diff is 2087 characters long. Set self.maxDiff to None to see it.\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpirnuo9o1/worker_1/tests/test_legacy.py::TestBasic::test_backlash_escapes\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 111 passed in 0.15s\nwarning: `VIRTUAL_ENV=/Users/yuan/stylebench/.venv` does not match the project environment path `.venv` and will be ignored; use `--active` to target the active environment instead\n",
+      "test_output": ".F\n=================================== FAILURES ===================================\n_________________ TestMarkdownBasics.testDotNotationExtension __________________\ntests/test_apis.py:72: in testDotNotationExtension\n    markdown.Markdown(extensions=['markdown.extensions.footnotes'])\nmarkdown/core.py:129: in __init__\n    self.reset()\nmarkdown/core.py:275: in reset\n    extension.reset()\nmarkdown/core.py:275: in reset\n    extension.reset()\nE   RecursionError: maximum recursion depth exceeded\n!!! Recursion detected (same locals & position)\n=========================== short test summary info ============================\nFAILED tests/test_apis.py::TestMarkdownBasics::testDotNotationExtension - Rec...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 1 passed in 0.11s\n",
       "failing_tests": [
-        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpirnuo9o1/worker_1/tests/test_legacy.py::TestBasic::test_backlash_escapes"
+        "tests/test_apis.py::TestMarkdownBasics::testDotNotationExtension"
       ],
       "exit_code": 1
     },
     {
       "bug_id": "python-markdown-original-045",
-      "test_output": "........................................................................ [  8%]\n.......................................F\n=================================== FAILURES ===================================\n_______________________ TestBasic.test_backlash_escapes ________________________\n/Users/yuan/stylebench-data/original/python-markdown/markdown/test_tools.py:166: in test\n    self.assertMultiLineEqual(output, expected)\nE   AssertionError: '<p>T[456 chars]\\\\\\\\n</code></pre>\\n<pre><code>Backtick: \\\\`\\n[1220 chars]</p>' != '<p>T[456 chars]\\\\\\\\n\\nBacktick: \\\\`\\n\\nAsterisk: \\\\*\\n\\nUnder[860 chars]</p>'\nE   Diff is 2087 characters long. Set self.maxDiff to None to see it.\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpirnuo9o1/worker_1/tests/test_legacy.py::TestBasic::test_backlash_escapes\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 111 passed in 0.15s\nwarning: `VIRTUAL_ENV=/Users/yuan/stylebench/.venv` does not match the project environment path `.venv` and will be ignored; use `--active` to target the active environment instead\n",
+      "test_output": "F\n=================================== FAILURES ===================================\n______________________ TestMarkdownBasics.testBlankInput _______________________\ntests/test_apis.py:47: in setUp\n    self.md = markdown.Markdown()\n              ^^^^^^^^^^^^^^^^^^^\nmarkdown/core.py:128: in __init__\n    self.set_output_format(kwargs.get('output_format', 'xhtml'))\nmarkdown/core.py:287: in set_output_format\n    format.output_format = format.lower().rstrip('145')  # ignore number\n    ^^^^^^^^^^^^^^^^^^^^\nE   AttributeError: 'str' object has no attribute 'output_format'\n=========================== short test summary info ============================\nFAILED tests/test_apis.py::TestMarkdownBasics::testBlankInput - AttributeErro...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed in 0.11s\n",
       "failing_tests": [
-        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpirnuo9o1/worker_1/tests/test_legacy.py::TestBasic::test_backlash_escapes"
+        "tests/test_apis.py::TestMarkdownBasics::testBlankInput"
       ],
       "exit_code": 1
     },
     {
       "bug_id": "python-markdown-original-046",
-      "test_output": "........................................................................ [  8%]\n........................................................................ [ 16%]\n............................................ssssssssssssssssssssssssssss [ 24%]\nssssssssssssssssss..s..F\n=================================== FAILURES ===================================\n________________________ TestExtensions.test_sane_lists ________________________\n/Users/yuan/stylebench-data/original/python-markdown/markdown/test_tools.py:166: in test\n    self.assertMultiLineEqual(output, expected)\nE   AssertionError: '<ol start=\"1\">\\n<li>Ordered</li>\\n<li>List</[405 chars]/ol>' != '<ol>\\n<li>Ordered</li>\\n<li>List</li>\\n</ol>[395 chars]/ol>'\nE   - <ol start=\"1\">\nE   + <ol>\nE     <li>Ordered</li>\nE     <li>List</li>\nE     </ol>\nE     <ul>\nE     <li>Unordered</li>\nE     <li>List</li>\nE     </ul>\nE   - <ol start=\"1\">\nE   + <ol>\nE     <li>Ordered again</li>\nE     </ol>\nE     <p>Paragraph\nE     * not a list item</p>\nE   - <ol start=\"1\">\nE   + <ol>\nE     <li>More ordered\nE     * not a list item</li>\nE     </ol>\nE     <ul>\nE     <li>Unordered again\nE     1. not a list item</li>\nE     </ul>\nE   - <ol>\nE   + <ol start=\"3\">\nE     <li>Bird</li>\nE     <li>McHale</li>\nE     <li>Parish</li>\nE     </ol>\nE     <p>Not a list</p>\nE   - <ol>\nE   + <ol start=\"3\">\nE     <li>Bird</li>\nE     <li>McHale</li>\nE     <li>Parish</li>\nE     </ol>\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpirnuo9o1/worker_1/tests/test_legacy.py::TestExtensions::test_sane_lists\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 192 passed, 47 skipped in 0.40s\nwarning: `VIRTUAL_ENV=/Users/yuan/stylebench/.venv` does not match the project environment path `.venv` and will be ignored; use `--active` to target the active environment instead\n",
+      "test_output": "F\n=================================== FAILURES ===================================\n______________________ TestMarkdownBasics.testBlankInput _______________________\ntests/test_apis.py:47: in setUp\n    self.md = markdown.Markdown()\n              ^^^^^^^^^^^^^^^^^^^\nmarkdown/core.py:128: in __init__\n    self.set_output_format(kwargs.get('output_format', 'xhtml'))\nmarkdown/core.py:287: in set_output_format\n    self.output_format = self.lower().rstrip('145')  # ignore number\n                         ^^^^^^^^^^\nE   AttributeError: 'Markdown' object has no attribute 'lower'\n=========================== short test summary info ============================\nFAILED tests/test_apis.py::TestMarkdownBasics::testBlankInput - AttributeErro...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed in 0.11s\n",
       "failing_tests": [
-        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpirnuo9o1/worker_1/tests/test_legacy.py::TestExtensions::test_sane_lists"
+        "tests/test_apis.py::TestMarkdownBasics::testBlankInput"
       ],
       "exit_code": 1
     },
     {
       "bug_id": "python-markdown-original-047",
-      "test_output": "........................................................................ [  8%]\n........................................................................ [ 16%]\n............................................ssssssssssssssssssssssssssss [ 24%]\nssssssssssssssssss..s..F\n=================================== FAILURES ===================================\n________________________ TestExtensions.test_sane_lists ________________________\n/Users/yuan/stylebench-data/original/python-markdown/markdown/test_tools.py:166: in test\n    self.assertMultiLineEqual(output, expected)\nE   AssertionError: '<ol start=\"1\">\\n<li>Ordered</li>\\n<li>List</[405 chars]/ol>' != '<ol>\\n<li>Ordered</li>\\n<li>List</li>\\n</ol>[395 chars]/ol>'\nE   - <ol start=\"1\">\nE   + <ol>\nE     <li>Ordered</li>\nE     <li>List</li>\nE     </ol>\nE     <ul>\nE     <li>Unordered</li>\nE     <li>List</li>\nE     </ul>\nE   - <ol start=\"1\">\nE   + <ol>\nE     <li>Ordered again</li>\nE     </ol>\nE     <p>Paragraph\nE     * not a list item</p>\nE   - <ol start=\"1\">\nE   + <ol>\nE     <li>More ordered\nE     * not a list item</li>\nE     </ol>\nE     <ul>\nE     <li>Unordered again\nE     1. not a list item</li>\nE     </ul>\nE   - <ol>\nE   + <ol start=\"3\">\nE     <li>Bird</li>\nE     <li>McHale</li>\nE     <li>Parish</li>\nE     </ol>\nE     <p>Not a list</p>\nE   - <ol>\nE   + <ol start=\"3\">\nE     <li>Bird</li>\nE     <li>McHale</li>\nE     <li>Parish</li>\nE     </ol>\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpirnuo9o1/worker_1/tests/test_legacy.py::TestExtensions::test_sane_lists\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 192 passed, 47 skipped in 0.39s\nwarning: `VIRTUAL_ENV=/Users/yuan/stylebench/.venv` does not match the project environment path `.venv` and will be ignored; use `--active` to target the active environment instead\n",
+      "test_output": "F\n=================================== FAILURES ===================================\n______________________ TestMarkdownBasics.testBlankInput _______________________\ntests/test_apis.py:47: in setUp\n    self.md = markdown.Markdown()\n              ^^^^^^^^^^^^^^^^^^^\nmarkdown/core.py:128: in __init__\n    self.set_output_format(kwargs.get('output_format', 'xhtml'))\nmarkdown/core.py:289: in set_output_format\n    format.serializer = self.output_formats[self.output_format]\n    ^^^^^^^^^^^^^^^^^\nE   AttributeError: 'str' object has no attribute 'serializer'\n=========================== short test summary info ============================\nFAILED tests/test_apis.py::TestMarkdownBasics::testBlankInput - AttributeErro...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed in 0.11s\n",
       "failing_tests": [
-        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpirnuo9o1/worker_1/tests/test_legacy.py::TestExtensions::test_sane_lists"
+        "tests/test_apis.py::TestMarkdownBasics::testBlankInput"
       ],
       "exit_code": 1
     },
     {
       "bug_id": "python-markdown-original-048",
-      "test_output": "........................................................................ [  8%]\n..............................................................F\n=================================== FAILURES ===================================\n___________________ TestMisc.test_blank_lines_in_codeblocks ____________________\n/Users/yuan/stylebench-data/original/python-markdown/markdown/test_tools.py:166: in test\n    self.assertMultiLineEqual(output, expected)\nE   AssertionError: '<p>P[93 chars]s\\n\\nthree tabbed lines\\n\\nfour tabbed lines\\n[278 chars]</p>' != '<p>P[93 chars]s\\n\\n\\nthree tabbed lines\\n\\n\\n\\nfour tabbed l[338 chars]</p>'\nE     <p>Preserve blank lines in code blocks with tabs:</p>\nE     <pre><code>a code block\nE     \nE     two tabbed lines\nE     \nE   + \nE     three tabbed lines\nE   + \nE   + \nE     \nE     four tabbed lines\nE     \nE   + \nE   + \nE   + \nE     five tabbed lines\nE     \nE   + \nE   + \nE   + \nE   + \nE     six tabbed lines\nE   + \nE   + \nE   + \nE   + \nE   + \nE     \nE     End of tabbed block\nE     </code></pre>\nE     <p>And without tabs:</p>\nE     <pre><code>a code block\nE     \nE     two blank lines\nE     \nE   + \nE     three blank lines\nE   + \nE   + \nE     \nE     four blank lines\nE     \nE   + \nE   + \nE   + \nE     five blank lines\nE     \nE   + \nE   + \nE   + \nE   + \nE     six blank lines\nE   + \nE   + \nE   + \nE   + \nE   + \nE     \nE     End of block\nE     </code></pre>\nE     <p>End of document</p>\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpirnuo9o1/worker_1/tests/test_legacy.py::TestMisc::test_blank_lines_in_codeblocks\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 134 passed in 0.20s\nwarning: `VIRTUAL_ENV=/Users/yuan/stylebench/.venv` does not match the project environment path `.venv` and will be ignored; use `--active` to target the active environment instead\n",
+      "test_output": "F\n=================================== FAILURES ===================================\n______________________ TestMarkdownBasics.testBlankInput _______________________\ntests/test_apis.py:47: in setUp\n    self.md = markdown.Markdown()\n              ^^^^^^^^^^^^^^^^^^^\nmarkdown/core.py:128: in __init__\n    self.set_output_format(kwargs.get('output_format', 'xhtml'))\nmarkdown/core.py:289: in set_output_format\n    self.serializer = format.output_formats[self.output_format]\n    ^^^^^^^^^^^^^^^^^\nE   AttributeError: 'str' object has no attribute 'serializer'\n=========================== short test summary info ============================\nFAILED tests/test_apis.py::TestMarkdownBasics::testBlankInput - AttributeErro...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed in 0.11s\n",
       "failing_tests": [
-        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpirnuo9o1/worker_1/tests/test_legacy.py::TestMisc::test_blank_lines_in_codeblocks"
+        "tests/test_apis.py::TestMarkdownBasics::testBlankInput"
       ],
       "exit_code": 1
     },
     {
       "bug_id": "python-markdown-original-049",
-      "test_output": "........................................................................ [  8%]\n..............................................................F\n=================================== FAILURES ===================================\n___________________ TestMisc.test_blank_lines_in_codeblocks ____________________\n/Users/yuan/stylebench-data/original/python-markdown/markdown/test_tools.py:166: in test\n    self.assertMultiLineEqual(output, expected)\nE   AssertionError: '<p>P[93 chars]s\\n\\nthree tabbed lines\\n\\nfour tabbed lines\\n[278 chars]</p>' != '<p>P[93 chars]s\\n\\n\\nthree tabbed lines\\n\\n\\n\\nfour tabbed l[338 chars]</p>'\nE     <p>Preserve blank lines in code blocks with tabs:</p>\nE     <pre><code>a code block\nE     \nE     two tabbed lines\nE     \nE   + \nE     three tabbed lines\nE   + \nE   + \nE     \nE     four tabbed lines\nE     \nE   + \nE   + \nE   + \nE     five tabbed lines\nE     \nE   + \nE   + \nE   + \nE   + \nE     six tabbed lines\nE   + \nE   + \nE   + \nE   + \nE   + \nE     \nE     End of tabbed block\nE     </code></pre>\nE     <p>And without tabs:</p>\nE     <pre><code>a code block\nE     \nE     two blank lines\nE     \nE   + \nE     three blank lines\nE   + \nE   + \nE     \nE     four blank lines\nE     \nE   + \nE   + \nE   + \nE     five blank lines\nE     \nE   + \nE   + \nE   + \nE   + \nE     six blank lines\nE   + \nE   + \nE   + \nE   + \nE   + \nE     \nE     End of block\nE     </code></pre>\nE     <p>End of document</p>\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpirnuo9o1/worker_1/tests/test_legacy.py::TestMisc::test_blank_lines_in_codeblocks\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 134 passed in 0.21s\nwarning: `VIRTUAL_ENV=/Users/yuan/stylebench/.venv` does not match the project environment path `.venv` and will be ignored; use `--active` to target the active environment instead\n",
+      "test_output": "F\n=================================== FAILURES ===================================\n______________________ TestMarkdownBasics.testBlankInput _______________________\ntests/test_apis.py:47: in setUp\n    self.md = markdown.Markdown()\n              ^^^^^^^^^^^^^^^^^^^\nmarkdown/core.py:128: in __init__\n    self.set_output_format(kwargs.get('output_format', 'xhtml'))\nmarkdown/core.py:289: in set_output_format\n    self.serializer = self.output_formats[format.output_format]\n    ^^^^^^^^^^^^^^^^^\nE   AttributeError: 'str' object has no attribute 'serializer'\n=========================== short test summary info ============================\nFAILED tests/test_apis.py::TestMarkdownBasics::testBlankInput - AttributeErro...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed in 0.10s\n",
       "failing_tests": [
-        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpirnuo9o1/worker_1/tests/test_legacy.py::TestMisc::test_blank_lines_in_codeblocks"
+        "tests/test_apis.py::TestMarkdownBasics::testBlankInput"
       ],
       "exit_code": 1
     },
     {
       "bug_id": "python-markdown-original-050",
-      "test_output": ".....F\n=================================== FAILURES ===================================\n______________________ TestMarkdownBasics.testSimpleInput ______________________\n/Users/yuan/stylebench-data/original/python-markdown/tests/test_apis.py:59: in testSimpleInput\n    self.assertEqual(self.md.convert('foo'), '<p>foo</p>')\n                     ^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpirnuo9o1/worker_1/markdown/core.py:357: in convert\n    root = self.parser.parseDocument(self.lines).getroot()\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpirnuo9o1/worker_1/markdown/blockparser.py:117: in parseDocument\n    self.parseChunk(self.root, '\\n'.join(lines))\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpirnuo9o1/worker_1/markdown/blockparser.py:136: in parseChunk\n    self.parseBlocks(parent, text.split('\\n\\n'))\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpirnuo9o1/worker_1/markdown/blockparser.py:158: in parseBlocks\n    if processor.run(parent, blocks) is not False:\n       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpirnuo9o1/worker_1/markdown/blockprocessors.py:616: in run\n    if self.parser.state.isstate('list'):\n       ^^^^^^^^^^^\nE   AttributeError: 'ParagraphProcessor' object has no attribute 'parser'\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpirnuo9o1/worker_1/tests/test_apis.py::TestMarkdownBasics::testSimpleInput\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 5 passed in 0.12s\nwarning: `VIRTUAL_ENV=/Users/yuan/stylebench/.venv` does not match the project environment path `.venv` and will be ignored; use `--active` to target the active environment instead\n",
+      "test_output": "F\n=================================== FAILURES ===================================\n______________________ TestMarkdownBasics.testBlankInput _______________________\ntests/test_apis.py:47: in setUp\n    self.md = markdown.Markdown()\n              ^^^^^^^^^^^^^^^^^^^\nmarkdown/core.py:128: in __init__\n    self.set_output_format(kwargs.get('output_format', 'xhtml'))\nmarkdown/core.py:289: in set_output_format\n    self.serializer = self.output_formats[self.output_format]\n    ^^^^^^^^^^^^^^^^^\nE   AttributeError: 'str' object has no attribute 'serializer'\n=========================== short test summary info ============================\nFAILED tests/test_apis.py::TestMarkdownBasics::testBlankInput - AttributeErro...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed in 0.10s\n",
       "failing_tests": [
-        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpirnuo9o1/worker_1/tests/test_apis.py::TestMarkdownBasics::testSimpleInput"
+        "tests/test_apis.py::TestMarkdownBasics::testBlankInput"
       ],
       "exit_code": 1
     }
@@ -419,495 +404,453 @@
   "_hidden": [
     {
       "bug_id": "python-markdown-original-001",
-      "file_path": "markdown/__main__.py",
-      "line_number": 92,
-      "mutation_type": "comparison",
-      "original_text": "==",
-      "mutated_text": "!=",
-      "context": "...se_args(args, values)      if len(args) == 0:         input_file = None     else:...",
-      "mutation_type_original": "eq_ne"
+      "file_path": "markdown/blockparser.py",
+      "line_number": 96,
+      "mutation_type": "var_swap",
+      "original_text": "self",
+      "mutated_text": "md",
+      "context": "....blockprocessors].          \"\"\"         self.blockprocessors: util.Registry[BlockPro..."
     },
     {
       "bug_id": "python-markdown-original-002",
-      "file_path": "markdown/__main__.py",
-      "line_number": 90,
+      "file_path": "markdown/blockparser.py",
+      "line_number": 98,
       "mutation_type": "var_swap",
-      "original_text": "args",
-      "mutated_text": "values",
-      "context": "...\"Print debug messages.\")      (options, args) = parser.parse_args(args, values)..."
+      "original_text": "md",
+      "mutated_text": "self",
+      "context": "...self.state = State()         self.md = md      def parseDocument(self, lines..."
     },
     {
       "bug_id": "python-markdown-original-003",
-      "file_path": "markdown/__main__.py",
-      "line_number": 90,
+      "file_path": "markdown/blockparser.py",
+      "line_number": 98,
       "mutation_type": "var_swap",
-      "original_text": "args",
-      "mutated_text": "values",
-      "context": "...(options, args) = parser.parse_args(args, values)      if len(args) == 0:..."
+      "original_text": "md",
+      "mutated_text": "self",
+      "context": "...self.state = State()         self.md = md      def parseDocument(self, lines: Ite..."
     },
     {
       "bug_id": "python-markdown-original-004",
-      "file_path": "markdown/__main__.py",
-      "line_number": 90,
-      "mutation_type": "var_swap",
-      "original_text": "values",
-      "mutated_text": "args",
-      "context": "...ptions, args) = parser.parse_args(args, values)      if len(args) == 0:         input_..."
-    },
-    {
-      "bug_id": "python-markdown-original-005",
-      "file_path": "markdown/__main__.py",
-      "line_number": 92,
-      "mutation_type": "var_swap",
-      "original_text": "args",
-      "mutated_text": "values",
-      "context": "...er.parse_args(args, values)      if len(args) == 0:         input_file = None     el..."
-    },
-    {
-      "bug_id": "python-markdown-original-006",
-      "file_path": "markdown/__main__.py",
-      "line_number": 95,
-      "mutation_type": "var_swap",
-      "original_text": "args",
-      "mutated_text": "values",
-      "context": "...e = None     else:         input_file = args[0]      if not options.extensions:..."
-    },
-    {
-      "bug_id": "python-markdown-original-007",
-      "file_path": "markdown/__main__.py",
-      "line_number": 110,
-      "mutation_type": "var_swap",
-      "original_text": "args",
-      "mutated_text": "values",
-      "context": "...options.configfile                 e.args = (message,) + e.args[1:]..."
-    },
-    {
-      "bug_id": "python-markdown-original-008",
-      "file_path": "markdown/__main__.py",
-      "line_number": 110,
-      "mutation_type": "var_swap",
-      "original_text": "args",
-      "mutated_text": "values",
-      "context": "...e.args = (message,) + e.args[1:]                 raise      opts = {..."
-    },
-    {
-      "bug_id": "python-markdown-original-009",
-      "file_path": "markdown/__main__.py",
-      "line_number": 65,
-      "mutation_type": "logic",
-      "original_text": "True",
-      "mutated_text": "False",
-      "context": "...action='store_false', default=True,                       help=\"Observe nu...",
-      "mutation_type_original": "true_false"
-    },
-    {
-      "bug_id": "python-markdown-original-010",
-      "file_path": "markdown/__main__.py",
-      "line_number": 139,
-      "mutation_type": "logic",
-      "original_text": "True",
-      "mutated_text": "False",
-      "context": "...fault')         logging.captureWarnings(True)         warn_logger = logging.getLogge...",
-      "mutation_type_original": "true_false"
-    },
-    {
-      "bug_id": "python-markdown-original-011",
-      "file_path": "markdown/__main__.py",
-      "line_number": 123,
-      "mutation_type": "return_value",
-      "original_text": "opts, options.verbose",
-      "mutated_text": "None",
-      "context": "...'lazy_ol': options.lazy_ol     }      return opts, options.verbose   def run():  # pragma: no cover     \"\"...",
-      "mutation_type_original": "return_none"
-    },
-    {
-      "bug_id": "python-markdown-original-012",
-      "file_path": "markdown/__main__.py",
-      "line_number": 92,
-      "mutation_type": "control_flow",
-      "original_text": "if len(args) == 0:\n        input_file = None\n    else:\n        input_file = args[0]",
-      "mutated_text": "if len(args) == 0:\n        input_file = args[0]\n    else:\n        input_file = None",
-      "context": "...= parser.parse_args(args, values)      if len(args) == 0:         input_file = None     else:         input_file = args[0]      if not options.extensions:...",
-      "mutation_type_original": "if_else_swap"
-    },
-    {
-      "bug_id": "python-markdown-original-013",
-      "file_path": "markdown/__main__.py",
-      "line_number": 136,
-      "mutation_type": "comparison",
-      "original_text": "<=",
-      "mutated_text": ">=",
-      "context": "...r(console_handler)     if logging_level <= WARNING:         # Ensure deprecation w...",
-      "mutation_type_original": "le_ge"
-    },
-    {
-      "bug_id": "python-markdown-original-014",
-      "file_path": "markdown/__main__.py",
-      "line_number": 81,
-      "mutation_type": "arithmetic",
-      "original_text": "+",
-      "mutated_text": "-",
-      "context": "...action=\"store_const\", const=CRITICAL+10, dest=\"verbose\",...",
-      "mutation_type_original": "add_sub"
-    },
-    {
-      "bug_id": "python-markdown-original-015",
-      "file_path": "markdown/__main__.py",
-      "line_number": 110,
-      "mutation_type": "arithmetic",
-      "original_text": "+",
-      "mutated_text": "-",
-      "context": "...ile                 e.args = (message,) + e.args[1:]                 raise      o...",
-      "mutation_type_original": "add_sub"
-    },
-    {
-      "bug_id": "python-markdown-original-016",
-      "file_path": "markdown/__main__.py",
-      "line_number": 81,
-      "mutation_type": "boundary",
-      "original_text": "10",
-      "mutated_text": "11",
-      "context": "...action=\"store_const\", const=CRITICAL+10, dest=\"verbose\",...",
-      "mutation_type_original": "plus_one"
-    },
-    {
-      "bug_id": "python-markdown-original-017",
-      "file_path": "markdown/__main__.py",
-      "line_number": 92,
-      "mutation_type": "boundary",
-      "original_text": "0",
-      "mutated_text": "1",
-      "context": "...args(args, values)      if len(args) == 0:         input_file = None     else:...",
-      "mutation_type_original": "plus_one"
-    },
-    {
-      "bug_id": "python-markdown-original-018",
-      "file_path": "markdown/__main__.py",
-      "line_number": 95,
-      "mutation_type": "boundary",
-      "original_text": "0",
-      "mutated_text": "1",
-      "context": "...one     else:         input_file = args[0]      if not options.extensions:...",
-      "mutation_type_original": "plus_one"
-    },
-    {
-      "bug_id": "python-markdown-original-019",
-      "file_path": "markdown/__main__.py",
-      "line_number": 92,
-      "mutation_type": "boundary",
-      "original_text": "0",
-      "mutated_text": "-1",
-      "context": "...args(args, values)      if len(args) == 0:         input_file = None     else:...",
-      "mutation_type_original": "minus_one"
-    },
-    {
-      "bug_id": "python-markdown-original-020",
-      "file_path": "markdown/__meta__.py",
-      "line_number": 39,
-      "mutation_type": "comparison",
-      "original_text": "==",
-      "mutated_text": "!=",
-      "context": "...nal')      parts = 2 if version_info[2] == 0 else 3     v = '.'.join(map(str, vers...",
-      "mutation_type_original": "eq_ne"
-    },
-    {
-      "bug_id": "python-markdown-original-021",
-      "file_path": "markdown/__meta__.py",
-      "line_number": 42,
-      "mutation_type": "comparison",
-      "original_text": "==",
-      "mutated_text": "!=",
-      "context": "..._info[:parts]))      if version_info[3] == 'dev':         v += '.dev' + str(versio...",
-      "mutation_type_original": "eq_ne"
-    },
-    {
-      "bug_id": "python-markdown-original-022",
-      "file_path": "markdown/__meta__.py",
-      "line_number": 48,
-      "mutation_type": "return_value",
-      "original_text": "v",
-      "mutated_text": "None",
-      "context": "...on_info[3]] + str(version_info[4])      return v   __version__ = _get_version(__version_...",
-      "mutation_type_original": "return_none"
-    },
-    {
-      "bug_id": "python-markdown-original-023",
-      "file_path": "markdown/__meta__.py",
-      "line_number": 43,
-      "mutation_type": "arithmetic",
-      "original_text": "+",
-      "mutated_text": "-",
-      "context": "...n_info[3] == 'dev':         v += '.dev' + str(version_info[4])     elif version_i...",
-      "mutation_type_original": "add_sub"
-    },
-    {
-      "bug_id": "python-markdown-original-024",
-      "file_path": "markdown/__meta__.py",
-      "line_number": 46,
-      "mutation_type": "arithmetic",
-      "original_text": "+",
-      "mutated_text": "-",
-      "context": "...}         v += mapping[version_info[3]] + str(version_info[4])      return v   __...",
-      "mutation_type_original": "add_sub"
-    },
-    {
-      "bug_id": "python-markdown-original-025",
-      "file_path": "markdown/__meta__.py",
-      "line_number": 31,
-      "mutation_type": "boundary",
-      "original_text": "3",
-      "mutated_text": "4",
-      "context": "...mport annotations   __version_info__ = (3, 10, 0, 'final', 0)   def _get_version(...",
-      "mutation_type_original": "plus_one"
-    },
-    {
-      "bug_id": "python-markdown-original-026",
-      "file_path": "markdown/__meta__.py",
-      "line_number": 39,
-      "mutation_type": "boundary",
-      "original_text": "2",
-      "mutated_text": "3",
-      "context": "...'final')      parts = 2 if version_info[2] == 0 else 3     v = '.'.join(map(str,...",
-      "mutation_type_original": "plus_one"
-    },
-    {
-      "bug_id": "python-markdown-original-027",
-      "file_path": "markdown/__meta__.py",
-      "line_number": 39,
-      "mutation_type": "boundary",
-      "original_text": "0",
-      "mutated_text": "1",
-      "context": "...')      parts = 2 if version_info[2] == 0 else 3     v = '.'.join(map(str, versio...",
-      "mutation_type_original": "plus_one"
-    },
-    {
-      "bug_id": "python-markdown-original-028",
-      "file_path": "markdown/__meta__.py",
-      "line_number": 39,
-      "mutation_type": "boundary",
-      "original_text": "3",
-      "mutated_text": "4",
-      "context": "...parts = 2 if version_info[2] == 0 else 3     v = '.'.join(map(str, version_info[...",
-      "mutation_type_original": "plus_one"
-    },
-    {
-      "bug_id": "python-markdown-original-029",
-      "file_path": "markdown/__meta__.py",
-      "line_number": 42,
-      "mutation_type": "boundary",
-      "original_text": "3",
-      "mutated_text": "4",
-      "context": "...ion_info[:parts]))      if version_info[3] == 'dev':         v += '.dev' + str(ve...",
-      "mutation_type_original": "plus_one"
-    },
-    {
-      "bug_id": "python-markdown-original-030",
-      "file_path": "markdown/__meta__.py",
-      "line_number": 43,
-      "mutation_type": "boundary",
-      "original_text": "4",
-      "mutated_text": "5",
-      "context": "...v += '.dev' + str(version_info[4])     elif version_info[3] != 'final':...",
-      "mutation_type_original": "plus_one"
-    },
-    {
-      "bug_id": "python-markdown-original-031",
-      "file_path": "markdown/__meta__.py",
-      "line_number": 46,
-      "mutation_type": "boundary",
-      "original_text": "4",
-      "mutated_text": "5",
-      "context": "...ing[version_info[3]] + str(version_info[4])      return v   __version__ = _get_ve...",
-      "mutation_type_original": "plus_one"
-    },
-    {
-      "bug_id": "python-markdown-original-032",
-      "file_path": "markdown/__meta__.py",
-      "line_number": 31,
-      "mutation_type": "boundary",
-      "original_text": "3",
-      "mutated_text": "2",
-      "context": "...mport annotations   __version_info__ = (3, 10, 0, 'final', 0)   def _get_version(...",
-      "mutation_type_original": "minus_one"
-    },
-    {
-      "bug_id": "python-markdown-original-033",
-      "file_path": "markdown/__meta__.py",
-      "line_number": 31,
-      "mutation_type": "boundary",
-      "original_text": "0",
-      "mutated_text": "-1",
-      "context": "...nnotations   __version_info__ = (3, 10, 0, 'final', 0)   def _get_version(version...",
-      "mutation_type_original": "minus_one"
-    },
-    {
-      "bug_id": "python-markdown-original-034",
-      "file_path": "markdown/__meta__.py",
-      "line_number": 39,
-      "mutation_type": "boundary",
-      "original_text": "2",
-      "mutated_text": "1",
-      "context": "...'final')      parts = 2 if version_info[2] == 0 else 3     v = '.'.join(map(str,...",
-      "mutation_type_original": "minus_one"
-    },
-    {
-      "bug_id": "python-markdown-original-035",
-      "file_path": "markdown/__meta__.py",
-      "line_number": 39,
-      "mutation_type": "boundary",
-      "original_text": "0",
-      "mutated_text": "-1",
-      "context": "...')      parts = 2 if version_info[2] == 0 else 3     v = '.'.join(map(str, versio...",
-      "mutation_type_original": "minus_one"
-    },
-    {
-      "bug_id": "python-markdown-original-036",
-      "file_path": "markdown/__meta__.py",
-      "line_number": 39,
-      "mutation_type": "boundary",
-      "original_text": "3",
-      "mutated_text": "2",
-      "context": "...parts = 2 if version_info[2] == 0 else 3     v = '.'.join(map(str, version_info[...",
-      "mutation_type_original": "minus_one"
-    },
-    {
-      "bug_id": "python-markdown-original-037",
-      "file_path": "markdown/__meta__.py",
-      "line_number": 42,
-      "mutation_type": "boundary",
-      "original_text": "3",
-      "mutated_text": "2",
-      "context": "...ion_info[:parts]))      if version_info[3] == 'dev':         v += '.dev' + str(ve...",
-      "mutation_type_original": "minus_one"
-    },
-    {
-      "bug_id": "python-markdown-original-038",
-      "file_path": "markdown/__meta__.py",
-      "line_number": 43,
-      "mutation_type": "boundary",
-      "original_text": "4",
-      "mutated_text": "3",
-      "context": "...v += '.dev' + str(version_info[4])     elif version_info[3] != 'final':...",
-      "mutation_type_original": "minus_one"
-    },
-    {
-      "bug_id": "python-markdown-original-039",
-      "file_path": "markdown/__meta__.py",
-      "line_number": 44,
-      "mutation_type": "boundary",
-      "original_text": "3",
-      "mutated_text": "2",
-      "context": "...(version_info[4])     elif version_info[3] != 'final':         mapping = {'alpha'...",
-      "mutation_type_original": "minus_one"
-    },
-    {
-      "bug_id": "python-markdown-original-040",
-      "file_path": "markdown/__meta__.py",
-      "line_number": 46,
-      "mutation_type": "boundary",
-      "original_text": "3",
-      "mutated_text": "2",
-      "context": "...'rc'}         v += mapping[version_info[3]] + str(version_info[4])      return v...",
-      "mutation_type_original": "minus_one"
-    },
-    {
-      "bug_id": "python-markdown-original-041",
-      "file_path": "markdown/__meta__.py",
-      "line_number": 46,
-      "mutation_type": "boundary",
-      "original_text": "4",
-      "mutated_text": "3",
-      "context": "...ing[version_info[3]] + str(version_info[4])      return v   __version__ = _get_ve...",
-      "mutation_type_original": "minus_one"
-    },
-    {
-      "bug_id": "python-markdown-original-042",
       "file_path": "markdown/blockprocessors.py",
-      "line_number": 261,
-      "mutation_type": "comparison",
-      "original_text": "==",
-      "mutated_text": "!=",
-      "context": "...if (sibling is not None and sibling.tag == \"pre\" and            len(sibling) and s...",
-      "mutation_type_original": "eq_ne"
-    },
-    {
-      "bug_id": "python-markdown-original-043",
-      "file_path": "markdown/blockprocessors.py",
-      "line_number": 262,
-      "mutation_type": "comparison",
-      "original_text": "==",
-      "mutated_text": "!=",
-      "context": "...len(sibling) and sibling[0].tag == \"code\"):             # The previous blo...",
-      "mutation_type_original": "eq_ne"
-    },
-    {
-      "bug_id": "python-markdown-original-044",
-      "file_path": "markdown/blockprocessors.py",
-      "line_number": 304,
-      "mutation_type": "comparison",
-      "original_text": "==",
-      "mutated_text": "!=",
-      "context": "...if sibling is not None and sibling.tag == \"blockquote\":             # Previous bl...",
-      "mutation_type_original": "eq_ne"
-    },
-    {
-      "bug_id": "python-markdown-original-045",
-      "file_path": "markdown/blockprocessors.py",
-      "line_number": 319,
-      "mutation_type": "comparison",
-      "original_text": "==",
-      "mutated_text": "!=",
-      "context": "....RE.match(line)         if line.strip() == \">\":             return \"\"         elif...",
-      "mutation_type_original": "eq_ne"
-    },
-    {
-      "bug_id": "python-markdown-original-046",
-      "file_path": "markdown/blockprocessors.py",
-      "line_number": 402,
-      "mutation_type": "comparison",
-      "original_text": "!=",
-      "mutated_text": "==",
-      "context": "...if not self.LAZY_OL and self.STARTSWITH != '1':                 lst.attrib['start'...",
-      "mutation_type_original": "eq_ne"
-    },
-    {
-      "bug_id": "python-markdown-original-047",
-      "file_path": "markdown/blockprocessors.py",
-      "line_number": 426,
-      "mutation_type": "comparison",
-      "original_text": "==",
-      "mutated_text": "!=",
-      "context": "...if not items and self.TAG == 'ol':                     # Detect the...",
-      "mutation_type_original": "eq_ne"
-    },
-    {
-      "bug_id": "python-markdown-original-048",
-      "file_path": "markdown/blockprocessors.py",
-      "line_number": 569,
-      "mutation_type": "comparison",
-      "original_text": "==",
-      "mutated_text": "!=",
-      "context": "...if (sibling is not None and sibling.tag == 'pre' and            len(sibling) and s...",
-      "mutation_type_original": "eq_ne"
-    },
-    {
-      "bug_id": "python-markdown-original-049",
-      "file_path": "markdown/blockprocessors.py",
-      "line_number": 570,
-      "mutation_type": "comparison",
-      "original_text": "==",
-      "mutated_text": "!=",
-      "context": "...len(sibling) and sibling[0].tag == 'code'):             # Last block is a...",
-      "mutation_type_original": "eq_ne"
-    },
-    {
-      "bug_id": "python-markdown-original-050",
-      "file_path": "markdown/blockprocessors.py",
-      "line_number": 75,
+      "line_number": 76,
       "mutation_type": "var_swap",
       "original_text": "self",
       "mutated_text": "parser",
-      "context": "...t__(self, parser: BlockParser):         self.parser = parser         self.tab_length..."
+      "context": "...):         self.parser = parser         self.tab_length = parser.md.tab_length..."
+    },
+    {
+      "bug_id": "python-markdown-original-005",
+      "file_path": "markdown/blockprocessors.py",
+      "line_number": 76,
+      "mutation_type": "var_swap",
+      "original_text": "parser",
+      "mutated_text": "self",
+      "context": "...rser = parser         self.tab_length = parser.md.tab_length      def lastChild(self,..."
+    },
+    {
+      "bug_id": "python-markdown-original-006",
+      "file_path": "markdown/blockprocessors.py",
+      "line_number": 80,
+      "mutation_type": "var_swap",
+      "original_text": "parent",
+      "mutated_text": "self",
+      "context": "...an `etree` element. \"\"\"         if len(parent):             return parent[-1]..."
+    },
+    {
+      "bug_id": "python-markdown-original-007",
+      "file_path": "markdown/blockprocessors.py",
+      "line_number": 346,
+      "mutation_type": "var_swap",
+      "original_text": "parser",
+      "mutated_text": "self",
+      "context": "...BlockParser):         super().__init__(parser)         # Detect an item (`1. item`)...."
+    },
+    {
+      "bug_id": "python-markdown-original-008",
+      "file_path": "markdown/blockprocessors.py",
+      "line_number": 348,
+      "mutation_type": "var_swap",
+      "original_text": "self",
+      "mutated_text": "parser",
+      "context": "...e.compile(r'^[ ]{0,%d}\\d+\\.[ ]+(.*)' % (self.tab_length - 1))         # Detect items..."
+    },
+    {
+      "bug_id": "python-markdown-original-009",
+      "file_path": "markdown/blockprocessors.py",
+      "line_number": 350,
+      "mutation_type": "var_swap",
+      "original_text": "self",
+      "mutated_text": "parser",
+      "context": "...hey can be of either list type.         self.CHILD_RE = re.compile(r'^[ ]{0,%d}((\\d+..."
+    },
+    {
+      "bug_id": "python-markdown-original-010",
+      "file_path": "markdown/blockprocessors.py",
+      "line_number": 351,
+      "mutation_type": "var_swap",
+      "original_text": "self",
+      "mutated_text": "parser",
+      "context": "...' %                                    (self.tab_length - 1))         # Detect inden..."
+    },
+    {
+      "bug_id": "python-markdown-original-011",
+      "file_path": "markdown/blockprocessors.py",
+      "line_number": 353,
+      "mutation_type": "var_swap",
+      "original_text": "self",
+      "mutated_text": "parser",
+      "context": "...d (nested) items of either type         self.INDENT_RE = re.compile(r'^[ ]{%d,%d}((\\..."
+    },
+    {
+      "bug_id": "python-markdown-original-012",
+      "file_path": "markdown/blockprocessors.py",
+      "line_number": 354,
+      "mutation_type": "var_swap",
+      "original_text": "self",
+      "mutated_text": "parser",
+      "context": "...%                                     (self.tab_length, self.tab_length * 2 - 1))..."
+    },
+    {
+      "bug_id": "python-markdown-original-013",
+      "file_path": "markdown/blockprocessors.py",
+      "line_number": 354,
+      "mutation_type": "var_swap",
+      "original_text": "self",
+      "mutated_text": "parser",
+      "context": "...(self.tab_length, self.tab_length * 2 - 1))      def test(self..."
+    },
+    {
+      "bug_id": "python-markdown-original-014",
+      "file_path": "markdown/blockprocessors.py",
+      "line_number": 357,
+      "mutation_type": "var_swap",
+      "original_text": "self",
+      "mutated_text": "parent",
+      "context": "...lock: str) -> bool:         return bool(self.RE.match(block))      def run(self, par..."
+    },
+    {
+      "bug_id": "python-markdown-original-015",
+      "file_path": "markdown/blockprocessors.py",
+      "line_number": 452,
+      "mutation_type": "var_swap",
+      "original_text": "parser",
+      "mutated_text": "self",
+      "context": "...BlockParser):         super().__init__(parser)         # Detect an item (`1. item`)...."
+    },
+    {
+      "bug_id": "python-markdown-original-016",
+      "file_path": "markdown/core.py",
+      "line_number": 177,
+      "mutation_type": "var_swap",
+      "original_text": "extensions",
+      "mutated_text": "self",
+      "context": "...nsions.          \"\"\"         for ext in extensions:             if isinstance(ext, str):..."
+    },
+    {
+      "bug_id": "python-markdown-original-017",
+      "file_path": "markdown/core.py",
+      "line_number": 179,
+      "mutation_type": "var_swap",
+      "original_text": "self",
+      "mutated_text": "extensions",
+      "context": "...stance(ext, str):                 ext = self.build_extension(ext, configs.get(ext, {..."
+    },
+    {
+      "bug_id": "python-markdown-original-018",
+      "file_path": "markdown/core.py",
+      "line_number": 179,
+      "mutation_type": "var_swap",
+      "original_text": "self",
+      "mutated_text": "configs",
+      "context": "...stance(ext, str):                 ext = self.build_extension(ext, configs.get(ext, {..."
+    },
+    {
+      "bug_id": "python-markdown-original-019",
+      "file_path": "markdown/core.py",
+      "line_number": 179,
+      "mutation_type": "var_swap",
+      "original_text": "configs",
+      "mutated_text": "self",
+      "context": "...ext = self.build_extension(ext, configs.get(ext, {}))             if isinstance..."
+    },
+    {
+      "bug_id": "python-markdown-original-020",
+      "file_path": "markdown/core.py",
+      "line_number": 179,
+      "mutation_type": "var_swap",
+      "original_text": "configs",
+      "mutated_text": "extensions",
+      "context": "...ext = self.build_extension(ext, configs.get(ext, {}))             if isinstance..."
+    },
+    {
+      "bug_id": "python-markdown-original-021",
+      "file_path": "markdown/core.py",
+      "line_number": 181,
+      "mutation_type": "var_swap",
+      "original_text": "self",
+      "mutated_text": "extensions",
+      "context": "...on):                 ext.extendMarkdown(self)                 logger.debug(..."
+    },
+    {
+      "bug_id": "python-markdown-original-022",
+      "file_path": "markdown/core.py",
+      "line_number": 181,
+      "mutation_type": "var_swap",
+      "original_text": "self",
+      "mutated_text": "configs",
+      "context": "...on):                 ext.extendMarkdown(self)                 logger.debug(..."
+    },
+    {
+      "bug_id": "python-markdown-original-023",
+      "file_path": "markdown/core.py",
+      "line_number": 214,
+      "mutation_type": "var_swap",
+      "original_text": "configs",
+      "mutated_text": "self",
+      "context": "...ion.         \"\"\"         configs = dict(configs)          entry_points = [ep for ep in..."
+    },
+    {
+      "bug_id": "python-markdown-original-024",
+      "file_path": "markdown/core.py",
+      "line_number": 214,
+      "mutation_type": "var_swap",
+      "original_text": "configs",
+      "mutated_text": "ext_name",
+      "context": "...ion.         \"\"\"         configs = dict(configs)          entry_points = [ep for ep in..."
+    },
+    {
+      "bug_id": "python-markdown-original-025",
+      "file_path": "markdown/core.py",
+      "line_number": 216,
+      "mutation_type": "var_swap",
+      "original_text": "ext_name",
+      "mutated_text": "self",
+      "context": "...et_installed_extensions() if ep.name == ext_name]         if entry_points:             e..."
+    },
+    {
+      "bug_id": "python-markdown-original-026",
+      "file_path": "markdown/core.py",
+      "line_number": 216,
+      "mutation_type": "var_swap",
+      "original_text": "ext_name",
+      "mutated_text": "configs",
+      "context": "...et_installed_extensions() if ep.name == ext_name]         if entry_points:             e..."
+    },
+    {
+      "bug_id": "python-markdown-original-027",
+      "file_path": "markdown/core.py",
+      "line_number": 219,
+      "mutation_type": "var_swap",
+      "original_text": "configs",
+      "mutated_text": "self",
+      "context": "...ints[0].load()             return ext(**configs)          # Get class name (if provided..."
+    },
+    {
+      "bug_id": "python-markdown-original-028",
+      "file_path": "markdown/core.py",
+      "line_number": 219,
+      "mutation_type": "var_swap",
+      "original_text": "configs",
+      "mutated_text": "ext_name",
+      "context": "...ints[0].load()             return ext(**configs)          # Get class name (if provided..."
+    },
+    {
+      "bug_id": "python-markdown-original-029",
+      "file_path": "markdown/core.py",
+      "line_number": 222,
+      "mutation_type": "var_swap",
+      "original_text": "ext_name",
+      "mutated_text": "self",
+      "context": "...ed): `path.to.module:ClassName`         ext_name, class_name = ext_name.split(':', 1) if..."
+    },
+    {
+      "bug_id": "python-markdown-original-030",
+      "file_path": "markdown/core.py",
+      "line_number": 222,
+      "mutation_type": "var_swap",
+      "original_text": "ext_name",
+      "mutated_text": "configs",
+      "context": "...ed): `path.to.module:ClassName`         ext_name, class_name = ext_name.split(':', 1) if..."
+    },
+    {
+      "bug_id": "python-markdown-original-031",
+      "file_path": "markdown/core.py",
+      "line_number": 222,
+      "mutation_type": "var_swap",
+      "original_text": "ext_name",
+      "mutated_text": "self",
+      "context": "...assName`         ext_name, class_name = ext_name.split(':', 1) if ':' in ext_name else (..."
+    },
+    {
+      "bug_id": "python-markdown-original-032",
+      "file_path": "markdown/core.py",
+      "line_number": 222,
+      "mutation_type": "var_swap",
+      "original_text": "ext_name",
+      "mutated_text": "configs",
+      "context": "...assName`         ext_name, class_name = ext_name.split(':', 1) if ':' in ext_name else (..."
+    },
+    {
+      "bug_id": "python-markdown-original-033",
+      "file_path": "markdown/core.py",
+      "line_number": 222,
+      "mutation_type": "var_swap",
+      "original_text": "ext_name",
+      "mutated_text": "self",
+      "context": "...name = ext_name.split(':', 1) if ':' in ext_name else (ext_name, '')          try:..."
+    },
+    {
+      "bug_id": "python-markdown-original-034",
+      "file_path": "markdown/core.py",
+      "line_number": 222,
+      "mutation_type": "var_swap",
+      "original_text": "ext_name",
+      "mutated_text": "configs",
+      "context": "...name = ext_name.split(':', 1) if ':' in ext_name else (ext_name, '')          try:..."
+    },
+    {
+      "bug_id": "python-markdown-original-035",
+      "file_path": "markdown/core.py",
+      "line_number": 222,
+      "mutation_type": "var_swap",
+      "original_text": "ext_name",
+      "mutated_text": "self",
+      "context": "....split(':', 1) if ':' in ext_name else (ext_name, '')          try:             module =..."
+    },
+    {
+      "bug_id": "python-markdown-original-036",
+      "file_path": "markdown/core.py",
+      "line_number": 222,
+      "mutation_type": "var_swap",
+      "original_text": "ext_name",
+      "mutated_text": "configs",
+      "context": "....split(':', 1) if ':' in ext_name else (ext_name, '')          try:             module =..."
+    },
+    {
+      "bug_id": "python-markdown-original-037",
+      "file_path": "markdown/core.py",
+      "line_number": 225,
+      "mutation_type": "var_swap",
+      "original_text": "ext_name",
+      "mutated_text": "self",
+      "context": "...module = importlib.import_module(ext_name)             logger.debug(..."
+    },
+    {
+      "bug_id": "python-markdown-original-038",
+      "file_path": "markdown/core.py",
+      "line_number": 225,
+      "mutation_type": "var_swap",
+      "original_text": "ext_name",
+      "mutated_text": "configs",
+      "context": "...module = importlib.import_module(ext_name)             logger.debug(..."
+    },
+    {
+      "bug_id": "python-markdown-original-039",
+      "file_path": "markdown/core.py",
+      "line_number": 236,
+      "mutation_type": "var_swap",
+      "original_text": "configs",
+      "mutated_text": "self",
+      "context": "...return getattr(module, class_name)(**configs)         else:             # Expect  `m..."
+    },
+    {
+      "bug_id": "python-markdown-original-040",
+      "file_path": "markdown/core.py",
+      "line_number": 236,
+      "mutation_type": "var_swap",
+      "original_text": "configs",
+      "mutated_text": "ext_name",
+      "context": "...return getattr(module, class_name)(**configs)         else:             # Expect  `m..."
+    },
+    {
+      "bug_id": "python-markdown-original-041",
+      "file_path": "markdown/core.py",
+      "line_number": 240,
+      "mutation_type": "var_swap",
+      "original_text": "configs",
+      "mutated_text": "self",
+      "context": "...return module.makeExtension(**configs)             except AttributeError as e..."
+    },
+    {
+      "bug_id": "python-markdown-original-042",
+      "file_path": "markdown/core.py",
+      "line_number": 240,
+      "mutation_type": "var_swap",
+      "original_text": "configs",
+      "mutated_text": "ext_name",
+      "context": "...return module.makeExtension(**configs)             except AttributeError as e..."
+    },
+    {
+      "bug_id": "python-markdown-original-043",
+      "file_path": "markdown/core.py",
+      "line_number": 260,
+      "mutation_type": "var_swap",
+      "original_text": "self",
+      "mutated_text": "extension",
+      "context": "...are \"registered.\"          \"\"\"         self.registeredExtensions.append(extension)..."
+    },
+    {
+      "bug_id": "python-markdown-original-044",
+      "file_path": "markdown/core.py",
+      "line_number": 260,
+      "mutation_type": "var_swap",
+      "original_text": "extension",
+      "mutated_text": "self",
+      "context": "...self.registeredExtensions.append(extension)         return self      def reset(sel..."
+    },
+    {
+      "bug_id": "python-markdown-original-045",
+      "file_path": "markdown/core.py",
+      "line_number": 287,
+      "mutation_type": "var_swap",
+      "original_text": "self",
+      "mutated_text": "format",
+      "context": "...n.output_formats`.          \"\"\"         self.output_format = format.lower().rstrip('..."
+    },
+    {
+      "bug_id": "python-markdown-original-046",
+      "file_path": "markdown/core.py",
+      "line_number": 287,
+      "mutation_type": "var_swap",
+      "original_text": "format",
+      "mutated_text": "self",
+      "context": "...\"\"\"         self.output_format = format.lower().rstrip('145')  # ignore number..."
+    },
+    {
+      "bug_id": "python-markdown-original-047",
+      "file_path": "markdown/core.py",
+      "line_number": 289,
+      "mutation_type": "var_swap",
+      "original_text": "self",
+      "mutated_text": "format",
+      "context": "...ignore number         try:             self.serializer = self.output_formats[self.o..."
+    },
+    {
+      "bug_id": "python-markdown-original-048",
+      "file_path": "markdown/core.py",
+      "line_number": 289,
+      "mutation_type": "var_swap",
+      "original_text": "self",
+      "mutated_text": "format",
+      "context": "...try:             self.serializer = self.output_formats[self.output_format]..."
+    },
+    {
+      "bug_id": "python-markdown-original-049",
+      "file_path": "markdown/core.py",
+      "line_number": 289,
+      "mutation_type": "var_swap",
+      "original_text": "self",
+      "mutated_text": "format",
+      "context": "...self.serializer = self.output_formats[self.output_format]         except KeyError..."
+    },
+    {
+      "bug_id": "python-markdown-original-050",
+      "file_path": "markdown/core.py",
+      "line_number": 291,
+      "mutation_type": "var_swap",
+      "original_text": "self",
+      "mutated_text": "format",
+      "context": "...as e:             valid_formats = list(self.output_formats.keys())             vali..."
     }
   ]
 }

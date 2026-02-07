@@ -1,0 +1,152 @@
+{
+  "metadata": {
+    "catalog": "/Users/yuan/stylebench-data/bugs/validators-original.json",
+    "repo": "/Users/yuan/stylebench-data/original/validators",
+    "repo_name": "validators",
+    "timestamp": "2026-02-06T15:04:12.815783",
+    "total_trials": 5
+  },
+  "results": [
+    {
+      "bug_id": "validators-original-001",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 895,
+      "tests_failed": 0,
+      "tests_total": 895,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-06T15:02:03.607655",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "src/validators/crypto_addresses/eth_address.py"
+        ],
+        "patch": "(restored to original)",
+        "tokens_used": 0,
+        "time_seconds": 35.96125888824463,
+        "error": null,
+        "agent_output": "All 17 tests pass. \n\n**The bug** was in `src/validators/crypto_addresses/eth_address.py` line 22. The condition `if len(addr) == 40: return False` was inverted \u2014 it was rejecting addresses that *are* exactly 40 characters (which is the correct length for an ETH address without the `0x` prefix). \n\n**The fix**: Changed `==` to `!=` so that it correctly rejects addresses that are *not* 40 characters long:\n\n```python\n# Before (buggy):\nif len(addr) == 40:\n    return False\n\n# After (fixed):\nif len(addr) != 40:\n    return False\n```\n"
+      }
+    },
+    {
+      "bug_id": "validators-original-002",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 895,
+      "tests_failed": 0,
+      "tests_total": 895,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-06T15:02:45.001010",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "src/validators/crypto_addresses/eth_address.py"
+        ],
+        "patch": "(restored to original)",
+        "tokens_used": 0,
+        "time_seconds": 38.66110277175903,
+        "error": null,
+        "agent_output": "All 17 tests pass.\n\n**The bug:** In `src/validators/crypto_addresses/eth_address.py:26`, the EIP-55 checksum validation had an inverted comparison. When the keccak hash digit is > 7, the corresponding address character should be uppercase \u2014 but the code was returning `False` (invalid) when the character *was* uppercase (`== addr[i]`), instead of when it *wasn't* (`!= addr[i]`).\n\n**The fix:** Changed `addr[i].upper() == addr[i]` to `addr[i].upper() != addr[i]` on line 26, so the function correctly rejects addresses where the character *fails* the checksum, rather than where it *passes*.\n"
+      }
+    },
+    {
+      "bug_id": "validators-original-003",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 895,
+      "tests_failed": 0,
+      "tests_total": 895,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-06T15:03:15.742588",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "src/validators/crypto_addresses/eth_address.py"
+        ],
+        "patch": "(restored to original)",
+        "tokens_used": 0,
+        "time_seconds": 27.85792374610901,
+        "error": null,
+        "agent_output": "All 17 tests pass now.\n\n**The bug** was in `src/validators/crypto_addresses/eth_address.py:27`. The EIP-55 checksum validation had an inverted condition: when the keccak hash digit is `<= 7`, the corresponding address character should be lowercase. The code was rejecting addresses where the character *was* lowercase (`== addr[i]`) instead of rejecting addresses where it *wasn't* lowercase (`!= addr[i]`). Changing `==` to `!=` fixed the logic.\n"
+      }
+    },
+    {
+      "bug_id": "validators-original-004",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 895,
+      "tests_failed": 0,
+      "tests_total": 895,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-06T15:03:42.115404",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "src/validators/i18n/es.py"
+        ],
+        "patch": "(restored to original)",
+        "tokens_used": 0,
+        "time_seconds": 23.792680025100708,
+        "error": null,
+        "agent_output": "All 59 tests pass now.\n\n**The bug:** In `src/validators/i18n/es.py:12`, the length check in `_nif_nie_validation` was `== 9` instead of `!= 9`. This caused the function to reject all valid 9-character NIF/NIE values and only attempt validation on values of other lengths (which would then fail anyway). Changing `==` to `!=` fixes the guard clause to correctly reject values that aren't exactly 9 characters.\n"
+      }
+    },
+    {
+      "bug_id": "validators-original-005",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 895,
+      "tests_failed": 0,
+      "tests_total": 895,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-06T15:04:12.729886",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "src/validators/i18n/es.py"
+        ],
+        "patch": "(restored to original)",
+        "tokens_used": 0,
+        "time_seconds": 28.140005111694336,
+        "error": null,
+        "agent_output": "All 59 tests pass. The bug was on line 20 of `src/validators/i18n/es.py` in the `_nif_nie_validation` function \u2014 the control character comparison used `!=` instead of `==`, inverting the validation logic so valid IDs were rejected and invalid ones accepted.\n"
+      }
+    }
+  ],
+  "summary": {
+    "by_agent": {
+      "claude": {
+        "total": 5,
+        "passed": 5
+      }
+    },
+    "by_mode": {
+      "with_tests": {
+        "total": 5,
+        "passed": 5
+      }
+    },
+    "by_evaluation": {
+      "PASS": 5,
+      "FAIL": 0,
+      "ERROR": 0,
+      "TIMEOUT": 0,
+      "NO_FIX": 0
+    }
+  }
+}

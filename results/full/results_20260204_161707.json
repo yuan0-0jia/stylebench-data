@@ -1,0 +1,272 @@
+{
+  "metadata": {
+    "catalog": "/Users/yuan/stylebench-data/bugs/humanize-snakecase.json",
+    "repo": "/Users/yuan/stylebench-data/snakecase/humanize",
+    "repo_name": "humanize",
+    "timestamp": "2026-02-04T16:17:07.928117",
+    "total_trials": 10
+  },
+  "results": [
+    {
+      "bug_id": "humanize-snakecase-001",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 684,
+      "tests_failed": 0,
+      "tests_total": 684,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-04T16:13:12.086964",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "src/humanize/lists.py"
+        ],
+        "patch": "(restored to original)",
+        "tokens_used": 0,
+        "time_seconds": 33.536826848983765,
+        "error": null,
+        "agent_output": "All tests pass. The bug was a simple logic error on line 31 of `src/humanize/lists.py`: the condition `if len(items) != 1:` should have been `if len(items) == 1:`. This caused the function to return only the first item when given a list with multiple items, instead of correctly formatting them with commas and \"and\".\n"
+      }
+    },
+    {
+      "bug_id": "humanize-snakecase-002",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 684,
+      "tests_failed": 0,
+      "tests_total": 684,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-04T16:13:46.022338",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "src/humanize/lists.py"
+        ],
+        "patch": "(restored to original)",
+        "tokens_used": 0,
+        "time_seconds": 30.658979892730713,
+        "error": null,
+        "agent_output": "All 7 tests in `test_lists.py` now pass. The bug was a simple logic error on line 31 of `src/humanize/lists.py` - the condition `if len(items) != 1:` was inverted and should have been `if len(items) == 1:`. This caused the function to return only the first item when there were multiple items, instead of returning the single item when the list had only one element.\n"
+      }
+    },
+    {
+      "bug_id": "humanize-snakecase-003",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 684,
+      "tests_failed": 0,
+      "tests_total": 684,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-04T16:14:05.028892",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "src/humanize/lists.py"
+        ],
+        "patch": "(restored to original)",
+        "tokens_used": 0,
+        "time_seconds": 15.841582775115967,
+        "error": null,
+        "agent_output": "The bug was on line 32 of `src/humanize/lists.py`. The `natural_list` function was returning `None` when given a single-item list instead of returning the string representation of that item. I changed `return None` to `return str(items[0])` to fix this.\n"
+      }
+    },
+    {
+      "bug_id": "humanize-snakecase-004",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 684,
+      "tests_failed": 0,
+      "tests_total": 684,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-04T16:14:39.455374",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "src/humanize/lists.py"
+        ],
+        "patch": "diff --git a/src/humanize/lists.py b/src/humanize/lists.py\nindex 3a52f1e..ebbfcf4 100644\n--- a/src/humanize/lists.py\n+++ b/src/humanize/lists.py\n@@ -31,6 +31,6 @@ def natural_list(items: list[Any]) -> str:\n     if len(items) == 1:\n         return str(items[0])\n     elif len(items) == 2:\n-        return f\"{str(items[0])} and {str(items[1])}\"\n+        return f\"{items[0]} and {items[1]}\"\n     else:\n         return \", \".join(str(item) for item in items[:-1]) + f\" and {str(items[-1])}\"\n",
+        "tokens_used": 0,
+        "time_seconds": 31.28333592414856,
+        "error": null,
+        "agent_output": "All tests pass. The bug was in `src/humanize/lists.py:34` where the function was returning `None` instead of the properly formatted string when the list had exactly 2 items. I changed `return None` to `return f\"{items[0]} and {items[1]}\"`.\n"
+      }
+    },
+    {
+      "bug_id": "humanize-snakecase-005",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 684,
+      "tests_failed": 0,
+      "tests_total": 684,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-04T16:15:12.178619",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "src/humanize/lists.py"
+        ],
+        "patch": "diff --git a/src/humanize/lists.py b/src/humanize/lists.py\nindex 3a52f1e..1a77ede 100644\n--- a/src/humanize/lists.py\n+++ b/src/humanize/lists.py\n@@ -33,4 +33,4 @@ def natural_list(items: list[Any]) -> str:\n     elif len(items) == 2:\n         return f\"{str(items[0])} and {str(items[1])}\"\n     else:\n-        return \", \".join(str(item) for item in items[:-1]) + f\" and {str(items[-1])}\"\n+        return \", \".join(str(item) for item in items[:-1]) + \" and \" + str(items[-1])\n",
+        "tokens_used": 0,
+        "time_seconds": 29.397104740142822,
+        "error": null,
+        "agent_output": "All tests pass. The bug was in `src/humanize/lists.py:36` where the `else` branch returned `None` instead of properly formatting lists with more than 2 items. The fix joins all items except the last with \", \" and appends \" and \" plus the last item.\n"
+      }
+    },
+    {
+      "bug_id": "humanize-snakecase-006",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 684,
+      "tests_failed": 0,
+      "tests_total": 684,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-04T16:15:27.898981",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "src/humanize/lists.py"
+        ],
+        "patch": "(restored to original)",
+        "tokens_used": 0,
+        "time_seconds": 12.513274192810059,
+        "error": null,
+        "agent_output": "The bug was a typo on line 36 in `src/humanize/lists.py`: the code used `-` (subtraction) instead of `+` (concatenation) when joining the comma-separated items with the final \"and\" clause. This caused a `TypeError` because you cannot subtract strings in Python.\n"
+      }
+    },
+    {
+      "bug_id": "humanize-snakecase-007",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 684,
+      "tests_failed": 0,
+      "tests_total": 684,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-04T16:16:06.280432",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "src/humanize/lists.py"
+        ],
+        "patch": "(restored to original)",
+        "tokens_used": 0,
+        "time_seconds": 35.11882185935974,
+        "error": null,
+        "agent_output": "All tests pass now. The bug was on line 31 where the condition `if len(items) == 2` was incorrect - it should have been `if len(items) == 1` to handle the single-item case. The original code had two identical conditions (`len(items) == 2`) which meant the single-item case (`[\"one\"]`) would incorrectly fall through to the else branch that's designed for 3+ items.\n"
+      }
+    },
+    {
+      "bug_id": "humanize-snakecase-008",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 684,
+      "tests_failed": 0,
+      "tests_total": 684,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-04T16:16:39.998501",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "src/humanize/lists.py"
+        ],
+        "patch": "(restored to original)",
+        "tokens_used": 0,
+        "time_seconds": 29.971073150634766,
+        "error": null,
+        "agent_output": "All tests pass. The bug was a simple off-by-one error in `src/humanize/lists.py:32`. When there's only one item in the list, the code was returning `items[1]` (which doesn't exist) instead of `items[0]` (the first and only element). I changed `items[1]` to `items[0]` to fix the issue.\n"
+      }
+    },
+    {
+      "bug_id": "humanize-snakecase-009",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 684,
+      "tests_failed": 0,
+      "tests_total": 684,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-04T16:17:03.694043",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "src/humanize/lists.py"
+        ],
+        "patch": "(restored to original)",
+        "tokens_used": 0,
+        "time_seconds": 20.049258947372437,
+        "error": "Exit code: 1",
+        "agent_output": "You've hit your limit \u00b7 resets 8pm (America/Los_Angeles)\n"
+      }
+    },
+    {
+      "bug_id": "humanize-snakecase-010",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "NO_FIX",
+      "tests_passed": 79,
+      "tests_failed": 1,
+      "tests_total": 80,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-04T16:17:07.812845",
+      "fix_result": {
+        "success": false,
+        "files_changed": [
+          "src/humanize/lists.py"
+        ],
+        "patch": "diff --git a/src/humanize/lists.py b/src/humanize/lists.py\nindex 3a52f1e..09db8c7 100644\n--- a/src/humanize/lists.py\n+++ b/src/humanize/lists.py\n@@ -29,7 +29,7 @@ def natural_list(items: list[Any]) -> str:\n         str: A string with commas and 'and' in the right places.\n     \"\"\"\n     if len(items) == 1:\n-        return str(items[0])\n+        return str(items[1])\n     elif len(items) == 2:\n         return f\"{str(items[0])} and {str(items[1])}\"\n     else:\n",
+        "tokens_used": 0,
+        "time_seconds": 1.9639830589294434,
+        "error": "Exit code: 1",
+        "agent_output": "You've hit your limit \u00b7 resets 8pm (America/Los_Angeles)\n"
+      }
+    }
+  ],
+  "summary": {
+    "by_agent": {
+      "claude": {
+        "total": 10,
+        "passed": 9
+      }
+    },
+    "by_mode": {
+      "with_tests": {
+        "total": 10,
+        "passed": 9
+      }
+    },
+    "by_evaluation": {
+      "PASS": 9,
+      "FAIL": 0,
+      "ERROR": 0,
+      "TIMEOUT": 0,
+      "NO_FIX": 1
+    }
+  }
+}

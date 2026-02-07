@@ -1,0 +1,104 @@
+{
+  "metadata": {
+    "catalog": "/Users/yuan/stylebench-data/bugs/validators-original.json",
+    "repo": "/Users/yuan/stylebench-data/original/validators",
+    "repo_name": "validators",
+    "timestamp": "2026-02-06T15:32:59.208376",
+    "total_trials": 3
+  },
+  "results": [
+    {
+      "bug_id": "validators-original-001",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 895,
+      "tests_failed": 0,
+      "tests_total": 895,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-06T15:31:54.761571",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "src/validators/crypto_addresses/eth_address.py"
+        ],
+        "patch": "(restored to original)",
+        "tokens_used": 0,
+        "time_seconds": 47.72081208229065,
+        "error": null,
+        "agent_output": "All 17 tests pass now.\n\n**The bug** was on line 22 of `src/validators/crypto_addresses/eth_address.py` in the `_validate_eth_checksum_address` function. The condition `if len(addr) == 40: return False` was rejecting addresses with the correct length (40 hex characters after removing the `0x` prefix). It should have been `if len(addr) != 40: return False` \u2014 rejecting addresses that do *not* have the correct length.\n"
+      }
+    },
+    {
+      "bug_id": "validators-original-002",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 895,
+      "tests_failed": 0,
+      "tests_total": 895,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-06T15:32:29.084163",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "src/validators/crypto_addresses/eth_address.py"
+        ],
+        "patch": "(restored to original)",
+        "tokens_used": 0,
+        "time_seconds": 31.154464960098267,
+        "error": null,
+        "agent_output": "All 17 tests pass. The fix was a single character change on line 26 of `src/validators/crypto_addresses/eth_address.py`:\n\n**Bug:** The EIP-55 checksum validation had an inverted condition. When the keccak hash nibble is `> 7`, the corresponding address character **should** be uppercase. The original code used `addr[i].upper() == addr[i]` (returning `False` when it IS uppercase), but it should return `False` when it is NOT uppercase (`!=`). This caused valid mixed-case checksum addresses like `0x5AEDA56215b167893e80B4fE645BA6d5Bab767DE` to be incorrectly rejected.\n"
+      }
+    },
+    {
+      "bug_id": "validators-original-003",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 895,
+      "tests_failed": 0,
+      "tests_total": 895,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-06T15:32:59.117723",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "src/validators/crypto_addresses/eth_address.py"
+        ],
+        "patch": "(restored to original)",
+        "tokens_used": 0,
+        "time_seconds": 27.168977975845337,
+        "error": null,
+        "agent_output": "All 17 tests pass. \n\n**The bug:** In `_validate_eth_checksum_address` (line 27), the EIP-55 checksum validation had a logic error. The condition `addr[i].lower() == addr[i]` was rejecting addresses where the hash digit was \u2264 7 and the character was already lowercase \u2014 but that's actually the *correct* case per the checksum spec. Changed `==` to `!=` so it correctly rejects characters that should be lowercase but aren't.\n"
+      }
+    }
+  ],
+  "summary": {
+    "by_agent": {
+      "claude": {
+        "total": 3,
+        "passed": 3
+      }
+    },
+    "by_mode": {
+      "with_tests": {
+        "total": 3,
+        "passed": 3
+      }
+    },
+    "by_evaluation": {
+      "PASS": 3,
+      "FAIL": 0,
+      "ERROR": 0,
+      "TIMEOUT": 0,
+      "NO_FIX": 0
+    }
+  }
+}

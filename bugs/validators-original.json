@@ -1,415 +1,354 @@
 {
-  "repo": "validators",
-  "style": "original",
-  "generated_at": "2026-02-03T15:38:53.918664",
-  "test_command": [
-    "uv",
-    "run",
-    "pytest",
-    "/Users/yuan/stylebench-data/original/validators/tests",
-    "-x",
-    "-q",
-    "--tb=short",
-    "--color=no"
-  ],
   "bugs": [
     {
       "bug_id": "validators-original-001",
-      "test_output": ".........................F\n=================================== FAILURES ===================================\n__ test_returns_true_on_valid_btc_address[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2] __\n/Users/yuan/stylebench-data/original/validators/tests/crypto_addresses/test_btc_address.py:24: in test_returns_true_on_valid_btc_address\n    assert btc_address(value)\nE   AssertionError: assert ValidationError(func=btc_address, args={'value': '1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2'})\nE    +  where ValidationError(func=btc_address, args={'value': '1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2'}) = btc_address('1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2')\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpde1o850i/worker_1/tests/crypto_addresses/test_btc_address.py::test_returns_true_on_valid_btc_address[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2]\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 25 passed in 0.17s\nwarning: `VIRTUAL_ENV=/Users/yuan/stylebench/.venv` does not match the project environment path `.venv` and will be ignored; use `--active` to target the active environment instead\n",
+      "test_output": "...................................F\n=================================== FAILURES ===================================\n_ test_returns_true_on_valid_eth_address[0x5AEDA56215b167893e80B4fE645BA6d5Bab767DE] _\ntests/crypto_addresses/test_eth_address.py:25: in test_returns_true_on_valid_eth_address\n    assert eth_address(value)\nE   AssertionError: assert ValidationError(func=eth_address, args={'func': <function eth_address at 0x10ab66e80>})\nE    +  where ValidationError(func=eth_address, args={'func': <function eth_address at 0x10ab66e80>}) = eth_address('0x5AEDA56215b167893e80B4fE645BA6d5Bab767DE')\n=========================== short test summary info ============================\nFAILED tests/crypto_addresses/test_eth_address.py::test_returns_true_on_valid_eth_address[0x5AEDA56215b167893e80B4fE645BA6d5Bab767DE]\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 35 passed in 0.11s\n",
       "failing_tests": [
-        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpde1o850i/worker_1/tests/crypto_addresses/test_btc_address.py::test_returns_true_on_valid_btc_address[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2]"
+        "tests/crypto_addresses/test_eth_address.py::test_returns_true_on_valid_eth_address[0x5AEDA56215b167893e80B4fE645BA6d5Bab767DE]"
       ],
       "exit_code": 1
     },
     {
       "bug_id": "validators-original-002",
-      "test_output": ".........................F\n=================================== FAILURES ===================================\n__ test_returns_true_on_valid_btc_address[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2] __\n/Users/yuan/stylebench-data/original/validators/tests/crypto_addresses/test_btc_address.py:24: in test_returns_true_on_valid_btc_address\n    assert btc_address(value)\nE   AssertionError: assert ValidationError(func=btc_address, args={'value': '1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2'})\nE    +  where ValidationError(func=btc_address, args={'value': '1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2'}) = btc_address('1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2')\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpde1o850i/worker_1/tests/crypto_addresses/test_btc_address.py::test_returns_true_on_valid_btc_address[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2]\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 25 passed in 0.09s\nwarning: `VIRTUAL_ENV=/Users/yuan/stylebench/.venv` does not match the project environment path `.venv` and will be ignored; use `--active` to target the active environment instead\n",
+      "test_output": "...................................F\n=================================== FAILURES ===================================\n_ test_returns_true_on_valid_eth_address[0x5AEDA56215b167893e80B4fE645BA6d5Bab767DE] _\ntests/crypto_addresses/test_eth_address.py:25: in test_returns_true_on_valid_eth_address\n    assert eth_address(value)\nE   AssertionError: assert ValidationError(func=eth_address, args={'func': <function eth_address at 0x106bf6de0>})\nE    +  where ValidationError(func=eth_address, args={'func': <function eth_address at 0x106bf6de0>}) = eth_address('0x5AEDA56215b167893e80B4fE645BA6d5Bab767DE')\n=========================== short test summary info ============================\nFAILED tests/crypto_addresses/test_eth_address.py::test_returns_true_on_valid_eth_address[0x5AEDA56215b167893e80B4fE645BA6d5Bab767DE]\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 35 passed in 0.09s\n",
       "failing_tests": [
-        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpde1o850i/worker_1/tests/crypto_addresses/test_btc_address.py::test_returns_true_on_valid_btc_address[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2]"
+        "tests/crypto_addresses/test_eth_address.py::test_returns_true_on_valid_eth_address[0x5AEDA56215b167893e80B4fE645BA6d5Bab767DE]"
       ],
       "exit_code": 1
     },
     {
       "bug_id": "validators-original-003",
-      "test_output": ".........................F\n=================================== FAILURES ===================================\n__ test_returns_true_on_valid_btc_address[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2] __\n/Users/yuan/stylebench-data/original/validators/tests/crypto_addresses/test_btc_address.py:24: in test_returns_true_on_valid_btc_address\n    assert btc_address(value)\nE   AssertionError: assert ValidationError(func=btc_address, args={'value': '1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2'})\nE    +  where ValidationError(func=btc_address, args={'value': '1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2'}) = btc_address('1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2')\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpde1o850i/worker_1/tests/crypto_addresses/test_btc_address.py::test_returns_true_on_valid_btc_address[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2]\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 25 passed in 0.09s\nwarning: `VIRTUAL_ENV=/Users/yuan/stylebench/.venv` does not match the project environment path `.venv` and will be ignored; use `--active` to target the active environment instead\n",
+      "test_output": "...................................F\n=================================== FAILURES ===================================\n_ test_returns_true_on_valid_eth_address[0x5AEDA56215b167893e80B4fE645BA6d5Bab767DE] _\ntests/crypto_addresses/test_eth_address.py:25: in test_returns_true_on_valid_eth_address\n    assert eth_address(value)\nE   AssertionError: assert ValidationError(func=eth_address, args={'func': <function eth_address at 0x106fe2de0>})\nE    +  where ValidationError(func=eth_address, args={'func': <function eth_address at 0x106fe2de0>}) = eth_address('0x5AEDA56215b167893e80B4fE645BA6d5Bab767DE')\n=========================== short test summary info ============================\nFAILED tests/crypto_addresses/test_eth_address.py::test_returns_true_on_valid_eth_address[0x5AEDA56215b167893e80B4fE645BA6d5Bab767DE]\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 35 passed in 0.09s\n",
       "failing_tests": [
-        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpde1o850i/worker_1/tests/crypto_addresses/test_btc_address.py::test_returns_true_on_valid_btc_address[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2]"
+        "tests/crypto_addresses/test_eth_address.py::test_returns_true_on_valid_eth_address[0x5AEDA56215b167893e80B4fE645BA6d5Bab767DE]"
       ],
       "exit_code": 1
     },
     {
       "bug_id": "validators-original-004",
-      "test_output": ".........................F\n=================================== FAILURES ===================================\n__ test_returns_true_on_valid_btc_address[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2] __\n/Users/yuan/stylebench-data/original/validators/tests/crypto_addresses/test_btc_address.py:24: in test_returns_true_on_valid_btc_address\n    assert btc_address(value)\nE   AssertionError: assert ValidationError(func=btc_address, args={'value': '1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2'})\nE    +  where ValidationError(func=btc_address, args={'value': '1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2'}) = btc_address('1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2')\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpde1o850i/worker_1/tests/crypto_addresses/test_btc_address.py::test_returns_true_on_valid_btc_address[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2]\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 25 passed in 0.09s\nwarning: `VIRTUAL_ENV=/Users/yuan/stylebench/.venv` does not match the project environment path `.venv` and will be ignored; use `--active` to target the active environment instead\n",
+      "test_output": "...................................F\n=================================== FAILURES ===================================\n_ test_returns_true_on_valid_eth_address[0x5AEDA56215b167893e80B4fE645BA6d5Bab767DE] _\ntests/crypto_addresses/test_eth_address.py:25: in test_returns_true_on_valid_eth_address\n    assert eth_address(value)\nE   AssertionError: assert ValidationError(func=eth_address, args={'func': <function eth_address at 0x1069c2de0>})\nE    +  where ValidationError(func=eth_address, args={'func': <function eth_address at 0x1069c2de0>}) = eth_address('0x5AEDA56215b167893e80B4fE645BA6d5Bab767DE')\n=========================== short test summary info ============================\nFAILED tests/crypto_addresses/test_eth_address.py::test_returns_true_on_valid_eth_address[0x5AEDA56215b167893e80B4fE645BA6d5Bab767DE]\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 35 passed in 0.10s\n",
       "failing_tests": [
-        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpde1o850i/worker_1/tests/crypto_addresses/test_btc_address.py::test_returns_true_on_valid_btc_address[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2]"
+        "tests/crypto_addresses/test_eth_address.py::test_returns_true_on_valid_eth_address[0x5AEDA56215b167893e80B4fE645BA6d5Bab767DE]"
       ],
       "exit_code": 1
     },
     {
       "bug_id": "validators-original-005",
-      "test_output": ".........................F\n=================================== FAILURES ===================================\n__ test_returns_true_on_valid_btc_address[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2] __\n/Users/yuan/stylebench-data/original/validators/tests/crypto_addresses/test_btc_address.py:24: in test_returns_true_on_valid_btc_address\n    assert btc_address(value)\nE   AssertionError: assert ValidationError(func=btc_address, args={'value': '1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2'})\nE    +  where ValidationError(func=btc_address, args={'value': '1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2'}) = btc_address('1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2')\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpde1o850i/worker_1/tests/crypto_addresses/test_btc_address.py::test_returns_true_on_valid_btc_address[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2]\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 25 passed in 0.08s\nwarning: `VIRTUAL_ENV=/Users/yuan/stylebench/.venv` does not match the project environment path `.venv` and will be ignored; use `--active` to target the active environment instead\n",
+      "test_output": "...................................F\n=================================== FAILURES ===================================\n_ test_returns_true_on_valid_eth_address[0x5AEDA56215b167893e80B4fE645BA6d5Bab767DE] _\ntests/crypto_addresses/test_eth_address.py:25: in test_returns_true_on_valid_eth_address\n    assert eth_address(value)\nE   AssertionError: assert ValidationError(func=eth_address, args={'func': <function eth_address at 0x1089fade0>})\nE    +  where ValidationError(func=eth_address, args={'func': <function eth_address at 0x1089fade0>}) = eth_address('0x5AEDA56215b167893e80B4fE645BA6d5Bab767DE')\n=========================== short test summary info ============================\nFAILED tests/crypto_addresses/test_eth_address.py::test_returns_true_on_valid_eth_address[0x5AEDA56215b167893e80B4fE645BA6d5Bab767DE]\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 35 passed in 0.09s\n",
       "failing_tests": [
-        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpde1o850i/worker_1/tests/crypto_addresses/test_btc_address.py::test_returns_true_on_valid_btc_address[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2]"
+        "tests/crypto_addresses/test_eth_address.py::test_returns_true_on_valid_eth_address[0x5AEDA56215b167893e80B4fE645BA6d5Bab767DE]"
       ],
       "exit_code": 1
     },
     {
       "bug_id": "validators-original-006",
-      "test_output": ".........................F\n=================================== FAILURES ===================================\n__ test_returns_true_on_valid_btc_address[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2] __\n/Users/yuan/stylebench-data/original/validators/tests/crypto_addresses/test_btc_address.py:24: in test_returns_true_on_valid_btc_address\n    assert btc_address(value)\nE   AssertionError: assert ValidationError(func=btc_address, args={'value': '1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2'})\nE    +  where ValidationError(func=btc_address, args={'value': '1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2'}) = btc_address('1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2')\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpde1o850i/worker_1/tests/crypto_addresses/test_btc_address.py::test_returns_true_on_valid_btc_address[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2]\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 25 passed in 0.09s\nwarning: `VIRTUAL_ENV=/Users/yuan/stylebench/.venv` does not match the project environment path `.venv` and will be ignored; use `--active` to target the active environment instead\n",
+      "test_output": "...................................F\n=================================== FAILURES ===================================\n_ test_returns_true_on_valid_eth_address[0x5AEDA56215b167893e80B4fE645BA6d5Bab767DE] _\ntests/crypto_addresses/test_eth_address.py:25: in test_returns_true_on_valid_eth_address\n    assert eth_address(value)\nE   AssertionError: assert ValidationError(func=eth_address, args={'func': <function eth_address at 0x1071a6de0>})\nE    +  where ValidationError(func=eth_address, args={'func': <function eth_address at 0x1071a6de0>}) = eth_address('0x5AEDA56215b167893e80B4fE645BA6d5Bab767DE')\n=========================== short test summary info ============================\nFAILED tests/crypto_addresses/test_eth_address.py::test_returns_true_on_valid_eth_address[0x5AEDA56215b167893e80B4fE645BA6d5Bab767DE]\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 35 passed in 0.08s\n",
       "failing_tests": [
-        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpde1o850i/worker_1/tests/crypto_addresses/test_btc_address.py::test_returns_true_on_valid_btc_address[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2]"
+        "tests/crypto_addresses/test_eth_address.py::test_returns_true_on_valid_eth_address[0x5AEDA56215b167893e80B4fE645BA6d5Bab767DE]"
       ],
       "exit_code": 1
     },
     {
       "bug_id": "validators-original-007",
-      "test_output": ".........................F\n=================================== FAILURES ===================================\n__ test_returns_true_on_valid_btc_address[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2] __\n/Users/yuan/stylebench-data/original/validators/tests/crypto_addresses/test_btc_address.py:24: in test_returns_true_on_valid_btc_address\n    assert btc_address(value)\nE   AssertionError: assert ValidationError(func=btc_address, args={'value': '1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2'})\nE    +  where ValidationError(func=btc_address, args={'value': '1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2'}) = btc_address('1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2')\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpde1o850i/worker_1/tests/crypto_addresses/test_btc_address.py::test_returns_true_on_valid_btc_address[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2]\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 25 passed in 0.09s\nwarning: `VIRTUAL_ENV=/Users/yuan/stylebench/.venv` does not match the project environment path `.venv` and will be ignored; use `--active` to target the active environment instead\n",
+      "test_output": "...................................F\n=================================== FAILURES ===================================\n_ test_returns_true_on_valid_eth_address[0x5AEDA56215b167893e80B4fE645BA6d5Bab767DE] _\ntests/crypto_addresses/test_eth_address.py:25: in test_returns_true_on_valid_eth_address\n    assert eth_address(value)\nE   AssertionError: assert ValidationError(func=eth_address, args={'func': <function eth_address at 0x10ae26de0>})\nE    +  where ValidationError(func=eth_address, args={'func': <function eth_address at 0x10ae26de0>}) = eth_address('0x5AEDA56215b167893e80B4fE645BA6d5Bab767DE')\n=========================== short test summary info ============================\nFAILED tests/crypto_addresses/test_eth_address.py::test_returns_true_on_valid_eth_address[0x5AEDA56215b167893e80B4fE645BA6d5Bab767DE]\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 35 passed in 0.09s\n",
       "failing_tests": [
-        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpde1o850i/worker_1/tests/crypto_addresses/test_btc_address.py::test_returns_true_on_valid_btc_address[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2]"
+        "tests/crypto_addresses/test_eth_address.py::test_returns_true_on_valid_eth_address[0x5AEDA56215b167893e80B4fE645BA6d5Bab767DE]"
       ],
       "exit_code": 1
     },
     {
       "bug_id": "validators-original-008",
-      "test_output": ".........................F\n=================================== FAILURES ===================================\n__ test_returns_true_on_valid_btc_address[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2] __\n/Users/yuan/stylebench-data/original/validators/tests/crypto_addresses/test_btc_address.py:24: in test_returns_true_on_valid_btc_address\n    assert btc_address(value)\nE   AssertionError: assert ValidationError(func=btc_address, args={'value': '1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2'})\nE    +  where ValidationError(func=btc_address, args={'value': '1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2'}) = btc_address('1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2')\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpde1o850i/worker_1/tests/crypto_addresses/test_btc_address.py::test_returns_true_on_valid_btc_address[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2]\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 25 passed in 0.09s\nwarning: `VIRTUAL_ENV=/Users/yuan/stylebench/.venv` does not match the project environment path `.venv` and will be ignored; use `--active` to target the active environment instead\n",
+      "test_output": "...................................F\n=================================== FAILURES ===================================\n_ test_returns_true_on_valid_eth_address[0x5AEDA56215b167893e80B4fE645BA6d5Bab767DE] _\ntests/crypto_addresses/test_eth_address.py:25: in test_returns_true_on_valid_eth_address\n    assert eth_address(value)\nE   AssertionError: assert ValidationError(func=eth_address, args={'func': <function eth_address at 0x108a12de0>})\nE    +  where ValidationError(func=eth_address, args={'func': <function eth_address at 0x108a12de0>}) = eth_address('0x5AEDA56215b167893e80B4fE645BA6d5Bab767DE')\n=========================== short test summary info ============================\nFAILED tests/crypto_addresses/test_eth_address.py::test_returns_true_on_valid_eth_address[0x5AEDA56215b167893e80B4fE645BA6d5Bab767DE]\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 35 passed in 0.09s\n",
       "failing_tests": [
-        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpde1o850i/worker_1/tests/crypto_addresses/test_btc_address.py::test_returns_true_on_valid_btc_address[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2]"
+        "tests/crypto_addresses/test_eth_address.py::test_returns_true_on_valid_eth_address[0x5AEDA56215b167893e80B4fE645BA6d5Bab767DE]"
       ],
       "exit_code": 1
     },
     {
       "bug_id": "validators-original-009",
-      "test_output": ".........................F\n=================================== FAILURES ===================================\n__ test_returns_true_on_valid_btc_address[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2] __\n/Users/yuan/stylebench-data/original/validators/tests/crypto_addresses/test_btc_address.py:24: in test_returns_true_on_valid_btc_address\n    assert btc_address(value)\nE   AssertionError: assert ValidationError(func=btc_address, args={'value': '1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2'})\nE    +  where ValidationError(func=btc_address, args={'value': '1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2'}) = btc_address('1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2')\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpde1o850i/worker_1/tests/crypto_addresses/test_btc_address.py::test_returns_true_on_valid_btc_address[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2]\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 25 passed in 0.08s\nwarning: `VIRTUAL_ENV=/Users/yuan/stylebench/.venv` does not match the project environment path `.venv` and will be ignored; use `--active` to target the active environment instead\n",
+      "test_output": "...................................F\n=================================== FAILURES ===================================\n_ test_returns_true_on_valid_eth_address[0x5AEDA56215b167893e80B4fE645BA6d5Bab767DE] _\ntests/crypto_addresses/test_eth_address.py:25: in test_returns_true_on_valid_eth_address\n    assert eth_address(value)\nE   AssertionError: assert ValidationError(func=eth_address, args={'func': <function eth_address at 0x10709ade0>})\nE    +  where ValidationError(func=eth_address, args={'func': <function eth_address at 0x10709ade0>}) = eth_address('0x5AEDA56215b167893e80B4fE645BA6d5Bab767DE')\n=========================== short test summary info ============================\nFAILED tests/crypto_addresses/test_eth_address.py::test_returns_true_on_valid_eth_address[0x5AEDA56215b167893e80B4fE645BA6d5Bab767DE]\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 35 passed in 0.09s\n",
       "failing_tests": [
-        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpde1o850i/worker_1/tests/crypto_addresses/test_btc_address.py::test_returns_true_on_valid_btc_address[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2]"
+        "tests/crypto_addresses/test_eth_address.py::test_returns_true_on_valid_eth_address[0x5AEDA56215b167893e80B4fE645BA6d5Bab767DE]"
       ],
       "exit_code": 1
     },
     {
       "bug_id": "validators-original-010",
-      "test_output": ".........................F\n=================================== FAILURES ===================================\n__ test_returns_true_on_valid_btc_address[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2] __\n/Users/yuan/stylebench-data/original/validators/tests/crypto_addresses/test_btc_address.py:24: in test_returns_true_on_valid_btc_address\n    assert btc_address(value)\nE   AssertionError: assert ValidationError(func=btc_address, args={'value': '1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2'})\nE    +  where ValidationError(func=btc_address, args={'value': '1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2'}) = btc_address('1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2')\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpde1o850i/worker_1/tests/crypto_addresses/test_btc_address.py::test_returns_true_on_valid_btc_address[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2]\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 25 passed in 0.09s\nwarning: `VIRTUAL_ENV=/Users/yuan/stylebench/.venv` does not match the project environment path `.venv` and will be ignored; use `--active` to target the active environment instead\n",
+      "test_output": "...................................F\n=================================== FAILURES ===================================\n_ test_returns_true_on_valid_eth_address[0x5AEDA56215b167893e80B4fE645BA6d5Bab767DE] _\ntests/crypto_addresses/test_eth_address.py:25: in test_returns_true_on_valid_eth_address\n    assert eth_address(value)\nE   AssertionError: assert ValidationError(func=eth_address, args={'func': <function eth_address at 0x10672ade0>})\nE    +  where ValidationError(func=eth_address, args={'func': <function eth_address at 0x10672ade0>}) = eth_address('0x5AEDA56215b167893e80B4fE645BA6d5Bab767DE')\n=========================== short test summary info ============================\nFAILED tests/crypto_addresses/test_eth_address.py::test_returns_true_on_valid_eth_address[0x5AEDA56215b167893e80B4fE645BA6d5Bab767DE]\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 35 passed in 0.11s\n",
       "failing_tests": [
-        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpde1o850i/worker_1/tests/crypto_addresses/test_btc_address.py::test_returns_true_on_valid_btc_address[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2]"
+        "tests/crypto_addresses/test_eth_address.py::test_returns_true_on_valid_eth_address[0x5AEDA56215b167893e80B4fE645BA6d5Bab767DE]"
       ],
       "exit_code": 1
     },
     {
       "bug_id": "validators-original-011",
-      "test_output": ".........................F\n=================================== FAILURES ===================================\n__ test_returns_true_on_valid_btc_address[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2] __\n/Users/yuan/stylebench-data/original/validators/tests/crypto_addresses/test_btc_address.py:24: in test_returns_true_on_valid_btc_address\n    assert btc_address(value)\nE   AssertionError: assert ValidationError(func=btc_address, args={'value': '1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2'})\nE    +  where ValidationError(func=btc_address, args={'value': '1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2'}) = btc_address('1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2')\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpde1o850i/worker_1/tests/crypto_addresses/test_btc_address.py::test_returns_true_on_valid_btc_address[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2]\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 25 passed in 0.09s\nwarning: `VIRTUAL_ENV=/Users/yuan/stylebench/.venv` does not match the project environment path `.venv` and will be ignored; use `--active` to target the active environment instead\n",
+      "test_output": "...................................F\n=================================== FAILURES ===================================\n_ test_returns_true_on_valid_eth_address[0x5AEDA56215b167893e80B4fE645BA6d5Bab767DE] _\ntests/crypto_addresses/test_eth_address.py:25: in test_returns_true_on_valid_eth_address\n    assert eth_address(value)\nE   AssertionError: assert ValidationError(func=eth_address, args={'func': <function eth_address at 0x108f12de0>})\nE    +  where ValidationError(func=eth_address, args={'func': <function eth_address at 0x108f12de0>}) = eth_address('0x5AEDA56215b167893e80B4fE645BA6d5Bab767DE')\n=========================== short test summary info ============================\nFAILED tests/crypto_addresses/test_eth_address.py::test_returns_true_on_valid_eth_address[0x5AEDA56215b167893e80B4fE645BA6d5Bab767DE]\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 35 passed in 0.09s\n",
       "failing_tests": [
-        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpde1o850i/worker_1/tests/crypto_addresses/test_btc_address.py::test_returns_true_on_valid_btc_address[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2]"
+        "tests/crypto_addresses/test_eth_address.py::test_returns_true_on_valid_eth_address[0x5AEDA56215b167893e80B4fE645BA6d5Bab767DE]"
       ],
       "exit_code": 1
     },
     {
       "bug_id": "validators-original-012",
-      "test_output": ".........................F\n=================================== FAILURES ===================================\n__ test_returns_true_on_valid_btc_address[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2] __\n/Users/yuan/stylebench-data/original/validators/tests/crypto_addresses/test_btc_address.py:24: in test_returns_true_on_valid_btc_address\n    assert btc_address(value)\nE   AssertionError: assert ValidationError(func=btc_address, args={'value': '1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2'})\nE    +  where ValidationError(func=btc_address, args={'value': '1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2'}) = btc_address('1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2')\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpde1o850i/worker_1/tests/crypto_addresses/test_btc_address.py::test_returns_true_on_valid_btc_address[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2]\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 25 passed in 0.08s\nwarning: `VIRTUAL_ENV=/Users/yuan/stylebench/.venv` does not match the project environment path `.venv` and will be ignored; use `--active` to target the active environment instead\n",
+      "test_output": "...................................F\n=================================== FAILURES ===================================\n_ test_returns_true_on_valid_eth_address[0x5AEDA56215b167893e80B4fE645BA6d5Bab767DE] _\ntests/crypto_addresses/test_eth_address.py:25: in test_returns_true_on_valid_eth_address\n    assert eth_address(value)\nE   AssertionError: assert ValidationError(func=eth_address, args={'func': <function eth_address at 0x1094aede0>})\nE    +  where ValidationError(func=eth_address, args={'func': <function eth_address at 0x1094aede0>}) = eth_address('0x5AEDA56215b167893e80B4fE645BA6d5Bab767DE')\n=========================== short test summary info ============================\nFAILED tests/crypto_addresses/test_eth_address.py::test_returns_true_on_valid_eth_address[0x5AEDA56215b167893e80B4fE645BA6d5Bab767DE]\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 35 passed in 0.09s\n",
       "failing_tests": [
-        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpde1o850i/worker_1/tests/crypto_addresses/test_btc_address.py::test_returns_true_on_valid_btc_address[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2]"
+        "tests/crypto_addresses/test_eth_address.py::test_returns_true_on_valid_eth_address[0x5AEDA56215b167893e80B4fE645BA6d5Bab767DE]"
       ],
       "exit_code": 1
     },
     {
       "bug_id": "validators-original-013",
-      "test_output": ".........................F\n=================================== FAILURES ===================================\n__ test_returns_true_on_valid_btc_address[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2] __\n/Users/yuan/stylebench-data/original/validators/tests/crypto_addresses/test_btc_address.py:24: in test_returns_true_on_valid_btc_address\n    assert btc_address(value)\nE   AssertionError: assert ValidationError(func=btc_address, args={'value': '1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2'})\nE    +  where ValidationError(func=btc_address, args={'value': '1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2'}) = btc_address('1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2')\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpde1o850i/worker_1/tests/crypto_addresses/test_btc_address.py::test_returns_true_on_valid_btc_address[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2]\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 25 passed in 0.08s\nwarning: `VIRTUAL_ENV=/Users/yuan/stylebench/.venv` does not match the project environment path `.venv` and will be ignored; use `--active` to target the active environment instead\n",
+      "test_output": "...................................F\n=================================== FAILURES ===================================\n_ test_returns_true_on_valid_eth_address[0x5AEDA56215b167893e80B4fE645BA6d5Bab767DE] _\ntests/crypto_addresses/test_eth_address.py:25: in test_returns_true_on_valid_eth_address\n    assert eth_address(value)\nE   AssertionError: assert ValidationError(func=eth_address, args={'func': <function eth_address at 0x10b21ade0>})\nE    +  where ValidationError(func=eth_address, args={'func': <function eth_address at 0x10b21ade0>}) = eth_address('0x5AEDA56215b167893e80B4fE645BA6d5Bab767DE')\n=========================== short test summary info ============================\nFAILED tests/crypto_addresses/test_eth_address.py::test_returns_true_on_valid_eth_address[0x5AEDA56215b167893e80B4fE645BA6d5Bab767DE]\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 35 passed in 0.08s\n",
       "failing_tests": [
-        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpde1o850i/worker_1/tests/crypto_addresses/test_btc_address.py::test_returns_true_on_valid_btc_address[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2]"
-      ],
-      "exit_code": 1
-    },
-    {
-      "bug_id": "validators-original-014",
-      "test_output": ".........................F\n=================================== FAILURES ===================================\n__ test_returns_true_on_valid_btc_address[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2] __\n/Users/yuan/stylebench-data/original/validators/tests/crypto_addresses/test_btc_address.py:24: in test_returns_true_on_valid_btc_address\n    assert btc_address(value)\nE   AssertionError: assert ValidationError(func=btc_address, args={'value': '1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2'})\nE    +  where ValidationError(func=btc_address, args={'value': '1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2'}) = btc_address('1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2')\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpde1o850i/worker_1/tests/crypto_addresses/test_btc_address.py::test_returns_true_on_valid_btc_address[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2]\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 25 passed in 0.08s\nwarning: `VIRTUAL_ENV=/Users/yuan/stylebench/.venv` does not match the project environment path `.venv` and will be ignored; use `--active` to target the active environment instead\n",
-      "failing_tests": [
-        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpde1o850i/worker_1/tests/crypto_addresses/test_btc_address.py::test_returns_true_on_valid_btc_address[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2]"
+        "tests/crypto_addresses/test_eth_address.py::test_returns_true_on_valid_eth_address[0x5AEDA56215b167893e80B4fE645BA6d5Bab767DE]"
       ],
       "exit_code": 1
     },
     {
       "bug_id": "validators-original-015",
-      "test_output": ".........................F\n=================================== FAILURES ===================================\n__ test_returns_true_on_valid_btc_address[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2] __\n/Users/yuan/stylebench-data/original/validators/tests/crypto_addresses/test_btc_address.py:24: in test_returns_true_on_valid_btc_address\n    assert btc_address(value)\nE   AssertionError: assert ValidationError(func=btc_address, args={'value': '1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2'})\nE    +  where ValidationError(func=btc_address, args={'value': '1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2'}) = btc_address('1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2')\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpde1o850i/worker_1/tests/crypto_addresses/test_btc_address.py::test_returns_true_on_valid_btc_address[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2]\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 25 passed in 0.08s\nwarning: `VIRTUAL_ENV=/Users/yuan/stylebench/.venv` does not match the project environment path `.venv` and will be ignored; use `--active` to target the active environment instead\n",
+      "test_output": "...................................F\n=================================== FAILURES ===================================\n_ test_returns_true_on_valid_eth_address[0x5AEDA56215b167893e80B4fE645BA6d5Bab767DE] _\ntests/crypto_addresses/test_eth_address.py:25: in test_returns_true_on_valid_eth_address\n    assert eth_address(value)\nE   AssertionError: assert ValidationError(func=eth_address, args={'func': <function eth_address at 0x1071dade0>})\nE    +  where ValidationError(func=eth_address, args={'func': <function eth_address at 0x1071dade0>}) = eth_address('0x5AEDA56215b167893e80B4fE645BA6d5Bab767DE')\n=========================== short test summary info ============================\nFAILED tests/crypto_addresses/test_eth_address.py::test_returns_true_on_valid_eth_address[0x5AEDA56215b167893e80B4fE645BA6d5Bab767DE]\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 35 passed in 0.10s\n",
       "failing_tests": [
-        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpde1o850i/worker_1/tests/crypto_addresses/test_btc_address.py::test_returns_true_on_valid_btc_address[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2]"
+        "tests/crypto_addresses/test_eth_address.py::test_returns_true_on_valid_eth_address[0x5AEDA56215b167893e80B4fE645BA6d5Bab767DE]"
       ],
       "exit_code": 1
     },
     {
       "bug_id": "validators-original-016",
-      "test_output": ".........................F\n=================================== FAILURES ===================================\n__ test_returns_true_on_valid_btc_address[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2] __\n/Users/yuan/stylebench-data/original/validators/tests/crypto_addresses/test_btc_address.py:24: in test_returns_true_on_valid_btc_address\n    assert btc_address(value)\nE   AssertionError: assert ValidationError(func=btc_address, args={'value': '1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2'})\nE    +  where ValidationError(func=btc_address, args={'value': '1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2'}) = btc_address('1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2')\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpde1o850i/worker_1/tests/crypto_addresses/test_btc_address.py::test_returns_true_on_valid_btc_address[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2]\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 25 passed in 0.09s\nwarning: `VIRTUAL_ENV=/Users/yuan/stylebench/.venv` does not match the project environment path `.venv` and will be ignored; use `--active` to target the active environment instead\n",
+      "test_output": "...................................F\n=================================== FAILURES ===================================\n_ test_returns_true_on_valid_eth_address[0x5AEDA56215b167893e80B4fE645BA6d5Bab767DE] _\ntests/crypto_addresses/test_eth_address.py:25: in test_returns_true_on_valid_eth_address\n    assert eth_address(value)\nE   AssertionError: assert ValidationError(func=eth_address, args={'func': <function eth_address at 0x10a8a2de0>})\nE    +  where ValidationError(func=eth_address, args={'func': <function eth_address at 0x10a8a2de0>}) = eth_address('0x5AEDA56215b167893e80B4fE645BA6d5Bab767DE')\n=========================== short test summary info ============================\nFAILED tests/crypto_addresses/test_eth_address.py::test_returns_true_on_valid_eth_address[0x5AEDA56215b167893e80B4fE645BA6d5Bab767DE]\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 35 passed in 0.09s\n",
       "failing_tests": [
-        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpde1o850i/worker_1/tests/crypto_addresses/test_btc_address.py::test_returns_true_on_valid_btc_address[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2]"
+        "tests/crypto_addresses/test_eth_address.py::test_returns_true_on_valid_eth_address[0x5AEDA56215b167893e80B4fE645BA6d5Bab767DE]"
       ],
       "exit_code": 1
     },
     {
       "bug_id": "validators-original-017",
-      "test_output": ".........................F\n=================================== FAILURES ===================================\n__ test_returns_true_on_valid_btc_address[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2] __\n/Users/yuan/stylebench-data/original/validators/tests/crypto_addresses/test_btc_address.py:24: in test_returns_true_on_valid_btc_address\n    assert btc_address(value)\nE   AssertionError: assert ValidationError(func=btc_address, args={'value': '1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2'})\nE    +  where ValidationError(func=btc_address, args={'value': '1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2'}) = btc_address('1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2')\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpde1o850i/worker_1/tests/crypto_addresses/test_btc_address.py::test_returns_true_on_valid_btc_address[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2]\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 25 passed in 0.09s\nwarning: `VIRTUAL_ENV=/Users/yuan/stylebench/.venv` does not match the project environment path `.venv` and will be ignored; use `--active` to target the active environment instead\n",
+      "test_output": "...................................F\n=================================== FAILURES ===================================\n_ test_returns_true_on_valid_eth_address[0x5AEDA56215b167893e80B4fE645BA6d5Bab767DE] _\ntests/crypto_addresses/test_eth_address.py:25: in test_returns_true_on_valid_eth_address\n    assert eth_address(value)\nE   AssertionError: assert ValidationError(func=eth_address, args={'func': <function eth_address at 0x109072de0>})\nE    +  where ValidationError(func=eth_address, args={'func': <function eth_address at 0x109072de0>}) = eth_address('0x5AEDA56215b167893e80B4fE645BA6d5Bab767DE')\n=========================== short test summary info ============================\nFAILED tests/crypto_addresses/test_eth_address.py::test_returns_true_on_valid_eth_address[0x5AEDA56215b167893e80B4fE645BA6d5Bab767DE]\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 35 passed in 0.13s\n",
       "failing_tests": [
-        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpde1o850i/worker_1/tests/crypto_addresses/test_btc_address.py::test_returns_true_on_valid_btc_address[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2]"
+        "tests/crypto_addresses/test_eth_address.py::test_returns_true_on_valid_eth_address[0x5AEDA56215b167893e80B4fE645BA6d5Bab767DE]"
       ],
       "exit_code": 1
     },
     {
       "bug_id": "validators-original-018",
-      "test_output": ".........................F\n=================================== FAILURES ===================================\n__ test_returns_true_on_valid_btc_address[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2] __\n/Users/yuan/stylebench-data/original/validators/tests/crypto_addresses/test_btc_address.py:24: in test_returns_true_on_valid_btc_address\n    assert btc_address(value)\nE   AssertionError: assert ValidationError(func=btc_address, args={'value': '1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2'})\nE    +  where ValidationError(func=btc_address, args={'value': '1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2'}) = btc_address('1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2')\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpde1o850i/worker_1/tests/crypto_addresses/test_btc_address.py::test_returns_true_on_valid_btc_address[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2]\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 25 passed in 0.10s\nwarning: `VIRTUAL_ENV=/Users/yuan/stylebench/.venv` does not match the project environment path `.venv` and will be ignored; use `--active` to target the active environment instead\n",
+      "test_output": "...................................F\n=================================== FAILURES ===================================\n_ test_returns_true_on_valid_eth_address[0x5AEDA56215b167893e80B4fE645BA6d5Bab767DE] _\ntests/crypto_addresses/test_eth_address.py:25: in test_returns_true_on_valid_eth_address\n    assert eth_address(value)\nE   AssertionError: assert ValidationError(func=eth_address, args={'value': '0x5AEDA56215b167893e80B4fE645BA6d5Bab767DE'})\nE    +  where ValidationError(func=eth_address, args={'value': '0x5AEDA56215b167893e80B4fE645BA6d5Bab767DE'}) = eth_address('0x5AEDA56215b167893e80B4fE645BA6d5Bab767DE')\n=========================== short test summary info ============================\nFAILED tests/crypto_addresses/test_eth_address.py::test_returns_true_on_valid_eth_address[0x5AEDA56215b167893e80B4fE645BA6d5Bab767DE]\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 35 passed in 0.09s\n",
       "failing_tests": [
-        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpde1o850i/worker_1/tests/crypto_addresses/test_btc_address.py::test_returns_true_on_valid_btc_address[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2]"
+        "tests/crypto_addresses/test_eth_address.py::test_returns_true_on_valid_eth_address[0x5AEDA56215b167893e80B4fE645BA6d5Bab767DE]"
       ],
       "exit_code": 1
     },
     {
       "bug_id": "validators-original-019",
-      "test_output": ".........................F\n=================================== FAILURES ===================================\n__ test_returns_true_on_valid_btc_address[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2] __\n/Users/yuan/stylebench-data/original/validators/tests/crypto_addresses/test_btc_address.py:24: in test_returns_true_on_valid_btc_address\n    assert btc_address(value)\nE   AssertionError: assert ValidationError(func=btc_address, args={'value': '1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2'})\nE    +  where ValidationError(func=btc_address, args={'value': '1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2'}) = btc_address('1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2')\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpde1o850i/worker_1/tests/crypto_addresses/test_btc_address.py::test_returns_true_on_valid_btc_address[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2]\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 25 passed in 0.08s\nwarning: `VIRTUAL_ENV=/Users/yuan/stylebench/.venv` does not match the project environment path `.venv` and will be ignored; use `--active` to target the active environment instead\n",
+      "test_output": "...................................F\n=================================== FAILURES ===================================\n_ test_returns_true_on_valid_eth_address[0x5AEDA56215b167893e80B4fE645BA6d5Bab767DE] _\ntests/crypto_addresses/test_eth_address.py:25: in test_returns_true_on_valid_eth_address\n    assert eth_address(value)\nE   AssertionError: assert ValidationError(func=eth_address, args={'value': '0x5AEDA56215b167893e80B4fE645BA6d5Bab767DE'})\nE    +  where ValidationError(func=eth_address, args={'value': '0x5AEDA56215b167893e80B4fE645BA6d5Bab767DE'}) = eth_address('0x5AEDA56215b167893e80B4fE645BA6d5Bab767DE')\n=========================== short test summary info ============================\nFAILED tests/crypto_addresses/test_eth_address.py::test_returns_true_on_valid_eth_address[0x5AEDA56215b167893e80B4fE645BA6d5Bab767DE]\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 35 passed in 0.09s\n",
       "failing_tests": [
-        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpde1o850i/worker_1/tests/crypto_addresses/test_btc_address.py::test_returns_true_on_valid_btc_address[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2]"
+        "tests/crypto_addresses/test_eth_address.py::test_returns_true_on_valid_eth_address[0x5AEDA56215b167893e80B4fE645BA6d5Bab767DE]"
       ],
       "exit_code": 1
     },
     {
       "bug_id": "validators-original-020",
-      "test_output": ".........................F\n=================================== FAILURES ===================================\n__ test_returns_true_on_valid_btc_address[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2] __\n/Users/yuan/stylebench-data/original/validators/tests/crypto_addresses/test_btc_address.py:24: in test_returns_true_on_valid_btc_address\n    assert btc_address(value)\nE   AssertionError: assert ValidationError(func=btc_address, args={'value': '1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2'})\nE    +  where ValidationError(func=btc_address, args={'value': '1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2'}) = btc_address('1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2')\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpde1o850i/worker_1/tests/crypto_addresses/test_btc_address.py::test_returns_true_on_valid_btc_address[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2]\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 25 passed in 0.09s\nwarning: `VIRTUAL_ENV=/Users/yuan/stylebench/.venv` does not match the project environment path `.venv` and will be ignored; use `--active` to target the active environment instead\n",
+      "test_output": "...................................F\n=================================== FAILURES ===================================\n_ test_returns_true_on_valid_eth_address[0x5AEDA56215b167893e80B4fE645BA6d5Bab767DE] _\ntests/crypto_addresses/test_eth_address.py:25: in test_returns_true_on_valid_eth_address\n    assert eth_address(value)\nE   AssertionError: assert ValidationError(func=eth_address, args={'value': '0x5AEDA56215b167893e80B4fE645BA6d5Bab767DE'})\nE    +  where ValidationError(func=eth_address, args={'value': '0x5AEDA56215b167893e80B4fE645BA6d5Bab767DE'}) = eth_address('0x5AEDA56215b167893e80B4fE645BA6d5Bab767DE')\n=========================== short test summary info ============================\nFAILED tests/crypto_addresses/test_eth_address.py::test_returns_true_on_valid_eth_address[0x5AEDA56215b167893e80B4fE645BA6d5Bab767DE]\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 35 passed in 0.09s\n",
       "failing_tests": [
-        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpde1o850i/worker_1/tests/crypto_addresses/test_btc_address.py::test_returns_true_on_valid_btc_address[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2]"
+        "tests/crypto_addresses/test_eth_address.py::test_returns_true_on_valid_eth_address[0x5AEDA56215b167893e80B4fE645BA6d5Bab767DE]"
       ],
       "exit_code": 1
     },
     {
       "bug_id": "validators-original-021",
-      "test_output": ".........................F\n=================================== FAILURES ===================================\n__ test_returns_true_on_valid_btc_address[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2] __\n/Users/yuan/stylebench-data/original/validators/tests/crypto_addresses/test_btc_address.py:24: in test_returns_true_on_valid_btc_address\n    assert btc_address(value)\nE   AssertionError: assert ValidationError(func=btc_address, args={'value': '1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2'})\nE    +  where ValidationError(func=btc_address, args={'value': '1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2'}) = btc_address('1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2')\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpde1o850i/worker_1/tests/crypto_addresses/test_btc_address.py::test_returns_true_on_valid_btc_address[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2]\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 25 passed in 0.08s\nwarning: `VIRTUAL_ENV=/Users/yuan/stylebench/.venv` does not match the project environment path `.venv` and will be ignored; use `--active` to target the active environment instead\n",
+      "test_output": "...................................F\n=================================== FAILURES ===================================\n_ test_returns_true_on_valid_eth_address[0x5AEDA56215b167893e80B4fE645BA6d5Bab767DE] _\ntests/crypto_addresses/test_eth_address.py:25: in test_returns_true_on_valid_eth_address\n    assert eth_address(value)\nE   AssertionError: assert ValidationError(func=eth_address, args={'value': '0x5AEDA56215b167893e80B4fE645BA6d5Bab767DE'})\nE    +  where ValidationError(func=eth_address, args={'value': '0x5AEDA56215b167893e80B4fE645BA6d5Bab767DE'}) = eth_address('0x5AEDA56215b167893e80B4fE645BA6d5Bab767DE')\n=========================== short test summary info ============================\nFAILED tests/crypto_addresses/test_eth_address.py::test_returns_true_on_valid_eth_address[0x5AEDA56215b167893e80B4fE645BA6d5Bab767DE]\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 35 passed in 0.09s\n",
       "failing_tests": [
-        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpde1o850i/worker_1/tests/crypto_addresses/test_btc_address.py::test_returns_true_on_valid_btc_address[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2]"
+        "tests/crypto_addresses/test_eth_address.py::test_returns_true_on_valid_eth_address[0x5AEDA56215b167893e80B4fE645BA6d5Bab767DE]"
       ],
       "exit_code": 1
     },
     {
       "bug_id": "validators-original-022",
-      "test_output": ".........................F\n=================================== FAILURES ===================================\n__ test_returns_true_on_valid_btc_address[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2] __\n/Users/yuan/stylebench-data/original/validators/tests/crypto_addresses/test_btc_address.py:24: in test_returns_true_on_valid_btc_address\n    assert btc_address(value)\nE   AssertionError: assert ValidationError(func=btc_address, args={'value': '1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2'})\nE    +  where ValidationError(func=btc_address, args={'value': '1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2'}) = btc_address('1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2')\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpde1o850i/worker_1/tests/crypto_addresses/test_btc_address.py::test_returns_true_on_valid_btc_address[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2]\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 25 passed in 0.08s\nwarning: `VIRTUAL_ENV=/Users/yuan/stylebench/.venv` does not match the project environment path `.venv` and will be ignored; use `--active` to target the active environment instead\n",
+      "test_output": "...................................F\n=================================== FAILURES ===================================\n_ test_returns_true_on_valid_eth_address[0x5AEDA56215b167893e80B4fE645BA6d5Bab767DE] _\ntests/crypto_addresses/test_eth_address.py:25: in test_returns_true_on_valid_eth_address\n    assert eth_address(value)\nE   AssertionError: assert ValidationError(func=eth_address, args={'value': '0x5AEDA56215b167893e80B4fE645BA6d5Bab767DE'})\nE    +  where ValidationError(func=eth_address, args={'value': '0x5AEDA56215b167893e80B4fE645BA6d5Bab767DE'}) = eth_address('0x5AEDA56215b167893e80B4fE645BA6d5Bab767DE')\n=========================== short test summary info ============================\nFAILED tests/crypto_addresses/test_eth_address.py::test_returns_true_on_valid_eth_address[0x5AEDA56215b167893e80B4fE645BA6d5Bab767DE]\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 35 passed in 0.09s\n",
       "failing_tests": [
-        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpde1o850i/worker_1/tests/crypto_addresses/test_btc_address.py::test_returns_true_on_valid_btc_address[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2]"
+        "tests/crypto_addresses/test_eth_address.py::test_returns_true_on_valid_eth_address[0x5AEDA56215b167893e80B4fE645BA6d5Bab767DE]"
       ],
       "exit_code": 1
     },
     {
       "bug_id": "validators-original-023",
-      "test_output": ".........................F\n=================================== FAILURES ===================================\n__ test_returns_true_on_valid_btc_address[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2] __\n/Users/yuan/stylebench-data/original/validators/tests/crypto_addresses/test_btc_address.py:24: in test_returns_true_on_valid_btc_address\n    assert btc_address(value)\nE   AssertionError: assert ValidationError(func=btc_address, args={'value': '1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2'})\nE    +  where ValidationError(func=btc_address, args={'value': '1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2'}) = btc_address('1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2')\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpde1o850i/worker_1/tests/crypto_addresses/test_btc_address.py::test_returns_true_on_valid_btc_address[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2]\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 25 passed in 0.13s\nwarning: `VIRTUAL_ENV=/Users/yuan/stylebench/.venv` does not match the project environment path `.venv` and will be ignored; use `--active` to target the active environment instead\n",
+      "test_output": "...................................F\n=================================== FAILURES ===================================\n_ test_returns_true_on_valid_eth_address[0x5AEDA56215b167893e80B4fE645BA6d5Bab767DE] _\ntests/crypto_addresses/test_eth_address.py:25: in test_returns_true_on_valid_eth_address\n    assert eth_address(value)\nE   AssertionError: assert ValidationError(func=eth_address, args={'value': '0x5AEDA56215b167893e80B4fE645BA6d5Bab767DE'})\nE    +  where ValidationError(func=eth_address, args={'value': '0x5AEDA56215b167893e80B4fE645BA6d5Bab767DE'}) = eth_address('0x5AEDA56215b167893e80B4fE645BA6d5Bab767DE')\n=========================== short test summary info ============================\nFAILED tests/crypto_addresses/test_eth_address.py::test_returns_true_on_valid_eth_address[0x5AEDA56215b167893e80B4fE645BA6d5Bab767DE]\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 35 passed in 0.09s\n",
       "failing_tests": [
-        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpde1o850i/worker_1/tests/crypto_addresses/test_btc_address.py::test_returns_true_on_valid_btc_address[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2]"
+        "tests/crypto_addresses/test_eth_address.py::test_returns_true_on_valid_eth_address[0x5AEDA56215b167893e80B4fE645BA6d5Bab767DE]"
       ],
       "exit_code": 1
     },
     {
       "bug_id": "validators-original-024",
-      "test_output": ".........................F\n=================================== FAILURES ===================================\n__ test_returns_true_on_valid_btc_address[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2] __\n/Users/yuan/stylebench-data/original/validators/tests/crypto_addresses/test_btc_address.py:24: in test_returns_true_on_valid_btc_address\n    assert btc_address(value)\nE   AssertionError: assert ValidationError(func=btc_address, args={'value': '1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2'})\nE    +  where ValidationError(func=btc_address, args={'value': '1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2'}) = btc_address('1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2')\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpde1o850i/worker_1/tests/crypto_addresses/test_btc_address.py::test_returns_true_on_valid_btc_address[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2]\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 25 passed in 0.08s\nwarning: `VIRTUAL_ENV=/Users/yuan/stylebench/.venv` does not match the project environment path `.venv` and will be ignored; use `--active` to target the active environment instead\n",
+      "test_output": "...................................F\n=================================== FAILURES ===================================\n_ test_returns_true_on_valid_eth_address[0x5AEDA56215b167893e80B4fE645BA6d5Bab767DE] _\ntests/crypto_addresses/test_eth_address.py:25: in test_returns_true_on_valid_eth_address\n    assert eth_address(value)\nE   AssertionError: assert ValidationError(func=eth_address, args={'value': '0x5AEDA56215b167893e80B4fE645BA6d5Bab767DE'})\nE    +  where ValidationError(func=eth_address, args={'value': '0x5AEDA56215b167893e80B4fE645BA6d5Bab767DE'}) = eth_address('0x5AEDA56215b167893e80B4fE645BA6d5Bab767DE')\n=========================== short test summary info ============================\nFAILED tests/crypto_addresses/test_eth_address.py::test_returns_true_on_valid_eth_address[0x5AEDA56215b167893e80B4fE645BA6d5Bab767DE]\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 35 passed in 0.09s\n",
       "failing_tests": [
-        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpde1o850i/worker_1/tests/crypto_addresses/test_btc_address.py::test_returns_true_on_valid_btc_address[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2]"
+        "tests/crypto_addresses/test_eth_address.py::test_returns_true_on_valid_eth_address[0x5AEDA56215b167893e80B4fE645BA6d5Bab767DE]"
       ],
       "exit_code": 1
     },
     {
       "bug_id": "validators-original-025",
-      "test_output": ".........................F\n=================================== FAILURES ===================================\n__ test_returns_true_on_valid_btc_address[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2] __\n/Users/yuan/stylebench-data/original/validators/tests/crypto_addresses/test_btc_address.py:24: in test_returns_true_on_valid_btc_address\n    assert btc_address(value)\nE   AssertionError: assert ValidationError(func=btc_address, args={'value': '1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2'})\nE    +  where ValidationError(func=btc_address, args={'value': '1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2'}) = btc_address('1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2')\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpde1o850i/worker_1/tests/crypto_addresses/test_btc_address.py::test_returns_true_on_valid_btc_address[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2]\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 25 passed in 0.08s\nwarning: `VIRTUAL_ENV=/Users/yuan/stylebench/.venv` does not match the project environment path `.venv` and will be ignored; use `--active` to target the active environment instead\n",
+      "test_output": "F\n=================================== FAILURES ===================================\n_ test_returns_true_on_valid_bsc_address[0x4e5acf9684652BEa56F2f01b7101a225Ee33d23f] _\ntests/crypto_addresses/test_bsc_address.py:28: in test_returns_true_on_valid_bsc_address\n    assert bsc_address(value)\nE   AssertionError: assert ValidationError(func=bsc_address, args={'value': '0x4e5acf9684652BEa56F2f01b7101a225Ee33d23f'})\nE    +  where ValidationError(func=bsc_address, args={'value': '0x4e5acf9684652BEa56F2f01b7101a225Ee33d23f'}) = bsc_address('0x4e5acf9684652BEa56F2f01b7101a225Ee33d23f')\n=========================== short test summary info ============================\nFAILED tests/crypto_addresses/test_bsc_address.py::test_returns_true_on_valid_bsc_address[0x4e5acf9684652BEa56F2f01b7101a225Ee33d23f]\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed in 0.07s\n",
       "failing_tests": [
-        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpde1o850i/worker_1/tests/crypto_addresses/test_btc_address.py::test_returns_true_on_valid_btc_address[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2]"
+        "tests/crypto_addresses/test_bsc_address.py::test_returns_true_on_valid_bsc_address[0x4e5acf9684652BEa56F2f01b7101a225Ee33d23f]"
       ],
       "exit_code": 1
     },
     {
       "bug_id": "validators-original-026",
-      "test_output": ".............................F\n=================================== FAILURES ===================================\n_ test_returns_failed_validation_on_invalid_btc_address[ff3Cwgr2g7vsi1bXDUkpEnVoRLA9w4FZfC69] _\n/Users/yuan/stylebench-data/original/validators/tests/crypto_addresses/test_btc_address.py:40: in test_returns_failed_validation_on_invalid_btc_address\n    assert isinstance(btc_address(value), ValidationError)\nE   AssertionError: assert False\nE    +  where False = isinstance(True, ValidationError)\nE    +    where True = btc_address('ff3Cwgr2g7vsi1bXDUkpEnVoRLA9w4FZfC69')\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpde1o850i/worker_1/tests/crypto_addresses/test_btc_address.py::test_returns_failed_validation_on_invalid_btc_address[ff3Cwgr2g7vsi1bXDUkpEnVoRLA9w4FZfC69]\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 29 passed in 0.08s\nwarning: `VIRTUAL_ENV=/Users/yuan/stylebench/.venv` does not match the project environment path `.venv` and will be ignored; use `--active` to target the active environment instead\n",
+      "test_output": ".............................F\n=================================== FAILURES ===================================\n_ test_returns_failed_validation_on_invalid_btc_address[ff3Cwgr2g7vsi1bXDUkpEnVoRLA9w4FZfC69] _\ntests/crypto_addresses/test_btc_address.py:40: in test_returns_failed_validation_on_invalid_btc_address\n    assert isinstance(btc_address(value), ValidationError)\nE   AssertionError: assert False\nE    +  where False = isinstance(True, ValidationError)\nE    +    where True = btc_address('ff3Cwgr2g7vsi1bXDUkpEnVoRLA9w4FZfC69')\n=========================== short test summary info ============================\nFAILED tests/crypto_addresses/test_btc_address.py::test_returns_failed_validation_on_invalid_btc_address[ff3Cwgr2g7vsi1bXDUkpEnVoRLA9w4FZfC69]\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 29 passed in 0.08s\n",
       "failing_tests": [
-        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpde1o850i/worker_1/tests/crypto_addresses/test_btc_address.py::test_returns_failed_validation_on_invalid_btc_address[ff3Cwgr2g7vsi1bXDUkpEnVoRLA9w4FZfC69]"
-      ],
-      "exit_code": 1
-    },
-    {
-      "bug_id": "validators-original-027",
-      "test_output": ".............................F\n=================================== FAILURES ===================================\n_ test_returns_failed_validation_on_invalid_btc_address[ff3Cwgr2g7vsi1bXDUkpEnVoRLA9w4FZfC69] _\n/Users/yuan/stylebench-data/original/validators/tests/crypto_addresses/test_btc_address.py:40: in test_returns_failed_validation_on_invalid_btc_address\n    assert isinstance(btc_address(value), ValidationError)\nE   AssertionError: assert False\nE    +  where False = isinstance(True, ValidationError)\nE    +    where True = btc_address('ff3Cwgr2g7vsi1bXDUkpEnVoRLA9w4FZfC69')\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpde1o850i/worker_1/tests/crypto_addresses/test_btc_address.py::test_returns_failed_validation_on_invalid_btc_address[ff3Cwgr2g7vsi1bXDUkpEnVoRLA9w4FZfC69]\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 29 passed in 0.08s\nwarning: `VIRTUAL_ENV=/Users/yuan/stylebench/.venv` does not match the project environment path `.venv` and will be ignored; use `--active` to target the active environment instead\n",
-      "failing_tests": [
-        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpde1o850i/worker_1/tests/crypto_addresses/test_btc_address.py::test_returns_failed_validation_on_invalid_btc_address[ff3Cwgr2g7vsi1bXDUkpEnVoRLA9w4FZfC69]"
+        "tests/crypto_addresses/test_btc_address.py::test_returns_failed_validation_on_invalid_btc_address[ff3Cwgr2g7vsi1bXDUkpEnVoRLA9w4FZfC69]"
       ],
       "exit_code": 1
     },
     {
       "bug_id": "validators-original-028",
-      "test_output": ".........................F\n=================================== FAILURES ===================================\n__ test_returns_true_on_valid_btc_address[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2] __\n/Users/yuan/stylebench-data/original/validators/tests/crypto_addresses/test_btc_address.py:24: in test_returns_true_on_valid_btc_address\n    assert btc_address(value)\n           ^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpde1o850i/worker_1/src/validators/utils.py:91: in wrapper\n    if func(*args, **kwargs)\n       ^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpde1o850i/worker_1/src/validators/crypto_addresses/btc_address.py:55: in btc_address\n    else _validate_old_btc_address(value)\n         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpde1o850i/worker_1/src/validators/crypto_addresses/btc_address.py:21: in _validate_old_btc_address\n    decoded_bytes = _decode_base58(addr).to_bytes(25, \"big\")\n                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nE   AttributeError: 'NoneType' object has no attribute 'to_bytes'\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpde1o850i/worker_1/tests/crypto_addresses/test_btc_address.py::test_returns_true_on_valid_btc_address[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2]\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 25 passed in 0.08s\nwarning: `VIRTUAL_ENV=/Users/yuan/stylebench/.venv` does not match the project environment path `.venv` and will be ignored; use `--active` to target the active environment instead\n",
+      "test_output": ".................................F\n=================================== FAILURES ===================================\n_ test_returns_true_on_valid_eth_address[0x8ba1f109551bd432803012645ac136ddd64dba72] _\ntests/crypto_addresses/test_eth_address.py:25: in test_returns_true_on_valid_eth_address\n    assert eth_address(value)\n           ^^^^^^^^^^^^^^^^^^\nsrc/validators/utils.py:91: in wrapper\n    if func(*args, **kwargs)\n       ^^^^^^^^^^^^^^^^^^^^^\nsrc/validators/crypto_addresses/eth_address.py:54: in eth_address\n    raise ImportError(\nE   ImportError: Do `pip install validators[crypto-eth-addresses]` to perform `eth_address` validation.\n=========================== short test summary info ============================\nFAILED tests/crypto_addresses/test_eth_address.py::test_returns_true_on_valid_eth_address[0x8ba1f109551bd432803012645ac136ddd64dba72]\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 33 passed in 0.08s\n",
       "failing_tests": [
-        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpde1o850i/worker_1/tests/crypto_addresses/test_btc_address.py::test_returns_true_on_valid_btc_address[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2]"
+        "tests/crypto_addresses/test_eth_address.py::test_returns_true_on_valid_eth_address[0x8ba1f109551bd432803012645ac136ddd64dba72]"
       ],
       "exit_code": 1
     },
     {
       "bug_id": "validators-original-029",
-      "test_output": "..................................................F\n=================================== FAILURES ===================================\n__ test_returns_true_on_valid_trx_address[TLjfbTbpZYDQ4EoA4N5CLNgGjfbF8ZWz38] __\n/Users/yuan/stylebench-data/original/validators/tests/crypto_addresses/test_trx_address.py:29: in test_returns_true_on_valid_trx_address\n    assert trx_address(value)\nE   AssertionError: assert ValidationError(func=trx_address, args={'value': 'TLjfbTbpZYDQ4EoA4N5CLNgGjfbF8ZWz38'})\nE    +  where ValidationError(func=trx_address, args={'value': 'TLjfbTbpZYDQ4EoA4N5CLNgGjfbF8ZWz38'}) = trx_address('TLjfbTbpZYDQ4EoA4N5CLNgGjfbF8ZWz38')\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpde1o850i/worker_1/tests/crypto_addresses/test_trx_address.py::test_returns_true_on_valid_trx_address[TLjfbTbpZYDQ4EoA4N5CLNgGjfbF8ZWz38]\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 50 passed in 0.14s\nwarning: `VIRTUAL_ENV=/Users/yuan/stylebench/.venv` does not match the project environment path `.venv` and will be ignored; use `--active` to target the active environment instead\n",
+      "test_output": "...................................F\n=================================== FAILURES ===================================\n_ test_returns_true_on_valid_eth_address[0x5AEDA56215b167893e80B4fE645BA6d5Bab767DE] _\ntests/crypto_addresses/test_eth_address.py:25: in test_returns_true_on_valid_eth_address\n    assert eth_address(value)\nE   AssertionError: assert ValidationError(func=eth_address, args={'value': '0x5AEDA56215b167893e80B4fE645BA6d5Bab767DE'})\nE    +  where ValidationError(func=eth_address, args={'value': '0x5AEDA56215b167893e80B4fE645BA6d5Bab767DE'}) = eth_address('0x5AEDA56215b167893e80B4fE645BA6d5Bab767DE')\n=========================== short test summary info ============================\nFAILED tests/crypto_addresses/test_eth_address.py::test_returns_true_on_valid_eth_address[0x5AEDA56215b167893e80B4fE645BA6d5Bab767DE]\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 35 passed in 0.09s\n",
       "failing_tests": [
-        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpde1o850i/worker_1/tests/crypto_addresses/test_trx_address.py::test_returns_true_on_valid_trx_address[TLjfbTbpZYDQ4EoA4N5CLNgGjfbF8ZWz38]"
+        "tests/crypto_addresses/test_eth_address.py::test_returns_true_on_valid_eth_address[0x5AEDA56215b167893e80B4fE645BA6d5Bab767DE]"
       ],
       "exit_code": 1
     },
     {
       "bug_id": "validators-original-030",
-      "test_output": ".........................F\n=================================== FAILURES ===================================\n__ test_returns_true_on_valid_btc_address[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2] __\n/Users/yuan/stylebench-data/original/validators/tests/crypto_addresses/test_btc_address.py:24: in test_returns_true_on_valid_btc_address\n    assert btc_address(value)\nE   AssertionError: assert ValidationError(func=btc_address, args={'value': '1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2'})\nE    +  where ValidationError(func=btc_address, args={'value': '1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2'}) = btc_address('1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2')\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpde1o850i/worker_1/tests/crypto_addresses/test_btc_address.py::test_returns_true_on_valid_btc_address[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2]\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 25 passed in 0.08s\nwarning: `VIRTUAL_ENV=/Users/yuan/stylebench/.venv` does not match the project environment path `.venv` and will be ignored; use `--active` to target the active environment instead\n",
+      "test_output": "........................................................................ [  8%]\n...................................................F\n=================================== FAILURES ===================================\n______________________ test_returns_false_on_invalid_nif _______________________\ntests/i18n/test_es.py:100: in test_returns_false_on_invalid_nif\n    assert isinstance(result, ValidationError)\nE   assert False\nE    +  where False = isinstance(True, ValidationError)\n=========================== short test summary info ============================\nFAILED tests/i18n/test_es.py::test_returns_false_on_invalid_nif - assert False\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 123 passed in 0.11s\n",
       "failing_tests": [
-        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpde1o850i/worker_1/tests/crypto_addresses/test_btc_address.py::test_returns_true_on_valid_btc_address[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2]"
+        "tests/i18n/test_es.py::test_returns_false_on_invalid_nif"
       ],
       "exit_code": 1
     },
     {
       "bug_id": "validators-original-031",
-      "test_output": "..................................................F\n=================================== FAILURES ===================================\n__ test_returns_true_on_valid_trx_address[TLjfbTbpZYDQ4EoA4N5CLNgGjfbF8ZWz38] __\n/Users/yuan/stylebench-data/original/validators/tests/crypto_addresses/test_trx_address.py:29: in test_returns_true_on_valid_trx_address\n    assert trx_address(value)\nE   AssertionError: assert ValidationError(func=trx_address, args={'value': 'TLjfbTbpZYDQ4EoA4N5CLNgGjfbF8ZWz38'})\nE    +  where ValidationError(func=trx_address, args={'value': 'TLjfbTbpZYDQ4EoA4N5CLNgGjfbF8ZWz38'}) = trx_address('TLjfbTbpZYDQ4EoA4N5CLNgGjfbF8ZWz38')\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpde1o850i/worker_1/tests/crypto_addresses/test_trx_address.py::test_returns_true_on_valid_trx_address[TLjfbTbpZYDQ4EoA4N5CLNgGjfbF8ZWz38]\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 50 passed in 0.10s\nwarning: `VIRTUAL_ENV=/Users/yuan/stylebench/.venv` does not match the project environment path `.venv` and will be ignored; use `--active` to target the active environment instead\n",
+      "test_output": "........................................................................ [  8%]\n...................................................F\n=================================== FAILURES ===================================\n______________________ test_returns_false_on_invalid_nif _______________________\ntests/i18n/test_es.py:100: in test_returns_false_on_invalid_nif\n    assert isinstance(result, ValidationError)\nE   assert False\nE    +  where False = isinstance(True, ValidationError)\n=========================== short test summary info ============================\nFAILED tests/i18n/test_es.py::test_returns_false_on_invalid_nif - assert False\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 123 passed in 0.12s\n",
       "failing_tests": [
-        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpde1o850i/worker_1/tests/crypto_addresses/test_trx_address.py::test_returns_true_on_valid_trx_address[TLjfbTbpZYDQ4EoA4N5CLNgGjfbF8ZWz38]"
+        "tests/i18n/test_es.py::test_returns_false_on_invalid_nif"
       ],
       "exit_code": 1
     },
     {
       "bug_id": "validators-original-032",
-      "test_output": ".........................F\n=================================== FAILURES ===================================\n__ test_returns_true_on_valid_btc_address[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2] __\n/Users/yuan/stylebench-data/original/validators/tests/crypto_addresses/test_btc_address.py:24: in test_returns_true_on_valid_btc_address\n    assert btc_address(value)\nE   AssertionError: assert ValidationError(func=btc_address, args={'value': '1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2'})\nE    +  where ValidationError(func=btc_address, args={'value': '1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2'}) = btc_address('1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2')\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpde1o850i/worker_1/tests/crypto_addresses/test_btc_address.py::test_returns_true_on_valid_btc_address[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2]\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 25 passed in 0.09s\nwarning: `VIRTUAL_ENV=/Users/yuan/stylebench/.venv` does not match the project environment path `.venv` and will be ignored; use `--active` to target the active environment instead\n",
+      "test_output": "........................................................................ [  8%]\n...................................................F\n=================================== FAILURES ===================================\n______________________ test_returns_false_on_invalid_nif _______________________\ntests/i18n/test_es.py:100: in test_returns_false_on_invalid_nif\n    assert isinstance(result, ValidationError)\nE   assert False\nE    +  where False = isinstance(True, ValidationError)\n=========================== short test summary info ============================\nFAILED tests/i18n/test_es.py::test_returns_false_on_invalid_nif - assert False\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 123 passed in 0.14s\n",
       "failing_tests": [
-        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpde1o850i/worker_1/tests/crypto_addresses/test_btc_address.py::test_returns_true_on_valid_btc_address[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2]"
+        "tests/i18n/test_es.py::test_returns_false_on_invalid_nif"
       ],
       "exit_code": 1
     },
     {
       "bug_id": "validators-original-033",
-      "test_output": ".........................F\n=================================== FAILURES ===================================\n__ test_returns_true_on_valid_btc_address[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2] __\n/Users/yuan/stylebench-data/original/validators/tests/crypto_addresses/test_btc_address.py:24: in test_returns_true_on_valid_btc_address\n    assert btc_address(value)\nE   AssertionError: assert ValidationError(func=btc_address, args={'value': '1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2'})\nE    +  where ValidationError(func=btc_address, args={'value': '1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2'}) = btc_address('1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2')\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpde1o850i/worker_1/tests/crypto_addresses/test_btc_address.py::test_returns_true_on_valid_btc_address[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2]\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 25 passed in 0.09s\nwarning: `VIRTUAL_ENV=/Users/yuan/stylebench/.venv` does not match the project environment path `.venv` and will be ignored; use `--active` to target the active environment instead\n",
+      "test_output": "........................................................................ [  8%]\n.................F\n=================================== FAILURES ===================================\n_________________ test_returns_false_on_invalid_cif[Z5021960I] _________________\ntests/i18n/test_es.py:41: in test_returns_false_on_invalid_cif\n    assert isinstance(result, ValidationError)\nE   assert False\nE    +  where False = isinstance(True, ValidationError)\n=========================== short test summary info ============================\nFAILED tests/i18n/test_es.py::test_returns_false_on_invalid_cif[Z5021960I] - ...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 89 passed in 0.10s\n",
       "failing_tests": [
-        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpde1o850i/worker_1/tests/crypto_addresses/test_btc_address.py::test_returns_true_on_valid_btc_address[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2]"
-      ],
-      "exit_code": 1
-    },
-    {
-      "bug_id": "validators-original-034",
-      "test_output": ".........................F\n=================================== FAILURES ===================================\n__ test_returns_true_on_valid_btc_address[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2] __\n/Users/yuan/stylebench-data/original/validators/tests/crypto_addresses/test_btc_address.py:24: in test_returns_true_on_valid_btc_address\n    assert btc_address(value)\nE   AssertionError: assert ValidationError(func=btc_address, args={'value': '1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2'})\nE    +  where ValidationError(func=btc_address, args={'value': '1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2'}) = btc_address('1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2')\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpde1o850i/worker_1/tests/crypto_addresses/test_btc_address.py::test_returns_true_on_valid_btc_address[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2]\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 25 passed in 0.09s\nwarning: `VIRTUAL_ENV=/Users/yuan/stylebench/.venv` does not match the project environment path `.venv` and will be ignored; use `--active` to target the active environment instead\n",
-      "failing_tests": [
-        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpde1o850i/worker_1/tests/crypto_addresses/test_btc_address.py::test_returns_true_on_valid_btc_address[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2]"
+        "tests/i18n/test_es.py::test_returns_false_on_invalid_cif[Z5021960I]"
       ],
       "exit_code": 1
     },
     {
       "bug_id": "validators-original-035",
-      "test_output": ".........................F\n=================================== FAILURES ===================================\n__ test_returns_true_on_valid_btc_address[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2] __\n/Users/yuan/stylebench-data/original/validators/tests/crypto_addresses/test_btc_address.py:24: in test_returns_true_on_valid_btc_address\n    assert btc_address(value)\n           ^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpde1o850i/worker_1/src/validators/utils.py:91: in wrapper\n    if func(*args, **kwargs)\n       ^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpde1o850i/worker_1/src/validators/crypto_addresses/btc_address.py:55: in btc_address\n    else _validate_old_btc_address(value)\n         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpde1o850i/worker_1/src/validators/crypto_addresses/btc_address.py:21: in _validate_old_btc_address\n    decoded_bytes = _decode_base58(addr).to_bytes(25, \"big\")\n                    ^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpde1o850i/worker_1/src/validators/crypto_addresses/btc_address.py:14: in _decode_base58\n    return sum((58**enm) / alphabet.index(idx) for enm, idx in enumerate(addr[::-1]))\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpde1o850i/worker_1/src/validators/crypto_addresses/btc_address.py:14: in <genexpr>\n    return sum((58**enm) / alphabet.index(idx) for enm, idx in enumerate(addr[::-1]))\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nE   ZeroDivisionError: division by zero\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpde1o850i/worker_1/tests/crypto_addresses/test_btc_address.py::test_returns_true_on_valid_btc_address[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2]\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 25 passed in 0.09s\nwarning: `VIRTUAL_ENV=/Users/yuan/stylebench/.venv` does not match the project environment path `.venv` and will be ignored; use `--active` to target the active environment instead\n",
+      "test_output": "........................................................................ [  8%]\n...................................................................F\n=================================== FAILURES ===================================\n_________ test_returns_failed_validation_on_invalid_business_id[None] __________\ntests/i18n/test_fi.py:36: in test_returns_failed_validation_on_invalid_business_id\n    assert isinstance(fi_business_id(value), ValidationError)\nE   assert False\nE    +  where False = isinstance(True, ValidationError)\nE    +    where True = fi_business_id(None)\n=========================== short test summary info ============================\nFAILED tests/i18n/test_fi.py::test_returns_failed_validation_on_invalid_business_id[None]\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 139 passed in 0.12s\n",
       "failing_tests": [
-        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpde1o850i/worker_1/tests/crypto_addresses/test_btc_address.py::test_returns_true_on_valid_btc_address[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2]"
+        "tests/i18n/test_fi.py::test_returns_failed_validation_on_invalid_business_id[None]"
       ],
       "exit_code": 1
     },
     {
       "bug_id": "validators-original-036",
-      "test_output": ".........................F\n=================================== FAILURES ===================================\n__ test_returns_true_on_valid_btc_address[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2] __\n/Users/yuan/stylebench-data/original/validators/tests/crypto_addresses/test_btc_address.py:24: in test_returns_true_on_valid_btc_address\n    assert btc_address(value)\n           ^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpde1o850i/worker_1/src/validators/utils.py:91: in wrapper\n    if func(*args, **kwargs)\n       ^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpde1o850i/worker_1/src/validators/crypto_addresses/btc_address.py:55: in btc_address\n    else _validate_old_btc_address(value)\n         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpde1o850i/worker_1/src/validators/crypto_addresses/btc_address.py:21: in _validate_old_btc_address\n    decoded_bytes = _decode_base58(addr).to_bytes(25, \"big\")\n                    ^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpde1o850i/worker_1/src/validators/crypto_addresses/btc_address.py:14: in _decode_base58\n    return sum((59**enm) * alphabet.index(idx) for enm, idx in enumerate(addr[::-1]))\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpde1o850i/worker_1/src/validators/crypto_addresses/btc_address.py:14: in <genexpr>\n    return sum((59**enm) * alphabet.index(idx) for enm, idx in enumerate(addr[::-1]))\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nE   ZeroDivisionError: division by zero\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpde1o850i/worker_1/tests/crypto_addresses/test_btc_address.py::test_returns_true_on_valid_btc_address[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2]\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 25 passed in 0.09s\nwarning: `VIRTUAL_ENV=/Users/yuan/stylebench/.venv` does not match the project environment path `.venv` and will be ignored; use `--active` to target the active environment instead\n",
+      "test_output": "........................................................................ [  8%]\n.....................................................................F\n=================================== FAILURES ===================================\n______ test_returns_failed_validation_on_invalid_business_id[1233312312] _______\ntests/i18n/test_fi.py:36: in test_returns_failed_validation_on_invalid_business_id\n    assert isinstance(fi_business_id(value), ValidationError)\nE   AssertionError: assert False\nE    +  where False = isinstance(True, ValidationError)\nE    +    where True = fi_business_id('1233312312')\n=========================== short test summary info ============================\nFAILED tests/i18n/test_fi.py::test_returns_failed_validation_on_invalid_business_id[1233312312]\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 141 passed in 0.12s\n",
       "failing_tests": [
-        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpde1o850i/worker_1/tests/crypto_addresses/test_btc_address.py::test_returns_true_on_valid_btc_address[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2]"
+        "tests/i18n/test_fi.py::test_returns_failed_validation_on_invalid_business_id[1233312312]"
       ],
       "exit_code": 1
     },
     {
       "bug_id": "validators-original-037",
-      "test_output": ".........................F\n=================================== FAILURES ===================================\n__ test_returns_true_on_valid_btc_address[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2] __\n/Users/yuan/stylebench-data/original/validators/tests/crypto_addresses/test_btc_address.py:24: in test_returns_true_on_valid_btc_address\n    assert btc_address(value)\nE   AssertionError: assert ValidationError(func=btc_address, args={'value': '1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2'})\nE    +  where ValidationError(func=btc_address, args={'value': '1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2'}) = btc_address('1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2')\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpde1o850i/worker_1/tests/crypto_addresses/test_btc_address.py::test_returns_true_on_valid_btc_address[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2]\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 25 passed in 0.08s\nwarning: `VIRTUAL_ENV=/Users/yuan/stylebench/.venv` does not match the project environment path `.venv` and will be ignored; use `--active` to target the active environment instead\n",
+      "test_output": "........................................................................ [  8%]\n........................................................................ [ 16%]\n....F\n=================================== FAILURES ===================================\n_________________ test_returns_true_on_valid_ssn[010190-900P] __________________\ntests/i18n/test_fi.py:53: in test_returns_true_on_valid_ssn\n    assert fi_ssn(value)\nE   AssertionError: assert ValidationError(func=fi_ssn, args={'value': '010190-900P'})\nE    +  where ValidationError(func=fi_ssn, args={'value': '010190-900P'}) = fi_ssn('010190-900P')\n=========================== short test summary info ============================\nFAILED tests/i18n/test_fi.py::test_returns_true_on_valid_ssn[010190-900P] - A...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 148 passed in 0.12s\n",
       "failing_tests": [
-        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpde1o850i/worker_1/tests/crypto_addresses/test_btc_address.py::test_returns_true_on_valid_btc_address[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2]"
+        "tests/i18n/test_fi.py::test_returns_true_on_valid_ssn[010190-900P]"
       ],
       "exit_code": 1
     },
     {
       "bug_id": "validators-original-038",
-      "test_output": ".........................F\n=================================== FAILURES ===================================\n__ test_returns_true_on_valid_btc_address[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2] __\n/Users/yuan/stylebench-data/original/validators/tests/crypto_addresses/test_btc_address.py:24: in test_returns_true_on_valid_btc_address\n    assert btc_address(value)\nE   AssertionError: assert ValidationError(func=btc_address, args={'value': '1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2'})\nE    +  where ValidationError(func=btc_address, args={'value': '1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2'}) = btc_address('1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2')\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpde1o850i/worker_1/tests/crypto_addresses/test_btc_address.py::test_returns_true_on_valid_btc_address[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2]\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 25 passed in 0.09s\nwarning: `VIRTUAL_ENV=/Users/yuan/stylebench/.venv` does not match the project environment path `.venv` and will be ignored; use `--active` to target the active environment instead\n",
+      "test_output": "........................................................................ [  8%]\n........................................................................ [ 16%]\n.......F\n=================================== FAILURES ===================================\n_____________ test_returns_failed_validation_on_invalid_ssn[None] ______________\ntests/i18n/test_fi.py:76: in test_returns_failed_validation_on_invalid_ssn\n    assert isinstance(fi_ssn(value), ValidationError)\nE   assert False\nE    +  where False = isinstance(True, ValidationError)\nE    +    where True = fi_ssn(None)\n=========================== short test summary info ============================\nFAILED tests/i18n/test_fi.py::test_returns_failed_validation_on_invalid_ssn[None]\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 151 passed in 0.12s\n",
       "failing_tests": [
-        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpde1o850i/worker_1/tests/crypto_addresses/test_btc_address.py::test_returns_true_on_valid_btc_address[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2]"
+        "tests/i18n/test_fi.py::test_returns_failed_validation_on_invalid_ssn[None]"
       ],
       "exit_code": 1
     },
     {
       "bug_id": "validators-original-039",
-      "test_output": ".........................F\n=================================== FAILURES ===================================\n__ test_returns_true_on_valid_btc_address[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2] __\n/Users/yuan/stylebench-data/original/validators/tests/crypto_addresses/test_btc_address.py:24: in test_returns_true_on_valid_btc_address\n    assert btc_address(value)\nE   AssertionError: assert ValidationError(func=btc_address, args={'value': '1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2'})\nE    +  where ValidationError(func=btc_address, args={'value': '1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2'}) = btc_address('1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2')\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpde1o850i/worker_1/tests/crypto_addresses/test_btc_address.py::test_returns_true_on_valid_btc_address[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2]\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 25 passed in 0.08s\nwarning: `VIRTUAL_ENV=/Users/yuan/stylebench/.venv` does not match the project environment path `.venv` and will be ignored; use `--active` to target the active environment instead\n",
+      "test_output": "........................................................................ [  8%]\n........................................................................ [ 16%]\n.......F\n=================================== FAILURES ===================================\n_____________ test_returns_failed_validation_on_invalid_ssn[None] ______________\ntests/i18n/test_fi.py:76: in test_returns_failed_validation_on_invalid_ssn\n    assert isinstance(fi_ssn(value), ValidationError)\nE   assert False\nE    +  where False = isinstance(True, ValidationError)\nE    +    where True = fi_ssn(None)\n=========================== short test summary info ============================\nFAILED tests/i18n/test_fi.py::test_returns_failed_validation_on_invalid_ssn[None]\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 151 passed in 0.12s\n",
       "failing_tests": [
-        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpde1o850i/worker_1/tests/crypto_addresses/test_btc_address.py::test_returns_true_on_valid_btc_address[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2]"
+        "tests/i18n/test_fi.py::test_returns_failed_validation_on_invalid_ssn[None]"
       ],
       "exit_code": 1
     },
     {
       "bug_id": "validators-original-040",
-      "test_output": ".........................F\n=================================== FAILURES ===================================\n__ test_returns_true_on_valid_btc_address[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2] __\n/Users/yuan/stylebench-data/original/validators/tests/crypto_addresses/test_btc_address.py:24: in test_returns_true_on_valid_btc_address\n    assert btc_address(value)\nE   AssertionError: assert ValidationError(func=btc_address, args={'value': '1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2'})\nE    +  where ValidationError(func=btc_address, args={'value': '1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2'}) = btc_address('1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2')\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpde1o850i/worker_1/tests/crypto_addresses/test_btc_address.py::test_returns_true_on_valid_btc_address[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2]\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 25 passed in 0.08s\nwarning: `VIRTUAL_ENV=/Users/yuan/stylebench/.venv` does not match the project environment path `.venv` and will be ignored; use `--active` to target the active environment instead\n",
+      "test_output": "........................................................................ [  8%]\n........................................................................ [ 16%]\n............................................F\n=================================== FAILURES ===================================\n__________ test_returns_failed_validation_on_invalid_department[None] __________\ntests/i18n/test_fr.py:86: in test_returns_failed_validation_on_invalid_department\n    assert isinstance(fr_department(value), ValidationError)\nE   assert False\nE    +  where False = isinstance(True, ValidationError)\nE    +    where True = fr_department(None)\n=========================== short test summary info ============================\nFAILED tests/i18n/test_fr.py::test_returns_failed_validation_on_invalid_department[None]\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 188 passed in 0.12s\n",
       "failing_tests": [
-        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpde1o850i/worker_1/tests/crypto_addresses/test_btc_address.py::test_returns_true_on_valid_btc_address[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2]"
+        "tests/i18n/test_fr.py::test_returns_failed_validation_on_invalid_department[None]"
       ],
       "exit_code": 1
     },
     {
       "bug_id": "validators-original-041",
-      "test_output": ".........................F\n=================================== FAILURES ===================================\n__ test_returns_true_on_valid_btc_address[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2] __\n/Users/yuan/stylebench-data/original/validators/tests/crypto_addresses/test_btc_address.py:24: in test_returns_true_on_valid_btc_address\n    assert btc_address(value)\nE   AssertionError: assert ValidationError(func=btc_address, args={'value': '1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2'})\nE    +  where ValidationError(func=btc_address, args={'value': '1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2'}) = btc_address('1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2')\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpde1o850i/worker_1/tests/crypto_addresses/test_btc_address.py::test_returns_true_on_valid_btc_address[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2]\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 25 passed in 0.09s\nwarning: `VIRTUAL_ENV=/Users/yuan/stylebench/.venv` does not match the project environment path `.venv` and will be ignored; use `--active` to target the active environment instead\n",
+      "test_output": "........................................................................ [  8%]\n........................................................................ [ 16%]\n.........................F\n=================================== FAILURES ===================================\n____________ test_returns_true_on_valid_ssn[2 99 05 2A 202 817 58] _____________\ntests/i18n/test_fr.py:28: in test_returns_true_on_valid_ssn\n    assert fr_ssn(value)\nE   AssertionError: assert ValidationError(func=fr_ssn, args={'value': '2 99 05 2A 202 817 58'})\nE    +  where ValidationError(func=fr_ssn, args={'value': '2 99 05 2A 202 817 58'}) = fr_ssn('2 99 05 2A 202 817 58')\n=========================== short test summary info ============================\nFAILED tests/i18n/test_fr.py::test_returns_true_on_valid_ssn[2 99 05 2A 202 817 58]\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 169 passed in 0.13s\n",
       "failing_tests": [
-        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpde1o850i/worker_1/tests/crypto_addresses/test_btc_address.py::test_returns_true_on_valid_btc_address[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2]"
+        "tests/i18n/test_fr.py::test_returns_true_on_valid_ssn[2"
       ],
       "exit_code": 1
     },
     {
       "bug_id": "validators-original-042",
-      "test_output": ".........................F\n=================================== FAILURES ===================================\n__ test_returns_true_on_valid_btc_address[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2] __\n/Users/yuan/stylebench-data/original/validators/tests/crypto_addresses/test_btc_address.py:24: in test_returns_true_on_valid_btc_address\n    assert btc_address(value)\nE   AssertionError: assert ValidationError(func=btc_address, args={'value': '1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2'})\nE    +  where ValidationError(func=btc_address, args={'value': '1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2'}) = btc_address('1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2')\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpde1o850i/worker_1/tests/crypto_addresses/test_btc_address.py::test_returns_true_on_valid_btc_address[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2]\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 25 passed in 0.11s\nwarning: `VIRTUAL_ENV=/Users/yuan/stylebench/.venv` does not match the project environment path `.venv` and will be ignored; use `--active` to target the active environment instead\n",
+      "test_output": "........................................................................ [  8%]\n........................................................................ [ 16%]\n................................................F\n=================================== FAILURES ===================================\n___________ test_returns_failed_validation_on_invalid_department[2C] ___________\ntests/i18n/test_fr.py:86: in test_returns_failed_validation_on_invalid_department\n    assert isinstance(fr_department(value), ValidationError)\nE   AssertionError: assert False\nE    +  where False = isinstance(True, ValidationError)\nE    +    where True = fr_department('2C')\n=========================== short test summary info ============================\nFAILED tests/i18n/test_fr.py::test_returns_failed_validation_on_invalid_department[2C]\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 192 passed in 0.13s\n",
       "failing_tests": [
-        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpde1o850i/worker_1/tests/crypto_addresses/test_btc_address.py::test_returns_true_on_valid_btc_address[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2]"
+        "tests/i18n/test_fr.py::test_returns_failed_validation_on_invalid_department[2C]"
       ],
       "exit_code": 1
     },
     {
       "bug_id": "validators-original-043",
-      "test_output": ".........................F\n=================================== FAILURES ===================================\n__ test_returns_true_on_valid_btc_address[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2] __\n/Users/yuan/stylebench-data/original/validators/tests/crypto_addresses/test_btc_address.py:24: in test_returns_true_on_valid_btc_address\n    assert btc_address(value)\nE   AssertionError: assert ValidationError(func=btc_address, args={'value': '1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2'})\nE    +  where ValidationError(func=btc_address, args={'value': '1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2'}) = btc_address('1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2')\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpde1o850i/worker_1/tests/crypto_addresses/test_btc_address.py::test_returns_true_on_valid_btc_address[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2]\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 25 passed in 0.08s\nwarning: `VIRTUAL_ENV=/Users/yuan/stylebench/.venv` does not match the project environment path `.venv` and will be ignored; use `--active` to target the active environment instead\n",
+      "test_output": "........................................................................ [  8%]\n........................................................................ [ 16%]\n............................F\n=================================== FAILURES ===================================\n_____________ test_returns_failed_validation_on_invalid_ssn[None] ______________\ntests/i18n/test_fr.py:48: in test_returns_failed_validation_on_invalid_ssn\n    assert isinstance(fr_ssn(value), ValidationError)\nE   assert False\nE    +  where False = isinstance(True, ValidationError)\nE    +    where True = fr_ssn(None)\n=========================== short test summary info ============================\nFAILED tests/i18n/test_fr.py::test_returns_failed_validation_on_invalid_ssn[None]\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 172 passed in 0.12s\n",
       "failing_tests": [
-        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpde1o850i/worker_1/tests/crypto_addresses/test_btc_address.py::test_returns_true_on_valid_btc_address[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2]"
+        "tests/i18n/test_fr.py::test_returns_failed_validation_on_invalid_ssn[None]"
       ],
       "exit_code": 1
     },
     {
       "bug_id": "validators-original-044",
-      "test_output": ".........................F\n=================================== FAILURES ===================================\n__ test_returns_true_on_valid_btc_address[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2] __\n/Users/yuan/stylebench-data/original/validators/tests/crypto_addresses/test_btc_address.py:24: in test_returns_true_on_valid_btc_address\n    assert btc_address(value)\nE   AssertionError: assert ValidationError(func=btc_address, args={'value': '1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2'})\nE    +  where ValidationError(func=btc_address, args={'value': '1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2'}) = btc_address('1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2')\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpde1o850i/worker_1/tests/crypto_addresses/test_btc_address.py::test_returns_true_on_valid_btc_address[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2]\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 25 passed in 0.08s\nwarning: `VIRTUAL_ENV=/Users/yuan/stylebench/.venv` does not match the project environment path `.venv` and will be ignored; use `--active` to target the active environment instead\n",
+      "test_output": "........................................................................ [  8%]\n........................................................................ [ 16%]\n............................F\n=================================== FAILURES ===================================\n_____________ test_returns_failed_validation_on_invalid_ssn[None] ______________\ntests/i18n/test_fr.py:48: in test_returns_failed_validation_on_invalid_ssn\n    assert isinstance(fr_ssn(value), ValidationError)\nE   assert False\nE    +  where False = isinstance(True, ValidationError)\nE    +    where True = fr_ssn(None)\n=========================== short test summary info ============================\nFAILED tests/i18n/test_fr.py::test_returns_failed_validation_on_invalid_ssn[None]\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 172 passed in 0.12s\n",
       "failing_tests": [
-        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpde1o850i/worker_1/tests/crypto_addresses/test_btc_address.py::test_returns_true_on_valid_btc_address[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2]"
+        "tests/i18n/test_fr.py::test_returns_failed_validation_on_invalid_ssn[None]"
       ],
       "exit_code": 1
     },
     {
       "bug_id": "validators-original-045",
-      "test_output": ".........................F\n=================================== FAILURES ===================================\n__ test_returns_true_on_valid_btc_address[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2] __\n/Users/yuan/stylebench-data/original/validators/tests/crypto_addresses/test_btc_address.py:24: in test_returns_true_on_valid_btc_address\n    assert btc_address(value)\nE   AssertionError: assert ValidationError(func=btc_address, args={'value': '1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2'})\nE    +  where ValidationError(func=btc_address, args={'value': '1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2'}) = btc_address('1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2')\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpde1o850i/worker_1/tests/crypto_addresses/test_btc_address.py::test_returns_true_on_valid_btc_address[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2]\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 25 passed in 0.09s\nwarning: `VIRTUAL_ENV=/Users/yuan/stylebench/.venv` does not match the project environment path `.venv` and will be ignored; use `--active` to target the active environment instead\n",
+      "test_output": "........................................................................ [  8%]\n........................................................................ [ 16%]\n............................F\n=================================== FAILURES ===================================\n_____________ test_returns_failed_validation_on_invalid_ssn[None] ______________\ntests/i18n/test_fr.py:48: in test_returns_failed_validation_on_invalid_ssn\n    assert isinstance(fr_ssn(value), ValidationError)\nE   assert False\nE    +  where False = isinstance(True, ValidationError)\nE    +    where True = fr_ssn(None)\n=========================== short test summary info ============================\nFAILED tests/i18n/test_fr.py::test_returns_failed_validation_on_invalid_ssn[None]\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 172 passed in 0.12s\n",
       "failing_tests": [
-        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpde1o850i/worker_1/tests/crypto_addresses/test_btc_address.py::test_returns_true_on_valid_btc_address[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2]"
+        "tests/i18n/test_fr.py::test_returns_failed_validation_on_invalid_ssn[None]"
       ],
       "exit_code": 1
     },
     {
       "bug_id": "validators-original-046",
-      "test_output": ".........................F\n=================================== FAILURES ===================================\n__ test_returns_true_on_valid_btc_address[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2] __\n/Users/yuan/stylebench-data/original/validators/tests/crypto_addresses/test_btc_address.py:24: in test_returns_true_on_valid_btc_address\n    assert btc_address(value)\nE   AssertionError: assert ValidationError(func=btc_address, args={'value': '1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2'})\nE    +  where ValidationError(func=btc_address, args={'value': '1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2'}) = btc_address('1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2')\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpde1o850i/worker_1/tests/crypto_addresses/test_btc_address.py::test_returns_true_on_valid_btc_address[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2]\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 25 passed in 0.08s\nwarning: `VIRTUAL_ENV=/Users/yuan/stylebench/.venv` does not match the project environment path `.venv` and will be ignored; use `--active` to target the active environment instead\n",
+      "test_output": "........................................................................ [  8%]\n........................................................................ [ 16%]\n......................F\n=================================== FAILURES ===================================\n______________ test_returns_true_on_valid_ssn[1 84 12 76 451 089] ______________\ntests/i18n/test_fr.py:28: in test_returns_true_on_valid_ssn\n    assert fr_ssn(value)\nE   AssertionError: assert ValidationError(func=fr_ssn, args={'value': '1 84 12 76 451 089'})\nE    +  where ValidationError(func=fr_ssn, args={'value': '1 84 12 76 451 089'}) = fr_ssn('1 84 12 76 451 089')\n=========================== short test summary info ============================\nFAILED tests/i18n/test_fr.py::test_returns_true_on_valid_ssn[1 84 12 76 451 089]\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 166 passed in 0.12s\n",
       "failing_tests": [
-        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpde1o850i/worker_1/tests/crypto_addresses/test_btc_address.py::test_returns_true_on_valid_btc_address[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2]"
-      ],
-      "exit_code": 1
-    },
-    {
-      "bug_id": "validators-original-047",
-      "test_output": ".........................F\n=================================== FAILURES ===================================\n__ test_returns_true_on_valid_btc_address[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2] __\n/Users/yuan/stylebench-data/original/validators/tests/crypto_addresses/test_btc_address.py:24: in test_returns_true_on_valid_btc_address\n    assert btc_address(value)\nE   AssertionError: assert ValidationError(func=btc_address, args={'value': '1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2'})\nE    +  where ValidationError(func=btc_address, args={'value': '1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2'}) = btc_address('1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2')\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpde1o850i/worker_1/tests/crypto_addresses/test_btc_address.py::test_returns_true_on_valid_btc_address[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2]\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 25 passed in 0.08s\nwarning: `VIRTUAL_ENV=/Users/yuan/stylebench/.venv` does not match the project environment path `.venv` and will be ignored; use `--active` to target the active environment instead\n",
-      "failing_tests": [
-        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpde1o850i/worker_1/tests/crypto_addresses/test_btc_address.py::test_returns_true_on_valid_btc_address[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2]"
-      ],
-      "exit_code": 1
-    },
-    {
-      "bug_id": "validators-original-048",
-      "test_output": ".........................F\n=================================== FAILURES ===================================\n__ test_returns_true_on_valid_btc_address[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2] __\n/Users/yuan/stylebench-data/original/validators/tests/crypto_addresses/test_btc_address.py:24: in test_returns_true_on_valid_btc_address\n    assert btc_address(value)\nE   AssertionError: assert ValidationError(func=btc_address, args={'value': '1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2'})\nE    +  where ValidationError(func=btc_address, args={'value': '1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2'}) = btc_address('1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2')\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpde1o850i/worker_1/tests/crypto_addresses/test_btc_address.py::test_returns_true_on_valid_btc_address[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2]\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 25 passed in 0.08s\nwarning: `VIRTUAL_ENV=/Users/yuan/stylebench/.venv` does not match the project environment path `.venv` and will be ignored; use `--active` to target the active environment instead\n",
-      "failing_tests": [
-        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpde1o850i/worker_1/tests/crypto_addresses/test_btc_address.py::test_returns_true_on_valid_btc_address[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2]"
-      ],
-      "exit_code": 1
-    },
-    {
-      "bug_id": "validators-original-049",
-      "test_output": ".........................F\n=================================== FAILURES ===================================\n__ test_returns_true_on_valid_btc_address[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2] __\n/Users/yuan/stylebench-data/original/validators/tests/crypto_addresses/test_btc_address.py:24: in test_returns_true_on_valid_btc_address\n    assert btc_address(value)\nE   AssertionError: assert ValidationError(func=btc_address, args={'value': '1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2'})\nE    +  where ValidationError(func=btc_address, args={'value': '1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2'}) = btc_address('1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2')\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpde1o850i/worker_1/tests/crypto_addresses/test_btc_address.py::test_returns_true_on_valid_btc_address[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2]\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 25 passed in 0.08s\nwarning: `VIRTUAL_ENV=/Users/yuan/stylebench/.venv` does not match the project environment path `.venv` and will be ignored; use `--active` to target the active environment instead\n",
-      "failing_tests": [
-        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpde1o850i/worker_1/tests/crypto_addresses/test_btc_address.py::test_returns_true_on_valid_btc_address[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2]"
+        "tests/i18n/test_fr.py::test_returns_true_on_valid_ssn[1"
       ],
       "exit_code": 1
     },
     {
       "bug_id": "validators-original-050",
-      "test_output": ".........................F\n=================================== FAILURES ===================================\n__ test_returns_true_on_valid_btc_address[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2] __\n/Users/yuan/stylebench-data/original/validators/tests/crypto_addresses/test_btc_address.py:24: in test_returns_true_on_valid_btc_address\n    assert btc_address(value)\nE   AssertionError: assert ValidationError(func=btc_address, args={'value': '1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2'})\nE    +  where ValidationError(func=btc_address, args={'value': '1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2'}) = btc_address('1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2')\n=========================== short test summary info ============================\nFAILED ../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpde1o850i/worker_1/tests/crypto_addresses/test_btc_address.py::test_returns_true_on_valid_btc_address[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2]\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 25 passed in 0.08s\nwarning: `VIRTUAL_ENV=/Users/yuan/stylebench/.venv` does not match the project environment path `.venv` and will be ignored; use `--active` to target the active environment instead\n",
+      "test_output": "........................................................................ [  8%]\n........................................................................ [ 16%]\n........................................................................ [ 24%]\n........................................................................ [ 32%]\n........................................................................ [ 40%]\n........................................................................ [ 48%]\n........................................................................ [ 56%]\n........................................................................ [ 64%]\n........................................................................ [ 72%]\n...........F\n=================================== FAILURES ===================================\n______________ test_returns_true_on_valid_ipv4_address[127.0.0.1] ______________\ntests/test_ip_address.py:20: in test_returns_true_on_valid_ipv4_address\n    assert ipv4(address)\nE   AssertionError: assert ValidationError(func=ipv4, args={'value': '127.0.0.1'})\nE    +  where ValidationError(func=ipv4, args={'value': '127.0.0.1'}) = ipv4('127.0.0.1')\n=========================== short test summary info ============================\nFAILED tests/test_ip_address.py::test_returns_true_on_valid_ipv4_address[127.0.0.1]\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 659 passed in 0.26s\n",
       "failing_tests": [
-        "../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpde1o850i/worker_1/tests/crypto_addresses/test_btc_address.py::test_returns_true_on_valid_btc_address[1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2]"
+        "tests/test_ip_address.py::test_returns_true_on_valid_ipv4_address[127.0.0.1]"
       ],
       "exit_code": 1
     }
@@ -417,497 +356,399 @@
   "_hidden": [
     {
       "bug_id": "validators-original-001",
-      "file_path": "src/validators/country.py",
-      "line_number": 305,
-      "mutation_type": "comparison",
-      "original_text": "==",
-      "mutated_text": "!=",
-      "context": "...type(value)) == \"invalid\":         return False      if iso_format == \"alpha2\":...",
-      "mutation_type_original": "eq_ne"
+      "file_path": "src/validators/crypto_addresses/eth_address.py",
+      "line_number": 22,
+      "mutation_type": "eq_ne",
+      "original_text": "!=",
+      "mutated_text": "==",
+      "context": "...hex()  # type: ignore      if len(addr) != 40:         return False      for i in..."
     },
     {
       "bug_id": "validators-original-002",
-      "file_path": "src/validators/country.py",
-      "line_number": 305,
-      "mutation_type": "comparison",
-      "original_text": "==",
-      "mutated_text": "!=",
-      "context": "...if iso_format == \"alpha2\":         return (             value.upper() in set(_alp...",
-      "mutation_type_original": "eq_ne"
+      "file_path": "src/validators/crypto_addresses/eth_address.py",
+      "line_number": 26,
+      "mutation_type": "eq_ne",
+      "original_text": "!=",
+      "mutated_text": "==",
+      "context": "...dr_hash[i], 16) > 7 and addr[i].upper() != addr[i]) or (             int(addr_hash..."
     },
     {
       "bug_id": "validators-original-003",
-      "file_path": "src/validators/country.py",
-      "line_number": 308,
-      "mutation_type": "comparison",
-      "original_text": "==",
-      "mutated_text": "!=",
-      "context": "...value.upper() in set(_alpha3_to_alpha2.values())             if ignore_case...",
-      "mutation_type_original": "eq_ne"
+      "file_path": "src/validators/crypto_addresses/eth_address.py",
+      "line_number": 27,
+      "mutation_type": "eq_ne",
+      "original_text": "!=",
+      "mutated_text": "==",
+      "context": "...r_hash[i], 16) <= 7 and addr[i].lower() != addr[i]         ):             return F..."
     },
     {
       "bug_id": "validators-original-004",
-      "file_path": "src/validators/country.py",
-      "line_number": 314,
-      "mutation_type": "comparison",
-      "original_text": "==",
-      "mutated_text": "!=",
-      "context": "...() in _alpha3_to_alpha2 if ignore_case else value in _alpha3_to_alpha2      return...",
-      "mutation_type_original": "eq_ne"
+      "file_path": "src/validators/i18n/es.py",
+      "line_number": 12,
+      "mutation_type": "eq_ne",
+      "original_text": "!=",
+      "mutated_text": "==",
+      "context": "...is a NIF or a NIE.\"\"\"     if len(value) != 9:         return False     value = val..."
     },
     {
       "bug_id": "validators-original-005",
-      "file_path": "src/validators/country.py",
-      "line_number": 352,
-      "mutation_type": "comparison",
-      "original_text": "!=",
-      "mutated_text": "==",
-      "context": "...value.upper() in _currency_iso4217 if ignore_case else value in _currency_iso4217",
-      "mutation_type_original": "eq_ne"
+      "file_path": "src/validators/i18n/es.py",
+      "line_number": 20,
+      "mutation_type": "eq_ne",
+      "original_text": "==",
+      "mutated_text": "!=",
+      "context": "...return numbers.isdigit() and value[8] == table[int(numbers) % 23]   @validator d..."
     },
     {
       "bug_id": "validators-original-006",
-      "file_path": "src/validators/country.py",
-      "line_number": 308,
-      "mutation_type": "var_swap",
-      "original_text": "iso_format",
-      "mutated_text": "value",
-      "context": "...(             value.upper() in set(_alpha3_to_alpha2.values())             if ignore_case..."
+      "file_path": "src/validators/i18n/es.py",
+      "line_number": 54,
+      "mutation_type": "eq_ne",
+      "original_text": "!=",
+      "mutated_text": "==",
+      "context": "...\"\"\"     if not value or len(value) != 9:         return False     value = val..."
     },
     {
       "bug_id": "validators-original-007",
-      "file_path": "src/validators/country.py",
-      "line_number": 308,
-      "mutation_type": "var_swap",
-      "original_text": "iso_format",
-      "mutated_text": "ignore_case",
-      "context": "...(             value.upper() in set(_alpha3_to_alpha2.values())             if ignore_case..."
+      "file_path": "src/validators/i18n/es.py",
+      "line_number": 68,
+      "mutation_type": "eq_ne",
+      "original_text": "==",
+      "mutated_text": "!=",
+      "context": "...(int, str(int(char) * 2))) if index % 2 == 0 else int(char)             for index,..."
     },
     {
       "bug_id": "validators-original-008",
-      "file_path": "src/validators/country.py",
-      "line_number": 317,
-      "mutation_type": "var_swap",
-      "original_text": "iso_format",
-      "mutated_text": "value",
-      "context": "...alidator def currency(value: str, /, *, skip_symbols: bool = True, ignore_case: bool = Fal..."
+      "file_path": "src/validators/i18n/es.py",
+      "line_number": 74,
+      "mutation_type": "eq_ne",
+      "original_text": "==",
+      "mutated_text": "!=",
+      "context": "...# Number type         return str(res) == control     if first_chr in \"PSQW\":  #..."
     },
     {
       "bug_id": "validators-original-009",
-      "file_path": "src/validators/country.py",
-      "line_number": 317,
-      "mutation_type": "var_swap",
-      "original_text": "iso_format",
-      "mutated_text": "ignore_case",
-      "context": "...alidator def currency(value: str, /, *, skip_symbols: bool = True, ignore_case: bool = Fal..."
+      "file_path": "src/validators/i18n/es.py",
+      "line_number": 76,
+      "mutation_type": "eq_ne",
+      "original_text": "==",
+      "mutated_text": "!=",
+      "context": "...# Letter type         return table[res] == control     return control in {str(res)..."
     },
     {
       "bug_id": "validators-original-010",
-      "file_path": "src/validators/country.py",
-      "line_number": 355,
-      "mutation_type": "var_swap",
-      "original_text": "value",
-      "mutated_text": "skip_symbols",
-      "context": "...gnore_case else value in _currency_iso4217"
+      "file_path": "src/validators/i18n/ru.py",
+      "line_number": 39,
+      "mutation_type": "eq_ne",
+      "original_text": "==",
+      "mutated_text": "!=",
+      "context": "...# company         if len(digits) == 10:             weight_coefs = [2, 4, 1..."
     },
     {
       "bug_id": "validators-original-011",
-      "file_path": "src/validators/country.py",
-      "line_number": 355,
-      "mutation_type": "var_swap",
-      "original_text": "value",
-      "mutated_text": "ignore_case",
-      "context": "...gnore_case else value in _currency_iso4217"
+      "file_path": "src/validators/i18n/ru.py",
+      "line_number": 43,
+      "mutation_type": "eq_ne",
+      "original_text": "==",
+      "mutated_text": "!=",
+      "context": "...(                 (control_number % 10) == digits[-1]                 if control_n..."
     },
     {
       "bug_id": "validators-original-012",
-      "file_path": "src/validators/country.py",
-      "line_number": 317,
-      "mutation_type": "logic",
-      "original_text": "False",
-      "mutated_text": "True",
-      "context": "...str, /, *, skip_symbols: bool = True, ignore_case: bool = False):     \"\"\"Validates gi...",
-      "mutation_type_original": "true_false"
+      "file_path": "src/validators/i18n/ru.py",
+      "line_number": 45,
+      "mutation_type": "eq_ne",
+      "original_text": "==",
+      "mutated_text": "!=",
+      "context": "...> 9                 else control_number == digits[-1]             )         # pers..."
     },
     {
       "bug_id": "validators-original-013",
-      "file_path": "src/validators/country.py",
-      "line_number": 321,
-      "mutation_type": "logic",
-      "original_text": "True",
-      "mutated_text": "False",
-      "context": "...\"\"Validates given currency code.      This performs [ISO 4217][1] currency code/symb...",
-      "mutation_type_original": "true_false"
-    },
-    {
-      "bug_id": "validators-original-014",
-      "file_path": "src/validators/country.py",
-      "line_number": 321,
-      "mutation_type": "logic",
-      "original_text": "False",
-      "mutated_text": "True",
-      "context": "...code.      This performs [ISO 4217][1] currency code/symbol validation.      [1]: ht...",
-      "mutation_type_original": "true_false"
+      "file_path": "src/validators/i18n/ru.py",
+      "line_number": 48,
+      "mutation_type": "eq_ne",
+      "original_text": "==",
+      "mutated_text": "!=",
+      "context": "...# person         elif len(digits) == 12:             weight_coefs1 = [7, 2,..."
     },
     {
       "bug_id": "validators-original-015",
-      "file_path": "src/validators/country.py",
-      "line_number": 347,
-      "mutation_type": "logic",
-      "original_text": "False",
-      "mutated_text": "True",
-      "context": "...e in _currency_symbols:         return True      if len(value) != 3:         return F...",
-      "mutation_type_original": "true_false"
+      "file_path": "src/validators/i18n/ru.py",
+      "line_number": 56,
+      "mutation_type": "eq_ne",
+      "original_text": "==",
+      "mutated_text": "!=",
+      "context": "...9                 else control_number1 == digits[-2] and (control_number2 % 10) =..."
     },
     {
       "bug_id": "validators-original-016",
-      "file_path": "src/validators/country.py",
-      "line_number": 237,
-      "mutation_type": "return_value",
-      "original_text": "\"invalid\"",
-      "mutated_text": "None",
-      "context": "...ng_code(value: str, /):     \"\"\"Validates given calling code.      This performs country's callin...",
-      "mutation_type_original": "return_none"
+      "file_path": "src/validators/i18n/ru.py",
+      "line_number": 56,
+      "mutation_type": "eq_ne",
+      "original_text": "==",
+      "mutated_text": "!=",
+      "context": "...= digits[-2] and (control_number2 % 10) == digits[-1]                 if control_n..."
     },
     {
       "bug_id": "validators-original-017",
-      "file_path": "src/validators/country.py",
-      "line_number": 263,
-      "mutation_type": "return_value",
-      "original_text": "value in set(_calling_codes.values())",
-      "mutated_text": "None",
-      "context": "...es())   @validator def country_code(value: str, /, *, iso_format: str = \"auto\", ignore_case: bool = False):     \"\"\"Validates...",
-      "mutation_type_original": "return_none"
+      "file_path": "src/validators/i18n/ru.py",
+      "line_number": 58,
+      "mutation_type": "eq_ne",
+      "original_text": "==",
+      "mutated_text": "!=",
+      "context": "...9                 else control_number2 == digits[-1]             )         else:..."
     },
     {
       "bug_id": "validators-original-018",
-      "file_path": "src/validators/country.py",
-      "line_number": 315,
-      "mutation_type": "return_value",
-      "original_text": "value.upper() in _alpha3_to_alpha2 if ignore_case else value in _alpha3_to_alpha2",
-      "mutated_text": "None",
-      "context": "...a2 if ignore_case else value in _alpha3_to_alpha2      return value in _numeric if iso_format == \"numeric\" else False   @validator def currency(value: str, /, *, skip_s...",
-      "mutation_type_original": "return_none"
+      "file_path": "src/validators/i18n/es.py",
+      "line_number": 12,
+      "mutation_type": "var_swap",
+      "original_text": "value",
+      "mutated_text": "number_by_letter",
+      "context": "...he doi is a NIF or a NIE.\"\"\"     if len(value) != 9:         return False     value =..."
     },
     {
       "bug_id": "validators-original-019",
-      "file_path": "src/validators/country.py",
-      "line_number": 355,
-      "mutation_type": "return_value",
-      "original_text": "value.upper() in _currency_iso4217 if ignore_case else value in _currency_iso4217",
-      "mutated_text": "None",
-      "context": "...17 if ignore_case else value in _currency_iso4217",
-      "mutation_type_original": "return_none"
+      "file_path": "src/validators/i18n/es.py",
+      "line_number": 14,
+      "mutation_type": "var_swap",
+      "original_text": "value",
+      "mutated_text": "number_by_letter",
+      "context": "...!= 9:         return False     value = value.upper()     table = \"TRWAGMYFPDXBNJZSQV..."
     },
     {
       "bug_id": "validators-original-020",
-      "file_path": "src/validators/country.py",
-      "line_number": 302,
-      "mutation_type": "comparison",
-      "original_text": "<",
-      "mutated_text": ">",
-      "context": "...format == \"auto\" and (iso_format := _get_code_type(value)) == \"invalid\":...",
-      "mutation_type_original": "lt_gt"
+      "file_path": "src/validators/i18n/es.py",
+      "line_number": 18,
+      "mutation_type": "var_swap",
+      "original_text": "number_by_letter",
+      "mutated_text": "value",
+      "context": "...o the corresponding digit     numbers = number_by_letter.get(value[0], value[0]) + value[1:8]..."
     },
     {
       "bug_id": "validators-original-021",
-      "file_path": "src/validators/country.py",
-      "line_number": 310,
-      "mutation_type": "logic",
-      "original_text": "in",
-      "mutated_text": "not in",
-      "context": "...if ignore_case             else value in set(_alpha3_to_alpha2.values())...",
-      "mutation_type_original": "in_not_in"
+      "file_path": "src/validators/i18n/es.py",
+      "line_number": 18,
+      "mutation_type": "var_swap",
+      "original_text": "value",
+      "mutated_text": "number_by_letter",
+      "context": "...igit     numbers = number_by_letter.get(value[0], value[0]) + value[1:8]     # doi[8]..."
     },
     {
       "bug_id": "validators-original-022",
-      "file_path": "src/validators/country.py",
-      "line_number": 312,
-      "mutation_type": "logic",
-      "original_text": "in",
-      "mutated_text": "not in",
-      "context": "...)     if iso_format == \"alpha3\":         return value.upper() in _alpha3_to_al...",
-      "mutation_type_original": "in_not_in"
+      "file_path": "src/validators/i18n/es.py",
+      "line_number": 18,
+      "mutation_type": "var_swap",
+      "original_text": "value",
+      "mutated_text": "number_by_letter",
+      "context": "...umbers = number_by_letter.get(value[0], value[0]) + value[1:8]     # doi[8] is contro..."
     },
     {
       "bug_id": "validators-original-023",
-      "file_path": "src/validators/country.py",
-      "line_number": 315,
-      "mutation_type": "logic",
-      "original_text": "in",
-      "mutated_text": "not in",
-      "context": "...e value in _alpha3_to_alpha2      return value in _numeric if iso_format == \"numer...",
-      "mutation_type_original": "in_not_in"
+      "file_path": "src/validators/i18n/es.py",
+      "line_number": 18,
+      "mutation_type": "var_swap",
+      "original_text": "value",
+      "mutated_text": "number_by_letter",
+      "context": "...ber_by_letter.get(value[0], value[0]) + value[1:8]     # doi[8] is control     return..."
     },
     {
       "bug_id": "validators-original-024",
-      "file_path": "src/validators/country.py",
-      "line_number": 349,
-      "mutation_type": "logic",
-      "original_text": "in",
-      "mutated_text": "not in",
-      "context": "...ue      if len(value) != 3:         return False      return value.upper() in _cur...",
-      "mutation_type_original": "in_not_in"
+      "file_path": "src/validators/i18n/es.py",
+      "line_number": 20,
+      "mutation_type": "var_swap",
+      "original_text": "value",
+      "mutated_text": "number_by_letter",
+      "context": "...ontrol     return numbers.isdigit() and value[8] == table[int(numbers) % 23]   @valid..."
     },
     {
       "bug_id": "validators-original-025",
-      "file_path": "src/validators/crypto_addresses/btc_address.py",
-      "line_number": 23,
-      "mutation_type": "comparison",
-      "original_text": "==",
-      "mutated_text": "!=",
-      "context": "...decoded_bytes[-4:]     return checksum == sha256(sha256(header).digest()).digest(...",
-      "mutation_type_original": "eq_ne"
+      "file_path": "src/validators/crypto_addresses/bsc_address.py",
+      "line_number": 36,
+      "mutation_type": "true_false",
+      "original_text": "True",
+      "mutated_text": "False",
+      "context": "...alue):         return False      return True"
     },
     {
       "bug_id": "validators-original-026",
       "file_path": "src/validators/crypto_addresses/btc_address.py",
       "line_number": 20,
-      "mutation_type": "logic",
+      "mutation_type": "true_false",
       "original_text": "False",
       "mutated_text": "True",
-      "context": "...r) not in range(25, 35):         return False     decoded_bytes = _decode_base58(addr...",
-      "mutation_type_original": "true_false"
-    },
-    {
-      "bug_id": "validators-original-027",
-      "file_path": "src/validators/crypto_addresses/btc_address.py",
-      "line_number": 49,
-      "mutation_type": "logic",
-      "original_text": "False",
-      "mutated_text": "True",
-      "context": "...\"\"\"     if not value:         return False      return (         # segwit pattern...",
-      "mutation_type_original": "true_false"
+      "context": "...r) not in range(25, 35):         return False     decoded_bytes = _decode_base58(addr..."
     },
     {
       "bug_id": "validators-original-028",
-      "file_path": "src/validators/crypto_addresses/btc_address.py",
-      "line_number": 14,
-      "mutation_type": "return_value",
-      "original_text": "sum((58**enm) * alphabet.index(idx) for enm, idx in enumerate(addr[::-1]))",
-      "mutated_text": "None",
-      "context": "...RSTUVWXYZabcdefghijkmnopqrstuvwxyz\"     return sum((58**enm) * alphabet.index(idx) for enm, idx in enumerate(addr[::-1]))   def _validate_old_btc_address(addr: s...",
-      "mutation_type_original": "return_none"
+      "file_path": "src/validators/crypto_addresses/eth_address.py",
+      "line_number": 9,
+      "mutation_type": "true_false",
+      "original_text": "True",
+      "mutated_text": "False",
+      "context": "....utils import validator  _keccak_flag = True try:     # external     from eth_hash.a..."
     },
     {
       "bug_id": "validators-original-029",
-      "file_path": "src/validators/crypto_addresses/btc_address.py",
-      "line_number": 20,
-      "mutation_type": "return_value",
-      "original_text": "False",
-      "mutated_text": "None",
-      "context": "...len(addr) not in range(25, 35):         return False     decoded_bytes = _decode_base58(addr...",
-      "mutation_type_original": "return_none"
+      "file_path": "src/validators/crypto_addresses/eth_address.py",
+      "line_number": 30,
+      "mutation_type": "true_false",
+      "original_text": "True",
+      "mutated_text": "False",
+      "context": "...):             return False     return True   @validator def eth_address(value: str..."
     },
     {
       "bug_id": "validators-original-030",
-      "file_path": "src/validators/crypto_addresses/btc_address.py",
-      "line_number": 23,
-      "mutation_type": "return_value",
-      "original_text": "checksum == sha256(sha256(header).digest()).digest()[:4]",
-      "mutated_text": "None",
-      "context": "...oded_bytes[:-4], decoded_bytes[-4:]     return checksum == sha256(sha256(header).digest()).digest()[:4]   @validator def btc_address(value: str...",
-      "mutation_type_original": "return_none"
+      "file_path": "src/validators/i18n/es.py",
+      "line_number": 13,
+      "mutation_type": "true_false",
+      "original_text": "False",
+      "mutated_text": "True",
+      "context": "...if len(value) != 9:         return False     value = value.upper()     table = \"..."
     },
     {
       "bug_id": "validators-original-031",
-      "file_path": "src/validators/crypto_addresses/btc_address.py",
-      "line_number": 49,
-      "mutation_type": "return_value",
+      "file_path": "src/validators/i18n/es.py",
+      "line_number": 55,
+      "mutation_type": "true_false",
       "original_text": "False",
-      "mutated_text": "None",
-      "context": "...ress.     \"\"\"     if not value:         return False      return (         # segwit pattern...",
-      "mutation_type_original": "return_none"
+      "mutated_text": "True",
+      "context": "...alue or len(value) != 9:         return False     value = value.upper()     table = \"..."
     },
     {
       "bug_id": "validators-original-032",
-      "file_path": "src/validators/crypto_addresses/btc_address.py",
-      "line_number": 51,
-      "mutation_type": "return_value",
-      "original_text": "(\n        # segwit pattern\n        re.compile(r\"^(bc|tc)[0-3][02-9ac-hj-np-z]{14,74}$\").match(value)\n        if value[:2] in (\"bc\", \"tb\")\n        else _validate_old_btc_address(value)\n    )",
-      "mutated_text": "None",
-      "context": "...if not value:         return False      return (         # segwit pattern         re.compile(r\"^(bc|tc)[0-3][02-9ac-hj-np-z]{14,74}$\").match(value)         if value[:2] in (\"bc\", \"tb\")         else _validate_old_btc_address(value)     )",
-      "mutation_type_original": "return_none"
+      "file_path": "src/validators/i18n/es.py",
+      "line_number": 62,
+      "mutation_type": "true_false",
+      "original_text": "False",
+      "mutated_text": "True",
+      "context": "...not doi_body.isdigit():         return False     res = (         10         - sum(..."
     },
     {
       "bug_id": "validators-original-033",
-      "file_path": "src/validators/crypto_addresses/btc_address.py",
-      "line_number": 19,
-      "mutation_type": "logic",
-      "original_text": "not in",
-      "mutated_text": "in",
-      "context": "...P2SH type address.\"\"\"     if len(addr) not in range(25, 35):         return False...",
-      "mutation_type_original": "in_not_in"
-    },
-    {
-      "bug_id": "validators-original-034",
-      "file_path": "src/validators/crypto_addresses/btc_address.py",
-      "line_number": 54,
-      "mutation_type": "logic",
-      "original_text": "in",
-      "mutated_text": "not in",
-      "context": "...4}$\").match(value)         if value[:2] in (\"bc\", \"tb\")         else _validate_old...",
-      "mutation_type_original": "in_not_in"
+      "file_path": "src/validators/i18n/es.py",
+      "line_number": 77,
+      "mutation_type": "true_false",
+      "original_text": "False",
+      "mutated_text": "True",
+      "context": "...[res]} if first_chr in \"CDFGJNRUV\" else False   @validator def es_nif(value: str, /):..."
     },
     {
       "bug_id": "validators-original-035",
-      "file_path": "src/validators/crypto_addresses/btc_address.py",
-      "line_number": 14,
-      "mutation_type": "arithmetic",
-      "original_text": "*",
-      "mutated_text": "/",
-      "context": "...nopqrstuvwxyz\"     return sum((58**enm) * alphabet.index(idx) for enm, idx in enu...",
-      "mutation_type_original": "mul_div"
+      "file_path": "src/validators/i18n/fi.py",
+      "line_number": 56,
+      "mutation_type": "true_false",
+      "original_text": "False",
+      "mutated_text": "True",
+      "context": "...\"\"\"     if not value:         return False     if not re.match(_business_id_patter..."
     },
     {
       "bug_id": "validators-original-036",
-      "file_path": "src/validators/crypto_addresses/btc_address.py",
-      "line_number": 14,
-      "mutation_type": "boundary",
-      "original_text": "58",
-      "mutated_text": "59",
-      "context": "...defghijkmnopqrstuvwxyz\"     return sum((58**enm) * alphabet.index(idx) for enm, id...",
-      "mutation_type_original": "plus_one"
+      "file_path": "src/validators/i18n/fi.py",
+      "line_number": 58,
+      "mutation_type": "true_false",
+      "original_text": "False",
+      "mutated_text": "True",
+      "context": "...ss_id_pattern(), value):         return False     factors = [7, 9, 10, 5, 8, 4, 2]..."
     },
     {
       "bug_id": "validators-original-037",
-      "file_path": "src/validators/crypto_addresses/btc_address.py",
-      "line_number": 14,
-      "mutation_type": "boundary",
-      "original_text": "1",
-      "mutated_text": "2",
-      "context": "...(idx) for enm, idx in enumerate(addr[::-1]))   def _validate_old_btc_address(addr...",
-      "mutation_type_original": "plus_one"
+      "file_path": "src/validators/i18n/fi.py",
+      "line_number": 67,
+      "mutation_type": "true_false",
+      "original_text": "True",
+      "mutated_text": "False",
+      "context": "...: str, /, *, allow_temporal_ssn: bool = True):     \"\"\"Validate a Finnish Social Secu..."
     },
     {
       "bug_id": "validators-original-038",
-      "file_path": "src/validators/crypto_addresses/btc_address.py",
-      "line_number": 19,
-      "mutation_type": "boundary",
-      "original_text": "25",
-      "mutated_text": "26",
-      "context": "...dress.\"\"\"     if len(addr) not in range(25, 35):         return False     decoded_...",
-      "mutation_type_original": "plus_one"
+      "file_path": "src/validators/i18n/fi.py",
+      "line_number": 93,
+      "mutation_type": "true_false",
+      "original_text": "False",
+      "mutated_text": "True",
+      "context": "...\"\"\"     if not value:         return False     ssn_check_marks = \"0123456789ABCDEF..."
     },
     {
       "bug_id": "validators-original-039",
-      "file_path": "src/validators/crypto_addresses/btc_address.py",
-      "line_number": 19,
-      "mutation_type": "boundary",
-      "original_text": "35",
-      "mutated_text": "36",
-      "context": "...s.\"\"\"     if len(addr) not in range(25, 35):         return False     decoded_byte...",
-      "mutation_type_original": "plus_one"
+      "file_path": "src/validators/i18n/fi.py",
+      "line_number": 96,
+      "mutation_type": "true_false",
+      "original_text": "False",
+      "mutated_text": "True",
+      "context": "...n_check_marks), value)):         return False     gd = result.groupdict()     checksu..."
     },
     {
       "bug_id": "validators-original-040",
-      "file_path": "src/validators/crypto_addresses/btc_address.py",
-      "line_number": 21,
-      "mutation_type": "boundary",
-      "original_text": "25",
-      "mutated_text": "26",
-      "context": "...d_bytes = _decode_base58(addr).to_bytes(25, \"big\")     header, checksum = decoded_...",
-      "mutation_type_original": "plus_one"
+      "file_path": "src/validators/i18n/fr.py",
+      "line_number": 56,
+      "mutation_type": "true_false",
+      "original_text": "False",
+      "mutated_text": "True",
+      "context": "...\"\"\"     if not value:         return False     if isinstance(value, str):..."
     },
     {
       "bug_id": "validators-original-041",
-      "file_path": "src/validators/crypto_addresses/btc_address.py",
-      "line_number": 22,
-      "mutation_type": "boundary",
-      "original_text": "4",
-      "mutated_text": "5",
-      "context": "...header, checksum = decoded_bytes[:-4], decoded_bytes[-4:]     return checksu...",
-      "mutation_type_original": "plus_one"
+      "file_path": "src/validators/i18n/fr.py",
+      "line_number": 59,
+      "mutation_type": "true_false",
+      "original_text": "True",
+      "mutated_text": "False",
+      "context": "...\", \"2B\"):  # Corsica             return True         try:             value = int(va..."
     },
     {
       "bug_id": "validators-original-042",
-      "file_path": "src/validators/crypto_addresses/btc_address.py",
-      "line_number": 22,
-      "mutation_type": "boundary",
-      "original_text": "4",
-      "mutated_text": "5",
-      "context": "...um = decoded_bytes[:-4], decoded_bytes[-4:]     return checksum == sha256(sha256(...",
-      "mutation_type_original": "plus_one"
+      "file_path": "src/validators/i18n/fr.py",
+      "line_number": 63,
+      "mutation_type": "true_false",
+      "original_text": "False",
+      "mutated_text": "True",
+      "context": "...except ValueError:             return False     return 1 <= value <= 19 or 21 <= va..."
     },
     {
       "bug_id": "validators-original-043",
-      "file_path": "src/validators/crypto_addresses/btc_address.py",
-      "line_number": 23,
-      "mutation_type": "boundary",
-      "original_text": "4",
-      "mutated_text": "5",
-      "context": "...a256(sha256(header).digest()).digest()[:4]   @validator def btc_address(value: st...",
-      "mutation_type_original": "plus_one"
+      "file_path": "src/validators/i18n/fr.py",
+      "line_number": 95,
+      "mutation_type": "true_false",
+      "original_text": "False",
+      "mutated_text": "True",
+      "context": "...\"\"\"     if not value:         return False     matched = re.match(_ssn_pattern(),..."
     },
     {
       "bug_id": "validators-original-044",
-      "file_path": "src/validators/crypto_addresses/btc_address.py",
-      "line_number": 54,
-      "mutation_type": "boundary",
-      "original_text": "2",
-      "mutated_text": "3",
-      "context": "...4,74}$\").match(value)         if value[:2] in (\"bc\", \"tb\")         else _validate...",
-      "mutation_type_original": "plus_one"
+      "file_path": "src/validators/i18n/fr.py",
+      "line_number": 98,
+      "mutation_type": "true_false",
+      "original_text": "False",
+      "mutated_text": "True",
+      "context": "...lue)     if not matched:         return False     groups = list(matched.groups())..."
     },
     {
       "bug_id": "validators-original-045",
-      "file_path": "src/validators/crypto_addresses/btc_address.py",
-      "line_number": 14,
-      "mutation_type": "boundary",
-      "original_text": "58",
-      "mutated_text": "57",
-      "context": "...defghijkmnopqrstuvwxyz\"     return sum((58**enm) * alphabet.index(idx) for enm, id...",
-      "mutation_type_original": "minus_one"
+      "file_path": "src/validators/i18n/fr.py",
+      "line_number": 104,
+      "mutation_type": "true_false",
+      "original_text": "False",
+      "mutated_text": "True",
+      "context": "...for foreign born people         return False     if control_key is None:         # n..."
     },
     {
       "bug_id": "validators-original-046",
-      "file_path": "src/validators/crypto_addresses/btc_address.py",
-      "line_number": 14,
-      "mutation_type": "boundary",
-      "original_text": "1",
-      "mutated_text": "0",
-      "context": "...(idx) for enm, idx in enumerate(addr[::-1]))   def _validate_old_btc_address(addr...",
-      "mutation_type_original": "minus_one"
-    },
-    {
-      "bug_id": "validators-original-047",
-      "file_path": "src/validators/crypto_addresses/btc_address.py",
-      "line_number": 19,
-      "mutation_type": "boundary",
-      "original_text": "25",
-      "mutated_text": "24",
-      "context": "...dress.\"\"\"     if len(addr) not in range(25, 35):         return False     decoded_...",
-      "mutation_type_original": "minus_one"
-    },
-    {
-      "bug_id": "validators-original-048",
-      "file_path": "src/validators/crypto_addresses/btc_address.py",
-      "line_number": 19,
-      "mutation_type": "boundary",
-      "original_text": "35",
-      "mutated_text": "34",
-      "context": "...s.\"\"\"     if len(addr) not in range(25, 35):         return False     decoded_byte...",
-      "mutation_type_original": "minus_one"
-    },
-    {
-      "bug_id": "validators-original-049",
-      "file_path": "src/validators/crypto_addresses/btc_address.py",
-      "line_number": 21,
-      "mutation_type": "boundary",
-      "original_text": "25",
-      "mutated_text": "24",
-      "context": "...d_bytes = _decode_base58(addr).to_bytes(25, \"big\")     header, checksum = decoded_...",
-      "mutation_type_original": "minus_one"
+      "file_path": "src/validators/i18n/fr.py",
+      "line_number": 107,
+      "mutation_type": "true_false",
+      "original_text": "True",
+      "mutated_text": "False",
+      "context": "...additional check needed         return True     if len(department) == len(groups[4]..."
     },
     {
       "bug_id": "validators-original-050",
-      "file_path": "src/validators/crypto_addresses/btc_address.py",
-      "line_number": 22,
-      "mutation_type": "boundary",
-      "original_text": "4",
-      "mutated_text": "3",
-      "context": "...header, checksum = decoded_bytes[:-4], decoded_bytes[-4:]     return checksu...",
-      "mutation_type_original": "minus_one"
+      "file_path": "src/validators/ip_address.py",
+      "line_number": 47,
+      "mutation_type": "true_false",
+      "original_text": "False",
+      "mutated_text": "True",
+      "context": "...cidr: bool = True,     strict: bool = False,     private: Optional[bool] = None,..."
     }
   ]
 }

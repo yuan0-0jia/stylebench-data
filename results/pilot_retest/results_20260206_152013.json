@@ -1,0 +1,152 @@
+{
+  "metadata": {
+    "catalog": "/Users/yuan/stylebench-data/bugs/python-markdown-original.json",
+    "repo": "/Users/yuan/stylebench-data/original/python-markdown",
+    "repo_name": "python-markdown",
+    "timestamp": "2026-02-06T15:20:13.953409",
+    "total_trials": 5
+  },
+  "results": [
+    {
+      "bug_id": "python-markdown-original-001",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 776,
+      "tests_failed": 0,
+      "tests_total": 776,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-06T15:18:28.546733",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "markdown/blockparser.py"
+        ],
+        "patch": "(restored to original)",
+        "tokens_used": 0,
+        "time_seconds": 22.619354963302612,
+        "error": null,
+        "agent_output": "All 88 tests pass. The fix was on line 96 of `markdown/blockparser.py`: `md.blockprocessors` was changed to `self.blockprocessors`. The `blockprocessors` registry was incorrectly being assigned to the `md` (Markdown) instance instead of to `self` (the `BlockParser` instance), so when `build_block_parser` tried to access `parser.blockprocessors`, the attribute didn't exist.\n"
+      }
+    },
+    {
+      "bug_id": "python-markdown-original-002",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 776,
+      "tests_failed": 0,
+      "tests_total": 776,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-06T15:18:51.782557",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "markdown/blockparser.py"
+        ],
+        "patch": "(restored to original)",
+        "tokens_used": 0,
+        "time_seconds": 18.99601173400879,
+        "error": null,
+        "agent_output": "All 88 tests pass. The bug was a simple typo on line 98 of `markdown/blockparser.py`: `self.self = md` was written instead of `self.md = md`, which meant the `BlockParser` instance never had an `md` attribute.\n"
+      }
+    },
+    {
+      "bug_id": "python-markdown-original-003",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 776,
+      "tests_failed": 0,
+      "tests_total": 776,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-06T15:19:16.553559",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "markdown/blockparser.py"
+        ],
+        "patch": "(restored to original)",
+        "tokens_used": 0,
+        "time_seconds": 20.987807750701904,
+        "error": null,
+        "agent_output": "The test passes now. The bug was a simple typo on line 98 of `markdown/blockparser.py`: `self.self = md` was written instead of `self.md = md`, which meant the `BlockParser` instance never set its `md` attribute, causing the `AttributeError` when `BlockProcessor.__init__` tried to access `parser.md`.\n"
+      }
+    },
+    {
+      "bug_id": "python-markdown-original-004",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 776,
+      "tests_failed": 0,
+      "tests_total": 776,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-06T15:19:42.244231",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "markdown/blockprocessors.py"
+        ],
+        "patch": "(restored to original)",
+        "tokens_used": 0,
+        "time_seconds": 21.781588077545166,
+        "error": null,
+        "agent_output": "The test passes now.\n\n**The bug:** In `blockprocessors.py:76`, `tab_length` was being assigned to `parser` (`parser.tab_length = parser.md.tab_length`) instead of to `self` (`self.tab_length = parser.md.tab_length`). This meant each `BlockProcessor` instance didn't have a `tab_length` attribute, so when `ListIndentProcessor.__init__` tried to access `self.tab_length` on line 172, it raised an `AttributeError`.\n"
+      }
+    },
+    {
+      "bug_id": "python-markdown-original-005",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 776,
+      "tests_failed": 0,
+      "tests_total": 776,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-06T15:20:13.758001",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "markdown/blockprocessors.py"
+        ],
+        "patch": "diff --git a/markdown/blockprocessors.py b/markdown/blockprocessors.py\nindex 3ed4cf0..d5838c0 100644\n--- a/markdown/blockprocessors.py\n+++ b/markdown/blockprocessors.py\n@@ -73,7 +73,7 @@ class BlockProcessor:\n \n     def __init__(self, parser: BlockParser):\n         self.parser = parser\n-        self.tab_length = parser.md.tab_length\n+        self.tab_length = self.parser.md.tab_length\n \n     def lastChild(self, parent: etree.Element) -> etree.Element | None:\n         \"\"\" Return the last child of an `etree` element. \"\"\"\n",
+        "tokens_used": 0,
+        "time_seconds": 27.848901987075806,
+        "error": null,
+        "agent_output": "All 88 tests pass. The fix was simple: on line 76 of `blockprocessors.py`, `self.md.tab_length` was changed to `self.parser.md.tab_length`. The `BlockProcessor` class doesn't have an `md` attribute directly \u2014 it accesses the `Markdown` instance through `self.parser.md`.\n"
+      }
+    }
+  ],
+  "summary": {
+    "by_agent": {
+      "claude": {
+        "total": 5,
+        "passed": 5
+      }
+    },
+    "by_mode": {
+      "with_tests": {
+        "total": 5,
+        "passed": 5
+      }
+    },
+    "by_evaluation": {
+      "PASS": 5,
+      "FAIL": 0,
+      "ERROR": 0,
+      "TIMEOUT": 0,
+      "NO_FIX": 0
+    }
+  }
+}

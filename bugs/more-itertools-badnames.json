@@ -1,17 +1,4 @@
 {
-  "repo": "more-itertools",
-  "style": "badnames",
-  "generated_at": "2026-02-03T16:54:03.953633",
-  "test_command": [
-    "uv",
-    "run",
-    "pytest",
-    "/Users/yuan/stylebench-data/badnames/more-itertools/tests",
-    "-x",
-    "-q",
-    "--tb=short",
-    "--color=no"
-  ],
   "bugs": [
     {
       "bug_id": "more-itertools-badnames-001",
@@ -72,14 +59,6 @@
     {
       "bug_id": "more-itertools-badnames-008",
       "test_output": ".................................................................................. [ 11%]\n.................F\n=================================== FAILURES ===================================\n_____________ InterleaveEvenlyTests.test_argument_mismatch_raises ______________\ntests/test_more.py:1214: in test_argument_mismatch_raises\n    list(mi.interleave_evenly(g, lengths=h))\nmore_itertools/more.py:1306: in interleave_evenly\n    v = [iter(iterables[i]) for i in ab]\n        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nmore_itertools/more.py:1306: in <listcomp>\n    v = [iter(iterables[i]) for i in ab]\n              ^^^^^^^^^^^^\nE   IndexError: list index out of range\n=========================== short test summary info ============================\nFAILED tests/test_more.py::InterleaveEvenlyTests::test_argument_mismatch_raises\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 99 passed, 62 subtests passed in 0.34s\nwarning: `VIRTUAL_ENV=/Users/yuan/stylebench/.venv` does not match the project environment path `.venv` and will be ignored; use `--active` to target the active environment instead\n",
-      "failing_tests": [
-        "tests/test_more.py::InterleaveEvenlyTests::test_argument_mismatch_raises"
-      ],
-      "exit_code": 1
-    },
-    {
-      "bug_id": "more-itertools-badnames-009",
-      "test_output": ".................................................................................. [ 11%]\n.................F\n=================================== FAILURES ===================================\n_____________ InterleaveEvenlyTests.test_argument_mismatch_raises ______________\ntests/test_more.py:1214: in test_argument_mismatch_raises\n    list(mi.interleave_evenly(g, lengths=h))\nmore_itertools/more.py:1306: in interleave_evenly\n    v = [iter(iterables[i]) for i in ab]\n        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nmore_itertools/more.py:1306: in <listcomp>\n    v = [iter(iterables[i]) for i in ab]\n              ^^^^^^^^^^^^\nE   IndexError: list index out of range\n=========================== short test summary info ============================\nFAILED tests/test_more.py::InterleaveEvenlyTests::test_argument_mismatch_raises\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 99 passed, 62 subtests passed in 0.35s\nwarning: `VIRTUAL_ENV=/Users/yuan/stylebench/.venv` does not match the project environment path `.venv` and will be ignored; use `--active` to target the active environment instead\n",
       "failing_tests": [
         "tests/test_more.py::InterleaveEvenlyTests::test_argument_mismatch_raises"
       ],
@@ -493,16 +472,6 @@
       "original_text": "!=",
       "mutated_text": "==",
       "context": "...'             )     elif len(iterables) != len(lengths):         raise ValueError(...",
-      "mutation_type_original": "eq_ne"
-    },
-    {
-      "bug_id": "more-itertools-badnames-009",
-      "file_path": "more_itertools/more.py",
-      "line_number": 1499,
-      "mutation_type": "comparison",
-      "original_text": "!=",
-      "mutated_text": "==",
-      "context": "...for v in u:                 if len(v) != n:                     raise ValueError...",
       "mutation_type_original": "eq_ne"
     },
     {

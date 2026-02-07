@@ -1,0 +1,272 @@
+{
+  "metadata": {
+    "catalog": "/Users/yuan/stylebench-data/bugs/humanize-formatting.json",
+    "repo": "/Users/yuan/stylebench-data/formatting/humanize",
+    "repo_name": "humanize",
+    "timestamp": "2026-02-05T09:36:04.534026",
+    "total_trials": 10
+  },
+  "results": [
+    {
+      "bug_id": "humanize-formatting-001",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 684,
+      "tests_failed": 0,
+      "tests_total": 684,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-05T09:31:46.548618",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "src/humanize/lists.py"
+        ],
+        "patch": "(restored to original)",
+        "tokens_used": 0,
+        "time_seconds": 38.258153200149536,
+        "error": null,
+        "agent_output": "The fix works correctly. The output is now `1, 2 and 3` as expected.\n\nTo summarize the bug: On line 31 of `src/humanize/lists.py`, the condition `if len(items) != 1:` was incorrect. It should have been `if len(items) == 1:`. This was a simple logic error where `!=` was used instead of `==`, causing the function to return only the first item for any list with more than one element.\n"
+      }
+    },
+    {
+      "bug_id": "humanize-formatting-002",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 684,
+      "tests_failed": 0,
+      "tests_total": 684,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-05T09:32:26.225187",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "src/humanize/lists.py"
+        ],
+        "patch": "(restored to original)",
+        "tokens_used": 0,
+        "time_seconds": 36.52807402610779,
+        "error": null,
+        "agent_output": "All 7 tests in `test_lists.py` now pass. The fix was simple: changing `!=` to `==` on line 31 of `src/humanize/lists.py`. The original code had inverted logic - it was returning only the first item when the list had more than one element, instead of returning just the first item when there's exactly one element.\n"
+      }
+    },
+    {
+      "bug_id": "humanize-formatting-003",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 684,
+      "tests_failed": 0,
+      "tests_total": 684,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-05T09:32:43.789317",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "src/humanize/lists.py"
+        ],
+        "patch": "(restored to original)",
+        "tokens_used": 0,
+        "time_seconds": 14.427402019500732,
+        "error": null,
+        "agent_output": "The fix is complete. The bug was on line 32 of `src/humanize/lists.py` - when the list had exactly one item, the function was incorrectly returning `None` instead of the string representation of that single item. I changed `return None` to `return str(items[0])` to match the expected behavior shown in the docstring and tests.\n"
+      }
+    },
+    {
+      "bug_id": "humanize-formatting-004",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 684,
+      "tests_failed": 0,
+      "tests_total": 684,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-05T09:33:20.316371",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "src/humanize/lists.py"
+        ],
+        "patch": "diff --git a/src/humanize/lists.py b/src/humanize/lists.py\nindex 5f68724..a1cc004 100644\n--- a/src/humanize/lists.py\n+++ b/src/humanize/lists.py\n@@ -31,7 +31,7 @@ def natural_list(items: list[Any]) -> str:\n     if len(items) == 1:\n         return str(items[0])\n     elif len(items) == 2:\n-        return f'{str(items[0])} and {str(items[1])}'\n+        return f'{items[0]} and {items[1]}'\n     else:\n         return (\n             ', '.join(str(item) for item in items[:-1])\n",
+        "tokens_used": 0,
+        "time_seconds": 33.615524768829346,
+        "error": null,
+        "agent_output": "All tests pass now. The bug was in `src/humanize/lists.py:34` where the function returned `None` instead of formatting a two-item list. The fix was to return `f'{items[0]} and {items[1]}'` for the case when the list has exactly 2 items.\n"
+      }
+    },
+    {
+      "bug_id": "humanize-formatting-005",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 684,
+      "tests_failed": 0,
+      "tests_total": 684,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-05T09:33:59.640040",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "src/humanize/lists.py"
+        ],
+        "patch": "diff --git a/src/humanize/lists.py b/src/humanize/lists.py\nindex 5f68724..aac5676 100644\n--- a/src/humanize/lists.py\n+++ b/src/humanize/lists.py\n@@ -33,7 +33,4 @@ def natural_list(items: list[Any]) -> str:\n     elif len(items) == 2:\n         return f'{str(items[0])} and {str(items[1])}'\n     else:\n-        return (\n-            ', '.join(str(item) for item in items[:-1])\n-            + f' and {str(items[-1])}'\n-        )\n+        return ', '.join(str(item) for item in items[:-1]) + ' and ' + str(items[-1])\n",
+        "tokens_used": 0,
+        "time_seconds": 36.02181816101074,
+        "error": null,
+        "agent_output": "All 7 tests in `test_lists.py` are now passing. The bug was in `src/humanize/lists.py:36` where the `natural_list` function was returning `None` for lists with more than 2 items instead of properly formatting them. \n\nThe fix joins all items except the last with \", \" and then appends \" and \" followed by the last item, producing output like \"1, 2 and 3\" as expected.\n"
+      }
+    },
+    {
+      "bug_id": "humanize-formatting-006",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 684,
+      "tests_failed": 0,
+      "tests_total": 684,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-05T09:34:16.201861",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "src/humanize/lists.py"
+        ],
+        "patch": "(restored to original)",
+        "tokens_used": 0,
+        "time_seconds": 13.438318967819214,
+        "error": null,
+        "agent_output": "The bug was a simple typo on line 38 in `src/humanize/lists.py`. The code was using `-` (subtraction) instead of `+` (concatenation) to join the comma-separated list with the final \"and\" clause. This caused the `TypeError: unsupported operand type(s) for -: 'str' and 'str'` error since you can't subtract strings.\n"
+      }
+    },
+    {
+      "bug_id": "humanize-formatting-007",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 684,
+      "tests_failed": 0,
+      "tests_total": 684,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-05T09:34:51.202086",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "src/humanize/lists.py"
+        ],
+        "patch": "(restored to original)",
+        "tokens_used": 0,
+        "time_seconds": 31.878231048583984,
+        "error": null,
+        "agent_output": "All tests pass now. The bug was on line 31 of `src/humanize/lists.py` where the condition `if len(items) == 2` should have been `if len(items) == 1`. This was causing the function to return only the first item when there were two items in the list, instead of properly handling the single-item case separately from the two-item case.\n"
+      }
+    },
+    {
+      "bug_id": "humanize-formatting-008",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 684,
+      "tests_failed": 0,
+      "tests_total": 684,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-05T09:35:07.352927",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "src/humanize/lists.py"
+        ],
+        "patch": "(restored to original)",
+        "tokens_used": 0,
+        "time_seconds": 13.005557775497437,
+        "error": null,
+        "agent_output": "The fix is simple: changed `items[1]` to `items[0]` on line 32. When a list has exactly one item, the code should return the first element at index 0, not index 1 (which doesn't exist and causes the `IndexError`).\n"
+      }
+    },
+    {
+      "bug_id": "humanize-formatting-009",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 684,
+      "tests_failed": 0,
+      "tests_total": 684,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-05T09:35:47.917225",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "src/humanize/lists.py"
+        ],
+        "patch": "diff --git a/src/humanize/lists.py b/src/humanize/lists.py\nindex 5f68724..df51458 100644\n--- a/src/humanize/lists.py\n+++ b/src/humanize/lists.py\n@@ -30,8 +30,6 @@ def natural_list(items: list[Any]) -> str:\n     \"\"\"\n     if len(items) == 1:\n         return str(items[0])\n-    elif len(items) == 2:\n-        return f'{str(items[0])} and {str(items[1])}'\n     else:\n         return (\n             ', '.join(str(item) for item in items[:-1])\n",
+        "tokens_used": 0,
+        "time_seconds": 37.4364128112793,
+        "error": null,
+        "agent_output": "All tests pass now. The bug was on line 33-34 of `src/humanize/lists.py` where there was an incorrect special case for lists with exactly 3 items. The code was:\n\n```python\nelif len(items) == 3:\n    return f'{str(items[0])} and {str(items[1])}'\n```\n\nThis incorrectly returned only the first two items joined with \"and\" (e.g., `'1 and 2'`), instead of all three items properly formatted (e.g., `'1, 2 and 3'`).\n\nThe fix was to remove this erroneous special case, allowing the `else` branch to handle all lists with 2 or more items correctly.\n"
+      }
+    },
+    {
+      "bug_id": "humanize-formatting-010",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 684,
+      "tests_failed": 0,
+      "tests_total": 684,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-05T09:36:04.420603",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "src/humanize/lists.py"
+        ],
+        "patch": "(restored to original)",
+        "tokens_used": 0,
+        "time_seconds": 13.626906871795654,
+        "error": null,
+        "agent_output": "The bug was an off-by-one error on line 32. When the list contains exactly one item, the code was accessing `items[1]` instead of `items[0]`. Since Python uses zero-based indexing, accessing index 1 on a single-element list causes an `IndexError`. The fix changes `items[1]` to `items[0]`.\n"
+      }
+    }
+  ],
+  "summary": {
+    "by_agent": {
+      "claude": {
+        "total": 10,
+        "passed": 10
+      }
+    },
+    "by_mode": {
+      "with_tests": {
+        "total": 10,
+        "passed": 10
+      }
+    },
+    "by_evaluation": {
+      "PASS": 10,
+      "FAIL": 0,
+      "ERROR": 0,
+      "TIMEOUT": 0,
+      "NO_FIX": 0
+    }
+  }
+}

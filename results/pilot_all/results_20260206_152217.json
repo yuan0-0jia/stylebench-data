@@ -1,0 +1,104 @@
+{
+  "metadata": {
+    "catalog": "/Users/yuan/stylebench-data/bugs/humanize-original.json",
+    "repo": "/Users/yuan/stylebench-data/original/humanize",
+    "repo_name": "humanize",
+    "timestamp": "2026-02-06T15:22:17.076504",
+    "total_trials": 3
+  },
+  "results": [
+    {
+      "bug_id": "humanize-original-001",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 684,
+      "tests_failed": 0,
+      "tests_total": 684,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-06T15:21:10.987883",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "src/humanize/filesize.py"
+        ],
+        "patch": "(restored to original)",
+        "tokens_used": 0,
+        "time_seconds": 34.50637221336365,
+        "error": null,
+        "agent_output": "All 70 tests pass. The fix was a one-character change on line 91 of `src/humanize/filesize.py`: changing `!=` to `==`.\n\n**The bug:** The condition `abs_bytes != 1` was inverted \u2014 it was returning the singular \"Byte\" for all values *except* 1, when it should only return singular \"Byte\" when the value *is* exactly 1. This caused `naturalsize(300)` to return `\"300 Byte\"` instead of falling through to line 95 which correctly returns `\"300 Bytes\"`.\n"
+      }
+    },
+    {
+      "bug_id": "humanize-original-002",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 684,
+      "tests_failed": 0,
+      "tests_total": 684,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-06T15:21:49.047036",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "src/humanize/filesize.py"
+        ],
+        "patch": "(restored to original)",
+        "tokens_used": 0,
+        "time_seconds": 34.743364095687866,
+        "error": null,
+        "agent_output": "All 70 tests pass. The fix was a single-character change on line 80 of `src/humanize/filesize.py`:\n\n**Bug:** `if value:` was used instead of `if gnu:` when selecting the suffix set. Since `value` is truthy for any non-zero input, it always selected GNU-style suffixes (like `K`, `M`) instead of the appropriate decimal (`kB`, `MB`) or binary (`KiB`, `MiB`) suffixes.\n\n**Fix:** Changed `if value:` to `if gnu:` so the suffix selection correctly checks the `gnu` parameter.\n"
+      }
+    },
+    {
+      "bug_id": "humanize-original-003",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 684,
+      "tests_failed": 0,
+      "tests_total": 684,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-06T15:22:16.960817",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "src/humanize/filesize.py"
+        ],
+        "patch": "(restored to original)",
+        "tokens_used": 0,
+        "time_seconds": 24.45829200744629,
+        "error": "Exit code: 1",
+        "agent_output": "You've hit your limit \u00b7 resets 7pm (America/Los_Angeles)\n"
+      }
+    }
+  ],
+  "summary": {
+    "by_agent": {
+      "claude": {
+        "total": 3,
+        "passed": 3
+      }
+    },
+    "by_mode": {
+      "with_tests": {
+        "total": 3,
+        "passed": 3
+      }
+    },
+    "by_evaluation": {
+      "PASS": 3,
+      "FAIL": 0,
+      "ERROR": 0,
+      "TIMEOUT": 0,
+      "NO_FIX": 0
+    }
+  }
+}

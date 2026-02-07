@@ -1,0 +1,284 @@
+{
+  "metadata": {
+    "catalog": "/Users/yuan/stylebench-data/bugs/humanize-camelcase.json",
+    "repo": "/Users/yuan/stylebench-data/camelcase/humanize",
+    "repo_name": "humanize",
+    "timestamp": "2026-02-04T16:12:35.032863",
+    "total_trials": 10
+  },
+  "results": [
+    {
+      "bug_id": "humanize-camelcase-001",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 684,
+      "tests_failed": 0,
+      "tests_total": 684,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-04T16:08:55.423944",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "src/humanize/time.py",
+          "tests/test_i18n.py"
+        ],
+        "patch": "diff --git a/src/humanize/time.py b/src/humanize/time.py\nindex 16ba982..95fa30c 100644\n--- a/src/humanize/time.py\n+++ b/src/humanize/time.py\n@@ -624,7 +624,7 @@ def precisedelta(\n     for unit, fmt in zip(reversed(Unit), fmts):\n         singularTxt, pluralTxt, fmtValue = fmt\n         if fmtValue > 0 or (not texts and unit == minUnit):\n-            _fmtValue = 1 if 1 < fmtValue < 2 else int(fmtValue)\n+            _fmtValue = 2 if 1 < fmtValue < 2 else int(fmtValue)\n             fmtTxt = _ngettext(singularTxt, pluralTxt, _fmtValue)\n             import math\n \ndiff --git a/tests/test_i18n.py b/tests/test_i18n.py\nindex 457a79e..af98935 100644\n--- a/tests/test_i18n.py\n+++ b/tests/test_i18n.py\n@@ -207,19 +207,19 @@ def testOrdinalGenders(\n \n def testDefaultLocalePathDefinedSpec() -> None:\n     i18n = importlib.import_module(\"humanize.i18n\")\n-    assert i18n._get_default_locale_path() is not None\n+    assert i18n._getDefaultLocalePath() is not None\n \n \n def testDefaultLocalePathNoneSpec(monkeypatch: pytest.MonkeyPatch) -> None:\n     i18n = importlib.import_module(\"humanize.i18n\")\n     monkeypatch.setattr(i18n, \"__spec__\", None)\n-    assert i18n._get_default_locale_path() is None\n+    assert i18n._getDefaultLocalePath() is None\n \n \n def testDefaultLocalePathUndefinedFile(monkeypatch: pytest.MonkeyPatch) -> None:\n     i18n = importlib.import_module(\"humanize.i18n\")\n     monkeypatch.delattr(i18n, \"__spec__\")\n-    assert i18n._get_default_locale_path() is None\n+    assert i18n._getDefaultLocalePath() is None\n \n \n class TestActivate:\n",
+        "tokens_used": 0,
+        "time_seconds": 30.424301147460938,
+        "error": null,
+        "agent_output": "All tests pass. The bug was a simple logic error on line 31 of `src/humanize/lists.py`: the condition `if len(items) != 1:` was inverted and should have been `if len(items) == 1:`. This caused the function to return only the first item when there were multiple items in the list, instead of returning only the first item when the list contained exactly one element.\n"
+      }
+    },
+    {
+      "bug_id": "humanize-camelcase-002",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 684,
+      "tests_failed": 0,
+      "tests_total": 684,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-04T16:09:12.044721",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "src/humanize/time.py",
+          "tests/test_i18n.py"
+        ],
+        "patch": "diff --git a/src/humanize/time.py b/src/humanize/time.py\nindex 16ba982..95fa30c 100644\n--- a/src/humanize/time.py\n+++ b/src/humanize/time.py\n@@ -624,7 +624,7 @@ def precisedelta(\n     for unit, fmt in zip(reversed(Unit), fmts):\n         singularTxt, pluralTxt, fmtValue = fmt\n         if fmtValue > 0 or (not texts and unit == minUnit):\n-            _fmtValue = 1 if 1 < fmtValue < 2 else int(fmtValue)\n+            _fmtValue = 2 if 1 < fmtValue < 2 else int(fmtValue)\n             fmtTxt = _ngettext(singularTxt, pluralTxt, _fmtValue)\n             import math\n \ndiff --git a/tests/test_i18n.py b/tests/test_i18n.py\nindex 457a79e..af98935 100644\n--- a/tests/test_i18n.py\n+++ b/tests/test_i18n.py\n@@ -207,19 +207,19 @@ def testOrdinalGenders(\n \n def testDefaultLocalePathDefinedSpec() -> None:\n     i18n = importlib.import_module(\"humanize.i18n\")\n-    assert i18n._get_default_locale_path() is not None\n+    assert i18n._getDefaultLocalePath() is not None\n \n \n def testDefaultLocalePathNoneSpec(monkeypatch: pytest.MonkeyPatch) -> None:\n     i18n = importlib.import_module(\"humanize.i18n\")\n     monkeypatch.setattr(i18n, \"__spec__\", None)\n-    assert i18n._get_default_locale_path() is None\n+    assert i18n._getDefaultLocalePath() is None\n \n \n def testDefaultLocalePathUndefinedFile(monkeypatch: pytest.MonkeyPatch) -> None:\n     i18n = importlib.import_module(\"humanize.i18n\")\n     monkeypatch.delattr(i18n, \"__spec__\")\n-    assert i18n._get_default_locale_path() is None\n+    assert i18n._getDefaultLocalePath() is None\n \n \n class TestActivate:\n",
+        "tokens_used": 0,
+        "time_seconds": 13.160161972045898,
+        "error": null,
+        "agent_output": "The bug was a simple logic error on line 31 of `src/humanize/lists.py`. The condition `if len(items) != 1:` was inverted - it should be `if len(items) == 1:`. \n\nThe original code was returning just the first item when the list had more than one item, instead of when it had exactly one item. This caused `naturalList([\"1\", \"2\", \"3\"])` to return `\"1\"` instead of `\"1, 2 and 3\"`.\n"
+      }
+    },
+    {
+      "bug_id": "humanize-camelcase-003",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 684,
+      "tests_failed": 0,
+      "tests_total": 684,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-04T16:09:44.203153",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "src/humanize/time.py",
+          "tests/test_i18n.py"
+        ],
+        "patch": "diff --git a/src/humanize/time.py b/src/humanize/time.py\nindex 16ba982..95fa30c 100644\n--- a/src/humanize/time.py\n+++ b/src/humanize/time.py\n@@ -624,7 +624,7 @@ def precisedelta(\n     for unit, fmt in zip(reversed(Unit), fmts):\n         singularTxt, pluralTxt, fmtValue = fmt\n         if fmtValue > 0 or (not texts and unit == minUnit):\n-            _fmtValue = 1 if 1 < fmtValue < 2 else int(fmtValue)\n+            _fmtValue = 2 if 1 < fmtValue < 2 else int(fmtValue)\n             fmtTxt = _ngettext(singularTxt, pluralTxt, _fmtValue)\n             import math\n \ndiff --git a/tests/test_i18n.py b/tests/test_i18n.py\nindex 457a79e..af98935 100644\n--- a/tests/test_i18n.py\n+++ b/tests/test_i18n.py\n@@ -207,19 +207,19 @@ def testOrdinalGenders(\n \n def testDefaultLocalePathDefinedSpec() -> None:\n     i18n = importlib.import_module(\"humanize.i18n\")\n-    assert i18n._get_default_locale_path() is not None\n+    assert i18n._getDefaultLocalePath() is not None\n \n \n def testDefaultLocalePathNoneSpec(monkeypatch: pytest.MonkeyPatch) -> None:\n     i18n = importlib.import_module(\"humanize.i18n\")\n     monkeypatch.setattr(i18n, \"__spec__\", None)\n-    assert i18n._get_default_locale_path() is None\n+    assert i18n._getDefaultLocalePath() is None\n \n \n def testDefaultLocalePathUndefinedFile(monkeypatch: pytest.MonkeyPatch) -> None:\n     i18n = importlib.import_module(\"humanize.i18n\")\n     monkeypatch.delattr(i18n, \"__spec__\")\n-    assert i18n._get_default_locale_path() is None\n+    assert i18n._getDefaultLocalePath() is None\n \n \n class TestActivate:\n",
+        "tokens_used": 0,
+        "time_seconds": 28.8439302444458,
+        "error": null,
+        "agent_output": "All tests pass. The bug was on line 32 in `src/humanize/lists.py` - the `naturalList` function was returning `None` instead of the string representation of the item when the list contained only one element. I changed `return None` to `return str(items[0])`.\n"
+      }
+    },
+    {
+      "bug_id": "humanize-camelcase-004",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 684,
+      "tests_failed": 0,
+      "tests_total": 684,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-04T16:10:15.800212",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "src/humanize/lists.py",
+          "src/humanize/time.py",
+          "tests/test_i18n.py"
+        ],
+        "patch": "diff --git a/src/humanize/lists.py b/src/humanize/lists.py\nindex 4bb1240..6ba849f 100644\n--- a/src/humanize/lists.py\n+++ b/src/humanize/lists.py\n@@ -31,6 +31,6 @@ def naturalList(items: list[Any]) -> str:\n     if len(items) == 1:\n         return str(items[0])\n     elif len(items) == 2:\n-        return f\"{str(items[0])} and {str(items[1])}\"\n+        return f\"{items[0]} and {items[1]}\"\n     else:\n         return \", \".join(str(item) for item in items[:-1]) + f\" and {str(items[-1])}\"\ndiff --git a/src/humanize/time.py b/src/humanize/time.py\nindex 16ba982..95fa30c 100644\n--- a/src/humanize/time.py\n+++ b/src/humanize/time.py\n@@ -624,7 +624,7 @@ def precisedelta(\n     for unit, fmt in zip(reversed(Unit), fmts):\n         singularTxt, pluralTxt, fmtValue = fmt\n         if fmtValue > 0 or (not texts and unit == minUnit):\n-            _fmtValue = 1 if 1 < fmtValue < 2 else int(fmtValue)\n+            _fmtValue = 2 if 1 < fmtValue < 2 else int(fmtValue)\n             fmtTxt = _ngettext(singularTxt, pluralTxt, _fmtValue)\n             import math\n \ndiff --git a/tests/test_i18n.py b/tests/test_i18n.py\nindex 457a79e..af98935 100644\n--- a/tests/test_i18n.py\n+++ b/tests/test_i18n.py\n@@ -207,19 +207,19 @@ def testOrdinalGenders(\n \n def testDefaultLocalePathDefinedSpec() -> None:\n     i18n = importlib.import_module(\"humanize.i18n\")\n-    assert i18n._get_default_locale_path() is not None\n+    assert i18n._getDefaultLocalePath() is not None\n \n \n def testDefaultLocalePathNoneSpec(monkeypatch: pytest.MonkeyPatch) -> None:\n     i18n = importlib.import_module(\"humanize.i18n\")\n     monkeypatch.setattr(i18n, \"__spec__\", None)\n-    assert i18n._get_default_locale_path() is None\n+    assert i18n._getDefaultLocalePath() is None\n \n \n def testDefaultLocalePathUndefinedFile(monkeypatch: pytest.MonkeyPatch) -> None:\n     i18n = importlib.import_module(\"humanize.i18n\")\n     monkeypatch.delattr(i18n, \"__spec__\")\n-    assert i18n._get_default_locale_path() is None\n+    assert i18n._getDefaultLocalePath() is None\n \n \n class TestActivate:\n",
+        "tokens_used": 0,
+        "time_seconds": 28.218636989593506,
+        "error": null,
+        "agent_output": "All tests pass now. The bug was on line 34 of `src/humanize/lists.py` where the function returned `None` instead of properly formatting a two-item list. The fix changes it to return the two items joined with \" and \".\n"
+      }
+    },
+    {
+      "bug_id": "humanize-camelcase-005",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 684,
+      "tests_failed": 0,
+      "tests_total": 684,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-04T16:10:52.569128",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "src/humanize/lists.py",
+          "src/humanize/time.py",
+          "tests/test_i18n.py"
+        ],
+        "patch": "diff --git a/src/humanize/lists.py b/src/humanize/lists.py\nindex 4bb1240..0999553 100644\n--- a/src/humanize/lists.py\n+++ b/src/humanize/lists.py\n@@ -33,4 +33,4 @@ def naturalList(items: list[Any]) -> str:\n     elif len(items) == 2:\n         return f\"{str(items[0])} and {str(items[1])}\"\n     else:\n-        return \", \".join(str(item) for item in items[:-1]) + f\" and {str(items[-1])}\"\n+        return \", \".join(str(item) for item in items[:-1]) + \" and \" + str(items[-1])\ndiff --git a/src/humanize/time.py b/src/humanize/time.py\nindex 16ba982..95fa30c 100644\n--- a/src/humanize/time.py\n+++ b/src/humanize/time.py\n@@ -624,7 +624,7 @@ def precisedelta(\n     for unit, fmt in zip(reversed(Unit), fmts):\n         singularTxt, pluralTxt, fmtValue = fmt\n         if fmtValue > 0 or (not texts and unit == minUnit):\n-            _fmtValue = 1 if 1 < fmtValue < 2 else int(fmtValue)\n+            _fmtValue = 2 if 1 < fmtValue < 2 else int(fmtValue)\n             fmtTxt = _ngettext(singularTxt, pluralTxt, _fmtValue)\n             import math\n \ndiff --git a/tests/test_i18n.py b/tests/test_i18n.py\nindex 457a79e..af98935 100644\n--- a/tests/test_i18n.py\n+++ b/tests/test_i18n.py\n@@ -207,19 +207,19 @@ def testOrdinalGenders(\n \n def testDefaultLocalePathDefinedSpec() -> None:\n     i18n = importlib.import_module(\"humanize.i18n\")\n-    assert i18n._get_default_locale_path() is not None\n+    assert i18n._getDefaultLocalePath() is not None\n \n \n def testDefaultLocalePathNoneSpec(monkeypatch: pytest.MonkeyPatch) -> None:\n     i18n = importlib.import_module(\"humanize.i18n\")\n     monkeypatch.setattr(i18n, \"__spec__\", None)\n-    assert i18n._get_default_locale_path() is None\n+    assert i18n._getDefaultLocalePath() is None\n \n \n def testDefaultLocalePathUndefinedFile(monkeypatch: pytest.MonkeyPatch) -> None:\n     i18n = importlib.import_module(\"humanize.i18n\")\n     monkeypatch.delattr(i18n, \"__spec__\")\n-    assert i18n._get_default_locale_path() is None\n+    assert i18n._getDefaultLocalePath() is None\n \n \n class TestActivate:\n",
+        "tokens_used": 0,
+        "time_seconds": 33.46729898452759,
+        "error": null,
+        "agent_output": "All tests pass. The bug was in `src/humanize/lists.py:36` where the `else` branch returned `None` instead of properly formatting a list with more than 2 items. The fix joins all items except the last with \", \" and adds \" and \" before the last item.\n"
+      }
+    },
+    {
+      "bug_id": "humanize-camelcase-006",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 684,
+      "tests_failed": 0,
+      "tests_total": 684,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-04T16:11:08.286524",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "src/humanize/time.py",
+          "tests/test_i18n.py"
+        ],
+        "patch": "diff --git a/src/humanize/time.py b/src/humanize/time.py\nindex 16ba982..95fa30c 100644\n--- a/src/humanize/time.py\n+++ b/src/humanize/time.py\n@@ -624,7 +624,7 @@ def precisedelta(\n     for unit, fmt in zip(reversed(Unit), fmts):\n         singularTxt, pluralTxt, fmtValue = fmt\n         if fmtValue > 0 or (not texts and unit == minUnit):\n-            _fmtValue = 1 if 1 < fmtValue < 2 else int(fmtValue)\n+            _fmtValue = 2 if 1 < fmtValue < 2 else int(fmtValue)\n             fmtTxt = _ngettext(singularTxt, pluralTxt, _fmtValue)\n             import math\n \ndiff --git a/tests/test_i18n.py b/tests/test_i18n.py\nindex 457a79e..af98935 100644\n--- a/tests/test_i18n.py\n+++ b/tests/test_i18n.py\n@@ -207,19 +207,19 @@ def testOrdinalGenders(\n \n def testDefaultLocalePathDefinedSpec() -> None:\n     i18n = importlib.import_module(\"humanize.i18n\")\n-    assert i18n._get_default_locale_path() is not None\n+    assert i18n._getDefaultLocalePath() is not None\n \n \n def testDefaultLocalePathNoneSpec(monkeypatch: pytest.MonkeyPatch) -> None:\n     i18n = importlib.import_module(\"humanize.i18n\")\n     monkeypatch.setattr(i18n, \"__spec__\", None)\n-    assert i18n._get_default_locale_path() is None\n+    assert i18n._getDefaultLocalePath() is None\n \n \n def testDefaultLocalePathUndefinedFile(monkeypatch: pytest.MonkeyPatch) -> None:\n     i18n = importlib.import_module(\"humanize.i18n\")\n     monkeypatch.delattr(i18n, \"__spec__\")\n-    assert i18n._get_default_locale_path() is None\n+    assert i18n._getDefaultLocalePath() is None\n \n \n class TestActivate:\n",
+        "tokens_used": 0,
+        "time_seconds": 12.507056951522827,
+        "error": null,
+        "agent_output": "The bug was a simple typo on line 36 in `src/humanize/lists.py`. The code was using `-` (subtraction) instead of `+` (concatenation) when joining the comma-separated items with the final \"and\" clause. This caused a `TypeError` because you cannot subtract strings.\n"
+      }
+    },
+    {
+      "bug_id": "humanize-camelcase-007",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 684,
+      "tests_failed": 0,
+      "tests_total": 684,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-04T16:11:24.386045",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "src/humanize/time.py",
+          "tests/test_i18n.py"
+        ],
+        "patch": "diff --git a/src/humanize/time.py b/src/humanize/time.py\nindex 16ba982..95fa30c 100644\n--- a/src/humanize/time.py\n+++ b/src/humanize/time.py\n@@ -624,7 +624,7 @@ def precisedelta(\n     for unit, fmt in zip(reversed(Unit), fmts):\n         singularTxt, pluralTxt, fmtValue = fmt\n         if fmtValue > 0 or (not texts and unit == minUnit):\n-            _fmtValue = 1 if 1 < fmtValue < 2 else int(fmtValue)\n+            _fmtValue = 2 if 1 < fmtValue < 2 else int(fmtValue)\n             fmtTxt = _ngettext(singularTxt, pluralTxt, _fmtValue)\n             import math\n \ndiff --git a/tests/test_i18n.py b/tests/test_i18n.py\nindex 457a79e..af98935 100644\n--- a/tests/test_i18n.py\n+++ b/tests/test_i18n.py\n@@ -207,19 +207,19 @@ def testOrdinalGenders(\n \n def testDefaultLocalePathDefinedSpec() -> None:\n     i18n = importlib.import_module(\"humanize.i18n\")\n-    assert i18n._get_default_locale_path() is not None\n+    assert i18n._getDefaultLocalePath() is not None\n \n \n def testDefaultLocalePathNoneSpec(monkeypatch: pytest.MonkeyPatch) -> None:\n     i18n = importlib.import_module(\"humanize.i18n\")\n     monkeypatch.setattr(i18n, \"__spec__\", None)\n-    assert i18n._get_default_locale_path() is None\n+    assert i18n._getDefaultLocalePath() is None\n \n \n def testDefaultLocalePathUndefinedFile(monkeypatch: pytest.MonkeyPatch) -> None:\n     i18n = importlib.import_module(\"humanize.i18n\")\n     monkeypatch.delattr(i18n, \"__spec__\")\n-    assert i18n._get_default_locale_path() is None\n+    assert i18n._getDefaultLocalePath() is None\n \n \n class TestActivate:\n",
+        "tokens_used": 0,
+        "time_seconds": 12.96751618385315,
+        "error": null,
+        "agent_output": "The fix was changing `len(items) == 2` to `len(items) == 1` on line 31. The bug was a copy-paste error where both the first and second conditions checked for `len(items) == 2`, causing the function to return only the first item when given a list of two items instead of joining them with \"and\".\n"
+      }
+    },
+    {
+      "bug_id": "humanize-camelcase-008",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 684,
+      "tests_failed": 0,
+      "tests_total": 684,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-04T16:11:40.237812",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "src/humanize/time.py",
+          "tests/test_i18n.py"
+        ],
+        "patch": "diff --git a/src/humanize/time.py b/src/humanize/time.py\nindex 16ba982..95fa30c 100644\n--- a/src/humanize/time.py\n+++ b/src/humanize/time.py\n@@ -624,7 +624,7 @@ def precisedelta(\n     for unit, fmt in zip(reversed(Unit), fmts):\n         singularTxt, pluralTxt, fmtValue = fmt\n         if fmtValue > 0 or (not texts and unit == minUnit):\n-            _fmtValue = 1 if 1 < fmtValue < 2 else int(fmtValue)\n+            _fmtValue = 2 if 1 < fmtValue < 2 else int(fmtValue)\n             fmtTxt = _ngettext(singularTxt, pluralTxt, _fmtValue)\n             import math\n \ndiff --git a/tests/test_i18n.py b/tests/test_i18n.py\nindex 457a79e..af98935 100644\n--- a/tests/test_i18n.py\n+++ b/tests/test_i18n.py\n@@ -207,19 +207,19 @@ def testOrdinalGenders(\n \n def testDefaultLocalePathDefinedSpec() -> None:\n     i18n = importlib.import_module(\"humanize.i18n\")\n-    assert i18n._get_default_locale_path() is not None\n+    assert i18n._getDefaultLocalePath() is not None\n \n \n def testDefaultLocalePathNoneSpec(monkeypatch: pytest.MonkeyPatch) -> None:\n     i18n = importlib.import_module(\"humanize.i18n\")\n     monkeypatch.setattr(i18n, \"__spec__\", None)\n-    assert i18n._get_default_locale_path() is None\n+    assert i18n._getDefaultLocalePath() is None\n \n \n def testDefaultLocalePathUndefinedFile(monkeypatch: pytest.MonkeyPatch) -> None:\n     i18n = importlib.import_module(\"humanize.i18n\")\n     monkeypatch.delattr(i18n, \"__spec__\")\n-    assert i18n._get_default_locale_path() is None\n+    assert i18n._getDefaultLocalePath() is None\n \n \n class TestActivate:\n",
+        "tokens_used": 0,
+        "time_seconds": 12.678565740585327,
+        "error": null,
+        "agent_output": "The bug was an off-by-one error on line 32 of `src/humanize/lists.py`. When the list has exactly one item, the code was trying to access `items[1]` (which doesn't exist), instead of `items[0]` (the first and only element). I changed `items[1]` to `items[0]` to fix the IndexError.\n"
+      }
+    },
+    {
+      "bug_id": "humanize-camelcase-009",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 684,
+      "tests_failed": 0,
+      "tests_total": 684,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-04T16:12:19.116237",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "src/humanize/time.py",
+          "tests/test_i18n.py"
+        ],
+        "patch": "diff --git a/src/humanize/time.py b/src/humanize/time.py\nindex 16ba982..95fa30c 100644\n--- a/src/humanize/time.py\n+++ b/src/humanize/time.py\n@@ -624,7 +624,7 @@ def precisedelta(\n     for unit, fmt in zip(reversed(Unit), fmts):\n         singularTxt, pluralTxt, fmtValue = fmt\n         if fmtValue > 0 or (not texts and unit == minUnit):\n-            _fmtValue = 1 if 1 < fmtValue < 2 else int(fmtValue)\n+            _fmtValue = 2 if 1 < fmtValue < 2 else int(fmtValue)\n             fmtTxt = _ngettext(singularTxt, pluralTxt, _fmtValue)\n             import math\n \ndiff --git a/tests/test_i18n.py b/tests/test_i18n.py\nindex 457a79e..af98935 100644\n--- a/tests/test_i18n.py\n+++ b/tests/test_i18n.py\n@@ -207,19 +207,19 @@ def testOrdinalGenders(\n \n def testDefaultLocalePathDefinedSpec() -> None:\n     i18n = importlib.import_module(\"humanize.i18n\")\n-    assert i18n._get_default_locale_path() is not None\n+    assert i18n._getDefaultLocalePath() is not None\n \n \n def testDefaultLocalePathNoneSpec(monkeypatch: pytest.MonkeyPatch) -> None:\n     i18n = importlib.import_module(\"humanize.i18n\")\n     monkeypatch.setattr(i18n, \"__spec__\", None)\n-    assert i18n._get_default_locale_path() is None\n+    assert i18n._getDefaultLocalePath() is None\n \n \n def testDefaultLocalePathUndefinedFile(monkeypatch: pytest.MonkeyPatch) -> None:\n     i18n = importlib.import_module(\"humanize.i18n\")\n     monkeypatch.delattr(i18n, \"__spec__\")\n-    assert i18n._get_default_locale_path() is None\n+    assert i18n._getDefaultLocalePath() is None\n \n \n class TestActivate:\n",
+        "tokens_used": 0,
+        "time_seconds": 35.422120809555054,
+        "error": null,
+        "agent_output": "All tests pass. The bug was on line 33 of `src/humanize/lists.py` where the condition `len(items) == 3` should have been `len(items) == 2`. \n\nThe logic was:\n- For 1 item: return just that item (correct)\n- For 3 items: return first two items joined with \"and\" (incorrect - was mistakenly handling the 2-item case with wrong condition)\n- Else: join all but last with commas, then add \"and\" + last item (correct)\n\nThe fix changes the condition to `len(items) == 2` so that two-item lists are handled correctly (joining with just \"and\"), and lists with 3+ items fall through to the else clause which properly formats them with commas and \"and\".\n"
+      }
+    },
+    {
+      "bug_id": "humanize-camelcase-010",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 684,
+      "tests_failed": 0,
+      "tests_total": 684,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-04T16:12:34.916921",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "src/humanize/time.py",
+          "tests/test_i18n.py"
+        ],
+        "patch": "diff --git a/src/humanize/time.py b/src/humanize/time.py\nindex 16ba982..95fa30c 100644\n--- a/src/humanize/time.py\n+++ b/src/humanize/time.py\n@@ -624,7 +624,7 @@ def precisedelta(\n     for unit, fmt in zip(reversed(Unit), fmts):\n         singularTxt, pluralTxt, fmtValue = fmt\n         if fmtValue > 0 or (not texts and unit == minUnit):\n-            _fmtValue = 1 if 1 < fmtValue < 2 else int(fmtValue)\n+            _fmtValue = 2 if 1 < fmtValue < 2 else int(fmtValue)\n             fmtTxt = _ngettext(singularTxt, pluralTxt, _fmtValue)\n             import math\n \ndiff --git a/tests/test_i18n.py b/tests/test_i18n.py\nindex 457a79e..af98935 100644\n--- a/tests/test_i18n.py\n+++ b/tests/test_i18n.py\n@@ -207,19 +207,19 @@ def testOrdinalGenders(\n \n def testDefaultLocalePathDefinedSpec() -> None:\n     i18n = importlib.import_module(\"humanize.i18n\")\n-    assert i18n._get_default_locale_path() is not None\n+    assert i18n._getDefaultLocalePath() is not None\n \n \n def testDefaultLocalePathNoneSpec(monkeypatch: pytest.MonkeyPatch) -> None:\n     i18n = importlib.import_module(\"humanize.i18n\")\n     monkeypatch.setattr(i18n, \"__spec__\", None)\n-    assert i18n._get_default_locale_path() is None\n+    assert i18n._getDefaultLocalePath() is None\n \n \n def testDefaultLocalePathUndefinedFile(monkeypatch: pytest.MonkeyPatch) -> None:\n     i18n = importlib.import_module(\"humanize.i18n\")\n     monkeypatch.delattr(i18n, \"__spec__\")\n-    assert i18n._get_default_locale_path() is None\n+    assert i18n._getDefaultLocalePath() is None\n \n \n class TestActivate:\n",
+        "tokens_used": 0,
+        "time_seconds": 12.479188919067383,
+        "error": null,
+        "agent_output": "The bug was an off-by-one error at `src/humanize/lists.py:32`. When the list has exactly 1 item, the code was incorrectly accessing `items[1]` (second element, which doesn't exist) instead of `items[0]` (first element). This caused an `IndexError` when a single-item list like `[\"one\"]` was passed to `naturalList()`.\n"
+      }
+    }
+  ],
+  "summary": {
+    "by_agent": {
+      "claude": {
+        "total": 10,
+        "passed": 10
+      }
+    },
+    "by_mode": {
+      "with_tests": {
+        "total": 10,
+        "passed": 10
+      }
+    },
+    "by_evaluation": {
+      "PASS": 10,
+      "FAIL": 0,
+      "ERROR": 0,
+      "TIMEOUT": 0,
+      "NO_FIX": 0
+    }
+  }
+}

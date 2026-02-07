@@ -1,0 +1,104 @@
+{
+  "metadata": {
+    "catalog": "/Users/yuan/stylebench-data/bugs/more-itertools-original.json",
+    "repo": "/Users/yuan/stylebench-data/original/more-itertools",
+    "repo_name": "more-itertools",
+    "timestamp": "2026-02-06T15:35:18.575159",
+    "total_trials": 3
+  },
+  "results": [
+    {
+      "bug_id": "more-itertools-original-001",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 701,
+      "tests_failed": 0,
+      "tests_total": 701,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-06T15:33:51.814950",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "more_itertools/more.py"
+        ],
+        "patch": "(restored to original)",
+        "tokens_used": 0,
+        "time_seconds": 28.856464862823486,
+        "error": null,
+        "agent_output": "All 564 tests pass. The bug was a simple inverted condition (`==` instead of `!=`) in the `chunked` function's strict mode check.\n"
+      }
+    },
+    {
+      "bug_id": "more-itertools-original-002",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 701,
+      "tests_failed": 0,
+      "tests_total": 701,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-06T15:34:42.343565",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "more_itertools/more.py"
+        ],
+        "patch": "(restored to original)",
+        "tokens_used": 0,
+        "time_seconds": 40.06670308113098,
+        "error": null,
+        "agent_output": "All 6 tests pass. The fix was a simple logic inversion on line 846. The condition `r != size` was backwards \u2014 when `r == size` (the default, full permutation case), the `_full` algorithm should be used, and `_partial` should only be used when `r != size`.\n"
+      }
+    },
+    {
+      "bug_id": "more-itertools-original-003",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 701,
+      "tests_failed": 0,
+      "tests_total": 701,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-06T15:35:18.539675",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "more_itertools/more.py"
+        ],
+        "patch": "diff --git a/more_itertools/more.py b/more_itertools/more.py\nindex a6da295..72dc283 100755\n--- a/more_itertools/more.py\n+++ b/more_itertools/more.py\n@@ -930,7 +930,7 @@ def intersperse(e, iterable, n=1):\n         [1, 2, None, 3, 4, None, 5]\n \n     \"\"\"\n-    if n == 0:\n+    if n < 1:\n         raise ValueError('n must be > 0')\n     elif n == 1:\n         # interleave(repeat(e), iterable) -> e, x_0, e, x_1, e, x_2...\n",
+        "tokens_used": 0,
+        "time_seconds": 25.216087818145752,
+        "error": null,
+        "agent_output": "All 6 intersperse tests pass now.\n\n**The bug:** On line 933, the guard condition `if n != 0:` was inverted \u2014 it raised `ValueError` for every value of `n` except 0, when it should only raise for values less than 1. Changed it to `if n < 1:` so it correctly rejects non-positive values and allows the default `n=1` case and higher values to proceed.\n"
+      }
+    }
+  ],
+  "summary": {
+    "by_agent": {
+      "claude": {
+        "total": 3,
+        "passed": 3
+      }
+    },
+    "by_mode": {
+      "with_tests": {
+        "total": 3,
+        "passed": 3
+      }
+    },
+    "by_evaluation": {
+      "PASS": 3,
+      "FAIL": 0,
+      "ERROR": 0,
+      "TIMEOUT": 0,
+      "NO_FIX": 0
+    }
+  }
+}
