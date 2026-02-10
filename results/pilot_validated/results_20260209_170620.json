@@ -1,0 +1,272 @@
+{
+  "metadata": {
+    "catalog": "/Users/yuan/stylebench-data/bugs/validators-badnames.json",
+    "repo": "/Users/yuan/stylebench-data/badnames/validators",
+    "repo_name": "validators",
+    "timestamp": "2026-02-09T17:06:20.822457",
+    "total_trials": 10
+  },
+  "results": [
+    {
+      "bug_id": "validators-badnames-001",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 895,
+      "tests_failed": 0,
+      "tests_total": 895,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-09T17:02:18.893566",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "src/validators/country.py"
+        ],
+        "patch": "(restored to original)",
+        "tokens_used": 0,
+        "time_seconds": 24.787816047668457,
+        "error": null,
+        "agent_output": "All 26 tests pass now.\n\n**The bug:** On line 305 of `src/validators/country.py`, the condition `iso_format != \"auto\"` was inverted. When `iso_format` was `\"auto\"`, the auto-detection via `_get_code_type()` was skipped, so `iso_format` remained the string `\"auto\"` and never matched any of the format branches (`alpha2`, `alpha3`, `numeric`), causing the function to always return `False` for auto-detected formats.\n\n**The fix:** Changed `!=` to `==` so that auto-detection runs when `iso_format` is `\"auto\"`.\n"
+      }
+    },
+    {
+      "bug_id": "validators-badnames-002",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 895,
+      "tests_failed": 0,
+      "tests_total": 895,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-09T17:02:47.375889",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "src/validators/country.py"
+        ],
+        "patch": "(restored to original)",
+        "tokens_used": 0,
+        "time_seconds": 25.418215036392212,
+        "error": null,
+        "agent_output": "All 26 tests pass.\n\n**The bug:** On line 305 of `src/validators/country.py`, the condition `iso_format != \"auto\"` was inverted. When `iso_format` is `\"auto\"`, the code should auto-detect the format type from the value using `_get_code_type()`. But with `!=`, the auto-detection was skipped when `iso_format` was `\"auto\"`, leaving it unresolved \u2014 so it never matched any of the subsequent `alpha2`/`alpha3`/`numeric` checks and returned `False`.\n\n**The fix:** Changed `!=` to `==` so that auto-detection runs when `iso_format` is `\"auto\"`.\n"
+      }
+    },
+    {
+      "bug_id": "validators-badnames-003",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 895,
+      "tests_failed": 0,
+      "tests_total": 895,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-09T17:03:15.617408",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "src/validators/country.py"
+        ],
+        "patch": "(restored to original)",
+        "tokens_used": 0,
+        "time_seconds": 25.54971480369568,
+        "error": null,
+        "agent_output": "All 26 tests pass, including the previously failing `test_returns_true_on_valid_country_code[ISR-auto]`.\n\n**The bug:** On line 308 of `src/validators/country.py`, the condition `iso_format != \"alpha2\"` was inverted. It should have been `iso_format == \"alpha2\"`. This caused the alpha2 and alpha3 validation branches to be swapped \u2014 alpha3 codes like \"ISR\" were being checked against the alpha2 values set instead of the alpha3 keys set, so they always failed validation.\n\n**The fix:** Changed `!=` to `==` on line 308, so alpha2 codes are correctly validated against `_alpha3_to_alpha2.values()` and alpha3 codes against `_alpha3_to_alpha2.keys()`.\n"
+      }
+    },
+    {
+      "bug_id": "validators-badnames-004",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 895,
+      "tests_failed": 0,
+      "tests_total": 895,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-09T17:03:41.504476",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "src/validators/country.py"
+        ],
+        "patch": "(restored to original)",
+        "tokens_used": 0,
+        "time_seconds": 23.342079877853394,
+        "error": null,
+        "agent_output": "All 26 tests pass.\n\n**The bug:** On line 314 of `src/validators/country.py`, the condition `iso_format != \"alpha3\"` was inverted. It should have been `iso_format == \"alpha3\"`. \n\nThis caused alpha3 country codes (like `\"ISR\"`) to skip the alpha3 lookup in `_alpha3_to_alpha2` and instead fall through to the numeric check, which would always return `False` for alphabetic codes.\n"
+      }
+    },
+    {
+      "bug_id": "validators-badnames-005",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 895,
+      "tests_failed": 0,
+      "tests_total": 895,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-09T17:04:49.811128",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "src/validators/country.py"
+        ],
+        "patch": "(restored to original)",
+        "tokens_used": 0,
+        "time_seconds": 65.83254194259644,
+        "error": null,
+        "agent_output": "The fix: on line 317, changed `iso_format != \"numeric\"` to `iso_format == \"numeric\"`. The condition was inverted \u2014 it was returning `False` when the format was `\"numeric\"` (the exact case where it should check the `_numeric` set) and checking the set for any other format.\n"
+      }
+    },
+    {
+      "bug_id": "validators-badnames-006",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 895,
+      "tests_failed": 0,
+      "tests_total": 895,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-09T17:05:08.893453",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "src/validators/country.py"
+        ],
+        "patch": "(restored to original)",
+        "tokens_used": 0,
+        "time_seconds": 16.598005056381226,
+        "error": null,
+        "agent_output": "The fix: line 352 had `len(value) == 3` which should be `len(value) != 3`. The condition was inverted \u2014 it was rejecting all valid 3-character currency codes (like \"USD\", \"uSd\") and only allowing non-3-character strings through to the ISO 4217 check, which would never match since all ISO 4217 codes are exactly 3 characters.\n"
+      }
+    },
+    {
+      "bug_id": "validators-badnames-007",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 895,
+      "tests_failed": 0,
+      "tests_total": 895,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-09T17:05:26.225232",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "src/validators/country.py"
+        ],
+        "patch": "(restored to original)",
+        "tokens_used": 0,
+        "time_seconds": 14.95287799835205,
+        "error": null,
+        "agent_output": "The fix: line 308 had `if value == \"alpha2\"` instead of `if iso_format == \"alpha2\"`. This meant the alpha2 branch was never reached (since `value` would be a country code like `\"US\"`, never the string `\"alpha2\"`), causing valid alpha2 codes to fall through to the numeric check and fail.\n"
+      }
+    },
+    {
+      "bug_id": "validators-badnames-008",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 895,
+      "tests_failed": 0,
+      "tests_total": 895,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-09T17:05:44.042963",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "src/validators/country.py"
+        ],
+        "patch": "(restored to original)",
+        "tokens_used": 0,
+        "time_seconds": 15.36905026435852,
+        "error": null,
+        "agent_output": "The fix: changed `ignore_case == \"alpha2\"` to `iso_format == \"alpha2\"` on line 308. This was a simple variable name typo \u2014 the code was comparing the boolean `ignore_case` parameter against the string `\"alpha2\"` instead of comparing `iso_format`, so the alpha2 branch was never reached.\n"
+      }
+    },
+    {
+      "bug_id": "validators-badnames-009",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 895,
+      "tests_failed": 0,
+      "tests_total": 895,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-09T17:06:01.571323",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "src/validators/country.py"
+        ],
+        "patch": "(restored to original)",
+        "tokens_used": 0,
+        "time_seconds": 15.19597601890564,
+        "error": null,
+        "agent_output": "The fix: on line 317, `value == \"numeric\"` was changed to `iso_format == \"numeric\"`. The original code was comparing the country code value (e.g., `\"840\"`) against the string `\"numeric\"`, which would always be `False` for actual numeric country codes. It should be checking whether the `iso_format` parameter equals `\"numeric\"`.\n"
+      }
+    },
+    {
+      "bug_id": "validators-badnames-010",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 895,
+      "tests_failed": 0,
+      "tests_total": 895,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-09T17:06:20.738996",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "src/validators/country.py"
+        ],
+        "patch": "(restored to original)",
+        "tokens_used": 0,
+        "time_seconds": 16.778927087783813,
+        "error": null,
+        "agent_output": "The fix: changed `ignore_case == \"numeric\"` to `iso_format == \"numeric\"` on line 317. The original code was incorrectly comparing the boolean `ignore_case` parameter against the string `\"numeric\"` instead of checking the `iso_format` parameter, causing numeric country code validation (like `\"840\"`) to always fail.\n"
+      }
+    }
+  ],
+  "summary": {
+    "by_agent": {
+      "claude": {
+        "total": 10,
+        "passed": 10
+      }
+    },
+    "by_mode": {
+      "with_tests": {
+        "total": 10,
+        "passed": 10
+      }
+    },
+    "by_evaluation": {
+      "PASS": 10,
+      "FAIL": 0,
+      "ERROR": 0,
+      "TIMEOUT": 0,
+      "NO_FIX": 0
+    }
+  }
+}

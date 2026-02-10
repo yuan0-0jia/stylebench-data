@@ -1,0 +1,272 @@
+{
+  "metadata": {
+    "catalog": "/Users/yuan/stylebench-data/bugs/validators-camelcase.json",
+    "repo": "/Users/yuan/stylebench-data/camelcase/validators",
+    "repo_name": "validators",
+    "timestamp": "2026-02-09T16:57:48.282474",
+    "total_trials": 10
+  },
+  "results": [
+    {
+      "bug_id": "validators-camelcase-001",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 895,
+      "tests_failed": 0,
+      "tests_total": 895,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-09T16:53:37.766201",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "src/validators/country.py"
+        ],
+        "patch": "(restored to original)",
+        "tokens_used": 0,
+        "time_seconds": 24.5796000957489,
+        "error": null,
+        "agent_output": "All 26 tests pass now.\n\n**The bug:** On line 305 of `src/validators/country.py`, the condition `isoFormat != \"auto\"` was inverted. It should be `isoFormat == \"auto\"` so that when the user passes `isoFormat=\"auto\"`, the code auto-detects the format type (alpha2, alpha3, or numeric) from the value. With the `!=` operator, auto-detection was skipped for `\"auto\"` and only attempted for explicit format strings (which made no sense), causing valid codes like `\"ISR\"` to fall through to the final `return False`.\n"
+      }
+    },
+    {
+      "bug_id": "validators-camelcase-002",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 895,
+      "tests_failed": 0,
+      "tests_total": 895,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-09T16:54:04.197922",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "src/validators/country.py"
+        ],
+        "patch": "(restored to original)",
+        "tokens_used": 0,
+        "time_seconds": 23.72175097465515,
+        "error": null,
+        "agent_output": "All 26 tests pass.\n\n**The bug:** On line 305 of `src/validators/country.py`, the condition `isoFormat != \"auto\"` was inverted. When `isoFormat` was `\"auto\"`, the auto-detection via `_getCodeType(value)` was skipped (due to short-circuit evaluation), so `isoFormat` remained `\"auto\"` and none of the subsequent format checks (`alpha2`, `alpha3`, `numeric`) matched, causing the function to always return `False` for auto-detected formats.\n\n**The fix:** Changed `!=` to `==` so that auto-detection runs when `isoFormat` is `\"auto\"`.\n"
+      }
+    },
+    {
+      "bug_id": "validators-camelcase-003",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 895,
+      "tests_failed": 0,
+      "tests_total": 895,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-09T16:54:24.122805",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "src/validators/country.py"
+        ],
+        "patch": "(restored to original)",
+        "tokens_used": 0,
+        "time_seconds": 17.46641778945923,
+        "error": null,
+        "agent_output": "The fix: Changed `len(value) == 3` to `len(value) != 3` on line 352 of `src/validators/country.py`.\n\nThe bug was that the `currency` function was rejecting values with exactly 3 characters, when it should have been rejecting values that are *not* 3 characters. ISO 4217 currency codes (like \"USD\") are always 3 letters, so the guard should ensure the length is 3 before checking against the valid codes set.\n"
+      }
+    },
+    {
+      "bug_id": "validators-camelcase-004",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 895,
+      "tests_failed": 0,
+      "tests_total": 895,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-09T16:55:06.092840",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "src/validators/country.py"
+        ],
+        "patch": "(restored to original)",
+        "tokens_used": 0,
+        "time_seconds": 39.455917835235596,
+        "error": null,
+        "agent_output": "All 26 tests pass. \n\n**The bug:** On line 302 of `src/validators/country.py`, the length validation check was applied to `isoFormat` instead of `value`. The guard `not (1 < len(isoFormat) < 4)` was meant to reject country code values that aren't 2 or 3 characters long, but was mistakenly checking the format string (e.g., `\"auto\"` has length 4, which fails the `< 4` check). Changing `isoFormat` to `value` fixes it.\n"
+      }
+    },
+    {
+      "bug_id": "validators-camelcase-005",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 895,
+      "tests_failed": 0,
+      "tests_total": 895,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-09T16:55:29.394763",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "src/validators/country.py"
+        ],
+        "patch": "(restored to original)",
+        "tokens_used": 0,
+        "time_seconds": 20.88997507095337,
+        "error": null,
+        "agent_output": "All 26 tests pass. The bug was on line 302 of `src/validators/country.py` \u2014 `len(ignoreCase)` was called on a `bool` parameter instead of `len(value)`. This was a simple variable name typo causing the `\"object of type 'bool' has no len()\"` error.\n"
+      }
+    },
+    {
+      "bug_id": "validators-camelcase-006",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 895,
+      "tests_failed": 0,
+      "tests_total": 895,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-09T16:55:56.146378",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "src/validators/country.py"
+        ],
+        "patch": "(restored to original)",
+        "tokens_used": 0,
+        "time_seconds": 23.815130949020386,
+        "error": null,
+        "agent_output": "All 26 tests pass. The fix was a single-character change on line 305 of `src/validators/country.py`:\n\n**Bug:** `value == \"auto\"` should have been `isoFormat == \"auto\"`.\n\nThe condition was checking if the country code value itself was the string `\"auto\"` instead of checking if the `isoFormat` parameter was `\"auto\"`. This meant the auto-detection branch (which uses the walrus operator to reassign `isoFormat` based on the value's format) never executed, causing all `isoFormat=\"auto\"` calls to fall through and return `False`.\n"
+      }
+    },
+    {
+      "bug_id": "validators-camelcase-007",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 895,
+      "tests_failed": 0,
+      "tests_total": 895,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-09T16:56:29.590945",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "src/validators/country.py"
+        ],
+        "patch": "(restored to original)",
+        "tokens_used": 0,
+        "time_seconds": 30.485526084899902,
+        "error": null,
+        "agent_output": "All 26 tests pass. \n\n**The bug:** On line 305 of `src/validators/country.py`, the condition `ignoreCase == \"auto\"` was checking the wrong variable. It should have been `isoFormat == \"auto\"`. Since `ignoreCase` is a boolean, it never equals `\"auto\"`, so the auto-detection of the ISO format code type via `_getCodeType()` was never triggered. This caused all `isoFormat=\"auto\"` calls with alpha3 codes (like `\"ISR\"`) to fail.\n"
+      }
+    },
+    {
+      "bug_id": "validators-camelcase-008",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 895,
+      "tests_failed": 0,
+      "tests_total": 895,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-09T16:56:55.846608",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "src/validators/country.py"
+        ],
+        "patch": "(restored to original)",
+        "tokens_used": 0,
+        "time_seconds": 23.878129959106445,
+        "error": null,
+        "agent_output": "All 26 tests pass. \n\n**The bug:** On line 305 of `src/validators/country.py`, the variables `ignoreCase` and `isoFormat` were swapped. The condition read `ignoreCase == \"auto\"` when it should have been `isoFormat == \"auto\"`. Since `ignoreCase` is a boolean, it never equals `\"auto\"`, so the auto-detection of the ISO format type was never triggered. This caused any 3-letter alpha country code (like `\"ISR\"`) with `isoFormat=\"auto\"` to fail validation.\n"
+      }
+    },
+    {
+      "bug_id": "validators-camelcase-009",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 895,
+      "tests_failed": 0,
+      "tests_total": 895,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-09T16:57:22.793802",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "src/validators/country.py"
+        ],
+        "patch": "(restored to original)",
+        "tokens_used": 0,
+        "time_seconds": 24.472491979599,
+        "error": null,
+        "agent_output": "All 26 tests pass. \n\n**The bug**: On line 305 of `src/validators/country.py`, when `isoFormat` was `\"auto\"`, the code called `_getCodeType(isoFormat)` instead of `_getCodeType(value)`. This meant it was trying to detect the format type of the string `\"auto\"` rather than the actual country code value (e.g., `\"ISR\"`). Since `\"auto\"` is 4 characters long, `_getCodeType` returned `\"invalid\"`, causing all auto-detect validations for alpha3 codes to fail.\n\n**The fix**: Changed `_getCodeType(isoFormat)` to `_getCodeType(value)` so the format is correctly auto-detected from the input value.\n"
+      }
+    },
+    {
+      "bug_id": "validators-camelcase-010",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 895,
+      "tests_failed": 0,
+      "tests_total": 895,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-09T16:57:48.197073",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "src/validators/country.py"
+        ],
+        "patch": "(restored to original)",
+        "tokens_used": 0,
+        "time_seconds": 23.02658987045288,
+        "error": null,
+        "agent_output": "All 26 tests pass. The bug was on line 305 of `country.py`: `_getCodeType(ignoreCase)` was passing the boolean `ignoreCase` parameter instead of the string `value`. The function `_getCodeType` calls `.isdecimal()` on its argument, which only works on strings, not booleans. The fix is to pass `value` so the function can correctly determine the country code format (numeric, alpha2, or alpha3).\n"
+      }
+    }
+  ],
+  "summary": {
+    "by_agent": {
+      "claude": {
+        "total": 10,
+        "passed": 10
+      }
+    },
+    "by_mode": {
+      "with_tests": {
+        "total": 10,
+        "passed": 10
+      }
+    },
+    "by_evaluation": {
+      "PASS": 10,
+      "FAIL": 0,
+      "ERROR": 0,
+      "TIMEOUT": 0,
+      "NO_FIX": 0
+    }
+  }
+}

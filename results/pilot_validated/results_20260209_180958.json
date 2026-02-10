@@ -1,0 +1,272 @@
+{
+  "metadata": {
+    "catalog": "/Users/yuan/stylebench-data/bugs/more-itertools-original.json",
+    "repo": "/Users/yuan/stylebench-data/original/more-itertools",
+    "repo_name": "more-itertools",
+    "timestamp": "2026-02-09T18:09:58.009161",
+    "total_trials": 10
+  },
+  "results": [
+    {
+      "bug_id": "more-itertools-original-001",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 701,
+      "tests_failed": 0,
+      "tests_total": 701,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-09T18:04:17.903619",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "more_itertools/more.py"
+        ],
+        "patch": "(restored to original)",
+        "tokens_used": 0,
+        "time_seconds": 24.713936805725098,
+        "error": null,
+        "agent_output": "All 564 tests pass. The bug was a simple inverted comparison operator (`==` \u2192 `!=`) on line 235 of `more_itertools/more.py`.\n"
+      }
+    },
+    {
+      "bug_id": "more-itertools-original-002",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 701,
+      "tests_failed": 0,
+      "tests_total": 701,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-09T18:05:02.881113",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "more_itertools/more.py"
+        ],
+        "patch": "(restored to original)",
+        "tokens_used": 0,
+        "time_seconds": 34.586199045181274,
+        "error": null,
+        "agent_output": "All 6 tests pass. The fix was a simple logic inversion on line 846:\n\n**Bug:** The condition `r != size` was swapped \u2014 it used `_full` (full permutations algorithm) when `r != size`, and `_partial` (partial permutations algorithm) when `r == size`. This is backwards.\n\n**Fix:** Changed `r != size` to `r == size` so that:\n- `_full` is used when `r == size` (generating all full-length permutations)\n- `_partial` is used when `r != size` (generating partial permutations of length `r`)\n"
+      }
+    },
+    {
+      "bug_id": "more-itertools-original-003",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 701,
+      "tests_failed": 0,
+      "tests_total": 701,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-09T18:05:27.521723",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "more_itertools/more.py"
+        ],
+        "patch": "(restored to original)",
+        "tokens_used": 0,
+        "time_seconds": 14.225170135498047,
+        "error": null,
+        "agent_output": "The fix: changed `if n != 0:` to `if n == 0:` on line 933. The condition was inverted \u2014 it was raising `ValueError('n must be > 0')` for all non-zero values of `n`, when it should only raise for `n == 0`.\n"
+      }
+    },
+    {
+      "bug_id": "more-itertools-original-004",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 701,
+      "tests_failed": 0,
+      "tests_total": 701,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-09T18:06:12.872444",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "more_itertools/more.py"
+        ],
+        "patch": "(restored to original)",
+        "tokens_used": 0,
+        "time_seconds": 34.990150928497314,
+        "error": null,
+        "agent_output": "All 6 tests pass. The bug was a swapped condition on line 935. The `n != 1` branch was running the simple interleave (which inserts the filler between every element), while the `else` (i.e., `n == 1`) branch was running the chunked logic. Changing `n != 1` to `n == 1` puts each branch with its correct logic:\n\n- **`n == 1`**: Simple interleave \u2014 insert filler between every single item\n- **`n > 1`**: Chunked interleave \u2014 group items into chunks of size `n`, then insert filler between chunks\n"
+      }
+    },
+    {
+      "bug_id": "more-itertools-original-005",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 701,
+      "tests_failed": 0,
+      "tests_total": 701,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-09T18:06:47.372681",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "more_itertools/more.py"
+        ],
+        "patch": "(restored to original)",
+        "tokens_used": 0,
+        "time_seconds": 24.084424018859863,
+        "error": null,
+        "agent_output": "All tests pass. The bug was a simple logic inversion on line 977 of `more.py`: the condition `counts[element] != 1` was selecting elements that appear in **multiple** iterables instead of elements **unique** to a single iterable. Changing `!=` to `==` fixes it so `uniques` correctly contains elements that appear in only one iterable's set.\n"
+      }
+    },
+    {
+      "bug_id": "more-itertools-original-006",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 701,
+      "tests_failed": 0,
+      "tests_total": 701,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-09T18:07:28.784034",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "more_itertools/more.py"
+        ],
+        "patch": "(restored to original)",
+        "tokens_used": 0,
+        "time_seconds": 30.934744119644165,
+        "error": null,
+        "agent_output": "All 5 bucket tests pass. The fix was a simple logic inversion on line 1170 of `more.py`: the condition `item_value != value` was changed to `item_value == value`. The bug caused items that *didn't* match the requested bucket key to be yielded instead of items that *did* match, which is why `list(D[10])` was returning all the non-10s items instead of the 10s items.\n"
+      }
+    },
+    {
+      "bug_id": "more-itertools-original-007",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 701,
+      "tests_failed": 0,
+      "tests_total": 701,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-09T18:08:00.802603",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "more_itertools/more.py"
+        ],
+        "patch": "(restored to original)",
+        "tokens_used": 0,
+        "time_seconds": 21.354669094085693,
+        "error": null,
+        "agent_output": "All 10 `InterleaveEvenlyTests` pass now. The fix was a single character change: `==` \u2192 `!=` on line 1296.\n"
+      }
+    },
+    {
+      "bug_id": "more-itertools-original-008",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 701,
+      "tests_failed": 0,
+      "tests_total": 701,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-09T18:08:38.635055",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "more_itertools/more.py"
+        ],
+        "patch": "(restored to original)",
+        "tokens_used": 0,
+        "time_seconds": 27.229900121688843,
+        "error": null,
+        "agent_output": "All 5 tests pass. The fix was a simple logic inversion on line 1577 of `more.py`: the condition `if maxsplit != 1` was changed to `if maxsplit == 1`.\n\n**The bug:** When `maxsplit` was `-1` (unlimited splits), the condition `maxsplit != 1` was `True`, causing it to yield the entire remainder of the iterator and return early after the first split. This meant subsequent split points were never processed. With the corrected `== 1` check, the early-return only happens when we've reached the last allowed split.\n"
+      }
+    },
+    {
+      "bug_id": "more-itertools-original-009",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 701,
+      "tests_failed": 0,
+      "tests_total": 701,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-09T18:09:13.191946",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "more_itertools/more.py"
+        ],
+        "patch": "(restored to original)",
+        "tokens_used": 0,
+        "time_seconds": 24.08453917503357,
+        "error": null,
+        "agent_output": "All 4 `SplitAfterTest` tests pass now.\n\n**The bug:** In `more_itertools/more.py:1604`, the early-return guard condition was inverted \u2014 `if maxsplit != 0` instead of `if maxsplit == 0`. This caused the function to yield the entire iterable as a single unsplit list whenever `maxsplit` was `-1` (the default), instead of only doing so when `maxsplit` was `0` (meaning \"no splits\").\n"
+      }
+    },
+    {
+      "bug_id": "more-itertools-original-010",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 701,
+      "tests_failed": 0,
+      "tests_total": 701,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-09T18:09:57.982585",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "more_itertools/more.py"
+        ],
+        "patch": "(restored to original)",
+        "tokens_used": 0,
+        "time_seconds": 34.31577277183533,
+        "error": null,
+        "agent_output": "All 564 tests pass.\n\n**The fix:** In `split_after()` at line 1614 of `more_itertools/more.py`, the condition `if maxsplit != 1` was inverted. It should be `if maxsplit == 1`. \n\nThe logic is: after performing a split, if `maxsplit == 1` that means we just used the last allowed split, so we should consume the rest of the iterable as one final group and return. The original code did the opposite \u2014 it consumed the remainder when splits were still available, and continued splitting when none were left.\n"
+      }
+    }
+  ],
+  "summary": {
+    "by_agent": {
+      "claude": {
+        "total": 10,
+        "passed": 10
+      }
+    },
+    "by_mode": {
+      "with_tests": {
+        "total": 10,
+        "passed": 10
+      }
+    },
+    "by_evaluation": {
+      "PASS": 10,
+      "FAIL": 0,
+      "ERROR": 0,
+      "TIMEOUT": 0,
+      "NO_FIX": 0
+    }
+  }
+}

@@ -1,0 +1,273 @@
+{
+  "metadata": {
+    "catalog": "/Users/yuan/stylebench-data/bugs/python-markdown-snakecase.json",
+    "repo": "/Users/yuan/stylebench-data/snakecase/python-markdown",
+    "repo_name": "python-markdown",
+    "timestamp": "2026-02-09T17:21:09.620166",
+    "total_trials": 10
+  },
+  "results": [
+    {
+      "bug_id": "python-markdown-snakecase-001",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 776,
+      "tests_failed": 0,
+      "tests_total": 776,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-09T17:18:03.485187",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "Markdown.egg-info/PKG-INFO",
+          "markdown/__meta__.py"
+        ],
+        "patch": "diff --git a/Markdown.egg-info/PKG-INFO b/Markdown.egg-info/PKG-INFO\nindex de3a9b5..de0e57b 100644\n--- a/Markdown.egg-info/PKG-INFO\n+++ b/Markdown.egg-info/PKG-INFO\n@@ -1,6 +1,6 @@\n Metadata-Version: 2.4\n Name: Markdown\n-Version: 3.10\n+Version: 3.10.0\n Summary: Python implementation of John Gruber's Markdown.\n Author: Manfred Stienstra, Yuri Takhteyev\n Author-email: Waylan limberg <python.markdown@gmail.com>\ndiff --git a/markdown/__meta__.py b/markdown/__meta__.py\nindex 69823ae..b4b68f4 100644\n--- a/markdown/__meta__.py\n+++ b/markdown/__meta__.py\n@@ -36,7 +36,7 @@ def _get_version(version_info):\n     assert len(version_info) == 5\n     assert version_info[3] in ('dev', 'alpha', 'beta', 'rc', 'final')\n \n-    parts = 2 if version_info[2] == 0 else 3\n+    parts = 3 if version_info[2] != 0 else 2\n     v = '.'.join(map(str, version_info[:parts]))\n \n     if version_info[3] == 'dev':\n",
+        "tokens_used": 0,
+        "time_seconds": 19.747534036636353,
+        "error": null,
+        "agent_output": "Both tests pass. The bug was a simple swap of the ternary values on line 39 of `markdown/__meta__.py` \u2014 `2` and `3` were reversed, causing the patch version to be included when it was `0` and omitted when it was non-zero.\n"
+      }
+    },
+    {
+      "bug_id": "python-markdown-snakecase-002",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 776,
+      "tests_failed": 0,
+      "tests_total": 776,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-09T17:18:27.295625",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "Markdown.egg-info/PKG-INFO"
+        ],
+        "patch": "diff --git a/Markdown.egg-info/PKG-INFO b/Markdown.egg-info/PKG-INFO\nindex de3a9b5..73bd5ec 100644\n--- a/Markdown.egg-info/PKG-INFO\n+++ b/Markdown.egg-info/PKG-INFO\n@@ -1,6 +1,6 @@\n Metadata-Version: 2.4\n Name: Markdown\n-Version: 3.10\n+Version: 3.10.dev0\n Summary: Python implementation of John Gruber's Markdown.\n Author: Manfred Stienstra, Yuri Takhteyev\n Author-email: Waylan limberg <python.markdown@gmail.com>\n",
+        "tokens_used": 0,
+        "time_seconds": 20.456093072891235,
+        "error": null,
+        "agent_output": "The fix is confirmed. The bug was a simple logic inversion on line 42 of `markdown/__meta__.py`: the condition `!= 'dev'` should have been `== 'dev'`. This caused the `'dev'` case to fall into the `elif` branch where it tried to look up `'dev'` in a mapping that only contained `'alpha'`, `'beta'`, and `'rc'`, resulting in a `KeyError`.\n"
+      }
+    },
+    {
+      "bug_id": "python-markdown-snakecase-005",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 776,
+      "tests_failed": 0,
+      "tests_total": 776,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-09T17:18:41.479709",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "markdown/__meta__.py"
+        ],
+        "patch": "(restored to original)",
+        "tokens_used": 0,
+        "time_seconds": 10.45548701286316,
+        "error": null,
+        "agent_output": "The fix: line 43 in `markdown/__meta__.py` used `-=` (subtraction assignment) instead of `+=` (concatenation assignment) when appending the `.dev` suffix to the version string. Changed `v -= '.dev' + ...` to `v += '.dev' + ...`.\n"
+      }
+    },
+    {
+      "bug_id": "python-markdown-snakecase-006",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 776,
+      "tests_failed": 0,
+      "tests_total": 776,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-09T17:19:02.794972",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "markdown/__meta__.py"
+        ],
+        "patch": "(restored to original)",
+        "tokens_used": 0,
+        "time_seconds": 17.579544067382812,
+        "error": null,
+        "agent_output": "Both tests pass. The fix was a simple typo on line 46 of `markdown/__meta__.py`: the `-=` operator was changed to `+=`. The code was trying to append a string suffix (like `\"a1\"`, `\"b2\"`, `\"rc4\"`) to the version string, which requires string concatenation (`+=`), not subtraction (`-=`).\n"
+      }
+    },
+    {
+      "bug_id": "python-markdown-snakecase-013",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 776,
+      "tests_failed": 0,
+      "tests_total": 776,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-09T17:19:29.598623",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "Markdown.egg-info/PKG-INFO"
+        ],
+        "patch": "diff --git a/Markdown.egg-info/PKG-INFO b/Markdown.egg-info/PKG-INFO\nindex de3a9b5..de0e57b 100644\n--- a/Markdown.egg-info/PKG-INFO\n+++ b/Markdown.egg-info/PKG-INFO\n@@ -1,6 +1,6 @@\n Metadata-Version: 2.4\n Name: Markdown\n-Version: 3.10\n+Version: 3.10.0\n Summary: Python implementation of John Gruber's Markdown.\n Author: Manfred Stienstra, Yuri Takhteyev\n Author-email: Waylan limberg <python.markdown@gmail.com>\n",
+        "tokens_used": 0,
+        "time_seconds": 23.169830083847046,
+        "error": null,
+        "agent_output": "Tests pass. The bug was on line 39 of `markdown/__meta__.py`:\n\n```python\n# Before (always uses 3 parts):\nparts = 3 if version_info[2] == 0 else 3\n\n# After (uses 2 parts when patch is 0, omitting the trailing \".0\"):\nparts = 2 if version_info[2] == 0 else 3\n```\n\nThe condition was a no-op \u2014 both branches returned `3`. The fix makes it return `2` when the patch version is `0`, so versions like `(1, 2, 0, 'beta', 2)` produce `\"1.2b2\"` instead of `\"1.2.0b2\"`.\n"
+      }
+    },
+    {
+      "bug_id": "python-markdown-snakecase-014",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 776,
+      "tests_failed": 0,
+      "tests_total": 776,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-09T17:19:56.939076",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "Markdown.egg-info/PKG-INFO"
+        ],
+        "patch": "diff --git a/Markdown.egg-info/PKG-INFO b/Markdown.egg-info/PKG-INFO\nindex de3a9b5..de0e57b 100644\n--- a/Markdown.egg-info/PKG-INFO\n+++ b/Markdown.egg-info/PKG-INFO\n@@ -1,6 +1,6 @@\n Metadata-Version: 2.4\n Name: Markdown\n-Version: 3.10\n+Version: 3.10.0\n Summary: Python implementation of John Gruber's Markdown.\n Author: Manfred Stienstra, Yuri Takhteyev\n Author-email: Waylan limberg <python.markdown@gmail.com>\n",
+        "tokens_used": 0,
+        "time_seconds": 23.580091953277588,
+        "error": null,
+        "agent_output": "Tests pass. The bug was on line 39 of `markdown/__meta__.py` \u2014 a simple copy-paste error where both branches of the ternary produced `3`:\n\n```python\n# Before (bug): always uses 3 parts\nparts = 3 if version_info[2] == 0 else 3\n\n# After (fix): uses 2 parts when patch is 0 to omit \".0\"\nparts = 2 if version_info[2] == 0 else 3\n```\n\nThis ensures that when the patch version is `0`, it's omitted from the version string (e.g., `1.2b2` instead of `1.2.0b2`), which is the correct PEP 440 normalization.\n"
+      }
+    },
+    {
+      "bug_id": "python-markdown-snakecase-015",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 776,
+      "tests_failed": 0,
+      "tests_total": 776,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-09T17:20:14.582919",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "Markdown.egg-info/PKG-INFO"
+        ],
+        "patch": "diff --git a/Markdown.egg-info/PKG-INFO b/Markdown.egg-info/PKG-INFO\nindex de3a9b5..de0e57b 100644\n--- a/Markdown.egg-info/PKG-INFO\n+++ b/Markdown.egg-info/PKG-INFO\n@@ -1,6 +1,6 @@\n Metadata-Version: 2.4\n Name: Markdown\n-Version: 3.10\n+Version: 3.10.0\n Summary: Python implementation of John Gruber's Markdown.\n Author: Manfred Stienstra, Yuri Takhteyev\n Author-email: Waylan limberg <python.markdown@gmail.com>\n",
+        "tokens_used": 0,
+        "time_seconds": 13.75200629234314,
+        "error": null,
+        "agent_output": "The bug was on line 39: `version_info[2] == 1` should be `version_info[2] == 0`. When the patch version is `0`, it should be omitted from the version string (e.g., `(1, 2, 0, 'beta', 2)` \u2192 `\"1.2b2\"`, not `\"1.2.0b2\"`). The condition was checking for `1` instead of `0`.\n"
+      }
+    },
+    {
+      "bug_id": "python-markdown-snakecase-016",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 776,
+      "tests_failed": 0,
+      "tests_total": 776,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-09T17:20:38.585406",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "markdown/__meta__.py"
+        ],
+        "patch": "(restored to original)",
+        "tokens_used": 0,
+        "time_seconds": 20.535228967666626,
+        "error": null,
+        "agent_output": "The test passes now. The bug was a simple off-by-one error: `parts` should be `3` (to slice `major, minor, patch`) not `4` (which also included the release type string like `'dev'`).\n"
+      }
+    },
+    {
+      "bug_id": "python-markdown-snakecase-017",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 776,
+      "tests_failed": 0,
+      "tests_total": 776,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-09T17:20:54.377849",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "markdown/__meta__.py"
+        ],
+        "patch": "(restored to original)",
+        "tokens_used": 0,
+        "time_seconds": 12.663517236709595,
+        "error": null,
+        "agent_output": "The fix: Line 42 was checking `version_info[4]` (the numeric component, e.g. `0`) against `'dev'`, when it should have been checking `version_info[3]` (the release type string). This caused the `'dev'` case to never match, falling through to the `elif` branch where `'dev'` wasn't in the `mapping` dict, resulting in a `KeyError`.\n"
+      }
+    },
+    {
+      "bug_id": "python-markdown-snakecase-018",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 776,
+      "tests_failed": 0,
+      "tests_total": 776,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-09T17:21:09.443869",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "markdown/__meta__.py"
+        ],
+        "patch": "(restored to original)",
+        "tokens_used": 0,
+        "time_seconds": 11.970677852630615,
+        "error": null,
+        "agent_output": "The fix: changed `version_info[5]` to `version_info[4]` on line 43. The `version_info` tuple has 5 elements (indices 0\u20134), and the version number suffix is always at index 4 \u2014 the `dev` branch was using index 5 while the `alpha`/`beta`/`rc` branch correctly used index 4.\n"
+      }
+    }
+  ],
+  "summary": {
+    "by_agent": {
+      "claude": {
+        "total": 10,
+        "passed": 10
+      }
+    },
+    "by_mode": {
+      "with_tests": {
+        "total": 10,
+        "passed": 10
+      }
+    },
+    "by_evaluation": {
+      "PASS": 10,
+      "FAIL": 0,
+      "ERROR": 0,
+      "TIMEOUT": 0,
+      "NO_FIX": 0
+    }
+  }
+}

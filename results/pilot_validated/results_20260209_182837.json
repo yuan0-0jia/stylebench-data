@@ -1,0 +1,272 @@
+{
+  "metadata": {
+    "catalog": "/Users/yuan/stylebench-data/bugs/more-itertools-badnames.json",
+    "repo": "/Users/yuan/stylebench-data/badnames/more-itertools",
+    "repo_name": "more-itertools",
+    "timestamp": "2026-02-09T18:28:37.645752",
+    "total_trials": 10
+  },
+  "results": [
+    {
+      "bug_id": "more-itertools-badnames-001",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 701,
+      "tests_failed": 0,
+      "tests_total": 701,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-09T18:23:02.687692",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "more_itertools/more.py"
+        ],
+        "patch": "(restored to original)",
+        "tokens_used": 0,
+        "time_seconds": 25.410953998565674,
+        "error": null,
+        "agent_output": "All 564 tests pass. The bug was a simple logic inversion (`==` instead of `!=`) in the strict mode check of the `chunked` function.\n"
+      }
+    },
+    {
+      "bug_id": "more-itertools-badnames-002",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 701,
+      "tests_failed": 0,
+      "tests_total": 701,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-09T18:23:40.612914",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "more_itertools/more.py"
+        ],
+        "patch": "(restored to original)",
+        "tokens_used": 0,
+        "time_seconds": 27.64207100868225,
+        "error": null,
+        "agent_output": "All 6 tests in `DistinctPermutationsTests` pass now.\n\n**The bug:** On line 846, the condition `r != ag` was inverted. When `r == ag` (full-length permutations), the function should use `_full`, but the flipped condition was routing it to `_partial` instead. `_partial` then crashed with `IndexError: list index out of range` because `tail = A[r:]` is empty when `r` equals the full length of the iterable.\n\n**The fix:** Changed `r != ag` to `r == ag`.\n"
+      }
+    },
+    {
+      "bug_id": "more-itertools-badnames-003",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 701,
+      "tests_failed": 0,
+      "tests_total": 701,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-09T18:24:12.376772",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "more_itertools/more.py"
+        ],
+        "patch": "diff --git a/more_itertools/more.py b/more_itertools/more.py\nindex fed050d..280c25d 100755\n--- a/more_itertools/more.py\n+++ b/more_itertools/more.py\n@@ -930,7 +930,7 @@ def intersperse(e, iterable, n=1):\n         [1, 2, None, 3, 4, None, 5]\n \n     \"\"\"\n-    if n == 0:\n+    if n < 1:\n         raise ValueError('n must be > 0')\n     elif n == 1:\n         # interleave(repeat(e), iterable) -> e, x_0, e, x_1, e, x_2...\n",
+        "tokens_used": 0,
+        "time_seconds": 21.310012102127075,
+        "error": null,
+        "agent_output": "All 6 intersperse tests pass. The fix was a simple logic error on line 933: `if n != 0:` was raising a `ValueError` for all valid values of `n` (like the default `n=1`). The correct guard is `if n < 1:`, which only raises when `n` is zero or negative.\n"
+      }
+    },
+    {
+      "bug_id": "more-itertools-badnames-004",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 701,
+      "tests_failed": 0,
+      "tests_total": 701,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-09T18:24:51.350246",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "more_itertools/more.py"
+        ],
+        "patch": "(restored to original)",
+        "tokens_used": 0,
+        "time_seconds": 28.374284029006958,
+        "error": null,
+        "agent_output": "The bug was on line 935: the condition `n != 1` was swapped \u2014 it should be `n == 1`. \n\n- When `n == 1` (default), we intersperse after every element using the simple `interleave`/`islice` approach.\n- When `n != 1` (i.e., `n > 1`), we use `chunked` to group `n` items together before interspersing.\n\nThe original code had these two branches backwards, so calling `intersperse('_', iterable, n=2)` was hitting the simple interleave path (inserting after every element) instead of the chunked path.\n"
+      }
+    },
+    {
+      "bug_id": "more-itertools-badnames-005",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 701,
+      "tests_failed": 0,
+      "tests_total": 701,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-09T18:25:28.680638",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "more_itertools/more.py"
+        ],
+        "patch": "(restored to original)",
+        "tokens_used": 0,
+        "time_seconds": 26.486785173416138,
+        "error": null,
+        "agent_output": "The bug was a simple logic inversion on line 977. The set `v` was collecting elements appearing in **multiple** iterables (`!= 1`) instead of elements appearing in **exactly one** iterable (`== 1`). Since line 978 filters each list to keep only elements in `v`, the old code was keeping shared elements and discarding unique ones \u2014 the exact opposite of what `unique_to_each` should do.\n"
+      }
+    },
+    {
+      "bug_id": "more-itertools-badnames-006",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 701,
+      "tests_failed": 0,
+      "tests_total": 701,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-09T18:26:06.107188",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "more_itertools/more.py"
+        ],
+        "patch": "(restored to original)",
+        "tokens_used": 0,
+        "time_seconds": 26.60236883163452,
+        "error": null,
+        "agent_output": "All 7 `WindowedTests` pass now. The fix was a single character change: `!=` \u2192 `==` on the condition checking `n == 0` in the `windowed()` function at `more_itertools/more.py:1010`.\n"
+      }
+    },
+    {
+      "bug_id": "more-itertools-badnames-007",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 701,
+      "tests_failed": 0,
+      "tests_total": 701,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-09T18:26:53.288465",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "more_itertools/more.py"
+        ],
+        "patch": "(restored to original)",
+        "tokens_used": 0,
+        "time_seconds": 36.142788887023926,
+        "error": null,
+        "agent_output": "All 5 bucket tests pass. The bug was a simple logic inversion on line 1170 in `_get_values`: `u != value` was changed to `u == value`. The method should yield items whose key matches the requested bucket value, not items whose key *doesn't* match.\n"
+      }
+    },
+    {
+      "bug_id": "more-itertools-badnames-008",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 701,
+      "tests_failed": 0,
+      "tests_total": 701,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-09T18:27:24.531388",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "more_itertools/more.py"
+        ],
+        "patch": "(restored to original)",
+        "tokens_used": 0,
+        "time_seconds": 20.588520050048828,
+        "error": null,
+        "agent_output": "All 10 `InterleaveEvenlyTests` pass now.\n\n**The bug:** On line 1296 of `more.py`, the comparison operator was `==` instead of `!=`. The guard clause was raising a `ValueError` when `len(iterables)` **matched** `len(lengths)` (the valid case), and allowing mismatched lengths through (the invalid case). Flipping `==` to `!=` fixes the logic.\n"
+      }
+    },
+    {
+      "bug_id": "more-itertools-badnames-010",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 701,
+      "tests_failed": 0,
+      "tests_total": 701,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-09T18:28:01.328996",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "more_itertools/more.py"
+        ],
+        "patch": "(restored to original)",
+        "tokens_used": 0,
+        "time_seconds": 26.26253581047058,
+        "error": null,
+        "agent_output": "All 5 tests pass. The fix was a simple inverted condition on line 1568 of `more.py`: `maxsplit != 0` was changed to `maxsplit == 0`. The early-return path that yields the entire iterable as a single list should only trigger when `maxsplit == 0` (no splits requested), not for all other values.\n"
+      }
+    },
+    {
+      "bug_id": "more-itertools-badnames-011",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 701,
+      "tests_failed": 0,
+      "tests_total": 701,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-09T18:28:37.617513",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "more_itertools/more.py"
+        ],
+        "patch": "(restored to original)",
+        "tokens_used": 0,
+        "time_seconds": 25.76839780807495,
+        "error": null,
+        "agent_output": "All 5 tests pass now.\n\n**The bug:** In `split_before()` at line 1577, the condition `if maxsplit != 1:` was inverted. It should be `if maxsplit == 1:`.\n\nThe logic is: after yielding a split, check if we've reached the split limit (`maxsplit == 1`). If so, yield the remainder of the iterable and return. The original code had `!= 1`, which caused it to yield the remainder and return early on the *first* split when `maxsplit` was `-1` (unlimited), combining all subsequent elements into one group instead of continuing to split.\n"
+      }
+    }
+  ],
+  "summary": {
+    "by_agent": {
+      "claude": {
+        "total": 10,
+        "passed": 10
+      }
+    },
+    "by_mode": {
+      "with_tests": {
+        "total": 10,
+        "passed": 10
+      }
+    },
+    "by_evaluation": {
+      "PASS": 10,
+      "FAIL": 0,
+      "ERROR": 0,
+      "TIMEOUT": 0,
+      "NO_FIX": 0
+    }
+  }
+}

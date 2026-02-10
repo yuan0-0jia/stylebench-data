@@ -1,0 +1,272 @@
+{
+  "metadata": {
+    "catalog": "/Users/yuan/stylebench-data/bugs/validators-formatting.json",
+    "repo": "/Users/yuan/stylebench-data/formatting/validators",
+    "repo_name": "validators",
+    "timestamp": "2026-02-09T17:10:02.232737",
+    "total_trials": 10
+  },
+  "results": [
+    {
+      "bug_id": "validators-formatting-001",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 895,
+      "tests_failed": 0,
+      "tests_total": 895,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-09T17:06:52.746387",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "src/validators/country.py"
+        ],
+        "patch": "(restored to original)",
+        "tokens_used": 0,
+        "time_seconds": 26.936988830566406,
+        "error": null,
+        "agent_output": "All 26 tests pass now.\n\n**The bug**: On line 313, the condition `if iso_format != 'alpha2'` was wrong \u2014 it should have been `if iso_format == 'alpha2'`. \n\nThe original `!= 'alpha2'` condition matched `alpha3`, `numeric`, and everything else, causing it to always check against alpha2 **values** (2-letter codes). This made the `alpha3` branch on line 319 unreachable. So when `'ISR'` came in with `iso_format='auto'` (resolved to `'alpha3'`), it was incorrectly checked against 2-letter codes like `\"IL\"` instead of 3-letter keys like `\"ISR\"`, causing the validation to fail.\n"
+      }
+    },
+    {
+      "bug_id": "validators-formatting-002",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 895,
+      "tests_failed": 0,
+      "tests_total": 895,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-09T17:07:19.043051",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "src/validators/country.py"
+        ],
+        "patch": "(restored to original)",
+        "tokens_used": 0,
+        "time_seconds": 23.83543610572815,
+        "error": null,
+        "agent_output": "All 26 tests pass now.\n\n**The bug:** On line 319 of `src/validators/country.py`, the condition `if iso_format != 'alpha3':` was inverted \u2014 it should have been `if iso_format == 'alpha3':`. This caused the alpha3 lookup (checking `_alpha3_to_alpha2` dictionary) to run for everything *except* alpha3, and the numeric check to never match alpha3 codes. So when `'ISR'` was passed with `iso_format='auto'` (which resolved to `'alpha3'`), it skipped the alpha3 branch and fell through to `return value in _numeric`, which returned `False`.\n"
+      }
+    },
+    {
+      "bug_id": "validators-formatting-003",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 895,
+      "tests_failed": 0,
+      "tests_total": 895,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-09T17:07:36.275026",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "src/validators/country.py"
+        ],
+        "patch": "(restored to original)",
+        "tokens_used": 0,
+        "time_seconds": 14.755929946899414,
+        "error": null,
+        "agent_output": "The fix: on line 326, `iso_format != 'numeric'` was changed to `iso_format == 'numeric'`. The condition was inverted \u2014 it was returning `False` when the format *was* `'numeric'` and checking the `_numeric` set when it wasn't, which is the opposite of correct behavior.\n"
+      }
+    },
+    {
+      "bug_id": "validators-formatting-004",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 895,
+      "tests_failed": 0,
+      "tests_total": 895,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-09T17:07:55.509572",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "src/validators/country.py"
+        ],
+        "patch": "(restored to original)",
+        "tokens_used": 0,
+        "time_seconds": 16.78886604309082,
+        "error": null,
+        "agent_output": "The bug was on line 363 in `src/validators/country.py`. The condition `if len(value) == 3: return False` was backwards \u2014 it was rejecting all 3-character strings, but ISO 4217 currency codes are exactly 3 characters (e.g., \"USD\"). Changed `== 3` to `!= 3` so it rejects values that are *not* 3 characters long, allowing valid currency codes to proceed to the lookup.\n"
+      }
+    },
+    {
+      "bug_id": "validators-formatting-005",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 895,
+      "tests_failed": 0,
+      "tests_total": 895,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-09T17:08:13.694312",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "src/validators/country.py"
+        ],
+        "patch": "(restored to original)",
+        "tokens_used": 0,
+        "time_seconds": 15.666641235351562,
+        "error": null,
+        "agent_output": "The bug was on line 313: `if value == 'alpha2'` should be `if iso_format == 'alpha2'`. The variable `value` holds the country code (e.g., `'US'`), so it would never equal the string `'alpha2'`, causing all alpha2 format validations to fall through to the final `else False` branch and return a `ValidationError`.\n"
+      }
+    },
+    {
+      "bug_id": "validators-formatting-006",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 895,
+      "tests_failed": 0,
+      "tests_total": 895,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-09T17:08:32.277221",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "src/validators/country.py"
+        ],
+        "patch": "(restored to original)",
+        "tokens_used": 0,
+        "time_seconds": 16.20150399208069,
+        "error": null,
+        "agent_output": "The fix: line 313 had `ignore_case == 'alpha2'` which should be `iso_format == 'alpha2'`. This was a simple variable name typo \u2014 `ignore_case` is a boolean, so comparing it to the string `'alpha2'` always evaluated to `False`, causing the alpha2 validation branch to be skipped entirely. Valid alpha2 codes like `'US'` would fall through to the final `else False` and incorrectly return a `ValidationError`.\n"
+      }
+    },
+    {
+      "bug_id": "validators-formatting-007",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 895,
+      "tests_failed": 0,
+      "tests_total": 895,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-09T17:08:50.620014",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "src/validators/country.py"
+        ],
+        "patch": "(restored to original)",
+        "tokens_used": 0,
+        "time_seconds": 16.001079082489014,
+        "error": null,
+        "agent_output": "The bug was on line 319: `if value == 'alpha3'` should be `if iso_format == 'alpha3'`. The condition was comparing the country code value (e.g., `'ISR'`) against the string `'alpha3'` instead of checking the `iso_format` parameter. This caused the alpha3 branch to never execute, so any alpha3 country code lookup (like `'ISR'` with `iso_format='auto'`) would fall through and return `False`.\n"
+      }
+    },
+    {
+      "bug_id": "validators-formatting-008",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 895,
+      "tests_failed": 0,
+      "tests_total": 895,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-09T17:09:09.991859",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "src/validators/country.py"
+        ],
+        "patch": "(restored to original)",
+        "tokens_used": 0,
+        "time_seconds": 17.05395817756653,
+        "error": null,
+        "agent_output": "The fix: changed `ignore_case == 'alpha3'` to `iso_format == 'alpha3'` on line 319. This was a simple variable name typo \u2014 `ignore_case` (a boolean) was being compared to the string `'alpha3'` instead of `iso_format`, causing the alpha3 branch to never execute.\n"
+      }
+    },
+    {
+      "bug_id": "validators-formatting-011",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 895,
+      "tests_failed": 0,
+      "tests_total": 895,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-09T17:09:32.797927",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "src/validators/country.py"
+        ],
+        "patch": "(restored to original)",
+        "tokens_used": 0,
+        "time_seconds": 20.305070877075195,
+        "error": null,
+        "agent_output": "The fix: on line 322, `if value` was changed to `if ignore_case`. \n\nThe `alpha3` branch was using `if value` as the condition, which is always truthy for any non-empty string, so it always uppercased the input before lookup \u2014 effectively ignoring case unconditionally. This meant `'uSa'` was treated as valid even though `ignore_case=False` (the default). The `alpha2` branch already had the correct pattern (`if ignore_case`), so this was just a typo/copy-paste error in the `alpha3` branch.\n"
+      }
+    },
+    {
+      "bug_id": "validators-formatting-012",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 895,
+      "tests_failed": 0,
+      "tests_total": 895,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-09T17:10:02.146921",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "src/validators/country.py"
+        ],
+        "patch": "(restored to original)",
+        "tokens_used": 0,
+        "time_seconds": 26.867146968841553,
+        "error": null,
+        "agent_output": "All 26 tests pass now.\n\n**The bug:** In `src/validators/country.py:322`, the ternary condition in the `alpha3` branch used `iso_format` (which is always truthy since it's the string `'alpha3'`) instead of `ignore_case`. This caused the alpha3 validation to always do a case-insensitive `.upper()` lookup, making mixed-case inputs like `'uSa'` incorrectly validate as `True` even when `ignore_case=False`.\n\n**The fix:** Changed `if iso_format` to `if ignore_case` on line 322, matching the pattern already used correctly in the `alpha2` branch.\n"
+      }
+    }
+  ],
+  "summary": {
+    "by_agent": {
+      "claude": {
+        "total": 10,
+        "passed": 10
+      }
+    },
+    "by_mode": {
+      "with_tests": {
+        "total": 10,
+        "passed": 10
+      }
+    },
+    "by_evaluation": {
+      "PASS": 10,
+      "FAIL": 0,
+      "ERROR": 0,
+      "TIMEOUT": 0,
+      "NO_FIX": 0
+    }
+  }
+}
