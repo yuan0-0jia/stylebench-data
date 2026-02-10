@@ -1,0 +1,272 @@
+{
+  "metadata": {
+    "catalog": "/Users/yuan/stylebench-data/bugs/humanize-original.json",
+    "repo": "/Users/yuan/stylebench-data/original/humanize",
+    "repo_name": "humanize",
+    "timestamp": "2026-02-09T15:54:37.927565",
+    "total_trials": 10
+  },
+  "results": [
+    {
+      "bug_id": "humanize-original-001",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 684,
+      "tests_failed": 0,
+      "tests_total": 684,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-09T15:49:02.563733",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "src/humanize/filesize.py"
+        ],
+        "patch": "(restored to original)",
+        "tokens_used": 0,
+        "time_seconds": 26.76672101020813,
+        "error": null,
+        "agent_output": "The fix: line 91 had `abs_bytes != 1` which should be `abs_bytes == 1`. The singular \"Byte\" (without 's') should only be returned when the value is exactly 1, not for every other value. This was causing 300 to return \"300 Byte\" instead of falling through to line 95 which correctly returns \"300 Bytes\".\n"
+      }
+    },
+    {
+      "bug_id": "humanize-original-002",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 684,
+      "tests_failed": 0,
+      "tests_total": 684,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-09T15:49:44.035732",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "src/humanize/filesize.py"
+        ],
+        "patch": "(restored to original)",
+        "tokens_used": 0,
+        "time_seconds": 38.365817070007324,
+        "error": null,
+        "agent_output": "All 70 tests pass. The fix was a single-character change on line 80 of `src/humanize/filesize.py`:\n\n**Bug:** `if value:` was used instead of `if gnu:` when selecting the suffix format. Since `value` is truthy for any non-zero number, it always selected GNU-style suffixes (e.g., `K`) instead of the correct decimal suffixes (e.g., ` kB`).\n\n**Fix:** Changed `if value:` to `if gnu:` to correctly check the `gnu` parameter.\n"
+      }
+    },
+    {
+      "bug_id": "humanize-original-003",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 684,
+      "tests_failed": 0,
+      "tests_total": 684,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-09T15:50:21.182857",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "src/humanize/filesize.py"
+        ],
+        "patch": "(restored to original)",
+        "tokens_used": 0,
+        "time_seconds": 33.437422037124634,
+        "error": null,
+        "agent_output": "All 70 tests pass. The bug was on line 80 of `src/humanize/filesize.py` \u2014 the first condition checked `if binary` instead of `if gnu`, so the suffix selection logic was:\n\n```python\n# Before (broken):\nif binary:          # \u2190 should be \"gnu\"\n    suffix = suffixes[\"gnu\"]\nelif binary:\n    suffix = suffixes[\"binary\"]\n\n# After (fixed):\nif gnu:\n    suffix = suffixes[\"gnu\"]\nelif binary:\n    suffix = suffixes[\"binary\"]\n```\n\nThis caused `binary=True` calls to incorrectly use GNU suffixes (e.g., `K`) instead of binary suffixes (e.g., ` KiB`), and the `elif binary` branch was unreachable.\n"
+      }
+    },
+    {
+      "bug_id": "humanize-original-004",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 684,
+      "tests_failed": 0,
+      "tests_total": 684,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-09T15:50:54.334946",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "src/humanize/filesize.py"
+        ],
+        "patch": "(restored to original)",
+        "tokens_used": 0,
+        "time_seconds": 30.021443128585815,
+        "error": null,
+        "agent_output": "All 70 tests pass. The fix was a single-character change on line 80 of `src/humanize/filesize.py`:\n\n**Bug:** `if format:` was used instead of `if gnu:` when selecting the suffix set. Since `format` always has a truthy default value (`\"%.1f\"`), the GNU suffixes (no spaces, uppercase letters like `K`, `M`) were always selected instead of the appropriate decimal (`kB`, `MB`) or binary (`KiB`, `MiB`) suffixes.\n\n**Fix:** Changed `if format:` to `if gnu:` to correctly check the `gnu` parameter.\n"
+      }
+    },
+    {
+      "bug_id": "humanize-original-005",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 684,
+      "tests_failed": 0,
+      "tests_total": 684,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-09T15:51:31.801794",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "src/humanize/filesize.py"
+        ],
+        "patch": "(restored to original)",
+        "tokens_used": 0,
+        "time_seconds": 34.3449981212616,
+        "error": null,
+        "agent_output": "All 70 tests pass. The fix was a one-character change on line 82 of `src/humanize/filesize.py`: `elif value:` \u2192 `elif binary:`.\n\n**The bug**: The code was checking `value` (the input number) instead of `binary` (the boolean flag) to decide which suffix set to use. Since `value` is almost always truthy (non-zero), it was always selecting binary suffixes (\"KiB\", \"MiB\", etc.) instead of decimal suffixes (\"kB\", \"MB\", etc.) when `gnu=False`.\n"
+      }
+    },
+    {
+      "bug_id": "humanize-original-006",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 684,
+      "tests_failed": 0,
+      "tests_total": 684,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-09T15:51:51.892988",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "src/humanize/filesize.py"
+        ],
+        "patch": "(restored to original)",
+        "tokens_used": 0,
+        "time_seconds": 16.881988048553467,
+        "error": null,
+        "agent_output": "The fix: line 82 had `elif gnu:` which is a duplicate of the `if gnu:` check on line 80. It should be `elif binary:` so that when `binary=True` is passed, the binary suffixes (`KiB`, `MiB`, etc.) are used instead of the decimal ones (`kB`, `MB`, etc.).\n"
+      }
+    },
+    {
+      "bug_id": "humanize-original-007",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 684,
+      "tests_failed": 0,
+      "tests_total": 684,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-09T15:52:32.851287",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "src/humanize/filesize.py"
+        ],
+        "patch": "(restored to original)",
+        "tokens_used": 0,
+        "time_seconds": 37.73238801956177,
+        "error": null,
+        "agent_output": "All 70 tests pass.\n\n**The fix:** On line 82 of `src/humanize/filesize.py`, the condition `elif format:` was changed to `elif binary:`. The bug was that `format` (which defaults to `\"%.1f\"`) is always truthy, so the code was always selecting binary suffixes (`KiB`, `MiB`, etc.) instead of decimal suffixes (`kB`, `MB`, etc.) when `gnu` was False. The correct condition checks the `binary` parameter to decide which suffix set to use.\n"
+      }
+    },
+    {
+      "bug_id": "humanize-original-008",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 684,
+      "tests_failed": 0,
+      "tests_total": 684,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-09T15:53:09.517080",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "src/humanize/filesize.py"
+        ],
+        "patch": "(restored to original)",
+        "tokens_used": 0,
+        "time_seconds": 33.2867431640625,
+        "error": null,
+        "agent_output": "All 70 tests pass. \n\n**The bug** was on line 87 of `src/humanize/filesize.py`. The condition `value or binary` was used to determine the base, but it should have been `gnu or binary`. \n\nSince `value` (the file size input) is almost always truthy (any non-zero number or non-empty string), the base was incorrectly set to 1024 even in decimal mode. This caused `naturalsize(\"1000\")` to return `\"1000 Bytes\"` (since 1000 < 1024) instead of the expected `\"1.0 kB\"` (since 1000 >= 1000).\n"
+      }
+    },
+    {
+      "bug_id": "humanize-original-009",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 684,
+      "tests_failed": 0,
+      "tests_total": 684,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-09T15:53:58.686388",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "src/humanize/filesize.py"
+        ],
+        "patch": "diff --git a/src/humanize/filesize.py b/src/humanize/filesize.py\nindex 13e5edd..fcb001d 100644\n--- a/src/humanize/filesize.py\n+++ b/src/humanize/filesize.py\n@@ -84,7 +84,7 @@ def naturalsize(\n     else:\n         suffix = suffixes[\"decimal\"]\n \n-    base = 1024 if (gnu or binary) else 1000\n+    base = 1024 if (binary or gnu) else 1000\n     bytes_ = float(value)\n     abs_bytes = abs(bytes_)\n \n",
+        "tokens_used": 0,
+        "time_seconds": 45.89447498321533,
+        "error": null,
+        "agent_output": "All 70 tests pass. \n\n**The bug**: On line 87 of `src/humanize/filesize.py`, the condition was `binary or binary` (a typo that just evaluates `binary` twice) instead of `binary or gnu`. \n\nGNU mode uses base 1024 (like `ls -sh`), so when `gnu=True` the base should be 1024. But the typo meant it was using base 1000 when only `gnu=True` was set, producing incorrect values like `31.0K` instead of the expected `30.3K`.\n\n**The fix**: Changed `binary or binary` to `binary or gnu`.\n"
+      }
+    },
+    {
+      "bug_id": "humanize-original-010",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 684,
+      "tests_failed": 0,
+      "tests_total": 684,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-09T15:54:37.818217",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "src/humanize/filesize.py"
+        ],
+        "patch": "(restored to original)",
+        "tokens_used": 0,
+        "time_seconds": 35.35450482368469,
+        "error": null,
+        "agent_output": "All 70 tests pass. The fix was a single-character change on line 87 of `src/humanize/filesize.py`:\n\n**Bug:** `format or binary` \u2192 should be `gnu or binary`\n\nThe `format` parameter always has a truthy default value (`\"%.1f\"`), so the condition was always true, making `base` always 1024. This meant decimal mode (which should use base 1000) was incorrectly using base 1024, causing values like 1000 to stay below the threshold and display as \"1000 Bytes\" instead of \"1.0 kB\".\n"
+      }
+    }
+  ],
+  "summary": {
+    "by_agent": {
+      "claude": {
+        "total": 10,
+        "passed": 10
+      }
+    },
+    "by_mode": {
+      "with_tests": {
+        "total": 10,
+        "passed": 10
+      }
+    },
+    "by_evaluation": {
+      "PASS": 10,
+      "FAIL": 0,
+      "ERROR": 0,
+      "TIMEOUT": 0,
+      "NO_FIX": 0
+    }
+  }
+}

@@ -1,0 +1,272 @@
+{
+  "metadata": {
+    "catalog": "/Users/yuan/stylebench-data/bugs/humanize-badnames.json",
+    "repo": "/Users/yuan/stylebench-data/badnames/humanize",
+    "repo_name": "humanize",
+    "timestamp": "2026-02-09T16:04:55.393657",
+    "total_trials": 10
+  },
+  "results": [
+    {
+      "bug_id": "humanize-badnames-001",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 684,
+      "tests_failed": 0,
+      "tests_total": 684,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-09T16:02:10.857727",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "src/humanize/lists.py"
+        ],
+        "patch": "(restored to original)",
+        "tokens_used": 0,
+        "time_seconds": 11.440393924713135,
+        "error": null,
+        "agent_output": "The fix: changed `!=` to `==` on line 31. The original condition `len(items) != 1` was backwards \u2014 it returned just the first element for any list that *wasn't* length 1, when it should have returned just the first element only when the list *is* length 1.\n"
+      }
+    },
+    {
+      "bug_id": "humanize-badnames-002",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 684,
+      "tests_failed": 0,
+      "tests_total": 684,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-09T16:02:36.108910",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "src/humanize/lists.py"
+        ],
+        "patch": "(restored to original)",
+        "tokens_used": 0,
+        "time_seconds": 22.210729837417603,
+        "error": null,
+        "agent_output": "All 7 tests pass. The bug was a simple logic error on line 33: the condition `len(items) != 2` should have been `len(items) == 2`. This caused the two-item branch (`\"x and y\"`) to execute for lists with 3+ items, and the comma-separated branch to execute for exactly 2 items \u2014 the opposite of the intended behavior.\n"
+      }
+    },
+    {
+      "bug_id": "humanize-badnames-003",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 684,
+      "tests_failed": 0,
+      "tests_total": 684,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-09T16:02:49.089062",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "src/humanize/lists.py"
+        ],
+        "patch": "(restored to original)",
+        "tokens_used": 0,
+        "time_seconds": 9.929807186126709,
+        "error": null,
+        "agent_output": "The fix: line 32 was `return None` instead of `return str(items[0])`. When the list contains exactly one item, the function should return that item as a string, not `None`.\n"
+      }
+    },
+    {
+      "bug_id": "humanize-badnames-004",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 684,
+      "tests_failed": 0,
+      "tests_total": 684,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-09T16:03:04.628937",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "src/humanize/lists.py"
+        ],
+        "patch": "diff --git a/src/humanize/lists.py b/src/humanize/lists.py\nindex 3a52f1e..ebbfcf4 100644\n--- a/src/humanize/lists.py\n+++ b/src/humanize/lists.py\n@@ -31,6 +31,6 @@ def natural_list(items: list[Any]) -> str:\n     if len(items) == 1:\n         return str(items[0])\n     elif len(items) == 2:\n-        return f\"{str(items[0])} and {str(items[1])}\"\n+        return f\"{items[0]} and {items[1]}\"\n     else:\n         return \", \".join(str(item) for item in items[:-1]) + f\" and {str(items[-1])}\"\n",
+        "tokens_used": 0,
+        "time_seconds": 12.37477421760559,
+        "error": null,
+        "agent_output": "The fix: line 34 in `src/humanize/lists.py` was returning `None` for 2-element lists instead of joining them with `\" and \"`. Changed it to `f\"{items[0]} and {items[1]}\"`.\n"
+      }
+    },
+    {
+      "bug_id": "humanize-badnames-005",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 684,
+      "tests_failed": 0,
+      "tests_total": 684,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-09T16:03:25.761544",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "src/humanize/lists.py"
+        ],
+        "patch": "diff --git a/src/humanize/lists.py b/src/humanize/lists.py\nindex 3a52f1e..d755447 100644\n--- a/src/humanize/lists.py\n+++ b/src/humanize/lists.py\n@@ -33,4 +33,4 @@ def natural_list(items: list[Any]) -> str:\n     elif len(items) == 2:\n         return f\"{str(items[0])} and {str(items[1])}\"\n     else:\n-        return \", \".join(str(item) for item in items[:-1]) + f\" and {str(items[-1])}\"\n+        return \", \".join(str(i) for i in items[:-1]) + \" and \" + str(items[-1])\n",
+        "tokens_used": 0,
+        "time_seconds": 18.190020084381104,
+        "error": null,
+        "agent_output": "All 7 tests pass. The fix was simple: the `else` branch for lists with 3+ items was returning `None` instead of joining all items except the last with `\", \"` and appending `\" and \"` plus the last item.\n"
+      }
+    },
+    {
+      "bug_id": "humanize-badnames-006",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 684,
+      "tests_failed": 0,
+      "tests_total": 684,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-09T16:03:43.078016",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "src/humanize/lists.py"
+        ],
+        "patch": "(restored to original)",
+        "tokens_used": 0,
+        "time_seconds": 13.967695951461792,
+        "error": null,
+        "agent_output": "The fix: changed `-` to `+` on line 36. The `-` operator isn't supported for string concatenation in Python, which caused the `TypeError`.\n"
+      }
+    },
+    {
+      "bug_id": "humanize-badnames-007",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 684,
+      "tests_failed": 0,
+      "tests_total": 684,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-09T16:04:04.763095",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "src/humanize/lists.py"
+        ],
+        "patch": "(restored to original)",
+        "tokens_used": 0,
+        "time_seconds": 17.0868239402771,
+        "error": null,
+        "agent_output": "The fix: line 31 had `len(items) == 2` but should have been `len(items) == 1`. Both the first and second branches were checking for length 2, so a 2-element list was incorrectly handled by the first branch (which only returns the first item). Now:\n\n- `len(items) == 1` \u2192 returns just the single item\n- `len(items) == 2` \u2192 returns `\"item1 and item2\"`\n- otherwise \u2192 comma-separated with \"and\" before the last item\n"
+      }
+    },
+    {
+      "bug_id": "humanize-badnames-008",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 684,
+      "tests_failed": 0,
+      "tests_total": 684,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-09T16:04:19.170070",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "src/humanize/lists.py"
+        ],
+        "patch": "(restored to original)",
+        "tokens_used": 0,
+        "time_seconds": 10.941383123397827,
+        "error": null,
+        "agent_output": "The fix: `items[1]` \u2192 `items[0]` on line 32. When the list has exactly one item, it should return `items[0]` (the first and only element), not `items[1]` which is out of range.\n"
+      }
+    },
+    {
+      "bug_id": "humanize-badnames-009",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 684,
+      "tests_failed": 0,
+      "tests_total": 684,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-09T16:04:40.461072",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "src/humanize/lists.py"
+        ],
+        "patch": "(restored to original)",
+        "tokens_used": 0,
+        "time_seconds": 17.916342973709106,
+        "error": null,
+        "agent_output": "The fix: changed `len(items) == 3` to `len(items) == 2` on line 33. \n\nThe bug was an off-by-one error. The special case for two-item lists (e.g., `\"one and two\"` without a comma) was incorrectly checking for length 3 instead of length 2. This caused 3-item lists like `[\"1\", \"2\", \"3\"]` to be truncated to `\"1 and 2\"`, while 2-item lists fell through to the general `else` branch.\n"
+      }
+    },
+    {
+      "bug_id": "humanize-badnames-010",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 684,
+      "tests_failed": 0,
+      "tests_total": 684,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-09T16:04:55.278061",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "src/humanize/lists.py"
+        ],
+        "patch": "(restored to original)",
+        "tokens_used": 0,
+        "time_seconds": 11.646873950958252,
+        "error": null,
+        "agent_output": "The bug was a simple copy-paste error on line 34: `items[1]` was used twice instead of `items[0]` and `items[1]`, causing the output `\"two and two\"` instead of `\"one and two\"` when the list has exactly 2 elements.\n"
+      }
+    }
+  ],
+  "summary": {
+    "by_agent": {
+      "claude": {
+        "total": 10,
+        "passed": 10
+      }
+    },
+    "by_mode": {
+      "with_tests": {
+        "total": 10,
+        "passed": 10
+      }
+    },
+    "by_evaluation": {
+      "PASS": 10,
+      "FAIL": 0,
+      "ERROR": 0,
+      "TIMEOUT": 0,
+      "NO_FIX": 0
+    }
+  }
+}
