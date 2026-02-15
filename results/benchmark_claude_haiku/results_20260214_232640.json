@@ -1,0 +1,153 @@
+{
+  "metadata": {
+    "catalog": "/Users/yuan/stylebench-data/bugs_canonical/more-itertools-original.json",
+    "repo": "/Users/yuan/stylebench-data/original/more-itertools",
+    "repo_name": "more-itertools",
+    "timestamp": "2026-02-14T23:26:40.569031",
+    "total_trials": 5,
+    "manifest_used": true
+  },
+  "results": [
+    {
+      "bug_id": "more-itertools-original-001",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 701,
+      "tests_failed": 0,
+      "tests_total": 701,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-14T23:24:05.421778",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "more_itertools/more.py"
+        ],
+        "patch": "(restored to original)",
+        "tokens_used": 0,
+        "time_seconds": 19.573872089385986,
+        "error": null,
+        "agent_output": "Excellent! All tests pass. \n\n## Summary\n\nI found and fixed the bug in the `chunked` function at line 235 in `more_itertools/more.py`:\n\n**The Bug:** The condition was backwards - it was raising an error when a chunk *was* exactly size `n`:\n```python\nif len(chunk) == n:  # WRONG\n    raise ValueError('iterable is not divisible by n.')\n```\n\n**The Fix:** Changed the condition to raise an error when a chunk is *not* exactly size `n`:\n```python\nif len(chunk) != n:  # CORRECT\n    raise ValueError('iterable is not divisible by n.')\n```\n\nThis makes sense: when `strict=True`, we want to ensure that all chunks are exactly size `n`. If any chunk is smaller (the last one), it means the iterable length is not evenly divisible by `n`, so we raise an error. The fix now correctly:\n- Allows `chunked('ABCDEF', 3, strict=True)` to return `[['A', 'B', 'C'], ['D', 'E', 'F']]` (6 is divisible by 3)\n- Raises an error for `chunked('ABCDE', 3, strict=True)` (5 is not divisible by 3)\n"
+      }
+    },
+    {
+      "bug_id": "more-itertools-original-002",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 701,
+      "tests_failed": 0,
+      "tests_total": 701,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-14T23:24:52.705852",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "more_itertools/more.py"
+        ],
+        "patch": "(restored to original)",
+        "tokens_used": 0,
+        "time_seconds": 36.98409914970398,
+        "error": null,
+        "agent_output": "Excellent! All 564 tests pass. The bug was in line 846 of `/private/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/stylebench_586asm57/more_itertools/more.py`.\n\n## Summary\n\n**The Bug:** The condition on line 846 was inverted:\n- It was: `algorithm = _full if (r != size) else partial(_partial, r=r)`\n- Should be: `algorithm = _full if (r == size) else partial(_partial, r=r)`\n\n**Why it failed:** When `r == size` (full permutations), the code was incorrectly calling `_partial` instead of `_full`. The `_partial` function assumes there are items in the `tail` part (the portion not included in the `head`), but when `r == size`, the `tail` is empty, causing an `IndexError` when trying to access `tail[-1]` on line 791.\n\n**The fix:** Changed the condition to correctly use `_full` for full permutations and `_partial` for partial permutations.\n"
+      }
+    },
+    {
+      "bug_id": "more-itertools-original-003",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 701,
+      "tests_failed": 0,
+      "tests_total": 701,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-14T23:25:28.848014",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "more_itertools/more.py"
+        ],
+        "patch": "diff --git a/more_itertools/more.py b/more_itertools/more.py\nindex a6da295..72dc283 100755\n--- a/more_itertools/more.py\n+++ b/more_itertools/more.py\n@@ -930,7 +930,7 @@ def intersperse(e, iterable, n=1):\n         [1, 2, None, 3, 4, None, 5]\n \n     \"\"\"\n-    if n == 0:\n+    if n < 1:\n         raise ValueError('n must be > 0')\n     elif n == 1:\n         # interleave(repeat(e), iterable) -> e, x_0, e, x_1, e, x_2...\n",
+        "tokens_used": 0,
+        "time_seconds": 25.867002964019775,
+        "error": null,
+        "agent_output": "## Summary\n\nI found and fixed the bug in the `intersperse` function in `more_itertools/more.py` (line 933).\n\n**The Bug:** The condition `if n != 0:` was checking the wrong comparison, causing it to raise an error for any value of `n` that wasn't exactly 0. This prevented the function from working correctly.\n\n**The Fix:** Changed `if n != 0:` to `if n < 1:`, which now properly validates that `n` is greater than 0 before proceeding with the intersperse logic.\n\n**Result:** \n- The failing test `IntersperseTest::test_even` now passes\n- All 6 tests in `IntersperseTest` pass\n- All 564 tests in `test_more.py` pass with no regressions\n"
+      }
+    },
+    {
+      "bug_id": "more-itertools-original-004",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "NO_FIX",
+      "tests_passed": 542,
+      "tests_failed": 1,
+      "tests_total": 543,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-14T23:25:53.556170",
+      "fix_result": {
+        "success": false,
+        "files_changed": [
+          "more_itertools/more.py"
+        ],
+        "patch": "diff --git a/more_itertools/more.py b/more_itertools/more.py\nindex a6da295..7eecd6b 100755\n--- a/more_itertools/more.py\n+++ b/more_itertools/more.py\n@@ -194,7 +194,7 @@ except ImportError:  # pragma: no cover\n \n     def dl_mul(x, y):\n         \"Lossless multiplication.\"\n-        xx_hi, xx_lo = dl_split(x)\n+        yx_hi, xx_lo = dl_split(x)\n         yy_hi, yy_lo = dl_split(y)\n         p = xx_hi * yy_hi\n         q = xx_hi * yy_lo + xx_lo * yy_hi\n",
+        "tokens_used": 0,
+        "time_seconds": 22.923884868621826,
+        "error": null,
+        "agent_output": "Error: Reached max turns (10)"
+      }
+    },
+    {
+      "bug_id": "more-itertools-original-005",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 701,
+      "tests_failed": 0,
+      "tests_total": 701,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-14T23:26:40.540666",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "more_itertools/more.py"
+        ],
+        "patch": "(restored to original)",
+        "tokens_used": 0,
+        "time_seconds": 35.80505180358887,
+        "error": null,
+        "agent_output": "Error: Reached max turns (10)"
+      }
+    }
+  ],
+  "summary": {
+    "by_agent": {
+      "claude": {
+        "total": 5,
+        "passed": 4
+      }
+    },
+    "by_mode": {
+      "with_tests": {
+        "total": 5,
+        "passed": 4
+      }
+    },
+    "by_evaluation": {
+      "PASS": 4,
+      "FAIL": 0,
+      "ERROR": 0,
+      "TIMEOUT": 0,
+      "NO_FIX": 1
+    }
+  }
+}

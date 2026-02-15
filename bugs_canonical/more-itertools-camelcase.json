@@ -1,0 +1,363 @@
+{
+  "repo": "more-itertools",
+  "style": "camelcase",
+  "generated_at": "2026-02-14T16:58:20.910898",
+  "test_command": [
+    "uv",
+    "run",
+    "--with",
+    "pytest",
+    "python",
+    "-m",
+    "pytest",
+    "/Users/yuan/stylebench-data/camelcase/more-itertools/tests",
+    "-x",
+    "-q",
+    "--tb=short",
+    "--color=no"
+  ],
+  "bugs": [
+    {
+      "bug_id": "more-itertools-camelcase-001",
+      "test_output": "...F\n=================================== FAILURES ===================================\n_______________________ ChunkedTests.testStrictBeingTrue _______________________\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpe51g2pfp/camelcase/more-itertools/tests/test_more.py:93: in testStrictBeingTrue\n    list(mi.chunked('ABCDEF', 3, strict=True)),\n    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpe51g2pfp/camelcase/more-itertools/more_itertools/more.py:236: in ret\n    raise ValueError('iterable is not divisible by n.')\nE   ValueError: iterable is not divisible by n.\n=========================== short test summary info ============================\nFAILED ../../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpe51g2pfp/camelcase/more-itertools/tests/test_more.py::ChunkedTests::testStrictBeingTrue\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 3 passed in 0.21s\n",
+      "failing_tests": [
+        "../../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpe51g2pfp/camelcase/more-itertools/tests/test_more.py::ChunkedTests::testStrictBeingTrue"
+      ],
+      "exit_code": 1
+    },
+    {
+      "bug_id": "more-itertools-camelcase-002",
+      "test_output": ".....................................F\n=================================== FAILURES ===================================\n_____________________ DistinctPermutationsTests.testBasic ______________________\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpe51g2pfp/camelcase/more-itertools/tests/test_more.py:492: in testBasic\n    actual = list(mi.distinctPermutations(iterable))\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpe51g2pfp/camelcase/more-itertools/more_itertools/more.py:791: in _partial\n    pivot = tail[-1]\n            ^^^^^^^^\nE   IndexError: list index out of range\n=========================== short test summary info ============================\nFAILED ../../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpe51g2pfp/camelcase/more-itertools/tests/test_more.py::DistinctPermutationsTests::testBasic\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 37 passed, 13 subtests passed in 0.19s\n",
+      "failing_tests": [
+        "../../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpe51g2pfp/camelcase/more-itertools/tests/test_more.py::DistinctPermutationsTests::testBasic"
+      ],
+      "exit_code": 1
+    },
+    {
+      "bug_id": "more-itertools-camelcase-003",
+      "test_output": "..........................................................F\n=================================== FAILURES ===================================\n___________________________ IntersperseTest.testEven ___________________________\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpe51g2pfp/camelcase/more-itertools/tests/test_more.py:746: in testEven\n    list(mi.intersperse(None, iterable)), ['0', None, '1']\n         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpe51g2pfp/camelcase/more-itertools/more_itertools/more.py:934: in intersperse\n    raise ValueError('n must be > 0')\nE   ValueError: n must be > 0\n=========================== short test summary info ============================\nFAILED ../../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpe51g2pfp/camelcase/more-itertools/tests/test_more.py::IntersperseTest::testEven\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 58 passed, 48 subtests passed in 0.30s\n",
+      "failing_tests": [
+        "../../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpe51g2pfp/camelcase/more-itertools/tests/test_more.py::IntersperseTest::testEven"
+      ],
+      "exit_code": 1
+    },
+    {
+      "bug_id": "more-itertools-camelcase-004",
+      "test_output": ".................................................................................. [ 11%]\n......................................................... [ 19%]\n........................................................................ [ 30%]\n.................................................. [ 37%]\n..................................................................... [ 47%]\n..................................... [ 52%]\n.................................... [ 57%]\n.............................................................................................. [ 70%]\n.............................................F\n=================================== FAILURES ===================================\n___________________ DiscreteFourierTransformTests.testBasic ____________________\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpe51g2pfp/camelcase/more-itertools/tests/test_more.py:6294: in testBasic\n    self.assertTrue(all(map(cmath.isclose, mi.dft(xarr), Xarr)))\nE   AssertionError: False is not true\n=========================== short test summary info ============================\nFAILED ../../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpe51g2pfp/camelcase/more-itertools/tests/test_more.py::DiscreteFourierTransformTests::testBasic\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 542 passed, 2245 subtests passed in 1.09s\n",
+      "failing_tests": [
+        "../../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpe51g2pfp/camelcase/more-itertools/tests/test_more.py::DiscreteFourierTransformTests::testBasic"
+      ],
+      "exit_code": 1
+    },
+    {
+      "bug_id": "more-itertools-camelcase-005",
+      "test_output": ".................................................................................. [ 11%]\n......................................................... [ 19%]\n........................................................................ [ 30%]\n.................................................. [ 37%]\n..................................................................... [ 47%]\n..................................... [ 52%]\n.................................... [ 57%]\n.............................................................................................. [ 70%]\n.............................................F\n=================================== FAILURES ===================================\n___________________ DiscreteFourierTransformTests.testBasic ____________________\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpe51g2pfp/camelcase/more-itertools/tests/test_more.py:6294: in testBasic\n    self.assertTrue(all(map(cmath.isclose, mi.dft(xarr), Xarr)))\nE   AssertionError: False is not true\n=========================== short test summary info ============================\nFAILED ../../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpe51g2pfp/camelcase/more-itertools/tests/test_more.py::DiscreteFourierTransformTests::testBasic\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 542 passed, 2245 subtests passed in 1.10s\n",
+      "failing_tests": [
+        "../../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpe51g2pfp/camelcase/more-itertools/tests/test_more.py::DiscreteFourierTransformTests::testBasic"
+      ],
+      "exit_code": 1
+    },
+    {
+      "bug_id": "more-itertools-camelcase-006",
+      "test_output": ".................................................................................. [ 11%]\n......................................................... [ 19%]\n........................................................................ [ 30%]\n.................................................. [ 37%]\n..................................................................... [ 47%]\n..................................... [ 52%]\n.................................... [ 57%]\n.............................................................................................. [ 70%]\n.............................................F\n=================================== FAILURES ===================================\n___________________ DiscreteFourierTransformTests.testBasic ____________________\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpe51g2pfp/camelcase/more-itertools/tests/test_more.py:6294: in testBasic\n    self.assertTrue(all(map(cmath.isclose, mi.dft(xarr), Xarr)))\nE   AssertionError: False is not true\n=========================== short test summary info ============================\nFAILED ../../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpe51g2pfp/camelcase/more-itertools/tests/test_more.py::DiscreteFourierTransformTests::testBasic\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 542 passed, 2245 subtests passed in 1.10s\n",
+      "failing_tests": [
+        "../../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpe51g2pfp/camelcase/more-itertools/tests/test_more.py::DiscreteFourierTransformTests::testBasic"
+      ],
+      "exit_code": 1
+    },
+    {
+      "bug_id": "more-itertools-camelcase-007",
+      "test_output": "....................F\n=================================== FAILURES ===================================\n______________________ PeekableTests.testMultiPrependPeek ______________________\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpe51g2pfp/camelcase/more-itertools/tests/test_more.py:397: in testMultiPrependPeek\n    self.assertFalse(it)\nE   AssertionError: <more_itertools.more.peekable object at 0x10b6b2190> is not false\n=========================== short test summary info ============================\nFAILED ../../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpe51g2pfp/camelcase/more-itertools/tests/test_more.py::PeekableTests::testMultiPrependPeek\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 20 passed, 13 subtests passed in 0.16s\n",
+      "failing_tests": [
+        "../../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpe51g2pfp/camelcase/more-itertools/tests/test_more.py::PeekableTests::testMultiPrependPeek"
+      ],
+      "exit_code": 1
+    },
+    {
+      "bug_id": "more-itertools-camelcase-008",
+      "test_output": "..............................F\n=================================== FAILURES ===================================\n_____________________ PeekableTests.testPrependTruthiness ______________________\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpe51g2pfp/camelcase/more-itertools/tests/test_more.py:376: in testPrependTruthiness\n    self.assertTrue(it)\nE   AssertionError: <more_itertools.more.peekable object at 0x108ba21d0> is not true\n=========================== short test summary info ============================\nFAILED ../../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpe51g2pfp/camelcase/more-itertools/tests/test_more.py::PeekableTests::testPrependTruthiness\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 30 passed, 13 subtests passed in 0.16s\n",
+      "failing_tests": [
+        "../../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpe51g2pfp/camelcase/more-itertools/tests/test_more.py::PeekableTests::testPrependTruthiness"
+      ],
+      "exit_code": 1
+    },
+    {
+      "bug_id": "more-itertools-camelcase-009",
+      "test_output": ".................................................................................. [ 11%]\n......................................................... [ 19%]\n........................................................................ [ 30%]\n.................................................. [ 37%]\n..................................................................... [ 47%]\n..................................... [ 52%]\n.................................... [ 57%]\n.............................................................................................. [ 70%]\n..........................F\n=================================== FAILURES ===================================\n____________________________ IterateTests.testBasic ____________________________\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpe51g2pfp/camelcase/more-itertools/tests/test_more.py:6113: in testBasic\n    self.assertEqual(result, expected)\nE   AssertionError: Lists differ: [] != [1, 2, 4, 8, 16, 32, 64, 128, 256, 512]\nE   \nE   Second list contains 10 additional elements.\nE   First extra element 0:\nE   1\nE   \nE   - []\nE   + [1, 2, 4, 8, 16, 32, 64, 128, 256, 512]\n=========================== short test summary info ============================\nFAILED ../../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpe51g2pfp/camelcase/more-itertools/tests/test_more.py::IterateTests::testBasic\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 523 passed, 2245 subtests passed in 1.09s\n",
+      "failing_tests": [
+        "../../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpe51g2pfp/camelcase/more-itertools/tests/test_more.py::IterateTests::testBasic"
+      ],
+      "exit_code": 1
+    },
+    {
+      "bug_id": "more-itertools-camelcase-010",
+      "test_output": ".F\n=================================== FAILURES ===================================\n____________________________ ChunkedTests.testNone _____________________________\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpe51g2pfp/camelcase/more-itertools/tests/test_more.py:69: in testNone\n    list(mi.chunked('ABCDE', None)), [['A', 'B', 'C', 'D', 'E']]\n         ^^^^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpe51g2pfp/camelcase/more-itertools/more_itertools/more.py:233: in chunked\n    raise ValueError('n must not be None when using strict mode.')\nE   ValueError: n must not be None when using strict mode.\n=========================== short test summary info ============================\nFAILED ../../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpe51g2pfp/camelcase/more-itertools/tests/test_more.py::ChunkedTests::testNone\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 1 passed in 0.18s\n",
+      "failing_tests": [
+        "../../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpe51g2pfp/camelcase/more-itertools/tests/test_more.py::ChunkedTests::testNone"
+      ],
+      "exit_code": 1
+    },
+    {
+      "bug_id": "more-itertools-camelcase-011",
+      "test_output": "..................................F\n=================================== FAILURES ===================================\n________________________ PeekableTests.testSlicingReset ________________________\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpe51g2pfp/camelcase/more-itertools/tests/test_more.py:314: in testSlicingReset\n    self.assertEqual(actual, expected, sliceArgs)\nE   AssertionError: Lists differ: [] != ['2']\nE   \nE   Second list contains 1 additional elements.\nE   First extra element 0:\nE   '2'\nE   \nE   - []\nE   + ['2'] : (-4, -3, 1)\n=========================== short test summary info ============================\nFAILED ../../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpe51g2pfp/camelcase/more-itertools/tests/test_more.py::PeekableTests::testSlicingReset\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 34 passed, 13 subtests passed in 0.17s\n",
+      "failing_tests": [
+        "../../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpe51g2pfp/camelcase/more-itertools/tests/test_more.py::PeekableTests::testSlicingReset"
+      ],
+      "exit_code": 1
+    },
+    {
+      "bug_id": "more-itertools-camelcase-012",
+      "test_output": ".....................................F\n=================================== FAILURES ===================================\n_____________________ DistinctPermutationsTests.testBasic ______________________\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpe51g2pfp/camelcase/more-itertools/tests/test_more.py:492: in testBasic\n    actual = list(mi.distinctPermutations(iterable))\n                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpe51g2pfp/camelcase/more-itertools/more_itertools/more.py:852: in distinctPermutations\n    for permutedIndices in algorithm(indices)\n                                     ^^^^^^^\nE   UnboundLocalError: cannot access local variable 'indices' where it is not associated with a value\n=========================== short test summary info ============================\nFAILED ../../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpe51g2pfp/camelcase/more-itertools/tests/test_more.py::DistinctPermutationsTests::testBasic\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 37 passed, 13 subtests passed in 0.19s\n",
+      "failing_tests": [
+        "../../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpe51g2pfp/camelcase/more-itertools/tests/test_more.py::DistinctPermutationsTests::testBasic"
+      ],
+      "exit_code": 1
+    },
+    {
+      "bug_id": "more-itertools-camelcase-013",
+      "test_output": ".................................................................................. [ 11%]\n......................................................... [ 19%]\n........................................................................ [ 30%]\n...................F\n=================================== FAILURES ===================================\n_________________________ NumericRangeTests.testCount __________________________\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpe51g2pfp/camelcase/more-itertools/tests/test_more.py:3036: in testCount\n    self.assertEqual(c, mi.numericRange(*args).count(v))\nE   AssertionError: 1 != 0\n=========================== short test summary info ============================\nFAILED ../../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpe51g2pfp/camelcase/more-itertools/tests/test_more.py::NumericRangeTests::testCount\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 230 passed, 77 subtests passed in 0.34s\n",
+      "failing_tests": [
+        "../../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpe51g2pfp/camelcase/more-itertools/tests/test_more.py::NumericRangeTests::testCount"
+      ],
+      "exit_code": 1
+    },
+    {
+      "bug_id": "more-itertools-camelcase-014",
+      "test_output": ".................................................................................. [ 11%]\n......................................................... [ 19%]\n........................................................................ [ 30%]\n.................................................. [ 37%]\n..................................................................... [ 47%]\n..................................... [ 52%]\n..........................F\n=================================== FAILURES ===================================\n________________________ AllUniqueTests.testNonHashable ________________________\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpe51g2pfp/camelcase/more-itertools/tests/test_more.py:4815: in testNonHashable\n    self.assertEqual(mi.allUnique([[1, 2], [3, 4]]), True)\nE   AssertionError: False != True\n=========================== short test summary info ============================\nFAILED ../../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpe51g2pfp/camelcase/more-itertools/tests/test_more.py::AllUniqueTests::testNonHashable\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 393 passed, 2117 subtests passed in 0.99s\n",
+      "failing_tests": [
+        "../../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpe51g2pfp/camelcase/more-itertools/tests/test_more.py::AllUniqueTests::testNonHashable"
+      ],
+      "exit_code": 1
+    },
+    {
+      "bug_id": "more-itertools-camelcase-015",
+      "test_output": ".................................................................................. [ 11%]\n......................................................... [ 19%]\n........................................................................ [ 30%]\n.................................................. [ 37%]\n..................................................................... [ 47%]\n..................................... [ 52%]\n.................................... [ 57%]\n............................................................F\n=================================== FAILURES ===================================\n__________________ DuplicatesEverSeenTests.testKeyNonHashable __________________\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpe51g2pfp/camelcase/more-itertools/tests/test_more.py:5472: in testKeyNonHashable\n    self.assertEqual(\nE   AssertionError: Lists differ: [[1, 2], [3, 0], [5, -2], [5, 6]] != []\nE   \nE   First list contains 4 additional elements.\nE   First extra element 0:\nE   [1, 2]\nE   \nE   - [[1, 2], [3, 0], [5, -2], [5, 6]]\nE   + []\n=========================== short test summary info ============================\nFAILED ../../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpe51g2pfp/camelcase/more-itertools/tests/test_more.py::DuplicatesEverSeenTests::testKeyNonHashable\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 463 passed, 2234 subtests passed in 1.03s\n",
+      "failing_tests": [
+        "../../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpe51g2pfp/camelcase/more-itertools/tests/test_more.py::DuplicatesEverSeenTests::testKeyNonHashable"
+      ],
+      "exit_code": 1
+    },
+    {
+      "bug_id": "more-itertools-camelcase-016",
+      "test_output": ".................................................................................. [ 11%]\n......................................................... [ 19%]\n........................................................................ [ 30%]\n.................................................. [ 37%]\n..................................................................... [ 47%]\n..................................... [ 52%]\n.................................... [ 57%]\n.............................................................................................. [ 70%]\n.............................................F\n=================================== FAILURES ===================================\n___________________ DiscreteFourierTransformTests.testBasic ____________________\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpe51g2pfp/camelcase/more-itertools/tests/test_more.py:6294: in testBasic\n    self.assertTrue(all(map(cmath.isclose, mi.dft(xarr), Xarr)))\nE   AssertionError: False is not true\n=========================== short test summary info ============================\nFAILED ../../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpe51g2pfp/camelcase/more-itertools/tests/test_more.py::DiscreteFourierTransformTests::testBasic\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 542 passed, 2245 subtests passed in 1.04s\n",
+      "failing_tests": [
+        "../../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpe51g2pfp/camelcase/more-itertools/tests/test_more.py::DiscreteFourierTransformTests::testBasic"
+      ],
+      "exit_code": 1
+    },
+    {
+      "bug_id": "more-itertools-camelcase-017",
+      "test_output": ".................................................................................. [ 11%]\n......................................................... [ 19%]\n........................................................................ [ 30%]\n.................................................. [ 37%]\n..................................................................... [ 47%]\n..................................... [ 52%]\n.................................... [ 57%]\n.............................................................................................. [ 70%]\n.............................................F\n=================================== FAILURES ===================================\n___________________ DiscreteFourierTransformTests.testBasic ____________________\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpe51g2pfp/camelcase/more-itertools/tests/test_more.py:6294: in testBasic\n    self.assertTrue(all(map(cmath.isclose, mi.dft(xarr), Xarr)))\nE   AssertionError: False is not true\n=========================== short test summary info ============================\nFAILED ../../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpe51g2pfp/camelcase/more-itertools/tests/test_more.py::DiscreteFourierTransformTests::testBasic\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 542 passed, 2245 subtests passed in 1.08s\n",
+      "failing_tests": [
+        "../../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpe51g2pfp/camelcase/more-itertools/tests/test_more.py::DiscreteFourierTransformTests::testBasic"
+      ],
+      "exit_code": 1
+    },
+    {
+      "bug_id": "more-itertools-camelcase-018",
+      "test_output": ".................................................................................. [ 11%]\n......................................................... [ 19%]\n........................................................................ [ 30%]\n.................................................. [ 37%]\n..................................................................... [ 47%]\n..................................... [ 52%]\n.................................... [ 57%]\n.............................................................................................. [ 70%]\n..............................................F\n=================================== FAILURES ===================================\n_________________ DiscreteFourierTransformTests.testRoundtrip __________________\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpe51g2pfp/camelcase/more-itertools/tests/test_more.py:6302: in testRoundtrip\n    assert all(map(cmath.isclose, mi.idft(Xarr), xarr))\nE   assert False\nE    +  where False = all(<map object at 0x109c38430>)\nE    +    where <map object at 0x109c38430> = map(<built-in function isclose>, <generator object idft at 0x109623b40>, [(0.16377684475236043+0.9059055629095121j), (0.7735879800290875+0.8786303371012171j), (0.37759477697221155+0.006595040...7019+0.10203672129957864j), (0.043887451982234094+0.6671381677849223j), (0.12624969922059648+0.9066079782041607j), ...])\nE    +      where <built-in function isclose> = cmath.isclose\nE    +      and   <generator object idft at 0x109623b40> = <function idft at 0x109a22de0>([(6.127582746429986+8.87801809074114j), (-0.5135392676257515+1.182581045108366j), (-1.0334255319648618-1.2796436491724...06406+1.787653011081834j), (-0.032546486403249836+2.5007284389966054j), (-0.38328633101453635-1.185418850729782j), ...])\nE    +        where <function idft at 0x109a22de0> = mi.idft\n=========================== short test summary info ============================\nFAILED ../../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpe51g2pfp/camelcase/more-itertools/tests/test_more.py::DiscreteFourierTransformTests::testRoundtrip\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 543 passed, 2245 subtests passed in 1.06s\n",
+      "failing_tests": [
+        "../../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpe51g2pfp/camelcase/more-itertools/tests/test_more.py::DiscreteFourierTransformTests::testRoundtrip"
+      ],
+      "exit_code": 1
+    },
+    {
+      "bug_id": "more-itertools-camelcase-019",
+      "test_output": "..............F\n=================================== FAILURES ===================================\n___________________________ NthOrLastTests.testBasic ___________________________\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpe51g2pfp/camelcase/more-itertools/tests/test_more.py:198: in testBasic\n    self.assertEqual(mi.nthOrLast(range(3), 1), 1)\nE   AssertionError: 2 != 1\n=========================== short test summary info ============================\nFAILED ../../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpe51g2pfp/camelcase/more-itertools/tests/test_more.py::NthOrLastTests::testBasic\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 14 passed, 13 subtests passed in 0.16s\n",
+      "failing_tests": [
+        "../../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpe51g2pfp/camelcase/more-itertools/tests/test_more.py::NthOrLastTests::testBasic"
+      ],
+      "exit_code": 1
+    },
+    {
+      "bug_id": "more-itertools-camelcase-020",
+      "test_output": "....................F\n=================================== FAILURES ===================================\n______________________ PeekableTests.testMultiPrependPeek ______________________\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpe51g2pfp/camelcase/more-itertools/tests/test_more.py:391: in testMultiPrependPeek\n    self.assertEqual(it.peek(), 2)\n                     ^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpe51g2pfp/camelcase/more-itertools/more_itertools/more.py:403: in peek\n    return self._cache[1]\n           ^^^^^^^^^^^^^^\nE   IndexError: deque index out of range\n=========================== short test summary info ============================\nFAILED ../../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpe51g2pfp/camelcase/more-itertools/tests/test_more.py::PeekableTests::testMultiPrependPeek\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 20 passed, 13 subtests passed in 0.18s\n",
+      "failing_tests": [
+        "../../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpe51g2pfp/camelcase/more-itertools/tests/test_more.py::PeekableTests::testMultiPrependPeek"
+      ],
+      "exit_code": 1
+    }
+  ],
+  "_hidden": [
+    {
+      "bug_id": "more-itertools-camelcase-001",
+      "file_path": "more_itertools/more.py",
+      "line_number": 235,
+      "mutation_type": "eq_ne",
+      "original_text": "!=",
+      "mutated_text": "==",
+      "context": "...iterator:                 if len(chunk) != n:                     raise ValueError..."
+    },
+    {
+      "bug_id": "more-itertools-camelcase-002",
+      "file_path": "more_itertools/more.py",
+      "line_number": 846,
+      "mutation_type": "eq_ne",
+      "original_text": "==",
+      "mutated_text": "!=",
+      "context": "...tial, ... )     algorithm = _full if (r == size) else partial(_partial, r=r)..."
+    },
+    {
+      "bug_id": "more-itertools-camelcase-003",
+      "file_path": "more_itertools/more.py",
+      "line_number": 933,
+      "mutation_type": "eq_ne",
+      "original_text": "==",
+      "mutated_text": "!=",
+      "context": "...None, 3, 4, None, 5]      \"\"\"     if n == 0:         raise ValueError('n must be..."
+    },
+    {
+      "bug_id": "more-itertools-camelcase-004",
+      "file_path": "more_itertools/more.py",
+      "line_number": 197,
+      "mutation_type": "var_swap",
+      "original_text": "x",
+      "mutated_text": "y",
+      "context": "...lication.\"         xxHi, xxLo = dlSplit(x)         yyHi, yyLo = dlSplit(y)..."
+    },
+    {
+      "bug_id": "more-itertools-camelcase-005",
+      "file_path": "more_itertools/more.py",
+      "line_number": 198,
+      "mutation_type": "var_swap",
+      "original_text": "y",
+      "mutated_text": "x",
+      "context": "...dlSplit(x)         yyHi, yyLo = dlSplit(y)         p = xxHi * yyHi         q = xx..."
+    },
+    {
+      "bug_id": "more-itertools-camelcase-006",
+      "file_path": "more_itertools/more.py",
+      "line_number": 206,
+      "mutation_type": "var_swap",
+      "original_text": "p",
+      "mutated_text": "q",
+      "context": "...urn fsum(chain.from_iterable(map(dlMul, p, q)))   def chunked(iterable, n, strict..."
+    },
+    {
+      "bug_id": "more-itertools-camelcase-007",
+      "file_path": "more_itertools/more.py",
+      "line_number": 386,
+      "mutation_type": "true_false",
+      "original_text": "False",
+      "mutated_text": "True",
+      "context": "...xcept StopIteration:             return False         return True      def peek(self,..."
+    },
+    {
+      "bug_id": "more-itertools-camelcase-008",
+      "file_path": "more_itertools/more.py",
+      "line_number": 387,
+      "mutation_type": "true_false",
+      "original_text": "True",
+      "mutated_text": "False",
+      "context": "...return False         return True      def peek(self, default=_marker):..."
+    },
+    {
+      "bug_id": "more-itertools-camelcase-009",
+      "file_path": "more_itertools/more.py",
+      "line_number": 553,
+      "mutation_type": "true_false",
+      "original_text": "True",
+      "mutated_text": "False",
+      "context": "...suppress(StopIteration):         while True:             yield start             st..."
+    },
+    {
+      "bug_id": "more-itertools-camelcase-010",
+      "file_path": "more_itertools/more.py",
+      "line_number": 229,
+      "mutation_type": "if_else_swap",
+      "original_text": "if strict:\n        if n is None:\n            raise ValueError('n must not be None when using strict mode.')\n\n        def ret():\n            for chunk in iterator:\n                if len(chunk) != n:\n                    raise ValueError('iterable is not divisible by n.')\n                yield chunk\n\n        return ret()\n    else:\n        return iterator",
+      "mutated_text": "if strict:\n        return iterator\n    else:\n        if n is None:\n            raise ValueError('n must not be None when using strict mode.')\n\n        def ret():\n            for chunk in iterator:\n                if len(chunk) != n:\n                    raise ValueError('iterable is not divisible by n.')\n                yield chunk\n\n        return ret()",
+      "context": "...rtial(take, n, iter(iterable)), [])     if strict:         if n is None:             raise ValueError('n must not be None when using strict mode.')          def ret():             for chunk in iterator:                 if len(chunk) != n:                     raise ValueError('iterable is not divisible by n.')                 yield chunk          return ret()     else:         return iterator   def first(iterable, default=_marker):..."
+    },
+    {
+      "bug_id": "more-itertools-camelcase-011",
+      "file_path": "more_itertools/more.py",
+      "line_number": 456,
+      "mutation_type": "if_else_swap",
+      "original_text": "if (start < 0) or (stop < 0):\n            self._cache.extend(self._it)\n        # Otherwise we'll need to find the rightmost index and cache to that\n        # point.\n        else:\n            n = min(max(start, stop) + 1, maxsize)\n            cacheLen = len(self._cache)\n            if n >= cacheLen:\n                self._cache.extend(islice(self._it, n - cacheLen))",
+      "mutated_text": "if (start < 0) or (stop < 0):\n            n = min(max(start, stop) + 1, maxsize)\n            cacheLen = len(self._cache)\n            if n >= cacheLen:\n                self._cache.extend(islice(self._it, n - cacheLen))\n        # Otherwise we'll need to find the rightmost index and cache to that\n        # point.\n        else:\n            self._cache.extend(self._it)",
+      "context": "...r to slice from the right side.         if (start < 0) or (stop < 0):             self._cache.extend(self._it)         # Otherwise we'll need to find the rightmost index and cache to that         # point.         else:             n = min(max(start, stop) + 1, maxsize)             cacheLen = len(self._cache)             if n >= cacheLen:                 self._cache.extend(islice(self._it, n - cacheLen))          return list(self._cache)[index..."
+    },
+    {
+      "bug_id": "more-itertools-camelcase-012",
+      "file_path": "more_itertools/more.py",
+      "line_number": 849,
+      "mutation_type": "if_else_swap",
+      "original_text": "if sortable:\n            return algorithm(items)\n        else:\n            return (\n                permutedItems(permutedIndices)\n                for permutedIndices in algorithm(indices)\n            )",
+      "mutated_text": "if sortable:\n            return (\n                permutedItems(permutedIndices)\n                for permutedIndices in algorithm(indices)\n            )\n        else:\n            return algorithm(items)",
+      "context": "...al, r=r)      if 0 < r <= size:         if sortable:             return algorithm(items)         else:             return (                 permutedItems(permutedIndices)                 for permutedIndices in algorithm(indices)             )      return iter(() if r else ((),))..."
+    },
+    {
+      "bug_id": "more-itertools-camelcase-013",
+      "file_path": "more_itertools/more.py",
+      "line_number": 2382,
+      "mutation_type": "in_not_in",
+      "original_text": "in",
+      "mutated_text": "not in",
+      "context": "...(self, value):         return int(value in self)      def index(self, value):..."
+    },
+    {
+      "bug_id": "more-itertools-camelcase-014",
+      "file_path": "more_itertools/more.py",
+      "line_number": 4141,
+      "mutation_type": "in_not_in",
+      "original_text": "in",
+      "mutated_text": "not in",
+      "context": "...xcept TypeError:             if element in seenlist:                 return False..."
+    },
+    {
+      "bug_id": "more-itertools-camelcase-015",
+      "file_path": "more_itertools/more.py",
+      "line_number": 4659,
+      "mutation_type": "in_not_in",
+      "original_text": "not in",
+      "mutated_text": "in",
+      "context": "...except TypeError:             if k not in seenList:                 seenList.appe..."
+    },
+    {
+      "bug_id": "more-itertools-camelcase-016",
+      "file_path": "more_itertools/more.py",
+      "line_number": 191,
+      "mutation_type": "add_sub",
+      "original_text": "-",
+      "mutated_text": "+",
+      "context": "...constant = 2.0 ** 27 + 1         hi = t - (t - x)         lo = x - hi         ret..."
+    },
+    {
+      "bug_id": "more-itertools-camelcase-017",
+      "file_path": "more_itertools/more.py",
+      "line_number": 192,
+      "mutation_type": "add_sub",
+      "original_text": "-",
+      "mutated_text": "+",
+      "context": "...hi = t - (t - x)         lo = x - hi         return hi, lo      def dlMul..."
+    },
+    {
+      "bug_id": "more-itertools-camelcase-018",
+      "file_path": "more_itertools/more.py",
+      "line_number": 200,
+      "mutation_type": "add_sub",
+      "original_text": "+",
+      "mutated_text": "-",
+      "context": "...p = xxHi * yyHi         q = xxHi * yyLo + xxLo * yyHi         z = p + q         z..."
+    },
+    {
+      "bug_id": "more-itertools-camelcase-019",
+      "file_path": "more_itertools/more.py",
+      "line_number": 313,
+      "mutation_type": "plus_one",
+      "original_text": "1",
+      "mutated_text": "2",
+      "context": "...\"\"     return last(islice(iterable, n + 1), default=default)   class peekable:..."
+    },
+    {
+      "bug_id": "more-itertools-camelcase-020",
+      "file_path": "more_itertools/more.py",
+      "line_number": 403,
+      "mutation_type": "plus_one",
+      "original_text": "0",
+      "mutated_text": "1",
+      "context": "...turn default         return self._cache[0]      def prepend(self, *items):..."
+    }
+  ]
+}

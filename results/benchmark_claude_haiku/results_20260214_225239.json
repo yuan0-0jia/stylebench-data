@@ -1,0 +1,161 @@
+{
+  "metadata": {
+    "catalog": "/Users/yuan/stylebench-data/bugs_canonical/humanize-camelcase.json",
+    "repo": "/Users/yuan/stylebench-data/camelcase/humanize",
+    "repo_name": "humanize",
+    "timestamp": "2026-02-14T22:52:39.680026",
+    "total_trials": 5,
+    "manifest_used": true
+  },
+  "results": [
+    {
+      "bug_id": "humanize-camelcase-001",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 684,
+      "tests_failed": 0,
+      "tests_total": 684,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-14T22:50:24.068420",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "src/humanize/time.py",
+          "tests/test_i18n.py"
+        ],
+        "patch": "diff --git a/src/humanize/time.py b/src/humanize/time.py\nindex 16ba982..95fa30c 100644\n--- a/src/humanize/time.py\n+++ b/src/humanize/time.py\n@@ -624,7 +624,7 @@ def precisedelta(\n     for unit, fmt in zip(reversed(Unit), fmts):\n         singularTxt, pluralTxt, fmtValue = fmt\n         if fmtValue > 0 or (not texts and unit == minUnit):\n-            _fmtValue = 1 if 1 < fmtValue < 2 else int(fmtValue)\n+            _fmtValue = 2 if 1 < fmtValue < 2 else int(fmtValue)\n             fmtTxt = _ngettext(singularTxt, pluralTxt, _fmtValue)\n             import math\n \ndiff --git a/tests/test_i18n.py b/tests/test_i18n.py\nindex 457a79e..af98935 100644\n--- a/tests/test_i18n.py\n+++ b/tests/test_i18n.py\n@@ -207,19 +207,19 @@ def testOrdinalGenders(\n \n def testDefaultLocalePathDefinedSpec() -> None:\n     i18n = importlib.import_module(\"humanize.i18n\")\n-    assert i18n._get_default_locale_path() is not None\n+    assert i18n._getDefaultLocalePath() is not None\n \n \n def testDefaultLocalePathNoneSpec(monkeypatch: pytest.MonkeyPatch) -> None:\n     i18n = importlib.import_module(\"humanize.i18n\")\n     monkeypatch.setattr(i18n, \"__spec__\", None)\n-    assert i18n._get_default_locale_path() is None\n+    assert i18n._getDefaultLocalePath() is None\n \n \n def testDefaultLocalePathUndefinedFile(monkeypatch: pytest.MonkeyPatch) -> None:\n     i18n = importlib.import_module(\"humanize.i18n\")\n     monkeypatch.delattr(i18n, \"__spec__\")\n-    assert i18n._get_default_locale_path() is None\n+    assert i18n._getDefaultLocalePath() is None\n \n \n class TestActivate:\n",
+        "tokens_used": 0,
+        "time_seconds": 32.47350811958313,
+        "error": null,
+        "agent_output": "Excellent! The bug has been fixed successfully.\n\n## Summary\n\nThe bug was in `/src/humanize/filesize.py` at line 91. The condition was inverted:\n\n**Before:** `if absBytes != 1 and not gnu:` - This incorrectly returned \"Byte\" (singular) for all values except 1\n**After:** `if absBytes == 1 and not gnu:` - This correctly returns \"Byte\" (singular) only when the value is exactly 1\n\nNow:\n- 1 byte \u2192 \"1 Byte\" (singular)\n- 300 bytes \u2192 \"300 Bytes\" (plural)\n\nAll 70 tests in the filesize test suite now pass.\n"
+      }
+    },
+    {
+      "bug_id": "humanize-camelcase-002",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "NO_FIX",
+      "tests_passed": 76,
+      "tests_failed": 1,
+      "tests_total": 77,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-14T22:51:00.716529",
+      "fix_result": {
+        "success": false,
+        "files_changed": [
+          "src/humanize/lists.py",
+          "src/humanize/time.py",
+          "tests/test_i18n.py"
+        ],
+        "patch": "diff --git a/src/humanize/lists.py b/src/humanize/lists.py\nindex 4bb1240..eb19807 100644\n--- a/src/humanize/lists.py\n+++ b/src/humanize/lists.py\n@@ -28,7 +28,7 @@ def naturalList(items: list[Any]) -> str:\n     Returns:\n         str: A string with commas and 'and' in the right places.\n     \"\"\"\n-    if len(items) == 1:\n+    if len(items) != 1:\n         return str(items[0])\n     elif len(items) == 2:\n         return f\"{str(items[0])} and {str(items[1])}\"\ndiff --git a/src/humanize/time.py b/src/humanize/time.py\nindex 16ba982..95fa30c 100644\n--- a/src/humanize/time.py\n+++ b/src/humanize/time.py\n@@ -624,7 +624,7 @@ def precisedelta(\n     for unit, fmt in zip(reversed(Unit), fmts):\n         singularTxt, pluralTxt, fmtValue = fmt\n         if fmtValue > 0 or (not texts and unit == minUnit):\n-            _fmtValue = 1 if 1 < fmtValue < 2 else int(fmtValue)\n+            _fmtValue = 2 if 1 < fmtValue < 2 else int(fmtValue)\n             fmtTxt = _ngettext(singularTxt, pluralTxt, _fmtValue)\n             import math\n \ndiff --git a/tests/test_i18n.py b/tests/test_i18n.py\nindex 457a79e..af98935 100644\n--- a/tests/test_i18n.py\n+++ b/tests/test_i18n.py\n@@ -207,19 +207,19 @@ def testOrdinalGenders(\n \n def testDefaultLocalePathDefinedSpec() -> None:\n     i18n = importlib.import_module(\"humanize.i18n\")\n-    assert i18n._get_default_locale_path() is not None\n+    assert i18n._getDefaultLocalePath() is not None\n \n \n def testDefaultLocalePathNoneSpec(monkeypatch: pytest.MonkeyPatch) -> None:\n     i18n = importlib.import_module(\"humanize.i18n\")\n     monkeypatch.setattr(i18n, \"__spec__\", None)\n-    assert i18n._get_default_locale_path() is None\n+    assert i18n._getDefaultLocalePath() is None\n \n \n def testDefaultLocalePathUndefinedFile(monkeypatch: pytest.MonkeyPatch) -> None:\n     i18n = importlib.import_module(\"humanize.i18n\")\n     monkeypatch.delattr(i18n, \"__spec__\")\n-    assert i18n._get_default_locale_path() is None\n+    assert i18n._getDefaultLocalePath() is None\n \n \n class TestActivate:\n",
+        "tokens_used": 0,
+        "time_seconds": 34.11899709701538,
+        "error": null,
+        "agent_output": "Error: Reached max turns (10)"
+      }
+    },
+    {
+      "bug_id": "humanize-camelcase-003",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "FAIL",
+      "tests_passed": 76,
+      "tests_failed": 1,
+      "tests_total": 77,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-14T22:51:35.009436",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "src/humanize/filesize.py",
+          "src/humanize/lists.py",
+          "src/humanize/time.py",
+          "tests/test_i18n.py"
+        ],
+        "patch": "diff --git a/src/humanize/filesize.py b/src/humanize/filesize.py\nindex ba384c5..fe5ed33 100644\n--- a/src/humanize/filesize.py\n+++ b/src/humanize/filesize.py\n@@ -92,7 +92,12 @@ def naturalsize(\n         return f\"{int(bytes)} Byte\"\n \n     if absBytes < base:\n-        return f\"{int(bytes)}B\" if gnu else f\"{int(bytes)} Bytes\"\n+        if gnu:\n+            return f\"{int(bytes)}B\"\n+        elif absBytes == 1:\n+            return f\"{int(bytes)} Byte\"\n+        else:\n+            return f\"{int(bytes)} Bytes\"\n \n     exp = int(min(log(absBytes, base), len(suffix)))\n     ret: str = format % (bytes / (base**exp)) + suffix[exp - 1]\ndiff --git a/src/humanize/lists.py b/src/humanize/lists.py\nindex 4bb1240..e477349 100644\n--- a/src/humanize/lists.py\n+++ b/src/humanize/lists.py\n@@ -30,7 +30,7 @@ def naturalList(items: list[Any]) -> str:\n     \"\"\"\n     if len(items) == 1:\n         return str(items[0])\n-    elif len(items) == 2:\n+    elif len(items) != 2:\n         return f\"{str(items[0])} and {str(items[1])}\"\n     else:\n         return \", \".join(str(item) for item in items[:-1]) + f\" and {str(items[-1])}\"\ndiff --git a/src/humanize/time.py b/src/humanize/time.py\nindex 16ba982..95fa30c 100644\n--- a/src/humanize/time.py\n+++ b/src/humanize/time.py\n@@ -624,7 +624,7 @@ def precisedelta(\n     for unit, fmt in zip(reversed(Unit), fmts):\n         singularTxt, pluralTxt, fmtValue = fmt\n         if fmtValue > 0 or (not texts and unit == minUnit):\n-            _fmtValue = 1 if 1 < fmtValue < 2 else int(fmtValue)\n+            _fmtValue = 2 if 1 < fmtValue < 2 else int(fmtValue)\n             fmtTxt = _ngettext(singularTxt, pluralTxt, _fmtValue)\n             import math\n \ndiff --git a/tests/test_i18n.py b/tests/test_i18n.py\nindex 457a79e..af98935 100644\n--- a/tests/test_i18n.py\n+++ b/tests/test_i18n.py\n@@ -207,19 +207,19 @@ def testOrdinalGenders(\n \n def testDefaultLocalePathDefinedSpec() -> None:\n     i18n = importlib.import_module(\"humanize.i18n\")\n-    assert i18n._get_default_locale_path() is not None\n+    assert i18n._getDefaultLocalePath() is not None\n \n \n def testDefaultLocalePathNoneSpec(monkeypatch: pytest.MonkeyPatch) -> None:\n     i18n = importlib.import_module(\"humanize.i18n\")\n     monkeypatch.setattr(i18n, \"__spec__\", None)\n-    assert i18n._get_default_locale_path() is None\n+    assert i18n._getDefaultLocalePath() is None\n \n \n def testDefaultLocalePathUndefinedFile(monkeypatch: pytest.MonkeyPatch) -> None:\n     i18n = importlib.import_module(\"humanize.i18n\")\n     monkeypatch.delattr(i18n, \"__spec__\")\n-    assert i18n._get_default_locale_path() is None\n+    assert i18n._getDefaultLocalePath() is None\n \n \n class TestActivate:\n",
+        "tokens_used": 0,
+        "time_seconds": 31.206850051879883,
+        "error": null,
+        "agent_output": "Error: Reached max turns (10)"
+      }
+    },
+    {
+      "bug_id": "humanize-camelcase-004",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 684,
+      "tests_failed": 0,
+      "tests_total": 684,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-14T22:52:06.868440",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "src/humanize/time.py",
+          "tests/test_i18n.py"
+        ],
+        "patch": "diff --git a/src/humanize/time.py b/src/humanize/time.py\nindex 16ba982..95fa30c 100644\n--- a/src/humanize/time.py\n+++ b/src/humanize/time.py\n@@ -624,7 +624,7 @@ def precisedelta(\n     for unit, fmt in zip(reversed(Unit), fmts):\n         singularTxt, pluralTxt, fmtValue = fmt\n         if fmtValue > 0 or (not texts and unit == minUnit):\n-            _fmtValue = 1 if 1 < fmtValue < 2 else int(fmtValue)\n+            _fmtValue = 2 if 1 < fmtValue < 2 else int(fmtValue)\n             fmtTxt = _ngettext(singularTxt, pluralTxt, _fmtValue)\n             import math\n \ndiff --git a/tests/test_i18n.py b/tests/test_i18n.py\nindex 457a79e..af98935 100644\n--- a/tests/test_i18n.py\n+++ b/tests/test_i18n.py\n@@ -207,19 +207,19 @@ def testOrdinalGenders(\n \n def testDefaultLocalePathDefinedSpec() -> None:\n     i18n = importlib.import_module(\"humanize.i18n\")\n-    assert i18n._get_default_locale_path() is not None\n+    assert i18n._getDefaultLocalePath() is not None\n \n \n def testDefaultLocalePathNoneSpec(monkeypatch: pytest.MonkeyPatch) -> None:\n     i18n = importlib.import_module(\"humanize.i18n\")\n     monkeypatch.setattr(i18n, \"__spec__\", None)\n-    assert i18n._get_default_locale_path() is None\n+    assert i18n._getDefaultLocalePath() is None\n \n \n def testDefaultLocalePathUndefinedFile(monkeypatch: pytest.MonkeyPatch) -> None:\n     i18n = importlib.import_module(\"humanize.i18n\")\n     monkeypatch.delattr(i18n, \"__spec__\")\n-    assert i18n._get_default_locale_path() is None\n+    assert i18n._getDefaultLocalePath() is None\n \n \n class TestActivate:\n",
+        "tokens_used": 0,
+        "time_seconds": 28.2977511882782,
+        "error": null,
+        "agent_output": "Error: Reached max turns (10)"
+      }
+    },
+    {
+      "bug_id": "humanize-camelcase-005",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 684,
+      "tests_failed": 0,
+      "tests_total": 684,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-14T22:52:39.559510",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "src/humanize/time.py",
+          "tests/test_i18n.py"
+        ],
+        "patch": "diff --git a/src/humanize/time.py b/src/humanize/time.py\nindex 16ba982..95fa30c 100644\n--- a/src/humanize/time.py\n+++ b/src/humanize/time.py\n@@ -624,7 +624,7 @@ def precisedelta(\n     for unit, fmt in zip(reversed(Unit), fmts):\n         singularTxt, pluralTxt, fmtValue = fmt\n         if fmtValue > 0 or (not texts and unit == minUnit):\n-            _fmtValue = 1 if 1 < fmtValue < 2 else int(fmtValue)\n+            _fmtValue = 2 if 1 < fmtValue < 2 else int(fmtValue)\n             fmtTxt = _ngettext(singularTxt, pluralTxt, _fmtValue)\n             import math\n \ndiff --git a/tests/test_i18n.py b/tests/test_i18n.py\nindex 457a79e..af98935 100644\n--- a/tests/test_i18n.py\n+++ b/tests/test_i18n.py\n@@ -207,19 +207,19 @@ def testOrdinalGenders(\n \n def testDefaultLocalePathDefinedSpec() -> None:\n     i18n = importlib.import_module(\"humanize.i18n\")\n-    assert i18n._get_default_locale_path() is not None\n+    assert i18n._getDefaultLocalePath() is not None\n \n \n def testDefaultLocalePathNoneSpec(monkeypatch: pytest.MonkeyPatch) -> None:\n     i18n = importlib.import_module(\"humanize.i18n\")\n     monkeypatch.setattr(i18n, \"__spec__\", None)\n-    assert i18n._get_default_locale_path() is None\n+    assert i18n._getDefaultLocalePath() is None\n \n \n def testDefaultLocalePathUndefinedFile(monkeypatch: pytest.MonkeyPatch) -> None:\n     i18n = importlib.import_module(\"humanize.i18n\")\n     monkeypatch.delattr(i18n, \"__spec__\")\n-    assert i18n._get_default_locale_path() is None\n+    assert i18n._getDefaultLocalePath() is None\n \n \n class TestActivate:\n",
+        "tokens_used": 0,
+        "time_seconds": 29.15685200691223,
+        "error": null,
+        "agent_output": "Error: Reached max turns (10)"
+      }
+    }
+  ],
+  "summary": {
+    "by_agent": {
+      "claude": {
+        "total": 5,
+        "passed": 3
+      }
+    },
+    "by_mode": {
+      "with_tests": {
+        "total": 5,
+        "passed": 3
+      }
+    },
+    "by_evaluation": {
+      "PASS": 3,
+      "FAIL": 1,
+      "ERROR": 0,
+      "TIMEOUT": 0,
+      "NO_FIX": 1
+    }
+  }
+}

@@ -1,0 +1,153 @@
+{
+  "metadata": {
+    "catalog": "/Users/yuan/stylebench-data/bugs_canonical/more-itertools-formatting.json",
+    "repo": "/Users/yuan/stylebench-data/formatting/more-itertools",
+    "repo_name": "more-itertools",
+    "timestamp": "2026-02-14T23:38:46.306491",
+    "total_trials": 5,
+    "manifest_used": true
+  },
+  "results": [
+    {
+      "bug_id": "more-itertools-formatting-001",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 701,
+      "tests_failed": 0,
+      "tests_total": 701,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-14T23:36:43.244790",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "more_itertools/more.py"
+        ],
+        "patch": "(restored to original)",
+        "tokens_used": 0,
+        "time_seconds": 18.591140747070312,
+        "error": null,
+        "agent_output": "Excellent! All tests pass. \n\n## Summary\n\nI found and fixed the bug in the `chunked` function at **more_itertools/more.py:226**.\n\n**The bug:** The condition was inverted - it was checking `if len(chunk) == n:` (raising an error when the chunk is the correct size) instead of `if len(chunk) != n:` (raising an error when the chunk is incomplete).\n\n**The fix:** Changed the equality operator to a not-equal operator:\n```python\n# Before (incorrect):\nif len(chunk) == n:\n    raise ValueError('iterable is not divisible by n.')\n\n# After (correct):\nif len(chunk) != n:\n    raise ValueError('iterable is not divisible by n.')\n```\n\nThis ensures that when `strict=True`, an error is only raised if any chunk has a size different from `n`, meaning the iterable is not evenly divisible. All 6 ChunkedTests now pass.\n"
+      }
+    },
+    {
+      "bug_id": "more-itertools-formatting-002",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 701,
+      "tests_failed": 0,
+      "tests_total": 701,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-14T23:37:18.734673",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "more_itertools/more.py"
+        ],
+        "patch": "(restored to original)",
+        "tokens_used": 0,
+        "time_seconds": 24.67875599861145,
+        "error": null,
+        "agent_output": "Error: Reached max turns (10)"
+      }
+    },
+    {
+      "bug_id": "more-itertools-formatting-003",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 701,
+      "tests_failed": 0,
+      "tests_total": 701,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-14T23:37:50.966580",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "more_itertools/more.py"
+        ],
+        "patch": "diff --git a/more_itertools/more.py b/more_itertools/more.py\nindex 42fb2f0..fe05bfe 100755\n--- a/more_itertools/more.py\n+++ b/more_itertools/more.py\n@@ -920,7 +920,7 @@ def intersperse(e, iterable, n=1):\n         [1, 2, None, 3, 4, None, 5]\n \n     \"\"\"\n-    if n == 0:\n+    if n < 1:\n         raise ValueError('n must be > 0')\n     elif n == 1:\n         # interleave(repeat(e), iterable) -> e, x_0, e, x_1, e, x_2...\n",
+        "tokens_used": 0,
+        "time_seconds": 21.190674304962158,
+        "error": null,
+        "agent_output": "Excellent! All tests pass. \n\n## Summary\n\nThe bug was in the `intersperse` function at line 923 of `more_itertools/more.py`. The condition was:\n\n```python\nif n != 0:\n    raise ValueError('n must be > 0')\n```\n\nThis logic was inverted. It was raising an error whenever `n` was NOT equal to 0, which rejected all valid values (like n=1, n=2, etc.). \n\nThe fix was to change it to:\n\n```python\nif n < 1:\n    raise ValueError('n must be > 0')\n```\n\nThis correctly validates that `n` must be at least 1 (greater than 0). All 564 tests now pass.\n"
+      }
+    },
+    {
+      "bug_id": "more-itertools-formatting-004",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "NO_FIX",
+      "tests_passed": 542,
+      "tests_failed": 1,
+      "tests_total": 543,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-14T23:38:17.634249",
+      "fix_result": {
+        "success": false,
+        "files_changed": [
+          "more_itertools/more.py"
+        ],
+        "patch": "diff --git a/more_itertools/more.py b/more_itertools/more.py\nindex 42fb2f0..da9da5c 100755\n--- a/more_itertools/more.py\n+++ b/more_itertools/more.py\n@@ -185,7 +185,7 @@ except ImportError:  # pragma: no cover\n \n     def dl_mul(x, y):\n         \"Lossless multiplication.\"\n-        xx_hi, xx_lo = dl_split(x)\n+        yx_hi, xx_lo = dl_split(x)\n         yy_hi, yy_lo = dl_split(y)\n         p = xx_hi * yy_hi\n         q = xx_hi * yy_lo + xx_lo * yy_hi\n",
+        "tokens_used": 0,
+        "time_seconds": 24.848408222198486,
+        "error": null,
+        "agent_output": "Error: Reached max turns (10)"
+      }
+    },
+    {
+      "bug_id": "more-itertools-formatting-005",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "NO_FIX",
+      "tests_passed": 542,
+      "tests_failed": 1,
+      "tests_total": 543,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-14T23:38:46.271073",
+      "fix_result": {
+        "success": false,
+        "files_changed": [
+          "more_itertools/more.py"
+        ],
+        "patch": "diff --git a/more_itertools/more.py b/more_itertools/more.py\nindex 42fb2f0..79e9d79 100755\n--- a/more_itertools/more.py\n+++ b/more_itertools/more.py\n@@ -186,7 +186,7 @@ except ImportError:  # pragma: no cover\n     def dl_mul(x, y):\n         \"Lossless multiplication.\"\n         xx_hi, xx_lo = dl_split(x)\n-        yy_hi, yy_lo = dl_split(y)\n+        xy_hi, yy_lo = dl_split(y)\n         p = xx_hi * yy_hi\n         q = xx_hi * yy_lo + xx_lo * yy_hi\n         z = p + q\n",
+        "tokens_used": 0,
+        "time_seconds": 26.67436194419861,
+        "error": null,
+        "agent_output": "Error: Reached max turns (10)"
+      }
+    }
+  ],
+  "summary": {
+    "by_agent": {
+      "claude": {
+        "total": 5,
+        "passed": 3
+      }
+    },
+    "by_mode": {
+      "with_tests": {
+        "total": 5,
+        "passed": 3
+      }
+    },
+    "by_evaluation": {
+      "PASS": 3,
+      "FAIL": 0,
+      "ERROR": 0,
+      "TIMEOUT": 0,
+      "NO_FIX": 2
+    }
+  }
+}

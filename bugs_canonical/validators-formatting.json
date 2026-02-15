@@ -1,0 +1,365 @@
+{
+  "repo": "validators",
+  "style": "formatting",
+  "generated_at": "2026-02-14T16:21:29.538198",
+  "test_command": [
+    "uv",
+    "run",
+    "--with",
+    "pytest",
+    "--with",
+    "validators[crypto-eth-addresses]",
+    "python",
+    "-m",
+    "pytest",
+    "/Users/yuan/stylebench-data/formatting/validators/tests",
+    "-x",
+    "-q",
+    "--tb=short",
+    "--color=no"
+  ],
+  "bugs": [
+    {
+      "bug_id": "validators-formatting-001",
+      "test_output": "........................................................................ [  8%]\n........................................................................ [ 16%]\n........................................................................ [ 24%]\n.......................................F\n=================================== FAILURES ===================================\n___________ test_returns_true_on_valid_card_number[4242424242424242] ___________\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpgcaruj2t/formatting/validators/tests/test_card.py:43: in test_returns_true_on_valid_card_number\n    assert card_number(value)\nE   AssertionError: assert ValidationError(func=card_number, args={'value': '4242424242424242'})\nE    +  where ValidationError(func=card_number, args={'value': '4242424242424242'}) = card_number('4242424242424242')\n=========================== short test summary info ============================\nFAILED ../../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpgcaruj2t/formatting/validators/tests/test_card.py::test_returns_true_on_valid_card_number[4242424242424242]\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 255 passed in 0.21s\n",
+      "failing_tests": [
+        "../../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpgcaruj2t/formatting/validators/tests/test_card.py::test_returns_true_on_valid_card_number[4242424242424242]"
+      ],
+      "exit_code": 1
+    },
+    {
+      "bug_id": "validators-formatting-002",
+      "test_output": "........................................................................ [  8%]\n........................................................................ [ 16%]\n........................................................................ [ 24%]\n.........................................................F\n=================================== FAILURES ===================================\n______________ test_returns_true_on_valid_visa[4242424242424242] _______________\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpgcaruj2t/formatting/validators/tests/test_card.py:63: in test_returns_true_on_valid_visa\n    assert visa(value)\nE   AssertionError: assert ValidationError(func=visa, args={'value': '4242424242424242'})\nE    +  where ValidationError(func=visa, args={'value': '4242424242424242'}) = visa('4242424242424242')\n=========================== short test summary info ============================\nFAILED ../../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpgcaruj2t/formatting/validators/tests/test_card.py::test_returns_true_on_valid_visa[4242424242424242]\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 273 passed in 0.17s\n",
+      "failing_tests": [
+        "../../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpgcaruj2t/formatting/validators/tests/test_card.py::test_returns_true_on_valid_visa[4242424242424242]"
+      ],
+      "exit_code": 1
+    },
+    {
+      "bug_id": "validators-formatting-003",
+      "test_output": "........................................................................ [  8%]\n........................................................................ [ 16%]\n........................................................................ [ 24%]\n.....................................................................F\n=================================== FAILURES ===================================\n___________ test_returns_true_on_valid_mastercard[5555555555554444] ____________\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpgcaruj2t/formatting/validators/tests/test_card.py:83: in test_returns_true_on_valid_mastercard\n    assert mastercard(value)\nE   AssertionError: assert ValidationError(func=mastercard, args={'value': '5555555555554444'})\nE    +  where ValidationError(func=mastercard, args={'value': '5555555555554444'}) = mastercard('5555555555554444')\n=========================== short test summary info ============================\nFAILED ../../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpgcaruj2t/formatting/validators/tests/test_card.py::test_returns_true_on_valid_mastercard[5555555555554444]\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 285 passed in 0.18s\n",
+      "failing_tests": [
+        "../../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpgcaruj2t/formatting/validators/tests/test_card.py::test_returns_true_on_valid_mastercard[5555555555554444]"
+      ],
+      "exit_code": 1
+    },
+    {
+      "bug_id": "validators-formatting-004",
+      "test_output": "........................................................................ [  8%]\n........................................................................ [ 16%]\n........................................................................ [ 24%]\n..........................F\n=================================== FAILURES ===================================\n_________________ test_returns_true_on_valid_range[12-None-14] _________________\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpgcaruj2t/formatting/validators/tests/test_between.py:29: in test_returns_true_on_valid_range\n    assert between(value, min_val=min_val, max_val=max_val)\nE   AssertionError: assert ValidationError(func=between, args={'value': 12, 'min_val': None, 'max_val': 14})\nE    +  where ValidationError(func=between, args={'value': 12, 'min_val': None, 'max_val': 14}) = between(12, min_val=None, max_val=14)\n=========================== short test summary info ============================\nFAILED ../../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpgcaruj2t/formatting/validators/tests/test_between.py::test_returns_true_on_valid_range[12-None-14]\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 242 passed in 0.16s\n",
+      "failing_tests": [
+        "../../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpgcaruj2t/formatting/validators/tests/test_between.py::test_returns_true_on_valid_range[12-None-14]"
+      ],
+      "exit_code": 1
+    },
+    {
+      "bug_id": "validators-formatting-005",
+      "test_output": "........................................................................ [  8%]\n........................................................................ [ 16%]\n........................................................................ [ 24%]\n...........................F\n=================================== FAILURES ===================================\n_________________ test_returns_true_on_valid_range[12-11-None] _________________\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpgcaruj2t/formatting/validators/tests/test_between.py:29: in test_returns_true_on_valid_range\n    assert between(value, min_val=min_val, max_val=max_val)\nE   AssertionError: assert ValidationError(func=between, args={'value': 12, 'min_val': 11, 'max_val': None})\nE    +  where ValidationError(func=between, args={'value': 12, 'min_val': 11, 'max_val': None}) = between(12, min_val=11, max_val=None)\n=========================== short test summary info ============================\nFAILED ../../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpgcaruj2t/formatting/validators/tests/test_between.py::test_returns_true_on_valid_range[12-11-None]\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 243 passed in 0.17s\n",
+      "failing_tests": [
+        "../../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpgcaruj2t/formatting/validators/tests/test_between.py::test_returns_true_on_valid_range[12-11-None]"
+      ],
+      "exit_code": 1
+    },
+    {
+      "bug_id": "validators-formatting-006",
+      "test_output": "........................................................................ [  8%]\n........................................................................ [ 16%]\n........................................................................ [ 24%]\n...........................F\n=================================== FAILURES ===================================\n_________________ test_returns_true_on_valid_range[12-11-None] _________________\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpgcaruj2t/formatting/validators/tests/test_between.py:29: in test_returns_true_on_valid_range\n    assert between(value, min_val=min_val, max_val=max_val)\nE   AssertionError: assert ValidationError(func=between, args={'reason': 'Comparison type mismatch', 'value': 12, 'min_val': 11, 'max_val': None})\nE    +  where ValidationError(func=between, args={'reason': 'Comparison type mismatch', 'value': 12, 'min_val': 11, 'max_val': None}) = between(12, min_val=11, max_val=None)\n=========================== short test summary info ============================\nFAILED ../../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpgcaruj2t/formatting/validators/tests/test_between.py::test_returns_true_on_valid_range[12-11-None]\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 243 passed in 0.17s\n",
+      "failing_tests": [
+        "../../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpgcaruj2t/formatting/validators/tests/test_between.py::test_returns_true_on_valid_range[12-11-None]"
+      ],
+      "exit_code": 1
+    },
+    {
+      "bug_id": "validators-formatting-007",
+      "test_output": "........................................................................ [  8%]\n........................................................................ [ 16%]\n........................................................................ [ 24%]\n...............................F\n=================================== FAILURES ===================================\n_________ test_returns_failed_validation_on_invalid_range[None-13-14] __________\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpgcaruj2t/formatting/validators/tests/test_between.py:49: in test_returns_failed_validation_on_invalid_range\n    assert isinstance(\nE   assert False\nE    +  where False = isinstance(True, ValidationError)\nE    +    where True = between(None, min_val=13, max_val=14)\n=========================== short test summary info ============================\nFAILED ../../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpgcaruj2t/formatting/validators/tests/test_between.py::test_returns_failed_validation_on_invalid_range[None-13-14]\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 247 passed in 0.16s\n",
+      "failing_tests": [
+        "../../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpgcaruj2t/formatting/validators/tests/test_between.py::test_returns_failed_validation_on_invalid_range[None-13-14]"
+      ],
+      "exit_code": 1
+    },
+    {
+      "bug_id": "validators-formatting-008",
+      "test_output": "........................................................................ [  8%]\n........................................................................ [ 16%]\n........................................................................ [ 24%]\n.......................................................F\n=================================== FAILURES ===================================\n__________ test_returns_failed_on_valid_card_number[400000276000318X] __________\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpgcaruj2t/formatting/validators/tests/test_card.py:57: in test_returns_failed_on_valid_card_number\n    assert isinstance(card_number(value), ValidationError)\nE   AssertionError: assert False\nE    +  where False = isinstance(True, ValidationError)\nE    +    where True = card_number('400000276000318X')\n=========================== short test summary info ============================\nFAILED ../../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpgcaruj2t/formatting/validators/tests/test_card.py::test_returns_failed_on_valid_card_number[400000276000318X]\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 271 passed in 0.17s\n",
+      "failing_tests": [
+        "../../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpgcaruj2t/formatting/validators/tests/test_card.py::test_returns_failed_on_valid_card_number[400000276000318X]"
+      ],
+      "exit_code": 1
+    },
+    {
+      "bug_id": "validators-formatting-009",
+      "test_output": "........................................................................ [  8%]\n........................................................................ [ 16%]\n........................................................................ [ 24%]\n........................................................................ [ 32%]\n........................................................................ [ 40%]\n...............................................F\n=================================== FAILURES ===================================\n__________________ test_returns_true_on_valid_cron[* * * * *] __________________\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpgcaruj2t/formatting/validators/tests/test_cron.py:31: in test_returns_true_on_valid_cron\n    assert cron(value)\nE   AssertionError: assert ValidationError(func=cron, args={'value': '* * * * *'})\nE    +  where ValidationError(func=cron, args={'value': '* * * * *'}) = cron('* * * * *')\n=========================== short test summary info ============================\nFAILED ../../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpgcaruj2t/formatting/validators/tests/test_cron.py::test_returns_true_on_valid_cron[* * * * *]\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 407 passed in 0.22s\n",
+      "failing_tests": [
+        "../../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpgcaruj2t/formatting/validators/tests/test_cron.py::test_returns_true_on_valid_cron[*"
+      ],
+      "exit_code": 1
+    },
+    {
+      "bug_id": "validators-formatting-010",
+      "test_output": "...........F\n=================================== FAILURES ===================================\n_ test_returns_failed_validation_on_invalid_bsc_address[1x32Be343B94f860124dC4fEe278FDCBD38C102D88] _\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpgcaruj2t/formatting/validators/tests/crypto_addresses/test_bsc_address.py:52: in test_returns_failed_validation_on_invalid_bsc_address\n    assert isinstance(bsc_address(value), ValidationError)\n                      ^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpgcaruj2t/formatting/validators/src/validators/utils.py:105: in wrapper\n    raise ValidationError(\nE   validators.utils.ValidationError: ValidationError(func=bsc_address, args={'value': '1x32Be343B94f860124dC4fEe278FDCBD38C102D88'})\n=========================== short test summary info ============================\nFAILED ../../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpgcaruj2t/formatting/validators/tests/crypto_addresses/test_bsc_address.py::test_returns_failed_validation_on_invalid_bsc_address[1x32Be343B94f860124dC4fEe278FDCBD38C102D88]\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 11 passed in 0.09s\n",
+      "failing_tests": [
+        "../../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpgcaruj2t/formatting/validators/tests/crypto_addresses/test_bsc_address.py::test_returns_failed_validation_on_invalid_bsc_address[1x32Be343B94f860124dC4fEe278FDCBD38C102D88]"
+      ],
+      "exit_code": 1
+    },
+    {
+      "bug_id": "validators-formatting-011",
+      "test_output": "........................................................................ [  8%]\n........................................................................ [ 16%]\n........................................................................ [ 24%]\n...................................F\n=================================== FAILURES ===================================\n______ test_returns_failed_validation_on_invalid_range[12-13.5-max_val4] _______\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpgcaruj2t/formatting/validators/src/validators/between.py:76: in between\n    if min_val > max_val:\n       ^^^^^^^^^^^^^^^^^\nE   TypeError: '>' not supported between instances of 'str' and 'datetime.datetime'\n\nThe above exception was the direct cause of the following exception:\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpgcaruj2t/formatting/validators/src/validators/utils.py:103: in wrapper\n    if func(*args, **kwargs)\n       ^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpgcaruj2t/formatting/validators/src/validators/between.py:79: in between\n    raise TypeError('Comparison type mismatch') from err\nE   TypeError: Comparison type mismatch\n\nThe above exception was the direct cause of the following exception:\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpgcaruj2t/formatting/validators/tests/test_between.py:50: in test_returns_failed_validation_on_invalid_range\n    between(value, min_val=min_val, max_val=max_val), ValidationError\n    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpgcaruj2t/formatting/validators/src/validators/utils.py:114: in wrapper\n    raise ValidationError(\nE   validators.utils.ValidationError: ValidationError(func=between, args={'reason': 'Comparison type mismatch', 'value': 12, 'min_val': '13.5', 'max_val': datetime.datetime(1970, 1, 1, 0, 0)})\n=========================== short test summary info ============================\nFAILED ../../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpgcaruj2t/formatting/validators/tests/test_between.py::test_returns_failed_validation_on_invalid_range[12-13.5-max_val4]\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 251 passed in 0.20s\n",
+      "failing_tests": [
+        "../../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpgcaruj2t/formatting/validators/tests/test_between.py::test_returns_failed_validation_on_invalid_range[12-13.5-max_val4]"
+      ],
+      "exit_code": 1
+    },
+    {
+      "bug_id": "validators-formatting-012",
+      "test_output": "........................................................................ [  8%]\n........................................................................ [ 16%]\n........................................................................ [ 24%]\n........................................................................ [ 32%]\n.....................................F\n=================================== FAILURES ===================================\n_____________ test_returns_true_on_valid_diners[3056930009020004] ______________\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpgcaruj2t/formatting/validators/tests/test_card.py:145: in test_returns_true_on_valid_diners\n    assert diners(value)\nE   AssertionError: assert ValidationError(func=diners, args={'value': '3056930009020004'})\nE    +  where ValidationError(func=diners, args={'value': '3056930009020004'}) = diners('3056930009020004')\n=========================== short test summary info ============================\nFAILED ../../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpgcaruj2t/formatting/validators/tests/test_card.py::test_returns_true_on_valid_diners[3056930009020004]\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 325 passed in 0.18s\n",
+      "failing_tests": [
+        "../../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpgcaruj2t/formatting/validators/tests/test_card.py::test_returns_true_on_valid_diners[3056930009020004]"
+      ],
+      "exit_code": 1
+    },
+    {
+      "bug_id": "validators-formatting-013",
+      "test_output": "........................................................................ [  8%]\n........................................................................ [ 16%]\n........................................................................ [ 24%]\n........................................................................ [ 32%]\n........................................................................ [ 40%]\n................................................F\n=================================== FAILURES ===================================\n_________________ test_returns_true_on_valid_cron[*/5 * * * *] _________________\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpgcaruj2t/formatting/validators/tests/test_cron.py:31: in test_returns_true_on_valid_cron\n    assert cron(value)\nE   AssertionError: assert ValidationError(func=cron, args={'value': '*/5 * * * *'})\nE    +  where ValidationError(func=cron, args={'value': '*/5 * * * *'}) = cron('*/5 * * * *')\n=========================== short test summary info ============================\nFAILED ../../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpgcaruj2t/formatting/validators/tests/test_cron.py::test_returns_true_on_valid_cron[*/5 * * * *]\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 408 passed in 0.22s\n",
+      "failing_tests": [
+        "../../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpgcaruj2t/formatting/validators/tests/test_cron.py::test_returns_true_on_valid_cron[*/5"
+      ],
+      "exit_code": 1
+    },
+    {
+      "bug_id": "validators-formatting-014",
+      "test_output": "........................................................................ [  8%]\n........................................................................ [ 16%]\n........................................................................ [ 24%]\n........................................................................ [ 32%]\n........................................................................ [ 40%]\n..................................................F\n=================================== FAILURES ===================================\n________________ test_returns_true_on_valid_cron[30 3 * * 1-5] _________________\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpgcaruj2t/formatting/validators/tests/test_cron.py:31: in test_returns_true_on_valid_cron\n    assert cron(value)\nE   AssertionError: assert ValidationError(func=cron, args={'value': '30 3 * * 1-5'})\nE    +  where ValidationError(func=cron, args={'value': '30 3 * * 1-5'}) = cron('30 3 * * 1-5')\n=========================== short test summary info ============================\nFAILED ../../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpgcaruj2t/formatting/validators/tests/test_cron.py::test_returns_true_on_valid_cron[30 3 * * 1-5]\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 410 passed in 0.22s\n",
+      "failing_tests": [
+        "../../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpgcaruj2t/formatting/validators/tests/test_cron.py::test_returns_true_on_valid_cron[30"
+      ],
+      "exit_code": 1
+    },
+    {
+      "bug_id": "validators-formatting-015",
+      "test_output": "........................................................................ [  8%]\n........................................................................ [ 16%]\n........................................................................ [ 24%]\n.......................................F\n=================================== FAILURES ===================================\n___________ test_returns_true_on_valid_card_number[4242424242424242] ___________\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpgcaruj2t/formatting/validators/tests/test_card.py:43: in test_returns_true_on_valid_card_number\n    assert card_number(value)\nE   AssertionError: assert ValidationError(func=card_number, args={'value': '4242424242424242'})\nE    +  where ValidationError(func=card_number, args={'value': '4242424242424242'}) = card_number('4242424242424242')\n=========================== short test summary info ============================\nFAILED ../../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpgcaruj2t/formatting/validators/tests/test_card.py::test_returns_true_on_valid_card_number[4242424242424242]\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 255 passed in 0.18s\n",
+      "failing_tests": [
+        "../../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpgcaruj2t/formatting/validators/tests/test_card.py::test_returns_true_on_valid_card_number[4242424242424242]"
+      ],
+      "exit_code": 1
+    },
+    {
+      "bug_id": "validators-formatting-016",
+      "test_output": "..................................................F\n=================================== FAILURES ===================================\n__ test_returns_true_on_valid_trx_address[TLjfbTbpZYDQ4EoA4N5CLNgGjfbF8ZWz38] __\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpgcaruj2t/formatting/validators/tests/crypto_addresses/test_trx_address.py:29: in test_returns_true_on_valid_trx_address\n    assert trx_address(value)\n           ^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpgcaruj2t/formatting/validators/src/validators/utils.py:103: in wrapper\n    if func(*args, **kwargs)\n       ^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpgcaruj2t/formatting/validators/src/validators/crypto_addresses/trx_address.py:64: in trx_address\n    ) and _validate_trx_checksum_address(value)\n          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpgcaruj2t/formatting/validators/src/validators/crypto_addresses/trx_address.py:26: in _validate_trx_checksum_address\n    address = _base58_decode(addr)\n              ^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpgcaruj2t/formatting/validators/src/validators/crypto_addresses/trx_address.py:17: in _base58_decode\n    return num.to_bytes(25, byteorder='big')\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nE   OverflowError: can't convert negative int to unsigned\n=========================== short test summary info ============================\nFAILED ../../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpgcaruj2t/formatting/validators/tests/crypto_addresses/test_trx_address.py::test_returns_true_on_valid_trx_address[TLjfbTbpZYDQ4EoA4N5CLNgGjfbF8ZWz38]\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 50 passed in 0.12s\n",
+      "failing_tests": [
+        "../../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpgcaruj2t/formatting/validators/tests/crypto_addresses/test_trx_address.py::test_returns_true_on_valid_trx_address[TLjfbTbpZYDQ4EoA4N5CLNgGjfbF8ZWz38]"
+      ],
+      "exit_code": 1
+    },
+    {
+      "bug_id": "validators-formatting-017",
+      "test_output": "........................................................................ [  8%]\n........................................................................ [ 16%]\n........................................................................ [ 24%]\n.......................................F\n=================================== FAILURES ===================================\n___________ test_returns_true_on_valid_card_number[4242424242424242] ___________\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpgcaruj2t/formatting/validators/tests/test_card.py:43: in test_returns_true_on_valid_card_number\n    assert card_number(value)\nE   AssertionError: assert ValidationError(func=card_number, args={'value': '4242424242424242'})\nE    +  where ValidationError(func=card_number, args={'value': '4242424242424242'}) = card_number('4242424242424242')\n=========================== short test summary info ============================\nFAILED ../../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpgcaruj2t/formatting/validators/tests/test_card.py::test_returns_true_on_valid_card_number[4242424242424242]\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 255 passed in 0.17s\n",
+      "failing_tests": [
+        "../../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpgcaruj2t/formatting/validators/tests/test_card.py::test_returns_true_on_valid_card_number[4242424242424242]"
+      ],
+      "exit_code": 1
+    },
+    {
+      "bug_id": "validators-formatting-018",
+      "test_output": "........................................................................ [  8%]\n........................................................................ [ 16%]\n........................................................................ [ 24%]\n.......................................F\n=================================== FAILURES ===================================\n___________ test_returns_true_on_valid_card_number[4242424242424242] ___________\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpgcaruj2t/formatting/validators/tests/test_card.py:43: in test_returns_true_on_valid_card_number\n    assert card_number(value)\nE   AssertionError: assert ValidationError(func=card_number, args={'value': '4242424242424242'})\nE    +  where ValidationError(func=card_number, args={'value': '4242424242424242'}) = card_number('4242424242424242')\n=========================== short test summary info ============================\nFAILED ../../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpgcaruj2t/formatting/validators/tests/test_card.py::test_returns_true_on_valid_card_number[4242424242424242]\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 255 passed in 0.16s\n",
+      "failing_tests": [
+        "../../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpgcaruj2t/formatting/validators/tests/test_card.py::test_returns_true_on_valid_card_number[4242424242424242]"
+      ],
+      "exit_code": 1
+    },
+    {
+      "bug_id": "validators-formatting-019",
+      "test_output": "........................................................................ [  8%]\n........................................................................ [ 16%]\n........................................................................ [ 24%]\n.......................................F\n=================================== FAILURES ===================================\n___________ test_returns_true_on_valid_card_number[4242424242424242] ___________\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpgcaruj2t/formatting/validators/tests/test_card.py:43: in test_returns_true_on_valid_card_number\n    assert card_number(value)\nE   AssertionError: assert ValidationError(func=card_number, args={'value': '4242424242424242'})\nE    +  where ValidationError(func=card_number, args={'value': '4242424242424242'}) = card_number('4242424242424242')\n=========================== short test summary info ============================\nFAILED ../../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpgcaruj2t/formatting/validators/tests/test_card.py::test_returns_true_on_valid_card_number[4242424242424242]\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 255 passed in 0.18s\n",
+      "failing_tests": [
+        "../../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpgcaruj2t/formatting/validators/tests/test_card.py::test_returns_true_on_valid_card_number[4242424242424242]"
+      ],
+      "exit_code": 1
+    },
+    {
+      "bug_id": "validators-formatting-020",
+      "test_output": "........................................................................ [  8%]\n........................................................................ [ 16%]\n........................................................................ [ 24%]\n........................................F\n=================================== FAILURES ===================================\n___________ test_returns_true_on_valid_card_number[4000002760003184] ___________\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpgcaruj2t/formatting/validators/tests/test_card.py:43: in test_returns_true_on_valid_card_number\n    assert card_number(value)\nE   AssertionError: assert ValidationError(func=card_number, args={'value': '4000002760003184'})\nE    +  where ValidationError(func=card_number, args={'value': '4000002760003184'}) = card_number('4000002760003184')\n=========================== short test summary info ============================\nFAILED ../../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpgcaruj2t/formatting/validators/tests/test_card.py::test_returns_true_on_valid_card_number[4000002760003184]\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 256 passed in 0.19s\n",
+      "failing_tests": [
+        "../../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpgcaruj2t/formatting/validators/tests/test_card.py::test_returns_true_on_valid_card_number[4000002760003184]"
+      ],
+      "exit_code": 1
+    }
+  ],
+  "_hidden": [
+    {
+      "bug_id": "validators-formatting-001",
+      "file_path": "src/validators/card.py",
+      "line_number": 38,
+      "mutation_type": "eq_ne",
+      "original_text": "==",
+      "mutated_text": "!=",
+      "context": "...return (odd_sum + even_sum) % 10 == 0     except ValueError:         return..."
+    },
+    {
+      "bug_id": "validators-formatting-002",
+      "file_path": "src/validators/card.py",
+      "line_number": 62,
+      "mutation_type": "eq_ne",
+      "original_text": "==",
+      "mutated_text": "!=",
+      "context": "...eturn card_number(value) and len(value) == 16 and pattern.match(value)   @validato..."
+    },
+    {
+      "bug_id": "validators-formatting-003",
+      "file_path": "src/validators/card.py",
+      "line_number": 84,
+      "mutation_type": "eq_ne",
+      "original_text": "==",
+      "mutated_text": "!=",
+      "context": "...eturn card_number(value) and len(value) == 16 and pattern.match(value)   @validato..."
+    },
+    {
+      "bug_id": "validators-formatting-004",
+      "file_path": "src/validators/between.py",
+      "line_number": 67,
+      "mutation_type": "var_swap",
+      "original_text": "value",
+      "mutated_text": "min_val",
+      "context": "...t will always be `True`.     \"\"\"     if value is None:         return False      if m..."
+    },
+    {
+      "bug_id": "validators-formatting-005",
+      "file_path": "src/validators/between.py",
+      "line_number": 67,
+      "mutation_type": "var_swap",
+      "original_text": "value",
+      "mutated_text": "max_val",
+      "context": "...t will always be `True`.     \"\"\"     if value is None:         return False      if m..."
+    },
+    {
+      "bug_id": "validators-formatting-006",
+      "file_path": "src/validators/between.py",
+      "line_number": 70,
+      "mutation_type": "var_swap",
+      "original_text": "max_val",
+      "mutated_text": "value",
+      "context": "...e is None:         return False      if max_val is None:         max_val = AbsMax()..."
+    },
+    {
+      "bug_id": "validators-formatting-007",
+      "file_path": "src/validators/between.py",
+      "line_number": 68,
+      "mutation_type": "true_false",
+      "original_text": "False",
+      "mutated_text": "True",
+      "context": "...\"\"     if value is None:         return False      if max_val is None:         max_va..."
+    },
+    {
+      "bug_id": "validators-formatting-008",
+      "file_path": "src/validators/card.py",
+      "line_number": 40,
+      "mutation_type": "true_false",
+      "original_text": "False",
+      "mutated_text": "True",
+      "context": "...0     except ValueError:         return False   @validator def visa(value: str, /):..."
+    },
+    {
+      "bug_id": "validators-formatting-009",
+      "file_path": "src/validators/cron.py",
+      "line_number": 9,
+      "mutation_type": "true_false",
+      "original_text": "True",
+      "mutated_text": "False",
+      "context": "...if component == '*':         return True      if component.isdecimal():..."
+    },
+    {
+      "bug_id": "validators-formatting-010",
+      "file_path": "src/validators/utils.py",
+      "line_number": 93,
+      "mutation_type": "if_else_swap",
+      "original_text": "if raise_validation_error:\n                if func(*args, **kwargs):\n                    return True\n                else:\n                    raise ValidationError(\n                        func, _func_args_as_dict(func, *args, **kwargs)\n                    )\n            else:\n                return (\n                    True\n                    if func(*args, **kwargs)\n                    else ValidationError(\n                        func, _func_args_as_dict(func, *args, **kwargs)\n                    )\n                )",
+      "mutated_text": "if raise_validation_error:\n                return (\n                    True\n                    if func(*args, **kwargs)\n                    else ValidationError(\n                        func, _func_args_as_dict(func, *args, **kwargs)\n                    )\n                )\n            else:\n                if func(*args, **kwargs):\n                    return True\n                else:\n                    raise ValidationError(\n                        func, _func_args_as_dict(func, *args, **kwargs)\n                    )",
+      "context": "..._error = True          try:             if raise_validation_error:                 if func(*args, **kwargs):                     return True                 else:                     raise ValidationError(                         func, _func_args_as_dict(func, *args, **kwargs)                     )             else:                 return (                     True                     if func(*args, **kwargs)                     else ValidationError(                         func, _func_args_as_dict(func, *args, **kwargs)                     )                 )         except (ValueError, TypeError,..."
+    },
+    {
+      "bug_id": "validators-formatting-011",
+      "file_path": "src/validators/utils.py",
+      "line_number": 109,
+      "mutation_type": "if_else_swap",
+      "original_text": "if raise_validation_error:\n                raise ValidationError(\n                    func, _func_args_as_dict(func, *args, **kwargs), str(exp)\n                ) from exp\n            else:\n                return ValidationError(\n                    func, _func_args_as_dict(func, *args, **kwargs), str(exp)\n                )",
+      "mutated_text": "if raise_validation_error:\n                return ValidationError(\n                    func, _func_args_as_dict(func, *args, **kwargs), str(exp)\n                )\n            else:\n                raise ValidationError(\n                    func, _func_args_as_dict(func, *args, **kwargs), str(exp)\n                ) from exp",
+      "context": "...rror, UnicodeError) as exp:             if raise_validation_error:                 raise ValidationError(                     func, _func_args_as_dict(func, *args, **kwargs), str(exp)                 ) from exp             else:                 return ValidationError(                     func, _func_args_as_dict(func, *args, **kwargs), str(exp)                 )      return wrapper"
+    },
+    {
+      "bug_id": "validators-formatting-012",
+      "file_path": "src/validators/card.py",
+      "line_number": 151,
+      "mutation_type": "in_not_in",
+      "original_text": "in",
+      "mutated_text": "not in",
+      "context": "...card_number(value) and len(value) in {14, 16} and pattern.match(value)     )..."
+    },
+    {
+      "bug_id": "validators-formatting-013",
+      "file_path": "src/validators/cron.py",
+      "line_number": 14,
+      "mutation_type": "in_not_in",
+      "original_text": "in",
+      "mutated_text": "not in",
+      "context": "...= int(component) <= max_val      if '/' in component:         parts = component.sp..."
+    },
+    {
+      "bug_id": "validators-formatting-014",
+      "file_path": "src/validators/cron.py",
+      "line_number": 22,
+      "mutation_type": "in_not_in",
+      "original_text": "in",
+      "mutated_text": "not in",
+      "context": "...<= int(parts[0]) <= max_val      if '-' in component:         parts = component.sp..."
+    },
+    {
+      "bug_id": "validators-formatting-015",
+      "file_path": "src/validators/card.py",
+      "line_number": 38,
+      "mutation_type": "add_sub",
+      "original_text": "+",
+      "mutated_text": "-",
+      "context": "...digits[-2::-2])         return (odd_sum + even_sum) % 10 == 0     except ValueErr..."
+    },
+    {
+      "bug_id": "validators-formatting-016",
+      "file_path": "src/validators/crypto_addresses/trx_address.py",
+      "line_number": 16,
+      "mutation_type": "add_sub",
+      "original_text": "+",
+      "mutated_text": "-",
+      "context": "...or char in addr:         num = num * 58 + alphabet.index(char)     return num.to_..."
+    },
+    {
+      "bug_id": "validators-formatting-017",
+      "file_path": "src/validators/domain.py",
+      "line_number": 114,
+      "mutation_type": "add_sub",
+      "original_text": "+",
+      "mutated_text": "-",
+      "context": "...Last character of the gTLD             + rf'[a-z]{trailing_dot}',             va..."
+    },
+    {
+      "bug_id": "validators-formatting-018",
+      "file_path": "src/validators/card.py",
+      "line_number": 36,
+      "mutation_type": "plus_one",
+      "original_text": "1",
+      "mutated_text": "2",
+      "context": "..., value))         odd_sum = sum(digits[-1::-2])         even_sum = sum(sum(divmod..."
+    },
+    {
+      "bug_id": "validators-formatting-019",
+      "file_path": "src/validators/card.py",
+      "line_number": 36,
+      "mutation_type": "plus_one",
+      "original_text": "2",
+      "mutated_text": "3",
+      "context": "...lue))         odd_sum = sum(digits[-1::-2])         even_sum = sum(sum(divmod(2 *..."
+    },
+    {
+      "bug_id": "validators-formatting-020",
+      "file_path": "src/validators/card.py",
+      "line_number": 37,
+      "mutation_type": "plus_one",
+      "original_text": "2",
+      "mutated_text": "3",
+      "context": "...:-2])         even_sum = sum(sum(divmod(2 * d, 10)) for d in digits[-2::-2])..."
+    }
+  ]
+}

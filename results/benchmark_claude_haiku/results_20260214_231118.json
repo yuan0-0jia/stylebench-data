@@ -1,0 +1,153 @@
+{
+  "metadata": {
+    "catalog": "/Users/yuan/stylebench-data/bugs_canonical/validators-formatting.json",
+    "repo": "/Users/yuan/stylebench-data/formatting/validators",
+    "repo_name": "validators",
+    "timestamp": "2026-02-14T23:11:18.960472",
+    "total_trials": 5,
+    "manifest_used": true
+  },
+  "results": [
+    {
+      "bug_id": "validators-formatting-001",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 895,
+      "tests_failed": 0,
+      "tests_total": 895,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-14T23:09:46.537749",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "src/validators/card.py"
+        ],
+        "patch": "(restored to original)",
+        "tokens_used": 0,
+        "time_seconds": 16.753848791122437,
+        "error": null,
+        "agent_output": "Perfect! All tests pass now. The bug was a simple logic error in the `card_number` function at line 38 of `src/validators/card.py`.\n\n## Summary\n\n**Bug Found:** The Luhn algorithm check in the `card_number` function had inverted logic.\n\n**Location:** `src/validators/card.py:38`\n\n**Original Code:**\n```python\nreturn (odd_sum + even_sum) % 10 != 0\n```\n\n**Fixed Code:**\n```python\nreturn (odd_sum + even_sum) % 10 == 0\n```\n\n**Explanation:** According to Luhn's algorithm, a valid card number should have a checksum that equals 0 when taken modulo 10. The original code was returning `True` when the checksum was NOT equal to 0, which is backwards. Changing `!=` to `==` fixes the validation logic, and now all 126 tests pass.\n"
+      }
+    },
+    {
+      "bug_id": "validators-formatting-002",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 895,
+      "tests_failed": 0,
+      "tests_total": 895,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-14T23:10:10.104754",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "src/validators/card.py"
+        ],
+        "patch": "(restored to original)",
+        "tokens_used": 0,
+        "time_seconds": 20.933429956436157,
+        "error": null,
+        "agent_output": "Perfect! The bug has been fixed. \n\n## Summary\n\n**Bug found:** In `/src/validators/card.py` at line 62, the `visa()` function had a logic error:\n\n```python\n# BEFORE (incorrect)\nreturn card_number(value) and len(value) != 16 and pattern.match(value)\n\n# AFTER (correct)\nreturn card_number(value) and len(value) == 16 and pattern.match(value)\n```\n\nThe condition `len(value) != 16` was rejecting all valid 16-digit Visa cards. The fix changes it to `len(value) == 16`, which correctly validates that Visa cards are 16 digits long.\n\n**Result:** All 126 card validation tests now pass, including the previously failing test `test_returns_true_on_valid_visa[4242424242424242]`.\n"
+      }
+    },
+    {
+      "bug_id": "validators-formatting-003",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 895,
+      "tests_failed": 0,
+      "tests_total": 895,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-14T23:10:37.699708",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "src/validators/card.py"
+        ],
+        "patch": "(restored to original)",
+        "tokens_used": 0,
+        "time_seconds": 24.94487237930298,
+        "error": null,
+        "agent_output": "Excellent! All 895 tests pass. \n\n## Summary\n\nI found and fixed the bug in `src/validators/card.py:84`. The issue was in the `mastercard()` function:\n\n**The bug:** The length check was using `!=` instead of `==`:\n```python\nreturn card_number(value) and len(value) != 16 and pattern.match(value)\n```\n\n**The fix:** Changed it to:\n```python\nreturn card_number(value) and len(value) == 16 and pattern.match(value)\n```\n\nThis was causing valid Mastercard numbers (which should be exactly 16 digits) to be rejected. The test cards `5555555555554444` and `2223003122003222` are both 16-digit numbers, so they were failing the validation with the incorrect `!= 16` check.\n"
+      }
+    },
+    {
+      "bug_id": "validators-formatting-004",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 895,
+      "tests_failed": 0,
+      "tests_total": 895,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-14T23:10:58.872383",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "src/validators/between.py"
+        ],
+        "patch": "diff --git a/src/validators/between.py b/src/validators/between.py\nindex d92789d..ac16b86 100644\n--- a/src/validators/between.py\n+++ b/src/validators/between.py\n@@ -64,9 +64,6 @@ def between(\n         - `PossibleValueTypes` = `TypeVar(\"PossibleValueTypes\", int, float, str, datetime)`\n         - If neither `min_val` nor `max_val` is provided, result will always be `True`.\n     \"\"\"\n-    if value is None:\n-        return False\n-\n     if max_val is None:\n         max_val = AbsMax()\n     if min_val is None:\n",
+        "tokens_used": 0,
+        "time_seconds": 18.363161087036133,
+        "error": null,
+        "agent_output": "## Summary\n\nI found and fixed the bug in `src/validators/between.py`. \n\n**The Issue:**\nLines 67-68 had an incorrect early return:\n```python\nif min_val is None:\n    return False\n```\n\nThis caused the function to always return `False` when `min_val` was `None`, even though `None` is a valid value meaning \"no minimum check required.\"\n\n**The Fix:**\nRemoved the erroneous early return. Now when `min_val` is `None`, it properly gets replaced with `AbsMin()` on line 69-70, allowing the function to validate only against the `max_val` constraint.\n\n**Test Results:**\nAll 14 tests in `test_between.py` now pass, including the previously failing test case `test_returns_true_on_valid_range[12-None-14]`.\n"
+      }
+    },
+    {
+      "bug_id": "validators-formatting-005",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 895,
+      "tests_failed": 0,
+      "tests_total": 895,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-14T23:11:18.873051",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "src/validators/between.py"
+        ],
+        "patch": "diff --git a/src/validators/between.py b/src/validators/between.py\nindex d92789d..ac16b86 100644\n--- a/src/validators/between.py\n+++ b/src/validators/between.py\n@@ -64,9 +64,6 @@ def between(\n         - `PossibleValueTypes` = `TypeVar(\"PossibleValueTypes\", int, float, str, datetime)`\n         - If neither `min_val` nor `max_val` is provided, result will always be `True`.\n     \"\"\"\n-    if value is None:\n-        return False\n-\n     if max_val is None:\n         max_val = AbsMax()\n     if min_val is None:\n",
+        "tokens_used": 0,
+        "time_seconds": 17.244616985321045,
+        "error": null,
+        "agent_output": "## Summary\n\nI found and fixed the bug in `/private/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/stylebench_lvj9fqen/src/validators/between.py`.\n\n**The Bug:** Lines 67-68 contained an early return statement that immediately returned `False` whenever `max_val` was `None`:\n```python\nif max_val is None:\n    return False\n```\n\nThis was incorrect because `max_val=None` should mean \"no maximum check\", not a validation failure.\n\n**The Fix:** I removed the erroneous early return statement, leaving only the proper logic that converts `None` values to `AbsMax()` and `AbsMin()` sentinel objects for unlimited bounds checking.\n\nThe failing test case `test_returns_true_on_valid_range[12-11-None]` now passes, along with all other tests (14/14 passing).\n"
+      }
+    }
+  ],
+  "summary": {
+    "by_agent": {
+      "claude": {
+        "total": 5,
+        "passed": 5
+      }
+    },
+    "by_mode": {
+      "with_tests": {
+        "total": 5,
+        "passed": 5
+      }
+    },
+    "by_evaluation": {
+      "PASS": 5,
+      "FAIL": 0,
+      "ERROR": 0,
+      "TIMEOUT": 0,
+      "NO_FIX": 0
+    }
+  }
+}

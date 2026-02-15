@@ -1,0 +1,365 @@
+{
+  "repo": "validators",
+  "style": "camelcase",
+  "generated_at": "2026-02-14T16:21:29.538160",
+  "test_command": [
+    "uv",
+    "run",
+    "--with",
+    "pytest",
+    "--with",
+    "validators[crypto-eth-addresses]",
+    "python",
+    "-m",
+    "pytest",
+    "/Users/yuan/stylebench-data/camelcase/validators/tests",
+    "-x",
+    "-q",
+    "--tb=short",
+    "--color=no"
+  ],
+  "bugs": [
+    {
+      "bug_id": "validators-camelcase-001",
+      "test_output": "........................................................................ [  8%]\n........................................................................ [ 16%]\n........................................................................ [ 24%]\n.......................................F\n=================================== FAILURES ===================================\n______________ testReturnsTrueOnValidCardNumber[4242424242424242] ______________\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpgcaruj2t/camelcase/validators/tests/test_card.py:43: in testReturnsTrueOnValidCardNumber\n    assert cardNumber(value)\nE   AssertionError: assert ValidationError(func=cardNumber, args={'value': '4242424242424242'})\nE    +  where ValidationError(func=cardNumber, args={'value': '4242424242424242'}) = cardNumber('4242424242424242')\n=========================== short test summary info ============================\nFAILED ../../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpgcaruj2t/camelcase/validators/tests/test_card.py::testReturnsTrueOnValidCardNumber[4242424242424242]\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 255 passed in 0.20s\n",
+      "failing_tests": [
+        "../../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpgcaruj2t/camelcase/validators/tests/test_card.py::testReturnsTrueOnValidCardNumber[4242424242424242]"
+      ],
+      "exit_code": 1
+    },
+    {
+      "bug_id": "validators-camelcase-002",
+      "test_output": "........................................................................ [  8%]\n........................................................................ [ 16%]\n........................................................................ [ 24%]\n.........................................................F\n=================================== FAILURES ===================================\n_________________ testReturnsTrueOnValidVisa[4242424242424242] _________________\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpgcaruj2t/camelcase/validators/tests/test_card.py:63: in testReturnsTrueOnValidVisa\n    assert visa(value)\nE   AssertionError: assert ValidationError(func=visa, args={'value': '4242424242424242'})\nE    +  where ValidationError(func=visa, args={'value': '4242424242424242'}) = visa('4242424242424242')\n=========================== short test summary info ============================\nFAILED ../../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpgcaruj2t/camelcase/validators/tests/test_card.py::testReturnsTrueOnValidVisa[4242424242424242]\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 273 passed in 0.17s\n",
+      "failing_tests": [
+        "../../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpgcaruj2t/camelcase/validators/tests/test_card.py::testReturnsTrueOnValidVisa[4242424242424242]"
+      ],
+      "exit_code": 1
+    },
+    {
+      "bug_id": "validators-camelcase-003",
+      "test_output": "........................................................................ [  8%]\n........................................................................ [ 16%]\n........................................................................ [ 24%]\n.....................................................................F\n=================================== FAILURES ===================================\n______________ testReturnsTrueOnValidMastercard[5555555555554444] ______________\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpgcaruj2t/camelcase/validators/tests/test_card.py:78: in testReturnsTrueOnValidMastercard\n    assert mastercard(value)\nE   AssertionError: assert ValidationError(func=mastercard, args={'value': '5555555555554444'})\nE    +  where ValidationError(func=mastercard, args={'value': '5555555555554444'}) = mastercard('5555555555554444')\n=========================== short test summary info ============================\nFAILED ../../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpgcaruj2t/camelcase/validators/tests/test_card.py::testReturnsTrueOnValidMastercard[5555555555554444]\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 285 passed in 0.17s\n",
+      "failing_tests": [
+        "../../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpgcaruj2t/camelcase/validators/tests/test_card.py::testReturnsTrueOnValidMastercard[5555555555554444]"
+      ],
+      "exit_code": 1
+    },
+    {
+      "bug_id": "validators-camelcase-004",
+      "test_output": "........................................................................ [  8%]\n........................................................................ [ 16%]\n........................................................................ [ 24%]\n..........................F\n=================================== FAILURES ===================================\n___________________ testReturnsTrueOnValidRange[12-None-14] ____________________\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpgcaruj2t/camelcase/validators/tests/test_between.py:22: in testReturnsTrueOnValidRange\n    assert between(value, minVal=minVal, maxVal=maxVal)\nE   AssertionError: assert ValidationError(func=between, args={'value': 12, 'minVal': None, 'maxVal': 14})\nE    +  where ValidationError(func=between, args={'value': 12, 'minVal': None, 'maxVal': 14}) = between(12, minVal=None, maxVal=14)\n=========================== short test summary info ============================\nFAILED ../../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpgcaruj2t/camelcase/validators/tests/test_between.py::testReturnsTrueOnValidRange[12-None-14]\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 242 passed in 0.16s\n",
+      "failing_tests": [
+        "../../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpgcaruj2t/camelcase/validators/tests/test_between.py::testReturnsTrueOnValidRange[12-None-14]"
+      ],
+      "exit_code": 1
+    },
+    {
+      "bug_id": "validators-camelcase-005",
+      "test_output": "........................................................................ [  8%]\n........................................................................ [ 16%]\n........................................................................ [ 24%]\n...........................F\n=================================== FAILURES ===================================\n___________________ testReturnsTrueOnValidRange[12-11-None] ____________________\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpgcaruj2t/camelcase/validators/tests/test_between.py:22: in testReturnsTrueOnValidRange\n    assert between(value, minVal=minVal, maxVal=maxVal)\nE   AssertionError: assert ValidationError(func=between, args={'value': 12, 'minVal': 11, 'maxVal': None})\nE    +  where ValidationError(func=between, args={'value': 12, 'minVal': 11, 'maxVal': None}) = between(12, minVal=11, maxVal=None)\n=========================== short test summary info ============================\nFAILED ../../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpgcaruj2t/camelcase/validators/tests/test_between.py::testReturnsTrueOnValidRange[12-11-None]\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 243 passed in 0.16s\n",
+      "failing_tests": [
+        "../../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpgcaruj2t/camelcase/validators/tests/test_between.py::testReturnsTrueOnValidRange[12-11-None]"
+      ],
+      "exit_code": 1
+    },
+    {
+      "bug_id": "validators-camelcase-006",
+      "test_output": "........................................................................ [  8%]\n........................................................................ [ 16%]\n........................................................................ [ 24%]\n...........................F\n=================================== FAILURES ===================================\n___________________ testReturnsTrueOnValidRange[12-11-None] ____________________\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpgcaruj2t/camelcase/validators/tests/test_between.py:22: in testReturnsTrueOnValidRange\n    assert between(value, minVal=minVal, maxVal=maxVal)\nE   AssertionError: assert ValidationError(func=between, args={'reason': 'Comparison type mismatch', 'value': 12, 'minVal': 11, 'maxVal': None})\nE    +  where ValidationError(func=between, args={'reason': 'Comparison type mismatch', 'value': 12, 'minVal': 11, 'maxVal': None}) = between(12, minVal=11, maxVal=None)\n=========================== short test summary info ============================\nFAILED ../../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpgcaruj2t/camelcase/validators/tests/test_between.py::testReturnsTrueOnValidRange[12-11-None]\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 243 passed in 0.16s\n",
+      "failing_tests": [
+        "../../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpgcaruj2t/camelcase/validators/tests/test_between.py::testReturnsTrueOnValidRange[12-11-None]"
+      ],
+      "exit_code": 1
+    },
+    {
+      "bug_id": "validators-camelcase-007",
+      "test_output": "........................................................................ [  8%]\n........................................................................ [ 16%]\n........................................................................ [ 24%]\n...............................F\n=================================== FAILURES ===================================\n____________ testReturnsFailedValidationOnInvalidRange[None-13-14] _____________\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpgcaruj2t/camelcase/validators/tests/test_between.py:40: in testReturnsFailedValidationOnInvalidRange\n    assert isinstance(between(value, minVal=minVal, maxVal=maxVal), ValidationError)\nE   assert False\nE    +  where False = isinstance(True, ValidationError)\nE    +    where True = between(None, minVal=13, maxVal=14)\n=========================== short test summary info ============================\nFAILED ../../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpgcaruj2t/camelcase/validators/tests/test_between.py::testReturnsFailedValidationOnInvalidRange[None-13-14]\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 247 passed in 0.16s\n",
+      "failing_tests": [
+        "../../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpgcaruj2t/camelcase/validators/tests/test_between.py::testReturnsFailedValidationOnInvalidRange[None-13-14]"
+      ],
+      "exit_code": 1
+    },
+    {
+      "bug_id": "validators-camelcase-008",
+      "test_output": "........................................................................ [  8%]\n........................................................................ [ 16%]\n........................................................................ [ 24%]\n.......................................................F\n=================================== FAILURES ===================================\n_____________ testReturnsFailedOnValidCardNumber[400000276000318X] _____________\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpgcaruj2t/camelcase/validators/tests/test_card.py:57: in testReturnsFailedOnValidCardNumber\n    assert isinstance(cardNumber(value), ValidationError)\nE   AssertionError: assert False\nE    +  where False = isinstance(True, ValidationError)\nE    +    where True = cardNumber('400000276000318X')\n=========================== short test summary info ============================\nFAILED ../../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpgcaruj2t/camelcase/validators/tests/test_card.py::testReturnsFailedOnValidCardNumber[400000276000318X]\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 271 passed in 0.17s\n",
+      "failing_tests": [
+        "../../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpgcaruj2t/camelcase/validators/tests/test_card.py::testReturnsFailedOnValidCardNumber[400000276000318X]"
+      ],
+      "exit_code": 1
+    },
+    {
+      "bug_id": "validators-camelcase-009",
+      "test_output": "........................................................................ [  8%]\n........................................................................ [ 16%]\n........................................................................ [ 24%]\n........................................................................ [ 32%]\n........................................................................ [ 40%]\n...............................................F\n=================================== FAILURES ===================================\n____________________ testReturnsTrueOnValidCron[* * * * *] _____________________\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpgcaruj2t/camelcase/validators/tests/test_cron.py:31: in testReturnsTrueOnValidCron\n    assert cron(value)\nE   AssertionError: assert ValidationError(func=cron, args={'value': '* * * * *'})\nE    +  where ValidationError(func=cron, args={'value': '* * * * *'}) = cron('* * * * *')\n=========================== short test summary info ============================\nFAILED ../../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpgcaruj2t/camelcase/validators/tests/test_cron.py::testReturnsTrueOnValidCron[* * * * *]\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 407 passed in 0.27s\n",
+      "failing_tests": [
+        "../../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpgcaruj2t/camelcase/validators/tests/test_cron.py::testReturnsTrueOnValidCron[*"
+      ],
+      "exit_code": 1
+    },
+    {
+      "bug_id": "validators-camelcase-010",
+      "test_output": "...........F\n=================================== FAILURES ===================================\n_ testReturnsFailedValidationOnInvalidBscAddress[1x32Be343B94f860124dC4fEe278FDCBD38C102D88] _\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpgcaruj2t/camelcase/validators/tests/crypto_addresses/test_bsc_address.py:52: in testReturnsFailedValidationOnInvalidBscAddress\n    assert isinstance(bscAddress(value), ValidationError)\n                      ^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpgcaruj2t/camelcase/validators/src/validators/utils.py:93: in wrapper\n    raise ValidationError(func, _funcArgsAsDict(func, *args, **kwargs))\nE   validators.utils.ValidationError: ValidationError(func=bscAddress, args={'value': '1x32Be343B94f860124dC4fEe278FDCBD38C102D88'})\n=========================== short test summary info ============================\nFAILED ../../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpgcaruj2t/camelcase/validators/tests/crypto_addresses/test_bsc_address.py::testReturnsFailedValidationOnInvalidBscAddress[1x32Be343B94f860124dC4fEe278FDCBD38C102D88]\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 11 passed in 0.09s\n",
+      "failing_tests": [
+        "../../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpgcaruj2t/camelcase/validators/tests/crypto_addresses/test_bsc_address.py::testReturnsFailedValidationOnInvalidBscAddress[1x32Be343B94f860124dC4fEe278FDCBD38C102D88]"
+      ],
+      "exit_code": 1
+    },
+    {
+      "bug_id": "validators-camelcase-011",
+      "test_output": "........................................................................ [  8%]\n........................................................................ [ 16%]\n........................................................................ [ 24%]\n...................................F\n=================================== FAILURES ===================================\n__________ testReturnsFailedValidationOnInvalidRange[12-13.5-maxVal4] __________\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpgcaruj2t/camelcase/validators/src/validators/between.py:74: in between\n    if minVal > maxVal:\n       ^^^^^^^^^^^^^^^\nE   TypeError: '>' not supported between instances of 'str' and 'datetime.datetime'\n\nThe above exception was the direct cause of the following exception:\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpgcaruj2t/camelcase/validators/src/validators/utils.py:91: in wrapper\n    if func(*args, **kwargs)\n       ^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpgcaruj2t/camelcase/validators/src/validators/between.py:77: in between\n    raise TypeError(\"Comparison type mismatch\") from err\nE   TypeError: Comparison type mismatch\n\nThe above exception was the direct cause of the following exception:\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpgcaruj2t/camelcase/validators/tests/test_between.py:40: in testReturnsFailedValidationOnInvalidRange\n    assert isinstance(between(value, minVal=minVal, maxVal=maxVal), ValidationError)\n                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpgcaruj2t/camelcase/validators/src/validators/utils.py:98: in wrapper\n    raise ValidationError(\nE   validators.utils.ValidationError: ValidationError(func=between, args={'reason': 'Comparison type mismatch', 'value': 12, 'minVal': '13.5', 'maxVal': datetime.datetime(1970, 1, 1, 0, 0)})\n=========================== short test summary info ============================\nFAILED ../../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpgcaruj2t/camelcase/validators/tests/test_between.py::testReturnsFailedValidationOnInvalidRange[12-13.5-maxVal4]\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 251 passed in 0.18s\n",
+      "failing_tests": [
+        "../../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpgcaruj2t/camelcase/validators/tests/test_between.py::testReturnsFailedValidationOnInvalidRange[12-13.5-maxVal4]"
+      ],
+      "exit_code": 1
+    },
+    {
+      "bug_id": "validators-camelcase-012",
+      "test_output": "........................................................................ [  8%]\n........................................................................ [ 16%]\n........................................................................ [ 24%]\n........................................................................ [ 32%]\n.....................................F\n=================================== FAILURES ===================================\n________________ testReturnsTrueOnValidDiners[3056930009020004] ________________\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpgcaruj2t/camelcase/validators/tests/test_card.py:135: in testReturnsTrueOnValidDiners\n    assert diners(value)\nE   AssertionError: assert ValidationError(func=diners, args={'value': '3056930009020004'})\nE    +  where ValidationError(func=diners, args={'value': '3056930009020004'}) = diners('3056930009020004')\n=========================== short test summary info ============================\nFAILED ../../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpgcaruj2t/camelcase/validators/tests/test_card.py::testReturnsTrueOnValidDiners[3056930009020004]\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 325 passed in 0.18s\n",
+      "failing_tests": [
+        "../../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpgcaruj2t/camelcase/validators/tests/test_card.py::testReturnsTrueOnValidDiners[3056930009020004]"
+      ],
+      "exit_code": 1
+    },
+    {
+      "bug_id": "validators-camelcase-013",
+      "test_output": "........................................................................ [  8%]\n........................................................................ [ 16%]\n........................................................................ [ 24%]\n........................................................................ [ 32%]\n........................................................................ [ 40%]\n................................................F\n=================================== FAILURES ===================================\n___________________ testReturnsTrueOnValidCron[*/5 * * * *] ____________________\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpgcaruj2t/camelcase/validators/tests/test_cron.py:31: in testReturnsTrueOnValidCron\n    assert cron(value)\nE   AssertionError: assert ValidationError(func=cron, args={'value': '*/5 * * * *'})\nE    +  where ValidationError(func=cron, args={'value': '*/5 * * * *'}) = cron('*/5 * * * *')\n=========================== short test summary info ============================\nFAILED ../../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpgcaruj2t/camelcase/validators/tests/test_cron.py::testReturnsTrueOnValidCron[*/5 * * * *]\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 408 passed in 0.20s\n",
+      "failing_tests": [
+        "../../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpgcaruj2t/camelcase/validators/tests/test_cron.py::testReturnsTrueOnValidCron[*/5"
+      ],
+      "exit_code": 1
+    },
+    {
+      "bug_id": "validators-camelcase-014",
+      "test_output": "........................................................................ [  8%]\n........................................................................ [ 16%]\n........................................................................ [ 24%]\n........................................................................ [ 32%]\n........................................................................ [ 40%]\n..................................................F\n=================================== FAILURES ===================================\n___________________ testReturnsTrueOnValidCron[30 3 * * 1-5] ___________________\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpgcaruj2t/camelcase/validators/tests/test_cron.py:31: in testReturnsTrueOnValidCron\n    assert cron(value)\nE   AssertionError: assert ValidationError(func=cron, args={'value': '30 3 * * 1-5'})\nE    +  where ValidationError(func=cron, args={'value': '30 3 * * 1-5'}) = cron('30 3 * * 1-5')\n=========================== short test summary info ============================\nFAILED ../../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpgcaruj2t/camelcase/validators/tests/test_cron.py::testReturnsTrueOnValidCron[30 3 * * 1-5]\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 410 passed in 0.20s\n",
+      "failing_tests": [
+        "../../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpgcaruj2t/camelcase/validators/tests/test_cron.py::testReturnsTrueOnValidCron[30"
+      ],
+      "exit_code": 1
+    },
+    {
+      "bug_id": "validators-camelcase-015",
+      "test_output": "........................................................................ [  8%]\n........................................................................ [ 16%]\n........................................................................ [ 24%]\n.......................................F\n=================================== FAILURES ===================================\n______________ testReturnsTrueOnValidCardNumber[4242424242424242] ______________\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpgcaruj2t/camelcase/validators/tests/test_card.py:43: in testReturnsTrueOnValidCardNumber\n    assert cardNumber(value)\nE   AssertionError: assert ValidationError(func=cardNumber, args={'value': '4242424242424242'})\nE    +  where ValidationError(func=cardNumber, args={'value': '4242424242424242'}) = cardNumber('4242424242424242')\n=========================== short test summary info ============================\nFAILED ../../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpgcaruj2t/camelcase/validators/tests/test_card.py::testReturnsTrueOnValidCardNumber[4242424242424242]\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 255 passed in 0.17s\n",
+      "failing_tests": [
+        "../../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpgcaruj2t/camelcase/validators/tests/test_card.py::testReturnsTrueOnValidCardNumber[4242424242424242]"
+      ],
+      "exit_code": 1
+    },
+    {
+      "bug_id": "validators-camelcase-016",
+      "test_output": "..................................................F\n=================================== FAILURES ===================================\n_____ testReturnsTrueOnValidTrxAddress[TLjfbTbpZYDQ4EoA4N5CLNgGjfbF8ZWz38] _____\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpgcaruj2t/camelcase/validators/tests/crypto_addresses/test_trx_address.py:29: in testReturnsTrueOnValidTrxAddress\n    assert trxAddress(value)\n           ^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpgcaruj2t/camelcase/validators/src/validators/utils.py:91: in wrapper\n    if func(*args, **kwargs)\n       ^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpgcaruj2t/camelcase/validators/src/validators/crypto_addresses/trx_address.py:62: in trxAddress\n    ) and _validateTrxChecksumAddress(value)\n          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpgcaruj2t/camelcase/validators/src/validators/crypto_addresses/trx_address.py:26: in _validateTrxChecksumAddress\n    address = _base58Decode(addr)\n              ^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpgcaruj2t/camelcase/validators/src/validators/crypto_addresses/trx_address.py:17: in _base58Decode\n    return num.to_bytes(25, byteorder=\"big\")\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nE   OverflowError: can't convert negative int to unsigned\n=========================== short test summary info ============================\nFAILED ../../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpgcaruj2t/camelcase/validators/tests/crypto_addresses/test_trx_address.py::testReturnsTrueOnValidTrxAddress[TLjfbTbpZYDQ4EoA4N5CLNgGjfbF8ZWz38]\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 50 passed in 0.12s\n",
+      "failing_tests": [
+        "../../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpgcaruj2t/camelcase/validators/tests/crypto_addresses/test_trx_address.py::testReturnsTrueOnValidTrxAddress[TLjfbTbpZYDQ4EoA4N5CLNgGjfbF8ZWz38]"
+      ],
+      "exit_code": 1
+    },
+    {
+      "bug_id": "validators-camelcase-017",
+      "test_output": "........................................................................ [  8%]\n........................................................................ [ 16%]\n........................................................................ [ 24%]\n........................................................................ [ 32%]\n........................................................................ [ 40%]\n........................................................................ [ 48%]\n.F\n=================================== FAILURES ===================================\n____________ testReturnsTrueOnValidDomain[example.com-False-False] _____________\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpgcaruj2t/camelcase/validators/tests/test_domain.py:33: in testReturnsTrueOnValidDomain\n    assert domain(value, rfc1034=rfc1034, rfc2782=rfc2782)\nE   assert ValidationError(func=domain, args={'reason': \"unsupported operand type(s) for -: 'str' and 'str'\", 'value': 'example.com', 'rfc1034': False, 'rfc2782': False})\nE    +  where ValidationError(func=domain, args={'reason': \"unsupported operand type(s) for -: 'str' and 'str'\", 'value': 'example.com', 'rfc1034': False, 'rfc2782': False}) = domain('example.com', rfc1034=False, rfc2782=False)\n=========================== short test summary info ============================\nFAILED ../../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpgcaruj2t/camelcase/validators/tests/test_domain.py::testReturnsTrueOnValidDomain[example.com-False-False]\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 433 passed in 0.22s\n",
+      "failing_tests": [
+        "../../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpgcaruj2t/camelcase/validators/tests/test_domain.py::testReturnsTrueOnValidDomain[example.com-False-False]"
+      ],
+      "exit_code": 1
+    },
+    {
+      "bug_id": "validators-camelcase-018",
+      "test_output": "........................................................................ [  8%]\n........................................................................ [ 16%]\n........................................................................ [ 24%]\n.......................................F\n=================================== FAILURES ===================================\n______________ testReturnsTrueOnValidCardNumber[4242424242424242] ______________\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpgcaruj2t/camelcase/validators/tests/test_card.py:43: in testReturnsTrueOnValidCardNumber\n    assert cardNumber(value)\nE   AssertionError: assert ValidationError(func=cardNumber, args={'value': '4242424242424242'})\nE    +  where ValidationError(func=cardNumber, args={'value': '4242424242424242'}) = cardNumber('4242424242424242')\n=========================== short test summary info ============================\nFAILED ../../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpgcaruj2t/camelcase/validators/tests/test_card.py::testReturnsTrueOnValidCardNumber[4242424242424242]\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 255 passed in 0.16s\n",
+      "failing_tests": [
+        "../../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpgcaruj2t/camelcase/validators/tests/test_card.py::testReturnsTrueOnValidCardNumber[4242424242424242]"
+      ],
+      "exit_code": 1
+    },
+    {
+      "bug_id": "validators-camelcase-019",
+      "test_output": "........................................................................ [  8%]\n........................................................................ [ 16%]\n........................................................................ [ 24%]\n.......................................F\n=================================== FAILURES ===================================\n______________ testReturnsTrueOnValidCardNumber[4242424242424242] ______________\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpgcaruj2t/camelcase/validators/tests/test_card.py:43: in testReturnsTrueOnValidCardNumber\n    assert cardNumber(value)\nE   AssertionError: assert ValidationError(func=cardNumber, args={'value': '4242424242424242'})\nE    +  where ValidationError(func=cardNumber, args={'value': '4242424242424242'}) = cardNumber('4242424242424242')\n=========================== short test summary info ============================\nFAILED ../../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpgcaruj2t/camelcase/validators/tests/test_card.py::testReturnsTrueOnValidCardNumber[4242424242424242]\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 255 passed in 0.17s\n",
+      "failing_tests": [
+        "../../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpgcaruj2t/camelcase/validators/tests/test_card.py::testReturnsTrueOnValidCardNumber[4242424242424242]"
+      ],
+      "exit_code": 1
+    },
+    {
+      "bug_id": "validators-camelcase-020",
+      "test_output": "........................................................................ [  8%]\n........................................................................ [ 16%]\n........................................................................ [ 24%]\n........................................F\n=================================== FAILURES ===================================\n______________ testReturnsTrueOnValidCardNumber[4000002760003184] ______________\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpgcaruj2t/camelcase/validators/tests/test_card.py:43: in testReturnsTrueOnValidCardNumber\n    assert cardNumber(value)\nE   AssertionError: assert ValidationError(func=cardNumber, args={'value': '4000002760003184'})\nE    +  where ValidationError(func=cardNumber, args={'value': '4000002760003184'}) = cardNumber('4000002760003184')\n=========================== short test summary info ============================\nFAILED ../../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpgcaruj2t/camelcase/validators/tests/test_card.py::testReturnsTrueOnValidCardNumber[4000002760003184]\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 256 passed in 0.20s\n",
+      "failing_tests": [
+        "../../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpgcaruj2t/camelcase/validators/tests/test_card.py::testReturnsTrueOnValidCardNumber[4000002760003184]"
+      ],
+      "exit_code": 1
+    }
+  ],
+  "_hidden": [
+    {
+      "bug_id": "validators-camelcase-001",
+      "file_path": "src/validators/card.py",
+      "line_number": 38,
+      "mutation_type": "eq_ne",
+      "original_text": "==",
+      "mutated_text": "!=",
+      "context": "...return (oddSum + evenSum) % 10 == 0     except ValueError:         return..."
+    },
+    {
+      "bug_id": "validators-camelcase-002",
+      "file_path": "src/validators/card.py",
+      "line_number": 62,
+      "mutation_type": "eq_ne",
+      "original_text": "==",
+      "mutated_text": "!=",
+      "context": "...return cardNumber(value) and len(value) == 16 and pattern.match(value)   @validato..."
+    },
+    {
+      "bug_id": "validators-camelcase-003",
+      "file_path": "src/validators/card.py",
+      "line_number": 84,
+      "mutation_type": "eq_ne",
+      "original_text": "==",
+      "mutated_text": "!=",
+      "context": "...return cardNumber(value) and len(value) == 16 and pattern.match(value)   @validato..."
+    },
+    {
+      "bug_id": "validators-camelcase-004",
+      "file_path": "src/validators/between.py",
+      "line_number": 65,
+      "mutation_type": "var_swap",
+      "original_text": "value",
+      "mutated_text": "minVal",
+      "context": "...t will always be `True`.     \"\"\"     if value is None:         return False      if m..."
+    },
+    {
+      "bug_id": "validators-camelcase-005",
+      "file_path": "src/validators/between.py",
+      "line_number": 65,
+      "mutation_type": "var_swap",
+      "original_text": "value",
+      "mutated_text": "maxVal",
+      "context": "...t will always be `True`.     \"\"\"     if value is None:         return False      if m..."
+    },
+    {
+      "bug_id": "validators-camelcase-006",
+      "file_path": "src/validators/between.py",
+      "line_number": 68,
+      "mutation_type": "var_swap",
+      "original_text": "maxVal",
+      "mutated_text": "value",
+      "context": "...e is None:         return False      if maxVal is None:         maxVal = AbsMax()..."
+    },
+    {
+      "bug_id": "validators-camelcase-007",
+      "file_path": "src/validators/between.py",
+      "line_number": 66,
+      "mutation_type": "true_false",
+      "original_text": "False",
+      "mutated_text": "True",
+      "context": "...\"\"     if value is None:         return False      if maxVal is None:         maxVal..."
+    },
+    {
+      "bug_id": "validators-camelcase-008",
+      "file_path": "src/validators/card.py",
+      "line_number": 40,
+      "mutation_type": "true_false",
+      "original_text": "False",
+      "mutated_text": "True",
+      "context": "...0     except ValueError:         return False   @validator def visa(value: str, /):..."
+    },
+    {
+      "bug_id": "validators-camelcase-009",
+      "file_path": "src/validators/cron.py",
+      "line_number": 9,
+      "mutation_type": "true_false",
+      "original_text": "True",
+      "mutated_text": "False",
+      "context": "...if component == \"*\":         return True      if component.isdecimal():..."
+    },
+    {
+      "bug_id": "validators-camelcase-010",
+      "file_path": "src/validators/utils.py",
+      "line_number": 83,
+      "mutation_type": "if_else_swap",
+      "original_text": "if raiseValidationError:\n                if func(*args, **kwargs):\n                    return True\n                else:\n                    raise ValidationError(func, _funcArgsAsDict(func, *args, **kwargs))\n            else:\n                return (\n                    True\n                    if func(*args, **kwargs)\n                    else ValidationError(func, _funcArgsAsDict(func, *args, **kwargs))\n                )",
+      "mutated_text": "if raiseValidationError:\n                return (\n                    True\n                    if func(*args, **kwargs)\n                    else ValidationError(func, _funcArgsAsDict(func, *args, **kwargs))\n                )\n            else:\n                if func(*args, **kwargs):\n                    return True\n                else:\n                    raise ValidationError(func, _funcArgsAsDict(func, *args, **kwargs))",
+      "context": "...nError = True          try:             if raiseValidationError:                 if func(*args, **kwargs):                     return True                 else:                     raise ValidationError(func, _funcArgsAsDict(func, *args, **kwargs))             else:                 return (                     True                     if func(*args, **kwargs)                     else ValidationError(func, _funcArgsAsDict(func, *args, **kwargs))                 )         except (ValueError, TypeError,..."
+    },
+    {
+      "bug_id": "validators-camelcase-011",
+      "file_path": "src/validators/utils.py",
+      "line_number": 95,
+      "mutation_type": "if_else_swap",
+      "original_text": "if raiseValidationError:\n                raise ValidationError(\n                    func, _funcArgsAsDict(func, *args, **kwargs), str(exp)\n                ) from exp\n            else:\n                return ValidationError(func, _funcArgsAsDict(func, *args, **kwargs), str(exp))",
+      "mutated_text": "if raiseValidationError:\n                return ValidationError(func, _funcArgsAsDict(func, *args, **kwargs), str(exp))\n            else:\n                raise ValidationError(\n                    func, _funcArgsAsDict(func, *args, **kwargs), str(exp)\n                ) from exp",
+      "context": "...rror, UnicodeError) as exp:             if raiseValidationError:                 raise ValidationError(                     func, _funcArgsAsDict(func, *args, **kwargs), str(exp)                 ) from exp             else:                 return ValidationError(func, _funcArgsAsDict(func, *args, **kwargs), str(exp))      return wrapper"
+    },
+    {
+      "bug_id": "validators-camelcase-012",
+      "file_path": "src/validators/card.py",
+      "line_number": 150,
+      "mutation_type": "in_not_in",
+      "original_text": "in",
+      "mutated_text": "not in",
+      "context": "...return cardNumber(value) and len(value) in {14, 16} and pattern.match(value)   @va..."
+    },
+    {
+      "bug_id": "validators-camelcase-013",
+      "file_path": "src/validators/cron.py",
+      "line_number": 14,
+      "mutation_type": "in_not_in",
+      "original_text": "in",
+      "mutated_text": "not in",
+      "context": "...<= int(component) <= maxVal      if \"/\" in component:         parts = component.sp..."
+    },
+    {
+      "bug_id": "validators-camelcase-014",
+      "file_path": "src/validators/cron.py",
+      "line_number": 22,
+      "mutation_type": "in_not_in",
+      "original_text": "in",
+      "mutated_text": "not in",
+      "context": "...<= int(parts[0]) <= maxVal      if \"-\" in component:         parts = component.sp..."
+    },
+    {
+      "bug_id": "validators-camelcase-015",
+      "file_path": "src/validators/card.py",
+      "line_number": 38,
+      "mutation_type": "add_sub",
+      "original_text": "+",
+      "mutated_text": "-",
+      "context": "...digits[-2::-2])         return (oddSum + evenSum) % 10 == 0     except ValueErro..."
+    },
+    {
+      "bug_id": "validators-camelcase-016",
+      "file_path": "src/validators/crypto_addresses/trx_address.py",
+      "line_number": 16,
+      "mutation_type": "add_sub",
+      "original_text": "+",
+      "mutated_text": "-",
+      "context": "...or char in addr:         num = num * 58 + alphabet.index(char)     return num.to_..."
+    },
+    {
+      "bug_id": "validators-camelcase-017",
+      "file_path": "src/validators/domain.py",
+      "line_number": 96,
+      "mutation_type": "add_sub",
+      "original_text": "+",
+      "mutated_text": "-",
+      "context": "...Last character of the gTLD             + rf\"[a-z]{trailingDot}\",             val..."
+    },
+    {
+      "bug_id": "validators-camelcase-018",
+      "file_path": "src/validators/card.py",
+      "line_number": 36,
+      "mutation_type": "plus_one",
+      "original_text": "1",
+      "mutated_text": "2",
+      "context": "...t, value))         oddSum = sum(digits[-1::-2])         evenSum = sum(sum(divmod(..."
+    },
+    {
+      "bug_id": "validators-camelcase-019",
+      "file_path": "src/validators/card.py",
+      "line_number": 36,
+      "mutation_type": "plus_one",
+      "original_text": "2",
+      "mutated_text": "3",
+      "context": "...alue))         oddSum = sum(digits[-1::-2])         evenSum = sum(sum(divmod(2 *..."
+    },
+    {
+      "bug_id": "validators-camelcase-020",
+      "file_path": "src/validators/card.py",
+      "line_number": 37,
+      "mutation_type": "plus_one",
+      "original_text": "2",
+      "mutated_text": "3",
+      "context": "...::-2])         evenSum = sum(sum(divmod(2 * d, 10)) for d in digits[-2::-2])..."
+    }
+  ]
+}

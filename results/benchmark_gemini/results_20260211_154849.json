@@ -1,0 +1,104 @@
+{
+  "metadata": {
+    "catalog": "/Users/yuan/stylebench-data/bugs/validators-camelcase.json",
+    "repo": "/Users/yuan/stylebench-data/camelcase/validators",
+    "repo_name": "validators",
+    "timestamp": "2026-02-11T15:48:49.669060",
+    "total_trials": 3
+  },
+  "results": [
+    {
+      "bug_id": "validators-camelcase-008",
+      "agent": "gemini",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 895,
+      "tests_failed": 0,
+      "tests_total": 895,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-11T15:48:20.799069",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "src/validators/country.py"
+        ],
+        "patch": "diff --git a/src/validators/country.py b/src/validators/country.py\nindex 4e0394f..5b7053c 100644\n--- a/src/validators/country.py\n+++ b/src/validators/country.py\n@@ -302,8 +302,11 @@ def countryCode(value: str, /, *, isoFormat: str = \"auto\", ignoreCase: bool = Fa\n     if not (1 < len(value) < 4):\n         return False\n \n-    if isoFormat == \"auto\" and (isoFormat := _getCodeType(value)) == \"invalid\":\n-        return False\n+    if isoFormat == \"auto\":\n+        detected_isoFormat = _getCodeType(value)\n+        if detected_isoFormat == \"invalid\":\n+            return False\n+        isoFormat = detected_isoFormat\n \n     if isoFormat == \"alpha2\":\n         return (\n",
+        "tokens_used": 0,
+        "time_seconds": 42.88714599609375,
+        "error": "Exit code: 1",
+        "agent_output": "I've identified the failing test: `testReturnsTrueOnValidCountryCode[ISR-auto]` in `tests/test_country.py`. This test expects `countryCode('ISR', isoFormat='auto')` to return `True`, but it's currently raising a `ValidationError`.\n\nMy plan is to:\n1. Read `src/validators/country.py` to understand the `countryCode` function.\n2. Review `tests/test_country.py` to clarify the expected behavior for 'ISR'.\n3. Pinpoint and fix the bug in `country.py` with minimal changes.\n\nStarting with `src/validators/country.py`.\nI've analyzed `src/validators/country.py` and identified the bug in the `countryCode` function. The `isoFormat` was not being correctly determined when set to `\"auto\"` and `ignoreCase` was `False`, leading to `countryCode('ISR', isoFormat='auto')` incorrectly returning a `ValidationError`.\n\nThe issue stems from the condition `if ignoreCase == \"auto\" and (isoFormat := _getCodeType(value)) == \"invalid\":`. Since `ignoreCase` is a boolean (defaulting to `False`), `ignoreCase == \"auto\"` is always `False`, preventing the `isoFormat` from being updated when it's `\"auto\"`.\n\nI will modify the `countryCode` function to correctly determine and update `isoFormat` when it is set to `\"auto\"`, regardless of the `ignoreCase` value.\nFix applied. Now, I'll re-run tests to verify.\nYOLO mode is enabled. All tool calls will be automatically approved.\nLoaded cached credentials.\nYOLO mode is enabled. All tool calls will be automatically approved.\nHook registry initialized with 0 hook entries\nAttempt 1 failed: You have exhausted your capacity on this model. Your quota will reset after 0s.. Retrying after 143.812193ms...\nError when talking to Gemini API Full report available at: /var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/gemini-client-error-Turn.run-sendMessageStream-2026-02-11T23-48-18-577Z.json TerminalQuotaError: You have exhausted your capacity on this model. Your quota will reset after 17h57m49s.\n    at classifyGoogleError (file:///Users/yuan/.nvm/versions/node/v22.20.0/lib/node_modules/@google/gemini-cli/node_modules/@google/gemini-cli-core/dist/src/utils/googleQuotaErrors.js:214:28)\n    at retryWithBackoff (file:///Users/yuan/.nvm/versions/node/v22.20.0/lib/node_modules/@google/gemini-cli/node_modules/@google/gemini-cli-core/dist/src/utils/retry.js:131:37)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async GeminiChat.makeApiCallAndProcessStream (file:///Users/yuan/.nvm/versions/node/v22.20.0/lib/node_modules/@google/gemini-cli/node_modules/@google/gemini-cli-core/dist/src/core/geminiChat.js:431:32)\n    at async GeminiChat.streamWithRetries (file:///Users/yuan/.nvm/versions/node/v22.20.0/lib/node_modules/@google/gemini-cli/node_modules/@google/gemini-cli-core/dist/src/core/geminiChat.js:263:40)\n    at async Turn.run (file:///Users/yuan/.nvm/versions/node/v22.20.0/lib/node_modules/@google/gemini-cli/node_modules/@google/gemini-cli-core/dist/src/core/turn.js:66:30)\n    at async GeminiClient.processTurn (file:///Users/yuan/.nvm/versions/node/v22.20.0/lib/node_modules/@google/gemini-cli/node_modules/@google/gemini-cli-core/dist/src/core/client.js:459:26)\n    at async GeminiClient.sendMessageStream (file:///Users/yuan/.nvm/versions/node/v22.20.0/lib/node_modules/@google/gemini-cli/node_modules/@google/gemini-cli-core/dist/src/core/client.js:559:20)\n    at async file:///Users/yuan/.nvm/versions/node/v22.20.0/lib/node_modules/@google/gemini-cli/dist/src/nonInteractiveCli.js:193:34\n    at async main (file:///Users/yuan/.nvm/versions/node/v22.20.0/lib/node_modules/@google/gemini-cli/dist/src/gemini.js:492:9) {\n  cause: {\n    code: 429,\n    message: 'You have exhausted your capacity on this model. Your quota will reset after 17h57m49s.',\n    details: [ [Object], [Object] ]\n  },\n  retryDelayMs: 64669458.202392995\n}\nAn unexpected critical error occurred:[object Object]\n"
+      }
+    },
+    {
+      "bug_id": "validators-camelcase-009",
+      "agent": "gemini",
+      "mode": "with_tests",
+      "evaluation": "NO_FIX",
+      "tests_passed": 386,
+      "tests_failed": 1,
+      "tests_total": 387,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-11T15:48:32.693495",
+      "fix_result": {
+        "success": false,
+        "files_changed": [
+          "src/validators/country.py"
+        ],
+        "patch": "diff --git a/src/validators/country.py b/src/validators/country.py\nindex 4e0394f..7dcb7a1 100644\n--- a/src/validators/country.py\n+++ b/src/validators/country.py\n@@ -302,7 +302,7 @@ def countryCode(value: str, /, *, isoFormat: str = \"auto\", ignoreCase: bool = Fa\n     if not (1 < len(value) < 4):\n         return False\n \n-    if isoFormat == \"auto\" and (isoFormat := _getCodeType(value)) == \"invalid\":\n+    if isoFormat == \"auto\" and (isoFormat := _getCodeType(isoFormat)) == \"invalid\":\n         return False\n \n     if isoFormat == \"alpha2\":\n",
+        "tokens_used": 0,
+        "time_seconds": 9.125201225280762,
+        "error": "Exit code: 1",
+        "agent_output": "YOLO mode is enabled. All tool calls will be automatically approved.\nLoaded cached credentials.\nYOLO mode is enabled. All tool calls will be automatically approved.\nHook registry initialized with 0 hook entries\nError when talking to Gemini API Full report available at: /var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/gemini-client-error-Turn.run-sendMessageStream-2026-02-11T23-48-32-583Z.json TerminalQuotaError: You have exhausted your capacity on this model. Your quota will reset after 17h57m35s.\n    at classifyGoogleError (file:///Users/yuan/.nvm/versions/node/v22.20.0/lib/node_modules/@google/gemini-cli/node_modules/@google/gemini-cli-core/dist/src/utils/googleQuotaErrors.js:214:28)\n    at retryWithBackoff (file:///Users/yuan/.nvm/versions/node/v22.20.0/lib/node_modules/@google/gemini-cli/node_modules/@google/gemini-cli-core/dist/src/utils/retry.js:131:37)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async GeminiChat.makeApiCallAndProcessStream (file:///Users/yuan/.nvm/versions/node/v22.20.0/lib/node_modules/@google/gemini-cli/node_modules/@google/gemini-cli-core/dist/src/core/geminiChat.js:431:32)\n    at async GeminiChat.streamWithRetries (file:///Users/yuan/.nvm/versions/node/v22.20.0/lib/node_modules/@google/gemini-cli/node_modules/@google/gemini-cli-core/dist/src/core/geminiChat.js:263:40)\n    at async Turn.run (file:///Users/yuan/.nvm/versions/node/v22.20.0/lib/node_modules/@google/gemini-cli/node_modules/@google/gemini-cli-core/dist/src/core/turn.js:66:30)\n    at async GeminiClient.processTurn (file:///Users/yuan/.nvm/versions/node/v22.20.0/lib/node_modules/@google/gemini-cli/node_modules/@google/gemini-cli-core/dist/src/core/client.js:459:26)\n    at async GeminiClient.sendMessageStream (file:///Users/yuan/.nvm/versions/node/v22.20.0/lib/node_modules/@google/gemini-cli/node_modules/@google/gemini-cli-core/dist/src/core/client.js:559:20)\n    at async file:///Users/yuan/.nvm/versions/node/v22.20.0/lib/node_modules/@google/gemini-cli/dist/src/nonInteractiveCli.js:193:34\n    at async main (file:///Users/yuan/.nvm/versions/node/v22.20.0/lib/node_modules/@google/gemini-cli/dist/src/gemini.js:492:9) {\n  cause: {\n    code: 429,\n    message: 'You have exhausted your capacity on this model. Your quota will reset after 17h57m35s.',\n    details: [ [Object], [Object] ]\n  },\n  retryDelayMs: 64655457.41196799\n}\nAn unexpected critical error occurred:[object Object]\n"
+      }
+    },
+    {
+      "bug_id": "validators-camelcase-010",
+      "agent": "gemini",
+      "mode": "with_tests",
+      "evaluation": "NO_FIX",
+      "tests_passed": 386,
+      "tests_failed": 1,
+      "tests_total": 387,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-11T15:48:49.578649",
+      "fix_result": {
+        "success": false,
+        "files_changed": [
+          "src/validators/country.py"
+        ],
+        "patch": "diff --git a/src/validators/country.py b/src/validators/country.py\nindex 4e0394f..cb3e5eb 100644\n--- a/src/validators/country.py\n+++ b/src/validators/country.py\n@@ -302,7 +302,7 @@ def countryCode(value: str, /, *, isoFormat: str = \"auto\", ignoreCase: bool = Fa\n     if not (1 < len(value) < 4):\n         return False\n \n-    if isoFormat == \"auto\" and (isoFormat := _getCodeType(value)) == \"invalid\":\n+    if isoFormat == \"auto\" and (isoFormat := _getCodeType(ignoreCase)) == \"invalid\":\n         return False\n \n     if isoFormat == \"alpha2\":\n",
+        "tokens_used": 0,
+        "time_seconds": 14.0681791305542,
+        "error": "Exit code: 1",
+        "agent_output": "I will read the file `src/validators/country.py` to understand the `countryCode` and `_getCodeType` functions and identify the cause of the `AttributeError`.\nYOLO mode is enabled. All tool calls will be automatically approved.\nLoaded cached credentials.\nYOLO mode is enabled. All tool calls will be automatically approved.\nHook registry initialized with 0 hook entries\nError when talking to Gemini API Full report available at: /var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/gemini-client-error-Turn.run-sendMessageStream-2026-02-11T23-48-49-475Z.json TerminalQuotaError: You have exhausted your capacity on this model. Your quota will reset after 17h57m18s.\n    at classifyGoogleError (file:///Users/yuan/.nvm/versions/node/v22.20.0/lib/node_modules/@google/gemini-cli/node_modules/@google/gemini-cli-core/dist/src/utils/googleQuotaErrors.js:214:28)\n    at retryWithBackoff (file:///Users/yuan/.nvm/versions/node/v22.20.0/lib/node_modules/@google/gemini-cli/node_modules/@google/gemini-cli-core/dist/src/utils/retry.js:131:37)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async GeminiChat.makeApiCallAndProcessStream (file:///Users/yuan/.nvm/versions/node/v22.20.0/lib/node_modules/@google/gemini-cli/node_modules/@google/gemini-cli-core/dist/src/core/geminiChat.js:431:32)\n    at async GeminiChat.streamWithRetries (file:///Users/yuan/.nvm/versions/node/v22.20.0/lib/node_modules/@google/gemini-cli/node_modules/@google/gemini-cli-core/dist/src/core/geminiChat.js:263:40)\n    at async Turn.run (file:///Users/yuan/.nvm/versions/node/v22.20.0/lib/node_modules/@google/gemini-cli/node_modules/@google/gemini-cli-core/dist/src/core/turn.js:66:30)\n    at async GeminiClient.processTurn (file:///Users/yuan/.nvm/versions/node/v22.20.0/lib/node_modules/@google/gemini-cli/node_modules/@google/gemini-cli-core/dist/src/core/client.js:459:26)\n    at async GeminiClient.sendMessageStream (file:///Users/yuan/.nvm/versions/node/v22.20.0/lib/node_modules/@google/gemini-cli/node_modules/@google/gemini-cli-core/dist/src/core/client.js:559:20)\n    at async file:///Users/yuan/.nvm/versions/node/v22.20.0/lib/node_modules/@google/gemini-cli/dist/src/nonInteractiveCli.js:193:34\n    at async main (file:///Users/yuan/.nvm/versions/node/v22.20.0/lib/node_modules/@google/gemini-cli/dist/src/gemini.js:492:9) {\n  cause: {\n    code: 429,\n    message: 'You have exhausted your capacity on this model. Your quota will reset after 17h57m18s.',\n    details: [ [Object], [Object] ]\n  },\n  retryDelayMs: 64638570.399126\n}\nAn unexpected critical error occurred:[object Object]\n"
+      }
+    }
+  ],
+  "summary": {
+    "by_agent": {
+      "gemini": {
+        "total": 3,
+        "passed": 1
+      }
+    },
+    "by_mode": {
+      "with_tests": {
+        "total": 3,
+        "passed": 1
+      }
+    },
+    "by_evaluation": {
+      "PASS": 1,
+      "FAIL": 0,
+      "ERROR": 0,
+      "TIMEOUT": 0,
+      "NO_FIX": 2
+    }
+  }
+}

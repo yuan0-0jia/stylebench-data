@@ -1,0 +1,55 @@
+{
+  "metadata": {
+    "catalog": "/Users/yuan/stylebench-data/bugs_canonical/python-markdown-formatting.json",
+    "repo": "/Users/yuan/stylebench-data/formatting/python-markdown",
+    "repo_name": "python-markdown",
+    "timestamp": "2026-02-15T13:56:37.399360",
+    "total_trials": 1,
+    "manifest_used": true
+  },
+  "results": [
+    {
+      "bug_id": "python-markdown-formatting-004",
+      "agent": "claude",
+      "mode": "without_tests",
+      "evaluation": "NO_FIX",
+      "tests_passed": 68,
+      "tests_failed": 1,
+      "tests_total": 69,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-15T13:56:37.202969",
+      "fix_result": {
+        "success": false,
+        "files_changed": [],
+        "patch": "(restored to original)",
+        "tokens_used": 0,
+        "time_seconds": 27.192439079284668,
+        "error": null,
+        "agent_output": "Perfect! All 88 tests pass now. \n\n## Summary\n\nI found and fixed the bug in `/private/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/stylebench_35p4sxj8/markdown/__main__.py` at lines 139-142.\n\n**The bug:** The code was checking the length of `args` (the original input arguments) instead of `values` (the remaining positional arguments after parsing). This caused the first command-line flag like `-e` to be incorrectly assigned as the input file.\n\n**The fix:** Changed:\n- `if len(args) == 0:` \u2192 `if len(values) == 0:`\n- `input_file = args[0]` \u2192 `input_file = values[0]`\n\nThe `optparse.parse_args()` method returns the parsed options and the remaining positional arguments. The original code was incorrectly using the unprocessed `args` list instead of the processed `values` list to extract the input file.\n"
+      }
+    }
+  ],
+  "summary": {
+    "by_agent": {
+      "claude": {
+        "total": 1,
+        "passed": 0
+      }
+    },
+    "by_mode": {
+      "without_tests": {
+        "total": 1,
+        "passed": 0
+      }
+    },
+    "by_evaluation": {
+      "PASS": 0,
+      "FAIL": 0,
+      "ERROR": 0,
+      "TIMEOUT": 0,
+      "NO_FIX": 1
+    }
+  }
+}
