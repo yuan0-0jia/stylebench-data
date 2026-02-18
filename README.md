@@ -1,29 +1,34 @@
 # StyleBench Data
 
-Code style variants for benchmarking coding agents. This repository contains Python projects transformed into different coding styles for use with [StyleBench](https://github.com/yuan0-0jia/stylebench).
+Code style variants, bug catalogs, and benchmark results for [StyleBench](https://github.com/yuan0-0jia/stylebench).
 
 ## Structure
 
 ```
 stylebench-data/
-├── original/           # Unmodified source repositories
+├── original/              # Unmodified source repositories
 │   ├── humanize/
 │   ├── validators/
 │   ├── python-markdown/
 │   └── more-itertools/
-├── camelcase/          # snake_case → camelCase naming
+├── camelcase/             # snake_case → camelCase naming
 │   └── ...
-├── snakecase/          # camelCase → snake_case (roundtrip from camelcase)
+├── snakecase/             # camelCase → snake_case (roundtrip from camelcase)
 │   └── ...
-├── badnames/           # Descriptive names → single-letter (a, b, c)
+├── badnames/              # Descriptive names → single-letter (a, b, c)
 │   └── ...
-├── formatting/         # Compact formatting (79 char lines, single quotes)
+├── formatting/            # Compact formatting (79 char lines, single quotes)
 │   └── ...
-└── bugs/               # Validated bug catalogs (991 total bugs)
-    ├── humanize-original.json
-    ├── humanize-camelcase.json
-    ├── ...
-    └── *-agent.json    # Agent-visible versions (no diff leakage)
+├── bugs/                  # Ad-hoc validated bug catalogs (991 total bugs)
+│   ├── humanize-original.json
+│   └── ...
+├── bugs_canonical/        # Canonical bug catalogs for benchmark (400 bugs)
+│   ├── humanize-original.json
+│   ├── humanize-camelcase.json
+│   └── ...                # 20 catalogs, 20 bugs each
+└── results/               # Benchmark results
+    ├── benchmark_claude_haiku/    # Haiku pilot + full runs
+    └── benchmark_gemini/          # Gemini runs
 ```
 
 ## Source Projects
@@ -71,34 +76,6 @@ Applies compact formatting style using ruff:
 
 **Validation**: 100% test pass rate across all projects.
 
-## Usage
-
-Clone this repository alongside the main StyleBench repo:
-
-```bash
-git clone https://github.com/yuan0-0jia/stylebench.git
-git clone https://github.com/yuan0-0jia/stylebench-data.git
-```
-
-The code repo has symlinks to this data repo for convenient access:
-
-```bash
-cd stylebench
-ls data/original/        # Points to ../stylebench-data/original
-ls data/camelcase/       # Points to ../stylebench-data/camelcase
-```
-
-Run tests on a transformed project:
-
-```bash
-cd stylebench-data/camelcase/humanize
-uv run --with pytest pytest tests/ -q
-
-# Or from the code repo via symlinks
-cd stylebench/data/camelcase/humanize
-uv run --with pytest pytest tests/ -q
-```
-
 ## Validation Results
 
 All variants have been validated to ensure tests still pass after transformation:
@@ -111,6 +88,75 @@ All variants have been validated to ensure tests still pass after transformation
 | more-itertools | 701 pass | 693 (98.9%) | 700 (99.9%) | 701 (100%) | 701 (100%) |
 
 *Minor CamelCase/SnakeCase failures are due to dynamic imports that can't be tracked statically.*
+
+## Bug Catalogs
+
+### Canonical Catalogs (`bugs_canonical/`)
+
+Used for the benchmark. The same logical mutation is applied consistently across all 5 style variants, ensuring fair comparison.
+
+- **20 catalogs** (4 repos × 5 styles), **20 bugs each** = **400 total bugs**
+- All bugs have `line_number` and `context` for precise application
+- 8+ mutation types: eq_ne, var_swap, add_sub, and_or, if_else_swap, in_not_in, plus_one, true_false (+ return_none for python-markdown)
+
+### Ad-Hoc Catalogs (`bugs/`)
+
+Used during development. Contains **991 validated bugs** across all 20 repo/style combinations:
+
+| Repo | Bugs per Style | Total |
+|------|----------------|-------|
+| humanize | 30 | 150 |
+| validators | 30 | 150 |
+| python-markdown | 50 | 250 |
+| more-itertools | 30 | 150 |
+
+### Catalog Format
+
+Each `{repo}-{style}.json` contains:
+- `bugs[]` — Agent-visible data: test failure output, failing test names
+- `_hidden[]` — Scoring data: mutation file, line number, original/mutated text, mutation type
+
+The agent never sees: mutation location, original code, or the diff.
+
+## Results
+
+Benchmark results are stored in `results/` with per-run directories:
+
+```
+results/benchmark_claude_haiku/
+├── benchmark_state.json          # Progress tracking (completed bugs, rate limit state)
+├── results_YYYYMMDD_HHMMSS_*.json  # Per-batch result files
+└── ...
+```
+
+Each result file contains:
+- `metadata` — catalog, repo, timestamp, `hit_rate_limit` flag
+- `results[]` — per-trial evaluation (PASS/FAIL/ERROR/TIMEOUT/NO_FIX)
+- `summary` — aggregated stats by agent, mode, evaluation
+
+### Pilot Results (200 trials, Haiku, 10 turns)
+
+| Metric | Value |
+|--------|-------|
+| Overall pass rate | 68.0% (136/200) |
+| with_tests | 76.0% |
+| without_tests | 60.0% |
+
+## Usage
+
+Clone this repository alongside the main StyleBench repo:
+
+```bash
+git clone https://github.com/yuan0-0jia/stylebench.git
+git clone https://github.com/yuan0-0jia/stylebench-data.git
+```
+
+Run the benchmark:
+
+```bash
+cd stylebench
+python scripts/run_benchmark.py --catalog-dir bugs_canonical
+```
 
 ## Regenerating Variants
 
@@ -130,50 +176,6 @@ python scripts/transform.py badnames stylebench-data/original/humanize stylebenc
 
 # Formatting
 python scripts/transform.py formatting stylebench-data/original/humanize stylebench-data/formatting/humanize --style compact
-```
-
-## Bug Catalogs
-
-The `bugs/` directory contains **991 validated bugs** across all 20 repo/style combinations:
-
-| Repo | Bugs per Style | Total |
-|------|----------------|-------|
-| humanize | 30 | 150 |
-| validators | 30 | 150 |
-| python-markdown | 50 | 250 |
-| more-itertools | 30 | 150 |
-
-**Mutation type distribution**: eq_ne (45%), var_swap (16%), boundary (23%), other (16%)
-
-### Catalog Format
-
-Each `{repo}-{style}.json` contains:
-- Full bug details including mutation locations (for scoring)
-- Test failure output
-
-Each `{repo}-{style}-agent.json` contains:
-- **Agent-visible data only**: test failure output, failing test names
-- **No diff leakage**: mutation locations are hidden from agents
-
-Example agent-visible data:
-```json
-{
-  "bug_id": "humanize-camel-001",
-  "test_output": "FAILED tests/test_time.py::test_naturaldelta - AssertionError...",
-  "failing_tests": ["tests/test_time.py::test_naturaldelta"]
-}
-```
-
-### Regenerating Bug Catalogs
-
-```bash
-cd stylebench
-
-# Generate bugs for all repo/style combinations
-python scripts/generate_bugs.py --all --output ../stylebench-data/bugs/
-
-# Generate for a single variant
-python scripts/generate_bugs.py humanize camelcase --count 50
 ```
 
 ## License
