@@ -1,0 +1,154 @@
+{
+  "metadata": {
+    "catalog": "/Users/yuan/stylebench-data/bugs_canonical/humanize-formatting.json",
+    "repo": "/Users/yuan/stylebench-data/formatting/humanize",
+    "repo_name": "humanize",
+    "timestamp": "2026-02-18T09:46:15.322290",
+    "total_trials": 5,
+    "manifest_used": false
+  },
+  "results": [
+    {
+      "bug_id": "humanize-formatting-001",
+      "agent": "claude",
+      "mode": "without_tests",
+      "evaluation": "FAIL",
+      "tests_passed": 0,
+      "tests_failed": 0,
+      "tests_total": 0,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-18T09:44:20.674980",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "src/humanize/filesize.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 28.153233289718628,
+        "error": null,
+        "agent_output": "Error: Reached max turns (10)",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "humanize-formatting-002",
+      "agent": "claude",
+      "mode": "without_tests",
+      "evaluation": "NO_FIX",
+      "tests_passed": 0,
+      "tests_failed": 0,
+      "tests_total": 0,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-18T09:44:49.245914",
+      "fix_result": {
+        "success": false,
+        "files_changed": [],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 26.270044088363647,
+        "error": null,
+        "agent_output": "Error: Reached max turns (10)",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "humanize-formatting-003",
+      "agent": "claude",
+      "mode": "without_tests",
+      "evaluation": "FAIL",
+      "tests_passed": 0,
+      "tests_failed": 0,
+      "tests_total": 0,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-18T09:45:16.630604",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "src/humanize/_version.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 22.91163396835327,
+        "error": null,
+        "agent_output": "Perfect! The bug has been fixed. The issue was in `/private/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/stylebench_qcyq77f8/src/humanize/_version.py` on line 13.\n\n**The Bug:** \nThe code had `TYPE_CHECKING = False` instead of importing `TYPE_CHECKING` from the `typing` module.\n\n**The Fix:**\nChanged line 13 from:\n```python\nTYPE_CHECKING = False\n```\n\nTo:\n```python\nfrom typing import TYPE_CHECKING\n```\n\nThis is a standard Python pattern where `TYPE_CHECKING` is a constant from the `typing` module that is `False` at runtime but `True` during static type checking. The conditional block ensures that type imports and definitions only execute during type checking, not at runtime, which is the proper way to handle this pattern.\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "humanize-formatting-004",
+      "agent": "claude",
+      "mode": "without_tests",
+      "evaluation": "FAIL",
+      "tests_passed": 0,
+      "tests_failed": 0,
+      "tests_total": 0,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-18T09:45:46.164323",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "src/humanize/filesize.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 25.052335739135742,
+        "error": null,
+        "agent_output": "Perfect! I found and fixed the bug. The issue was in the `naturalsize()` function in `filesize.py`:\n\n**The Bug:** Line 80 had `if value:` instead of `if gnu:`\n\nThis caused the function to incorrectly use GNU-style formatting whenever any non-zero value was passed, instead of only when the `gnu` parameter is explicitly set to `True`.\n\n**The Fix:** Changed line 80 from:\n```python\nif value:\n```\nto:\n```python\nif gnu:\n```\n\nThis ensures the function properly respects the `gnu`, `binary`, and default (decimal) format parameters as documented in the function's docstring and examples.\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "humanize-formatting-005",
+      "agent": "claude",
+      "mode": "without_tests",
+      "evaluation": "NO_FIX",
+      "tests_passed": 0,
+      "tests_failed": 0,
+      "tests_total": 0,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-18T09:46:15.274718",
+      "fix_result": {
+        "success": false,
+        "files_changed": [],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 26.88868999481201,
+        "error": null,
+        "agent_output": "Error: Reached max turns (10)",
+        "rate_limited": false
+      }
+    }
+  ],
+  "summary": {
+    "by_agent": {
+      "claude": {
+        "total": 5,
+        "passed": 0
+      }
+    },
+    "by_mode": {
+      "without_tests": {
+        "total": 5,
+        "passed": 0
+      }
+    },
+    "by_evaluation": {
+      "PASS": 0,
+      "FAIL": 3,
+      "ERROR": 0,
+      "TIMEOUT": 0,
+      "NO_FIX": 2
+    }
+  }
+}

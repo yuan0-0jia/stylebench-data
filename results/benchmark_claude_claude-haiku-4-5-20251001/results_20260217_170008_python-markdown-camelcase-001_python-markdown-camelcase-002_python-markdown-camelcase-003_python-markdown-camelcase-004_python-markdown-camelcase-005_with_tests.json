@@ -1,0 +1,105 @@
+{
+  "metadata": {
+    "catalog": "/Users/yuan/stylebench-data/bugs_canonical/python-markdown-camelcase.json",
+    "repo": "/Users/yuan/stylebench-data/camelcase/python-markdown",
+    "repo_name": "python-markdown",
+    "timestamp": "2026-02-17T17:00:08.830149",
+    "total_trials": 3,
+    "manifest_used": false
+  },
+  "results": [
+    {
+      "bug_id": "python-markdown-camelcase-001",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 776,
+      "tests_failed": 0,
+      "tests_total": 776,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-17T16:59:08.736367",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "markdown/__main__.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 17.502290964126587,
+        "error": null,
+        "agent_output": "Excellent! All tests pass now. \n\n## Summary\n\nThe bug was in `/private/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/stylebench_mhmsxyvo/markdown/__main__.py` at lines 92-95. The condition checking the number of arguments was inverted:\n\n**Before (buggy):**\n```python\nif len(args) != 0:\n    inputFile = None\nelse:\n    inputFile = args[0]  # IndexError when args is empty\n```\n\n**After (fixed):**\n```python\nif len(args) == 0:\n    inputFile = None\nelse:\n    inputFile = args[0]\n```\n\nThe logic now correctly:\n- Sets `inputFile = None` when there are **no** arguments (assuming input from STDIN)\n- Sets `inputFile = args[0]` when there **is** an argument (the input file)\n\nAll 88 tests now pass.\n"
+      }
+    },
+    {
+      "bug_id": "python-markdown-camelcase-002",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 776,
+      "tests_failed": 0,
+      "tests_total": 776,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-17T16:59:34.221831",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "markdown/__meta__.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 20.95359492301941,
+        "error": null,
+        "agent_output": "Perfect! The bug has been fixed. \n\n## Summary\n\n**Bug Found:** In `/private/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/stylebench__bevxkfw/markdown/__meta__.py:39`, the logic for determining the number of version parts was inverted.\n\n**The Issue:** \n- The condition `parts = 2 if version_info[2] != 0 else 3` was backwards\n- When the patch version was non-zero (e.g., 2), it should include 3 parts (major.minor.patch), but it was only including 2 parts\n\n**The Fix:**\nChanged line 39 from:\n```python\nparts = 2 if version_info[2] != 0 else 3\n```\nto:\n```python\nparts = 3 if version_info[2] != 0 else 2\n```\n\nThis ensures:\n- When patch != 0: include all 3 parts (e.g., `1.1.2`)\n- When patch == 0: include only 2 parts (e.g., `1.2`)\n\nThe test now passes with the corrected version formatting.\n"
+      }
+    },
+    {
+      "bug_id": "python-markdown-camelcase-003",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 776,
+      "tests_failed": 0,
+      "tests_total": 776,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-17T16:59:53.893830",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "markdown/__meta__.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 14.614475965499878,
+        "error": null,
+        "agent_output": "Excellent! The bug has been fixed. \n\n## Summary\n\nThe bug was in `/markdown/__meta__.py` at line 42. The logic condition was inverted:\n\n**Original (buggy) code:**\n```python\nif version_info[3] != 'dev':\n    v += '.dev' + str(version_info[4])\n```\n\n**Fixed code:**\n```python\nif version_info[3] == 'dev':\n    v += '.dev' + str(version_info[4])\n```\n\nThe condition was checking the opposite of what it should. It was only adding the '.dev' prefix when the version type was **not** 'dev', which caused a KeyError when trying to look up 'dev' in the mapping dictionary. The fix changes it to correctly add '.dev' when the version type **is** 'dev'.\n"
+      }
+    }
+  ],
+  "summary": {
+    "by_agent": {
+      "claude": {
+        "total": 5,
+        "passed": 3
+      }
+    },
+    "by_mode": {
+      "with_tests": {
+        "total": 5,
+        "passed": 3
+      }
+    },
+    "by_evaluation": {
+      "PASS": 3,
+      "FAIL": 0,
+      "ERROR": 0,
+      "TIMEOUT": 0,
+      "NO_FIX": 2
+    }
+  }
+}

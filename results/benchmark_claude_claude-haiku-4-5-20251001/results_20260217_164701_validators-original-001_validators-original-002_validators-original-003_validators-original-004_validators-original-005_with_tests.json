@@ -1,0 +1,153 @@
+{
+  "metadata": {
+    "catalog": "/Users/yuan/stylebench-data/bugs_canonical/validators-original.json",
+    "repo": "/Users/yuan/stylebench-data/original/validators",
+    "repo_name": "validators",
+    "timestamp": "2026-02-17T16:47:01.832784",
+    "total_trials": 5,
+    "manifest_used": false
+  },
+  "results": [
+    {
+      "bug_id": "validators-original-001",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 895,
+      "tests_failed": 0,
+      "tests_total": 895,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-17T16:44:52.823694",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "src/validators/card.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 30.117933750152588,
+        "error": null,
+        "agent_output": "Perfect! \n\n## Summary\n\nI found and fixed the bug in the repository. The issue was in the `card_number()` function at line 38 of `/private/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/stylebench_eb3wo3ie/src/validators/card.py`.\n\n**The Bug:**\nThe Luhn algorithm validation had inverted logic:\n```python\nreturn (odd_sum + even_sum) % 10 != 0  # WRONG\n```\n\n**The Fix:**\nChanged it to the correct logic:\n```python\nreturn (odd_sum + even_sum) % 10 == 0  # CORRECT\n```\n\nAccording to the Luhn algorithm, a valid card number should have a sum of digits that is divisible by 10. The original code was returning `True` when the sum was NOT divisible by 10, which is backwards. Now all 256 tests pass successfully.\n"
+      }
+    },
+    {
+      "bug_id": "validators-original-002",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 895,
+      "tests_failed": 0,
+      "tests_total": 895,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-17T16:45:28.042963",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "src/validators/card.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 32.12705087661743,
+        "error": null,
+        "agent_output": "Perfect! **Bug fixed!**\n\n## Summary\n\nThe bug was in the `visa()` function at line 62 of `/src/validators/card.py`:\n\n**Before (incorrect):**\n```python\nreturn card_number(value) and len(value) != 16 and pattern.match(value)\n```\n\n**After (correct):**\n```python\nreturn card_number(value) and len(value) == 16 and pattern.match(value)\n```\n\n**Issue:** The condition `len(value) != 16` was rejecting valid Visa cards (which are always 16 digits). It should be `len(value) == 16` to accept cards that are exactly 16 digits long.\n\nThe fix ensures that the `visa()` function correctly validates Visa card numbers by:\n1. Checking if the card passes Luhn's algorithm (via `card_number()`)\n2. Verifying the length is exactly 16 digits\n3. Confirming the card number starts with \"4\"\n\nAll 126 card validation tests now pass.\n"
+      }
+    },
+    {
+      "bug_id": "validators-original-003",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 895,
+      "tests_failed": 0,
+      "tests_total": 895,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-17T16:45:59.623955",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "src/validators/card.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 28.732273817062378,
+        "error": null,
+        "agent_output": "Perfect! All 895 tests pass. \n\n## Summary\n\nI found and fixed the bug in the `mastercard()` function at line 84 of `/private/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/stylebench_j9ceke4j/src/validators/card.py`.\n\n**The Issue:** The length check was inverted. It was checking `len(value) != 16` (not equal to 16) when it should have been checking `len(value) == 16` (equal to 16).\n\n**The Fix:** Changed line 84 from:\n```python\nreturn card_number(value) and len(value) != 16 and pattern.match(value)\n```\n\nto:\n```python\nreturn card_number(value) and len(value) == 16 and pattern.match(value)\n```\n\nThis logic error was causing valid 16-digit Mastercard numbers (like \"5555555555554444\") to be rejected. The fix now correctly validates Mastercard numbers by ensuring they are exactly 16 digits long and match one of the valid Mastercard prefixes (51, 52, 53, 54, 55, 22, 23, 24, 25, 26, 27).\n"
+      }
+    },
+    {
+      "bug_id": "validators-original-004",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 895,
+      "tests_failed": 0,
+      "tests_total": 895,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-17T16:46:27.946487",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "src/validators/between.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 25.611142873764038,
+        "error": null,
+        "agent_output": "Excellent! All 895 tests pass now. \n\n## Summary\n\nI found and fixed the bug in `/private/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/stylebench_srs2tk_x/src/validators/between.py`.\n\n**The Bug:**\nLines 65-66 had an early return that would immediately return `False` whenever `min_val` was `None`:\n```python\nif min_val is None:\n    return False\n```\n\nThis prevented valid comparisons when only a `max_val` was provided (or neither was provided).\n\n**The Fix:**\nI removed the early return statement. The function now properly handles `None` values by converting them to `AbsMin()` or `AbsMax()` sentinel objects, which allows comparison logic to work correctly:\n- When `min_val is None`, it gets set to `AbsMin()` (representing negative infinity)\n- When `max_val is None`, it gets set to `AbsMax()` (representing positive infinity)\n\nThis allows the function to work correctly for all test cases, including `between(12, min_val=None, max_val=14)` which now properly returns `True`.\n"
+      }
+    },
+    {
+      "bug_id": "validators-original-005",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 895,
+      "tests_failed": 0,
+      "tests_total": 895,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-17T16:47:01.771104",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "src/validators/between.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 31.005094051361084,
+        "error": null,
+        "agent_output": "Perfect! All 895 tests pass. \n\n## Summary\n\nI found and fixed the bug in `/private/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/stylebench_j1big_0x/src/validators/between.py`.\n\n**The bug:** Lines 65-68 had incorrect logic. The original code was:\n```python\nif max_val is None:\n    return False\n\nif max_val is None:\n    max_val = AbsMax()\n```\n\nThis caused the function to immediately return `False` when `max_val` was `None`, which is a valid case (the validator should work with just a minimum value or just a maximum value).\n\n**The fix:** Changed line 65 from `if max_val is None:` to `if max_val is None:` with the proper setting of `AbsMax()`, and removed the early `return False`. The corrected logic now properly:\n- Sets `max_val` to `AbsMax()` when `max_val is None`\n- Sets `min_val` to `AbsMin()` when `min_val is None`\n\nThis allows the validator to handle cases where only one bound is provided, as intended by the design.\n"
+      }
+    }
+  ],
+  "summary": {
+    "by_agent": {
+      "claude": {
+        "total": 5,
+        "passed": 5
+      }
+    },
+    "by_mode": {
+      "with_tests": {
+        "total": 5,
+        "passed": 5
+      }
+    },
+    "by_evaluation": {
+      "PASS": 5,
+      "FAIL": 0,
+      "ERROR": 0,
+      "TIMEOUT": 0,
+      "NO_FIX": 0
+    }
+  }
+}

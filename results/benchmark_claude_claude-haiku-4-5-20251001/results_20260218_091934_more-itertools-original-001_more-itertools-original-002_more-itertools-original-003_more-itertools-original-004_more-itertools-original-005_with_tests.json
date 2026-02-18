@@ -1,0 +1,158 @@
+{
+  "metadata": {
+    "catalog": "/Users/yuan/stylebench-data/bugs_canonical/more-itertools-original.json",
+    "repo": "/Users/yuan/stylebench-data/original/more-itertools",
+    "repo_name": "more-itertools",
+    "timestamp": "2026-02-18T09:19:34.188399",
+    "total_trials": 5,
+    "manifest_used": false
+  },
+  "results": [
+    {
+      "bug_id": "more-itertools-original-001",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 701,
+      "tests_failed": 0,
+      "tests_total": 701,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-18T09:17:28.574841",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "more_itertools/more.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 21.72489285469055,
+        "error": null,
+        "agent_output": "Excellent! All tests pass. \n\n## Summary\n\nI found and fixed the bug in the `chunked` function at `/private/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/stylebench_1xk1hcue/more_itertools/more.py:235`.\n\n**The bug:** The condition was inverted. It was checking `if len(chunk) == n:` when it should check `if len(chunk) != n:`.\n\n**What was happening:**\n- When `strict=True`, the function should raise an error only if a chunk is **incomplete** (not divisible by n)\n- The buggy code was raising an error when chunks **were complete** (had exactly n elements)\n- This caused `chunked('ABCDEF', 3, strict=True)` to incorrectly raise an error, even though 'ABCDEF' is perfectly divisible into chunks of 3\n\n**The fix:** Changed line 235 from `if len(chunk) == n:` to `if len(chunk) != n:`, so it now correctly raises an error only when chunks are incomplete.\n\nAll 6 chunked tests now pass, including the previously failing `test_strict_being_true` test.\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "more-itertools-original-002",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 701,
+      "tests_failed": 0,
+      "tests_total": 701,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-18T09:18:07.134615",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "more_itertools/more.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 28.519402980804443,
+        "error": null,
+        "agent_output": "Perfect! All tests pass. \n\n## Summary\n\nI found and fixed the bug in `/private/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/stylebench_zb7s_krs/more_itertools/more.py` at line 846.\n\n**The Bug:** The condition `if (r != size)` was backwards, causing the algorithm to use the wrong generator function:\n- When `r == size` (full permutations), it should use `_full`, but it was using `_partial`\n- This caused `_partial` to receive an empty `tail` list, leading to an `IndexError` when trying to access `tail[-1]`\n\n**The Fix:** Changed line 846 from:\n```python\nalgorithm = _full if (r != size) else partial(_partial, r=r)\n```\nto:\n```python\nalgorithm = _full if (r == size) else partial(_partial, r=r)\n```\n\nThis ensures that when generating all permutations (where `r` equals the size of the input), the correct `_full` algorithm is used, which handles the entire set correctly. All 564 tests now pass.\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "more-itertools-original-003",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 701,
+      "tests_failed": 0,
+      "tests_total": 701,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-18T09:18:44.848004",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "more_itertools/more.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 27.310568809509277,
+        "error": null,
+        "agent_output": "Excellent! All 564 tests pass. \n\n## Summary\n\nI found and fixed the bug in the `intersperse` function at `/private/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/stylebench_xzks1iir/more_itertools/more.py:933`.\n\n**The bug:** The condition was `if n != 0:` which incorrectly raised an error when `n` had ANY value. This prevented the function from working at all.\n\n**The fix:** Changed the condition to `if n <= 0:` so it only raises an error when `n` is less than or equal to 0, which is the correct validation logic.\n\nAll tests now pass successfully!\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "more-itertools-original-004",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 701,
+      "tests_failed": 0,
+      "tests_total": 701,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-18T09:19:10.484160",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "more_itertools/more.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 14.394767045974731,
+        "error": null,
+        "agent_output": "Excellent! The test now passes. The bug was fixed by correcting the variable name in the destructuring assignment of `dl_split(x)` from `yx_hi, xx_lo` to `xx_hi, xx_lo`.\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "more-itertools-original-005",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 701,
+      "tests_failed": 0,
+      "tests_total": 701,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-18T09:19:34.174846",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "more_itertools/more.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 12.067264795303345,
+        "error": null,
+        "agent_output": "Perfect! The bug has been fixed. \n\n**Summary:**\n- **Bug**: Line 198 in `more_itertools/more.py` had a typo: `xy_hi, yy_lo = dl_split(y)` \n- **Fix**: Changed `xy_hi` to `yy_hi` so the variable correctly represents the high part of `y`\n- **Result**: The test now passes successfully\n\nThe issue was a simple variable naming error where the result of splitting `y` was assigned to `xy_hi` instead of `yy_hi`, causing `yy_hi` to be undefined when used on line 199.\n",
+        "rate_limited": false
+      }
+    }
+  ],
+  "summary": {
+    "by_agent": {
+      "claude": {
+        "total": 5,
+        "passed": 5
+      }
+    },
+    "by_mode": {
+      "with_tests": {
+        "total": 5,
+        "passed": 5
+      }
+    },
+    "by_evaluation": {
+      "PASS": 5,
+      "FAIL": 0,
+      "ERROR": 0,
+      "TIMEOUT": 0,
+      "NO_FIX": 0
+    }
+  }
+}

@@ -1,0 +1,151 @@
+{
+  "metadata": {
+    "catalog": "/Users/yuan/stylebench-data/bugs_canonical/more-itertools-original.json",
+    "repo": "/Users/yuan/stylebench-data/original/more-itertools",
+    "repo_name": "more-itertools",
+    "timestamp": "2026-02-17T20:42:19.012418",
+    "total_trials": 5,
+    "manifest_used": false
+  },
+  "results": [
+    {
+      "bug_id": "more-itertools-original-001",
+      "agent": "claude",
+      "mode": "without_tests",
+      "evaluation": "PASS",
+      "tests_passed": 701,
+      "tests_failed": 0,
+      "tests_total": 701,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-17T20:39:55.939528",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "more_itertools/more.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 28.419928073883057,
+        "error": null,
+        "agent_output": "Error: Reached max turns (10)"
+      }
+    },
+    {
+      "bug_id": "more-itertools-original-002",
+      "agent": "claude",
+      "mode": "without_tests",
+      "evaluation": "PASS",
+      "tests_passed": 701,
+      "tests_failed": 0,
+      "tests_total": 701,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-17T20:40:34.773345",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "more_itertools/more.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 28.070019721984863,
+        "error": null,
+        "agent_output": "Error: Reached max turns (10)"
+      }
+    },
+    {
+      "bug_id": "more-itertools-original-003",
+      "agent": "claude",
+      "mode": "without_tests",
+      "evaluation": "NO_FIX",
+      "tests_passed": 58,
+      "tests_failed": 1,
+      "tests_total": 59,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-17T20:40:59.503757",
+      "fix_result": {
+        "success": false,
+        "files_changed": [],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 23.857187032699585,
+        "error": null,
+        "agent_output": "Error: Reached max turns (10)"
+      }
+    },
+    {
+      "bug_id": "more-itertools-original-004",
+      "agent": "claude",
+      "mode": "without_tests",
+      "evaluation": "PASS",
+      "tests_passed": 701,
+      "tests_failed": 0,
+      "tests_total": 701,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-17T20:41:38.210957",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "more_itertools/more.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 26.618677854537964,
+        "error": null,
+        "agent_output": "Error: Reached max turns (10)"
+      }
+    },
+    {
+      "bug_id": "more-itertools-original-005",
+      "agent": "claude",
+      "mode": "without_tests",
+      "evaluation": "PASS",
+      "tests_passed": 701,
+      "tests_failed": 0,
+      "tests_total": 701,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-17T20:42:18.998622",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "more_itertools/more.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 28.806174755096436,
+        "error": null,
+        "agent_output": "Perfect! The fix has been applied correctly. Let me verify the logic is now correct:\n\n**Bug Summary:**\n- **Location:** `more_itertools/more.py`, line 198 in the `dl_mul` function\n- **Issue:** Variable name typo - `xy_hi` should be `yy_hi`\n- **Original code:** `xy_hi, yy_lo = dl_split(y)`\n- **Fixed code:** `yy_hi, yy_lo = dl_split(y)`\n\n**Why this was the bug:**\nThe function implements lossless multiplication using Dekker-Veltkamp splitting. When splitting input `y`, the high and low components should be named `yy_hi` and `yy_lo` (consistent naming convention). The code was incorrectly naming the high component `xy_hi`, which caused a `NameError` on line 199 when trying to use the undefined variable `yy_hi`.\n\n**Code logic verification:**\n- Line 197: Split `x` \u2192 `xx_hi, xx_lo`\n- Line 198: Split `y` \u2192 `yy_hi, yy_lo` \u2713 (now fixed)\n- Line 199: Uses `yy_hi` \u2713 (now defined)\n- Line 200: Uses `yy_lo` and `yy_hi` \u2713 (now both defined)\n- Line 202: Uses `yy_lo` \u2713 (now defined)\n\nThe fix is minimal and corrects the simple typo that was causing the test failure.\n"
+      }
+    }
+  ],
+  "summary": {
+    "by_agent": {
+      "claude": {
+        "total": 5,
+        "passed": 4
+      }
+    },
+    "by_mode": {
+      "without_tests": {
+        "total": 5,
+        "passed": 4
+      }
+    },
+    "by_evaluation": {
+      "PASS": 4,
+      "FAIL": 0,
+      "ERROR": 0,
+      "TIMEOUT": 0,
+      "NO_FIX": 1
+    }
+  }
+}

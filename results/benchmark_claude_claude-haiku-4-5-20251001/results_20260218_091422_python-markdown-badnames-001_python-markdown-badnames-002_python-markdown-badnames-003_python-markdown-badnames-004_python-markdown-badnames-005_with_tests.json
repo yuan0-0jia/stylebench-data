@@ -1,0 +1,158 @@
+{
+  "metadata": {
+    "catalog": "/Users/yuan/stylebench-data/bugs_canonical/python-markdown-badnames.json",
+    "repo": "/Users/yuan/stylebench-data/badnames/python-markdown",
+    "repo_name": "python-markdown",
+    "timestamp": "2026-02-18T09:14:22.634307",
+    "total_trials": 5,
+    "manifest_used": false
+  },
+  "results": [
+    {
+      "bug_id": "python-markdown-badnames-001",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 776,
+      "tests_failed": 0,
+      "tests_total": 776,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-18T09:12:40.167749",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "markdown/__main__.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 19.171583890914917,
+        "error": null,
+        "agent_output": "Excellent! All tests pass. \n\n## Summary\n\nI found and fixed the bug in `/private/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/stylebench_mwbkvqi5/markdown/__main__.py` at lines 92-95.\n\n**The Bug:** The conditional logic was inverted. When there were arguments (`len(args) != 0`), it set `c = None`. When there were no arguments (`len(args) == 0`), it tried to access `args[0]`, causing an `IndexError`.\n\n**The Fix:** I swapped the logic so that:\n- When `len(args) != 0`: `c = args[0]` (get the first argument)\n- When `len(args) == 0`: `c = None` (no arguments)\n\nAll 88 tests now pass, including the previously failing `testEncodingOption` test.\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "python-markdown-badnames-002",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 776,
+      "tests_failed": 0,
+      "tests_total": 776,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-18T09:13:05.371603",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "markdown/__meta__.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 21.13156294822693,
+        "error": null,
+        "agent_output": "Perfect! The bug has been fixed. Here's a summary:\n\n## Bug Fix Summary\n\n**Location:** `/markdown/__meta__.py:39`\n\n**Issue:** The logic for determining how many version components to include was inverted.\n\n**The Bug:**\n```python\nb = 2 if version_info[2] != 0 else 3  # Wrong logic\n```\n\nThis meant: \"if patch is NOT 0, use only 2 parts (major.minor)\"\n\n**The Fix:**\n```python\nb = 3 if version_info[2] != 0 else 2  # Correct logic\n```\n\nNow: \"if patch is NOT 0, use 3 parts (major.minor.patch)\"\n\nThis ensures that:\n- `(1, 1, 2, 'dev', 0)` \u2192 `\"1.1.2.dev0\"` \u2713 (patch is 2, so include all 3 parts)\n- `(1, 2, 0, 'final', 0)` \u2192 `\"1.2\"` \u2713 (patch is 0, so only include 2 parts)\n\nAll tests now pass!\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "python-markdown-badnames-003",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 776,
+      "tests_failed": 0,
+      "tests_total": 776,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-18T09:13:22.650029",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "markdown/__meta__.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 13.31831407546997,
+        "error": null,
+        "agent_output": "Perfect! The bug is fixed. The issue was in the conditional logic at line 42 of `markdown/__meta__.py`:\n\n**The Problem:**\n- The condition `if version_info[3] != 'dev':` was checking if it's NOT 'dev', then adding `.dev` - which is backwards\n- When `version_info[3]` was actually 'dev', it would skip this block and go to the `elif`, which tried to look up 'dev' in the dictionary `a` (which only has 'alpha', 'beta', 'rc'), causing the KeyError\n\n**The Fix:**\nChanged line 42 from `if version_info[3] != 'dev':` to `if version_info[3] == 'dev':` so it correctly adds the `.dev` prefix when the version type is actually 'dev'.\n\nThe test now passes!\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "python-markdown-badnames-004",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 776,
+      "tests_failed": 0,
+      "tests_total": 776,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-18T09:13:49.899015",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "markdown/__main__.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 23.921701192855835,
+        "error": null,
+        "agent_output": "Error: Reached max turns (10)",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "python-markdown-badnames-005",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 776,
+      "tests_failed": 0,
+      "tests_total": 776,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-18T09:14:22.490274",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "markdown/__main__.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 29.101847887039185,
+        "error": null,
+        "agent_output": "Perfect! All tests pass now. \n\n## Summary\n\nThe bug was in the `parse_options` function in `markdown/__main__.py`. The issue was on lines 92-95:\n\n**The Problem:** After calling `f.parse_args(args, values)`, the code was checking `len(args)` and using `args[0]` to determine the input file. However, `args` is the original argument list passed to the function and doesn't reflect what's left after option parsing. Instead, the remaining positional arguments are returned in the `values` list by `parse_args`.\n\n**The Fix:** Changed the code to check `len(values)` and use `values[0]` instead of checking `args`:\n- Line 92: `if len(args) == 0:` \u2192 `if len(values) == 0:`\n- Line 95: `c = args[0]` \u2192 `c = values[0]`\n\nThis ensures that when parsing options like `['-e', 'utf-8']`, the function correctly identifies that there are no positional arguments (input file) and sets `input` to `None`, rather than incorrectly treating the `-e` flag as a positional argument.\n",
+        "rate_limited": false
+      }
+    }
+  ],
+  "summary": {
+    "by_agent": {
+      "claude": {
+        "total": 5,
+        "passed": 5
+      }
+    },
+    "by_mode": {
+      "with_tests": {
+        "total": 5,
+        "passed": 5
+      }
+    },
+    "by_evaluation": {
+      "PASS": 5,
+      "FAIL": 0,
+      "ERROR": 0,
+      "TIMEOUT": 0,
+      "NO_FIX": 0
+    }
+  }
+}

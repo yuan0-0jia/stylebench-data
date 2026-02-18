@@ -1,0 +1,151 @@
+{
+  "metadata": {
+    "catalog": "/Users/yuan/stylebench-data/bugs_canonical/more-itertools-formatting.json",
+    "repo": "/Users/yuan/stylebench-data/formatting/more-itertools",
+    "repo_name": "more-itertools",
+    "timestamp": "2026-02-17T20:54:25.945977",
+    "total_trials": 5,
+    "manifest_used": false
+  },
+  "results": [
+    {
+      "bug_id": "more-itertools-formatting-001",
+      "agent": "claude",
+      "mode": "without_tests",
+      "evaluation": "PASS",
+      "tests_passed": 701,
+      "tests_failed": 0,
+      "tests_total": 701,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-17T20:52:16.650210",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "more_itertools/more.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 31.57840585708618,
+        "error": null,
+        "agent_output": "Error: Reached max turns (10)"
+      }
+    },
+    {
+      "bug_id": "more-itertools-formatting-002",
+      "agent": "claude",
+      "mode": "without_tests",
+      "evaluation": "NO_FIX",
+      "tests_passed": 37,
+      "tests_failed": 1,
+      "tests_total": 38,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-17T20:52:47.188772",
+      "fix_result": {
+        "success": false,
+        "files_changed": [],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 29.788290977478027,
+        "error": null,
+        "agent_output": "Error: Reached max turns (10)"
+      }
+    },
+    {
+      "bug_id": "more-itertools-formatting-003",
+      "agent": "claude",
+      "mode": "without_tests",
+      "evaluation": "PASS",
+      "tests_passed": 701,
+      "tests_failed": 0,
+      "tests_total": 701,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-17T20:53:26.312178",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "more_itertools/more.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 28.30451989173889,
+        "error": null,
+        "agent_output": "Error: Reached max turns (10)"
+      }
+    },
+    {
+      "bug_id": "more-itertools-formatting-004",
+      "agent": "claude",
+      "mode": "without_tests",
+      "evaluation": "PASS",
+      "tests_passed": 701,
+      "tests_failed": 0,
+      "tests_total": 701,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-17T20:53:48.846779",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "more_itertools/more.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 11.05932903289795,
+        "error": null,
+        "agent_output": "Perfect! The bug was a simple variable naming error. On line 188, the variable was incorrectly named `yx_hi` instead of `xx_hi`. This caused a `NameError` when line 190 tried to use the undefined `xx_hi` variable.\n\nThe fix changes:\n- `yx_hi, xx_lo = dl_split(x)` \u2192 `xx_hi, xx_lo = dl_split(x)`\n\nThis ensures that the high and low components of `x` are correctly unpacked and assigned to the proper variable names that are used in the subsequent calculations.\n"
+      }
+    },
+    {
+      "bug_id": "more-itertools-formatting-005",
+      "agent": "claude",
+      "mode": "without_tests",
+      "evaluation": "PASS",
+      "tests_passed": 701,
+      "tests_failed": 0,
+      "tests_total": 701,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-17T20:54:25.931966",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "more_itertools/more.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 25.93468403816223,
+        "error": null,
+        "agent_output": "Error: Reached max turns (10)"
+      }
+    }
+  ],
+  "summary": {
+    "by_agent": {
+      "claude": {
+        "total": 5,
+        "passed": 4
+      }
+    },
+    "by_mode": {
+      "without_tests": {
+        "total": 5,
+        "passed": 4
+      }
+    },
+    "by_evaluation": {
+      "PASS": 4,
+      "FAIL": 0,
+      "ERROR": 0,
+      "TIMEOUT": 0,
+      "NO_FIX": 1
+    }
+  }
+}

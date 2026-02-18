@@ -1,0 +1,158 @@
+{
+  "metadata": {
+    "catalog": "/Users/yuan/stylebench-data/bugs_canonical/more-itertools-camelcase.json",
+    "repo": "/Users/yuan/stylebench-data/camelcase/more-itertools",
+    "repo_name": "more-itertools",
+    "timestamp": "2026-02-18T09:22:12.657522",
+    "total_trials": 5,
+    "manifest_used": false
+  },
+  "results": [
+    {
+      "bug_id": "more-itertools-camelcase-001",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 701,
+      "tests_failed": 0,
+      "tests_total": 701,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-18T09:20:17.795331",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "more_itertools/more.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 26.288498163223267,
+        "error": null,
+        "agent_output": "Perfect! All tests pass. The bug was a logic error on line 235 of `/private/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/stylebench_bbeam29l/more_itertools/more.py`.\n\n**Summary:**\n- The condition `if len(chunk) == n:` was backwards - it was raising an error when chunks were the correct size\n- Changed it to `if len(chunk) != n:` to raise an error only when chunks are incomplete (meaning the iterable isn't divisible by n)\n- All 6 chunked tests now pass\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "more-itertools-camelcase-002",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 701,
+      "tests_failed": 0,
+      "tests_total": 701,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-18T09:20:56.938804",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "more_itertools/more.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 28.83591890335083,
+        "error": null,
+        "agent_output": "Perfect! All tests pass. \n\n## Summary\n\nI found and fixed the bug in `/private/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/stylebench_c9oi8ozp/more_itertools/more.py` at line 846.\n\n**The Bug:** The condition for selecting which algorithm to use was inverted:\n```python\nalgorithm = _full if (r != size) else partial(_partial, r=r)\n```\n\n**The Fix:** Changed the condition from `r != size` to `r == size`:\n```python\nalgorithm = _full if (r == size) else partial(_partial, r=r)\n```\n\n**Explanation:** \n- `_full` is the algorithm for generating full permutations (when `r == size`)\n- `_partial` is the algorithm for partial permutations (when `r < size`)\n- The original inverted condition caused `_partial` to be used for full permutations, which tried to access `tail[-1]` when `tail` was empty, resulting in an `IndexError`\n\nAll 564 tests now pass successfully.\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "more-itertools-camelcase-003",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 701,
+      "tests_failed": 0,
+      "tests_total": 701,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-18T09:21:21.973632",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "more_itertools/more.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 14.589080810546875,
+        "error": null,
+        "agent_output": "Perfect! The bug is fixed. Here's a summary of what I found and fixed:\n\n**Bug Location**: `/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/stylebench_1dww3c03/more_itertools/more.py:933`\n\n**The Issue**: The condition on line 933 was `if n != 0:` which would raise a `ValueError` for ANY non-zero value of `n`. This is incorrect because `n=1` is a valid value (the default parameter). The error should only be raised when `n` is 0 or negative.\n\n**The Fix**: Changed the condition from `if n != 0:` to `if n <= 0:` to properly validate that `n` must be greater than 0.\n\nAll intersperse tests now pass successfully!\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "more-itertools-camelcase-004",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 701,
+      "tests_failed": 0,
+      "tests_total": 701,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-18T09:21:49.048029",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "more_itertools/more.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 16.025858879089355,
+        "error": null,
+        "agent_output": "Perfect! The bug is fixed. \n\n**Summary:**\nThe bug was in the `dlMul` function at line 197 of `/private/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/stylebench_aca2o74u/more_itertools/more.py`. \n\nThe variable name was a typo: `yxHi` should have been `xxHi`. This caused a `NameError` when the code tried to use `xxHi` on line 199, since that variable was never defined.\n\nThe fix was simple - changing line 197 from:\n```python\nyxHi, xxLo = dlSplit(x)\n```\nto:\n```python\nxxHi, xxLo = dlSplit(x)\n```\n\nThe test now passes successfully!\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "more-itertools-camelcase-005",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 701,
+      "tests_failed": 0,
+      "tests_total": 701,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-18T09:22:12.644017",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "more_itertools/more.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 12.20339584350586,
+        "error": null,
+        "agent_output": "Perfect! The bug is fixed. \n\n**Summary:**\nThe bug was a simple variable naming error in the `dlMul` function at line 198. The variable was incorrectly named `xyHi` when it should have been `yyHi`. This caused a `NameError` when the code tried to reference `yyHi` on line 199. The fix was a one-word change: `xyHi, yyLo` \u2192 `yyHi, yyLo`.\n",
+        "rate_limited": false
+      }
+    }
+  ],
+  "summary": {
+    "by_agent": {
+      "claude": {
+        "total": 5,
+        "passed": 5
+      }
+    },
+    "by_mode": {
+      "with_tests": {
+        "total": 5,
+        "passed": 5
+      }
+    },
+    "by_evaluation": {
+      "PASS": 5,
+      "FAIL": 0,
+      "ERROR": 0,
+      "TIMEOUT": 0,
+      "NO_FIX": 0
+    }
+  }
+}

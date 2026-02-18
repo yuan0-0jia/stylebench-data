@@ -1,0 +1,154 @@
+{
+  "metadata": {
+    "catalog": "/Users/yuan/stylebench-data/bugs_canonical/humanize-badnames.json",
+    "repo": "/Users/yuan/stylebench-data/badnames/humanize",
+    "repo_name": "humanize",
+    "timestamp": "2026-02-18T09:43:45.608246",
+    "total_trials": 5,
+    "manifest_used": false
+  },
+  "results": [
+    {
+      "bug_id": "humanize-badnames-001",
+      "agent": "claude",
+      "mode": "without_tests",
+      "evaluation": "NO_FIX",
+      "tests_passed": 0,
+      "tests_failed": 0,
+      "tests_total": 0,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-18T09:41:45.851858",
+      "fix_result": {
+        "success": false,
+        "files_changed": [],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 23.600120782852173,
+        "error": null,
+        "agent_output": "Error: Reached max turns (10)",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "humanize-badnames-002",
+      "agent": "claude",
+      "mode": "without_tests",
+      "evaluation": "FAIL",
+      "tests_passed": 0,
+      "tests_failed": 0,
+      "tests_total": 0,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-18T09:42:18.663932",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "src/humanize/lists.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 27.865550994873047,
+        "error": null,
+        "agent_output": "Perfect! I found and fixed the bug. The issue was in the `natural_list` function in `/private/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/stylebench_a27ba5y2/src/humanize/lists.py`:\n\n**The Bug:**\nLine 31 had `if len(items) != 1:` which is incorrect logic. This condition would:\n- Return only `items[0]` for ANY list with more than 1 item\n- For single-item lists, it would fall through to the elif/else branches\n\n**The Fix:**\nChanged line 31 from `if len(items) != 1:` to `if len(items) == 1:`\n\nThis correctly implements the intended logic:\n- Single item lists return that item\n- Two item lists return \"item1 and item2\"\n- Three or more items return \"item1, item2, ... and last_item\"\n\nThe fix is minimal and only changes the condition that was causing the logic error - changing a `!=` (not equal) to `==` (equal), which inverts the condition to match the correct behavior shown in the docstring examples.\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "humanize-badnames-003",
+      "agent": "claude",
+      "mode": "without_tests",
+      "evaluation": "FAIL",
+      "tests_passed": 0,
+      "tests_failed": 0,
+      "tests_total": 0,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-18T09:42:47.968266",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "src/humanize/lists.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 24.612759113311768,
+        "error": null,
+        "agent_output": "Error: Reached max turns (10)",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "humanize-badnames-004",
+      "agent": "claude",
+      "mode": "without_tests",
+      "evaluation": "NO_FIX",
+      "tests_passed": 0,
+      "tests_failed": 0,
+      "tests_total": 0,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-18T09:43:15.801668",
+      "fix_result": {
+        "success": false,
+        "files_changed": [],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 25.577555894851685,
+        "error": null,
+        "agent_output": "Error: Reached max turns (10)",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "humanize-badnames-005",
+      "agent": "claude",
+      "mode": "without_tests",
+      "evaluation": "FAIL",
+      "tests_passed": 0,
+      "tests_failed": 0,
+      "tests_total": 0,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-18T09:43:45.590355",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "src/humanize/_version.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 25.23740005493164,
+        "error": null,
+        "agent_output": "Error: Reached max turns (10)",
+        "rate_limited": false
+      }
+    }
+  ],
+  "summary": {
+    "by_agent": {
+      "claude": {
+        "total": 5,
+        "passed": 0
+      }
+    },
+    "by_mode": {
+      "without_tests": {
+        "total": 5,
+        "passed": 0
+      }
+    },
+    "by_evaluation": {
+      "PASS": 0,
+      "FAIL": 3,
+      "ERROR": 0,
+      "TIMEOUT": 0,
+      "NO_FIX": 2
+    }
+  }
+}

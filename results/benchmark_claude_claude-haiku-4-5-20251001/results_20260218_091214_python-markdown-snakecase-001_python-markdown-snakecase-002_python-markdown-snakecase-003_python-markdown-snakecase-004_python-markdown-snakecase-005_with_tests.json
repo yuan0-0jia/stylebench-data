@@ -1,0 +1,158 @@
+{
+  "metadata": {
+    "catalog": "/Users/yuan/stylebench-data/bugs_canonical/python-markdown-snakecase.json",
+    "repo": "/Users/yuan/stylebench-data/snakecase/python-markdown",
+    "repo_name": "python-markdown",
+    "timestamp": "2026-02-18T09:12:14.388883",
+    "total_trials": 5,
+    "manifest_used": false
+  },
+  "results": [
+    {
+      "bug_id": "python-markdown-snakecase-001",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 776,
+      "tests_failed": 0,
+      "tests_total": 776,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-18T09:10:26.440682",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "markdown/__main__.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 18.008604764938354,
+        "error": null,
+        "agent_output": "Perfect! All tests pass now. \n\n## Summary\n\nI found and fixed the bug in `/markdown/__main__.py` at lines 92-95. The issue was a logic error where the condition was inverted:\n\n**The Bug:** The code checked `if len(args) != 0` and then set `input_file = None`, but when args was empty (`len(args) == 0`), it tried to access `args[0]`, causing an `IndexError`.\n\n**The Fix:** Changed the condition from `if len(args) != 0:` to `if len(args) == 0:` so that:\n- When no arguments are provided, `input_file = None`\n- When arguments are provided, `input_file = args[0]`\n\nThis is a minimal one-line fix that corrects the inverted logic, and all 88 tests now pass.\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "python-markdown-snakecase-002",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 776,
+      "tests_failed": 0,
+      "tests_total": 776,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-18T09:10:49.908081",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "markdown/__meta__.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 19.465092182159424,
+        "error": null,
+        "agent_output": "Excellent! The bug has been fixed. \n\n## Summary\n\nThe bug was in `/markdown/__meta__.py` at line 39. The logic for determining how many version parts to include was inverted:\n\n**Original (incorrect) code:**\n```python\nparts = 2 if version_info[2] != 0 else 3\n```\n\n**Fixed code:**\n```python\nparts = 3 if version_info[2] != 0 else 2\n```\n\nThe logic should be:\n- When the patch version (index 2) is **not** 0, include **3** parts (major.minor.patch)\n- When the patch version is **0**, include **2** parts (major.minor)\n\nThis fix ensures version strings are formatted correctly according to PEP 440, where version tuples like `(1, 1, 2, 'dev', 0)` produce `\"1.1.2.dev0\"` and `(1, 2, 0, 'final', 0)` produce `\"1.2\"`.\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "python-markdown-snakecase-003",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 776,
+      "tests_failed": 0,
+      "tests_total": 776,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-18T09:11:13.177962",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "markdown/__meta__.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 19.265058040618896,
+        "error": null,
+        "agent_output": "Excellent! Both tests in the test_meta module pass. \n\n## Summary\n\nI found and fixed the bug in `/markdown/__meta__.py:42`. The issue was a logic error in the conditional statement:\n\n**The bug:** The condition `if version_info[3] != 'dev':` was inverted. This caused the function to:\n- Add `.dev` suffix when the version type was **NOT** 'dev' (wrong)\n- Add alpha/beta/rc suffixes when it was **NOT** 'final' (only correct by accident)\n\n**The fix:** Changed the first condition from `if version_info[3] != 'dev':` to `if version_info[3] == 'dev':` so that the `.dev` suffix is added only when the version type actually **is** 'dev'.\n\nThe test now passes with the correct version strings:\n- `(1, 1, 2, 'dev', 0)` \u2192 `\"1.1.2.dev0\"` \u2713\n- `(1, 1, 2, 'alpha', 1)` \u2192 `\"1.1.2a1\"` \u2713\n- And all other test cases pass \u2713\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "python-markdown-snakecase-004",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 776,
+      "tests_failed": 0,
+      "tests_total": 776,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-18T09:11:38.643167",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "markdown/__main__.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 22.171849966049194,
+        "error": null,
+        "agent_output": "Perfect! All tests pass now. \n\n## Summary\n\nThe bug was in `markdown/__main__.py:92-95`. The issue was that after calling `parser.parse_args(args, values)`, which returns the parsed options and remaining positional arguments, the code was still using the original `args` list to determine the input file instead of using `values`, which contains the remaining positional arguments after option parsing.\n\nThe fix was simple:\n- Changed `len(args)` to `len(values)` \n- Changed `args[0]` to `values[0]`\n\nThis ensures that when options like `-e utf-8` are passed, they don't get confused with positional arguments, and the input file is correctly extracted from the remaining parsed arguments.\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "python-markdown-snakecase-005",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 776,
+      "tests_failed": 0,
+      "tests_total": 776,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-18T09:12:14.253189",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "markdown/__main__.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 32.488065004348755,
+        "error": null,
+        "agent_output": "Error: Reached max turns (10)",
+        "rate_limited": false
+      }
+    }
+  ],
+  "summary": {
+    "by_agent": {
+      "claude": {
+        "total": 5,
+        "passed": 5
+      }
+    },
+    "by_mode": {
+      "with_tests": {
+        "total": 5,
+        "passed": 5
+      }
+    },
+    "by_evaluation": {
+      "PASS": 5,
+      "FAIL": 0,
+      "ERROR": 0,
+      "TIMEOUT": 0,
+      "NO_FIX": 0
+    }
+  }
+}

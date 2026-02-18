@@ -1,0 +1,153 @@
+{
+  "metadata": {
+    "catalog": "/Users/yuan/stylebench-data/bugs_canonical/validators-formatting.json",
+    "repo": "/Users/yuan/stylebench-data/formatting/validators",
+    "repo_name": "validators",
+    "timestamp": "2026-02-17T20:25:26.319031",
+    "total_trials": 5,
+    "manifest_used": false
+  },
+  "results": [
+    {
+      "bug_id": "validators-formatting-001",
+      "agent": "claude",
+      "mode": "without_tests",
+      "evaluation": "PASS",
+      "tests_passed": 895,
+      "tests_failed": 0,
+      "tests_total": 895,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-17T20:23:31.217581",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "src/validators/card.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 33.25929284095764,
+        "error": null,
+        "agent_output": "Perfect! All tests pass now. The bug was in the `card_number` function at line 38 of `/private/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/stylebench_wxceftpe/src/validators/card.py`.\n\n## Summary\n\n**Bug Found:** The Luhn algorithm validation was inverted.\n\n**Location:** `src/validators/card.py:38`\n\n**Issue:** The function returned `(odd_sum + even_sum) % 10 != 0`, which means it was returning `True` for **invalid** cards (when the sum is NOT divisible by 10) and `False` for **valid** cards (when the sum IS divisible by 10).\n\n**Fix:** Changed the operator from `!=` to `==`, so the function now correctly returns `True` when `(odd_sum + even_sum) % 10 == 0`, which is the proper Luhn algorithm check.\n\nAll 57 tests now pass, including the previously failing test `test_returns_true_on_valid_card_number[4242424242424242]`.\n"
+      }
+    },
+    {
+      "bug_id": "validators-formatting-002",
+      "agent": "claude",
+      "mode": "without_tests",
+      "evaluation": "PASS",
+      "tests_passed": 895,
+      "tests_failed": 0,
+      "tests_total": 895,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-17T20:23:50.595831",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "src/validators/card.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 16.64073395729065,
+        "error": null,
+        "agent_output": "Perfect! I've fixed the bug. The issue was on line 62 of the `visa` function:\n\n**The Bug:** `len(value) != 16` (checking that length is NOT equal to 16)\n**The Fix:** `len(value) == 16` (checking that length IS equal to 16)\n\nVisa cards must be exactly 16 digits long, but the original code was rejecting all 16-digit cards. This was an off-by-one logical error (using `!=` instead of `==`).\n"
+      }
+    },
+    {
+      "bug_id": "validators-formatting-003",
+      "agent": "claude",
+      "mode": "without_tests",
+      "evaluation": "PASS",
+      "tests_passed": 895,
+      "tests_failed": 0,
+      "tests_total": 895,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-17T20:24:26.270207",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "src/validators/card.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 33.15402412414551,
+        "error": null,
+        "agent_output": "Error: Reached max turns (10)"
+      }
+    },
+    {
+      "bug_id": "validators-formatting-004",
+      "agent": "claude",
+      "mode": "without_tests",
+      "evaluation": "PASS",
+      "tests_passed": 895,
+      "tests_failed": 0,
+      "tests_total": 895,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-17T20:24:55.280812",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "src/validators/between.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 26.298586130142212,
+        "error": null,
+        "agent_output": "Error: Reached max turns (10)"
+      }
+    },
+    {
+      "bug_id": "validators-formatting-005",
+      "agent": "claude",
+      "mode": "without_tests",
+      "evaluation": "PASS",
+      "tests_passed": 895,
+      "tests_failed": 0,
+      "tests_total": 895,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-17T20:25:26.259723",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "src/validators/between.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 28.544756412506104,
+        "error": null,
+        "agent_output": "Error: Reached max turns (10)"
+      }
+    }
+  ],
+  "summary": {
+    "by_agent": {
+      "claude": {
+        "total": 5,
+        "passed": 5
+      }
+    },
+    "by_mode": {
+      "without_tests": {
+        "total": 5,
+        "passed": 5
+      }
+    },
+    "by_evaluation": {
+      "PASS": 5,
+      "FAIL": 0,
+      "ERROR": 0,
+      "TIMEOUT": 0,
+      "NO_FIX": 0
+    }
+  }
+}

@@ -1,0 +1,83 @@
+{
+  "metadata": {
+    "catalog": "/Users/yuan/stylebench-data/bugs_canonical/python-markdown-camelcase.json",
+    "repo": "/Users/yuan/stylebench-data/camelcase/python-markdown",
+    "repo_name": "python-markdown",
+    "timestamp": "2026-02-18T09:10:02.011200",
+    "total_trials": 2,
+    "manifest_used": false
+  },
+  "results": [
+    {
+      "bug_id": "python-markdown-camelcase-004",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 776,
+      "tests_failed": 0,
+      "tests_total": 776,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-18T09:09:31.434627",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "markdown/__main__.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 25.215468168258667,
+        "error": null,
+        "agent_output": "Error: Reached max turns (10)",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "python-markdown-camelcase-005",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 776,
+      "tests_failed": 0,
+      "tests_total": 776,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-18T09:10:01.873152",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "markdown/__main__.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 27.004701137542725,
+        "error": null,
+        "agent_output": "Perfect! All tests pass. Let me summarize the fix:\n\n## Bug Found and Fixed\n\n**Location:** `/private/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/stylebench_bsndsf6_/markdown/__main__.py`, lines 92-95\n\n**Issue:** The code was incorrectly using the original `args` parameter instead of the `values` variable returned by `parser.parse_args()` to get positional arguments. \n\nWhen `parse_options(['-e', 'utf-8'])` was called:\n- The original `args` list still contained `['-e', 'utf-8']` (length 2)\n- The code checked `if len(args) == 0:` which was false\n- So it set `inputFile = args[0]` which was `'-e'` instead of `None`\n\nThe fix was to use the `values` return value from `parser.parse_args()` which contains only the unparsed positional arguments:\n\n```python\n# Before\nif len(args) == 0:\n    inputFile = None\nelse:\n    inputFile = args[0]\n\n# After\nif len(values) == 0:\n    inputFile = None\nelse:\n    inputFile = values[0]\n```\n\nAll 88 tests now pass! \u2705\n",
+        "rate_limited": false
+      }
+    }
+  ],
+  "summary": {
+    "by_agent": {
+      "claude": {
+        "total": 2,
+        "passed": 2
+      }
+    },
+    "by_mode": {
+      "with_tests": {
+        "total": 2,
+        "passed": 2
+      }
+    },
+    "by_evaluation": {
+      "PASS": 2,
+      "FAIL": 0,
+      "ERROR": 0,
+      "TIMEOUT": 0,
+      "NO_FIX": 0
+    }
+  }
+}
