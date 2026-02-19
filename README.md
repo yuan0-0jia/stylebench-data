@@ -19,7 +19,7 @@ stylebench-data/
 │   └── ...
 ├── formatting/            # Compact formatting (79 char lines, single quotes)
 │   └── ...
-├── bugs/                  # Ad-hoc validated bug catalogs (991 total bugs)
+├── bugs/                  # Ad-hoc validated bug catalogs (872 total bugs)
 │   ├── humanize-original.json
 │   └── ...
 ├── bugs_canonical/        # Canonical bug catalogs for benchmark (400 bugs)
@@ -27,8 +27,10 @@ stylebench-data/
 │   ├── humanize-camelcase.json
 │   └── ...                # 20 catalogs, 20 bugs each
 └── results/               # Benchmark results
-    ├── benchmark_claude_haiku/    # Haiku pilot + full runs
-    └── benchmark_gemini/          # Gemini runs
+    ├── benchmark/                              # Old pilot (invalidated)
+    ├── benchmark_claude_claude-haiku-4-5-20251001/  # Valid pilot (200 trials)
+    ├── benchmark_claude_haiku/                 # Full benchmark runs
+    └── benchmark_gemini/                       # Gemini runs
 ```
 
 ## Source Projects
@@ -37,7 +39,7 @@ stylebench-data/
 |---------|-----|-------|-------------|--------|
 | humanize | 1,650 | 684 | String humanization | [GitHub](https://github.com/python-humanize/humanize) |
 | validators | 3,144 | 878 | Input validation | [GitHub](https://github.com/python-validators/validators) |
-| python-markdown | 8,293 | 1,087 | Markdown parser | [GitHub](https://github.com/Python-Markdown/markdown) |
+| python-markdown | 8,293 | 776 | Markdown parser | [GitHub](https://github.com/Python-Markdown/markdown) |
 | more-itertools | 6,822 | 701 | Extended itertools | [GitHub](https://github.com/more-itertools/more-itertools) |
 
 ## Style Variants
@@ -97,18 +99,18 @@ Used for the benchmark. The same logical mutation is applied consistently across
 
 - **20 catalogs** (4 repos × 5 styles), **20 bugs each** = **400 total bugs**
 - All bugs have `line_number` and `context` for precise application
-- 8+ mutation types: eq_ne, var_swap, add_sub, and_or, if_else_swap, in_not_in, plus_one, true_false (+ return_none for python-markdown)
+- 7-8 mutation types per repo: eq_ne, var_swap, add_sub, and_or, if_else_swap, in_not_in, plus_one, true_false, return_none (availability depends on code characteristics)
 
 ### Ad-Hoc Catalogs (`bugs/`)
 
-Used during development. Contains **991 validated bugs** across all 20 repo/style combinations:
+Used during development. Contains **872 validated bugs** across all 20 repo/style combinations:
 
-| Repo | Bugs per Style | Total |
-|------|----------------|-------|
-| humanize | 30 | 150 |
-| validators | 30 | 150 |
-| python-markdown | 50 | 250 |
-| more-itertools | 30 | 150 |
+| Repo | Bugs (across 5 styles) |
+|------|------------------------|
+| humanize | 233 |
+| validators | 191 |
+| python-markdown | 200 |
+| more-itertools | 248 |
 
 ### Catalog Format
 
@@ -134,7 +136,7 @@ Each result file contains:
 - `results[]` — per-trial evaluation (PASS/FAIL/ERROR/TIMEOUT/NO_FIX)
 - `summary` — aggregated stats by agent, mode, evaluation
 
-### Pilot Results (200 trials, Haiku, 10 turns)
+### Pilot Results (200 trials, Claude Haiku 4.5, 10 turns)
 
 | Metric | Value |
 |--------|-------|
