@@ -1,0 +1,154 @@
+{
+  "metadata": {
+    "catalog": "/Users/yuan/stylebench-data/bugs_canonical/humanize-formatting.json",
+    "repo": "/Users/yuan/stylebench-data/formatting/humanize",
+    "repo_name": "humanize",
+    "timestamp": "2026-02-19T23:40:16.876895",
+    "total_trials": 5,
+    "manifest_used": false,
+    "hit_rate_limit": false
+  },
+  "results": [
+    {
+      "bug_id": "humanize-formatting-001",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "FAIL",
+      "tests_passed": 0,
+      "tests_failed": 0,
+      "tests_total": 0,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-19T23:36:10.956507",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "src/humanize/filesize.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 59.87116074562073,
+        "error": null,
+        "agent_output": "All 70 tests in `test_filesize.py` now pass. The bug was on line 91 of `filesize.py`:\n\n```python\n# Bug: condition was inverted\nif abs_bytes != 1 and not gnu:   # returned \"Byte\" for values != 1\n    return f'{int(bytes_)} Byte'\n\n# Fix: correct condition\nif abs_bytes == 1 and not gnu:   # returns \"Byte\" only for exactly 1\n    return f'{int(bytes_)} Byte'\n```\n\nThe `!=` should have been `==` \u2014 the singular \"Byte\" form should only be used when the value is exactly 1, not for all other values.\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "humanize-formatting-002",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "NO_FIX",
+      "tests_passed": 0,
+      "tests_failed": 0,
+      "tests_total": 0,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-19T23:37:13.304715",
+      "fix_result": {
+        "success": false,
+        "files_changed": [],
+        "patch": "",
+        "tokens_used": 0,
+        "time_seconds": 60.10777497291565,
+        "error": "Timeout after 60 seconds",
+        "agent_output": "",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "humanize-formatting-003",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "NO_FIX",
+      "tests_passed": 0,
+      "tests_failed": 0,
+      "tests_total": 0,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-19T23:38:15.557861",
+      "fix_result": {
+        "success": false,
+        "files_changed": [],
+        "patch": "",
+        "tokens_used": 0,
+        "time_seconds": 60.081695795059204,
+        "error": "Timeout after 60 seconds",
+        "agent_output": "",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "humanize-formatting-004",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "NO_FIX",
+      "tests_passed": 0,
+      "tests_failed": 0,
+      "tests_total": 0,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-19T23:39:17.963260",
+      "fix_result": {
+        "success": false,
+        "files_changed": [],
+        "patch": "",
+        "tokens_used": 0,
+        "time_seconds": 60.07807421684265,
+        "error": "Timeout after 60 seconds",
+        "agent_output": "",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "humanize-formatting-005",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 0,
+      "tests_failed": 0,
+      "tests_total": 0,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-19T23:40:16.797741",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "src/humanize/_version.py",
+          "src/humanize/filesize.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 54.43541717529297,
+        "error": null,
+        "agent_output": "All 70 tests pass now. The bug was in `filesize.py` lines 80-82: both conditions checked `binary` instead of checking `gnu` first. The fix changes `if binary:` to `if gnu:` so the correct suffix table is selected for each mode.\n",
+        "rate_limited": false
+      }
+    }
+  ],
+  "summary": {
+    "by_agent": {
+      "claude": {
+        "total": 5,
+        "passed": 1
+      }
+    },
+    "by_mode": {
+      "with_tests": {
+        "total": 5,
+        "passed": 1
+      }
+    },
+    "by_evaluation": {
+      "PASS": 1,
+      "FAIL": 1,
+      "ERROR": 0,
+      "TIMEOUT": 0,
+      "NO_FIX": 3
+    }
+  }
+}

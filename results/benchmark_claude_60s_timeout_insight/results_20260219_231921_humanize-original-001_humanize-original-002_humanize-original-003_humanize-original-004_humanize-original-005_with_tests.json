@@ -1,0 +1,156 @@
+{
+  "metadata": {
+    "catalog": "/Users/yuan/stylebench-data/bugs_canonical/humanize-original.json",
+    "repo": "/Users/yuan/stylebench-data/original/humanize",
+    "repo_name": "humanize",
+    "timestamp": "2026-02-19T23:19:21.847354",
+    "total_trials": 5,
+    "manifest_used": false,
+    "hit_rate_limit": false
+  },
+  "results": [
+    {
+      "bug_id": "humanize-original-001",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "NO_FIX",
+      "tests_passed": 0,
+      "tests_failed": 0,
+      "tests_total": 0,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-19T23:15:43.505559",
+      "fix_result": {
+        "success": false,
+        "files_changed": [],
+        "patch": "",
+        "tokens_used": 0,
+        "time_seconds": 60.080249071121216,
+        "error": "Timeout after 60 seconds",
+        "agent_output": "",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "humanize-original-002",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 0,
+      "tests_failed": 0,
+      "tests_total": 0,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-19T23:16:39.094118",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "src/humanize/_version.py",
+          "src/humanize/lists.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 52.34867191314697,
+        "error": null,
+        "agent_output": "All 7 tests pass now. The bug was in `src/humanize/lists.py` at line 31: the condition `len(items) != 1` was inverted. It should be `== 1`. With the wrong operator, the function returned only the first element for lists with 2+ items (wrong), and fell through to the `else` branch for single-item lists where `\", \".join(items[:-1])` produces an empty string giving `\" and item\"` (also wrong).\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "humanize-original-003",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "NO_FIX",
+      "tests_passed": 0,
+      "tests_failed": 0,
+      "tests_total": 0,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-19T23:17:41.440848",
+      "fix_result": {
+        "success": false,
+        "files_changed": [],
+        "patch": "",
+        "tokens_used": 0,
+        "time_seconds": 60.05976128578186,
+        "error": "Timeout after 60 seconds",
+        "agent_output": "",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "humanize-original-004",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "FAIL",
+      "tests_passed": 0,
+      "tests_failed": 0,
+      "tests_total": 0,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-19T23:18:23.643496",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "src/humanize/filesize.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 36.82518792152405,
+        "error": null,
+        "agent_output": "The fix is in `src/humanize/filesize.py` at line 80. The condition `if value:` was incorrectly checking whether the `value` argument was truthy (non-zero), causing every non-zero file size to use the GNU suffix format. It should be `if gnu:` to check the `gnu` parameter flag.\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "humanize-original-005",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "FAIL",
+      "tests_passed": 0,
+      "tests_failed": 0,
+      "tests_total": 0,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-19T23:19:21.829787",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "src/humanize/filesize.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 54.11271119117737,
+        "error": null,
+        "agent_output": "The fix is in `filesize.py:80`. The condition `if binary:` was repeated twice \u2014 the first branch (meant to select GNU-style suffixes like `K`, `M`) incorrectly checked `binary` instead of `gnu`. This caused:\n\n- `gnu=True` \u2192 fell through to `decimal` suffixes (wrong)\n- `binary=True` \u2192 used GNU suffixes like `K`, `M` instead of `KiB`, `MiB` (wrong)\n\nThe corrected logic:\n```python\nif gnu:\n    suffix = suffixes[\"gnu\"]\nelif binary:\n    suffix = suffixes[\"binary\"]\nelse:\n    suffix = suffixes[\"decimal\"]\n```\n",
+        "rate_limited": false
+      }
+    }
+  ],
+  "summary": {
+    "by_agent": {
+      "claude": {
+        "total": 5,
+        "passed": 1
+      }
+    },
+    "by_mode": {
+      "with_tests": {
+        "total": 5,
+        "passed": 1
+      }
+    },
+    "by_evaluation": {
+      "PASS": 1,
+      "FAIL": 2,
+      "ERROR": 0,
+      "TIMEOUT": 0,
+      "NO_FIX": 2
+    }
+  }
+}
