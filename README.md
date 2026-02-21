@@ -27,10 +27,9 @@ stylebench-data/
 │   ├── humanize-camelcase.json
 │   └── ...                # 20 catalogs, 20 bugs each
 └── results/               # Benchmark results
-    ├── benchmark/                              # Old pilot (invalidated)
-    ├── benchmark_claude_claude-haiku-4-5-20251001/  # Valid pilot (200 trials)
-    ├── benchmark_claude_haiku/                 # Full benchmark runs
-    └── benchmark_gemini/                       # Gemini runs
+    ├── benchmark_claude_claude-haiku-4-5-20251001/  # Canonical pilot (200 trials, Week 7)
+    ├── benchmark_claude_haiku_{repo}_{mode}/   # Full benchmark — Claude Haiku, 8 dirs (800 trials)
+    └── benchmark_codex/                        # Codex partial results (160 trials)
 ```
 
 ## Source Projects
@@ -136,13 +135,17 @@ Each result file contains:
 - `results[]` — per-trial evaluation (PASS/FAIL/ERROR/TIMEOUT/NO_FIX)
 - `summary` — aggregated stats by agent, mode, evaluation
 
-### Pilot Results (200 trials, Claude Haiku 4.5, 10 turns)
+### Full Benchmark Results (800 trials, Claude Haiku 4.5, 2026-02-20)
 
 | Metric | Value |
 |--------|-------|
-| Overall pass rate | 68.0% (136/200) |
-| with_tests | 76.0% |
-| without_tests | 60.0% |
+| Overall pass rate | 88.9% (711/800) |
+| with_tests | 91.8% (367/400) |
+| without_tests | 86.0% (344/400) |
+
+By repo: validators 97%, humanize 96%, python-markdown 85%, more-itertools 78%.
+Style effect minimal (~4pp range). Mutation type is the strongest predictor (30pp range).
+See [stylebench tracking repo](https://github.com/yuan0-0jia/cse247b_reports_w26) for full analysis.
 
 ## Usage
 
