@@ -1,0 +1,528 @@
+{
+  "metadata": {
+    "catalog": "/Users/yuan/stylebench-data/bugs_canonical/more-itertools-camelcase.json",
+    "repo": "/Users/yuan/stylebench-data/camelcase/more-itertools",
+    "repo_name": "more-itertools",
+    "timestamp": "2026-02-20T19:47:37.067529",
+    "total_trials": 20,
+    "manifest_used": false,
+    "hit_rate_limit": false
+  },
+  "results": [
+    {
+      "bug_id": "more-itertools-camelcase-001",
+      "agent": "claude",
+      "mode": "without_tests",
+      "evaluation": "PASS",
+      "tests_passed": 701,
+      "tests_failed": 0,
+      "tests_total": 701,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-20T19:28:52.329425",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "more_itertools/more.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 14.437400817871094,
+        "error": null,
+        "agent_output": "Done! The bug was a simple logic error on line 235. The condition was reversed:\n\n**Before (buggy):**\n```python\nif len(chunk) == n:  # Raises when chunk IS the right size \u2717\n    raise ValueError('iterable is not divisible by n.')\n```\n\n**After (fixed):**\n```python\nif len(chunk) != n:  # Raises when chunk is NOT the right size \u2713\n    raise ValueError('iterable is not divisible by n.')\n```\n\nWhen `strict=True`, the function should only raise an error when it encounters a chunk that's **smaller** than `n` (indicating the iterable wasn't evenly divisible). The original code was doing the opposite, raising errors on properly-sized chunks.\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "more-itertools-camelcase-002",
+      "agent": "claude",
+      "mode": "without_tests",
+      "evaluation": "PASS",
+      "tests_passed": 701,
+      "tests_failed": 0,
+      "tests_total": 701,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-20T19:29:51.667387",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "more_itertools/more.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 40.828444719314575,
+        "error": null,
+        "agent_output": "Perfect! I found and fixed the bug.\n\n## Summary\n\n**Bug Location:** `/private/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/stylebench_f_vuyivg/more_itertools/more.py:846`\n\n**The Problem:** The condition for choosing between the `_full` and `_partial` algorithms was inverted:\n```python\nalgorithm = _full if (r != size) else partial(_partial, r=r)  # WRONG\n```\n\nThis caused `_partial` to be used when `r == size`, but `_partial` splits the array into:\n- `head = A[:r]` (first r items)  \n- `tail = A[r:]` (remaining items)\n\nWhen `r == size`, `tail` becomes empty (`A[size:]`), and the code at line 791 tries to access `pivot = tail[-1]`, resulting in an `IndexError: list index out of range`.\n\n**The Fix:** Corrected the condition to:\n```python\nalgorithm = _full if (r == size) else partial(_partial, r=r)  # CORRECT\n```\n\nNow:\n- When `r == size`: uses `_full` (for full-length permutations)\n- When `r != size`: uses `_partial` (for r-length permutations where r < size)\n\nThis is a minimal one-character fix that corrects the logic error.\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "more-itertools-camelcase-003",
+      "agent": "claude",
+      "mode": "without_tests",
+      "evaluation": "PASS",
+      "tests_passed": 701,
+      "tests_failed": 0,
+      "tests_total": 701,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-20T19:30:19.934859",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "more_itertools/more.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 14.756817817687988,
+        "error": null,
+        "agent_output": "Perfect! I found and fixed the bug. The issue was a logic error in the `intersperse` function at line 933 in `/private/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/stylebench_ho3787zt/more_itertools/more.py`.\n\n**The Bug:**\nThe condition was `if n != 0:` which raises an error for ANY non-zero value of `n`. This means when the test calls `intersperse(None, iterable)` with the default `n=1`, it immediately raises \"ValueError: n must be > 0\".\n\n**The Fix:**\nChanged the condition from `if n != 0:` to `if n <= 0:` so the error is only raised when `n` is 0 or negative, allowing valid values like `n=1` to proceed to the correct branch.\n\nThis was a simple logic error that inverted the intended validation.\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "more-itertools-camelcase-004",
+      "agent": "claude",
+      "mode": "without_tests",
+      "evaluation": "PASS",
+      "tests_passed": 701,
+      "tests_failed": 0,
+      "tests_total": 701,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-20T19:30:49.274000",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "more_itertools/more.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 11.795419931411743,
+        "error": null,
+        "agent_output": "Done! The bug was on line 197 in the `dlMul` function. The variable was being assigned as `yxHi, xxLo` when it should be `xxHi, xxLo`. \n\nThe function splits the input `x` into high and low parts (xxHi, xxLo) and input `y` into high and low parts (yyHi, yyLo). The typo `yxHi` caused `xxHi` to be undefined on line 199, triggering the NameError. The fix simply renames the mistyped variable to the correct name.\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "more-itertools-camelcase-005",
+      "agent": "claude",
+      "mode": "without_tests",
+      "evaluation": "PASS",
+      "tests_passed": 701,
+      "tests_failed": 0,
+      "tests_total": 701,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-20T19:31:18.417256",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "more_itertools/more.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 10.715677976608276,
+        "error": null,
+        "agent_output": "Done! The bug was a simple variable naming error on line 198. The code was assigning the split result of `y` to `xyHi, yyLo` when it should have been `yyHi, yyLo`. This caused `yyHi` to be undefined when referenced on line 199.\n\nThe fix changes:\n- `xyHi, yyLo = dlSplit(y)` \u2192 `yyHi, yyLo = dlSplit(y)`\n\nThis is a minimal one-word change that corrects the variable name to match its usage in the `dlMul` function.\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "more-itertools-camelcase-006",
+      "agent": "claude",
+      "mode": "without_tests",
+      "evaluation": "PASS",
+      "tests_passed": 701,
+      "tests_failed": 0,
+      "tests_total": 701,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-20T19:32:09.027109",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "more_itertools/more.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 30.393573999404907,
+        "error": null,
+        "agent_output": "Perfect! I found and fixed the bug. The issue was a simple typo on line 206:\n\n**The Bug:** `maq` is not a defined function. It's a typo for `map`.\n\n**The Fix:** Changed `maq(dlMul, p, q)` to `map(dlMul, p, q)` in the `_fsumprod` function.\n\n**Why this works:** The function applies `dlMul` (which performs lossless multiplication returning a tuple) to pairs of corresponding elements from sequences `p` and `q`. The `map` function does exactly this - it applies the function to pairs of elements from both iterables. The results (tuples) are then flattened with `chain.from_iterable` and summed with `fsum` for extended precision arithmetic.\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "more-itertools-camelcase-007",
+      "agent": "claude",
+      "mode": "without_tests",
+      "evaluation": "PASS",
+      "tests_passed": 701,
+      "tests_failed": 0,
+      "tests_total": 701,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-20T19:32:51.035174",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "more_itertools/more.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 24.618305921554565,
+        "error": null,
+        "agent_output": "Perfect! The bug has been fixed. \n\n**Summary of the issue:**\n\nThe `__bool__` method in the `peekable` class (more_itertools/more.py:382-387) had a logic error. It was returning `True` in both cases:\n- When the iterator was exhausted (raised `StopIteration`), it returned `True`\n- When there were items available, it returned `True`\n\n**The fix:**\n\nChanged line 386 from `return True` to `return False`. Now the method correctly returns:\n- `False` when the iterator is exhausted (making the peekable falsy)\n- `True` when there are items available (making the peekable truthy)\n\nThis aligns with the documented behavior in the class docstring (lines 363-371) and allows the `testMultiPrependPeek` test to pass, since it expects an exhausted peekable to evaluate to `False`.\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "more-itertools-camelcase-008",
+      "agent": "claude",
+      "mode": "without_tests",
+      "evaluation": "PASS",
+      "tests_passed": 701,
+      "tests_failed": 0,
+      "tests_total": 701,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-20T19:33:31.694811",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "more_itertools/more.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 20.382182121276855,
+        "error": null,
+        "agent_output": "Fixed! The bug was in the `__bool__` method of the `peekable` class. It was returning `False` in both cases (when peek() succeeds and when it raises StopIteration). It should return `True` when there are items available.\n\nThe fix changes the final `return False` to `return True` on line 387, so the method now correctly returns:\n- `False` when the iterator is exhausted (StopIteration raised)\n- `True` when items are available\n\nThis allows the `testPrependTruthiness` test to pass by making a peekable with prepended items evaluate to `True`.\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "more-itertools-camelcase-009",
+      "agent": "claude",
+      "mode": "without_tests",
+      "evaluation": "PASS",
+      "tests_passed": 701,
+      "tests_failed": 0,
+      "tests_total": 701,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-20T19:34:19.477963",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "more_itertools/more.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 24.44032597541809,
+        "error": null,
+        "agent_output": "Perfect! I found and fixed the bug. \n\n**The Problem:**\nIn `/private/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/stylebench_bpg54nc_/more_itertools/more.py` at line 553, the `iterate` function had `while False:` instead of `while True:`. This caused the loop to never execute, so the function never yielded any values.\n\n**The Fix:**\nChanged line 553 from:\n```python\nwhile False:\n```\nto:\n```python\nwhile True:\n```\n\nThe `iterate` function is supposed to produce an infinite iterator that yields: `start`, `func(start)`, `func(func(start))`, etc. The test expected `take(10, iterate(lambda x: 2*x, 1))` to return `[1, 2, 4, 8, 16, 32, 64, 128, 256, 512]`. With the fix in place, the function will now correctly yield these powers of 2.\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "more-itertools-camelcase-010",
+      "agent": "claude",
+      "mode": "without_tests",
+      "evaluation": "PASS",
+      "tests_passed": 701,
+      "tests_failed": 0,
+      "tests_total": 701,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-20T19:35:25.374064",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "more_itertools/more.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 51.57471680641174,
+        "error": null,
+        "agent_output": "Perfect! I've fixed the bug. The problem was that the conditional branches were inverted:\n\n**The Bug:** The validation logic was in the `else` block (when `strict=False`), but it should be in the `if strict:` block.\n\n**The Fix:** I moved the validation code to execute when `strict=True`, and made the `else` block simply return the iterator without validation. This makes logical sense:\n- When `strict=False` (default): Return the iterator as-is without any validation checks\n- When `strict=True`: Validate that all chunks are exactly size `n`, and raise an error if `n is None`\n\nNow `chunked('ABCDE', None)` with default `strict=False` will work correctly and return all elements as a single chunk, which is what the test expects.\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "more-itertools-camelcase-011",
+      "agent": "claude",
+      "mode": "without_tests",
+      "evaluation": "FAIL",
+      "tests_passed": 34,
+      "tests_failed": 1,
+      "tests_total": 35,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-20T19:37:21.965270",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "more_itertools/more.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 114.9695212841034,
+        "error": null,
+        "agent_output": "Perfect! I've fixed the bug. The issue was in the formula for calculating how many items to cache when slicing with negative indices.\n\n**The Problem:**\n- When both `start` and `stop` are negative (like `[-4:-3]`), the formula `max(start, stop) + 1` would produce a negative result\n- For `start = -4, stop = -3`: `max(-4, -3) + 1 = -3 + 1 = -2` (negative!)\n- This prevented the cache from being extended, causing an empty list to be returned instead of the expected data\n\n**The Solution:**\nChanged line 457 from:\n```python\nn = min(max(start, stop) + 1, maxsize)\n```\nto:\n```python\nn = min(max(abs(start), abs(stop)), maxsize)\n```\n\nNow for the slice `[-4:-3]`:\n- `max(abs(-4), abs(-3)) = max(4, 3) = 4` (positive)\n- The cache properly extends to 4 items\n- The slice returns the expected result\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "more-itertools-camelcase-012",
+      "agent": "claude",
+      "mode": "without_tests",
+      "evaluation": "PASS",
+      "tests_passed": 701,
+      "tests_failed": 0,
+      "tests_total": 701,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-20T19:37:58.145801",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "more_itertools/more.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 23.96817183494568,
+        "error": null,
+        "agent_output": "Perfect! I found and fixed the bug. \n\n**The Issue:**\nThe if/else branches in the `distinctPermutations` function were inverted. The code at line 848-855 was:\n- Trying to use `indices` and `permutedItems` when `sortable = True`\n- Returning `algorithm(items)` when `sortable = False`\n\nHowever:\n- `indices` is only defined in the except block (line 831) when `sortable = False`\n- `permutedItems` function is only defined in the except block (lines 836-839) when `sortable = False`\n\n**The Fix:**\nI swapped the if/else branches so that:\n- When `sortable = True`: return `algorithm(items)` directly\n- When `sortable = False`: return the generator that applies `permutedItems` to the results of `algorithm(indices)`\n\nThis fix is minimal and only reorders the existing code blocks to match the correct logic flow.\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "more-itertools-camelcase-013",
+      "agent": "claude",
+      "mode": "without_tests",
+      "evaluation": "PASS",
+      "tests_passed": 701,
+      "tests_failed": 0,
+      "tests_total": 701,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-20T19:38:39.619023",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "more_itertools/more.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 29.257760047912598,
+        "error": null,
+        "agent_output": "Perfect! I found and fixed the bug. \n\n**The Problem:** The `count` method in the `numericRange` class at line 2382 had an inverted logic error:\n```python\ndef count(self, value):\n    return not int(value in self)  # BUG: incorrect 'not' operator\n```\n\n**The Fix:** Removed the `not` operator:\n```python\ndef count(self, value):\n    return int(value in self)  # FIXED: returns 1 if value in range, 0 otherwise\n```\n\n**Why this was wrong:**\n- When a value IS in the range: `True` \u2192 `int(True)` = 1, but `not 1` = `False` \u274c\n- When a value is NOT in the range: `False` \u2192 `int(False)` = 0, but `not 0` = `True` \u274c\n\nThe test was expecting `count()` to return 1 for a value that exists in the range, but it was returning `False` instead. The `count` method should behave like Python's `str.count()` - returning how many times the value appears (0 or 1 for a range).\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "more-itertools-camelcase-014",
+      "agent": "claude",
+      "mode": "without_tests",
+      "evaluation": "PASS",
+      "tests_passed": 701,
+      "tests_failed": 0,
+      "tests_total": 701,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-20T19:39:13.455117",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "more_itertools/more.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 21.248783111572266,
+        "error": null,
+        "agent_output": "Perfect! I've found and fixed the bug. \n\n**The Issue:**\nIn the `allUnique` function at line 4141, the condition for unhashable items was inverted:\n- **Original (buggy)**: `if element not in seenlist: return False`\n- **Fixed**: `if element in seenlist: return False`\n\nThe logic was backwards - it was returning `False` (not unique) when an element was **unique** (not in the list), when it should only return `False` when a duplicate is found (element **is** in the list).\n\nFor the failing test `allUnique([[1, 2], [3, 4]])`:\n- Lists are unhashable, triggering the exception handler\n- Original code: `[1, 2] not in []` \u2192 True \u2192 returns False \u274c\n- Fixed code: `[1, 2] in []` \u2192 False \u2192 adds to list and continues \u2192 returns True \u2713\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "more-itertools-camelcase-015",
+      "agent": "claude",
+      "mode": "without_tests",
+      "evaluation": "PASS",
+      "tests_passed": 701,
+      "tests_failed": 0,
+      "tests_total": 701,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-20T19:40:14.403587",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "more_itertools/more.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 46.530861139297485,
+        "error": null,
+        "agent_output": "Perfect! I've identified and fixed the bug.\n\n**Summary:**\nThe bug was in the `duplicatesEverseen` function at line 4659 in `/more_itertools/more.py`. When handling non-hashable keys, the logic was inverted.\n\n**The Issue:**\n- The condition `if k in seenList:` was backwards\n- It should be `if k not in seenList:` to match the logic in the try block\n- This caused non-hashable items to never be properly tracked as \"seen\", so the function would yield every occurrence instead of only the duplicates\n\n**The Fix:**\nChanged line 4659 from:\n```python\nif k in seenList:\n```\nto:\n```python\nif k not in seenList:\n```\n\nThis makes the except block (for non-hashable keys) mirror the try block (for hashable keys) logic correctly: track the first occurrence, and only yield subsequent occurrences as duplicates.\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "more-itertools-camelcase-016",
+      "agent": "claude",
+      "mode": "without_tests",
+      "evaluation": "NO_FIX",
+      "tests_passed": 542,
+      "tests_failed": 1,
+      "tests_total": 543,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-20T19:42:16.522724",
+      "fix_result": {
+        "success": false,
+        "files_changed": [],
+        "patch": "",
+        "tokens_used": 0,
+        "time_seconds": 120.02830791473389,
+        "error": "Timeout after 120 seconds",
+        "agent_output": "",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "more-itertools-camelcase-017",
+      "agent": "claude",
+      "mode": "without_tests",
+      "evaluation": "NO_FIX",
+      "tests_passed": 542,
+      "tests_failed": 1,
+      "tests_total": 543,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-20T19:44:18.327730",
+      "fix_result": {
+        "success": false,
+        "files_changed": [],
+        "patch": "",
+        "tokens_used": 0,
+        "time_seconds": 120.03595685958862,
+        "error": "Timeout after 120 seconds",
+        "agent_output": "",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "more-itertools-camelcase-018",
+      "agent": "claude",
+      "mode": "without_tests",
+      "evaluation": "NO_FIX",
+      "tests_passed": 543,
+      "tests_failed": 1,
+      "tests_total": 544,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-20T19:46:20.365987",
+      "fix_result": {
+        "success": false,
+        "files_changed": [],
+        "patch": "",
+        "tokens_used": 0,
+        "time_seconds": 120.0348949432373,
+        "error": "Timeout after 120 seconds",
+        "agent_output": "",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "more-itertools-camelcase-019",
+      "agent": "claude",
+      "mode": "without_tests",
+      "evaluation": "PASS",
+      "tests_passed": 701,
+      "tests_failed": 0,
+      "tests_total": 701,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-20T19:47:07.763678",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "more_itertools/more.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 35.91756892204285,
+        "error": null,
+        "agent_output": "Perfect! I found and fixed the bug. \n\n**The Issue:** The function `nthOrLast` had an off-by-one error on line 313. It was using `n + 2` when it should use `n + 1`:\n\n```python\n# Before (wrong)\nreturn last(islice(iterable, n + 2), default=default)\n\n# After (fixed)\nreturn last(islice(iterable, n + 1), default=default)\n```\n\n**Why this fixes it:** With `range(3)` (which is [0, 1, 2]) and `n=1`:\n- The old code: `islice(range(3), 3)` gives [0, 1, 2], `last()` returns 2 \u274c\n- The fixed code: `islice(range(3), 2)` gives [0, 1], `last()` returns 1 \u2713\n\nThe function is designed to return the nth item (0-indexed) if there are enough items, otherwise the last item. Using `n + 1` correctly captures the first n+1 items, and taking the last one gives us the item at index n.\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "more-itertools-camelcase-020",
+      "agent": "claude",
+      "mode": "without_tests",
+      "evaluation": "PASS",
+      "tests_passed": 701,
+      "tests_failed": 0,
+      "tests_total": 701,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-20T19:47:37.052494",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "more_itertools/more.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 17.531344890594482,
+        "error": null,
+        "agent_output": "**Bug found and fixed!**\n\nThe issue was in the `peek` method at line 403 in `/more_itertools/more.py`. \n\n**The Problem:**\n- When `peek()` is called and the cache is empty, it appends only ONE item from the iterator\n- Then it tries to return `self._cache[1]` (the second item), but the cache only contains one item at index 0\n- This causes an `IndexError: deque index out of range`\n\n**The Fix:**\nChanged line 403 from `return self._cache[1]` to `return self._cache[0]`\n\nThe `peek` method should return the next item that will be consumed (at index 0), not the item after that (at index 1). This is the correct behavior for a peek operation on any iterator-like object.\n",
+        "rate_limited": false
+      }
+    }
+  ],
+  "summary": {
+    "by_agent": {
+      "claude": {
+        "total": 20,
+        "passed": 16
+      }
+    },
+    "by_mode": {
+      "without_tests": {
+        "total": 20,
+        "passed": 16
+      }
+    },
+    "by_evaluation": {
+      "PASS": 16,
+      "FAIL": 1,
+      "ERROR": 0,
+      "TIMEOUT": 0,
+      "NO_FIX": 3
+    }
+  }
+}

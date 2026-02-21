@@ -1,0 +1,536 @@
+{
+  "metadata": {
+    "catalog": "/Users/yuan/stylebench-data/bugs_canonical/humanize-camelcase.json",
+    "repo": "/Users/yuan/stylebench-data/camelcase/humanize",
+    "repo_name": "humanize",
+    "timestamp": "2026-02-20T19:38:40.970458",
+    "total_trials": 20,
+    "manifest_used": false,
+    "hit_rate_limit": false
+  },
+  "results": [
+    {
+      "bug_id": "humanize-camelcase-001",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 684,
+      "tests_failed": 0,
+      "tests_total": 737,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-20T19:06:30.064594",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "src/humanize/filesize.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 34.36498498916626,
+        "error": null,
+        "agent_output": "## Summary\n\n**Bug Found:** Line 91 of `src/humanize/filesize.py` had inverted logic for pluralization.\n\n**The Issue:**\n```python\nif absBytes != 1 and not gnu:\n    return f\"{int(bytes)} Byte\"\n```\n\nThis returned singular \"Byte\" when the value was **NOT** 1, which is backwards. It should return singular \"Byte\" only when the value **IS** 1.\n\n**The Fix:**\nChanged the condition from `absBytes != 1` to `absBytes == 1`:\n```python\nif absBytes == 1 and not gnu:\n    return f\"{int(bytes)} Byte\"\n```\n\n**Result:** All 70 tests now pass, including the previously failing test case `testNaturalsize[testArgs0-300 Bytes]` which now correctly returns \"300 Bytes\" instead of \"300 Byte\".\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "humanize-camelcase-002",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 684,
+      "tests_failed": 0,
+      "tests_total": 737,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-20T19:07:05.202852",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "src/humanize/lists.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 31.63811492919922,
+        "error": null,
+        "agent_output": "## Summary\n\nI found and fixed the bug in the repository. The issue was in `/private/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/stylebench_d_j76dcf/src/humanize/lists.py` at line 31.\n\n**The Bug:**\nThe condition was inverted:\n```python\nif len(items) != 1:  # Wrong: if NOT 1 item\n    return str(items[0])\n```\n\nThis meant \"if there are NOT exactly one item, return just the first item\" \u2014 which caused the function to return only the first element for lists of 2 or more items.\n\n**The Fix:**\nChanged the condition to:\n```python\nif len(items) == 1:  # Correct: if exactly 1 item\n    return str(items[0])\n```\n\nNow the function correctly handles all cases:\n- 1 item: returns `\"item\"`\n- 2 items: returns `\"item1 and item2\"`\n- 3+ items: returns `\"item1, item2, ..., and itemN\"`\n\nAll 7 tests in `test_lists.py` now pass successfully.\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "humanize-camelcase-003",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 684,
+      "tests_failed": 0,
+      "tests_total": 737,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-20T19:07:36.595038",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "src/humanize/lists.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 28.561973094940186,
+        "error": null,
+        "agent_output": "Excellent! All tests pass now. \n\n## Summary\n\nI found and fixed the bug in `/private/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/stylebench_k8mxqdle/src/humanize/lists.py` at line 33.\n\n**The Bug:** The condition was backwards:\n```python\nelif len(items) != 2:  # WRONG - checks if NOT 2 items\n    return f\"{str(items[0])} and {str(items[1])}\"\n```\n\n**The Fix:** Changed `!=` to `==`:\n```python\nelif len(items) == 2:  # CORRECT - checks if exactly 2 items\n    return f\"{str(items[0])} and {str(items[1])}\"\n```\n\nThis was a simple logic error. For a list of 3+ items, it was incorrectly matching the first condition and returning only the first two items with \"and\" between them. Now it correctly:\n- Returns a single item as-is\n- Returns two items as \"item1 and item2\"  \n- Returns 3+ items as \"item1, item2, ..., itemN-1 and itemN\"\n\nAll 684 tests now pass! \u2713\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "humanize-camelcase-004",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 684,
+      "tests_failed": 0,
+      "tests_total": 737,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-20T19:08:38.395251",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "src/humanize/_version.py",
+          "src/humanize/filesize.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 58.07402992248535,
+        "error": null,
+        "agent_output": "## Summary\n\nI found and fixed the bug in `/private/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/stylebench_kbbhdwg8/src/humanize/filesize.py`.\n\n**The Bug:** Line 80 had a logic error:\n```python\nif value:  # \u274c Wrong - checks if value is truthy\n    suffix = suffixes[\"gnu\"]\n```\n\n**The Fix:** Changed it to:\n```python\nif gnu:  # \u2713 Correct - checks the gnu parameter\n    suffix = suffixes[\"gnu\"]\n```\n\n**Root Cause:** The condition was checking if the `value` parameter was non-zero instead of checking the `gnu` parameter. This caused the function to always use GNU-style suffixes (like \"K\") for any non-zero input, even when `gnu=False` (the default). Now it correctly uses decimal suffixes (like \" kB\") when `gnu=False`.\n\n**Test Results:** All 70 tests now pass \u2713\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "humanize-camelcase-005",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 684,
+      "tests_failed": 0,
+      "tests_total": 737,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-20T19:09:17.738933",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "src/humanize/filesize.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 35.4719340801239,
+        "error": null,
+        "agent_output": "Perfect! All tests are passing now. Here's a summary of what I found and fixed:\n\n## Bug Summary\n\n**Location:** `/src/humanize/filesize.py`, lines 80-85\n\n**The Issue:** There was a logic error in the conditional statement that selects the appropriate suffix format:\n\n```python\nif binary:                          # \u274c WRONG - first condition\n    suffix = suffixes[\"gnu\"]\nelif binary:                        # \u274c UNREACHABLE - same condition checked twice\n    suffix = suffixes[\"binary\"]\nelse:\n    suffix = suffixes[\"decimal\"]\n```\n\nThe first condition checked `binary`, so the `elif binary:` would never execute. This meant that when `binary=True` was passed to the function, it would incorrectly use GNU-style suffixes (like \"K\", \"M\") instead of binary suffixes (like \"KiB\", \"MiB\").\n\n## The Fix\n\nChanged line 80 from `if binary:` to `if gnu:`:\n\n```python\nif gnu:                             # \u2713 CORRECT - check gnu first\n    suffix = suffixes[\"gnu\"]\nelif binary:                        # \u2713 NOW REACHABLE - binary mode works\n    suffix = suffixes[\"binary\"]\nelse:\n    suffix = suffixes[\"decimal\"]\n```\n\nThis ensures:\n- When `gnu=True`: Use GNU-style suffixes (K, M, G, etc.)\n- When `binary=True`: Use binary suffixes (KiB, MiB, GiB, etc.)\n- Otherwise: Use decimal suffixes (kB, MB, GB, etc.)\n\n**Result:** All 70 tests now pass, including the previously failing test case `testNaturalsize[testArgs23-31.0 KiB]`.\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "humanize-camelcase-006",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 684,
+      "tests_failed": 0,
+      "tests_total": 737,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-20T19:10:08.473229",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "src/humanize/filesize.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 47.00060415267944,
+        "error": null,
+        "agent_output": "Perfect! All 70 tests pass now. The bug has been fixed.\n\n## Summary\n\nThe bug was in `/private/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/stylebench_of5tqtul/src/humanize/filesize.py` at line 80.\n\n**The Problem:** The code was checking `if format:` to determine which suffix style to use (GNU, binary, or decimal). Since the `format` parameter defaults to `\"%.1f\"` (a non-empty string that is always truthy), it would always use the GNU suffix style regardless of the `gnu` parameter.\n\n**The Fix:** Changed line 80 from:\n```python\nif format:\n```\nto:\n```python\nif gnu:\n```\n\nThis ensures the correct suffix style is selected:\n- GNU style (K, M, G) only when `gnu=True`\n- Binary style (KiB, MiB, GiB) when `binary=True` and `gnu=False`  \n- Decimal style (kB, MB, GB) when both are False (default)\n\nThe test case that was failing (`naturalsize(1000)` expecting `\"1.0 kB\"`) now correctly returns the expected value instead of `\"1.0K\"`.\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "humanize-camelcase-007",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "NO_FIX",
+      "tests_passed": 70,
+      "tests_failed": 1,
+      "tests_total": 72,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-20T19:27:04.071540",
+      "fix_result": {
+        "success": false,
+        "files_changed": [],
+        "patch": "",
+        "tokens_used": 0,
+        "time_seconds": 1013.3300149440765,
+        "error": "Timeout after 120 seconds",
+        "agent_output": "",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "humanize-camelcase-008",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 684,
+      "tests_failed": 0,
+      "tests_total": 737,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-20T19:28:30.340839",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "src/humanize/_version.py",
+          "src/humanize/time.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 81.8231189250946,
+        "error": null,
+        "agent_output": "## Summary\n\nI found and fixed the bug in the `precisedelta` function. The issue was on **line 523** of `/src/humanize/time.py`:\n\n**The Problem:**\n- When `precisedelta(0.01, minimumUnit=\"seconds\", format=\"%0.3f\")` was called, the value 0.01 was being rounded to 0 before being converted to a timedelta\n- This resulted in \"0 seconds\" instead of the expected \"0.010 seconds\"\n\n**The Root Cause:**\n- The `_dateAndDelta` function was called with `precise=False`, which rounds float values to the nearest integer\n- For the value 0.01, `round(0.01)` returns 0, losing the precision\n\n**The Fix:**\nChanged line 523 from:\n```python\ndate, delta = _dateAndDelta(value, precise=False)\n```\nto:\n```python\ndate, delta = _dateAndDelta(value, precise=True)\n```\n\nThis preserves the precision of float inputs, which is exactly what the `precisedelta` function should do. All 684 tests now pass successfully.\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "humanize-camelcase-009",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 684,
+      "tests_failed": 0,
+      "tests_total": 737,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-20T19:30:03.415648",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "src/humanize/_version.py",
+          "src/humanize/number.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 88.87786316871643,
+        "error": null,
+        "agent_output": "Perfect! The bug has been fixed successfully. Here's a summary of what was wrong and how I fixed it:\n\n## Bug Summary\n\n**Error:** `AttributeError: 'int' object has no attribute 'replace'`\n\n**Root Cause:** The `intcomma()` function at line 154 tried to call `.replace()` on non-string values (integers and floats). The `.replace()` method only exists for strings.\n\n## The Fix\n\nI simplified the logic by unifying how string and non-string values are handled:\n\n**Before (lines 148-162):**\n- String values: validated but kept as strings\n- Non-string values: tried to call `.replace()` directly on integers/floats \u2192 **ERROR**\n\n**After (lines 148-159):**\n1. Convert non-string values to strings first\n2. For all values, remove thousands/decimal separators\n3. Validate the value is a valid number\n4. Convert back to the appropriate numeric type (float or int)\n\nThis ensures the `intcomma()` function correctly handles integers, floats, and strings, and that the value is always in the correct format for subsequent operations like formatting with `ndigits`.\n\n## Test Results\n- \u2705 All 684 tests pass\n- \u2705 Original failing test now works: `humanize.intcomma(10_000_000)` returns `\"10,000,000\"`\n- \u2705 String and float inputs still work correctly\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "humanize-camelcase-010",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 684,
+      "tests_failed": 0,
+      "tests_total": 737,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-20T19:30:57.833597",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "src/humanize/number.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 50.800395011901855,
+        "error": null,
+        "agent_output": "## Summary\n\nI found and fixed the bug in `/src/humanize/number.py` in the `intcomma()` function at lines 153-156.\n\n**The Bug:**\nThe logic for determining whether to convert a string to `int` or `float` was backwards:\n- When the string had NO decimal point (like `\"100\"`), it was converting to `float`, resulting in `100.0`\n- When the string HAD a decimal point (like `\"100.5\"`), it was trying to convert to `int`, which would fail\n\n**The Fix:**\nI reversed the conditional logic:\n```python\n# Before (buggy):\nif \".\" in value:\n    value = int(value)      # Wrong: converts \"100.5\" to int\nelse:\n    value = float(value)    # Wrong: converts \"100\" to 100.0\n\n# After (fixed):\nif \".\" in value:\n    value = float(value)    # Correct: keeps decimal numbers as float\nelse:\n    value = int(value)      # Correct: converts integer strings to int\n```\n\nThis ensures that:\n- `intcomma(\"100\")` returns `\"100\"` (not `\"100.0\"`)\n- `intcomma(\"1234.5\")` returns `\"1,234.5\"` (preserves decimals)\n- All 219 tests now pass \u2713\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "humanize-camelcase-011",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 684,
+      "tests_failed": 0,
+      "tests_total": 737,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-20T19:31:39.147688",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "src/humanize/number.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 37.73671007156372,
+        "error": null,
+        "agent_output": "## Summary\n\nI've successfully found and fixed the bug in the `intcomma` function at `src/humanize/number.py:164-167`.\n\n**The Bug:**\nThe conditional logic was reversed:\n```python\n# BEFORE (buggy):\nif ndigits is not None:\n    orig = str(value)\nelse:\n    orig = \"{0:.{1}f}\".format(value, ndigits)  # ndigits is None here!\n```\n\nWhen `ndigits` was `None` (the default case), the code tried to use it in a format specifier, causing: `ValueError: Format specifier missing precision`\n\n**The Fix:**\nSwapped the branches to correct the logic:\n```python\n# AFTER (fixed):\nif ndigits is not None:\n    orig = \"{0:.{1}f}\".format(value, ndigits)\nelse:\n    orig = str(value)\n```\n\n**Verification:**\n- The original failing test now runs without the ValueError\n- All test cases pass, including:\n  - `intcomma(10_000_000)` \u2192 `\"10,000,000\"` \u2713\n  - `intcomma(1234.5454545, 2)` \u2192 `\"1,234.55\"` \u2713\n  - `intcomma(1_234_567.25)` \u2192 `\"1,234,567.25\"` \u2713\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "humanize-camelcase-012",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 684,
+      "tests_failed": 0,
+      "tests_total": 737,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-20T19:32:29.482164",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "src/humanize/filesize.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 45.282286167144775,
+        "error": null,
+        "agent_output": "## Summary\n\n**Bug Found:** Line 87 in `/src/humanize/filesize.py`\n\n**Issue:** The condition for determining the base used in file size calculation was using `and` instead of `or`:\n```python\nbase = 1024 if (gnu and binary) else 1000  # WRONG\n```\n\n**Root Cause:** When `binary=True` and `gnu=False`, the condition `(False and True)` evaluated to False, causing the function to use base 1000 instead of base 1024 for binary file sizes. This resulted in 31744 bytes being calculated as 31.7 KiB instead of 31.0 KiB.\n\n**Fix:** Changed the condition to use `or`:\n```python\nbase = 1024 if (gnu or binary) else 1000  # CORRECT\n```\n\nNow the function correctly uses base 1024 when either `gnu` OR `binary` is True, and base 1000 otherwise.\n\n**Result:** All 70 tests pass, including the previously failing test `testNaturalsize[testArgs23-31.0 KiB]`.\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "humanize-camelcase-013",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 737,
+      "tests_failed": 0,
+      "tests_total": 737,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-20T19:33:32.287653",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "src/humanize/_version.py",
+          "src/humanize/i18n.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 56.75222206115723,
+        "error": null,
+        "agent_output": "## Summary\n\nI found and fixed the bug! Here's what was wrong:\n\n**Bug Location:** `src/humanize/i18n.py:89`\n\n**The Problem:** The condition on line 89 was inverted. It checked:\n```python\nif locale in _TRANSLATIONS:\n```\n\nBut it should check:\n```python\nif locale not in _TRANSLATIONS:\n```\n\n**Why This Caused the Failure:** When `activate(\"ru_RU\")` was called, the \"ru_RU\" locale wasn't yet loaded into the `_TRANSLATIONS` dictionary. The inverted condition skipped loading the translation, then the code tried to return `_TRANSLATIONS[\"ru_RU\"]` which didn't exist, causing the `KeyError`.\n\n**The Fix:** Changed the condition to `if locale not in _TRANSLATIONS:` so that new locales are properly loaded before being used.\n\n**Test Results:** All 737 tests now pass, including the previously failing `testI18n` test.\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "humanize-camelcase-014",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 684,
+      "tests_failed": 0,
+      "tests_total": 737,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-20T19:34:33.910680",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "src/humanize/number.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 53.30780100822449,
+        "error": null,
+        "agent_output": "## Summary\n\nI found and fixed the bug in the `ordinal()` function in `/src/humanize/number.py` at line 105.\n\n**The Bug:**\nThe conditional logic was backwards. The original code was:\n```python\nif value % 100 not in (11, 12, 13):  # special case\n    return f\"{value}{t[0]}\"  # Always returned \"th\"\nreturn f\"{value}{t[value % 10]}\"  # Only used for 11, 12, 13\n```\n\nThis caused `ordinal(1)` to return `\"1th\"` instead of `\"1st\"` because when the value wasn't 11, 12, or 13, it always returned `t[0]` which is \"th\".\n\n**The Fix:**\nI changed line 105 from:\n```python\nif value % 100 not in (11, 12, 13):\n```\nto:\n```python\nif value % 100 in (11, 12, 13):\n```\n\nNow the logic is correct:\n- For special cases (11, 12, 13), use `t[0]` which is \"th\"\n- For all other cases, use `t[value % 10]` to get the appropriate suffix (st, nd, rd, or th)\n\n**Test Results:**\n- \u2705 All 219 number tests pass\n- \u2705 All 684 total tests pass\n- \u2705 53 tests skipped (expected)\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "humanize-camelcase-015",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 684,
+      "tests_failed": 0,
+      "tests_total": 737,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-20T19:35:44.246142",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "src/humanize/number.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 65.96917390823364,
+        "error": null,
+        "agent_output": "## Summary\n\nI found and fixed the bug in the `intcomma` function! \n\n**The Bug:**\nThe logic for handling string inputs was backwards at lines 153-156 in `/src/humanize/number.py`:\n- When a string **had NO** decimal point, it converted to `float()` (adding `.0`)\n- When a string **had a** decimal point, it tried to convert to `int()` (causing an error)\n\n**The Fix:**\nI swapped the conversion logic so it now correctly:\n- Converts to `int()` when there's **no** decimal point\n- Converts to `float()` when there **is** a decimal point\n\nThis ensures that:\n- `intcomma(\"100\")` returns `\"100\"` (not `\"100.0\"`)\n- `intcomma(\"1234567.1234567\")` returns `\"1,234,567.1234567\"` (with commas)\n\n**Result:**\n\u2705 All **684 tests** now pass (with 53 skipped)\n\u2705 The failing test `testIntcomma[testArgs6-100]` is now fixed\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "humanize-camelcase-016",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 684,
+      "tests_failed": 0,
+      "tests_total": 737,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-20T19:36:20.167270",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "src/humanize/filesize.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 32.40746998786926,
+        "error": null,
+        "agent_output": "Perfect! All 70 tests now pass. The bug was a simple operator error on line 98 of `src/humanize/filesize.py`:\n\n**The Problem:**\n```python\nret: str = format % (bytes / (base**exp)) - suffix[exp - 1]\n```\n\nThis was trying to subtract a string from a string, which Python doesn't support.\n\n**The Fix:**\n```python\nret: str = format % (bytes / (base**exp)) + suffix[exp - 1]\n```\n\nChanged the `-` operator to `+` to concatenate the formatted number with the suffix. Now the function correctly produces results like \"1.0 kB\" by combining the formatted value \"1.0\" with the suffix \" kB\".\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "humanize-camelcase-017",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 684,
+      "tests_failed": 0,
+      "tests_total": 737,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-20T19:37:01.762322",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "src/humanize/filesize.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 37.03838300704956,
+        "error": null,
+        "agent_output": "Perfect! All 70 tests are now passing, including the previously failing test `testArgs1-1.0 kB`. \n\n**Summary of the fix:**\n\nThe bug was in `/private/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/stylebench_main621p/src/humanize/filesize.py` at line 98.\n\n**The issue:** The code was using `suffix[exp + 1]` instead of `suffix[exp - 1]`, causing it to access the wrong suffix in the array.\n\n**Example:** When converting 1000 bytes:\n- `exp = 1` (since log\u2081\u2080\u2080\u2080(1000) = 1)\n- The buggy code used `suffix[1 + 1] = suffix[2]` which is \" GB\"\n- The correct code uses `suffix[1 - 1] = suffix[0]` which is \" kB\"\n\n**The fix:** Changed line 98 from:\n```python\nret: str = format % (bytes / (base**exp)) + suffix[exp + 1]\n```\n\nTo:\n```python\nret: str = format % (bytes / (base**exp)) + suffix[exp - 1]\n```\n\nThis simple one-character change fixed all test failures and now all 70 test cases pass successfully.\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "humanize-camelcase-018",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 684,
+      "tests_failed": 0,
+      "tests_total": 737,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-20T19:37:15.598036",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "src/humanize/lists.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 10.189436912536621,
+        "error": null,
+        "agent_output": "Perfect! The bug was a simple typo: using the minus operator (`-`) instead of the plus operator (`+`) for string concatenation. This was preventing the string with commas from being joined with the \"and\" clause. The fix converts the minus operator to a plus operator, which properly concatenates the two strings.\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "humanize-camelcase-019",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 684,
+      "tests_failed": 0,
+      "tests_total": 737,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-20T19:37:58.245335",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "src/humanize/filesize.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 39.05587673187256,
+        "error": null,
+        "agent_output": "## Summary\n\nI found and fixed the bug! The issue was in `/src/humanize/filesize.py` at **line 87**.\n\n### The Bug\nThe base for binary/GNU file size calculations was incorrectly set to `1025` instead of `1024`:\n\n```python\nbase = 1025 if (gnu or binary) else 1000  # \u274c WRONG\n```\n\n### The Fix\nChanged it to the correct base of `1024`:\n\n```python\nbase = 1024 if (gnu or binary) else 1000  # \u2705 CORRECT\n```\n\n### Why This Matters\n- Binary file sizes use base 1024 (2^10), not 1025\n- When `binary=True`, the function should use 1024 as the base for conversions\n- With the incorrect base of 1025, `naturalsize(1024**2 * 32, True)` was calculating `33554432 / 1025\u00b2 = 31.9 MiB` instead of `33554432 / 1024\u00b2 = 32.0 MiB`\n\n### Test Results\nAll 70 tests in `test_filesize.py` now pass, including the previously failing test:\n- \u2705 `testNaturalsize[testArgs24-32.0 MiB]` - **FIXED**\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "humanize-camelcase-020",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 684,
+      "tests_failed": 0,
+      "tests_total": 737,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-20T19:38:40.882234",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "src/humanize/filesize.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 37.33549618721008,
+        "error": null,
+        "agent_output": "Excellent! The bug has been fixed successfully. Here's a summary:\n\n## Bug Summary\n\n**Location:** `src/humanize/filesize.py:87`\n\n**Issue:** The base for decimal file size suffixes (kB, MB, GB, etc.) was incorrectly set to `1001` instead of `1000`.\n\n**Fix:** Changed line 87 from:\n```python\nbase = 1024 if (gnu or binary) else 1001\n```\n\nTo:\n```python\nbase = 1024 if (gnu or binary) else 1000\n```\n\n## Result\n\nThe test that was failing (`testNaturalsize[testArgs1-1.0 kB]`) now passes. When calling `humanize.naturalsize(1000)`, it correctly returns `\"1.0 kB\"` instead of `\"1000 Bytes\"`.\n\n**Full test suite results:** 684 passed, 53 skipped \u2713\n",
+        "rate_limited": false
+      }
+    }
+  ],
+  "summary": {
+    "by_agent": {
+      "claude": {
+        "total": 20,
+        "passed": 19
+      }
+    },
+    "by_mode": {
+      "with_tests": {
+        "total": 20,
+        "passed": 19
+      }
+    },
+    "by_evaluation": {
+      "PASS": 19,
+      "FAIL": 0,
+      "ERROR": 0,
+      "TIMEOUT": 0,
+      "NO_FIX": 1
+    }
+  }
+}

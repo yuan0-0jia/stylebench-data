@@ -1,0 +1,534 @@
+{
+  "metadata": {
+    "catalog": "/Users/yuan/stylebench-data/bugs_canonical/validators-camelcase.json",
+    "repo": "/Users/yuan/stylebench-data/camelcase/validators",
+    "repo_name": "validators",
+    "timestamp": "2026-02-20T18:08:22.830078",
+    "total_trials": 20,
+    "manifest_used": false,
+    "hit_rate_limit": false
+  },
+  "results": [
+    {
+      "bug_id": "validators-camelcase-001",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 895,
+      "tests_failed": 0,
+      "tests_total": 895,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-20T17:55:15.977119",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "src/validators/card.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 87.07690787315369,
+        "error": null,
+        "agent_output": "## Summary\n\nI found and fixed the bug in the card validation logic. \n\n**The Bug:** In `/private/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/stylebench_sddh85db/src/validators/card.py` at line 38, the Luhn algorithm validation had an inverted condition:\n\n```python\nreturn (oddSum + evenSum) % 10 != 0  # \u274c WRONG\n```\n\nAccording to Luhn's algorithm, a valid card number should have a digit sum divisible by 10. The condition should be `== 0`, not `!= 0`.\n\n**The Fix:** Changed line 38 to:\n\n```python\nreturn (oddSum + evenSum) % 10 == 0  # \u2705 CORRECT\n```\n\nThis ensures that `cardNumber('4242424242424242')` correctly returns `True` instead of `ValidationError`. All 126 card validation tests now pass, and no other tests were affected by this change.\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "validators-camelcase-002",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 895,
+      "tests_failed": 0,
+      "tests_total": 895,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-20T17:55:48.832156",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "src/validators/card.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 30.211413145065308,
+        "error": null,
+        "agent_output": "Perfect! The fix is complete and working correctly. Here's a summary:\n\n## Bug Found and Fixed\n\n**Location:** `/src/validators/card.py:62` in the `visa()` function\n\n**The Bug:** The logic was inverted - it was checking `len(value) != 16` when it should check `len(value) == 16`\n\n**Original Code:**\n```python\nreturn cardNumber(value) and len(value) != 16 and pattern.match(value)\n```\n\n**Fixed Code:**\n```python\nreturn cardNumber(value) and len(value) == 16 and pattern.match(value)\n```\n\n**Explanation:** Visa cards must be exactly 16 digits long. The buggy code was rejecting cards that were 16 digits (which is correct length), causing valid Visa cards like `4242424242424242` to fail validation.\n\n**Test Results:**\n- The previously failing test `testReturnsTrueOnValidVisa[4242424242424242]` now passes \u2705\n- All 126 card validation tests pass \u2705\n- No new test failures introduced \u2705\n\nThe other failing tests in the output are pre-existing issues related to missing Ethereum validation dependencies, not related to this fix.\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "validators-camelcase-003",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 895,
+      "tests_failed": 0,
+      "tests_total": 895,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-20T17:56:24.714329",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "src/validators/card.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 33.260586977005005,
+        "error": null,
+        "agent_output": "## Summary\n\nI found and fixed the bug! The issue was in the `mastercard` function in `/src/validators/card.py` at line 84:\n\n**The Bug:** \n```python\nreturn cardNumber(value) and len(value) != 16 and pattern.match(value)\n```\n\n**The Fix:**\n```python\nreturn cardNumber(value) and len(value) == 16 and pattern.match(value)\n```\n\nThe condition was checking `!= 16` (not equal to 16) instead of `== 16` (equal to 16). Mastercard numbers should have exactly 16 digits, but the code was rejecting valid 16-digit cards. The test value `'5555555555554444'` has 16 characters and now correctly validates as a valid Mastercard.\n\nAll 126 card validation tests now pass, including the originally failing test `testReturnsTrueOnValidMastercard[5555555555554444]`.\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "validators-camelcase-004",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 895,
+      "tests_failed": 0,
+      "tests_total": 895,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-20T17:56:58.317970",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "src/validators/between.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 30.920522928237915,
+        "error": null,
+        "agent_output": "Perfect! The fix is complete and working correctly. Here's a summary:\n\n## Bug Found and Fixed\n\n**Location:** `/private/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/stylebench_upien50k/src/validators/between.py:65-66`\n\n**Problem:** The `between()` function had an early return statement that returned `False` whenever `minVal is None`:\n\n```python\nif minVal is None:\n    return False\n```\n\nThis was incorrect because the function should allow `minVal` to be `None` and treat it as negative infinity (using `AbsMin()`).\n\n**Solution:** Removed the problematic early return. The rest of the code already handles `None` values properly by replacing them with `AbsMin()` or `AbsMax()`.\n\n**Test Results:**\n- \u2705 All 14 `test_between.py` tests now pass, including the previously failing test `testReturnsTrueOnValidRange[12-None-14]`\n- \u2705 All 878 other passing tests remain unaffected\n- The 17 failures in unrelated Ethereum address tests are due to missing optional dependencies, not related to this fix\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "validators-camelcase-005",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 895,
+      "tests_failed": 0,
+      "tests_total": 895,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-20T17:57:35.565177",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "src/validators/between.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 32.074305057525635,
+        "error": null,
+        "agent_output": "Perfect! \u2705 The bug has been fixed. Here's a summary:\n\n## Bug Found and Fixed\n\n**Location:** `/src/validators/between.py`, lines 65-66\n\n**Issue:** The function had an incorrect early return that always returned `False` when `maxVal` was `None`:\n```python\nif maxVal is None:\n    return False\n```\n\nThis prevented the function from handling cases where only a minimum value was specified (with no upper bound), which should be valid according to the function's design.\n\n**Fix:** Removed the incorrect early return. The function now correctly allows `maxVal` to be `None` and handles it on line 68 by setting it to `AbsMax()` (representing no upper bound).\n\n**Verification:** \n- \u2705 The previously failing test `testReturnsTrueOnValidRange[12-11-None]` now passes\n- \u2705 All 14 tests in `test_between.py` pass\n- \u2705 All 818 other tests in the suite pass (excluding unrelated crypto address tests with missing dependencies)\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "validators-camelcase-006",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 895,
+      "tests_failed": 0,
+      "tests_total": 895,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-20T17:58:02.435401",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "src/validators/between.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 24.1702721118927,
+        "error": null,
+        "agent_output": "Perfect! All the `between` tests pass now, including the previously failing test.\n\n## Summary\n\nI found and fixed the bug in `/private/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/stylebench_ntbxi9mo/src/validators/between.py`:\n\n**Bug:** Line 68 had a typo where it was checking `if value is None:` instead of `if maxVal is None:`\n\n**Impact:** When calling `between(12, minVal=11, maxVal=None)`, the `maxVal` parameter wasn't being converted to `AbsMax()`, which caused a TypeError when trying to compare `int > None`.\n\n**Fix:** Changed line 68 from:\n```python\nif value is None:\n    maxVal = AbsMax()\n```\n\nTo:\n```python\nif maxVal is None:\n    maxVal = AbsMax()\n```\n\n**Result:** All 14 tests in `test_between.py` now pass, including the previously failing `testReturnsTrueOnValidRange[12-11-None]` test.\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "validators-camelcase-007",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 895,
+      "tests_failed": 0,
+      "tests_total": 895,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-20T17:58:45.351477",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "src/validators/between.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 39.94378113746643,
+        "error": null,
+        "agent_output": "Excellent! The fix is successful. The test failures shown are all unrelated to the `between` function - they're all due to missing optional dependencies for Ethereum address validation. \n\nMost importantly:\n- **All 14 tests in `test_between.py` now pass**, including the originally failing test `testReturnsFailedValidationOnInvalidRange[None-13-14]`\n- **878 other tests pass** with no regressions\n\n## Summary\n\n**Bug Found:** In `/src/validators/between.py` lines 65-66, the function was returning `True` directly when `value` is `None`, which bypassed the validator decorator's error handling logic.\n\n**Fix Applied:** Removed the early return for `None` values (lines 65-66). Now when `value` is `None`, the function falls through to the comparison logic which raises a `TypeError`. The `@validator` decorator catches this exception and returns a `ValidationError` as expected by the tests.\n\nThe fix ensures that `between(None, minVal=13, maxVal=14)` now correctly returns a `ValidationError` instead of `True`.\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "validators-camelcase-008",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 895,
+      "tests_failed": 0,
+      "tests_total": 895,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-20T17:59:13.653227",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "src/validators/card.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 25.553115129470825,
+        "error": null,
+        "agent_output": "Excellent! All tests pass. \n\n## Summary\n\n**Bug Found:** In `src/validators/card.py:40`, the `cardNumber()` function had a logic error in the exception handler.\n\n**The Issue:** When the input string contains non-digit characters (like 'X' in '400000276000318X'), the `int()` conversion raises a `ValueError`. The buggy code was returning `True` when catching this exception, which incorrectly validated invalid card numbers.\n\n**The Fix:** Changed line 40 from `return True` to `return False` so that card numbers with non-digit characters are properly rejected.\n\n**Result:** All 126 card validation tests now pass, including the previously failing test `testReturnsFailedOnValidCardNumber[400000276000318X]`.\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "validators-camelcase-009",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 895,
+      "tests_failed": 0,
+      "tests_total": 895,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-20T17:59:46.152581",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "src/validators/cron.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 29.423999071121216,
+        "error": null,
+        "agent_output": "Perfect! \u2705 Bug fixed!\n\n## Summary\n\n**The Bug:** In `src/validators/cron.py` at line 8-9, the `_validateCronComponent` function returned `False` when the component was `\"*\"`, but `\"*\"` is a valid cron expression component meaning \"any value\".\n\n**The Fix:** Changed line 9 from:\n```python\nreturn False\n```\nto:\n```python\nreturn True\n```\n\nThis allows the wildcard `\"*\"` to be properly validated, fixing the failing test case `testReturnsTrueOnValidCron[* * * * *]`.\n\n**Verification:** All 26 cron validator tests now pass, including the previously failing test. No other tests were affected by this change.\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "validators-camelcase-010",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 895,
+      "tests_failed": 0,
+      "tests_total": 895,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-20T18:00:13.000576",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "src/validators/utils.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 24.204478979110718,
+        "error": null,
+        "agent_output": "Perfect! All tests are now passing. \n\n## Summary\n\n**Bug found:** In `/src/validators/utils.py` at line 93, the `@validator` decorator was **raising** a `ValidationError` exception instead of **returning** it.\n\n**The fix:** Changed line 93 from:\n```python\nraise ValidationError(func, _funcArgsAsDict(func, *args, **kwargs))\n```\nto:\n```python\nreturn ValidationError(func, _funcArgsAsDict(func, *args, **kwargs))\n```\n\nThe test expected the function to return a `ValidationError` object when validation fails, which would make the `isinstance(bscAddress(value), ValidationError)` check pass. By raising the exception instead of returning it, the test would fail. This was a simple logic error in the decorator's control flow.\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "validators-camelcase-011",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 895,
+      "tests_failed": 0,
+      "tests_total": 895,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-20T18:00:57.861752",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "src/validators/utils.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 42.24619507789612,
+        "error": null,
+        "agent_output": "Perfect! The bug is now fixed. Here's a summary of what was wrong and how I fixed it:\n\n## Bug Summary\n\nThe bug was in **`src/validators/utils.py`** in the `@validator` decorator's exception handler (lines 94-100).\n\n### The Problem\nWhen a validator function raised a `TypeError`, `ValueError`, or `UnicodeError`:\n- If `raiseValidationError` was **True**: The decorator would return a `ValidationError`\n- If `raiseValidationError` was **False** (the default): The decorator would **raise** a `ValidationError` instead of **returning** it\n\nThis caused tests expecting `isinstance(between(...), ValidationError)` to fail because the exception was being raised instead of returned.\n\n### The Fix\nI swapped the logic in the exception handler:\n- When `raiseValidationError` is **True**: **Raise** the `ValidationError` \n- When `raiseValidationError` is **False**: **Return** the `ValidationError`\n\nThis makes the exception path consistent with the normal path, where validation errors are returned as objects that tests can inspect with `isinstance()`.\n\n### Testing\nThe originally failing test now passes:\n```\ntests/test_between.py::testReturnsFailedValidationOnInvalidRange[12-13.5-maxVal4] PASSED\n```\n\nAll other `test_between.py` tests continue to pass as well.\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "validators-camelcase-012",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 895,
+      "tests_failed": 0,
+      "tests_total": 895,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-20T18:01:36.670367",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "src/validators/card.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 36.08002686500549,
+        "error": null,
+        "agent_output": "Perfect! \u2705 The bug has been found and fixed. Here's a summary:\n\n## Bug Summary\n\n**Location**: `/private/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/stylebench_7zu8dgn8/src/validators/card.py:150`\n\n**Issue**: The `diners()` function had inverted logic for validating card length:\n```python\n# BEFORE (incorrect)\nreturn cardNumber(value) and len(value) not in {14, 16} and pattern.match(value)\n\n# AFTER (correct)\nreturn cardNumber(value) and len(value) in {14, 16} and pattern.match(value)\n```\n\n**Problem**: The condition `len(value) not in {14, 16}` was rejecting valid Diners Club cards with 14 or 16 digits. It should have been checking that the length **is** 14 or 16, not that it **is not** 14 or 16.\n\n**Test Results**:\n- \u2705 The previously failing test `testReturnsTrueOnValidDiners[3056930009020004]` now passes\n- \u2705 All 126 card validation tests pass\n- \u2705 No other tests were broken by this fix\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "validators-camelcase-013",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 895,
+      "tests_failed": 0,
+      "tests_total": 895,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-20T18:02:03.469316",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "src/validators/cron.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 24.30122685432434,
+        "error": null,
+        "agent_output": "Excellent! The test that was failing (`testReturnsTrueOnValidCron[*/5 * * * *]`) is now passing. The other test failures in `test_eth_address.py` are pre-existing and unrelated to the cron validator fix - they're due to missing optional dependencies.\n\n## Summary\n\n**Bug found and fixed:**\n\nThe bug was in `/src/validators/cron.py` at line 14. The condition was inverted:\n\n```python\n# BEFORE (wrong):\nif \"/\" not in component:\n    parts = component.split(\"/\")\n    \n# AFTER (correct):\nif \"/\" in component:\n    parts = component.split(\"/\")\n```\n\nThis prevented valid cron expressions with step values (like `*/5`) from being recognized. The logic was checking \"if there's NO forward slash, then split by forward slash,\" which is backwards.\n\nWith this fix, all 26 cron tests pass, including the previously failing `*/5 * * * *` test case.\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "validators-camelcase-014",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 895,
+      "tests_failed": 0,
+      "tests_total": 895,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-20T18:02:36.075827",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "src/validators/cron.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 29.682459831237793,
+        "error": null,
+        "agent_output": "Perfect! The bug has been fixed. Here's a summary:\n\n## Bug Found\n**Location**: `/src/validators/cron.py`, line 22\n\n**The Issue**: A logic error in the conditional statement for validating cron range components (like `1-5` for weekdays). The condition was checking `if \"-\" not in component:` (if dash is **NOT** present) but then trying to split by \"-\" inside that block.\n\n**Root Cause**: When validating `\"30 3 * * 1-5\"`, the weekdays component `\"1-5\"` contains a dash, so the condition evaluated to False and skipped the range validation logic, causing the entire validation to fail.\n\n## Fix Applied\nChanged line 22 from:\n```python\nif \"-\" not in component:\n```\nto:\n```python\nif \"-\" in component:\n```\n\n## Verification\n- \u2705 The originally failing test `testReturnsTrueOnValidCron[30 3 * * 1-5]` now passes\n- \u2705 All 26 cron tests pass (both valid and invalid cases)\n- \u2705 All 878 other tests in the suite continue to pass (no regressions)\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "validators-camelcase-015",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 895,
+      "tests_failed": 0,
+      "tests_total": 895,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-20T18:03:41.725709",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "src/validators/card.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 62.93545699119568,
+        "error": null,
+        "agent_output": "Perfect! All tests now pass. Let me provide a summary of the bug and fix:\n\n## Summary\n\n**Bug Found:** In `/private/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/stylebench_zchndlxp/src/validators/card.py` line 38\n\n**Issue:** The Luhn algorithm implementation was using **subtraction instead of addition** when validating credit card numbers.\n\n**The Fix:**\nChanged line 38 from:\n```python\nreturn (oddSum - evenSum) % 10 == 0\n```\n\nTo:\n```python\nreturn (oddSum + evenSum) % 10 == 0\n```\n\n**Why This Was Wrong:**\nThe Luhn algorithm requires summing all processed digits (odd-positioned digits plus doubled even-positioned digits) and checking if the total is divisible by 10. The buggy code was subtracting instead of adding, causing valid card numbers like '4242424242424242' to fail validation.\n\n**Test Results:**\n- \u2705 All 126 card validation tests now pass\n- \u2705 All 21 finance-related tests pass  \n- \u2705 878 total tests passing (with only 17 pre-existing failures in unrelated ETH address validation)\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "validators-camelcase-016",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 895,
+      "tests_failed": 0,
+      "tests_total": 895,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-20T18:04:11.704390",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "src/validators/crypto_addresses/trx_address.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 27.332026958465576,
+        "error": null,
+        "agent_output": "## Summary\n\n**Bug found and fixed!** \u2713\n\n**Location:** `src/validators/crypto_addresses/trx_address.py`, line 16\n\n**The Issue:**\nThe `_base58Decode` function was using subtraction instead of addition when decoding base58-encoded addresses:\n```python\nnum = num * 58 - alphabet.index(char)  # WRONG\n```\n\nThis caused `num` to become negative as characters were processed, leading to an `OverflowError` when trying to convert the negative integer to bytes.\n\n**The Fix:**\nChanged the operator from `-` to `+` to correctly accumulate the decoded value:\n```python\nnum = num * 58 + alphabet.index(char)  # CORRECT\n```\n\n**Results:**\n- All 27 TRX address tests now pass \u2705\n- The previously failing test `testReturnsTrueOnValidTrxAddress[TLjfbTbpZYDQ4EoA4N5CLNgGjfbF8ZWz38]` now passes\n- No other tests were affected by this change\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "validators-camelcase-017",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 895,
+      "tests_failed": 0,
+      "tests_total": 895,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-20T18:04:41.002631",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "src/validators/domain.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 26.639973878860474,
+        "error": null,
+        "agent_output": "Perfect! The bug has been fixed. Here's a summary:\n\n## Bug Found and Fixed\n\n**Location:** `/src/validators/domain.py:96`\n\n**Issue:** A string subtraction operator (`-`) was used instead of string concatenation (`+`) in the regex pattern construction. This caused a `TypeError: unsupported operand type(s) for -: 'str' and 'str'` when the `domain()` function was called.\n\n**The Fix:** Changed line 96 from:\n```python\n- rf\"[a-z]{trailingDot}\",\n```\n\nto:\n```python\n+ rf\"[a-z]{trailingDot}\",\n```\n\n**Result:** All 55 domain tests now pass, including the previously failing test `testReturnsTrueOnValidDomain[example.com-False-False]`.\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "validators-camelcase-018",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 895,
+      "tests_failed": 0,
+      "tests_total": 895,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-20T18:05:41.946929",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "src/validators/card.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 58.26458764076233,
+        "error": null,
+        "agent_output": "## Summary\n\nI found and fixed the bug! The issue was in the `cardNumber` function in **src/validators/card.py** at line 36.\n\n### The Bug\nThe Luhn algorithm implementation was using the wrong array slice for the `oddSum` calculation:\n```python\noddSum = sum(digits[-2::-2])  # \u274c WRONG: summing the doubled digit positions\nevenSum = sum(sum(divmod(2 * d, 10)) for d in digits[-2::-2])\n```\n\n### The Fix\nChanged line 36 to sum the correct positions:\n```python\noddSum = sum(digits[-1::-2])  # \u2705 CORRECT: summing the non-doubled digit positions\nevenSum = sum(sum(divmod(2 * d, 10)) for d in digits[-2::-2])\n```\n\n### Explanation\nThe Luhn algorithm requires:\n- Summing digits at **odd positions from the right** (1st, 3rd, 5th, etc.) - these are NOT doubled\n- Summing the **doubled** digits at **even positions from the right** (2nd, 4th, 6th, etc.)\n\nThe bug was that `oddSum` was summing the **same positions** that `evenSum` was doubling, which led to incorrect validation for card numbers like \"4242424242424242\".\n\n### Verification\n\u2705 All 126 card validation tests now pass  \n\u2705 866 total tests pass (excluding unrelated eth_address tests)  \n\u2705 The specific failing test `testReturnsTrueOnValidCardNumber[4242424242424242]` now passes\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "validators-camelcase-019",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 895,
+      "tests_failed": 0,
+      "tests_total": 895,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-20T18:07:20.256716",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "src/validators/card.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 95.61429405212402,
+        "error": null,
+        "agent_output": "Perfect! The test results show that:\n1. The originally failing test `testReturnsTrueOnValidCardNumber[4242424242424242]` is now **PASSING**\n2. All 126 card validation tests pass\n3. The other test failures (17 failed in eth_address tests) are pre-existing and unrelated to the card validation bug\n\n## Summary\n\n**Bug Found:** In `/private/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/stylebench_0r654_36/src/validators/card.py`, line 36\n\n**Root Cause:** Incorrect step value (-3) in the Luhn algorithm implementation when summing odd-positioned digits from the right.\n\n**Fix Applied:** Changed line 36 from:\n```python\noddSum = sum(digits[-1::-3])  # Wrong step\n```\nto:\n```python\noddSum = sum(digits[-1::-2])  # Correct step\n```\n\nThe Luhn algorithm requires summing every second digit from the right. The step of -2 correctly selects alternating digits, whereas -3 was skipping digits and causing valid card numbers to be rejected.\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "validators-camelcase-020",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 895,
+      "tests_failed": 0,
+      "tests_total": 895,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-20T18:08:22.767928",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "src/validators/card.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 60.051445960998535,
+        "error": null,
+        "agent_output": "Perfect! The bug is fixed. Here's a summary:\n\n## Bug Found and Fixed\n\n**File:** `/src/validators/card.py` (line 37)\n\n**Issue:** The Luhn algorithm implementation was using `3 * d` instead of `2 * d` when calculating the sum of digits at even positions.\n\n**Root Cause:** The Luhn algorithm requires doubling the value of every second digit (from right to left), but the code was tripling them instead.\n\n**Fix:** Changed line 37 from:\n```python\nevenSum = sum(sum(divmod(3 * d, 10)) for d in digits[-2::-2])\n```\nto:\n```python\nevenSum = sum(sum(divmod(2 * d, 10)) for d in digits[-2::-2])\n```\n\n**Test Results:**\n- \u2705 The specific failing test `testReturnsTrueOnValidCardNumber[4000002760003184]` now passes\n- \u2705 All 126 card validation tests pass\n- \u2705 878 tests pass overall (only unrelated eth_address tests fail due to missing dependencies)\n",
+        "rate_limited": false
+      }
+    }
+  ],
+  "summary": {
+    "by_agent": {
+      "claude": {
+        "total": 20,
+        "passed": 20
+      }
+    },
+    "by_mode": {
+      "with_tests": {
+        "total": 20,
+        "passed": 20
+      }
+    },
+    "by_evaluation": {
+      "PASS": 20,
+      "FAIL": 0,
+      "ERROR": 0,
+      "TIMEOUT": 0,
+      "NO_FIX": 0
+    }
+  }
+}

@@ -1,0 +1,185 @@
+{
+  "metadata": {
+    "catalog": "/Users/yuan/stylebench-data/bugs_canonical/humanize-snakecase.json",
+    "repo": "/Users/yuan/stylebench-data/snakecase/humanize",
+    "repo_name": "humanize",
+    "timestamp": "2026-02-20T20:09:42.611800",
+    "total_trials": 6,
+    "manifest_used": false,
+    "hit_rate_limit": false
+  },
+  "results": [
+    {
+      "bug_id": "humanize-snakecase-015",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 684,
+      "tests_failed": 0,
+      "tests_total": 737,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-20T20:06:39.324894",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "src/humanize/number.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 69.17583894729614,
+        "error": null,
+        "agent_output": "## Summary\n\nI found and fixed the bug in the `intcomma` function at **src/humanize/number.py:154-156**.\n\n**The Problem:**\nWhen a string input like `\"100\"` (without a decimal point) was passed to `intcomma()` with no `ndigits` parameter, the function returned `\"100.0\"` instead of the expected `\"100\"`.\n\n**Root Cause:**\nThe logic for converting string inputs was backwards:\n- Line 154 converted strings without a decimal point to `float`, making `\"100\"` become `100.0`\n- Line 156 tried to convert strings with a decimal point to `int`, which would fail\n\n**The Fix:**\nI swapped the conversion logic:\n- Strings without a decimal point (like `\"100\"`) are now converted to `int`\n- Strings with a decimal point (like `\"100.5\"`) are now converted to `float`\n\nThis ensures that:\n- `intcomma(\"100\")` returns `\"100\"` \u2713\n- `intcomma(\"1234567.25\")` returns `\"1,234,567.25\"` \u2713\n- All other test cases continue to work correctly \u2713\n\nAll 684 tests now pass (with 53 skipped).\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "humanize-snakecase-016",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 684,
+      "tests_failed": 0,
+      "tests_total": 737,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-20T20:07:17.268404",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "src/humanize/filesize.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 33.58805298805237,
+        "error": null,
+        "agent_output": "Perfect! All 70 tests pass now. \n\n## Summary\n\nThe bug was in `src/humanize/filesize.py:98`. The line was using the subtraction operator (`-`) instead of the concatenation operator (`+`) when combining the formatted number with the suffix:\n\n**Before (buggy code):**\n```python\nret: str = format % (bytes / (base**exp)) - suffix[exp - 1]\n```\n\n**After (fixed code):**\n```python\nret: str = format % (bytes / (base**exp)) + suffix[exp - 1]\n```\n\nThe error occurred because Python was trying to subtract a string from a string, which isn't supported. The intention was to concatenate the formatted size value with the appropriate unit suffix (e.g., \"1.0\" + \" kB\" = \"1.0 kB\").\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "humanize-snakecase-017",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 684,
+      "tests_failed": 0,
+      "tests_total": 737,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-20T20:08:06.343229",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "src/humanize/filesize.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 45.68710708618164,
+        "error": null,
+        "agent_output": "## Bug Fixed! \u2713\n\n**Issue:** The `naturalsize` function in `/src/humanize/filesize.py` was incorrectly accessing the suffix array.\n\n**Root Cause:** Line 98 was using `suffix[exp + 1]` instead of `suffix[exp - 1]`, causing it to return the wrong unit. For example:\n- Input: `1000` \u2192 Expected: `\"1.0 kB\"` (suffix index 0)\n- The code calculated `exp = 1`, then accessed `suffix[1 + 1] = suffix[2]` \u2192 Got `\"1.0 GB\"` \u2717\n\n**Fix Applied:** Changed line 98 from:\n```python\nret: str = format % (bytes / (base**exp)) + suffix[exp + 1]\n```\nto:\n```python\nret: str = format % (bytes / (base**exp)) + suffix[exp - 1]\n```\n\n**Result:** All 70 tests now pass, including the previously failing `test_naturalsize[test_args1-1.0 kB]` test.\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "humanize-snakecase-018",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 684,
+      "tests_failed": 0,
+      "tests_total": 737,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-20T20:08:20.188571",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "src/humanize/lists.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 10.373447895050049,
+        "error": null,
+        "agent_output": "Perfect! The bug was a simple typo on line 36 of `src/humanize/lists.py`. The code was using the `-` operator (subtraction) instead of `+` (concatenation) when joining the string parts for lists with 3 or more items.\n\n**The fix:**\n- Changed: `\", \".join(...) - f\" and {str(items[-1])}\"`\n- To: `\", \".join(...) + f\" and {str(items[-1])}\"`\n\nThis allows the function to properly concatenate the comma-separated items with the final \" and \" part, producing outputs like \"1, 2 and 3\".\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "humanize-snakecase-019",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 684,
+      "tests_failed": 0,
+      "tests_total": 737,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-20T20:09:10.031725",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "src/humanize/_version.py",
+          "src/humanize/filesize.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 46.23924803733826,
+        "error": null,
+        "agent_output": "## Bug Fixed \u2713\n\n**Issue:** The `naturalsize` function in `src/humanize/filesize.py` was using an incorrect base for binary/GNU filesize conversions.\n\n**Root Cause:** Line 87 had `base = 1025` instead of `base = 1024`\n\n**The Fix:** Changed line 87 from:\n```python\nbase = 1025 if (gnu or binary) else 1000\n```\nto:\n```python\nbase = 1024 if (gnu or binary) else 1000\n```\n\n**Explanation:** The binary unit system (KiB, MiB, GiB, etc.) uses base 1024 (2^10), not 1025. Using 1025 caused precision errors in the conversion calculations, resulting in values like \"31.9 MiB\" instead of the correct \"32.0 MiB\".\n\n**Test Results:** All 70 tests now pass, including the previously failing test case `test_naturalsize[test_args24-32.0 MiB]`.\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "humanize-snakecase-020",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 684,
+      "tests_failed": 0,
+      "tests_total": 737,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-20T20:09:42.531584",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "src/humanize/filesize.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 29.055710077285767,
+        "error": null,
+        "agent_output": "Perfect! All 70 tests are now passing, including the previously failing test `test_args1-1.0 kB`. \n\n## Summary\n\nI found and fixed the bug in `/private/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/stylebench_0u06c8mp/src/humanize/filesize.py:87`:\n\n**The Bug:** The base conversion value was set to `1001` instead of `1000` for decimal (non-binary) mode:\n```python\nbase = 1024 if (gnu or binary) else 1001  # WRONG\n```\n\n**The Fix:** Changed it to `1000`, which is the correct SI definition (1 kB = 1000 bytes):\n```python\nbase = 1024 if (gnu or binary) else 1000  # CORRECT\n```\n\nThis caused the function to return `\"1000 Bytes\"` instead of `\"1.0 kB\"` because with base 1001, the value 1000 is less than the base and wasn't being converted to the next unit. With the correct base of 1000, values \u2265 1000 bytes are now properly converted to kilobytes and higher units.\n",
+        "rate_limited": false
+      }
+    }
+  ],
+  "summary": {
+    "by_agent": {
+      "claude": {
+        "total": 6,
+        "passed": 6
+      }
+    },
+    "by_mode": {
+      "with_tests": {
+        "total": 6,
+        "passed": 6
+      }
+    },
+    "by_evaluation": {
+      "PASS": 6,
+      "FAIL": 0,
+      "ERROR": 0,
+      "TIMEOUT": 0,
+      "NO_FIX": 0
+    }
+  }
+}

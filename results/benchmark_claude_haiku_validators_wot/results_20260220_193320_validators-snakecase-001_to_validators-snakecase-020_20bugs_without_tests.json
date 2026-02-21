@@ -1,0 +1,532 @@
+{
+  "metadata": {
+    "catalog": "/Users/yuan/stylebench-data/bugs_canonical/validators-snakecase.json",
+    "repo": "/Users/yuan/stylebench-data/snakecase/validators",
+    "repo_name": "validators",
+    "timestamp": "2026-02-20T19:33:20.109798",
+    "total_trials": 20,
+    "manifest_used": false,
+    "hit_rate_limit": false
+  },
+  "results": [
+    {
+      "bug_id": "validators-snakecase-001",
+      "agent": "claude",
+      "mode": "without_tests",
+      "evaluation": "PASS",
+      "tests_passed": 895,
+      "tests_failed": 0,
+      "tests_total": 895,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-20T19:04:28.803337",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "src/validators/card.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 35.80254411697388,
+        "error": null,
+        "agent_output": "Done! I found and fixed the bug:\n\n**Issue:** In the `card_number` function at line 38 of `src/validators/card.py`, the Luhn algorithm check had the condition backwards.\n\n**The bug:** \n```python\nreturn (odd_sum + even_sum) % 10 != 0  # Wrong: returns True when NOT valid\n```\n\n**The fix:**\n```python\nreturn (odd_sum + even_sum) % 10 == 0  # Correct: returns True when valid\n```\n\nThe Luhn algorithm requires that the checksum (sum of processed digits) is divisible by 10 for a valid card number. The original code was rejecting valid cards like `4242424242424242` because it had the comparison operator reversed.\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "validators-snakecase-002",
+      "agent": "claude",
+      "mode": "without_tests",
+      "evaluation": "PASS",
+      "tests_passed": 895,
+      "tests_failed": 0,
+      "tests_total": 895,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-20T19:04:56.622977",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "src/validators/card.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 22.85529112815857,
+        "error": null,
+        "agent_output": "Done! I found and fixed the bug:\n\n**The Bug:** In the `visa()` function at line 62, the condition was `len(value) != 16` when it should be `len(value) == 16`.\n\n**Why it was wrong:** Visa card numbers must be exactly 16 digits long. The condition was rejecting cards with 16 digits instead of accepting them, causing the test to fail for the valid Visa card `4242424242424242`.\n\n**The Fix:** Changed the operator from `!=` (not equal) to `==` (equal), matching the pattern used in other card validators like mastercard, unionpay, and jcb.\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "validators-snakecase-003",
+      "agent": "claude",
+      "mode": "without_tests",
+      "evaluation": "PASS",
+      "tests_passed": 895,
+      "tests_failed": 0,
+      "tests_total": 895,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-20T19:05:19.141830",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "src/validators/card.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 18.671326875686646,
+        "error": null,
+        "agent_output": "Done! I found and fixed the bug:\n\n**The Bug:** In the `mastercard` function at line 84, the length validation was using `!=` (not equal) instead of `==` (equal):\n- **Before:** `len(value) != 16`\n- **After:** `len(value) == 16`\n\nMastercard numbers should be exactly 16 digits long, but the code was rejecting any card that was 16 digits. The test case `'5555555555554444'` is a valid Mastercard (starts with '55', is 16 digits, and passes Luhn's algorithm), but it was being rejected due to this off-by-one logic error. All other card validators in the file correctly use `==` for their length checks.\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "validators-snakecase-004",
+      "agent": "claude",
+      "mode": "without_tests",
+      "evaluation": "PASS",
+      "tests_passed": 895,
+      "tests_failed": 0,
+      "tests_total": 895,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-20T19:05:50.841045",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "src/validators/between.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 29.299879789352417,
+        "error": null,
+        "agent_output": "Perfect! I found and fixed the bug. \n\n**The Problem:**\nThe `between.py` file had an early return on line 66 that returned `False` whenever `min_val` was `None`. This prevented valid cases like `between(12, min_val=None, max_val=14)` from working correctly.\n\n**The Solution:**\nRemoved the buggy early return (lines 65-66). The function now properly handles `None` values by using `AbsMin()` and `AbsMax()` objects:\n- If `max_val` is `None`, it uses `AbsMax()` (an object greater than any value)\n- If `min_val` is `None`, it uses `AbsMin()` (an object less than any value)\n\nNow the failing test case `between(12, min_val=None, max_val=14)` will correctly return `True` since `AbsMin() <= 12 <= 14` evaluates to `True`.\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "validators-snakecase-005",
+      "agent": "claude",
+      "mode": "without_tests",
+      "evaluation": "PASS",
+      "tests_passed": 895,
+      "tests_failed": 0,
+      "tests_total": 895,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-20T19:06:20.924512",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "src/validators/between.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 27.382319927215576,
+        "error": null,
+        "agent_output": "Perfect! I found and fixed the bug.\n\n**The Issue:**\nLines 65-66 had an erroneous check that returned `False` whenever `max_val` was `None`:\n```python\nif max_val is None:\n    return False\n```\n\nThis prevented the function from accepting `None` as a valid value for `max_val`, which should mean \"no upper bound.\"\n\n**The Fix:**\nI removed those two lines. Now the code correctly converts `None` values to special boundary objects (`AbsMax()` for no upper bound and `AbsMin()` for no lower bound), which allows the comparison to work properly.\n\nFor the failing test case `between(12, min_val=11, max_val=None)`:\n- `max_val=None` is converted to `AbsMax()` (representing infinity)\n- The comparison `11 <= 12 <= AbsMax()` correctly returns `True`\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "validators-snakecase-006",
+      "agent": "claude",
+      "mode": "without_tests",
+      "evaluation": "PASS",
+      "tests_passed": 895,
+      "tests_failed": 0,
+      "tests_total": 895,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-20T19:06:43.976678",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "src/validators/between.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 20.81780695915222,
+        "error": null,
+        "agent_output": "Perfect! I've fixed the bug. The issue was on line 68 where the code was checking `if value is None:` instead of `if max_val is None:`.\n\n**The bug:** When `max_val` was `None`, it wasn't being converted to `AbsMax()`, so the comparison on line 74 tried to compare `min_val > None`, which raised a TypeError.\n\n**The fix:** Changed line 68 to check `if max_val is None:` so that `None` values are properly replaced with sentinel values (`AbsMax()` and `AbsMin()`) before comparison.\n\nThis minimal change ensures the test case `between(12, min_val=11, max_val=None)` now correctly returns `True` instead of raising a \"Comparison type mismatch\" error.\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "validators-snakecase-007",
+      "agent": "claude",
+      "mode": "without_tests",
+      "evaluation": "PASS",
+      "tests_passed": 895,
+      "tests_failed": 0,
+      "tests_total": 895,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-20T19:07:11.645812",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "src/validators/between.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 25.563836812973022,
+        "error": null,
+        "agent_output": "Done! I found and fixed the bug:\n\n**The Bug:** Lines 65-66 in `between.py` had an early return that unconditionally returned `True` for `None` values:\n```python\nif value is None:\n    return True\n```\n\nThis caused the validator to pass for `None` even when min/max constraints were specified, which is incorrect.\n\n**The Fix:** Removed the buggy early return so that `None` values go through the normal comparison logic, which will properly validate them against the min/max bounds or raise an appropriate error.\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "validators-snakecase-008",
+      "agent": "claude",
+      "mode": "without_tests",
+      "evaluation": "PASS",
+      "tests_passed": 895,
+      "tests_failed": 0,
+      "tests_total": 895,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-20T19:07:38.307096",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "src/validators/card.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 24.309005975723267,
+        "error": null,
+        "agent_output": "Done! I found and fixed the bug. \n\n**The Issue:**\nIn the `card_number()` function at line 40, when a `ValueError` is caught (which occurs when the input contains non-digit characters like 'X'), it was incorrectly returning `True` instead of `False`.\n\n**The Fix:**\nChanged line 40 from `return True` to `return False`. This ensures that card numbers with invalid characters (like '400000276000318X') are properly rejected, as they should be.\n\nThe bug was a simple logic error: when the function encounters a `ValueError` during digit conversion, it means the input is invalid and should return `False`, not `True`.\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "validators-snakecase-009",
+      "agent": "claude",
+      "mode": "without_tests",
+      "evaluation": "PASS",
+      "tests_passed": 895,
+      "tests_failed": 0,
+      "tests_total": 895,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-20T19:07:54.643805",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "src/validators/cron.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 13.708643674850464,
+        "error": null,
+        "agent_output": "Done! The bug was in the `_validate_cron_component` function. When checking if a cron component is the wildcard `\"*\"`, it was incorrectly returning `False`. The wildcard is a valid cron component meaning \"any value\", so it should return `True`.\n\nThe fix changes line 9 from:\n```python\nreturn False\n```\nto:\n```python\nreturn True\n```\n\nThis allows cron strings like `'* * * * *'` to validate correctly.\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "validators-snakecase-010",
+      "agent": "claude",
+      "mode": "without_tests",
+      "evaluation": "PASS",
+      "tests_passed": 895,
+      "tests_failed": 0,
+      "tests_total": 895,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-20T19:08:36.714966",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "src/validators/utils.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 39.6684889793396,
+        "error": null,
+        "agent_output": "Perfect! I found and fixed the bug.\n\n**The Problem:**\nThe `validator` decorator in `utils.py` line 93 was **raising** a `ValidationError` instead of **returning** it. This caused the test to fail because the test expected the function to return a `ValidationError` instance for invalid input.\n\n**The Fix:**\nChanged line 93 from `raise ValidationError(...)` to `return ValidationError(...)`.\n\nThis fix:\n- Matches the docstring which explicitly states the decorator should \"return `ValidationError` object\" (line 49)\n- Makes the default behavior consistent with the behavior when `raise_validation_error` is True\n- Allows the test assertion `assert isinstance(bsc_address(value), ValidationError)` to work correctly\n\nThe invalid BSC address `1x32Be343B94f860124dC4fEe278FDCBD38C102D88` is correctly rejected by the regex pattern (which requires the `0x` prefix), and now the decorator properly returns a `ValidationError` instead of raising one.\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "validators-snakecase-011",
+      "agent": "claude",
+      "mode": "without_tests",
+      "evaluation": "PASS",
+      "tests_passed": 895,
+      "tests_failed": 0,
+      "tests_total": 895,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-20T19:09:18.745642",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "src/validators/utils.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 39.324434757232666,
+        "error": null,
+        "agent_output": "Perfect! I found and fixed the bug. \n\n**The Issue:**\nIn the `validator` decorator in `utils.py`, the exception handling logic had inverted branches. When `raise_validation_error` is `False` (the default), exceptions like `TypeError` were being **raised** instead of **returned** as `ValidationError` instances.\n\n**The Fix:**\nI swapped the if/else branches in lines 94-100 so that:\n- When `raise_validation_error` is `False` (default): **return** a `ValidationError` instance (consistent with normal validation failures)\n- When `raise_validation_error` is `True`: **raise** a `ValidationError` exception\n\nThis ensures that when the `between` function encounters a type mismatch and raises a `TypeError`, the decorator catches it and returns a `ValidationError` instance as expected by the test, rather than raising an exception.\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "validators-snakecase-012",
+      "agent": "claude",
+      "mode": "without_tests",
+      "evaluation": "PASS",
+      "tests_passed": 895,
+      "tests_failed": 0,
+      "tests_total": 895,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-20T19:09:52.756894",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "src/validators/card.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 31.193719148635864,
+        "error": null,
+        "agent_output": "Perfect! I found and fixed the bug.\n\n**The Problem:**\nThe `diners` function on line 150 had inverted logic:\n```python\nreturn card_number(value) and len(value) not in {14, 16} and pattern.match(value)\n```\n\nThis was rejecting card numbers with exactly 14 or 16 digits, when Diners Club cards should accept those lengths. The test card '3056930009020004' has 16 digits and is valid, but was being rejected.\n\n**The Fix:**\nChanged `not in {14, 16}` to `in {14, 16}`:\n```python\nreturn card_number(value) and len(value) in {14, 16} and pattern.match(value)\n```\n\nNow Diners Club cards will correctly validate when they have 14 or 16 digits (and pass the Luhn check and pattern matching).\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "validators-snakecase-013",
+      "agent": "claude",
+      "mode": "without_tests",
+      "evaluation": "NO_FIX",
+      "tests_passed": 408,
+      "tests_failed": 1,
+      "tests_total": 409,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-20T19:21:49.541309",
+      "fix_result": {
+        "success": false,
+        "files_changed": [],
+        "patch": "",
+        "tokens_used": 0,
+        "time_seconds": 714.9399969577789,
+        "error": "Timeout after 120 seconds",
+        "agent_output": "",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "validators-snakecase-014",
+      "agent": "claude",
+      "mode": "without_tests",
+      "evaluation": "PASS",
+      "tests_passed": 895,
+      "tests_failed": 0,
+      "tests_total": 895,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-20T19:28:08.899169",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "src/validators/cron.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 376.2222089767456,
+        "error": null,
+        "agent_output": "Perfect! I've fixed the bug. The issue was on **line 22** of `/src/validators/cron.py`:\n\n**The Problem:**\nThe condition was `if \"-\" not in component:` which is inverted. This prevented the range handling code (lines 23-27) from executing when a range like `1-5` was present.\n\n**The Fix:**\nChanged it to `if \"-\" in component:` so that range expressions (like `1-5` in the weekday field) are properly validated.\n\nThe failing test `30 3 * * 1-5` represents a valid cron expression (3:30 AM, Monday-Friday). With this fix, the range validation will now correctly process the `1-5` in the weekday field instead of skipping it and eventually returning false.\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "validators-snakecase-015",
+      "agent": "claude",
+      "mode": "without_tests",
+      "evaluation": "PASS",
+      "tests_passed": 895,
+      "tests_failed": 0,
+      "tests_total": 895,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-20T19:29:22.815107",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "src/validators/card.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 71.1990978717804,
+        "error": null,
+        "agent_output": "The bug is fixed! The issue was on line 38 of `src/validators/card.py`. The Luhn algorithm formula should **add** the odd and even sums, not subtract them. The correct check is:\n\n```python\nreturn (odd_sum + even_sum) % 10 == 0\n```\n\nThe standard Luhn algorithm validates that the total sum of all digits (with every second digit doubled and digit-summed) is divisible by 10. The original code was using subtraction instead of addition, which caused valid card numbers like `4242424242424242` to fail validation.\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "validators-snakecase-016",
+      "agent": "claude",
+      "mode": "without_tests",
+      "evaluation": "PASS",
+      "tests_passed": 895,
+      "tests_failed": 0,
+      "tests_total": 895,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-20T19:29:39.317657",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "src/validators/crypto_addresses/trx_address.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 12.675448894500732,
+        "error": null,
+        "agent_output": "Fixed! The bug was a simple logic error in the `_base58Decode` function at line 16. It was subtracting (`-`) the character index instead of adding (`+`) it when decoding the base58 address. This caused the accumulated number to become negative, which resulted in the `OverflowError` when trying to convert it to bytes.\n\nThe fix changes:\n```python\nnum = num * 58 - alphabet.index(char)\n```\n\nto:\n```python\nnum = num * 58 + alphabet.index(char)\n```\n\nThis is the correct algorithm for base58 decoding - multiply the accumulated value by the base and add the current digit's value.\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "validators-snakecase-017",
+      "agent": "claude",
+      "mode": "without_tests",
+      "evaluation": "PASS",
+      "tests_passed": 895,
+      "tests_failed": 0,
+      "tests_total": 895,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-20T19:30:00.363261",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "src/validators/domain.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 16.906240701675415,
+        "error": null,
+        "agent_output": "Done! The bug was on line 96 of the `domain.py` file. A minus operator (`-`) was used instead of a plus operator (`+`) for string concatenation when building the regex pattern. This caused the \"unsupported operand type(s) for -: 'str' and 'str'\" error since you can't subtract strings in Python.\n\nThe fix changes line 96 from:\n```python\n- rf\"[a-z]{trailing_dot}\",\n```\n\nTo:\n```python\n+ rf\"[a-z]{trailing_dot}\",\n```\n\nThis allows the regex pattern to be properly constructed by concatenating all the string parts together.\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "validators-snakecase-018",
+      "agent": "claude",
+      "mode": "without_tests",
+      "evaluation": "PASS",
+      "tests_passed": 895,
+      "tests_failed": 0,
+      "tests_total": 895,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-20T19:31:38.079064",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "src/validators/card.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 94.52459597587585,
+        "error": null,
+        "agent_output": "Perfect! I found and fixed the bug. The issue was in the Luhn algorithm implementation in the `card_number` function at line 36 of `/src/validators/card.py`.\n\n**The Problem:**\nBoth `odd_sum` and `even_sum` were using the same slice `digits[-2::-2]`, meaning they were processing the same set of digits:\n```python\nodd_sum = sum(digits[-2::-2])\neven_sum = sum(sum(divmod(2 * d, 10)) for d in digits[-2::-2])  # Same slice!\n```\n\nThis caused the function to fail for valid card numbers like '4242424242424242'.\n\n**The Solution:**\nChanged line 36 to use the complementary slice `digits[-1::-2]`:\n```python\nodd_sum = sum(digits[-1::-2])  # Non-doubled digits\neven_sum = sum(sum(divmod(2 * d, 10)) for d in digits[-2::-2])  # Doubled digits\n```\n\nThis correctly implements the Luhn algorithm by:\n- Summing non-doubled digits at positions 0, 2, 4, ... from the right\n- Summing doubled digits at positions 1, 3, 5, ... from the right\n- Checking if the total is divisible by 10\n\nThe fix is minimal and focused only on correcting the slice used in the non-doubled sum calculation.\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "validators-snakecase-019",
+      "agent": "claude",
+      "mode": "without_tests",
+      "evaluation": "PASS",
+      "tests_passed": 895,
+      "tests_failed": 0,
+      "tests_total": 895,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-20T19:32:31.693679",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "src/validators/card.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 49.82345986366272,
+        "error": null,
+        "agent_output": "Done! I found and fixed the bug.\n\n**The Bug:** Line 36 in `/src/validators/card.py`\n\nThe issue was in the Luhn algorithm implementation. The line:\n```python\nodd_sum = sum(digits[-1::-3])\n```\n\nShould be:\n```python\nodd_sum = sum(digits[-1::-2])\n```\n\n**Explanation:** \nThe Luhn algorithm requires processing digits in two groups:\n- **Odd positions** from the right (1, 3, 5, 7, ...): should not be doubled\n- **Even positions** from the right (2, 4, 6, 8, ...): should be doubled\n\nThe original code used step `-3` for odd positions, which caused:\n1. Incorrect indexing (not capturing all odd-positioned digits)\n2. **Overlap** with the even positions (indices 0, 6, 12 were processed twice)\n\nWith the correct step `-2`, it now properly selects every other digit starting from the last position, which is exactly what the Luhn algorithm needs. This allows `'4242424242424242'` to correctly validate and return `True`.\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "validators-snakecase-020",
+      "agent": "claude",
+      "mode": "without_tests",
+      "evaluation": "PASS",
+      "tests_passed": 895,
+      "tests_failed": 0,
+      "tests_total": 895,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-20T19:33:19.940028",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "src/validators/card.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 43.738203287124634,
+        "error": null,
+        "agent_output": "Perfect! I found and fixed the bug. \n\n**The Issue:**\nThe `card_number` function on line 37 was using `3 * d` instead of `2 * d` when implementing Luhn's algorithm. The Luhn algorithm specifically requires multiplying even-position digits by **2**, not 3.\n\n**The Fix:**\nChanged line 37 from:\n```python\neven_sum = sum(sum(divmod(3 * d, 10)) for d in digits[-2::-2])\n```\nto:\n```python\neven_sum = sum(sum(divmod(2 * d, 10)) for d in digits[-2::-2])\n```\n\nThis was causing valid card numbers like `4000002760003184` to incorrectly fail validation. With this fix, the test should now pass.\n",
+        "rate_limited": false
+      }
+    }
+  ],
+  "summary": {
+    "by_agent": {
+      "claude": {
+        "total": 20,
+        "passed": 19
+      }
+    },
+    "by_mode": {
+      "without_tests": {
+        "total": 20,
+        "passed": 19
+      }
+    },
+    "by_evaluation": {
+      "PASS": 19,
+      "FAIL": 0,
+      "ERROR": 0,
+      "TIMEOUT": 0,
+      "NO_FIX": 1
+    }
+  }
+}

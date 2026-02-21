@@ -1,0 +1,526 @@
+{
+  "metadata": {
+    "catalog": "/Users/yuan/stylebench-data/bugs_canonical/more-itertools-badnames.json",
+    "repo": "/Users/yuan/stylebench-data/badnames/more-itertools",
+    "repo_name": "more-itertools",
+    "timestamp": "2026-02-20T20:38:03.029658",
+    "total_trials": 20,
+    "manifest_used": false,
+    "hit_rate_limit": false
+  },
+  "results": [
+    {
+      "bug_id": "more-itertools-badnames-001",
+      "agent": "claude",
+      "mode": "without_tests",
+      "evaluation": "PASS",
+      "tests_passed": 701,
+      "tests_failed": 0,
+      "tests_total": 701,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-20T20:20:49.878443",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "more_itertools/more.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 18.54019594192505,
+        "error": null,
+        "agent_output": "Perfect! I found and fixed the bug. The issue was in the `chunked` function's strict mode logic (line 235 in more.py):\n\n**The Bug:** The condition was checking `if len(v) == n:` which raised an error when chunks were the CORRECT size. This is backwards logic.\n\n**The Fix:** Changed it to `if len(v) != n:` so it now correctly raises an error only when a chunk has fewer than `n` elements (indicating the iterable is not divisible by `n`).\n\nNow when you call `chunked('ABCDEF', 3, strict=True)`, it will:\n1. Produce first chunk [ABC] with len=3 \u2713 (passes check)\n2. Produce second chunk [DEF] with len=3 \u2713 (passes check)  \n3. Complete successfully (iterable is divisible by 3)\n\nThe test should now pass!\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "more-itertools-badnames-002",
+      "agent": "claude",
+      "mode": "without_tests",
+      "evaluation": "PASS",
+      "tests_passed": 701,
+      "tests_failed": 0,
+      "tests_total": 701,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-20T20:21:20.361388",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "more_itertools/more.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 20.093104124069214,
+        "error": null,
+        "agent_output": "Perfect! I found and fixed the bug. \n\n**The Issue:**\nThe condition on line 846 was inverted. The code was using:\n- `_full` when `r != ag` (wrong!)\n- `_partial` when `r == ag` (wrong!)\n\nWhen `r == ag` (requesting full permutations), `_partial` would be called, which splits the array into `head` and `tail`. Since `r` equals the full length, `tail` becomes empty. Then line 791 tries to access `tail[-1]`, causing the `IndexError: list index out of range`.\n\n**The Fix:**\nChanged line 846 from:\n```python\nh = _full if (r != ag) else partial(_partial, r=r)\n```\n\nTo:\n```python\nh = _full if (r == ag) else partial(_partial, r=r)\n```\n\nThis ensures:\n- `_full` is used for full permutations (when `r == ag`)\n- `_partial` is used for partial permutations (when `r < ag`)\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "more-itertools-badnames-003",
+      "agent": "claude",
+      "mode": "without_tests",
+      "evaluation": "PASS",
+      "tests_passed": 701,
+      "tests_failed": 0,
+      "tests_total": 701,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-20T20:22:07.049955",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "more_itertools/more.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 35.44169592857361,
+        "error": null,
+        "agent_output": "Done! The bug was a simple logic error on line 933. The condition was `if n != 0:` which would raise an error for **any** non-zero value of `n` (including the valid default `n=1`). \n\nThe correct validation should be `if n < 1:` to only raise an error when `n` is invalid (0 or negative).\n\n**The fix:**\n- Changed line 933 from `if n != 0:` to `if n < 1:`\n- This allows positive values of `n` to proceed to the appropriate logic branches\n- Now `mi.intersperse(None, g)` with the default `n=1` will work correctly\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "more-itertools-badnames-004",
+      "agent": "claude",
+      "mode": "without_tests",
+      "evaluation": "PASS",
+      "tests_passed": 701,
+      "tests_failed": 0,
+      "tests_total": 701,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-20T20:22:28.275052",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "more_itertools/more.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 9.658700942993164,
+        "error": null,
+        "agent_output": "Done! The bug was a simple typo on line 197 in the `dl_mul` function. The variable was incorrectly named `yx_hi` instead of `xx_hi`, causing the `NameError` when the code tried to use `xx_hi` on line 199.\n\n**The fix:** Changed `yx_hi, xx_lo = dl_split(x)` to `xx_hi, xx_lo = dl_split(x)`\n\nThis is a straightforward variable naming error that prevented the Discrete Fourier Transform function from working correctly.\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "more-itertools-badnames-005",
+      "agent": "claude",
+      "mode": "without_tests",
+      "evaluation": "PASS",
+      "tests_passed": 701,
+      "tests_failed": 0,
+      "tests_total": 701,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-20T20:22:50.546672",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "more_itertools/more.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 10.953162908554077,
+        "error": null,
+        "agent_output": "Done! The bug was a simple typo on line 198 of `more_itertools/more.py`. \n\n**The fix:** Changed `xy_hi, yy_lo = dl_split(y)` to `yy_hi, yy_lo = dl_split(y)`\n\nThe `dl_mul` function was assigning the high part of `y` to the wrong variable name (`xy_hi` instead of `yy_hi`), causing a NameError when the next line tried to use `yy_hi` which didn't exist. This was a simple variable naming mistake in the \"Lossless multiplication\" helper function.\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "more-itertools-badnames-006",
+      "agent": "claude",
+      "mode": "without_tests",
+      "evaluation": "PASS",
+      "tests_passed": 701,
+      "tests_failed": 0,
+      "tests_total": 701,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-20T20:23:17.843238",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "more_itertools/more.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 14.862185955047607,
+        "error": null,
+        "agent_output": "Done! The bug was a simple typo on line 206 of `more_itertools/more.py`:\n\n**Problem:** `maq(dl_mul, p, q)` - `maq` is not defined  \n**Fix:** Changed to `map(dl_mul, p, q)`\n\nThe `map` function applies the `dl_mul` (lossless multiplication) function to corresponding pairs from the iterables `p` and `q`. The result is then flattened with `chain.from_iterable()` and summed with `fsum()`.\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "more-itertools-badnames-007",
+      "agent": "claude",
+      "mode": "without_tests",
+      "evaluation": "PASS",
+      "tests_passed": 701,
+      "tests_failed": 0,
+      "tests_total": 701,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-20T20:23:57.286334",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "more_itertools/more.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 26.197139978408813,
+        "error": null,
+        "agent_output": "Perfect! I've found and fixed the bug. \n\n**The Issue:** The `__bool__` method in the `peekable` class (line 382-387) was always returning `True`, regardless of whether the peekable was exhausted or not.\n\n**The Fix:** Changed line 386 from `return True` to `return False` in the `except StopIteration` clause. This way:\n- When `peek()` raises `StopIteration` (peekable is exhausted), it returns `False` \u2713\n- When `peek()` succeeds (peekable has items), it returns `True` \u2713\n\nThis matches the documented behavior (lines 363-371) where a peekable should be falsy when exhausted and truthy when it has items. The test `test_multi_prepend_peek` was calling `self.assertFalse(j)` on an exhausted peekable, which was failing because the buggy implementation always returned `True`.\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "more-itertools-badnames-008",
+      "agent": "claude",
+      "mode": "without_tests",
+      "evaluation": "PASS",
+      "tests_passed": 701,
+      "tests_failed": 0,
+      "tests_total": 701,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-20T20:24:32.252310",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "more_itertools/more.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 21.03775382041931,
+        "error": null,
+        "agent_output": "Perfect! I found and fixed the bug. The issue was in the `__bool__` method of the `peekable` class at lines 382-387:\n\n**The Problem:**\nThe method was returning `False` in both cases - whether the iterator had items or was exhausted. This caused any peekable object to always evaluate as falsy.\n\n**The Fix:**\nChanged the last `return False` to `return True`. Now the method correctly:\n- Returns `False` when the iterator is exhausted (StopIteration is raised)\n- Returns `True` when the iterator has items available\n\nThis matches the intended behavior described in the docstring (lines 363-371) where a peekable with items should evaluate to `True` in a boolean context.\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "more-itertools-badnames-009",
+      "agent": "claude",
+      "mode": "without_tests",
+      "evaluation": "PASS",
+      "tests_passed": 701,
+      "tests_failed": 0,
+      "tests_total": 701,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-20T20:25:23.014336",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "more_itertools/more.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 33.29874515533447,
+        "error": null,
+        "agent_output": "Perfect! I found and fixed the bug. \n\n**The Issue:**\nThe `iterate` function at line 538-555 in `more_itertools/more.py` had a logic error. The condition was `while False:` on line 553, which meant the loop never executed and the function returned no values (an empty list).\n\n**The Fix:**\nChanged `while False:` to `while True:` on line 553. The `iterate` function should produce an infinite iterator by repeatedly applying a function to the starting value. The docstring confirms this with the example:\n```python\n>>> take(10, iterate(lambda x: 2*x, 1))\n[1, 2, 4, 8, 16, 32, 64, 128, 256, 512]\n```\n\nThis matches the expected output in the failing test. The function now correctly yields: 1, 2, 4, 8, 16, 32, 64, 128, 256, 512 when limited to 10 values.\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "more-itertools-badnames-010",
+      "agent": "claude",
+      "mode": "without_tests",
+      "evaluation": "PASS",
+      "tests_passed": 701,
+      "tests_failed": 0,
+      "tests_total": 701,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-20T20:26:01.307735",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "more_itertools/more.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 27.182998180389404,
+        "error": null,
+        "agent_output": "Perfect! I've found and fixed the bug. The issue was in the `chunked` function at lines 229-241 in `/private/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/stylebench_c74pr3qd/more_itertools/more.py`.\n\n**The Bug:**\nThe conditional logic was inverted:\n- When `strict=True`, it was returning the raw iterator without validation\n- When `strict=False`, it was checking for `None` and raising an error\n\n**The Fix:**\nI swapped the logic so that:\n- When `strict=True`: It now checks if `n is None` and raises an error, then validates all chunks have exactly length `n`\n- When `strict=False`: It now returns the iterator without validation, allowing `n=None` to work properly\n\nThis allows `chunked('ABCDE', None)` to return `[['A', 'B', 'C', 'D', 'E']]` as expected, since when `n=None` and `strict=False`, the entire iterable is treated as a single chunk.\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "more-itertools-badnames-011",
+      "agent": "claude",
+      "mode": "without_tests",
+      "evaluation": "NO_FIX",
+      "tests_passed": 34,
+      "tests_failed": 1,
+      "tests_total": 35,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-20T20:28:02.234752",
+      "fix_result": {
+        "success": false,
+        "files_changed": [],
+        "patch": "",
+        "tokens_used": 0,
+        "time_seconds": 120.04943799972534,
+        "error": "Timeout after 120 seconds",
+        "agent_output": "",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "more-itertools-badnames-012",
+      "agent": "claude",
+      "mode": "without_tests",
+      "evaluation": "PASS",
+      "tests_passed": 701,
+      "tests_failed": 0,
+      "tests_total": 701,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-20T20:28:34.080021",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "more_itertools/more.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 21.142314910888672,
+        "error": null,
+        "agent_output": "Perfect! I found and fixed the bug. \n\n**Summary:**\nThe bug was in the `distinct_permutations` function at lines 849-855. The if/else branches were **swapped**:\n\n- **What was wrong**: When sorting succeeded (`ah = True`), the code tried to use variables `v` and `permuted_items` which were only defined in the `except` block (i.e., when sorting **failed**)\n- **The fix**: I swapped the if/else branches so that:\n  - When `ah = True` (sorting succeeded): use `h(ac)` directly with the sorted collection\n  - When `ah = False` (sorting failed): use the generator with `permuted_items` and `v` (which are now properly defined)\n\nThis eliminates the `UnboundLocalError` by ensuring variables are only referenced in the branches where they're actually defined.\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "more-itertools-badnames-013",
+      "agent": "claude",
+      "mode": "without_tests",
+      "evaluation": "PASS",
+      "tests_passed": 701,
+      "tests_failed": 0,
+      "tests_total": 701,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-20T20:29:09.391754",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "more_itertools/more.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 24.521255254745483,
+        "error": null,
+        "agent_output": "Done! The bug was a logic error in the `count` method at line 2382 of `/more_itertools/more.py`. \n\n**The Issue:**\nThe method had `return not int(value in self)` which inverted the logic:\n- When a value IS in the range, `int(True)` becomes 1, then `not 1` becomes `False`\n- When a value is NOT in the range, `int(False)` becomes 0, then `not 0` becomes `True`\n\n**The Fix:**\nRemoved the `not` operator so it correctly returns:\n- `1` when the value is in the range (expected behavior)\n- `0` when the value is not in the range\n\nThis makes the method consistent with Python's built-in `count()` method semantics.\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "more-itertools-badnames-014",
+      "agent": "claude",
+      "mode": "without_tests",
+      "evaluation": "PASS",
+      "tests_passed": 701,
+      "tests_failed": 0,
+      "tests_total": 701,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-20T20:29:48.745440",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "more_itertools/more.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 27.663010120391846,
+        "error": null,
+        "agent_output": "Perfect! I found and fixed the bug. \n\n**The Issue:**\nIn the `all_unique` function at line 4141, the condition for detecting duplicate unhashable items was inverted.\n\n**The Fix:**\nChanged `if h not in u:` to `if h in u:` on line 4141.\n\nThis corrects the logic so that:\n- When an unhashable item is first encountered, it gets added to the list `u`\n- When a duplicate unhashable item is found (it's already in `u`), the function returns False\n- The function now correctly returns True for `all_unique([[1, 2], [3, 4]])` since both lists are unique\n\nThe fix aligns the unhashable item handling with the hashable item handling logic, making the function work correctly for all cases.\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "more-itertools-badnames-015",
+      "agent": "claude",
+      "mode": "without_tests",
+      "evaluation": "PASS",
+      "tests_passed": 701,
+      "tests_failed": 0,
+      "tests_total": 701,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-20T20:30:42.043707",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "more_itertools/more.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 41.97663497924805,
+        "error": null,
+        "agent_output": "Perfect! I found and fixed the bug. \n\n**The Issue:**\nIn the `duplicates_everseen` function at lines 4659-4662, the logic for handling non-hashable items was inverted. When an item was unhashable:\n- If it was already seen (`k in u`), the code appended it to the list instead of yielding it\n- If it was new (`k not in u`), the code yielded it instead of tracking it\n\n**The Fix:**\nChanged `if k in u:` to `if k not in u:` so that:\n1. First occurrences of unhashable items are added to the tracking list `u` without yielding\n2. Duplicate occurrences of unhashable items are yielded (as intended)\n\nThis makes the logic consistent with the hashable case, which correctly yields only duplicates after their first appearance.\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "more-itertools-badnames-016",
+      "agent": "claude",
+      "mode": "without_tests",
+      "evaluation": "NO_FIX",
+      "tests_passed": 542,
+      "tests_failed": 1,
+      "tests_total": 543,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-20T20:32:43.782766",
+      "fix_result": {
+        "success": false,
+        "files_changed": [],
+        "patch": "",
+        "tokens_used": 0,
+        "time_seconds": 120.03878021240234,
+        "error": "Timeout after 120 seconds",
+        "agent_output": "",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "more-itertools-badnames-017",
+      "agent": "claude",
+      "mode": "without_tests",
+      "evaluation": "NO_FIX",
+      "tests_passed": 542,
+      "tests_failed": 1,
+      "tests_total": 543,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-20T20:34:45.486134",
+      "fix_result": {
+        "success": false,
+        "files_changed": [],
+        "patch": "",
+        "tokens_used": 0,
+        "time_seconds": 120.02687311172485,
+        "error": "Timeout after 120 seconds",
+        "agent_output": "",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "more-itertools-badnames-018",
+      "agent": "claude",
+      "mode": "without_tests",
+      "evaluation": "NO_FIX",
+      "tests_passed": 543,
+      "tests_failed": 1,
+      "tests_total": 544,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-20T20:36:47.223416",
+      "fix_result": {
+        "success": false,
+        "files_changed": [],
+        "patch": "",
+        "tokens_used": 0,
+        "time_seconds": 120.03970193862915,
+        "error": "Timeout after 120 seconds",
+        "agent_output": "",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "more-itertools-badnames-019",
+      "agent": "claude",
+      "mode": "without_tests",
+      "evaluation": "PASS",
+      "tests_passed": 701,
+      "tests_failed": 0,
+      "tests_total": 701,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-20T20:37:23.644323",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "more_itertools/more.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 25.700270175933838,
+        "error": null,
+        "agent_output": "Perfect! I found and fixed the bug.\n\n**The Issue:**\nIn `more_itertools/more.py` at line 313, the `nth_or_last` function had an off-by-one error:\n```python\nreturn last(islice(iterable, n + 2), default=default)\n```\n\n**The Fix:**\nChanged `n + 2` to `n + 1`:\n```python\nreturn last(islice(iterable, n + 1), default=default)\n```\n\n**Why This Was Wrong:**\nWith `n=1` and `range(3)`:\n- `islice(range(3), 1 + 2)` was taking the first 3 elements: [0, 1, 2]\n- Then `last()` returned 2 (wrong)\n\nWith the fix:\n- `islice(range(3), 1 + 1)` takes the first 2 elements: [0, 1]\n- Then `last()` returns 1 (correct)\n\nThe function is now correctly returning the nth element or the last element if n is beyond the iterable's length.\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "more-itertools-badnames-020",
+      "agent": "claude",
+      "mode": "without_tests",
+      "evaluation": "PASS",
+      "tests_passed": 701,
+      "tests_failed": 0,
+      "tests_total": 701,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-20T20:38:03.017262",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "more_itertools/more.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 27.597431898117065,
+        "error": null,
+        "agent_output": "Perfect! I found and fixed the bug. \n\n**The Bug:** Line 403 in `/private/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/stylebench_erntcge3/more_itertools/more.py`\n\nThe `peek()` method was trying to access `self._cache[1]` (the second item) instead of `self._cache[0]` (the first/next item to be consumed).\n\n**Why it failed:** When `test_multi_prepend_peek` called `peek()` after prepending items, the cache had items, but accessing index 1 when the cache only had one item caused an `IndexError: deque index out of range`.\n\n**The Fix:** Changed `return self._cache[1]` to `return self._cache[0]` in the `peek()` method. This ensures `peek()` correctly returns the next item without advancing the iterator.\n",
+        "rate_limited": false
+      }
+    }
+  ],
+  "summary": {
+    "by_agent": {
+      "claude": {
+        "total": 20,
+        "passed": 16
+      }
+    },
+    "by_mode": {
+      "without_tests": {
+        "total": 20,
+        "passed": 16
+      }
+    },
+    "by_evaluation": {
+      "PASS": 16,
+      "FAIL": 0,
+      "ERROR": 0,
+      "TIMEOUT": 0,
+      "NO_FIX": 4
+    }
+  }
+}

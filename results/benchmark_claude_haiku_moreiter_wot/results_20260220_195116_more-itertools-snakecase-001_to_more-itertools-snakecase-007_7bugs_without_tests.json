@@ -1,0 +1,209 @@
+{
+  "metadata": {
+    "catalog": "/Users/yuan/stylebench-data/bugs_canonical/more-itertools-snakecase.json",
+    "repo": "/Users/yuan/stylebench-data/snakecase/more-itertools",
+    "repo_name": "more-itertools",
+    "timestamp": "2026-02-20T19:51:16.603663",
+    "total_trials": 7,
+    "manifest_used": false,
+    "hit_rate_limit": true
+  },
+  "results": [
+    {
+      "bug_id": "more-itertools-snakecase-001",
+      "agent": "claude",
+      "mode": "without_tests",
+      "evaluation": "PASS",
+      "tests_passed": 701,
+      "tests_failed": 0,
+      "tests_total": 701,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-20T19:48:12.868958",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "more_itertools/more.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 22.92411184310913,
+        "error": null,
+        "agent_output": "Perfect! The bug was a simple logic error on line 235. The condition was inverted:\n\n**The problem:** The code was raising an error when `len(chunk) == n` (when the chunk IS the correct size), instead of raising an error when the chunk is shorter than `n`.\n\n**The fix:** Changed `if len(chunk) == n:` to `if len(chunk) != n:` on line 235.\n\nNow when `strict=True`, the function will correctly:\n- Allow chunks that are exactly size `n` (all chunks during normal iteration)\n- Raise an error only if the last chunk is shorter than `n` (indicating the iterable isn't evenly divisible)\n\nFor the test case `chunked('ABCDEF', 3, strict=True)`, since 6 is perfectly divisible by 3, both chunks will be size 3 and no error will be raised.\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "more-itertools-snakecase-002",
+      "agent": "claude",
+      "mode": "without_tests",
+      "evaluation": "PASS",
+      "tests_passed": 701,
+      "tests_failed": 0,
+      "tests_total": 701,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-20T19:49:02.841916",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "more_itertools/more.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 39.055501222610474,
+        "error": null,
+        "agent_output": "Perfect! I found and fixed the bug. \n\n**The Issue:** Line 846 had the algorithm selection logic backwards:\n```python\nalgorithm = _full if (r != size) else partial(_partial, r=r)\n```\n\nThis meant when `r == size` (full permutations), it would call `_partial`, which is designed for partial permutations. In `_partial`, when `r == len(A)`, the `tail` list becomes empty (`tail = A[r:]` would be `A[len(A):]`). On the next iteration, accessing `tail[-1]` caused the IndexError.\n\n**The Fix:** Changed the condition to use `==` instead of `!=`:\n```python\nalgorithm = _full if (r == size) else partial(_partial, r=r)\n```\n\nNow it correctly uses `_full` for full permutations and `_partial` for partial permutations.\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "more-itertools-snakecase-003",
+      "agent": "claude",
+      "mode": "without_tests",
+      "evaluation": "PASS",
+      "tests_passed": 701,
+      "tests_failed": 0,
+      "tests_total": 701,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-20T19:49:27.596738",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "more_itertools/more.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 12.662274837493896,
+        "error": null,
+        "agent_output": "Done! The bug was a logic error on line 933. The condition was checking `if n != 0:` when it should have been checking `if n <= 0:`. This caused the function to reject all valid positive values of `n` instead of only rejecting invalid values (0 or negative). \n\nWith this fix, the test should pass because `intersperse(None, iterable)` will now correctly use the default `n=1` and proceed with the interspersing logic instead of immediately raising an error.\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "more-itertools-snakecase-004",
+      "agent": "claude",
+      "mode": "without_tests",
+      "evaluation": "PASS",
+      "tests_passed": 701,
+      "tests_failed": 0,
+      "tests_total": 701,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-20T19:49:50.765353",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "more_itertools/more.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 11.714991807937622,
+        "error": null,
+        "agent_output": "Fixed! The bug was a simple typo on line 197 of `more_itertools/more.py`:\n\n**The problem:** The variable was assigned as `yx_hi` but the code tried to use `xx_hi`, causing a `NameError`.\n\n**The solution:** Changed line 197 from `yx_hi, xx_lo = dl_split(x)` to `xx_hi, xx_lo = dl_split(x)` so the variable name matches the usage in line 199 where it's referenced as `xx_hi * yy_hi`.\n\nThis was a straightforward naming error in the lossless multiplication helper function.\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "more-itertools-snakecase-005",
+      "agent": "claude",
+      "mode": "without_tests",
+      "evaluation": "PASS",
+      "tests_passed": 701,
+      "tests_failed": 0,
+      "tests_total": 701,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-20T19:50:12.389487",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "more_itertools/more.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 9.562366008758545,
+        "error": null,
+        "agent_output": "Done! The bug was a simple variable naming error on line 198 in the `dl_mul` function. The variable was incorrectly named `xy_hi` when it should be `yy_hi`. This caused a `NameError` when line 199 tried to use the undefined `yy_hi` variable.\n\nThe fix splits the second parameter `y` into `yy_hi` and `yy_lo` (high and low parts), matching the pattern used for splitting `x` into `xx_hi` and `xx_lo`.\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "more-itertools-snakecase-006",
+      "agent": "claude",
+      "mode": "without_tests",
+      "evaluation": "FAIL",
+      "tests_passed": 542,
+      "tests_failed": 1,
+      "tests_total": 543,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-20T19:50:26.737906",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "more_itertools/more.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 11.214203119277954,
+        "error": null,
+        "agent_output": "Done! The bug was on line 206 in the `_fsumprod` function. It referenced `maq` which is not defined. The correct function to use is `starmap` (which is already imported from itertools on line 19). \n\n`starmap` applies a function to argument tuples from iterables, which is exactly what's needed here - applying the `dl_mul` function to corresponding pairs of elements from `p` and `q`.\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "more-itertools-snakecase-007",
+      "agent": "claude",
+      "mode": "without_tests",
+      "evaluation": "PASS",
+      "tests_passed": 701,
+      "tests_failed": 0,
+      "tests_total": 701,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-20T19:51:06.631082",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "more_itertools/more.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 28.73175597190857,
+        "error": null,
+        "agent_output": "Perfect! I found and fixed the bug. \n\n## Summary\n\n**Location:** `/private/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/stylebench_l34wu180/more_itertools/more.py:382-387`\n\n**The Bug:** The `__bool__` method of the `peekable` class was returning `True` in both cases - when the iterator had items AND when it was exhausted. This violates the documented behavior.\n\n**The Fix:** Changed line 386 from `return True` to `return False` when `StopIteration` is caught, so that:\n- `__bool__()` returns `True` when the peekable has items (peek succeeds)\n- `__bool__()` returns `False` when the peekable is exhausted (StopIteration is raised)\n\nThis matches the documented behavior in the docstring (lines 363-371) that shows a peekable should evaluate to `True` if it has items and `False` if it's exhausted.\n",
+        "rate_limited": false
+      }
+    }
+  ],
+  "summary": {
+    "by_agent": {
+      "claude": {
+        "total": 7,
+        "passed": 6
+      }
+    },
+    "by_mode": {
+      "without_tests": {
+        "total": 7,
+        "passed": 6
+      }
+    },
+    "by_evaluation": {
+      "PASS": 6,
+      "FAIL": 1,
+      "ERROR": 0,
+      "TIMEOUT": 0,
+      "NO_FIX": 0
+    }
+  }
+}
