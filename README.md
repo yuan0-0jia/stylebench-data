@@ -17,18 +17,24 @@ stylebench-data/
 │   └── ...
 ├── badnames/              # Descriptive names → single-letter (a, b, c)
 │   └── ...
-├── formatting/            # Compact formatting (79 char lines, single quotes)
+├── formatting/            # Ruff default formatting (88-char lines, double quotes)
+│   └── ...
+├── nodocstrings/          # Docstrings removed (module, class, function)
+│   └── ...
+├── nodocs_full/           # All documentation removed (docstrings + inline comments)
 │   └── ...
 ├── bugs/                  # Ad-hoc validated bug catalogs (872 total bugs)
 │   ├── humanize-original.json
 │   └── ...
-├── bugs_canonical/        # Canonical bug catalogs for benchmark (400 bugs)
+├── bugs_canonical/        # Canonical bug catalogs for benchmark (560 bugs)
 │   ├── humanize-original.json
 │   ├── humanize-camelcase.json
-│   └── ...                # 20 catalogs, 20 bugs each
+│   ├── humanize-nodocstrings.json
+│   └── ...                # 28 catalogs (4 repos × 7 styles), 20 bugs each
 └── results/               # Benchmark results
-    ├── benchmark_claude_claude-haiku-4-5-20251001/  # Canonical pilot (200 trials, Week 7)
-    ├── benchmark_claude_haiku_{repo}_{mode}/   # Full benchmark — Claude Haiku, 8 dirs (800 trials)
+    ├── benchmark_claude_haiku/                 # Canonical pilot (200 trials, Week 7)
+    ├── benchmark_claude_haiku_{repo}_{mode}/   # Full benchmark — 5 naming/formatting styles (800 trials)
+    ├── benchmark_claude_haiku_nds_{mode}/      # Doc-style benchmark — nodocstrings + nodocs_full (320 trials)
     └── benchmark_codex/                        # Codex partial results (160 trials)
 ```
 
@@ -70,10 +76,27 @@ Transforms local variable names to single-letter names:
 
 ### Formatting (`formatting/`)
 
-Applies compact formatting style using ruff:
-- 79 character line length
-- Single quotes for strings
+Applies ruff default formatting:
+- 88 character line length
+- Double quotes for strings
 - PEP 8 compliant
+
+**Validation**: 100% test pass rate across all projects.
+
+### NoDocstrings (`nodocstrings/`)
+
+Removes all docstrings (module-level, class-level, and function-level):
+- `def foo():\n    """Does something."""\n    ...` → `def foo():\n    ...`
+- Preserves inline comments and type hints
+
+**Validation**: 100% test pass rate across all projects.
+
+### NoDocsFull (`nodocs_full/`)
+
+Removes all natural-language documentation — both docstrings and inline comments:
+- Strips all docstrings (like `nodocstrings`)
+- Also strips `# inline comments`
+- Code with zero natural-language documentation
 
 **Validation**: 100% test pass rate across all projects.
 
@@ -81,12 +104,12 @@ Applies compact formatting style using ruff:
 
 All variants have been validated to ensure tests still pass after transformation:
 
-| Project | Original | CamelCase | SnakeCase | BadNaming | Formatting |
-|---------|----------|-----------|-----------|-----------|------------|
-| humanize | 684 pass | 681 (99.6%) | 684 (100%) | 684 (100%) | 684 (100%) |
-| validators | 878 pass | 878 (100%) | 878 (100%) | 878 (100%) | 878 (100%) |
-| python-markdown | 776 pass | 776 (100%) | 776 (100%) | 776 (100%) | 776 (100%) |
-| more-itertools | 701 pass | 693 (98.9%) | 700 (99.9%) | 701 (100%) | 701 (100%) |
+| Project | Original | CamelCase | SnakeCase | BadNaming | Formatting | NoDocstrings | NoDocsFull |
+|---------|----------|-----------|-----------|-----------|------------|--------------|------------|
+| humanize | 684 pass | 681 (99.6%) | 684 (100%) | 684 (100%) | 684 (100%) | 684 (100%) | 684 (100%) |
+| validators | 878 pass | 878 (100%) | 878 (100%) | 878 (100%) | 878 (100%) | 878 (100%) | 878 (100%) |
+| python-markdown | 776 pass | 776 (100%) | 776 (100%) | 776 (100%) | 776 (100%) | 776 (100%) | 776 (100%) |
+| more-itertools | 701 pass | 693 (98.9%) | 700 (99.9%) | 701 (100%) | 701 (100%) | 701 (100%) | 701 (100%) |
 
 *Minor CamelCase/SnakeCase failures are due to dynamic imports that can't be tracked statically.*
 
@@ -94,11 +117,12 @@ All variants have been validated to ensure tests still pass after transformation
 
 ### Canonical Catalogs (`bugs_canonical/`)
 
-Used for the benchmark. The same logical mutation is applied consistently across all 5 style variants, ensuring fair comparison.
+Used for the benchmark. The same logical mutation is applied consistently across all 7 style variants, ensuring fair comparison.
 
-- **20 catalogs** (4 repos × 5 styles), **20 bugs each** = **400 total bugs**
+- **28 catalogs** (4 repos × 7 styles), **20 bugs each** = **560 total bugs**
 - All bugs have `line_number` and `context` for precise application
 - 7-8 mutation types per repo: eq_ne, var_swap, add_sub, and_or, if_else_swap, in_not_in, plus_one, true_false, return_none (availability depends on code characteristics)
+- Original 5 styles generated via `generate_canonical_bugs.py`; doc styles extended via `extend_catalogs.py`
 
 ### Ad-Hoc Catalogs (`bugs/`)
 
@@ -124,7 +148,7 @@ The agent never sees: mutation location, original code, or the diff.
 Benchmark results are stored in `results/` with per-run directories:
 
 ```
-results/benchmark_claude_haiku/
+results/benchmark_claude_haiku_{repo}_{mode}/
 ├── benchmark_state.json          # Progress tracking (completed bugs, rate limit state)
 ├── results_YYYYMMDD_HHMMSS_*.json  # Per-batch result files
 └── ...
@@ -135,17 +159,31 @@ Each result file contains:
 - `results[]` — per-trial evaluation (PASS/FAIL/ERROR/TIMEOUT/NO_FIX)
 - `summary` — aggregated stats by agent, mode, evaluation
 
-### Full Benchmark Results (800 trials, Claude Haiku 4.5, 2026-02-20)
+### Full Benchmark Results (1120 trials, Claude Haiku 4.5, 2026-02-22)
 
 | Metric | Value |
 |--------|-------|
-| Overall pass rate | 88.9% (711/800) |
-| with_tests | 91.8% (367/400) |
-| without_tests | 86.0% (344/400) |
+| Overall pass rate | 88.3% (989/1120) |
+| with_tests | 91.6% (513/560) |
+| without_tests | 85.0% (476/560) |
 
-By repo: validators 97%, humanize 96%, python-markdown 85%, more-itertools 78%.
-Style effect minimal (~4pp range). Mutation type is the strongest predictor (30pp range).
-See [stylebench tracking repo](https://github.com/yuan0-0jia/cse247b_reports_w26) for full analysis.
+**By style** (avg across 4 repos):
+
+| Style | with_tests | without_tests | Combined |
+|-------|-----------|---------------|---------|
+| original | 93.8% | 87.5% | 90.6% |
+| camelcase | 95.0% | 87.5% | 91.2% |
+| snakecase | 90.0% | 86.2% | 88.1% |
+| badnames | 93.5% | 89.0% | 91.2% |
+| formatting | 91.2% | 85.0% | 88.1% |
+| nodocstrings | 92.5% | 83.8% | 88.1% |
+| nodocs_full | 90.0% | 81.2% | 85.6% |
+
+**By repo**: validators 96%, humanize 94%, python-markdown 86%, more-itertools 77%.
+
+**Key findings**: Style effect is small (~6pp range). Mutation type is the strongest predictor (30pp range). Documentation removal hurts most without test feedback (`nodocs_full` without_tests: 81.2%).
+
+See the [tracking repo overview](https://github.com/masc-ucsc/cse247b_reports_w26) for full analysis.
 
 ## Usage
 
@@ -180,7 +218,13 @@ python scripts/transform.py snakecase stylebench-data/camelcase/humanize stylebe
 python scripts/transform.py badnames stylebench-data/original/humanize stylebench-data/badnames/humanize
 
 # Formatting
-python scripts/transform.py formatting stylebench-data/original/humanize stylebench-data/formatting/humanize --style compact
+python scripts/transform.py formatting stylebench-data/original/humanize stylebench-data/formatting/humanize
+
+# NoDocstrings
+python scripts/transform.py nodocstrings stylebench-data/original/humanize stylebench-data/nodocstrings/humanize
+
+# NoDocsFull
+python scripts/transform.py nodocs_full stylebench-data/original/humanize stylebench-data/nodocs_full/humanize
 ```
 
 ## License
