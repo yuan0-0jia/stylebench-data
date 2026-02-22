@@ -1,0 +1,526 @@
+{
+  "metadata": {
+    "catalog": "/Users/yuan/stylebench-data/bugs_canonical/more-itertools-nodocstrings.json",
+    "repo": "/Users/yuan/stylebench-data/nodocstrings/more-itertools",
+    "repo_name": "more-itertools",
+    "timestamp": "2026-02-22T02:37:36.815518",
+    "total_trials": 20,
+    "manifest_used": false,
+    "hit_rate_limit": false
+  },
+  "results": [
+    {
+      "bug_id": "more-itertools-nodocstrings-001",
+      "agent": "claude",
+      "mode": "without_tests",
+      "evaluation": "PASS",
+      "tests_passed": 701,
+      "tests_failed": 0,
+      "tests_total": 701,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-22T02:20:04.890357",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "more_itertools/more.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 27.916821002960205,
+        "error": null,
+        "agent_output": "Done! I've fixed the bug in the `chunked` function (more.py:214). The logic condition was inverted - it should raise an error when `len(chunk) != n` (chunk is smaller than expected), not when `len(chunk) == n` (chunk is the correct size).\n\nThe fix changes line 214 from:\n```python\nif len(chunk) == n:\n```\nto:\n```python\nif len(chunk) != n:\n```\n\nThis allows the `strict=True` mode to correctly validate that the iterable is evenly divisible by n, only raising an error when the final chunk is smaller than n (indicating incomplete division).\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "more-itertools-nodocstrings-002",
+      "agent": "claude",
+      "mode": "without_tests",
+      "evaluation": "PASS",
+      "tests_passed": 701,
+      "tests_failed": 0,
+      "tests_total": 701,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-22T02:20:42.630417",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "more_itertools/more.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 27.49023985862732,
+        "error": null,
+        "agent_output": "Perfect! I found and fixed the bug.\n\n**The Bug:** Line 487 had the condition reversed:\n- `algorithm = _full if (r != size) else partial(_partial, r=r)`\n\n**The Issue:** When `r == size` (which happens by default when no `r` argument is provided), the code tries to use `_partial`. This function splits the input at position `r`, creating an empty `tail` when `r == size`. Then it tries to access `tail[-1]`, causing an IndexError.\n\n**The Fix:** Changed the condition to:\n- `algorithm = _full if (r == size) else partial(_partial, r=r)`\n\nNow it correctly uses:\n- `_full` for full permutations (when `r == size`)\n- `_partial` for partial permutations (when `r < size`)\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "more-itertools-nodocstrings-003",
+      "agent": "claude",
+      "mode": "without_tests",
+      "evaluation": "PASS",
+      "tests_passed": 701,
+      "tests_failed": 0,
+      "tests_total": 701,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-22T02:21:15.919830",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "more_itertools/more.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 23.049219131469727,
+        "error": null,
+        "agent_output": "Done! I found and fixed the bug:\n\n**The Issue:** Line 509 in `more_itertools/more.py` had an incorrect condition:\n```python\nif n != 0:  # Wrong - rejects ALL non-zero values\n    raise ValueError('n must be > 0')\n```\n\n**The Fix:** Changed it to:\n```python\nif n <= 0:  # Correct - only rejects zero and negative values\n    raise ValueError('n must be > 0')\n```\n\nThe original condition `if n != 0` was backwards - it raised an error for any non-zero value, including valid ones like the default `n=1`. The test calls `intersperse(None, iterable)` which relies on the default `n=1`, so it was incorrectly failing. The corrected logic now only raises an error when `n` is actually invalid (\u2264 0).\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "more-itertools-nodocstrings-004",
+      "agent": "claude",
+      "mode": "without_tests",
+      "evaluation": "PASS",
+      "tests_passed": 701,
+      "tests_failed": 0,
+      "tests_total": 701,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-22T02:21:37.751209",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "more_itertools/more.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 9.665184020996094,
+        "error": null,
+        "agent_output": "Done! The bug was a simple variable naming error on line 195. The variable was incorrectly named `yx_hi` when it should have been `xx_hi` to match its usage in the rest of the function. This caused a `NameError` when the function tried to use `xx_hi` on line 197.\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "more-itertools-nodocstrings-005",
+      "agent": "claude",
+      "mode": "without_tests",
+      "evaluation": "PASS",
+      "tests_passed": 701,
+      "tests_failed": 0,
+      "tests_total": 701,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-22T02:21:59.655871",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "more_itertools/more.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 10.768624782562256,
+        "error": null,
+        "agent_output": "Done! The bug was a simple typo on line 196. The variable should be `yy_hi` (not `xy_hi`) since it's unpacking the result of `dl_split(y)`. The subsequent lines (197-198) use both `yy_hi` and `yy_lo`, but only `yy_lo` was defined due to the incorrect variable name.\n\nThe fix changes:\n```python\nxy_hi, yy_lo = dl_split(y)\n```\nto:\n```python\nyy_hi, yy_lo = dl_split(y)\n```\n\nThis resolves the `NameError: name 'yy_hi' is not defined` error.\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "more-itertools-nodocstrings-006",
+      "agent": "claude",
+      "mode": "without_tests",
+      "evaluation": "PASS",
+      "tests_passed": 701,
+      "tests_failed": 0,
+      "tests_total": 701,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-22T02:22:41.016151",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "more_itertools/more.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 29.906986951828003,
+        "error": null,
+        "agent_output": "**Bug fixed!**\n\nThe issue was on line 204 in `more_itertools/more.py`. The code referenced `maq` which doesn't exist. \n\n**The fix:** Replace `maq(dl_mul, p, q)` with `starmap(dl_mul, zip(p, q))`\n\nThis correctly applies the `dl_mul` function to pairs of values from iterables `p` and `q`. The `starmap` function (imported from itertools) unpacks tuples as arguments, and `zip(p, q)` pairs corresponding elements from both iterables.\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "more-itertools-nodocstrings-007",
+      "agent": "claude",
+      "mode": "without_tests",
+      "evaluation": "PASS",
+      "tests_passed": 701,
+      "tests_failed": 0,
+      "tests_total": 701,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-22T02:23:20.667430",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "more_itertools/more.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 29.24642777442932,
+        "error": null,
+        "agent_output": "Fixed! The bug was in the `__bool__` method of the `peekable` class at line 264. \n\n**The Problem:** The method returned `True` regardless of whether the iterator was exhausted or not. When `peek()` raised `StopIteration` (indicating the iterator is empty), it should return `False`, but it was returning `True`.\n\n**The Fix:** Changed line 264 from `return True` to `return False`. Now the peekable iterator correctly evaluates to `False` when empty, which is what the `test_multi_prepend_peek` test expects when it calls `assertFalse(it)` on an exhausted iterator.\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "more-itertools-nodocstrings-008",
+      "agent": "claude",
+      "mode": "without_tests",
+      "evaluation": "PASS",
+      "tests_passed": 701,
+      "tests_failed": 0,
+      "tests_total": 701,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-22T02:23:59.895324",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "more_itertools/more.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 28.523723125457764,
+        "error": null,
+        "agent_output": "Perfect! The bug was in the `__bool__` method of the `peekable` class. The method was always returning `False`, even when there were items available via `peek()`. \n\n**The fix:** Changed line 265 from `return False` to `return True`\n\n**Explanation:** The `__bool__` method should return:\n- `True` when the peekable has items (peek() succeeds)\n- `False` when the peekable is empty (peek() raises StopIteration)\n\nThe test `test_prepend_truthiness` prepends items to a peekable and checks that it evaluates to true. With the corrected logic, the peekable will now correctly report as truthy when it contains items.\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "more-itertools-nodocstrings-009",
+      "agent": "claude",
+      "mode": "without_tests",
+      "evaluation": "PASS",
+      "tests_passed": 701,
+      "tests_failed": 0,
+      "tests_total": 701,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-22T02:24:36.802203",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "more_itertools/more.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 25.527621746063232,
+        "error": null,
+        "agent_output": "Perfect! I've fixed the bug. \n\n**The Issue:**\nThe `iterate` function on line 340 had `while False:` which prevented the loop from ever executing, causing the function to return an empty iterator instead of generating the expected sequence.\n\n**The Fix:**\nChanged `while False:` to `while True:` so the function properly yields values by repeatedly applying the function to the start value.\n\nThe `iterate` function is supposed to continuously apply a function to generate a sequence (e.g., `iterate(lambda x: x * 2, 1)` generates powers of 2: 1, 2, 4, 8, 16, 32, ...), which matches the expected test output of `[1, 2, 4, 8, 16, 32, 64, 128, 256, 512]`.\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "more-itertools-nodocstrings-010",
+      "agent": "claude",
+      "mode": "without_tests",
+      "evaluation": "FAIL",
+      "tests_passed": 1,
+      "tests_failed": 1,
+      "tests_total": 2,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-22T02:25:13.422518",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "more_itertools/more.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 35.500569105148315,
+        "error": null,
+        "agent_output": "Perfect! I've fixed the bug. The issue was that the logic was inverted:\n\n**The Problem:**\n- The check `if n is None:` was in the `else` block (executed when `strict=False`)\n- But the error message says \"when using strict mode\", indicating it should only check when `strict=True`\n\n**The Fix:**\n- Moved the `if n is None:` check from the `else` block into the `if strict:` block\n- Now when `strict=False` (the default), `n=None` is allowed\n- When `strict=True`, `n=None` will raise an error as intended\n\nThis allows the test `chunked('ABCDE', None)` to work correctly with the default `strict=False` parameter.\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "more-itertools-nodocstrings-011",
+      "agent": "claude",
+      "mode": "without_tests",
+      "evaluation": "NO_FIX",
+      "tests_passed": 34,
+      "tests_failed": 1,
+      "tests_total": 35,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-22T02:27:14.204355",
+      "fix_result": {
+        "success": false,
+        "files_changed": [],
+        "patch": "",
+        "tokens_used": 0,
+        "time_seconds": 120.04097104072571,
+        "error": "Timeout after 120 seconds",
+        "agent_output": "",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "more-itertools-nodocstrings-012",
+      "agent": "claude",
+      "mode": "without_tests",
+      "evaluation": "PASS",
+      "tests_passed": 701,
+      "tests_failed": 0,
+      "tests_total": 701,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-22T02:27:45.024009",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "more_itertools/more.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 20.658796072006226,
+        "error": null,
+        "agent_output": "Perfect! I found and fixed the bug. \n\n**The Issue:**\nThe if/else logic in lines 490-496 was reversed. When `sortable = True`, the code tried to use `permuted_items` and `indices`, but those variables are only defined in the `except TypeError` block when `sortable = False`.\n\n**The Fix:**\nI swapped the logic so that:\n- When `sortable = True`: Return `algorithm(items)` directly (using the sorted items)\n- When `sortable = False`: Return the generator expression that uses `permuted_items` and `indices` (which are only defined when items aren't sortable)\n\nThis makes logical sense because when items are sortable, they can be passed directly to the algorithm, but when they're not sortable (mixed types), we need to work with indices and map them back to the original items.\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "more-itertools-nodocstrings-013",
+      "agent": "claude",
+      "mode": "without_tests",
+      "evaluation": "PASS",
+      "tests_passed": 701,
+      "tests_failed": 0,
+      "tests_total": 701,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-22T02:28:28.021317",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "more_itertools/more.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 32.62778401374817,
+        "error": null,
+        "agent_output": "Done! The bug was a simple logic error in the `count` method. It was incorrectly returning `not int(value in self)`, which inverted the result. The fix was to change it to `int(value in self)`, so it properly returns:\n- `1` when the value is in the range\n- `0` when the value is not in the range\n\nThis matches the expected behavior of a `count()` method on a Sequence.\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "more-itertools-nodocstrings-014",
+      "agent": "claude",
+      "mode": "without_tests",
+      "evaluation": "PASS",
+      "tests_passed": 701,
+      "tests_failed": 0,
+      "tests_total": 701,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-22T02:29:07.923889",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "more_itertools/more.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 28.988354921340942,
+        "error": null,
+        "agent_output": "Perfect! I found and fixed the bug.\n\n**The Issue:**\nIn the `all_unique` function at line 1978, the condition was inverted. When handling non-hashable elements (caught by the `TypeError`), the code was checking:\n```python\nif element not in seenlist:\n    return False\n```\n\nThis logic is backwards \u2014 it returns `False` when an element is **NOT** in the list (meaning it's a new, unique element), which is wrong.\n\n**The Fix:**\nChanged it to:\n```python\nif element in seenlist:\n    return False\n```\n\nNow it correctly returns `False` only when an element **IS** already in the list (meaning it's a duplicate).\n\nThe test `all_unique([[1, 2], [3, 4]])` now works correctly because:\n- `[1, 2]` is not hashable, triggers `TypeError`, gets added to `seenlist`\n- `[3, 4]` is not hashable, triggers `TypeError`, is not in `seenlist`, so it gets added\n- Function returns `True` (all elements are unique)\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "more-itertools-nodocstrings-015",
+      "agent": "claude",
+      "mode": "without_tests",
+      "evaluation": "PASS",
+      "tests_passed": 701,
+      "tests_failed": 0,
+      "tests_total": 701,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-22T02:30:30.150711",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "more_itertools/more.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 71.17289185523987,
+        "error": null,
+        "agent_output": "Perfect! I've found and fixed the bug. The issue was in the `duplicates_everseen` function at line 2275:\n\n**The Problem:**\nIn the `except TypeError` block (which handles non-hashable items), the condition was inverted:\n- It checked `if k in seen_list:` then appended the item\n- This caused first-time occurrences to be yielded as duplicates\n\n**The Fix:**\nChanged line 2275 from `if k in seen_list:` to `if k not in seen_list:`\n\nNow the logic correctly matches the hashable case above it:\n- If an item is NOT in the seen list \u2192 add it (first occurrence)\n- If an item IS in the seen list \u2192 yield it (duplicate)\n\nThis fixes the test failure where the test expected an empty list `[]` (no duplicates) but was getting `[[1, 2], [3, 0], [5, -2], [5, 6]]` (false duplicates) when processing non-hashable items like lists.\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "more-itertools-nodocstrings-016",
+      "agent": "claude",
+      "mode": "without_tests",
+      "evaluation": "NO_FIX",
+      "tests_passed": 542,
+      "tests_failed": 1,
+      "tests_total": 543,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-22T02:32:31.840478",
+      "fix_result": {
+        "success": false,
+        "files_changed": [],
+        "patch": "",
+        "tokens_used": 0,
+        "time_seconds": 120.04892086982727,
+        "error": "Timeout after 120 seconds",
+        "agent_output": "",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "more-itertools-nodocstrings-017",
+      "agent": "claude",
+      "mode": "without_tests",
+      "evaluation": "NO_FIX",
+      "tests_passed": 542,
+      "tests_failed": 1,
+      "tests_total": 543,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-22T02:34:33.525794",
+      "fix_result": {
+        "success": false,
+        "files_changed": [],
+        "patch": "",
+        "tokens_used": 0,
+        "time_seconds": 120.03660202026367,
+        "error": "Timeout after 120 seconds",
+        "agent_output": "",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "more-itertools-nodocstrings-018",
+      "agent": "claude",
+      "mode": "without_tests",
+      "evaluation": "NO_FIX",
+      "tests_passed": 543,
+      "tests_failed": 1,
+      "tests_total": 544,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-22T02:36:35.255238",
+      "fix_result": {
+        "success": false,
+        "files_changed": [],
+        "patch": "",
+        "tokens_used": 0,
+        "time_seconds": 120.04320287704468,
+        "error": "Timeout after 120 seconds",
+        "agent_output": "",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "more-itertools-nodocstrings-019",
+      "agent": "claude",
+      "mode": "without_tests",
+      "evaluation": "PASS",
+      "tests_passed": 701,
+      "tests_failed": 0,
+      "tests_total": 701,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-22T02:37:10.078235",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "more_itertools/more.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 24.677307844161987,
+        "error": null,
+        "agent_output": "Done! I found and fixed the bug.\n\n**The Problem:** The `nth_or_last` function on line 249 had an off-by-one error. It was using `n + 2` instead of `n + 1`.\n\n**The Fix:** Changed `islice(iterable, n + 2)` to `islice(iterable, n + 1)`\n\n**Why this works:** \n- `islice(iterable, n + 1)` returns elements at indices 0 through n (inclusive)\n- `last()` then returns the element at index n, or the last available element if n is out of bounds\n- The original code with `n + 2` was including one extra element, causing it to always return the wrong index\n\nFor the test case `nth_or_last(range(3), 1)`:\n- Before fix: `islice(range(3), 3)` \u2192 `[0, 1, 2]` \u2192 `last()` \u2192 `2` \u274c\n- After fix: `islice(range(3), 2)` \u2192 `[0, 1]` \u2192 `last()` \u2192 `1` \u2713\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "more-itertools-nodocstrings-020",
+      "agent": "claude",
+      "mode": "without_tests",
+      "evaluation": "PASS",
+      "tests_passed": 701,
+      "tests_failed": 0,
+      "tests_total": 701,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-22T02:37:36.802250",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "more_itertools/more.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 16.583296060562134,
+        "error": null,
+        "agent_output": "Done! The bug was a simple off-by-one error. The `peek()` method was trying to access `self._cache[1]` when it should return `self._cache[0]`. \n\n**Why this caused the failure:**\n- In `test_multi_prepend_peek`, when `peek()` is called, the cache either contains prepended items or needs to fetch one from the iterator\n- The current index 1 access assumes there are at least 2 items in the cache, but there's only 1\n- The fix returns the first item in the cache (index 0), which is the correct behavior for a peek operation\n",
+        "rate_limited": false
+      }
+    }
+  ],
+  "summary": {
+    "by_agent": {
+      "claude": {
+        "total": 20,
+        "passed": 15
+      }
+    },
+    "by_mode": {
+      "without_tests": {
+        "total": 20,
+        "passed": 15
+      }
+    },
+    "by_evaluation": {
+      "PASS": 15,
+      "FAIL": 1,
+      "ERROR": 0,
+      "TIMEOUT": 0,
+      "NO_FIX": 4
+    }
+  }
+}
