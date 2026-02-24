@@ -170,7 +170,9 @@ Each result file contains:
 
 **By repo**: validators 95%, humanize 95%, python-markdown 85%, more-itertools 78%.
 
-**Key findings**: Style effect is small (~6pp range). Mutation type is the strongest predictor (30pp range). Documentation removal hurts most without test feedback (`nodocs_full` without_tests: 81.2%).
+**By mutation type** (avg across 6 styles): `eq_ne`/`var_swap` 99%, `plus_one` 96%, `and_or` 92%, `true_false` 89%, `in_not_in` 88%, `if_else_swap` 80%, `add_sub` 70%.
+
+**Key findings**: Style effect is small (~5pp range). Mutation type is the strongest predictor (30pp range: `add_sub` 70% → `eq_ne`/`var_swap` 99%). Documentation removal hurts most without test feedback (`nodocs_full` without_tests: 81.2%).
 
 See the [tracking repo overview](https://github.com/masc-ucsc/cse247b_reports_w26) for full analysis.
 
