@@ -21,7 +21,7 @@ stylebench-data/
 │   └── ...
 ├── nodocs_full/           # All documentation removed (docstrings + inline comments)
 │   └── ...
-├── bugs/                  # Ad-hoc validated bug catalogs (872 total bugs)
+├── bugs/                  # Ad-hoc validated bug catalogs (762 total bugs)
 │   ├── humanize-original.json
 │   └── ...
 ├── bugs_canonical/        # Canonical bug catalogs for benchmark (480 bugs)
@@ -116,14 +116,14 @@ Used for the benchmark. The same logical mutation is applied consistently across
 
 ### Ad-Hoc Catalogs (`bugs/`)
 
-Used during development. Contains **872 validated bugs** across all 20 repo/style combinations:
+Used during development. Contains **762 validated bugs** across 16 repo/style combinations:
 
-| Repo | Bugs (across 5 styles) |
+| Repo | Bugs (across 4 styles) |
 |------|------------------------|
-| humanize | 233 |
-| validators | 191 |
-| python-markdown | 200 |
-| more-itertools | 248 |
+| humanize | 196 |
+| validators | 168 |
+| python-markdown | 198 |
+| more-itertools | 200 |
 
 ### Catalog Format
 
