@@ -16,37 +16,37 @@ with freeze_time("2020-02-02"):
 
 @freeze_time("2020-02-02")
 def test_i18n() -> None:
-    b = NOW - dt.timedelta(seconds=3)
-    a = dt.timedelta(milliseconds=67_000)
+    three_seconds = NOW - dt.timedelta(seconds=3)
+    one_min_three_seconds = dt.timedelta(milliseconds=67_000)
 
-    assert humanize.naturaltime(b) == "3 seconds ago"
+    assert humanize.naturaltime(three_seconds) == "3 seconds ago"
     assert humanize.ordinal(5) == "5th"
-    assert humanize.precisedelta(a) == "1 minute and 7 seconds"
+    assert humanize.precisedelta(one_min_three_seconds) == "1 minute and 7 seconds"
 
     try:
         humanize.i18n.activate("ru_RU")
-        assert humanize.naturaltime(b) == "3 секунды назад"
+        assert humanize.naturaltime(three_seconds) == "3 секунды назад"
         assert humanize.ordinal(5) == "5ый"
-        assert humanize.precisedelta(a) == "1 минута и 7 секунд"
+        assert humanize.precisedelta(one_min_three_seconds) == "1 минута и 7 секунд"
 
     except FileNotFoundError:
         pytest.skip("Generate .mo with scripts/generate-translation-binaries.sh")
 
     finally:
         humanize.i18n.deactivate()
-        assert humanize.naturaltime(b) == "3 seconds ago"
+        assert humanize.naturaltime(three_seconds) == "3 seconds ago"
         assert humanize.ordinal(5) == "5th"
-        assert humanize.precisedelta(a) == "1 minute and 7 seconds"
+        assert humanize.precisedelta(one_min_three_seconds) == "1 minute and 7 seconds"
 
 
 def test_intcomma() -> None:
-    a = 10_000_000
+    number = 10_000_000
 
-    assert humanize.intcomma(a) == "10,000,000"
+    assert humanize.intcomma(number) == "10,000,000"
 
     try:
         humanize.i18n.activate("de_DE")
-        assert humanize.intcomma(a) == "10.000.000"
+        assert humanize.intcomma(number) == "10.000.000"
         assert humanize.intcomma(1_234_567.8901) == "1.234.567,8901"
         assert humanize.intcomma(1_234_567.89) == "1.234.567,89"
         assert humanize.intcomma("1234567,89") == "1.234.567,89"
@@ -54,38 +54,38 @@ def test_intcomma() -> None:
         assert humanize.intcomma("1.234.567,8") == "1.234.567,8"
 
         humanize.i18n.activate("fr_FR")
-        assert humanize.intcomma(a) == "10 000 000"
+        assert humanize.intcomma(number) == "10 000 000"
         assert humanize.intcomma(1_234_567.89) == "1 234 567.89"
         assert humanize.intcomma("1 234 567.89") == "1 234 567.89"
 
         humanize.i18n.activate("pt_BR")
-        assert humanize.intcomma(a) == "10.000.000"
+        assert humanize.intcomma(number) == "10.000.000"
 
     except FileNotFoundError:
         pytest.skip("Generate .mo with scripts/generate-translation-binaries.sh")
 
     finally:
         humanize.i18n.deactivate()
-        assert humanize.intcomma(a) == "10,000,000"
+        assert humanize.intcomma(number) == "10,000,000"
 
 
 def test_naturaldelta() -> None:
-    a = 1234 * 365 * 24 * 60 * 60
+    seconds = 1234 * 365 * 24 * 60 * 60
 
-    assert humanize.naturaldelta(a) == "1,234 years"
+    assert humanize.naturaldelta(seconds) == "1,234 years"
 
     try:
         humanize.i18n.activate("fr_FR")
-        assert humanize.naturaldelta(a) == "1 234 ans"
+        assert humanize.naturaldelta(seconds) == "1 234 ans"
         humanize.i18n.activate("es_ES")
-        assert humanize.naturaldelta(a) == "1,234 años"
+        assert humanize.naturaldelta(seconds) == "1,234 años"
 
     except FileNotFoundError:
         pytest.skip("Generate .mo with scripts/generate-translation-binaries.sh")
 
     finally:
         humanize.i18n.deactivate()
-        assert humanize.naturaldelta(a) == "1,234 years"
+        assert humanize.naturaldelta(seconds) == "1,234 years"
 
 
 @pytest.mark.parametrize(
@@ -206,20 +206,20 @@ def test_ordinal_genders(
 
 
 def test_default_locale_path_defined__spec__() -> None:
-    a = importlib.import_module("humanize.i18n")
-    assert a._get_default_locale_path() is not None
+    i18n = importlib.import_module("humanize.i18n")
+    assert i18n._get_default_locale_path() is not None
 
 
 def test_default_locale_path_none__spec__(monkeypatch: pytest.MonkeyPatch) -> None:
-    a = importlib.import_module("humanize.i18n")
-    monkeypatch.setattr(a, "__spec__", None)
-    assert a._get_default_locale_path() is None
+    i18n = importlib.import_module("humanize.i18n")
+    monkeypatch.setattr(i18n, "__spec__", None)
+    assert i18n._get_default_locale_path() is None
 
 
 def test_default_locale_path_undefined__file__(monkeypatch: pytest.MonkeyPatch) -> None:
-    a = importlib.import_module("humanize.i18n")
-    monkeypatch.delattr(a, "__spec__")
-    assert a._get_default_locale_path() is None
+    i18n = importlib.import_module("humanize.i18n")
+    monkeypatch.delattr(i18n, "__spec__")
+    assert i18n._get_default_locale_path() is None
 
 
 class TestActivate:
@@ -231,49 +231,49 @@ class TestActivate:
     def test_default_locale_path_null__spec__(
         self, monkeypatch: pytest.MonkeyPatch
     ) -> None:
-        a = importlib.import_module("humanize.i18n")
-        monkeypatch.setattr(a, "__spec__", None)
+        i18n = importlib.import_module("humanize.i18n")
+        monkeypatch.setattr(i18n, "__spec__", None)
 
         with pytest.raises(FileNotFoundError, match=self.expected_msg):
-            a.activate("ru_RU")
+            i18n.activate("ru_RU")
 
     def test_default_locale_path_undefined__spec__(
         self, monkeypatch: pytest.MonkeyPatch
     ) -> None:
-        a = importlib.import_module("humanize.i18n")
-        monkeypatch.delattr(a, "__spec__")
+        i18n = importlib.import_module("humanize.i18n")
+        monkeypatch.delattr(i18n, "__spec__")
 
         with pytest.raises(FileNotFoundError, match=self.expected_msg):
-            a.activate("ru_RU")
+            i18n.activate("ru_RU")
 
     @freeze_time("2020-02-02")
     def test_en_locale(self) -> None:
-        b = NOW - dt.timedelta(seconds=3)
-        a = humanize.naturaltime(b)
+        three_seconds = NOW - dt.timedelta(seconds=3)
+        test_str = humanize.naturaltime(three_seconds)
 
         humanize.i18n.activate("en_US")
-        assert a == humanize.naturaltime(b)
+        assert test_str == humanize.naturaltime(three_seconds)
 
         humanize.i18n.activate("en_GB")
-        assert a == humanize.naturaltime(b)
+        assert test_str == humanize.naturaltime(three_seconds)
 
         humanize.i18n.deactivate()
 
     @freeze_time("2020-02-02")
     def test_none_locale(self) -> None:
-        b = NOW - dt.timedelta(seconds=3)
+        three_seconds = NOW - dt.timedelta(seconds=3)
 
         try:
             humanize.i18n.activate("fr")
-            assert humanize.naturaltime(b) == "il y a 3 secondes"
+            assert humanize.naturaltime(three_seconds) == "il y a 3 secondes"
 
             humanize.i18n.activate(None)
-            a = humanize.naturaltime(b)
-            assert a == "3 seconds ago"
+            test_str = humanize.naturaltime(three_seconds)
+            assert test_str == "3 seconds ago"
         except FileNotFoundError:
             pytest.skip("Generate .mo with scripts/generate-translation-binaries.sh")
 
         finally:
             humanize.i18n.deactivate()
 
-        assert a == humanize.naturaltime(b)
+        assert test_str == humanize.naturaltime(three_seconds)

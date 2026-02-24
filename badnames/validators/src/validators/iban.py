@@ -15,8 +15,8 @@ def _char_value(char: str):
 def _mod_check(value: str):
     """Check if the value string passes the mod97-test."""
     # move country code and check numbers to end
-    a = value[4:] + value[:4]
-    return int("".join(_char_value(char) for char in a)) % 97 == 1
+    b = value[4:] + value[:4]
+    return int("".join(_char_value(a) for a in b)) % 97 == 1
 
 
 @validator

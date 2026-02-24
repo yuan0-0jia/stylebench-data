@@ -47,8 +47,8 @@ def uri(value: str, /):
     # url
     if any(
         # fmt: off
-        value.startswith(item)
-        for item in {
+        value.startswith(a)
+        for a in {
             "ftp",
             "ftps",
             "git",

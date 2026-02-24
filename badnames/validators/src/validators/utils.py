@@ -72,15 +72,15 @@ def validator(func: Callable[..., Any]):
 
     @wraps(func)
     def wrapper(*args: Any, **kwargs: Any):
-        b = False
+        d = False
         if "r_ve" in kwargs:
-            b = True
+            d = True
             del kwargs["r_ve"]
         if environ.get("RAISE_VALIDATION_ERROR", "False") == "True":
-            b = True
+            d = True
 
         try:
-            if b:
+            if d:
                 if func(*args, **kwargs):
                     return True
                 else:
@@ -91,12 +91,12 @@ def validator(func: Callable[..., Any]):
                     if func(*args, **kwargs)
                     else ValidationError(func, _func_args_as_dict(func, *args, **kwargs))
                 )
-        except (ValueError, TypeError, UnicodeError) as exp:
-            if b:
+        except (ValueError, TypeError, UnicodeError) as c:
+            if d:
                 raise ValidationError(
-                    func, _func_args_as_dict(func, *args, **kwargs), str(exp)
-                ) from exp
+                    func, _func_args_as_dict(func, *args, **kwargs), str(c)
+                ) from c
             else:
-                return ValidationError(func, _func_args_as_dict(func, *args, **kwargs), str(exp))
+                return ValidationError(func, _func_args_as_dict(func, *args, **kwargs), str(c))
 
     return wrapper

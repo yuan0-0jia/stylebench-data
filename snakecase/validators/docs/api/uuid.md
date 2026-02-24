@@ -1,3 +1,0 @@
-# uuid
-
-::: validators.uuid.uuid

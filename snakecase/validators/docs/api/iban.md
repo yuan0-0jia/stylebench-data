@@ -1,3 +1,0 @@
-# iban
-
-::: validators.iban.iban

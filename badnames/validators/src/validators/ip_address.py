@@ -21,8 +21,8 @@ def _check_private_ip(value: str, is_private: Optional[bool]):
         return True
     if (
         any(
-            value.startswith(l_bit)
-            for l_bit in {
+            value.startswith(a)
+            for a in {
                 "10.",  # private
                 "192.168.",  # private
                 "169.254.",  # link-local

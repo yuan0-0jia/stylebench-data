@@ -1,0 +1,109 @@
+{
+  "metadata": {
+    "catalog": "../stylebench-data/bugs_canonical/humanize-badnames.json",
+    "repo": "../stylebench-data/badnames/humanize",
+    "repo_name": "humanize",
+    "timestamp": "2026-02-24T11:29:17.375614",
+    "total_trials": 3,
+    "manifest_used": false,
+    "hit_rate_limit": false
+  },
+  "results": [
+    {
+      "bug_id": "humanize-badnames-002",
+      "agent": "claude",
+      "mode": "without_tests",
+      "evaluation": "PASS",
+      "tests_passed": 684,
+      "tests_failed": 0,
+      "tests_total": 737,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-24T11:28:28.670527",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "src/humanize/lists.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 23.074576139450073,
+        "error": null,
+        "agent_output": "Perfect! I've fixed the bug. The issue was on line 31 of `lists.py`:\n\n**The Problem:**\nThe condition `if len(items) != 1:` was backwards. It meant \"if the list does NOT have exactly 1 item, return just the first item\", which is the opposite of what we want.\n\n**The Fix:**\nChanged it to `if len(items) == 1:`, which correctly handles:\n- Single item lists: returns just that item\n- Two item lists: returns \"item1 and item2\"\n- Three+ item lists: returns \"item1, item2, ... and itemN\"\n\nNow when the test calls `natural_list([1, 2, 3])`, it will correctly return `'1, 2 and 3'` instead of just `'1'`.\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "humanize-badnames-003",
+      "agent": "claude",
+      "mode": "without_tests",
+      "evaluation": "PASS",
+      "tests_passed": 684,
+      "tests_failed": 0,
+      "tests_total": 737,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-24T11:29:01.650131",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "src/humanize/lists.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 27.303543090820312,
+        "error": null,
+        "agent_output": "Perfect! I've fixed the bug. The issue was on **line 33** where the condition was inverted.\n\n**The Problem:**\nThe condition `elif len(items) != 2:` was backwards, causing items with 3+ elements to return only the first two items with \"and\".\n\n**The Fix:**\nChanged `elif len(items) != 2:` to `elif len(items) == 2:`\n\nNow the logic correctly handles:\n- 1 item: returns the single item\n- 2 items: returns \"item1 and item2\"  \n- 3+ items: returns \"item1, item2, ... and itemN\" (comma-separated list)\n\nThe failing test expected `\"1, 2 and 3\"` for input `[1, 2, 3]`, which will now work correctly.\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "humanize-badnames-018",
+      "agent": "claude",
+      "mode": "without_tests",
+      "evaluation": "PASS",
+      "tests_passed": 684,
+      "tests_failed": 0,
+      "tests_total": 737,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-24T11:29:17.281472",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "src/humanize/lists.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 9.968032121658325,
+        "error": null,
+        "agent_output": "Fixed! The bug was on line 36 in `src/humanize/lists.py:36`. The code was using a minus sign (`-`) instead of a plus sign (`+`) for string concatenation. \n\n**The issue:** `return \", \".join(...) - f\" and {str(items[-1])}\"`  \n**The fix:** `return \", \".join(...) + f\" and {str(items[-1])}\"`\n\nThis simple typo caused a `TypeError` because Python doesn't support subtraction between strings. The corrected code now properly concatenates the comma-separated items with \" and \" before the last item, which is the expected behavior for creating natural language lists like \"1, 2 and 3\".\n",
+        "rate_limited": false
+      }
+    }
+  ],
+  "summary": {
+    "by_agent": {
+      "claude": {
+        "total": 3,
+        "passed": 3
+      }
+    },
+    "by_mode": {
+      "without_tests": {
+        "total": 3,
+        "passed": 3
+      }
+    },
+    "by_evaluation": {
+      "PASS": 3,
+      "FAIL": 0,
+      "ERROR": 0,
+      "TIMEOUT": 0,
+      "NO_FIX": 0
+    }
+  }
+}

@@ -1,0 +1,110 @@
+{
+  "metadata": {
+    "catalog": "../stylebench-data/bugs_canonical/humanize-badnames.json",
+    "repo": "../stylebench-data/badnames/humanize",
+    "repo_name": "humanize",
+    "timestamp": "2026-02-24T11:26:31.323093",
+    "total_trials": 3,
+    "manifest_used": false,
+    "hit_rate_limit": false
+  },
+  "results": [
+    {
+      "bug_id": "humanize-badnames-002",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 684,
+      "tests_failed": 0,
+      "tests_total": 737,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-24T11:25:37.747645",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "src/humanize/_version.py",
+          "src/humanize/lists.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 53.30279088020325,
+        "error": null,
+        "agent_output": "## Summary\n\n**Bug Found:** Logic error in `src/humanize/lists.py:31`\n\n**The Problem:**\nThe condition `if len(items) != 1:` (if NOT equal to 1) was backwards. This meant that for any list with more than 1 item, the function would return only the first item instead of properly formatting the entire list.\n\n**The Fix:**\nChanged line 31 from:\n```python\nif len(items) != 1:\n```\nto:\n```python\nif len(items) == 1:\n```\n\nThis ensures the function now correctly:\n- Returns a single item when given a 1-item list: `\"one\"`\n- Returns two items with \"and\": `\"one and two\"`\n- Returns multiple items with commas and \"and\": `\"one, two and three\"`\n\n**Result:** \u2705 All 684 tests pass (with 53 skipped). The previously failing test now passes.\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "humanize-badnames-003",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 684,
+      "tests_failed": 0,
+      "tests_total": 737,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-24T11:26:17.212543",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "src/humanize/lists.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 34.16002011299133,
+        "error": null,
+        "agent_output": "Excellent! All tests pass. \n\n## Summary\n\nI found and fixed the bug in `/private/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/stylebench_xhupjv2t/src/humanize/lists.py:33`\n\n**The Bug:** The condition was `elif len(items) != 2:` which meant \"if length is NOT 2\", but then it was returning only the first two items. This caused lists with 3+ items to incorrectly return only the first two elements.\n\n**The Fix:** Changed line 33 from:\n```python\nelif len(items) != 2:\n```\nto:\n```python\nelif len(items) == 2:\n```\n\nThis corrects the logic so that:\n- Lists with 1 item return just that item\n- Lists with 2 items return \"item1 and item2\"\n- Lists with 3+ items return \"item1, item2, ... and itemN\"\n\n**Result:** All 684 tests now pass with no regressions.\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "humanize-badnames-018",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 684,
+      "tests_failed": 0,
+      "tests_total": 737,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-24T11:26:31.235106",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "src/humanize/lists.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 8.30597710609436,
+        "error": null,
+        "agent_output": "Perfect! The bug was on line 36 - the code was using a minus operator (`-`) instead of a plus operator (`+`) for string concatenation. This caused a `TypeError` because you can't subtract strings in Python.\n\nThe fix was simple: change:\n```python\nreturn \", \".join(str(a) for a in items[:-1]) - f\" and {str(items[-1])}\"\n```\n\nto:\n```python\nreturn \", \".join(str(a) for a in items[:-1]) + f\" and {str(items[-1])}\"\n```\n\nThis will now properly concatenate the joined items with the \"and\" clause for lists with 3 or more items, producing output like \"1, 2 and 3\".\n",
+        "rate_limited": false
+      }
+    }
+  ],
+  "summary": {
+    "by_agent": {
+      "claude": {
+        "total": 3,
+        "passed": 3
+      }
+    },
+    "by_mode": {
+      "with_tests": {
+        "total": 3,
+        "passed": 3
+      }
+    },
+    "by_evaluation": {
+      "PASS": 3,
+      "FAIL": 0,
+      "ERROR": 0,
+      "TIMEOUT": 0,
+      "NO_FIX": 0
+    }
+  }
+}

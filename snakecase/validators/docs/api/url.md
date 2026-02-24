@@ -1,3 +1,0 @@
-# url
-
-::: validators.url.url

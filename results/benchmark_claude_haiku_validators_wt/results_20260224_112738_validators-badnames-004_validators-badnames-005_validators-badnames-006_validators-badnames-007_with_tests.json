@@ -1,0 +1,134 @@
+{
+  "metadata": {
+    "catalog": "../stylebench-data/bugs_canonical/validators-badnames.json",
+    "repo": "../stylebench-data/badnames/validators",
+    "repo_name": "validators",
+    "timestamp": "2026-02-24T11:27:38.196037",
+    "total_trials": 4,
+    "manifest_used": false,
+    "hit_rate_limit": false
+  },
+  "results": [
+    {
+      "bug_id": "validators-badnames-004",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 895,
+      "tests_failed": 0,
+      "tests_total": 895,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-24T11:25:30.434260",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "src/validators/between.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 41.18068242073059,
+        "error": null,
+        "agent_output": "## Summary\n\n\u2705 **Bug fixed!** \n\n**The Issue:**\nIn `src/validators/between.py` at lines 65-66, there was an incorrect early return that always returned `False` when `min_val` was `None`:\n\n```python\nif min_val is None:\n    return False\n```\n\nThis prevented valid cases like `between(12, min_val=None, max_val=14)` from working correctly.\n\n**The Fix:**\nRemoved those two lines. The corrected logic now properly handles `None` values by:\n1. Setting `max_val` to `AbsMax()` (a sentinel greater than any value) if it's `None`\n2. Setting `min_val` to `AbsMin()` (a sentinel less than any value) if it's `None`\n3. Performing the actual comparison\n\n**Result:**\nAll 14 `test_between.py` tests now pass, including the previously failing test `test_returns_true_on_valid_range[12-None-14]`.\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "validators-badnames-005",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 895,
+      "tests_failed": 0,
+      "tests_total": 895,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-24T11:26:00.507941",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "src/validators/between.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 25.303253889083862,
+        "error": null,
+        "agent_output": "Excellent! The bug is fixed. The test that was originally failing (`test_returns_true_on_valid_range[12-11-None]`) is now passing, along with all other tests in `test_between.py`.\n\n## Summary\n\n**The Bug:** In `src/validators/between.py` lines 65-66, there was an incorrect early return that was always returning `False` whenever `max_val` was `None`:\n\n```python\nif max_val is None:\n    return False\n```\n\n**The Fix:** Removed those two lines. When `max_val` is `None`, it means \"no upper limit,\" and the function should proceed with the validation logic below, which properly converts `None` to `AbsMax()`.\n\n**Result:** All 14 tests in `test_between.py` now pass, including the failing test case `between(12, min_val=11, max_val=None)`, which correctly returns `True`.\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "validators-badnames-006",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 895,
+      "tests_failed": 0,
+      "tests_total": 895,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-24T11:26:46.231914",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "src/validators/between.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 40.97070384025574,
+        "error": null,
+        "agent_output": "## Summary\n\nI found and fixed the bug! \n\n**The Issue:**\nIn `/private/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/stylebench_yw2tgtwz/src/validators/between.py` at line 68, there was a copy-paste error where the condition checked `if value is None:` instead of `if max_val is None:`.\n\n**What was happening:**\nWhen calling `between(12, min_val=11, max_val=None)`:\n1. The code correctly checked if `value` was `None` on line 65\n2. Line 68 incorrectly checked `if value is None:` again (instead of checking `max_val`)\n3. Since `value` was not `None`, the `max_val = AbsMax()` assignment was never executed\n4. The comparison `11 > None` on line 74 raised a `TypeError`, which became a `ValidationError`\n\n**The Fix:**\nChanged line 68 from:\n```python\nif value is None:\n```\nto:\n```python\nif max_val is None:\n```\n\nThe test that was failing (`test_returns_true_on_valid_range[12-11-None]`) now passes, along with all other tests in `test_between.py`.\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "validators-badnames-007",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 895,
+      "tests_failed": 0,
+      "tests_total": 895,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-24T11:27:38.133806",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "src/validators/between.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 47.020960092544556,
+        "error": null,
+        "agent_output": "## Summary\n\nI found and fixed the bug! \n\n**The Issue:** In `/src/validators/between.py` at line 66, when the `value` is `None`, the function was returning `True` instead of `False`.\n\n**The Fix:** Changed line 66 from:\n```python\nif value is None:\n    return True\n```\nto:\n```python\nif value is None:\n    return False\n```\n\n**Why This Works:** The `between()` function is decorated with `@validator`, which converts `False` return values into `ValidationError` objects. When `value` is `None`, the validation should fail and return a `ValidationError`, not pass with `True`.\n\n**Test Results:** \n- \u2705 The failing test `test_returns_failed_validation_on_invalid_range[None-13-14]` now passes\n- \u2705 All 818 tests in the test suite pass (excluding unrelated crypto_addresses tests with missing dependencies)\n",
+        "rate_limited": false
+      }
+    }
+  ],
+  "summary": {
+    "by_agent": {
+      "claude": {
+        "total": 4,
+        "passed": 4
+      }
+    },
+    "by_mode": {
+      "with_tests": {
+        "total": 4,
+        "passed": 4
+      }
+    },
+    "by_evaluation": {
+      "PASS": 4,
+      "FAIL": 0,
+      "ERROR": 0,
+      "TIMEOUT": 0,
+      "NO_FIX": 0
+    }
+  }
+}

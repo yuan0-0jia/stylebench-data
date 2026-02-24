@@ -61,8 +61,8 @@ def cron(value: str, /):
 
     try:
         minutes, hours, days, months, weekdays = value.strip().split()
-    except ValueError as err:
-        raise ValueError("Badly formatted cron string") from err
+    except ValueError as a:
+        raise ValueError("Badly formatted cron string") from a
 
     if not _validate_cron_component(minutes, 0, 59):
         return False

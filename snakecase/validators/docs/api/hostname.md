@@ -1,3 +1,0 @@
-# hostname
-
-::: validators.hostname.hostname

@@ -1,3 +1,0 @@
-# domain
-
-::: validators.domain.domain

@@ -13,8 +13,6 @@ stylebench-data/
 │   └── more-itertools/
 ├── camelcase/             # snake_case → camelCase naming
 │   └── ...
-├── snakecase/             # camelCase → snake_case (roundtrip from camelcase)
-│   └── ...
 ├── badnames/              # Descriptive names → single-letter (a, b, c)
 │   └── ...
 ├── formatting/            # Ruff default formatting (88-char lines, double quotes)
@@ -26,14 +24,14 @@ stylebench-data/
 ├── bugs/                  # Ad-hoc validated bug catalogs (872 total bugs)
 │   ├── humanize-original.json
 │   └── ...
-├── bugs_canonical/        # Canonical bug catalogs for benchmark (560 bugs)
+├── bugs_canonical/        # Canonical bug catalogs for benchmark (480 bugs)
 │   ├── humanize-original.json
 │   ├── humanize-camelcase.json
 │   ├── humanize-nodocstrings.json
-│   └── ...                # 28 catalogs (4 repos × 7 styles), 20 bugs each
+│   └── ...                # 24 catalogs (4 repos × 6 styles), 20 bugs each
 └── results/               # Benchmark results
     ├── benchmark_claude_haiku/                 # Canonical pilot (200 trials, Week 7)
-    ├── benchmark_claude_haiku_{repo}_{mode}/   # Full benchmark — 5 naming/formatting styles (800 trials)
+    ├── benchmark_claude_haiku_{repo}_{mode}/   # Full benchmark — 4 naming/formatting styles (640 trials)
     ├── benchmark_claude_haiku_nds_{mode}/      # Doc-style benchmark — nodocstrings + nodocs_full (320 trials)
     └── benchmark_codex/                        # Codex partial results (160 trials)
 ```
@@ -56,14 +54,6 @@ Transforms `snake_case` identifiers to `camelCase`:
 - `total_count` → `totalCount`
 
 **Validation**: 98-100% test pass rate across all projects.
-
-### SnakeCase (`snakecase/`)
-
-Transforms `camelCase` identifiers back to `snake_case` (roundtrip from camelcase variant):
-- `getUserName` → `get_user_name`
-- `totalCount` → `total_count`
-
-**Validation**: 99-100% test pass rate across all projects.
 
 ### BadNaming (`badnames/`)
 
@@ -104,25 +94,25 @@ Removes all natural-language documentation — both docstrings and inline commen
 
 All variants have been validated to ensure tests still pass after transformation:
 
-| Project | Original | CamelCase | SnakeCase | BadNaming | Formatting | NoDocstrings | NoDocsFull |
-|---------|----------|-----------|-----------|-----------|------------|--------------|------------|
-| humanize | 684 pass | 681 (99.6%) | 684 (100%) | 684 (100%) | 684 (100%) | 684 (100%) | 684 (100%) |
-| validators | 878 pass | 878 (100%) | 878 (100%) | 878 (100%) | 878 (100%) | 878 (100%) | 878 (100%) |
-| python-markdown | 776 pass | 776 (100%) | 776 (100%) | 776 (100%) | 776 (100%) | 776 (100%) | 776 (100%) |
-| more-itertools | 701 pass | 693 (98.9%) | 700 (99.9%) | 701 (100%) | 701 (100%) | 701 (100%) | 701 (100%) |
+| Project | Original | CamelCase | BadNaming | Formatting | NoDocstrings | NoDocsFull |
+|---------|----------|-----------|-----------|------------|--------------|------------|
+| humanize | 684 pass | 681 (99.6%) | 684 (100%) | 684 (100%) | 684 (100%) | 684 (100%) |
+| validators | 878 pass | 878 (100%) | 878 (100%) | 878 (100%) | 878 (100%) | 878 (100%) |
+| python-markdown | 776 pass | 776 (100%) | 776 (100%) | 776 (100%) | 776 (100%) | 776 (100%) |
+| more-itertools | 701 pass | 693 (98.9%) | 701 (100%) | 701 (100%) | 701 (100%) | 701 (100%) |
 
-*Minor CamelCase/SnakeCase failures are due to dynamic imports that can't be tracked statically.*
+*Minor CamelCase failures are due to dynamic imports that can't be tracked statically.*
 
 ## Bug Catalogs
 
 ### Canonical Catalogs (`bugs_canonical/`)
 
-Used for the benchmark. The same logical mutation is applied consistently across all 7 style variants, ensuring fair comparison.
+Used for the benchmark. The same logical mutation is applied consistently across all 6 style variants, ensuring fair comparison.
 
-- **28 catalogs** (4 repos × 7 styles), **20 bugs each** = **560 total bugs**
+- **24 catalogs** (4 repos × 6 styles), **20 bugs each** = **480 total bugs**
 - All bugs have `line_number` and `context` for precise application
 - 7-8 mutation types per repo: eq_ne, var_swap, add_sub, and_or, if_else_swap, in_not_in, plus_one, true_false, return_none (availability depends on code characteristics)
-- Original 5 styles generated via `generate_canonical_bugs.py`; doc styles extended via `extend_catalogs.py`
+- Original 4 styles generated via `generate_canonical_bugs.py`; doc styles extended via `extend_catalogs.py`
 
 ### Ad-Hoc Catalogs (`bugs/`)
 
@@ -159,27 +149,26 @@ Each result file contains:
 - `results[]` — per-trial evaluation (PASS/FAIL/ERROR/TIMEOUT/NO_FIX)
 - `summary` — aggregated stats by agent, mode, evaluation
 
-### Full Benchmark Results (1120 trials, Claude Haiku 4.5, 2026-02-22)
+### Full Benchmark Results (960 trials, Claude Haiku 4.5, 2026-02-24)
 
 | Metric | Value |
 |--------|-------|
-| Overall pass rate | 88.3% (989/1120) |
-| with_tests | 91.6% (513/560) |
-| without_tests | 85.0% (476/560) |
+| Overall pass rate | 88.4% (849/960) |
+| with_tests | 91.9% (441/480) |
+| without_tests | 85.0% (408/480) |
 
 **By style** (avg across 4 repos):
 
 | Style | with_tests | without_tests | Combined |
 |-------|-----------|---------------|---------|
 | original | 93.8% | 87.5% | 90.6% |
-| camelcase | 95.0% | 87.5% | 91.2% |
-| snakecase | 90.0% | 86.2% | 88.1% |
-| badnames | 93.5% | 89.0% | 91.2% |
+| camelcase | 92.5% | 83.8% | 88.1% |
+| badnames | 91.2% | 88.8% | 90.0% |
 | formatting | 91.2% | 85.0% | 88.1% |
 | nodocstrings | 92.5% | 83.8% | 88.1% |
 | nodocs_full | 90.0% | 81.2% | 85.6% |
 
-**By repo**: validators 96%, humanize 94%, python-markdown 86%, more-itertools 77%.
+**By repo**: validators 95%, humanize 95%, python-markdown 85%, more-itertools 78%.
 
 **Key findings**: Style effect is small (~6pp range). Mutation type is the strongest predictor (30pp range). Documentation removal hurts most without test feedback (`nodocs_full` without_tests: 81.2%).
 
@@ -210,9 +199,6 @@ cd stylebench
 
 # CamelCase
 python scripts/transform.py camelcase stylebench-data/original/humanize stylebench-data/camelcase/humanize --packages humanize
-
-# SnakeCase (from camelcase)
-python scripts/transform.py snakecase stylebench-data/camelcase/humanize stylebench-data/snakecase/humanize --packages humanize
 
 # BadNaming
 python scripts/transform.py badnames stylebench-data/original/humanize stylebench-data/badnames/humanize

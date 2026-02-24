@@ -1,3 +1,0 @@
-# slug
-
-::: validators.slug.slug

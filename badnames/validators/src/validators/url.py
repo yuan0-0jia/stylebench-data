@@ -82,7 +82,7 @@ def _validate_auth_segment(value: str):
         return _username_regex().match(value)
     username, password = value.rsplit(":", 1)
     return _username_regex().match(username) and all(
-        char_to_avoid not in password for char_to_avoid in ("/", "?", "#", "@")
+        a not in password for a in ("/", "?", "#", "@")
     )
 
 

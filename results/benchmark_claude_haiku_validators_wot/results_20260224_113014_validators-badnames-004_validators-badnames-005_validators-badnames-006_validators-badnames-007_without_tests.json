@@ -1,0 +1,134 @@
+{
+  "metadata": {
+    "catalog": "../stylebench-data/bugs_canonical/validators-badnames.json",
+    "repo": "../stylebench-data/badnames/validators",
+    "repo_name": "validators",
+    "timestamp": "2026-02-24T11:30:14.594673",
+    "total_trials": 4,
+    "manifest_used": false,
+    "hit_rate_limit": false
+  },
+  "results": [
+    {
+      "bug_id": "validators-badnames-004",
+      "agent": "claude",
+      "mode": "without_tests",
+      "evaluation": "PASS",
+      "tests_passed": 895,
+      "tests_failed": 0,
+      "tests_total": 895,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-24T11:28:34.324802",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "src/validators/between.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 28.41366481781006,
+        "error": null,
+        "agent_output": "Perfect! The bug has been fixed. \n\n**The issue:** Lines 65-66 had an early return that would immediately return `False` when `min_val` is `None`:\n```python\nif min_val is None:\n    return False\n```\n\nThis contradicted the documentation which states: \"If not provided, minimum value will not be checked.\"\n\n**The fix:** Removed the early return and let the code proceed to properly set `min_val` to `AbsMin()` when it's `None`. This way, when the value `None` is passed for `min_val`, it's treated as \"no lower bound\" (using `AbsMin()` which is less than any other value), and only the `max_val` constraint is checked.\n\nFor the failing test case `between(12, min_val=None, max_val=14)`:\n- `min_val=None` \u2192 becomes `AbsMin()` \n- `max_val=14` \u2192 stays as `14`\n- The comparison `AbsMin() <= 12 <= 14` now correctly evaluates to `True`\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "validators-badnames-005",
+      "agent": "claude",
+      "mode": "without_tests",
+      "evaluation": "PASS",
+      "tests_passed": 895,
+      "tests_failed": 0,
+      "tests_total": 895,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-24T11:29:07.425244",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "src/validators/between.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 28.401345014572144,
+        "error": null,
+        "agent_output": "Perfect! I've fixed the bug. The issue was on **lines 65-66** of `/private/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/stylebench_ruz2p32k/src/validators/between.py`:\n\n**The Bug:**\n```python\nif max_val is None:\n    return False\n```\n\nThis early return was incorrectly rejecting any call where `max_val` is `None`, contradicting the docstring which states \"If not provided, maximum value will not be checked.\"\n\n**The Fix:**\nI removed those two lines. Now the function correctly:\n1. Converts `max_val=None` to `AbsMax()` (a supremum value)\n2. Converts `min_val=None` to `AbsMin()` (an infimum value)\n3. Performs the comparison `min_val <= value <= max_val`\n\nWith this fix, `between(12, min_val=11, max_val=None)` will now correctly return `True` since 12 \u2265 11 with no upper limit enforced.\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "validators-badnames-006",
+      "agent": "claude",
+      "mode": "without_tests",
+      "evaluation": "PASS",
+      "tests_passed": 895,
+      "tests_failed": 0,
+      "tests_total": 895,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-24T11:29:32.774124",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "src/validators/between.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 20.285439014434814,
+        "error": null,
+        "agent_output": "Perfect! I found and fixed the bug. The issue was on line 68:\n\n**Bug:** The condition `if value is None:` should have been `if max_val is None:`\n\nThis was a copy-paste error. The code was checking `value` instead of `max_val`, which meant that when `max_val=None` was passed to the function, it never got initialized to `AbsMax()`. This caused a TypeError when trying to compare `min_val > max_val` (comparing an integer with None).\n\nThe fix ensures that:\n- When `max_val` is `None`, it gets set to `AbsMax()` (representing infinity)\n- When `min_val` is `None`, it gets set to `AbsMin()` (representing negative infinity)\n- The comparison logic then works correctly: `min_val <= value <= max_val`\n\nThe test case `between(12, min_val=11, max_val=None)` will now correctly return `True` since `11 <= 12 <= AbsMax()`.\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "validators-badnames-007",
+      "agent": "claude",
+      "mode": "without_tests",
+      "evaluation": "PASS",
+      "tests_passed": 895,
+      "tests_failed": 0,
+      "tests_total": 895,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-24T11:30:14.539017",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "src/validators/between.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 37.09393095970154,
+        "error": null,
+        "agent_output": "Perfect! The bug has been fixed. Here's what was wrong:\n\n**The Bug:** Lines 65-66 in `between.py` unconditionally returned `True` for any `None` value:\n```python\nif value is None:\n    return True\n```\n\nThis caused `between(None, min_val=13, max_val=14)` to pass validation when it should fail, since `None` cannot be compared with numeric values.\n\n**The Fix:** I removed those lines. Now when a `None` value is passed:\n1. The function attempts to evaluate `min_val <= value <= max_val` \n2. This raises a `TypeError` (since `None` can't be compared with numbers)\n3. The `@validator` decorator catches the exception and returns a `ValidationError`\n4. The test now passes as expected\n\nThe fix is minimal and surgical\u2014just removing the incorrect early return that was bypassing proper validation logic.\n",
+        "rate_limited": false
+      }
+    }
+  ],
+  "summary": {
+    "by_agent": {
+      "claude": {
+        "total": 4,
+        "passed": 4
+      }
+    },
+    "by_mode": {
+      "without_tests": {
+        "total": 4,
+        "passed": 4
+      }
+    },
+    "by_evaluation": {
+      "PASS": 4,
+      "FAIL": 0,
+      "ERROR": 0,
+      "TIMEOUT": 0,
+      "NO_FIX": 0
+    }
+  }
+}

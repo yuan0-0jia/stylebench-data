@@ -37,8 +37,8 @@ def test_returns_true_on_valid_cif(value: str):
 )
 def test_returns_false_on_invalid_cif(value: str):
     """Test returns false on invalid cif."""
-    a = es_cif(value)
-    assert isinstance(a, ValidationError)
+    result = es_cif(value)
+    assert isinstance(result, ValidationError)
 
 
 @pytest.mark.parametrize(
@@ -96,8 +96,8 @@ def test_returns_true_on_valid_nif(value: str):
 
 def test_returns_false_on_invalid_nif():
     """Test returns false on invalid nif."""
-    a = es_nif("12345")
-    assert isinstance(a, ValidationError)
+    result = es_nif("12345")
+    assert isinstance(result, ValidationError)
 
 
 @pytest.mark.parametrize(

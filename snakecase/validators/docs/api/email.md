@@ -1,3 +1,0 @@
-# email
-
-::: validators.email.email

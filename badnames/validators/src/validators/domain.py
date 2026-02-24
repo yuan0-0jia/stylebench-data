@@ -80,22 +80,22 @@ def domain(
         return False
 
     try:
-        a = r"_" if rfc_2782 else ""
-        b = r"\.?$" if rfc_1034 else r"$"
+        b = r"_" if rfc_2782 else ""
+        c = r"\.?$" if rfc_1034 else r"$"
 
         return not re.search(r"\s|__+", value) and re.match(
             # First character of the domain
-            rf"^(?:[a-z0-9{a}]"
+            rf"^(?:[a-z0-9{b}]"
             # Sub-domain
-            + rf"(?:[a-z0-9-{a}]{{0,61}}"
+            + rf"(?:[a-z0-9-{b}]{{0,61}}"
             # Hostname
-            + rf"[a-z0-9{a}])?\.)"
+            + rf"[a-z0-9{b}])?\.)"
             # First 61 characters of the gTLD
             + r"+[a-z0-9][a-z0-9-_]{0,61}"
             # Last character of the gTLD
-            + rf"[a-z]{b}",
+            + rf"[a-z]{c}",
             value.encode("idna").decode("utf-8"),
             re.IGNORECASE,
         )
-    except UnicodeError as err:
-        raise UnicodeError(f"Unable to encode/decode {value}") from err
+    except UnicodeError as a:
+        raise UnicodeError(f"Unable to encode/decode {value}") from a

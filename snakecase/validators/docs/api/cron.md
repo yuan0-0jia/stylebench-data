@@ -1,3 +1,0 @@
-# cron
-
-::: validators.cron.cron

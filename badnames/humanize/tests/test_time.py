@@ -59,14 +59,14 @@ def assert_equal_timedelta(td1: dt.timedelta, td2: dt.timedelta) -> None:
 
 
 def test_date_and_delta() -> None:
-    c = dt.datetime.now()
-    f = dt.timedelta
-    b = (3, 29, 86399, 86400, 86401 * 30)
-    a = [c - f(seconds=x) for x in b]
-    g = [f(seconds=x) for x in b]
-    e = [(c - f(seconds=x), f(seconds=x)) for x in b]
-    for t in (b, a, g):
-        for arg, result in zip(t, e):
+    now = dt.datetime.now()
+    td = dt.timedelta
+    int_tests = (3, 29, 86399, 86400, 86401 * 30)
+    date_tests = [now - td(seconds=x) for x in int_tests]
+    td_tests = [td(seconds=x) for x in int_tests]
+    results = [(now - td(seconds=x), td(seconds=x)) for x in int_tests]
+    for t in (int_tests, date_tests, td_tests):
+        for arg, result in zip(t, results):
             date, d = time._date_and_delta(arg)
             assert_equal_datetime(date, result[0])
             assert_equal_timedelta(d, result[1])
@@ -316,10 +316,10 @@ def test_naturaldate(test_input: dt.date, expected: str) -> None:
 )
 def test_naturaldelta_minimum_unit_default(seconds: float, expected: str) -> None:
     # Arrange
-    a = dt.timedelta(seconds=seconds)
+    delta = dt.timedelta(seconds=seconds)
 
     # Act / Assert
-    assert humanize.naturaldelta(a) == expected
+    assert humanize.naturaldelta(delta) == expected
 
 
 @pytest.mark.parametrize(
@@ -361,10 +361,10 @@ def test_naturaldelta_minimum_unit_explicit(
     minimum_unit: str, seconds: float, expected: str
 ) -> None:
     # Arrange
-    a = dt.timedelta(seconds=seconds)
+    delta = dt.timedelta(seconds=seconds)
 
     # Act / Assert
-    assert humanize.naturaldelta(a, minimum_unit=minimum_unit) == expected
+    assert humanize.naturaldelta(delta, minimum_unit=minimum_unit) == expected
     assert humanize.naturaldelta(seconds, minimum_unit=minimum_unit) == expected
 
 

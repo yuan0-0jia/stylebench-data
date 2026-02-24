@@ -73,7 +73,7 @@ def between(
     try:
         if min_val > max_val:
             raise ValueError("`min_val` cannot be greater than `max_val`")
-    except TypeError as err:
-        raise TypeError("Comparison type mismatch") from err
+    except TypeError as a:
+        raise TypeError("Comparison type mismatch") from a
 
     return min_val <= value <= max_val
