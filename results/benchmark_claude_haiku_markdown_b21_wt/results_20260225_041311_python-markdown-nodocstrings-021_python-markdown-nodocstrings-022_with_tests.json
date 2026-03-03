@@ -1,0 +1,82 @@
+{
+  "metadata": {
+    "catalog": "/Users/yuan/stylebench-data/bugs_canonical/python-markdown-nodocstrings.json",
+    "repo": "/Users/yuan/stylebench-data/nodocstrings/python-markdown",
+    "repo_name": "python-markdown",
+    "timestamp": "2026-02-25T04:13:11.733729",
+    "total_trials": 2,
+    "manifest_used": false,
+    "hit_rate_limit": true
+  },
+  "results": [
+    {
+      "bug_id": "python-markdown-nodocstrings-021",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "NO_FIX",
+      "tests_passed": 113,
+      "tests_failed": 1,
+      "tests_total": 114,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-25T04:12:12.570364",
+      "fix_result": {
+        "success": false,
+        "files_changed": [],
+        "patch": "",
+        "tokens_used": 0,
+        "time_seconds": 120.20513486862183,
+        "error": "Timeout after 120 seconds",
+        "agent_output": "",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "python-markdown-nodocstrings-022",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 776,
+      "tests_failed": 0,
+      "tests_total": 886,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-25T04:12:57.614140",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "markdown/extensions/tables.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 40.599457025527954,
+        "error": null,
+        "agent_output": "Perfect! All tests pass now. \n\n## Summary\n\nI found and fixed the bug in the markdown table parser. The issue was in `/markdown/extensions/tables.py` at **line 54**.\n\n**The Bug:**\n```python\nis_table = row0_len < 1\n```\n\nThis condition was checking if the number of cells in a row is **less than 1** (i.e., empty), which would only mark completely empty rows as tables. This prevented any actual tables from being recognized.\n\n**The Fix:**\n```python\nis_table = row0_len > 1\n```\n\nNow it correctly identifies rows with **more than 1 cell** as potential tables, which allows the table parser to properly validate the remaining rows and process the table with attribute lists.\n\nThe test that was failing (`test_table_td`) now passes, and all 776 tests in the suite pass successfully.\n",
+        "rate_limited": false
+      }
+    }
+  ],
+  "summary": {
+    "by_agent": {
+      "claude": {
+        "total": 2,
+        "passed": 1
+      }
+    },
+    "by_mode": {
+      "with_tests": {
+        "total": 2,
+        "passed": 1
+      }
+    },
+    "by_evaluation": {
+      "PASS": 1,
+      "FAIL": 0,
+      "ERROR": 0,
+      "TIMEOUT": 0,
+      "NO_FIX": 1
+    }
+  }
+}

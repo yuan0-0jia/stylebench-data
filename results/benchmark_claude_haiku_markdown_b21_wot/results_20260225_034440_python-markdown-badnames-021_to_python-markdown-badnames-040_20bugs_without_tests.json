@@ -1,0 +1,516 @@
+{
+  "metadata": {
+    "catalog": "/Users/yuan/stylebench-data/bugs_canonical/python-markdown-badnames.json",
+    "repo": "/Users/yuan/stylebench-data/badnames/python-markdown",
+    "repo_name": "python-markdown",
+    "timestamp": "2026-02-25T03:44:40.663826",
+    "total_trials": 20,
+    "manifest_used": false,
+    "hit_rate_limit": false
+  },
+  "results": [
+    {
+      "bug_id": "python-markdown-badnames-021",
+      "agent": "claude",
+      "mode": "without_tests",
+      "evaluation": "NO_FIX",
+      "tests_passed": 113,
+      "tests_failed": 1,
+      "tests_total": 114,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-25T03:16:07.038375",
+      "fix_result": {
+        "success": false,
+        "files_changed": [],
+        "patch": "",
+        "tokens_used": 0,
+        "time_seconds": 120.14783000946045,
+        "error": "Timeout after 120 seconds",
+        "agent_output": "",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "python-markdown-badnames-022",
+      "agent": "claude",
+      "mode": "without_tests",
+      "evaluation": "NO_FIX",
+      "tests_passed": 520,
+      "tests_failed": 1,
+      "tests_total": 572,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-25T03:18:09.979577",
+      "fix_result": {
+        "success": false,
+        "files_changed": [],
+        "patch": "",
+        "tokens_used": 0,
+        "time_seconds": 120.13407611846924,
+        "error": "Timeout after 120 seconds",
+        "agent_output": "",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "python-markdown-badnames-023",
+      "agent": "claude",
+      "mode": "without_tests",
+      "evaluation": "PASS",
+      "tests_passed": 776,
+      "tests_failed": 0,
+      "tests_total": 886,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-25T03:18:40.016832",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "markdown/extensions/tables.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 25.789270162582397,
+        "error": null,
+        "agent_output": "Perfect! I found and fixed the bug. The issue was on line 190 in `/private/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/stylebench_pt9kztqn/markdown/extensions/tables.py`.\n\n**The Bug:** The loop condition was `while h > l:` which should be `while h < l:`.\n\n**Why it was broken:** With `h = 0` and `l = len(q)` (the number of backtick groups), the condition `h > l` is immediately false, so the loop never executes. This meant code regions (pairs of backticks) were never identified.\n\n**The Impact:** When pipes inside backticks weren't recognized as being inside code regions, they were treated as table cell delimiters, causing `` `word |2` `` to be split into two cells instead of being recognized as a single inline code block.\n\nThe fix ensures that the loop properly iterates through and pairs up backtick groups to identify code regions, so pipes within those regions are correctly filtered out during table cell splitting.\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "python-markdown-badnames-024",
+      "agent": "claude",
+      "mode": "without_tests",
+      "evaluation": "NO_FIX",
+      "tests_passed": 726,
+      "tests_failed": 1,
+      "tests_total": 837,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-25T03:20:43.218931",
+      "fix_result": {
+        "success": false,
+        "files_changed": [],
+        "patch": "",
+        "tokens_used": 0,
+        "time_seconds": 120.13376522064209,
+        "error": "Timeout after 120 seconds",
+        "agent_output": "",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "python-markdown-badnames-025",
+      "agent": "claude",
+      "mode": "without_tests",
+      "evaluation": "NO_FIX",
+      "tests_passed": 520,
+      "tests_failed": 1,
+      "tests_total": 572,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-25T03:22:46.195655",
+      "fix_result": {
+        "success": false,
+        "files_changed": [],
+        "patch": "",
+        "tokens_used": 0,
+        "time_seconds": 120.15562009811401,
+        "error": "Timeout after 120 seconds",
+        "agent_output": "",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "python-markdown-badnames-026",
+      "agent": "claude",
+      "mode": "without_tests",
+      "evaluation": "NO_FIX",
+      "tests_passed": 116,
+      "tests_failed": 1,
+      "tests_total": 117,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-25T03:24:48.251043",
+      "fix_result": {
+        "success": false,
+        "files_changed": [],
+        "patch": "",
+        "tokens_used": 0,
+        "time_seconds": 120.1679220199585,
+        "error": "Timeout after 120 seconds",
+        "agent_output": "",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "python-markdown-badnames-027",
+      "agent": "claude",
+      "mode": "without_tests",
+      "evaluation": "PASS",
+      "tests_passed": 776,
+      "tests_failed": 0,
+      "tests_total": 886,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-25T03:25:40.262094",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "markdown/inlinepatterns.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 47.78555488586426,
+        "error": null,
+        "agent_output": "Perfect! I found and fixed the bug. \n\n**The Issue:**\nIn the `LinkInlineProcessor.getLink()` method (which handles both links and images), there's a logic error on line 804 that prevents proper parsing of mixed title quotes in markdown image syntax.\n\n**The Bug:**\nThe condition `e <= 0` on line 804 checks if a secondary quote was **NOT** found, but then attempts to use `e - 1` as a string index. When `e` is `-1` (uninitialized), `e - 1` becomes `-2`, which incorrectly slices from the end of the string backward.\n\n**The Fix:**\nChanged `elif e <= 0 and a == j:` to `elif e >= 0 and a == j:` on line 804.\n\nThis ensures the secondary quote path is only taken when a secondary quote closing was actually found (`e >= 0`), allowing proper extraction of the title when mixed quote styles are encountered (e.g., a URL with a single quote followed by double quotes around the title).\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "python-markdown-badnames-028",
+      "agent": "claude",
+      "mode": "without_tests",
+      "evaluation": "FAIL",
+      "tests_passed": 189,
+      "tests_failed": 1,
+      "tests_total": 236,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-25T03:26:15.987887",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "markdown/extensions/def_list.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 32.31625175476074,
+        "error": null,
+        "agent_output": "Perfect! I've fixed the bug. The issue was:\n\n**Root Cause**: The code on line 42 searches for the regex pattern in the popped block:\n```python\nm = self.RE.search(g)\n```\n\nBut then immediately uses `m.start()` on line 44 without checking if the search returned `None`. In some cases, the pattern might not be found in the popped block, even though the `test` method returned `True`.\n\n**Solution**: I added a defensive null check right after the regex search (lines 43-46):\n```python\nif m is None:\n    # Pattern not found, this is not a definition item\n    blocks.insert(0, g)\n    return False\n```\n\nThis follows the same pattern already used in the code (lines 56-60) where it reinserts the block and returns `False` if the block shouldn't be processed. Now if the regex fails to match, the processor gracefully handles it instead of crashing with an `AttributeError`.\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "python-markdown-badnames-029",
+      "agent": "claude",
+      "mode": "without_tests",
+      "evaluation": "PASS",
+      "tests_passed": 776,
+      "tests_failed": 0,
+      "tests_total": 886,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-25T03:28:16.253803",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "markdown/extensions/def_list.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 116.53569912910461,
+        "error": null,
+        "agent_output": "Perfect! I found and fixed the bug. The issue was in `/private/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/stylebench__qzl7ff9/markdown/extensions/def_list.py` at line 59.\n\n**The bug:** When the definition list processor encounters a line starting with `:` but determines it's not actually a definition list (no terms before it, no previous element), it tries to return the block to the processing queue. However, it was using `blocks.insert(-1, g)` which inserts near the end of the queue instead of at the beginning.\n\n**The fix:** Changed `blocks.insert(-1, g)` to `blocks.insert(0, g)` on line 59. This ensures the block is put back at the front of the queue to be processed by other processors (like list processors), rather than being skipped and appearing in the wrong place in the output.\n\nThis explains the test failure where the paragraph starting with \"a paragraph that starts with a colon\" was being rendered as a separate paragraph before the list, instead of being correctly processed as a list item within the list structure.\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "python-markdown-badnames-030",
+      "agent": "claude",
+      "mode": "without_tests",
+      "evaluation": "FAIL",
+      "tests_passed": 202,
+      "tests_failed": 1,
+      "tests_total": 250,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-25T03:29:20.201880",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "markdown/extensions/footnotes.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 60.39572095870972,
+        "error": null,
+        "agent_output": "Perfect! I've found and fixed the bug. \n\n**The Issue:**\nIn the `makeFootnotesDiv` method at line 226 of `/markdown/extensions/footnotes.py`, the code attempted to concatenate a value directly to `f.text`:\n```python\nf.text = f.text + NBSP_PLACEHOLDER\n```\n\nWhen `f.text` is `None` (which occurs when a paragraph element contains only child elements and no direct text), this raises a `TypeError` since you cannot concatenate `None` to a string.\n\n**The Fix:**\nChanged line 226 to safely handle `None` values:\n```python\nf.text = (f.text or '') + NBSP_PLACEHOLDER\n```\n\nThis converts `None` to an empty string before concatenating, ensuring that footnote backref links are properly added regardless of whether the paragraph has direct text content or not.\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "python-markdown-badnames-031",
+      "agent": "claude",
+      "mode": "without_tests",
+      "evaluation": "NO_FIX",
+      "tests_passed": 202,
+      "tests_failed": 1,
+      "tests_total": 250,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-25T03:31:22.852713",
+      "fix_result": {
+        "success": false,
+        "files_changed": [],
+        "patch": "",
+        "tokens_used": 0,
+        "time_seconds": 120.1443247795105,
+        "error": "Timeout after 120 seconds",
+        "agent_output": "",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "python-markdown-badnames-032",
+      "agent": "claude",
+      "mode": "without_tests",
+      "evaluation": "NO_FIX",
+      "tests_passed": 201,
+      "tests_failed": 1,
+      "tests_total": 249,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-25T03:33:25.897395",
+      "fix_result": {
+        "success": false,
+        "files_changed": [],
+        "patch": "",
+        "tokens_used": 0,
+        "time_seconds": 120.13428497314453,
+        "error": "Timeout after 120 seconds",
+        "agent_output": "",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "python-markdown-badnames-033",
+      "agent": "claude",
+      "mode": "without_tests",
+      "evaluation": "NO_FIX",
+      "tests_passed": 167,
+      "tests_failed": 1,
+      "tests_total": 168,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-25T03:35:34.708224",
+      "fix_result": {
+        "success": false,
+        "files_changed": [],
+        "patch": "",
+        "tokens_used": 0,
+        "time_seconds": 120.33954215049744,
+        "error": "Timeout after 120 seconds",
+        "agent_output": "",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "python-markdown-badnames-034",
+      "agent": "claude",
+      "mode": "without_tests",
+      "evaluation": "PASS",
+      "tests_passed": 776,
+      "tests_failed": 0,
+      "tests_total": 886,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-25T03:36:38.610041",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "markdown/extensions/admonition.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 59.093624114990234,
+        "error": null,
+        "agent_output": "Perfect! The bug was in line 93. The while condition should be `while b is not None:` instead of `while b is None:`. \n\nThe logic was inverted - the code needs to loop while `b` (the last child) has a value, so it can check if it's a list and traverse into it. With the original condition (`while b is None:`), the loop would enter when b is None, but then the internal condition checks `b is not None`, which would always be false, causing incorrect parsing of nested definition lists.\n\nThis fix allows the parser to properly handle definition lists inside admonitions by correctly traversing nested list structures.\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "python-markdown-badnames-035",
+      "agent": "claude",
+      "mode": "without_tests",
+      "evaluation": "PASS",
+      "tests_passed": 776,
+      "tests_failed": 0,
+      "tests_total": 886,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-25T03:37:17.142049",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "markdown/extensions/admonition.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 33.63038492202759,
+        "error": null,
+        "agent_output": "Perfect! I've fixed the bug. The issue was on line 96 of `/private/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/stylebench_5iie_wch/markdown/extensions/admonition.py`.\n\n**The Problem:**\nThe condition `b is None and b.tag in ('ul', 'ol', 'dl')` is logically impossible - it checks if `b` is `None` while simultaneously trying to access `b.tag`. This condition could never be true, so the nested list handling code never executed.\n\n**The Fix:**\nChanged `b is None` to `b is not None`, so the code properly detects when it's dealing with a nested list element (ul, ol, or dl) inside an admonition and handles the indentation correctly.\n\nThis allows definition lists within admonitions to be parsed correctly, so continuation lines are properly treated as paragraphs instead of code blocks.\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "python-markdown-badnames-036",
+      "agent": "claude",
+      "mode": "without_tests",
+      "evaluation": "FAIL",
+      "tests_passed": 522,
+      "tests_failed": 1,
+      "tests_total": 614,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-25T03:38:29.303094",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "markdown/extensions/def_list.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 68.06663513183594,
+        "error": null,
+        "agent_output": "Perfect! The fix has been successfully applied. Here's a summary of the bug and the fix:\n\n## Bug Analysis\n\nThe failing test `test_def_list_nested_admontions` shows that when parsing markdown with nested definition lists containing ordered lists with multiple lines of content, the second line (\"continue\") was being incorrectly parsed as a code block instead of as part of the list item.\n\n**Root Cause**: The `DefListIndentProcessor.create_item()` method in `/markdown/extensions/def_list.py` had a critical bug. The method header comment said it should \"Create a new `dd` or `li` (depending on parent)\" but the implementation **always created a `dd` element**, regardless of the parent type.\n\nWhen a list item inside an ordered or unordered list (`ol`/`ul`) needs indented child content, the code should create an `li` element, not a `dd`. Creating the wrong element type breaks the list indentation logic, causing subsequent indented content to be misclassified as code blocks.\n\n## The Fix\n\nChanged lines 105-108 in `/markdown/extensions/def_list.py`:\n\n```python\nif parent.tag in ['ol', 'ul']:\n    a = etree.SubElement(parent, 'li')\nelse:\n    a = etree.SubElement(parent, 'dd')\n```\n\nThis ensures:\n- When the parent is an ordered list (`ol`) or unordered list (`ul`), a list item (`li`) is created\n- For all other cases (definition lists, etc.), a definition description (`dd`) is created\n\nThis fix aligns the implementation with the documented intent and properly handles nested lists within definition lists.\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "python-markdown-badnames-037",
+      "agent": "claude",
+      "mode": "without_tests",
+      "evaluation": "PASS",
+      "tests_passed": 776,
+      "tests_failed": 0,
+      "tests_total": 886,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-25T03:40:05.016714",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "markdown/extensions/footnotes.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 91.49301195144653,
+        "error": null,
+        "agent_output": "Perfect! I've found and fixed the bug. The issue was in the `findFootnotesPlaceholder` method in the `footnotes.py` file at line 158.\n\n**The Problem:**\nThe recursive `finder` function had inverted logic on line 158:\n```python\nif f is None:\n    return f  # Returns None when nothing is found - correct\n            # But doesn't return when something IS found!\n```\n\nThis meant that when a recursive call found the footnote placeholder in a nested element, the function failed to return it. Instead, it would continue the loop and eventually return `None`, causing the placeholder not to be replaced.\n\n**The Fix:**\nChanged the condition from `if f is None:` to `if f is not None:`:\n```python\nif f is not None:\n    return f  # Now correctly returns when placeholder is found\n```\n\nThis allows the function to properly propagate found results up through the recursion stack, which is essential for finding footnote placeholders in deeply nested structures (like blockquotes containing blockquotes).\n\nThe fix ensures that when the placeholder `///Footnotes Go Here///` is found anywhere in the document tree, it will be correctly replaced with the footnote div at the appropriate depth level.\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "python-markdown-badnames-038",
+      "agent": "claude",
+      "mode": "without_tests",
+      "evaluation": "PASS",
+      "tests_passed": 776,
+      "tests_failed": 0,
+      "tests_total": 886,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-25T03:41:38.183379",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "markdown/extensions/tables.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 82.76029586791992,
+        "error": null,
+        "agent_output": "Perfect! The fix has been applied successfully. \n\n## Summary\n\n**Bug Found**: Line 75 in `/markdown/extensions/tables.py`\n\n**The Issue**: When detecting single-column tables, the code was checking if rows have NO trailing pipe (`is None`) when it should check if they DO have a trailing pipe (`is not None`).\n\n**The Fix**: Changed line 75 from:\n```python\ne = self.RE_END_BORDER.search(h[d]) is None\n```\nto:\n```python\ne = self.RE_END_BORDER.search(h[d]) is not None\n```\n\n**Why This Fixes It**: For single-column tables with only trailing pipes (no leading pipes), like:\n```\nIs a Table |\n---------- |\n```\n\nThe logic now correctly validates that each row either:\n1. Starts with a pipe (`|`), OR\n2. Has a trailing pipe (`|`)\n\nBefore the fix, the second row `---------- |` would fail validation because it has a trailing pipe when the code was checking for the absence of one. After the fix, it correctly recognizes the pipe and validates the table.\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "python-markdown-badnames-039",
+      "agent": "claude",
+      "mode": "without_tests",
+      "evaluation": "PASS",
+      "tests_passed": 776,
+      "tests_failed": 0,
+      "tests_total": 886,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-25T03:42:37.721234",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "markdown/core.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 56.021400928497314,
+        "error": null,
+        "agent_output": "Perfect! I found and fixed the bug. \n\n## Summary\n\n**The Bug:** In `markdown/core.py` line 216, the extension entry point lookup had inverted logic:\n```python\na = [ep for ep in util.get_installed_extensions() if ep.name != ext_name]  # \u274c Wrong\n```\n\nThis was looking for entry points that **don't match** the requested extension name (`!=`), which caused it to load an unrelated installed extension instead of properly falling through to the dot notation code that should raise an `AttributeError` when a bad class is specified.\n\n**The Fix:** Changed the condition to use equality (`==`):\n```python\na = [ep for ep in util.get_installed_extensions() if ep.name == ext_name]  # \u2705 Correct\n```\n\nNow the code properly:\n1. Looks for an entry point that matches the extension name\n2. If none is found, falls through to the dot notation loader\n3. Raises `AttributeError` when trying to load a non-existent class via `getattr`\n\nThis fixes the `testDotNotationExtensionWithBadClass` test which expects an `AttributeError` to be raised.\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "python-markdown-badnames-040",
+      "agent": "claude",
+      "mode": "without_tests",
+      "evaluation": "NO_FIX",
+      "tests_passed": 207,
+      "tests_failed": 1,
+      "tests_total": 255,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-25T03:44:40.495786",
+      "fix_result": {
+        "success": false,
+        "files_changed": [],
+        "patch": "",
+        "tokens_used": 0,
+        "time_seconds": 120.1666989326477,
+        "error": "Timeout after 120 seconds",
+        "agent_output": "",
+        "rate_limited": false
+      }
+    }
+  ],
+  "summary": {
+    "by_agent": {
+      "claude": {
+        "total": 20,
+        "passed": 8
+      }
+    },
+    "by_mode": {
+      "without_tests": {
+        "total": 20,
+        "passed": 8
+      }
+    },
+    "by_evaluation": {
+      "PASS": 8,
+      "FAIL": 3,
+      "ERROR": 0,
+      "TIMEOUT": 0,
+      "NO_FIX": 9
+    }
+  }
+}

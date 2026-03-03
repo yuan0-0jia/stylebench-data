@@ -1,0 +1,522 @@
+{
+  "metadata": {
+    "catalog": "/Users/yuan/stylebench-data/bugs_canonical/python-markdown-formatting.json",
+    "repo": "/Users/yuan/stylebench-data/formatting/python-markdown",
+    "repo_name": "python-markdown",
+    "timestamp": "2026-02-25T04:10:07.298362",
+    "total_trials": 20,
+    "manifest_used": false,
+    "hit_rate_limit": false
+  },
+  "results": [
+    {
+      "bug_id": "python-markdown-formatting-021",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "NO_FIX",
+      "tests_passed": 113,
+      "tests_failed": 1,
+      "tests_total": 114,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-25T03:45:02.052444",
+      "fix_result": {
+        "success": false,
+        "files_changed": [],
+        "patch": "",
+        "tokens_used": 0,
+        "time_seconds": 120.22068405151367,
+        "error": "Timeout after 120 seconds",
+        "agent_output": "",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "python-markdown-formatting-022",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 776,
+      "tests_failed": 0,
+      "tests_total": 886,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-25T03:46:02.071218",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "markdown/extensions/tables.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 55.23136591911316,
+        "error": null,
+        "agent_output": "## Summary\n\nI found and fixed the bug! The issue was in **markdown/extensions/tables.py at line 70**.\n\n### The Bug\nThe table processor had a logic error checking whether text could be a table:\n```python\nis_table = row0_len < 1\n```\n\nThis condition checks if a row has fewer than 1 cell (i.e., 0 cells), which would only be true for empty rows. This prevented multi-column tables from being recognized at all.\n\n### The Fix\nChanged line 70 to:\n```python\nis_table = row0_len > 1\n```\n\nNow it correctly checks if the row has **more than 1 cell**, which is the typical case for multi-column tables. The code then proceeds to validate the separator row (the dashes that separate headers from body rows).\n\n### Result\n- \u2705 The failing test `TestAttrList.test_table_td` now passes\n- \u2705 All 776 tests pass with no regressions\n- The table with attribute lists (`| A { .foo } | ...`) is now correctly parsed and rendered\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "python-markdown-formatting-023",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 776,
+      "tests_failed": 0,
+      "tests_total": 886,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-25T03:46:46.875196",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "markdown/extensions/tables.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 39.42135500907898,
+        "error": null,
+        "agent_output": "## Summary\n\nI found and fixed the bug! \n\n**The Bug:**\nIn `/markdown/extensions/tables.py` line 200, the while loop condition had a logic error:\n```python\nwhile pos > tic_len:  # WRONG: never true\n```\n\nThis should have been:\n```python\nwhile pos < tic_len:  # CORRECT: iterate through tics\n```\n\n**Why It Caused the Failure:**\nThe bug prevented the code from pairing up backtick markers (inline code delimiters). This meant the `tic_region` list remained empty, so pipes (`|`) inside backticks were never identified as being in a code region. As a result, all pipes were treated as table column delimiters, even those inside inline code blocks.\n\nFor example, `` `word |2` `` was incorrectly split into two cells at the `|` instead of being recognized as a single cell containing code.\n\n**The Fix:**\nChanged one character: `>` to `<` on line 200, which allows the loop to properly iterate through backtick markers and identify code regions.\n\n**Verification:**\n- The failing test `test_inline_code_blocks` now passes \u2713\n- All 16 table extension tests pass \u2713\n- Full test suite: 776 tests pass, 110 skipped \u2713\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "python-markdown-formatting-024",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "NO_FIX",
+      "tests_passed": 726,
+      "tests_failed": 1,
+      "tests_total": 837,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-25T03:48:50.662257",
+      "fix_result": {
+        "success": false,
+        "files_changed": [],
+        "patch": "",
+        "tokens_used": 0,
+        "time_seconds": 120.1858720779419,
+        "error": "Timeout after 120 seconds",
+        "agent_output": "",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "python-markdown-formatting-025",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "NO_FIX",
+      "tests_passed": 520,
+      "tests_failed": 1,
+      "tests_total": 572,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-25T03:50:54.463975",
+      "fix_result": {
+        "success": false,
+        "files_changed": [],
+        "patch": "",
+        "tokens_used": 0,
+        "time_seconds": 120.18985605239868,
+        "error": "Timeout after 120 seconds",
+        "agent_output": "",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "python-markdown-formatting-026",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 776,
+      "tests_failed": 0,
+      "tests_total": 886,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-25T03:52:44.175792",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "markdown/inlinepatterns.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 104.7508020401001,
+        "error": null,
+        "agent_output": "## Summary\n\nI found and fixed the bug in the Markdown inline link parser!\n\n### The Issue\nThe test was failing because inline links with titles (like `[text](/url/ \"title\")`) were being parsed incorrectly. The title was being HTML-encoded and included in the href attribute instead of being set as a separate `title` attribute.\n\n**Actual output:** `<a href=\"/url/ &quot;title&quot;\">text</a>`  \n**Expected output:** `<a href=\"/url/\" title=\"title\">text</a>`\n\n### The Root Cause\nThe bug was in `/markdown/inlinepatterns.py` at line 919 in the `LinkInlineProcessor.getLink()` method. The condition was:\n\n```python\nif exit_quote <= 0 and quote == last:\n```\n\nThis condition checks if we **did NOT** find a closing quote (`exit_quote <= 0`), which is the opposite of what we want. When a closing quote is found, `exit_quote` is set to a value > 0.\n\n### The Fix\nChanged the condition from `exit_quote <= 0` to `exit_quote > 0`:\n\n```python\nif exit_quote > 0 and quote == last:\n```\n\nThis ensures that when we properly close a quoted title, the code extracts the href and title separately instead of falling through to the `else` block which treats everything as the href.\n\n### Verification\n- \u2705 The failing test `test_links_inline` now passes\n- \u2705 All 103 legacy tests pass\n- \u2705 All inline link variations work correctly (with/without titles, with whitespace variations)\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "python-markdown-formatting-027",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 776,
+      "tests_failed": 0,
+      "tests_total": 886,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-25T03:54:04.000309",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "markdown/inlinepatterns.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 74.82705402374268,
+        "error": null,
+        "agent_output": "## Summary\n\nI found and fixed the bug! Here's what was wrong:\n\n**Bug Location:** `/private/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/stylebench_m3l0z94e/markdown/inlinepatterns.py:922`\n\n**The Issue:**\nThe test was failing because image links with mixed quotes (like `![Text](http://link.com/'.png\"title\")`) were not being parsed correctly. The URL and title were being treated as a single URL instead of being split properly.\n\n**Root Cause:**\nIn the `getLink` method of `LinkInlineProcessor`, the condition at line 922 was backwards:\n```python\nelif exit_alt_quote <= 0 and alt_quote == last:  # WRONG\n```\n\nThis was checking if we **didn't** find a closing alternative quote (`<= 0`), when it should have been checking if we **did** find one (`> 0`).\n\n**The Fix:**\nChanged line 922 from:\n```python\nelif exit_alt_quote <= 0 and alt_quote == last:\n```\nto:\n```python\nelif exit_alt_quote > 0 and alt_quote == last:\n```\n\nThis single character fix allows the parser to correctly handle URLs with single quotes followed by titles in double quotes (or vice versa), properly extracting both the URL and the title.\n\n**Test Results:**\n- \u2705 The failing test now passes\n- \u2705 All 776 tests in the suite pass\n- \u2705 No regressions introduced\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "python-markdown-formatting-028",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 776,
+      "tests_failed": 0,
+      "tests_total": 886,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-25T03:55:02.020189",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "markdown/extensions/def_list.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 53.17428517341614,
+        "error": null,
+        "agent_output": "## Summary\n\nI found and fixed the bug! Here's what was wrong:\n\n**The Bug:** In `/markdown/extensions/def_list.py:40`, the `run()` method was using `blocks.pop(-1)` to get the last block, but the `test()` method at line 36-37 is called with `blocks[0]` (the first block) by the block parser.\n\n**Root Cause:** In `blockparser.py:157-158`, the parser calls:\n```python\nif processor.test(parent, blocks[0]):\n    if processor.run(parent, blocks) is not False:\n```\n\nThe `test()` method validates the **first** block, but the `run()` method was operating on the **last** block. When these were different blocks and the last block didn't contain the definition list pattern (`:` marker), `self.RE.search(raw_block)` returned `None`, causing the `AttributeError: 'NoneType' object has no attribute 'start'`.\n\n**The Fix:** Changed line 40 from:\n```python\nraw_block = blocks.pop(-1)  # Wrong: pops the last block\n```\nto:\n```python\nraw_block = blocks.pop(0)   # Correct: pops the first block that test() validated\n```\n\n**Verification:** All 776 tests pass with this fix.\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "python-markdown-formatting-029",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 776,
+      "tests_failed": 0,
+      "tests_total": 886,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-25T03:55:44.815440",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "markdown/extensions/def_list.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 38.29730200767517,
+        "error": null,
+        "agent_output": "Perfect! All tests pass. Here's a summary of the bug and the fix:\n\n## Bug Summary\n\n**Location:** `/markdown/extensions/def_list.py` line 61\n\n**Issue:** The `DefListProcessor.run()` method was using `blocks.insert(-1, raw_block)` to requeue a block that wasn't a valid definition item. Using index `-1` inserts the block before the last element instead of at the front of the queue.\n\n**Impact:** When a paragraph started with a colon at the beginning of a document (like `: a paragraph that starts with a colon`), the block processor would fail to correctly requeue it. This caused subsequent list items to be absorbed as paragraph text rather than being parsed as proper lists.\n\n**Fix:** Changed line 61 from:\n```python\nblocks.insert(-1, raw_block)\n```\nto:\n```python\nblocks.insert(0, raw_block)\n```\n\nThis aligns with the standard practice used throughout the codebase where blocks are requeued at the front using `blocks.insert(0, ...)`.\n\nThe fix resolves the test failure while maintaining all 776 passing tests in the full test suite.\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "python-markdown-formatting-030",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 776,
+      "tests_failed": 0,
+      "tests_total": 886,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-25T03:56:48.048307",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "markdown/extensions/footnotes.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 58.453595876693726,
+        "error": null,
+        "agent_output": "Perfect! All 776 tests pass (with 110 skipped). The error we saw is a pre-existing test collection issue unrelated to my fix.\n\n## Summary\n\nI found and fixed the bug in the footnotes extension. The issue was on **line 158** of `/markdown/extensions/footnotes.py` in the `unique_ref` method:\n\n**Bug:** The counter for tracking duplicate footnote references was not being incremented:\n```python\nif original_ref in self.found_refs:\n    self.found_refs[original_ref] += 0  # BUG: This does nothing!\n```\n\n**Fix:** Changed `+= 0` to `+= 1` to properly count duplicate references:\n```python\nif original_ref in self.found_refs:\n    self.found_refs[original_ref] += 1  # Now correctly increments\n```\n\nThis bug prevented the footnotes extension from generating multiple backref links for duplicate footnote references. When the same footnote was referenced multiple times (e.g., `[^a]` appearing 3 times), the system should create 3 backref links (pointing to `#fnref:a`, `#fnref2:a`, and `#fnref3:a`), but it only created one because the counter never incremented past 1.\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "python-markdown-formatting-031",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "NO_FIX",
+      "tests_passed": 202,
+      "tests_failed": 1,
+      "tests_total": 250,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-25T03:58:51.386677",
+      "fix_result": {
+        "success": false,
+        "files_changed": [],
+        "patch": "",
+        "tokens_used": 0,
+        "time_seconds": 120.19319772720337,
+        "error": "Timeout after 120 seconds",
+        "agent_output": "",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "python-markdown-formatting-032",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 776,
+      "tests_failed": 0,
+      "tests_total": 886,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-25T03:59:41.635819",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "markdown/extensions/footnotes.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 45.49773287773132,
+        "error": null,
+        "agent_output": "## Summary\n\nI found and fixed the bug! \n\n**Bug Location:** `markdown/extensions/footnotes.py:277`\n\n**The Problem:**\nIn the `FootnoteBlockProcessor.run()` method, the code was incorrectly storing the footnote ID instead of the footnote content. The regex pattern has two capture groups:\n- Group 1: `([^\\]]*)` - the footnote ID (e.g., `1`)  \n- Group 2: `(.*)` - the footnote content (e.g., `A Footnote.`)\n\nThe code was storing `m.group(1)` (the ID) when it should have been storing `m.group(2)` (the content).\n\n**The Fix:**\nChanged line 277 from:\n```python\nfn_blocks = [m.group(1)]\n```\n\nTo:\n```python\nfn_blocks = [m.group(2)]\n```\n\nThis ensures the actual footnote content is stored and rendered, rather than the footnote number. The test now passes, confirming that footnotes display their content correctly: \"A Footnote.\" instead of \"1\".\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "python-markdown-formatting-033",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 776,
+      "tests_failed": 0,
+      "tests_total": 886,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-25T04:01:36.399993",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "markdown/blockprocessors.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 110.08548998832703,
+        "error": null,
+        "agent_output": "Excellent! The bug has been found and fixed. Here's a summary:\n\n## Bug Found\n**File:** `markdown/blockprocessors.py` (line 244)  \n**Class:** `ListIndentProcessor`  \n**Method:** `get_level()`\n\n## The Problem\nThe code was incorrectly calculating the indentation level:\n```python\nindent_level = len(m.group(1)) * self.tab_length  # WRONG\n```\n\nThis multiplied the number of matched spaces by `tab_length` again, causing massive inflation of the indent level. For example:\n- Input: 4 spaces of indentation\n- Calculation: `len('    ') * 4 = 4 * 4 = 16`\n- Expected: `1` (one level of indentation)\n\n## The Solution\nChanged the multiplication to division:\n```python\nindent_level = len(m.group(1)) // self.tab_length  # CORRECT\n```\n\nNow the indentation is properly converted from spaces to indent levels:\n- Input: 4 spaces \u2192 `4 // 4 = 1` indent level\n- Input: 8 spaces \u2192 `8 // 4 = 2` indent levels\n\n## Result\nThis allows nested list items to be recognized correctly instead of being mistakenly converted to code blocks. The test `test_lists7` now passes, and all 103 tests in the test suite pass.\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "python-markdown-formatting-034",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 776,
+      "tests_failed": 0,
+      "tests_total": 886,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-25T04:02:26.461715",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "markdown/extensions/admonition.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 44.67772126197815,
+        "error": null,
+        "agent_output": "## Summary\n\nI found and fixed the bug in the repository. Here's what was wrong:\n\n**Location:** `markdown/extensions/admonition.py`, line 102 in the `parse_content` method of the `AdmonitionProcessor` class.\n\n**The Bug:** \nThe while loop condition was `while last_child is None:` but inside the loop it checked `and last_child is not None`, which is logically contradictory. This meant the loop never executed when it should have.\n\n**The Fix:**\nChanged line 102 from:\n```python\nwhile last_child is None:\n```\nto:\n```python\nwhile last_child is not None:\n```\n\n**Why This Matters:**\nThis loop is responsible for traversing nested list structures (including definition lists) within admonitions to properly handle indentation. With the bug, when a definition list was the last child of an admonition, the traversal logic was skipped, causing the definition list content to not be properly dedented. This resulted in the content being rendered as code blocks (`<pre><code>`) instead of paragraphs within the definition list items.\n\n**Test Results:**\n- \u2705 The failing test `test_definition_list` now passes\n- \u2705 All 7 admonition tests pass\n- \u2705 All 776 tests in the full test suite pass (with 110 skipped)\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "python-markdown-formatting-035",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 776,
+      "tests_failed": 0,
+      "tests_total": 886,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-25T04:03:16.720381",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "markdown/extensions/admonition.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 45.167065143585205,
+        "error": null,
+        "agent_output": "## Summary\n\nI found and fixed the bug! \n\n**The Issue:**\nIn `/markdown/extensions/admonition.py` at line 106, there was a logic error in a conditional statement:\n\n```python\nwhile last_child is not None:\n    if (\n        sibling is not None\n        and block.startswith(' ' * self.tab_length * 2)\n        and last_child is None  # <-- BUG!\n        and last_child.tag in ('ul', 'ol', 'dl')\n    ):\n```\n\nThe condition checked `last_child is None` but then tried to access `last_child.tag`. This is impossible and prevented the code from properly handling definition lists within admonitions.\n\n**The Fix:**\nChanged line 106 from `and last_child is None` to `and last_child is not None`. This allows the code to correctly process nested definition list structures within admonitions.\n\n**Verification:**\n- The previously failing test `test_definition_list` now passes \u2705\n- All 776 tests pass with 110 skipped \u2705\n- All other admonition tests continue to pass \u2705\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "python-markdown-formatting-036",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "NO_FIX",
+      "tests_passed": 522,
+      "tests_failed": 1,
+      "tests_total": 614,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-25T04:05:20.822569",
+      "fix_result": {
+        "success": false,
+        "files_changed": [],
+        "patch": "",
+        "tokens_used": 0,
+        "time_seconds": 120.22271800041199,
+        "error": "Timeout after 120 seconds",
+        "agent_output": "",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "python-markdown-formatting-037",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 776,
+      "tests_failed": 0,
+      "tests_total": 886,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-25T04:06:21.458121",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "markdown/extensions/footnotes.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 55.351142168045044,
+        "error": null,
+        "agent_output": "Perfect! All tests pass. \n\n## Summary\n\nI found and fixed a logic bug in the `findFootnotesPlaceholder` method in `/markdown/extensions/footnotes.py` (line 177).\n\n**The Bug:**\nThe recursive placeholder finder function was exiting prematurely when searching nested elements. When a recursive search of a child's subtree returned `None` (meaning \"not found\"), the code immediately returned `None` instead of continuing to search the remaining siblings.\n\n**The Fix:**\nChanged line 177 from:\n```python\nif child_res is None:\n    return child_res\n```\n\nTo:\n```python\nif child_res is not None:\n    return child_res\n```\n\nThis ensures the function only returns when it actually **finds** the placeholder (`child_res is not None`), allowing the loop to continue searching siblings when a subtree doesn't contain the placeholder.\n\n**Test Results:**\n- The failing test `test_footnote_placeholder_depth` now passes \u2705\n- All 776 tests pass with no regressions \u2705\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "python-markdown-formatting-038",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 776,
+      "tests_failed": 0,
+      "tests_total": 886,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-25T04:07:20.191330",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "markdown/extensions/tables.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 53.32213091850281,
+        "error": null,
+        "agent_output": "## Summary\n\nI found and fixed the bug! The issue was in the table extension's logic for detecting single-column tables with right borders only.\n\n**Bug location:** `/markdown/extensions/tables.py`, line 78\n\n**The problem:** \nWhen checking if rows in a single-column table have the required trailing pipe character (`|`), the code had inverted logic:\n```python\nis_table = (\n    self.RE_END_BORDER.search(rows[index]) is None  # \u274c Wrong\n)\n```\n\nThis checked if the row does **NOT** have a trailing pipe, but for single-column tables with right borders, every row **MUST** have a trailing pipe.\n\n**The fix:**\nChanged the condition from `is None` to `is not None`:\n```python\nis_table = (\n    self.RE_END_BORDER.search(rows[index]) is not None  # \u2705 Correct\n)\n```\n\nNow single-column tables like this are correctly recognized:\n```\nIs a Table |\n---------- |\n```\n\n**Test results:**\n- \u2705 The previously failing test `test_single_column_tables` now passes\n- \u2705 All 16 table extension tests pass\n- \u2705 All 776 tests in the suite pass (110 skipped)\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "python-markdown-formatting-039",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 776,
+      "tests_failed": 0,
+      "tests_total": 886,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-25T04:08:03.683027",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "markdown/core.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 38.40692973136902,
+        "error": null,
+        "agent_output": "Excellent! All tests pass now. Here's a summary of the bug I found and fixed:\n\n## Bug Summary\n\n**Location:** `/markdown/core.py:246` in the `build_extension` method\n\n**The Issue:**\nThe condition for filtering entry points had inverted logic:\n```python\n# BUGGY - filters for NON-matching entry points\nentry_points = [\n    ep for ep in util.get_installed_extensions() if ep.name != ext_name\n]\n```\n\nThis was selecting all installed extensions that DON'T match the requested extension name, when it should select ones that DO match.\n\n**The Fix:**\nChanged the condition from `!=` to `==`:\n```python\n# FIXED - filters for matching entry points\nentry_points = [\n    ep for ep in util.get_installed_extensions() if ep.name == ext_name\n]\n```\n\n**Why It Was a Problem:**\nThe test `testDotNotationExtensionWithBadClass` was trying to load a non-existent class `markdown.extensions.footnotes:MissingExtension` and expected an `AttributeError` to be raised. However, with the buggy logic, the code would incorrectly use a non-matching installed extension instead of falling through to the normal import logic, which would have properly raised the expected `AttributeError`.\n\n**Test Results:**\n- \u2705 The previously failing test now passes\n- \u2705 All 88 tests in the test suite pass\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "python-markdown-formatting-040",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "NO_FIX",
+      "tests_passed": 207,
+      "tests_failed": 1,
+      "tests_total": 255,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-25T04:10:07.106633",
+      "fix_result": {
+        "success": false,
+        "files_changed": [],
+        "patch": "",
+        "tokens_used": 0,
+        "time_seconds": 120.19373202323914,
+        "error": "Timeout after 120 seconds",
+        "agent_output": "",
+        "rate_limited": false
+      }
+    }
+  ],
+  "summary": {
+    "by_agent": {
+      "claude": {
+        "total": 20,
+        "passed": 14
+      }
+    },
+    "by_mode": {
+      "with_tests": {
+        "total": 20,
+        "passed": 14
+      }
+    },
+    "by_evaluation": {
+      "PASS": 14,
+      "FAIL": 0,
+      "ERROR": 0,
+      "TIMEOUT": 0,
+      "NO_FIX": 6
+    }
+  }
+}

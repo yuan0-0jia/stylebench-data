@@ -1,0 +1,514 @@
+{
+  "metadata": {
+    "catalog": "/Users/yuan/stylebench-data/bugs_canonical/python-markdown-camelcase.json",
+    "repo": "/Users/yuan/stylebench-data/camelcase/python-markdown",
+    "repo_name": "python-markdown",
+    "timestamp": "2026-02-25T03:14:02.754706",
+    "total_trials": 20,
+    "manifest_used": false,
+    "hit_rate_limit": false
+  },
+  "results": [
+    {
+      "bug_id": "python-markdown-camelcase-021",
+      "agent": "claude",
+      "mode": "without_tests",
+      "evaluation": "NO_FIX",
+      "tests_passed": 113,
+      "tests_failed": 1,
+      "tests_total": 114,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-25T02:45:29.184589",
+      "fix_result": {
+        "success": false,
+        "files_changed": [],
+        "patch": "",
+        "tokens_used": 0,
+        "time_seconds": 120.16515374183655,
+        "error": "Timeout after 120 seconds",
+        "agent_output": "",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "python-markdown-camelcase-022",
+      "agent": "claude",
+      "mode": "without_tests",
+      "evaluation": "NO_FIX",
+      "tests_passed": 520,
+      "tests_failed": 1,
+      "tests_total": 572,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-25T02:47:32.336332",
+      "fix_result": {
+        "success": false,
+        "files_changed": [],
+        "patch": "",
+        "tokens_used": 0,
+        "time_seconds": 120.14169406890869,
+        "error": "Timeout after 120 seconds",
+        "agent_output": "",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "python-markdown-camelcase-023",
+      "agent": "claude",
+      "mode": "without_tests",
+      "evaluation": "PASS",
+      "tests_passed": 776,
+      "tests_failed": 0,
+      "tests_total": 886,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-25T02:48:12.487782",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "markdown/extensions/tables.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 35.51591181755066,
+        "error": null,
+        "agent_output": "Done! I found and fixed the bug. The issue was a simple comparison error on **line 190** of `/private/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/stylebench_wi6j8sp3/markdown/extensions/tables.py`.\n\n**The Bug:**\nThe while loop condition was `while pos > ticLen:` which prevented the loop from ever executing when there are backticks to process. This caused the code pairing logic to be skipped, meaning inline code regions were never identified.\n\n**The Fix:**\nChanged it to `while pos < ticLen:` so the loop properly iterates through all backtick groups to pair them up and identify code regions.\n\n**Why This Fixes the Test:**\nWhen a table cell contains inline code like `` `word |2` ``, the pipe character `|` inside the backticks should be treated as part of the code, not as a table column delimiter. With the broken loop, no code regions were identified, so all pipes were treated as column delimiters. Now the logic correctly identifies that the `|` is inside backticks and preserves it as part of the code block.\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "python-markdown-camelcase-024",
+      "agent": "claude",
+      "mode": "without_tests",
+      "evaluation": "NO_FIX",
+      "tests_passed": 726,
+      "tests_failed": 1,
+      "tests_total": 837,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-25T02:50:15.601156",
+      "fix_result": {
+        "success": false,
+        "files_changed": [],
+        "patch": "",
+        "tokens_used": 0,
+        "time_seconds": 120.12717008590698,
+        "error": "Timeout after 120 seconds",
+        "agent_output": "",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "python-markdown-camelcase-025",
+      "agent": "claude",
+      "mode": "without_tests",
+      "evaluation": "NO_FIX",
+      "tests_passed": 520,
+      "tests_failed": 1,
+      "tests_total": 572,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-25T02:52:18.527994",
+      "fix_result": {
+        "success": false,
+        "files_changed": [],
+        "patch": "",
+        "tokens_used": 0,
+        "time_seconds": 120.14837598800659,
+        "error": "Timeout after 120 seconds",
+        "agent_output": "",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "python-markdown-camelcase-026",
+      "agent": "claude",
+      "mode": "without_tests",
+      "evaluation": "PASS",
+      "tests_passed": 776,
+      "tests_failed": 0,
+      "tests_total": 886,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-25T02:54:05.674735",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "markdown/inlinepatterns.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 103.63043212890625,
+        "error": null,
+        "agent_output": "Perfect! I've fixed the bug. Here's a summary of what I found:\n\n## The Bug\nIn `/markdown/inlinepatterns.py` line 801, the condition for extracting the title from an inline link was inverted.\n\n**The Issue:**\n- The code was checking `if exitQuote <= 0 and quote == last:` to determine if a title should be extracted\n- `exitQuote` is set to a positive value (`index + 1`) when a closing quote is found (line 791)\n- The condition `exitQuote <= 0` means \"the quote was NOT found/closed\", which is the opposite of when we should extract the title\n- This caused the entire string including the title quotes to be treated as the href instead of properly extracting the title\n\n**The Fix:**\nChanged line 801 from:\n```python\nif exitQuote <= 0 and quote == last:\n```\nto:\n```python\nif exitQuote > 0 and quote == last:\n```\n\nThis ensures the title is properly extracted when a closing quote is found and closed. Now:\n- Links like `[URL and title](/url/ \"title\")` will correctly produce `<a href=\"/url/\" title=\"title\">URL and title</a>`\n- Instead of the broken output: `<a href=\"/url/ &quot;title&quot;\">URL and title</a>`\n\nThe fix is minimal and surgical - just changing the comparison operator from `<=` to `>` to properly detect when a quote has been found and closed.\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "python-markdown-camelcase-027",
+      "agent": "claude",
+      "mode": "without_tests",
+      "evaluation": "NO_FIX",
+      "tests_passed": 716,
+      "tests_failed": 1,
+      "tests_total": 827,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-25T02:56:08.857985",
+      "fix_result": {
+        "success": false,
+        "files_changed": [],
+        "patch": "",
+        "tokens_used": 0,
+        "time_seconds": 120.13605284690857,
+        "error": "Timeout after 120 seconds",
+        "agent_output": "",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "python-markdown-camelcase-028",
+      "agent": "claude",
+      "mode": "without_tests",
+      "evaluation": "FAIL",
+      "tests_passed": 189,
+      "tests_failed": 1,
+      "tests_total": 236,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-25T02:56:38.818428",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "markdown/extensions/def_list.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 26.732614040374756,
+        "error": null,
+        "agent_output": "Done! I've identified and fixed the bug.\n\n**The Issue:**\nIn `/markdown/extensions/def_list.py` at line 42-44, the code was trying to call `m.start()` without checking if `m` (the regex match object) was `None`. When `self.RE.search(rawBlock)` doesn't find a match, it returns `None`, leading to the `AttributeError: 'NoneType' object has no attribute 'start'`.\n\n**The Fix:**\nI added a safety check right after the regex search (lines 43-46) to handle the case where the pattern doesn't match:\n- If `m` is `None`, put the block back and return `False`\n- This is consistent with the existing pattern used later in the code (lines 56-60)\n\nThis minimal fix ensures the code doesn't try to call methods on `None` and gracefully handles blocks that don't match the expected pattern.\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "python-markdown-camelcase-029",
+      "agent": "claude",
+      "mode": "without_tests",
+      "evaluation": "NO_FIX",
+      "tests_passed": 200,
+      "tests_failed": 1,
+      "tests_total": 248,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-25T02:58:41.328647",
+      "fix_result": {
+        "success": false,
+        "files_changed": [],
+        "patch": "",
+        "tokens_used": 0,
+        "time_seconds": 120.12143898010254,
+        "error": "Timeout after 120 seconds",
+        "agent_output": "",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "python-markdown-camelcase-030",
+      "agent": "claude",
+      "mode": "without_tests",
+      "evaluation": "NO_FIX",
+      "tests_passed": 202,
+      "tests_failed": 1,
+      "tests_total": 250,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-25T03:00:45.357732",
+      "fix_result": {
+        "success": false,
+        "files_changed": [],
+        "patch": "",
+        "tokens_used": 0,
+        "time_seconds": 120.15065288543701,
+        "error": "Timeout after 120 seconds",
+        "agent_output": "",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "python-markdown-camelcase-031",
+      "agent": "claude",
+      "mode": "without_tests",
+      "evaluation": "FAIL",
+      "tests_passed": 202,
+      "tests_failed": 1,
+      "tests_total": 250,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-25T03:02:14.217224",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "markdown/extensions/footnotes.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 85.59798288345337,
+        "error": null,
+        "agent_output": "Perfect! I've identified and fixed the bug in the footnotes extension. Here's a summary of the issue:\n\n## Bug Analysis\n\nIn `/markdown/extensions/footnotes.py` (lines 223-230), the `makeFootnotesDiv` method had two issues:\n\n1. **Missing backref links**: The code only added the footnote backref link if `len(li) > 0` (i.e., if the footnote parsing resulted in child elements). If a footnote had no children, the backlink was never added. This caused footnotes to be missing their backref links.\n\n2. **TypeError on None text**: On line 226, the code did `node.text = node.text + NBSP_PLACEHOLDER`, which would crash if `node.text` was `None` (which happens when an element has child elements rather than just text).\n\n## The Fix\n\nChanged:\n```python\nif len(li):\n    node = li[-1]\n    if node.tag == \"p\":\n        node.text = node.text + NBSP_PLACEHOLDER  # Crashes if node.text is None\n        node.append(backlink)\n    else:\n        p = etree.SubElement(li, \"p\")\n        p.append(backlink)\n# If len(li) == 0, backlink is never added!\n```\n\nTo:\n```python\nif len(li) and li[-1].tag == \"p\":\n    node = li[-1]\n    node.text = (node.text or '') + NBSP_PLACEHOLDER  # Handle None case\n    node.append(backlink)\nelse:\n    p = etree.SubElement(li, \"p\")\n    p.append(backlink)  # Backlink always added, even if li was empty\n```\n\nThis ensures:\n- The backref link is **always** added, regardless of whether the footnote content generated child elements\n- None values for text content are properly handled\n- The logic is clearer and more robust\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "python-markdown-camelcase-032",
+      "agent": "claude",
+      "mode": "without_tests",
+      "evaluation": "NO_FIX",
+      "tests_passed": 201,
+      "tests_failed": 1,
+      "tests_total": 249,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-25T03:04:16.883820",
+      "fix_result": {
+        "success": false,
+        "files_changed": [],
+        "patch": "",
+        "tokens_used": 0,
+        "time_seconds": 120.14411687850952,
+        "error": "Timeout after 120 seconds",
+        "agent_output": "",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "python-markdown-camelcase-033",
+      "agent": "claude",
+      "mode": "without_tests",
+      "evaluation": "FAIL",
+      "tests_passed": 167,
+      "tests_failed": 1,
+      "tests_total": 168,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-25T03:06:03.303033",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "markdown/blockprocessors.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 103.48185801506042,
+        "error": null,
+        "agent_output": "Perfect! The fix works. The nested list items are now properly rendered as `<li>` tags instead of code blocks. The issue was that on line 227 of `blockprocessors.py`, the indentation level was being double-counted by multiplying the matched spaces by `tab_length`. Since `len(m.group(1))` already represents the actual number of spaces in the matched indentation, this multiplication caused nested list items not to be recognized correctly and fall through to the `CodeBlockProcessor` instead.\n\nThe fix is minimal and correct: remove the unnecessary multiplication so that `indentLevel` reflects the actual number of spaces matched.\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "python-markdown-camelcase-034",
+      "agent": "claude",
+      "mode": "without_tests",
+      "evaluation": "PASS",
+      "tests_passed": 776,
+      "tests_failed": 0,
+      "tests_total": 886,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-25T03:06:44.430844",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "markdown/extensions/admonition.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 36.980019092559814,
+        "error": null,
+        "agent_output": "Perfect! I found and fixed the bug. \n\n**The Issue:**\nOn line 93 of `/markdown/extensions/admonition.py`, the while loop condition was `while lastChild is None:`, which is contradictory with the if condition on line 96 that checks `lastChild is not None`. This made the if block unreachable, preventing the code from properly traversing nested list structures (ul, ol, dl).\n\n**The Fix:**\nChanged line 93 from `while lastChild is None:` to `while lastChild is not None:`. \n\nThis allows the code to properly:\n1. Check if the sibling has child elements\n2. If those children are lists (ul, ol, dl), traverse into them\n3. Adjust the indentation level correctly for content under those lists\n4. Continue processing definition lists and other nested structures inside admonitions\n\nThe fix is minimal and corrects the logical flow so that definition list content is properly recognized and processed instead of being incorrectly rendered as code blocks.\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "python-markdown-camelcase-035",
+      "agent": "claude",
+      "mode": "without_tests",
+      "evaluation": "PASS",
+      "tests_passed": 776,
+      "tests_failed": 0,
+      "tests_total": 886,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-25T03:07:18.447460",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "markdown/extensions/admonition.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 29.867643117904663,
+        "error": null,
+        "agent_output": "Perfect! I found and fixed the bug. \n\n**The Issue:**\nIn the `parse_content` method of the `AdmonitionProcessor` class (line 96), there was a logical error in the condition:\n\n```python\nlastChild is None and lastChild.tag in ('ul', 'ol', 'dl')\n```\n\nThis condition is impossible because:\n1. If `lastChild is None`, you can't access `lastChild.tag`\n2. We're inside a `while lastChild is not None:` loop, so `lastChild` cannot be None at this point\n\n**The Fix:**\nChanged line 96 from:\n```python\nlastChild is None and lastChild.tag in ('ul', 'ol', 'dl')\n```\n\nto:\n```python\nlastChild is not None and lastChild.tag in ('ul', 'ol', 'dl')\n```\n\nThis allows the code to properly detect when the last child element is a list (definition list, ordered list, or unordered list), which is essential for correctly handling continuation lines within list items inside admonitions. Without this fix, indented continuation text within definition list items was being parsed as code blocks instead of paragraphs.\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "python-markdown-camelcase-036",
+      "agent": "claude",
+      "mode": "without_tests",
+      "evaluation": "FAIL",
+      "tests_passed": 522,
+      "tests_failed": 1,
+      "tests_total": 614,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-25T03:08:08.672257",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "markdown/extensions/def_list.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 46.349936962127686,
+        "error": null,
+        "agent_output": "Perfect! I found and fixed the bug. Here's a summary:\n\n## The Bug\nThe `DefListIndentProcessor.create_item()` method (def_list.py:102-106) was **always creating `dd` elements**, even when the parent was an ordered list (`ol`) or unordered list (`ul`). This caused indented content within list items to be incorrectly treated as code blocks instead of list item content.\n\n## The Root Cause\nWhen the parser encounters indented content inside a list item that's nested within a definition list (especially inside admonitions), it calls `create_item()` with the list element as the parent. The buggy code would create a `dd` element regardless of the parent type, instead of checking whether it should create an `li` element for lists.\n\n## The Fix\nI updated the `create_item()` method to check the parent's tag:\n- If parent is `ol` or `ul` (but not `dl`), create an `li` element\n- Otherwise (when parent is `dl`), create a `dd` element\n\nThis ensures that nested content in regular list items is properly wrapped in `<li>` tags with `<p>` tags for the paragraphs, rather than being treated as indented code blocks.\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "python-markdown-camelcase-037",
+      "agent": "claude",
+      "mode": "without_tests",
+      "evaluation": "PASS",
+      "tests_passed": 776,
+      "tests_failed": 0,
+      "tests_total": 886,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-25T03:09:05.173221",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "markdown/extensions/footnotes.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 52.73972034454346,
+        "error": null,
+        "agent_output": "Perfect! The fix is in place. \n\n## Summary\n\n**Bug Found:** In the `findFootnotesPlaceholder` method (line 158-159) of `/private/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/stylebench_ysu0s3ru/markdown/extensions/footnotes.py`\n\n**The Problem:** The conditional logic was inverted. When recursively searching for the footnote placeholder in nested elements:\n- The code was returning immediately when `None` was found (meaning the placeholder wasn't in that subtree)\n- But it was NOT returning when the placeholder WAS found (returning a tuple)\n\n**The Fix:** Changed line 158 from `if childRes is None:` to `if childRes is not None:`. Now the method correctly:\n1. Returns the found placeholder when discovered in any subtree\n2. Continues searching other siblings when a subtree doesn't contain the placeholder\n3. Only returns None at the end if the placeholder is never found\n\nThis allows the placeholder to be correctly located in nested elements like deeply nested blockquotes, enabling the footnote div to be inserted at the right location instead of being left outside the blockquotes.\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "python-markdown-camelcase-038",
+      "agent": "claude",
+      "mode": "without_tests",
+      "evaluation": "PASS",
+      "tests_passed": 776,
+      "tests_failed": 0,
+      "tests_total": 886,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-25T03:09:57.214263",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "markdown/extensions/tables.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 48.14366602897644,
+        "error": null,
+        "agent_output": "Perfect! I've found and fixed the bug. \n\n**The Issue:**\nIn the `test` method of the `TableProcessor` class (line 75 of tables.py), there was a logic error when validating single-column tables. The code was checking:\n```python\nisTable = self.RE_END_BORDER.search(rows[index]) is None\n```\n\nThis was backwards. For a single-column table, rows need to **have** pipes (either at start or end), not rows that **don't** have end borders.\n\n**The Fix:**\nI changed line 75 from:\n```python\nisTable = self.RE_END_BORDER.search(rows[index]) is None\n```\n\nto:\n```python\nisTable = self.RE_END_BORDER.search(rows[index]) is not None\n```\n\nNow the logic correctly validates single-column tables by ensuring that each row either starts with `|` OR ends with `|` (meaning it has at least one pipe).\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "python-markdown-camelcase-039",
+      "agent": "claude",
+      "mode": "without_tests",
+      "evaluation": "NO_FIX",
+      "tests_passed": 35,
+      "tests_failed": 1,
+      "tests_total": 36,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-25T03:11:59.493293",
+      "fix_result": {
+        "success": false,
+        "files_changed": [],
+        "patch": "",
+        "tokens_used": 0,
+        "time_seconds": 120.15727996826172,
+        "error": "Timeout after 120 seconds",
+        "agent_output": "",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "python-markdown-camelcase-040",
+      "agent": "claude",
+      "mode": "without_tests",
+      "evaluation": "NO_FIX",
+      "tests_passed": 207,
+      "tests_failed": 1,
+      "tests_total": 255,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-25T03:14:02.608096",
+      "fix_result": {
+        "success": false,
+        "files_changed": [],
+        "patch": "",
+        "tokens_used": 0,
+        "time_seconds": 120.16107392311096,
+        "error": "Timeout after 120 seconds",
+        "agent_output": "",
+        "rate_limited": false
+      }
+    }
+  ],
+  "summary": {
+    "by_agent": {
+      "claude": {
+        "total": 20,
+        "passed": 6
+      }
+    },
+    "by_mode": {
+      "without_tests": {
+        "total": 20,
+        "passed": 6
+      }
+    },
+    "by_evaluation": {
+      "PASS": 6,
+      "FAIL": 4,
+      "ERROR": 0,
+      "TIMEOUT": 0,
+      "NO_FIX": 10
+    }
+  }
+}

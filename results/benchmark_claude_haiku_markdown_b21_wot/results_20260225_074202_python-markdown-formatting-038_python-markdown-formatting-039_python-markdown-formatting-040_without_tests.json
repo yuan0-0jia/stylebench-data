@@ -1,0 +1,107 @@
+{
+  "metadata": {
+    "catalog": "/Users/yuan/stylebench-data/bugs_canonical/python-markdown-formatting.json",
+    "repo": "/Users/yuan/stylebench-data/formatting/python-markdown",
+    "repo_name": "python-markdown",
+    "timestamp": "2026-02-25T07:42:02.043082",
+    "total_trials": 3,
+    "manifest_used": false,
+    "hit_rate_limit": false
+  },
+  "results": [
+    {
+      "bug_id": "python-markdown-formatting-038",
+      "agent": "claude",
+      "mode": "without_tests",
+      "evaluation": "PASS",
+      "tests_passed": 776,
+      "tests_failed": 0,
+      "tests_total": 886,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-25T07:37:52.257107",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "markdown/extensions/tables.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 64.65542817115784,
+        "error": null,
+        "agent_output": "Perfect! I've identified and fixed the bug. The issue was in line 78 of `/markdown/extensions/tables.py`:\n\n**The Problem:**\nThe logic for validating single-column tables was inverted. When checking if rows in a single-column table have at least one pipe, the code was checking if there's **NO** end border (`is None`), when it should check if there **IS** an end border (`is not None`).\n\n**The Fix:**\nChanged line 78 from:\n```python\nself.RE_END_BORDER.search(rows[index]) is None\n```\nto:\n```python\nself.RE_END_BORDER.search(rows[index]) is not None\n```\n\nThis allows single-column tables with pipes at the end of rows to be properly recognized as tables instead of being parsed as paragraphs. The corrected logic now properly validates that each row in a single-column table either starts with a pipe (`|`) OR ends with a pipe (`|`), which is necessary for proper table formatting.\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "python-markdown-formatting-039",
+      "agent": "claude",
+      "mode": "without_tests",
+      "evaluation": "NO_FIX",
+      "tests_passed": 35,
+      "tests_failed": 1,
+      "tests_total": 36,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-25T07:39:55.563704",
+      "fix_result": {
+        "success": false,
+        "files_changed": [],
+        "patch": "",
+        "tokens_used": 0,
+        "time_seconds": 120.1715497970581,
+        "error": "Timeout after 120 seconds",
+        "agent_output": "",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "python-markdown-formatting-040",
+      "agent": "claude",
+      "mode": "without_tests",
+      "evaluation": "FAIL",
+      "tests_passed": 207,
+      "tests_failed": 1,
+      "tests_total": 255,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-25T07:42:01.854222",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "markdown/serializers.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 118.50318384170532,
+        "error": null,
+        "agent_output": "Perfect! I've successfully fixed the bug. Here's a summary of what I found and fixed:\n\n## The Bug\n\nThe issue was **double HTML escaping** in the serializer. Here's what was happening:\n\n1. **Code blocks** are created in `blockprocessors.py` (lines 290-291) with text that's marked as `util.AtomicString` after being HTML-escaped with `util.code_escape()`\n2. The `AtomicString` class is documented as \"A string which should not be further processed\"\n3. **However**, the serializer in `serializers.py` was NOT checking for `AtomicString` instances and was re-escaping the already-escaped content\n4. This caused double-escaping: `&lt;` became `&amp;lt;`, turning `<li>` into `&lt;li&gt;` in the final HTML\n\n## The Fix\n\nI modified `/markdown/serializers.py` to:\n\n1. **Import `util`** module to access the `AtomicString` class\n2. **Check for `AtomicString`** in three escape functions:\n   - `_escape_cdata()` - for element text content\n   - `_escape_attrib()` - for XHTML attribute values  \n   - `_escape_attrib_html()` - for HTML attribute values\n\nEach function now returns the text immediately without escaping if it's an `AtomicString`, since the content is already properly escaped.\n\nThis is a minimal fix that respects the original design intent of `AtomicString` as a way to mark content that should not be further processed.\n",
+        "rate_limited": false
+      }
+    }
+  ],
+  "summary": {
+    "by_agent": {
+      "claude": {
+        "total": 3,
+        "passed": 1
+      }
+    },
+    "by_mode": {
+      "without_tests": {
+        "total": 3,
+        "passed": 1
+      }
+    },
+    "by_evaluation": {
+      "PASS": 1,
+      "FAIL": 1,
+      "ERROR": 0,
+      "TIMEOUT": 0,
+      "NO_FIX": 1
+    }
+  }
+}

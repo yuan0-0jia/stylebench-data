@@ -1,0 +1,514 @@
+{
+  "metadata": {
+    "catalog": "/Users/yuan/stylebench-data/bugs_canonical/python-markdown-nodocs_full.json",
+    "repo": "/Users/yuan/stylebench-data/nodocs_full/python-markdown",
+    "repo_name": "python-markdown",
+    "timestamp": "2026-02-25T09:58:49.248650",
+    "total_trials": 20,
+    "manifest_used": false,
+    "hit_rate_limit": false
+  },
+  "results": [
+    {
+      "bug_id": "python-markdown-nodocs_full-021",
+      "agent": "claude",
+      "mode": "without_tests",
+      "evaluation": "NO_FIX",
+      "tests_passed": 113,
+      "tests_failed": 1,
+      "tests_total": 114,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-25T09:25:29.042251",
+      "fix_result": {
+        "success": false,
+        "files_changed": [],
+        "patch": "",
+        "tokens_used": 0,
+        "time_seconds": 120.34117698669434,
+        "error": "Timeout after 120 seconds",
+        "agent_output": "",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "python-markdown-nodocs_full-022",
+      "agent": "claude",
+      "mode": "without_tests",
+      "evaluation": "PASS",
+      "tests_passed": 776,
+      "tests_failed": 0,
+      "tests_total": 886,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-25T09:27:19.759701",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "markdown/extensions/tables.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 105.52940511703491,
+        "error": null,
+        "agent_output": "Perfect! I found and fixed the bug. The issue was on **line 42** of `/markdown/extensions/tables.py`:\n\n**The Bug:** \n```python\nis_table = row0_len < 1\n```\n\nThis condition only sets `is_table = True` when there are 0 or fewer cells in the header row, which is backwards logic. This causes all normal tables (with 2+ columns) to be rejected and fall through to be rendered as plain text.\n\n**The Fix:**\n```python\nis_table = row0_len > 1\n```\n\nThis correctly identifies tables with 2 or more columns as potential tables, allowing the table parser to continue and validate the separator row. Tables with exactly 1 column will still be handled by the fallback logic on line 44 if they have borders.\n\nThis fixes the test failure where markdown tables weren't being parsed as tables at all, causing them to render as paragraphs instead of proper HTML table elements.\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "python-markdown-nodocs_full-023",
+      "agent": "claude",
+      "mode": "without_tests",
+      "evaluation": "PASS",
+      "tests_passed": 776,
+      "tests_failed": 0,
+      "tests_total": 886,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-25T09:28:36.239458",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "markdown/extensions/tables.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 72.49665689468384,
+        "error": null,
+        "agent_output": "Perfect! I found and fixed the bug. \n\n**The Issue:**\nOn line 139 in `markdown/extensions/tables.py`, there was a comparison operator error:\n- **Bug:** `while pos > tic_len:`\n- **Fix:** `while pos < tic_len:`\n\n**Why this caused the test to fail:**\nThe loop that identifies inline code regions within table cells was never executing because `pos` starts at 0 and `tic_len` is always >= 0, so the condition `pos > tic_len` was always false. This meant:\n1. `tic_region` (which tracks code block regions) always stayed empty\n2. Pipes inside backticks were not protected from being treated as cell delimiters\n3. Inline code blocks were not properly handled, and pipes within them were incorrectly splitting cells\n\nWith the fix, the loop now correctly matches backtick pairs, identifies code regions, and filters out pipes that appear inside those regions, allowing inline code blocks to render correctly in table cells.\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "python-markdown-nodocs_full-024",
+      "agent": "claude",
+      "mode": "without_tests",
+      "evaluation": "NO_FIX",
+      "tests_passed": 726,
+      "tests_failed": 1,
+      "tests_total": 837,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-25T09:30:39.403253",
+      "fix_result": {
+        "success": false,
+        "files_changed": [],
+        "patch": "",
+        "tokens_used": 0,
+        "time_seconds": 120.16639280319214,
+        "error": "Timeout after 120 seconds",
+        "agent_output": "",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "python-markdown-nodocs_full-025",
+      "agent": "claude",
+      "mode": "without_tests",
+      "evaluation": "NO_FIX",
+      "tests_passed": 520,
+      "tests_failed": 1,
+      "tests_total": 572,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-25T09:32:42.666707",
+      "fix_result": {
+        "success": false,
+        "files_changed": [],
+        "patch": "",
+        "tokens_used": 0,
+        "time_seconds": 120.16191005706787,
+        "error": "Timeout after 120 seconds",
+        "agent_output": "",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "python-markdown-nodocs_full-026",
+      "agent": "claude",
+      "mode": "without_tests",
+      "evaluation": "NO_FIX",
+      "tests_passed": 116,
+      "tests_failed": 1,
+      "tests_total": 117,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-25T09:34:45.198201",
+      "fix_result": {
+        "success": false,
+        "files_changed": [],
+        "patch": "",
+        "tokens_used": 0,
+        "time_seconds": 120.13723635673523,
+        "error": "Timeout after 120 seconds",
+        "agent_output": "",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "python-markdown-nodocs_full-027",
+      "agent": "claude",
+      "mode": "without_tests",
+      "evaluation": "NO_FIX",
+      "tests_passed": 716,
+      "tests_failed": 1,
+      "tests_total": 827,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-25T09:37:54.553004",
+      "fix_result": {
+        "success": false,
+        "files_changed": [],
+        "patch": "",
+        "tokens_used": 0,
+        "time_seconds": 186.39454197883606,
+        "error": "Timeout after 120 seconds",
+        "agent_output": "",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "python-markdown-nodocs_full-028",
+      "agent": "claude",
+      "mode": "without_tests",
+      "evaluation": "FAIL",
+      "tests_passed": 189,
+      "tests_failed": 1,
+      "tests_total": 236,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-25T09:38:35.660830",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "markdown/extensions/def_list.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 37.309574842453,
+        "error": null,
+        "agent_output": "Done! The bug was that the code didn't check if the regex search (`m = self.RE.search(raw_block)`) returned `None` before trying to call `m.start()` on line 23.\n\nThis can happen when the blocks list changes between the `test` method (which found a match) and the `run` method execution. By that time, a different block might be at the end of the blocks list, and it might not contain the expected pattern.\n\nThe fix adds a defensive check: if the search returns `None`, the block is returned to the blocks list and the processor returns `False` to indicate it couldn't handle it. This allows other processors to handle the block instead.\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "python-markdown-nodocs_full-029",
+      "agent": "claude",
+      "mode": "without_tests",
+      "evaluation": "NO_FIX",
+      "tests_passed": 200,
+      "tests_failed": 1,
+      "tests_total": 248,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-25T09:40:38.625608",
+      "fix_result": {
+        "success": false,
+        "files_changed": [],
+        "patch": "",
+        "tokens_used": 0,
+        "time_seconds": 120.14648175239563,
+        "error": "Timeout after 120 seconds",
+        "agent_output": "",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "python-markdown-nodocs_full-030",
+      "agent": "claude",
+      "mode": "without_tests",
+      "evaluation": "PASS",
+      "tests_passed": 776,
+      "tests_failed": 0,
+      "tests_total": 886,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-25T09:41:55.134470",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "markdown/extensions/footnotes.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 71.4293909072876,
+        "error": null,
+        "agent_output": "Perfect! The fix works. Now the footnote correctly generates multiple backref links when a footnote is referenced multiple times. \n\nThe output now shows:\n```html\n<a class=\"footnote-backref\" href=\"#fnref:1\" ...>&#8617;</a><a class=\"footnote-backref\" href=\"#fnref2:1\" ...>&#8617;</a>\n```\n\nPreviously it would only show one backref link even when the footnote was referenced twice.\n\n## Summary\n\nThe bug was in `markdown/extensions/footnotes.py` at line 102 in the `unique_ref` method. The counter for tracking duplicate footnote references was being incremented by 0 instead of 1:\n\n```python\n# Before (bug):\nself.found_refs[original_ref] += 0\n\n# After (fixed):\nself.found_refs[original_ref] += 1\n```\n\nThis caused the footnote backlink generation to fail when a footnote was referenced multiple times in the same document, as the duplicate count wasn't being tracked correctly.\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "python-markdown-nodocs_full-031",
+      "agent": "claude",
+      "mode": "without_tests",
+      "evaluation": "NO_FIX",
+      "tests_passed": 202,
+      "tests_failed": 1,
+      "tests_total": 250,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-25T09:43:58.534848",
+      "fix_result": {
+        "success": false,
+        "files_changed": [],
+        "patch": "",
+        "tokens_used": 0,
+        "time_seconds": 120.16217803955078,
+        "error": "Timeout after 120 seconds",
+        "agent_output": "",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "python-markdown-nodocs_full-032",
+      "agent": "claude",
+      "mode": "without_tests",
+      "evaluation": "PASS",
+      "tests_passed": 776,
+      "tests_failed": 0,
+      "tests_total": 886,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-25T09:44:54.036669",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "markdown/extensions/footnotes.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 51.2205171585083,
+        "error": null,
+        "agent_output": "Perfect! I found and fixed the bug. \n\n**The Issue:**\nIn the `FootnoteBlockProcessor.run` method at line 202 in `/markdown/extensions/footnotes.py`, the code was storing the wrong regex group:\n- `m.group(1)` is the footnote ID (e.g., \"1\")\n- `m.group(2)` is the footnote text (e.g., \"A Footnote.\")\n\nThe code was incorrectly using `m.group(1)` to initialize `fn_blocks`, which meant the footnote content was being set to \"1\" instead of the actual footnote text.\n\n**The Fix:**\nChanged line 202 from:\n```python\nfn_blocks = [m.group(1)]\n```\nto:\n```python\nfn_blocks = [m.group(2)]\n```\n\nThis ensures the footnote text is correctly stored instead of just the ID, which will fix the test assertion where it expected \"A Footnote.\" but was getting \"1\".\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "python-markdown-nodocs_full-033",
+      "agent": "claude",
+      "mode": "without_tests",
+      "evaluation": "FAIL",
+      "tests_passed": 167,
+      "tests_failed": 1,
+      "tests_total": 168,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-25T09:46:24.537962",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "markdown/blockprocessors.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 87.13056588172913,
+        "error": null,
+        "agent_output": "Perfect! I found and fixed the bug. The issue was in the `ListIndentProcessor.get_level()` method at line 120 in `blockprocessors.py`.\n\n**The bug:** The code was multiplying the length of matched spaces by `tab_length` again:\n```python\nindent_level = len(m.group(1))*self.tab_length  # WRONG\n```\n\n**Why it's wrong:** The regex `self.INDENT_RE` (line 80) matches groups of spaces already. So `m.group(1)` contains the actual matched spaces. When you call `len(m.group(1))`, you already have the number of spaces. Multiplying by `tab_length` again inflates the indent_level incorrectly (e.g., 8 spaces becomes 32), causing nested list items to be misclassified as code blocks.\n\n**The fix:** Remove the multiplication and just use the length of matched spaces:\n```python\nindent_level = len(m.group(1))  # CORRECT\n```\n\nThis allows the parser to correctly identify nested list items by their actual indentation level, preventing them from being incorrectly converted to code blocks.\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "python-markdown-nodocs_full-034",
+      "agent": "claude",
+      "mode": "without_tests",
+      "evaluation": "PASS",
+      "tests_passed": 776,
+      "tests_failed": 0,
+      "tests_total": 886,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-25T09:47:57.264971",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "markdown/extensions/admonition.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 87.99377489089966,
+        "error": null,
+        "agent_output": "Perfect! I've found and fixed the bug. The issue was on **line 54** of the `admonition.py` file.\n\n## The Bug\nThe while loop condition was:\n```python\nwhile last_child is None:\n```\n\nBut the condition inside the loop checks `last_child is not None` (line 57). This is logically impossible - the inner condition will never be true because we only enter the loop when `last_child is None`.\n\n## The Fix\nI changed the condition to:\n```python\nwhile last_child is not None:\n```\n\n## Why This Fixes The Test\nThis bug prevented the code from properly navigating through nested lists (like `<dl>` elements) within admonitions. The loop is designed to find the deepest list item so that new content can be properly indented and added to it. \n\nWith the bug, the loop never navigated into nested lists, causing indentation to be incorrect. When indentation is wrong in Markdown, content gets treated as code blocks (wrapped in `<pre><code>`). That's exactly what was happening - \"More text\" and \"Even more text\" were being converted to code blocks instead of remaining as paragraphs within the definition list items.\n\nWith the fix, the loop will now properly navigate through nested lists, maintain correct indentation, and the definition list content will be parsed correctly.\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "python-markdown-nodocs_full-035",
+      "agent": "claude",
+      "mode": "without_tests",
+      "evaluation": "NO_FIX",
+      "tests_passed": 508,
+      "tests_failed": 1,
+      "tests_total": 560,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-25T09:50:00.639989",
+      "fix_result": {
+        "success": false,
+        "files_changed": [],
+        "patch": "",
+        "tokens_used": 0,
+        "time_seconds": 120.14442205429077,
+        "error": "Timeout after 120 seconds",
+        "agent_output": "",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "python-markdown-nodocs_full-036",
+      "agent": "claude",
+      "mode": "without_tests",
+      "evaluation": "NO_FIX",
+      "tests_passed": 522,
+      "tests_failed": 1,
+      "tests_total": 614,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-25T09:52:03.799256",
+      "fix_result": {
+        "success": false,
+        "files_changed": [],
+        "patch": "",
+        "tokens_used": 0,
+        "time_seconds": 120.13572883605957,
+        "error": "Timeout after 120 seconds",
+        "agent_output": "",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "python-markdown-nodocs_full-037",
+      "agent": "claude",
+      "mode": "without_tests",
+      "evaluation": "PASS",
+      "tests_passed": 776,
+      "tests_failed": 0,
+      "tests_total": 886,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-25T09:53:43.585975",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "markdown/extensions/footnotes.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 94.73225808143616,
+        "error": null,
+        "agent_output": "Perfect! I found and fixed the bug. \n\n**The Bug:** In the `findFootnotesPlaceholder` function (line 119 in `/markdown/extensions/footnotes.py`), the recursive search logic was inverted. It had:\n```python\nif child_res is None:\n    return child_res\n```\n\nThis caused the function to return `None` when a footnotes placeholder was found in nested elements (like nested blockquotes), preventing the placeholder from being properly replaced with the footnotes div.\n\n**The Fix:** Changed the condition to:\n```python\nif child_res is not None:\n    return child_res\n```\n\nNow when the recursive search finds the placeholder at any nesting depth, it will properly return the result back up the call chain instead of discarding it.\n\nThis explains why the test `test_footnote_placeholder_depth` was failing - the placeholder in the deeply nested blockquotes wasn't being found and replaced, so the literal text `///Footnotes Go Here///` remained in the output and the footnotes div was appended to the root instead of replacing the placeholder.\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "python-markdown-nodocs_full-038",
+      "agent": "claude",
+      "mode": "without_tests",
+      "evaluation": "PASS",
+      "tests_passed": 776,
+      "tests_failed": 0,
+      "tests_total": 886,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-25T09:54:41.548436",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "markdown/extensions/tables.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 53.25191903114319,
+        "error": null,
+        "agent_output": "Perfect! I've fixed the bug. The issue was on **line 48** in the single-column table detection logic.\n\n**The Problem:**\nThe code was using `is None` instead of `is not None` when checking if a row ends with a pipe character. This inverted logic meant that rows which DID end with a pipe were being rejected as invalid table rows, preventing single-column tables from being recognized.\n\n**The Fix:**\nChanged line 48 from:\n```python\nis_table = self.RE_END_BORDER.search(rows[index]) is None\n```\nto:\n```python\nis_table = self.RE_END_BORDER.search(rows[index]) is not None\n```\n\nNow the logic correctly validates that a single-column table row either:\n1. Starts with `|` (line 46), OR\n2. Ends with `|` (line 48)\n\nThis allows single-column tables like:\n```\n| Is a Table |\n| ---------- |\n```\nto be properly recognized and rendered as HTML tables instead of paragraphs.\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "python-markdown-nodocs_full-039",
+      "agent": "claude",
+      "mode": "without_tests",
+      "evaluation": "NO_FIX",
+      "tests_passed": 35,
+      "tests_failed": 1,
+      "tests_total": 36,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-25T09:56:44.034383",
+      "fix_result": {
+        "success": false,
+        "files_changed": [],
+        "patch": "",
+        "tokens_used": 0,
+        "time_seconds": 120.13822793960571,
+        "error": "Timeout after 120 seconds",
+        "agent_output": "",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "python-markdown-nodocs_full-040",
+      "agent": "claude",
+      "mode": "without_tests",
+      "evaluation": "FAIL",
+      "tests_passed": 207,
+      "tests_failed": 1,
+      "tests_total": 255,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-25T09:58:49.060340",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "markdown/serializers.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 119.03913426399231,
+        "error": null,
+        "agent_output": "Perfect! I've found and fixed the bug. \n\n**The Problem:**\nThe serializer in `markdown/serializers.py` was escaping HTML entities (`<` \u2192 `&lt;`, `>` \u2192 `&gt;`) in the text content of elements. However, it had special handling to skip escaping for `<script>` and `<style>` tags (where you want to preserve raw content), but it was missing the same special handling for `<pre>` tags.\n\n**The Fix:**\nI added `\"pre\"` to the list of tags that should preserve their content without escaping (line 102). This ensures that literal code inside `<pre>` blocks is displayed correctly without unwanted HTML entity encoding.\n\nThis matches the design of the md_in_html extension which already classifies `<pre>` as a \"raw tag\" that should preserve its content (line 24 of `markdown/extensions/md_in_html.py`).\n\nThe change is minimal and surgical - just one line modification that adds \"pre\" to the existing special case for \"script\" and \"style\" tags.\n",
+        "rate_limited": false
+      }
+    }
+  ],
+  "summary": {
+    "by_agent": {
+      "claude": {
+        "total": 20,
+        "passed": 7
+      }
+    },
+    "by_mode": {
+      "without_tests": {
+        "total": 20,
+        "passed": 7
+      }
+    },
+    "by_evaluation": {
+      "PASS": 7,
+      "FAIL": 3,
+      "ERROR": 0,
+      "TIMEOUT": 0,
+      "NO_FIX": 10
+    }
+  }
+}

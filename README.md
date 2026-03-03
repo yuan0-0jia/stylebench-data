@@ -24,11 +24,11 @@ stylebench-data/
 ├── bugs/                  # Ad-hoc validated bug catalogs (762 total bugs)
 │   ├── humanize-original.json
 │   └── ...
-├── bugs_canonical/        # Canonical bug catalogs for benchmark (480 bugs)
+├── bugs_canonical/        # Canonical bug catalogs for benchmark (960 bugs)
 │   ├── humanize-original.json
 │   ├── humanize-camelcase.json
 │   ├── humanize-nodocstrings.json
-│   └── ...                # 24 catalogs (4 repos × 6 styles), 20 bugs each
+│   └── ...                # 24 catalogs (4 repos × 6 styles), 40 bugs each
 └── results/               # Benchmark results
     ├── benchmark_claude_haiku/                 # Canonical pilot (200 trials, Week 7)
     ├── benchmark_claude_haiku_{repo}_{mode}/   # Full benchmark — 4 naming/formatting styles (640 trials)
@@ -109,10 +109,11 @@ All variants have been validated to ensure tests still pass after transformation
 
 Used for the benchmark. The same logical mutation is applied consistently across all 6 style variants, ensuring fair comparison.
 
-- **24 catalogs** (4 repos × 6 styles), **20 bugs each** = **480 total bugs**
+- **24 catalogs** (4 repos × 6 styles), **40 bugs each** = **960 total bugs**
 - All bugs have `line_number` and `context` for precise application
-- 7-8 mutation types per repo: eq_ne, var_swap, add_sub, and_or, if_else_swap, in_not_in, plus_one, true_false, return_none (availability depends on code characteristics)
-- Original 4 styles generated via `generate_canonical_bugs.py`; doc styles extended via `extend_catalogs.py`
+- 14 mutation types across all repos: eq_ne, lt_gt, le_ge, var_swap, add_sub, mul_div, and_or, if_else_swap, in_not_in, is_is_not, plus_one, minus_one, true_false, return_none
+- Bugs 001-020: original set; bugs 021-040: naming-changed set (bug lines guaranteed different in camelcase/badnames vs original)
+- Doc styles (nodocstrings, nodocs_full) extended via `extend_catalogs.py`
 
 ### Ad-Hoc Catalogs (`bugs/`)
 
@@ -149,30 +150,31 @@ Each result file contains:
 - `results[]` — per-trial evaluation (PASS/FAIL/ERROR/TIMEOUT/NO_FIX)
 - `summary` — aggregated stats by agent, mode, evaluation
 
-### Full Benchmark Results (960 trials, Claude Haiku 4.5, 2026-02-24)
+### Full Benchmark Results (1920 trials, Claude Haiku 4.5)
 
 | Metric | Value |
 |--------|-------|
-| Overall pass rate | 88.4% (849/960) |
-| with_tests | 91.9% (441/480) |
-| without_tests | 85.0% (408/480) |
+| Overall pass rate | 84.9% (1631/1920) |
+| with_tests | 89.3% (857/960) |
+| without_tests | 80.6% (774/960) |
+| Mode gap | 8.7pp |
 
-**By style** (avg across 4 repos):
+**By style** (combined modes, 320 trials each):
 
 | Style | with_tests | without_tests | Combined |
 |-------|-----------|---------------|---------|
-| original | 93.8% | 87.5% | 90.6% |
-| camelcase | 92.5% | 83.8% | 88.1% |
-| badnames | 91.2% | 88.8% | 90.0% |
-| formatting | 91.2% | 85.0% | 88.1% |
-| nodocstrings | 92.5% | 83.8% | 88.1% |
-| nodocs_full | 90.0% | 81.2% | 85.6% |
+| original | 89.4% | 81.2% | 85.3% |
+| camelcase | 91.9% | 78.8% | 85.3% |
+| badnames | 88.8% | 82.5% | 85.6% |
+| formatting | 88.1% | 81.2% | 84.7% |
+| nodocstrings | 88.1% | 80.6% | 84.4% |
+| nodocs_full | 89.4% | 79.4% | 84.4% |
 
-**By repo**: validators 95%, humanize 95%, python-markdown 85%, more-itertools 78%.
+**By repo** (combined modes): validators 96%, humanize 92%, more-itertools 84%, python-markdown 68%.
 
-**By mutation type** (avg across 6 styles): `eq_ne`/`var_swap` 99%, `plus_one` 96%, `and_or` 92%, `true_false` 89%, `in_not_in` 88%, `if_else_swap` 80%, `add_sub` 70%.
+**By mutation type** (combined modes, all 14 types): `var_swap` 99%, `plus_one` 96%, `and_or`/`eq_ne` 91–92%, `return_none`/`true_false`/`in_not_in` 88–89%, `le_ge` 85%, `mul_div`/`lt_gt`/`minus_one` 82–83%, `if_else_swap` 80%, `is_is_not` 76%, `add_sub` 70%.
 
-**Key findings**: Style effect is small (~5pp range). Mutation type is the strongest predictor (30pp range: `add_sub` 70% → `eq_ne`/`var_swap` 99%). Documentation removal hurts most without test feedback (`nodocs_full` without_tests: 81.2%).
+**Key findings**: Style has **no statistically significant effect** (p = 0.998, 1pp range). Repository difficulty dominates (28pp range: python-markdown 68% → validators 96%). Mutation type spans 29pp (`var_swap` 99% → `add_sub` 70%). Badnames does not hurt fix rates vs original.
 
 See the [tracking repo overview](https://github.com/masc-ucsc/cse247b_reports_w26) for full analysis.
 

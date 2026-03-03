@@ -1,0 +1,528 @@
+{
+  "metadata": {
+    "catalog": "/Users/yuan/stylebench-data/bugs_canonical/humanize-badnames.json",
+    "repo": "/Users/yuan/stylebench-data/badnames/humanize",
+    "repo_name": "humanize",
+    "timestamp": "2026-02-24T22:29:21.416015",
+    "total_trials": 20,
+    "manifest_used": false,
+    "hit_rate_limit": false
+  },
+  "results": [
+    {
+      "bug_id": "humanize-badnames-021",
+      "agent": "claude",
+      "mode": "without_tests",
+      "evaluation": "PASS",
+      "tests_passed": 684,
+      "tests_failed": 0,
+      "tests_total": 737,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-24T21:45:44.990431",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "src/humanize/filesize.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 39.11687183380127,
+        "error": null,
+        "agent_output": "Perfect! I found and fixed the bug. \n\n**The Issue:**\nThe bug was on line 94 of `filesize.py`. The condition `if a > b:` was backwards - it should have been `if a < b:`.\n\n**What was happening:**\n- When `naturalsize(300)` was called, the value 300 is less than 1000 (the decimal base)\n- The incorrect condition `if a > b:` (300 > 1000) was False, so it skipped the early return\n- The code continued to line 97 where it calculated `d = 0` (due to log(300, 1000) \u2248 0.826)\n- This caused `f[d - 1]` to become `f[-1]`, which wraps around to the last element `\" QB\"` \n- Result: `\"300.0 QB\"` instead of `\"300 Bytes\"`\n\n**The Fix:**\nChanged line 94 from `if a > b:` to `if a < b:`, so values smaller than the base unit (1000 for decimal, 1024 for binary) return immediately with \"Bytes\" suffix instead of attempting suffix calculation.\n\nThe test should now pass with `naturalsize(300)` returning `'300 Bytes'` as expected.\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "humanize-badnames-022",
+      "agent": "claude",
+      "mode": "without_tests",
+      "evaluation": "FAIL",
+      "tests_passed": 488,
+      "tests_failed": 1,
+      "tests_total": 542,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-24T21:46:30.097371",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "src/humanize/time.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 41.63867902755737,
+        "error": null,
+        "agent_output": "Perfect! I've fixed the bug. The issue was on line 164 of `time.py`:\n\n**The Problem:**\nThe condition `b.microseconds > 1000` was too restrictive. When the minimum unit is explicitly set to `\"microseconds\"`, the function should return microseconds for **any positive value**, not just values greater than 1000. With a value of 1 microsecond, the condition failed and the function fell through to returning `\"a moment\"`.\n\n**The Fix:**\nChanged the condition from `b.microseconds > 1000` to `b.microseconds > 0`. This allows the function to return properly formatted microsecond strings (e.g., \"1 microsecond\") for any positive number of microseconds when the minimum unit is MICROSECONDS.\n\nThe fix is minimal and addresses exactly the failing test case without affecting other functionality.\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "humanize-badnames-023",
+      "agent": "claude",
+      "mode": "without_tests",
+      "evaluation": "PASS",
+      "tests_passed": 684,
+      "tests_failed": 0,
+      "tests_total": 737,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-24T21:47:05.629245",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "src/humanize/time.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 31.57478094100952,
+        "error": null,
+        "agent_output": "Perfect! I've found and fixed the bug. \n\n**The Issue:**\nOn line 171 of `/private/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/stylebench_f3xsr6mh/src/humanize/time.py`, there was a backwards comparison operator:\n\n```python\n# BEFORE (incorrect):\ne == Unit.MICROSECONDS and 1000 >= b.microseconds < 1_000_000\n```\n\nThis condition checks if `1000 >= microseconds`, which is only true for values less than 1000. But we need to handle the range of 1000-999999 microseconds (which should display as milliseconds).\n\n**The Fix:**\nChanged the comparison to:\n```python\n# AFTER (correct):\ne == Unit.MICROSECONDS and 1000 <= b.microseconds < 1_000_000\n```\n\nNow when `minimum_unit=\"microseconds\"` and we have 4000 microseconds (0.004 seconds), the condition correctly identifies it as being in the milliseconds range and returns `\"4 milliseconds\"` instead of `\"a moment\"`.\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "humanize-badnames-024",
+      "agent": "claude",
+      "mode": "without_tests",
+      "evaluation": "PASS",
+      "tests_passed": 684,
+      "tests_failed": 0,
+      "tests_total": 737,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-24T21:47:43.955000",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "src/humanize/time.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 34.117246866226196,
+        "error": null,
+        "agent_output": "Perfect! I've found and fixed the bug. \n\n**The Issue:**\nIn the `_suitable_minimum_unit` function at line 426, the comparison operator was inverted. The docstring states the function should \"find a unit **greater** than the original one\" when the minimum unit is suppressed, but the code was checking `if b < min_unit` instead of `if b > min_unit`.\n\n**Why this caused the failure:**\nWhen the test tried to use `minimum_unit=microseconds` with microseconds in the suppressed list, the function would look for units with value < 0 (since MICROSECONDS = 0), which don't exist. This triggered the ValueError.\n\n**The Fix:**\nChanged line 426 from:\n```python\nif b < min_unit and b not in suppress:\n```\nto:\n```python\nif b > min_unit and b not in suppress:\n```\n\nNow when a minimum unit is suppressed, the code correctly finds the next larger (less precise) unit that isn't suppressed, which allows it to return a result like \"1.20 milliseconds\" instead of raising an error.\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "humanize-badnames-025",
+      "agent": "claude",
+      "mode": "without_tests",
+      "evaluation": "PASS",
+      "tests_passed": 684,
+      "tests_failed": 0,
+      "tests_total": 737,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-24T21:48:35.923517",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "src/humanize/time.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 48.11338400840759,
+        "error": null,
+        "agent_output": "Done! I found and fixed the bug:\n\n**The Bug:** Line 626 in `src/humanize/time.py` had an incorrect condition:\n```python\nif d < 0 or (not k and unit == g):\n```\n\n**The Fix:** Changed it to:\n```python\nif d > 0 or (not k and unit == g):\n```\n\n**Explanation:** The condition determines which time units to include in the output. It should include units with **positive** values (`d > 0`), not negative ones (`d < 0`). The current bug was skipping all non-minimum units that had positive values, which is why \"1 minute and 7 seconds\" was being output as just \"7 seconds\". Only the minimum unit (seconds) was being included since that's when the condition `(not k and unit == g)` would trigger.\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "humanize-badnames-026",
+      "agent": "claude",
+      "mode": "without_tests",
+      "evaluation": "PASS",
+      "tests_passed": 684,
+      "tests_failed": 0,
+      "tests_total": 737,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-24T21:49:23.423967",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "src/humanize/time.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 43.26956105232239,
+        "error": null,
+        "agent_output": "Perfect! I've found and fixed the bug.\n\n**The Issue:**\nOn line 171 of `/private/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/stylebench_d4q4al51/src/humanize/time.py`, there's a comparison operator error:\n\n```python\ne == Unit.MICROSECONDS and 1000 >= b.microseconds < 1_000_000\n```\n\nThe condition `1000 >= b.microseconds` is backwards. When we have 4000 microseconds (4 milliseconds), this evaluates to `1000 >= 4000`, which is `False`. This causes the function to return \"a moment\" instead of the expected \"4 milliseconds\".\n\n**The Fix:**\nChanged the comparison to `1000 <= b.microseconds`:\n\n```python\ne == Unit.MICROSECONDS and 1000 <= b.microseconds < 1_000_000\n```\n\nNow with 4000 microseconds, the condition correctly evaluates to `True`, allowing the function to display the value as \"4 milliseconds\" when `minimum_unit=\"microseconds\"` is specified.\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "humanize-badnames-027",
+      "agent": "claude",
+      "mode": "without_tests",
+      "evaluation": "PASS",
+      "tests_passed": 684,
+      "tests_failed": 0,
+      "tests_total": 737,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-24T21:50:43.964984",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "src/humanize/time.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 76.78001093864441,
+        "error": null,
+        "agent_output": "Perfect! I've found and fixed the bug. \n\n**Summary:**\nThe bug was on **line 591** of `/private/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/stylebench_bq9g3lw_/src/humanize/time.py`:\n\n- **Incorrect:** `if msecs <= 1_000 and SECONDS not in i:`\n- **Correct:** `if msecs >= 1_000 and SECONDS not in i:`\n\nThis was a comparison operator error. The milliseconds promotion logic had the condition backwards compared to all the other unit promotions in the function. With `<=`, it was promoting milliseconds to seconds even when the milliseconds value was small (like 0), causing an extra unwanted second to be added. By changing it to `>=`, the code now correctly promotes only when milliseconds has rounded up to a value >= 1000 (representing a full second or more), matching the pattern used for all other unit promotions.\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "humanize-badnames-028",
+      "agent": "claude",
+      "mode": "without_tests",
+      "evaluation": "PASS",
+      "tests_passed": 684,
+      "tests_failed": 0,
+      "tests_total": 737,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-24T21:51:50.554798",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "src/humanize/time.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 62.94656586647034,
+        "error": null,
+        "agent_output": "Perfect! I've found and fixed the bug. The issue was on **line 594** in `src/humanize/time.py`.\n\n**The Bug:**\nThe condition `if h <= 60` should have been `if h >= 60`. This was causing the code to incorrectly promote any seconds value that was 60 or less to minutes, instead of only promoting when seconds reached 60 or more.\n\n**What was happening with 67 seconds:**\n1. After dividing by 60: `minutes=1, h=7` (1 minute and 7 seconds remainder)\n2. The buggy condition `if h <= 60` evaluated to True (since 7 \u2264 60)\n3. It subtracted 60 from h (making it -53) and incremented minutes (making it 2)\n4. Result: \"2 minutes\" instead of \"1 minute and 7 seconds\"\n\n**Why the fix works:**\nThe corrected condition `if h >= 60` only promotes seconds to minutes when there are actually 60 or more seconds to promote, matching the pattern used in all other similar promotion checks in the code (lines 591, 597, 600, 605, 608).\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "humanize-badnames-029",
+      "agent": "claude",
+      "mode": "without_tests",
+      "evaluation": "PASS",
+      "tests_passed": 684,
+      "tests_failed": 0,
+      "tests_total": 737,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-24T21:52:29.793786",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "src/humanize/time.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 34.81281399726868,
+        "error": null,
+        "agent_output": "Perfect! I've found and fixed the bug. The issue was on line 597 of `src/humanize/time.py` in the `precisedelta` function.\n\n**The Bug:** The condition `if minutes <= 60` should have been `if minutes >= 60`.\n\n**What was happening:** The code was incorrectly promoting minutes to hours whenever minutes was **less than or equal to** 60 (which is almost always true). This caused \"1 minute and 7 seconds\" to be converted to \"1 hour and 7 seconds\" because 1 minute (which is \u2264 60) was being converted to an hour.\n\n**The Fix:** Changed line 597 from `if minutes <= 60` to `if minutes >= 60` so that minutes only gets promoted to hours when it actually reaches or exceeds 60 (similar to how seconds are promoted to minutes when they reach 60 on line 594).\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "humanize-badnames-030",
+      "agent": "claude",
+      "mode": "without_tests",
+      "evaluation": "PASS",
+      "tests_passed": 684,
+      "tests_failed": 0,
+      "tests_total": 737,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-24T21:53:09.771446",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "src/humanize/time.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 36.31284999847412,
+        "error": null,
+        "agent_output": "Done! I found and fixed the bug. The issue was on line 600 of `time.py`:\n\n**The Bug:** The condition was `if hours <= 24` when it should have been `if hours >= 24`.\n\n**What was happening:** This faulty logic was causing the code to always subtract 24 from hours and add 1 day whenever hours was 24 or less (which is basically always). This resulted in an extra \"1 day\" being incorrectly added to the output.\n\n**The Fix:** Changed the comparison operator from `<=` to `>=` so that hours are only carried over to days when there are actually 24 or more hours to convert.\n\nThis minimal change ensures that `precisedelta()` will now correctly return \"1 minute and 7 seconds\" instead of \"1 day, 1 minute and 7 seconds\".\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "humanize-badnames-031",
+      "agent": "claude",
+      "mode": "without_tests",
+      "evaluation": "FAIL",
+      "tests_passed": 64,
+      "tests_failed": 1,
+      "tests_total": 65,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-24T21:53:44.784253",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "src/humanize/filesize.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 32.31785821914673,
+        "error": null,
+        "agent_output": "Perfect! I found and fixed the bug. \n\n**The Issue:**\nIn `/private/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/stylebench_nn7nsgya/src/humanize/filesize.py` at line 95, the code was always returning \"Bytes\" (plural) for values less than the base unit, even when the value was exactly 1.\n\n**The Fix:**\nI updated the logic to check if the value is 1 or -1 (singular form) versus other numbers (plural form):\n- If the integer value is 1 or -1 \u2192 \"Byte\" (singular)\n- Otherwise \u2192 \"Bytes\" (plural)\n\nThis ensures the test case `naturalsize(1)` now correctly returns `\"1 Byte\"` instead of `\"1 Bytes\"`.\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "humanize-badnames-032",
+      "agent": "claude",
+      "mode": "without_tests",
+      "evaluation": "NO_FIX",
+      "tests_passed": 1,
+      "tests_failed": 1,
+      "tests_total": 2,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-24T22:12:32.752830",
+      "fix_result": {
+        "success": false,
+        "files_changed": [],
+        "patch": "",
+        "tokens_used": 0,
+        "time_seconds": 1125.3113281726837,
+        "error": "Timeout after 120 seconds",
+        "agent_output": "",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "humanize-badnames-033",
+      "agent": "claude",
+      "mode": "without_tests",
+      "evaluation": "NO_FIX",
+      "tests_passed": 139,
+      "tests_failed": 1,
+      "tests_total": 193,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-24T22:21:56.593622",
+      "fix_result": {
+        "success": false,
+        "files_changed": [],
+        "patch": "",
+        "tokens_used": 0,
+        "time_seconds": 561.3296689987183,
+        "error": "Timeout after 120 seconds",
+        "agent_output": "",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "humanize-badnames-034",
+      "agent": "claude",
+      "mode": "without_tests",
+      "evaluation": "PASS",
+      "tests_passed": 684,
+      "tests_failed": 0,
+      "tests_total": 737,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-24T22:22:35.271653",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "src/humanize/number.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 34.90996193885803,
+        "error": null,
+        "agent_output": "Done! The bug was on line 371 of `/src/humanize/number.py`. \n\n**The Issue:**\nThe `limit_denominator(999)` call was too restrictive. When converting 0.333 to a fraction, the expected output is 333/1000, but since 1000 exceeds the limit of 999, the function returned the closest approximation with a smaller denominator: 332/997.\n\n**The Fix:**\nChanged `limit_denominator(999)` to `limit_denominator(1000)` on line 371. This allows denominators up to 1000, so 333/1000 is now correctly returned for the input 0.333.\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "humanize-badnames-035",
+      "agent": "claude",
+      "mode": "without_tests",
+      "evaluation": "PASS",
+      "tests_passed": 684,
+      "tests_failed": 0,
+      "tests_total": 737,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-24T22:23:28.714698",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "src/humanize/number.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 49.46298289299011,
+        "error": null,
+        "agent_output": "Done! I've found and fixed the bug in the `fractional` function.\n\n**The Issue:**\nThe condition on line 374 was checking `if e and not d and a == 0:` to detect when an integer was passed in. However, this condition was never `True` because Python's `Fraction` class always produces valid fractions with non-zero denominators. When representing zero (like `Fraction(0)`), it normalizes to `Fraction(0, 1)`, so the denominator is `1`, not `0`.\n\n**The Fix:**\nChanged the condition from `a == 0` to `a == 1` on line 374. Now when an integer value is passed (like `1` or `1.0`), the code correctly identifies it (e=1, d=0, a=1) and returns just the integer string (e.g., `'1'`) instead of the incorrect `'1 0/1'`.\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "humanize-badnames-036",
+      "agent": "claude",
+      "mode": "without_tests",
+      "evaluation": "PASS",
+      "tests_passed": 684,
+      "tests_failed": 0,
+      "tests_total": 737,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-24T22:24:18.960889",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "src/humanize/filesize.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 46.74134182929993,
+        "error": null,
+        "agent_output": "Perfect! I've fixed the bug. The issue was on **line 98** in `/src/humanize/filesize.py`:\n\n**The Problem:**\n- The code was using **multiplication** (`c * (b**d)`) instead of **division** (`c / (b**d)`)\n- This caused the value to be scaled in the wrong direction\n\n**The Fix:**\nChanged:\n```python\ne: str = format % (c * (b**d)) + f[d - 1]\n```\n\nTo:\n```python\ne: str = format % (c / (b**d)) + f[d - 1]\n```\n\n**Why this fixes it:**\nWhen converting a byte size to a human-readable format (e.g., 1000 bytes \u2192 1.0 kB), you need to divide by the appropriate power of the base (1000 in decimal mode). The buggy code was multiplying instead, which inflated the result by a factor of 10^(2d), causing `1000` bytes to become `1000000.0 kB` instead of `1.0 kB`.\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "humanize-badnames-037",
+      "agent": "claude",
+      "mode": "without_tests",
+      "evaluation": "NO_FIX",
+      "tests_passed": 146,
+      "tests_failed": 1,
+      "tests_total": 200,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-24T22:26:21.141332",
+      "fix_result": {
+        "success": false,
+        "files_changed": [],
+        "patch": "",
+        "tokens_used": 0,
+        "time_seconds": 120.11112785339355,
+        "error": "Timeout after 120 seconds",
+        "agent_output": "",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "humanize-badnames-038",
+      "agent": "claude",
+      "mode": "without_tests",
+      "evaluation": "PASS",
+      "tests_passed": 684,
+      "tests_failed": 0,
+      "tests_total": 737,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-24T22:27:05.744349",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "src/humanize/time.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 40.38580012321472,
+        "error": null,
+        "agent_output": "Done! I found and fixed the bug.\n\n**The Issue:**\nOn line 160 of `/private/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/stylebench_l_83fhf2/src/humanize/time.py`, the code was:\n```python\nh = round(a * 30.5)\n```\n\nThis multiplies the remaining days by 30.5, which is incorrect. The variable `a` represents the remaining days after removing full years, and it should be **divided** by 30.5 (average days per month) to convert to months, not multiplied.\n\n**The Fix:**\nChanged line 160 to:\n```python\nh = round(a / 30.5)\n```\n\n**Why this fixes it:**\n- When you have 1 year and 4 months (487 days total):\n  - `k = 487 // 365 = 1` (one full year)\n  - `a = 487 % 365 = 122` (remaining days)\n  - **Buggy code**: `h = round(122 * 30.5) = 3721` \u274c\n  - **Fixed code**: `h = round(122 / 30.5) = 4` \u2713\n\nThis simple one-character change (from `*` to `/`) fixes the logic error.\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "humanize-badnames-039",
+      "agent": "claude",
+      "mode": "without_tests",
+      "evaluation": "PASS",
+      "tests_passed": 684,
+      "tests_failed": 0,
+      "tests_total": 737,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-24T22:28:04.432524",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "src/humanize/time.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 55.30493211746216,
+        "error": null,
+        "agent_output": "Perfect! I found and fixed the bug. The issue was in the `precisedelta` function at line 569:\n\n**The Bug**: `24 / 3600` should be `24 * 3600`\n\n**Explanation**:\n- Line 567 converts remaining days to seconds: `h = b * 24 * 3600 + h`\n- Line 569 needs to convert those seconds back to days by dividing by 86400 (the number of seconds in a day)\n- The code had `24 / 3600 = 0.00666...` (division) instead of `24 * 3600 = 86400` (multiplication)\n- This caused 67 seconds to be incorrectly calculated as `67 / 0.00666... \u2248 10050 days`\n- This then cascaded to produce \"1 month and 10018 days\" instead of \"1 minute and 7 seconds\"\n\nThe fix changes the divisor from `/` to `*`, making it correctly divide seconds by the number of seconds in a day.\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "humanize-badnames-040",
+      "agent": "claude",
+      "mode": "without_tests",
+      "evaluation": "PASS",
+      "tests_passed": 684,
+      "tests_failed": 0,
+      "tests_total": 737,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-24T22:29:21.327644",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "src/humanize/number.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 73.43640923500061,
+        "error": null,
+        "agent_output": "Perfect! I've found and fixed the bug. The issue was on **line 257** in `/src/humanize/number.py`.\n\n**The Bug:**\nThe condition `if not c and h * g == powers[f + 1]:` had the logic inverted. It was checking if we're AT the end of the powers list, but then trying to access `powers[f + 1]` which would be out of bounds.\n\n**The Fix:**\nChanged `if not c` to `if c`, so the condition now reads:\n```python\nif c and h * g == powers[f + 1]:\n```\n\nThis correctly means: \"If we're NOT at the end of the powers list AND the rounded value would equal the next power threshold, upgrade to the next power unit.\"\n\nWith this fix, when a value rounds up such that the formatted result equals or exceeds the next power (e.g., \"1000.0 million\" which equals \"1.0 billion\"), the function will now correctly upgrade to use the higher unit. So `intword(1000000000)` will correctly return `\"1.0 billion\"` instead of `\"1000.0 million\"`.\n",
+        "rate_limited": false
+      }
+    }
+  ],
+  "summary": {
+    "by_agent": {
+      "claude": {
+        "total": 20,
+        "passed": 15
+      }
+    },
+    "by_mode": {
+      "without_tests": {
+        "total": 20,
+        "passed": 15
+      }
+    },
+    "by_evaluation": {
+      "PASS": 15,
+      "FAIL": 2,
+      "ERROR": 0,
+      "TIMEOUT": 0,
+      "NO_FIX": 3
+    }
+  }
+}

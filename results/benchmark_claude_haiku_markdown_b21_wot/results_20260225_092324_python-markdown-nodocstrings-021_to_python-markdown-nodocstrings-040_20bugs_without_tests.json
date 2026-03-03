@@ -1,0 +1,510 @@
+{
+  "metadata": {
+    "catalog": "/Users/yuan/stylebench-data/bugs_canonical/python-markdown-nodocstrings.json",
+    "repo": "/Users/yuan/stylebench-data/nodocstrings/python-markdown",
+    "repo_name": "python-markdown",
+    "timestamp": "2026-02-25T09:23:24.544272",
+    "total_trials": 20,
+    "manifest_used": false,
+    "hit_rate_limit": false
+  },
+  "results": [
+    {
+      "bug_id": "python-markdown-nodocstrings-021",
+      "agent": "claude",
+      "mode": "without_tests",
+      "evaluation": "NO_FIX",
+      "tests_passed": 113,
+      "tests_failed": 1,
+      "tests_total": 114,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-25T07:44:06.725762",
+      "fix_result": {
+        "success": false,
+        "files_changed": [],
+        "patch": "",
+        "tokens_used": 0,
+        "time_seconds": 120.16407299041748,
+        "error": "Timeout after 120 seconds",
+        "agent_output": "",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "python-markdown-nodocstrings-022",
+      "agent": "claude",
+      "mode": "without_tests",
+      "evaluation": "PASS",
+      "tests_passed": 776,
+      "tests_failed": 0,
+      "tests_total": 886,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-25T07:46:00.711042",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "markdown/extensions/tables.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 109.61086583137512,
+        "error": null,
+        "agent_output": "Perfect! I found and fixed the bug. The issue was in `/private/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/stylebench_3paykzzg/markdown/extensions/tables.py` at **line 54**.\n\n## The Bug\n\nThe original condition was:\n```python\nis_table = row0_len < 1\n```\n\nThis checks if the row has **fewer than 1 cell**, which is almost never true for valid markdown tables. This means multi-column tables (which have 2+ cells) were never being recognized as tables.\n\n## The Fix\n\nChanged it to:\n```python\nis_table = row0_len > 1\n```\n\nNow the code correctly initializes `is_table` to `True` for multi-column tables (which have more than 1 cell), allowing them to pass through to the separator row validation and be properly rendered as HTML tables.\n\nThis was a simple comparison operator typo (`<` instead of `>`), which prevented the table parser from recognizing any normal multi-column markdown tables, causing them to be rendered as plain text in `<p>` tags instead of proper `<table>` elements.\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "python-markdown-nodocstrings-023",
+      "agent": "claude",
+      "mode": "without_tests",
+      "evaluation": "PASS",
+      "tests_passed": 776,
+      "tests_failed": 0,
+      "tests_total": 886,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-25T07:46:48.626547",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "markdown/extensions/tables.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 43.36537289619446,
+        "error": null,
+        "agent_output": "Perfect! I've found and fixed the bug. The issue was on **line 171** of `markdown/extensions/tables.py`:\n\n**The Problem:**\nThe while loop condition was `while pos > tic_len:` which should be `while pos < tic_len:`. This logic error prevented the code from ever pairing up backticks (which denote inline code regions) in table cells.\n\n**Why This Caused the Failure:**\n- The algorithm is supposed to find matching backtick pairs and store them as \"tic regions\"\n- Then, when splitting the row by pipes, it filters out pipes that fall inside these code regions\n- With the broken condition, the pairing loop never executed, so no code regions were identified\n- This meant pipes inside backticks were not filtered out, causing inline code blocks to be split across multiple table cells instead of staying intact as `<code>` elements\n\nThe fix ensures that the code correctly identifies inline code blocks in table cells and prevents pipes within them from being used as table delimiters.\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "python-markdown-nodocstrings-024",
+      "agent": "claude",
+      "mode": "without_tests",
+      "evaluation": "NO_FIX",
+      "tests_passed": 726,
+      "tests_failed": 1,
+      "tests_total": 837,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-25T07:48:51.938689",
+      "fix_result": {
+        "success": false,
+        "files_changed": [],
+        "patch": "",
+        "tokens_used": 0,
+        "time_seconds": 120.1390700340271,
+        "error": "Timeout after 120 seconds",
+        "agent_output": "",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "python-markdown-nodocstrings-025",
+      "agent": "claude",
+      "mode": "without_tests",
+      "evaluation": "NO_FIX",
+      "tests_passed": 520,
+      "tests_failed": 1,
+      "tests_total": 572,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-25T07:50:55.201427",
+      "fix_result": {
+        "success": false,
+        "files_changed": [],
+        "patch": "",
+        "tokens_used": 0,
+        "time_seconds": 120.16310977935791,
+        "error": "Timeout after 120 seconds",
+        "agent_output": "",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "python-markdown-nodocstrings-026",
+      "agent": "claude",
+      "mode": "without_tests",
+      "evaluation": "NO_FIX",
+      "tests_passed": 116,
+      "tests_failed": 1,
+      "tests_total": 117,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-25T07:52:57.538008",
+      "fix_result": {
+        "success": false,
+        "files_changed": [],
+        "patch": "",
+        "tokens_used": 0,
+        "time_seconds": 120.15717482566833,
+        "error": "Timeout after 120 seconds",
+        "agent_output": "",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "python-markdown-nodocstrings-027",
+      "agent": "claude",
+      "mode": "without_tests",
+      "evaluation": "PASS",
+      "tests_passed": 776,
+      "tests_failed": 0,
+      "tests_total": 886,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-25T07:53:59.020559",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "markdown/inlinepatterns.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 57.23116898536682,
+        "error": null,
+        "agent_output": "Perfect! I've identified and fixed the bug.\n\n**The Problem:**\nOn line 563 of `markdown/inlinepatterns.py`, the condition was checking `exit_alt_quote <= 0`, which is logically incorrect.\n\n**The Fix:**\nChanged line 563 from:\n```python\nelif exit_alt_quote <= 0 and alt_quote == last:\n```\nto:\n```python\nelif exit_alt_quote >= 0 and alt_quote == last:\n```\n\n**Why This Fixes It:**\nThe code has two quote tracking systems - primary and secondary - to handle cases where markdown has mixed quotes (like a URL with a single quote and a title with double quotes). \n\n- Line 560 checks: `if exit_quote >= 0 and quote == last:` (use primary quote if found and closed)\n- Line 563 should check: `elif exit_alt_quote >= 0 and alt_quote == last:` (use secondary quote if found and closed)\n\nThe `<= 0` condition was backwards - it would only execute when the secondary quote was NOT found/closed, preventing the title from being extracted in mixed quote scenarios like `![Text](http://link.com/'.png \"title\")`. With the fix, the secondary quote (the double quote for the title) will be properly recognized and extracted as a separate `title` attribute instead of being appended to the `src` URL.\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "python-markdown-nodocstrings-028",
+      "agent": "claude",
+      "mode": "without_tests",
+      "evaluation": "FAIL",
+      "tests_passed": 189,
+      "tests_failed": 1,
+      "tests_total": 236,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-25T07:54:35.223198",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "markdown/extensions/def_list.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 32.6210241317749,
+        "error": null,
+        "agent_output": "Perfect! I've fixed the bug. The issue was in `/private/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/stylebench_5if31lip/markdown/extensions/def_list.py` at line 33-35.\n\n**The Problem:**\nThe code was calling `m.start()` on line 35 without checking if `m` (the regex search result) was `None`. When the regex pattern didn't match the raw_block, `m` would be `None`, causing an `AttributeError`.\n\n**The Solution:**\nI added a null check right after the regex search. If `m` is `None`, the block is put back into the blocks list and the function returns `False`, preventing the error and allowing other processors to handle the block. This follows the same pattern already used elsewhere in the code (lines 47-51).\n\nThe fix is minimal and handles the edge case where the block no longer contains the expected pattern by the time `run()` is called.\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "python-markdown-nodocstrings-029",
+      "agent": "claude",
+      "mode": "without_tests",
+      "evaluation": "NO_FIX",
+      "tests_passed": 200,
+      "tests_failed": 1,
+      "tests_total": 248,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-25T07:57:32.998008",
+      "fix_result": {
+        "success": false,
+        "files_changed": [],
+        "patch": "",
+        "tokens_used": 0,
+        "time_seconds": 174.81902885437012,
+        "error": "Timeout after 120 seconds",
+        "agent_output": "",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "python-markdown-nodocstrings-030",
+      "agent": "claude",
+      "mode": "without_tests",
+      "evaluation": "FAIL",
+      "tests_passed": 202,
+      "tests_failed": 1,
+      "tests_total": 250,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-25T07:59:06.471798",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "markdown/extensions/footnotes.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 89.36485815048218,
+        "error": null,
+        "agent_output": "Perfect! I've identified and fixed the bug. \n\n## Summary\n\n**The Bug:** In `/markdown/extensions/footnotes.py` at line 206, the code attempted to concatenate `node.text` directly with `NBSP_PLACEHOLDER`. However, when an XML element is created, its `text` attribute is `None` by default, not an empty string. This caused the concatenation to fail.\n\n**The Fix:** Changed line 206 from:\n```python\nnode.text = node.text + NBSP_PLACEHOLDER\n```\n\nto:\n```python\nnode.text = (node.text or '') + NBSP_PLACEHOLDER\n```\n\nThis handles both cases:\n- If `node.text` is `None`, it converts it to an empty string before concatenating\n- If `node.text` has content, it uses that content\n\nThis is a minimal fix that addresses only the specific logic error without modifying any other code.\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "python-markdown-nodocstrings-031",
+      "agent": "claude",
+      "mode": "without_tests",
+      "evaluation": "NO_FIX",
+      "tests_passed": 202,
+      "tests_failed": 1,
+      "tests_total": 250,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-25T08:01:09.465733",
+      "fix_result": {
+        "success": false,
+        "files_changed": [],
+        "patch": "",
+        "tokens_used": 0,
+        "time_seconds": 120.15992307662964,
+        "error": "Timeout after 120 seconds",
+        "agent_output": "",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "python-markdown-nodocstrings-032",
+      "agent": "claude",
+      "mode": "without_tests",
+      "evaluation": "PASS",
+      "tests_passed": 776,
+      "tests_failed": 0,
+      "tests_total": 886,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-25T08:03:13.364536",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "markdown/extensions/footnotes.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 119.78849220275879,
+        "error": null,
+        "agent_output": "Perfect! I found and fixed the bug. The issue was in `/markdown/extensions/footnotes.py` at line 230.\n\n**The Problem:**\nWhen parsing footnote definitions like `[^1]: A Footnote.`, the code was incorrectly storing the footnote ID (\"1\") instead of the actual text (\"A Footnote.\").\n\n**The Root Cause:**\nThe regex pattern `r'^[ ]{0,3}\\[\\^([^\\]]*)\\]:[ ]*(.*)$'` captures:\n- Group 1: The footnote ID\n- Group 2: The footnote text\n\nThe buggy code was using `fn_blocks = [m.group(1)]` which grabbed the ID instead of the text. It should be `fn_blocks = [m.group(2)]` to get the actual footnote content.\n\n**The Fix:**\nChanged line 230 from:\n```python\nfn_blocks = [m.group(1)]\n```\nto:\n```python\nfn_blocks = [m.group(2)]\n```\n\nThis ensures that the footnote text (not the ID) is stored and displayed in the rendered output.\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "python-markdown-nodocstrings-033",
+      "agent": "claude",
+      "mode": "without_tests",
+      "evaluation": "NO_FIX",
+      "tests_passed": 167,
+      "tests_failed": 1,
+      "tests_total": 168,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-25T08:05:15.891737",
+      "fix_result": {
+        "success": false,
+        "files_changed": [],
+        "patch": "",
+        "tokens_used": 0,
+        "time_seconds": 120.15609002113342,
+        "error": "Timeout after 120 seconds",
+        "agent_output": "",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "python-markdown-nodocstrings-034",
+      "agent": "claude",
+      "mode": "without_tests",
+      "evaluation": "NO_FIX",
+      "tests_passed": 508,
+      "tests_failed": 1,
+      "tests_total": 560,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-25T08:07:18.826847",
+      "fix_result": {
+        "success": false,
+        "files_changed": [],
+        "patch": "",
+        "tokens_used": 0,
+        "time_seconds": 120.13857984542847,
+        "error": "Timeout after 120 seconds",
+        "agent_output": "",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "python-markdown-nodocstrings-035",
+      "agent": "claude",
+      "mode": "without_tests",
+      "evaluation": "NO_FIX",
+      "tests_passed": 508,
+      "tests_failed": 1,
+      "tests_total": 560,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-25T08:25:57.791075",
+      "fix_result": {
+        "success": false,
+        "files_changed": [],
+        "patch": "",
+        "tokens_used": 0,
+        "time_seconds": 1114.5035908222198,
+        "error": "Timeout after 120 seconds",
+        "agent_output": "",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "python-markdown-nodocstrings-036",
+      "agent": "claude",
+      "mode": "without_tests",
+      "evaluation": "NO_FIX",
+      "tests_passed": 522,
+      "tests_failed": 1,
+      "tests_total": 614,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-25T08:44:36.915855",
+      "fix_result": {
+        "success": false,
+        "files_changed": [],
+        "patch": "",
+        "tokens_used": 0,
+        "time_seconds": 1116.0236308574677,
+        "error": "Timeout after 120 seconds",
+        "agent_output": "",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "python-markdown-nodocstrings-037",
+      "agent": "claude",
+      "mode": "without_tests",
+      "evaluation": "NO_FIX",
+      "tests_passed": 205,
+      "tests_failed": 1,
+      "tests_total": 253,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-25T09:18:37.057938",
+      "fix_result": {
+        "success": false,
+        "files_changed": [],
+        "patch": "",
+        "tokens_used": 0,
+        "time_seconds": 2036.9569499492645,
+        "error": "Timeout after 120 seconds",
+        "agent_output": "",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "python-markdown-nodocstrings-038",
+      "agent": "claude",
+      "mode": "without_tests",
+      "evaluation": "PASS",
+      "tests_passed": 776,
+      "tests_failed": 0,
+      "tests_total": 886,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-25T09:19:34.590969",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "markdown/extensions/tables.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 52.509966135025024,
+        "error": null,
+        "agent_output": "Perfect! I've found and fixed the bug.\n\n## Summary\n\n**Bug Location:** `/markdown/extensions/tables.py`, line 61\n\n**The Problem:** \nThe single-column table validation logic had inverted boolean logic. The code checks that each row in a single-column table has at least one pipe character (either at the start or end). However, line 61 was checking if the row does NOT end with a pipe:\n\n```python\nis_table = self.RE_END_BORDER.search(rows[index]) is None  # WRONG\n```\n\nThis caused rows without any pipes to be incorrectly validated as valid table rows.\n\n**The Fix:**\nChanged the condition to check if the row DOES end with a pipe:\n\n```python\nis_table = self.RE_END_BORDER.search(rows[index]) is not None  # CORRECT\n```\n\nNow the logic correctly validates that every row in a single-column table has at least one pipe character, allowing single-column tables to be properly recognized and rendered instead of being treated as paragraphs.\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "python-markdown-nodocstrings-039",
+      "agent": "claude",
+      "mode": "without_tests",
+      "evaluation": "PASS",
+      "tests_passed": 776,
+      "tests_failed": 0,
+      "tests_total": 886,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-25T09:21:21.238165",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "markdown/core.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 103.23727107048035,
+        "error": null,
+        "agent_output": "Perfect! I've fixed the bug. The issue was on **line 115 of `markdown/core.py`**.\n\n## The Bug\nThe filter condition for checking entry points had the wrong comparison operator:\n```python\nentry_points = [ep for ep in util.get_installed_extensions() if ep.name != ext_name]  # WRONG\n```\n\nThis was filtering for entry points that **don't match** the requested extension name (`!=`), which is backwards. This caused the code to load any registered extension instead of validating whether the requested class exists.\n\n## The Fix\nChanged the condition from `!=` to `==`:\n```python\nentry_points = [ep for ep in util.get_installed_extensions() if ep.name == ext_name]  # CORRECT\n```\n\nNow the code correctly:\n1. Only loads a registered entry point if it matches the requested extension name\n2. Falls through to manual module import and class lookup if no matching entry point exists\n3. Properly raises `AttributeError` when trying to load a non-existent class (which is what the test `testDotNotationExtensionWithBadClass` expects)\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "python-markdown-nodocstrings-040",
+      "agent": "claude",
+      "mode": "without_tests",
+      "evaluation": "NO_FIX",
+      "tests_passed": 207,
+      "tests_failed": 1,
+      "tests_total": 255,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-25T09:23:24.387218",
+      "fix_result": {
+        "success": false,
+        "files_changed": [],
+        "patch": "",
+        "tokens_used": 0,
+        "time_seconds": 120.14426898956299,
+        "error": "Timeout after 120 seconds",
+        "agent_output": "",
+        "rate_limited": false
+      }
+    }
+  ],
+  "summary": {
+    "by_agent": {
+      "claude": {
+        "total": 20,
+        "passed": 6
+      }
+    },
+    "by_mode": {
+      "without_tests": {
+        "total": 20,
+        "passed": 6
+      }
+    },
+    "by_evaluation": {
+      "PASS": 6,
+      "FAIL": 2,
+      "ERROR": 0,
+      "TIMEOUT": 0,
+      "NO_FIX": 12
+    }
+  }
+}

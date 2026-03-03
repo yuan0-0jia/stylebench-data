@@ -1,0 +1,532 @@
+{
+  "metadata": {
+    "catalog": "/Users/yuan/stylebench-data/bugs_canonical/validators-original.json",
+    "repo": "/Users/yuan/stylebench-data/original/validators",
+    "repo_name": "validators",
+    "timestamp": "2026-02-25T00:36:53.406125",
+    "total_trials": 20,
+    "manifest_used": false,
+    "hit_rate_limit": false
+  },
+  "results": [
+    {
+      "bug_id": "validators-original-021",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 895,
+      "tests_failed": 0,
+      "tests_total": 895,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-25T00:21:14.785289",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "src/validators/crypto_addresses/eth_address.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 58.76806116104126,
+        "error": null,
+        "agent_output": "Perfect! All tests pass now. \n\n## Summary\n\n**Bug Found:** In `/src/validators/crypto_addresses/eth_address.py:26-29`, the ERC-55 checksum validation logic had incorrect boundary conditions.\n\n**The Issue:**\n- The code checked `int(addr_hash[i], 16) < 7` and `int(addr_hash[i], 16) <= 7`\n- The ERC-55 standard requires checking against `8` as the boundary, not `7`\n- According to ERC-55: if hash digit >= 8, character should be uppercase; if < 8, character should be lowercase\n\n**The Fix:**\nChanged the condition from:\n```python\nif (int(addr_hash[i], 16) < 7 and addr[i].upper() != addr[i]) or (\n    int(addr_hash[i], 16) <= 7 and addr[i].lower() != addr[i]\n):\n```\n\nTo:\n```python\nif (int(addr_hash[i], 16) >= 8 and addr[i].upper() != addr[i]) or (\n    int(addr_hash[i], 16) < 8 and addr[i].lower() != addr[i]\n):\n```\n\nThis correctly validates mixed-case Ethereum addresses with ERC-55 checksums like `0x5AEDA56215b167893e80B4fE645BA6d5Bab767DE`. All 895 tests now pass.\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "validators-original-022",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 895,
+      "tests_failed": 0,
+      "tests_total": 895,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-25T00:21:48.901883",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "src/validators/email.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 31.064196825027466,
+        "error": null,
+        "agent_output": "Perfect! All 895 tests pass. \n\n## Summary\n\n**Bug Found:** In `src/validators/email.py` at line 63, there was a logic error in the length validation.\n\n**The Issue:**\n```python\nif len(username_part) < 64 or len(domain_part) > 253:\n    return False\n```\n\nThis condition was incorrectly rejecting emails with usernames **shorter** than 64 characters. According to RFC 5321, the username (local part) must be **at most** 64 characters, so short usernames like \"email\" (5 characters) should be valid, not invalid.\n\n**The Fix:**\nChanged the condition from `<` to `>` to properly validate the maximum lengths:\n```python\nif len(username_part) > 64 or len(domain_part) > 253:\n    return False\n```\n\nThis now correctly rejects emails only when:\n- The username part exceeds 64 characters, OR\n- The domain part exceeds 253 characters\n\nThe failing test `test_returns_true_on_valid_email[email@here.com]` now passes, and all 895 tests in the suite pass successfully.\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "validators-original-023",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 895,
+      "tests_failed": 0,
+      "tests_total": 895,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-25T00:22:19.073643",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "src/validators/email.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 26.993990898132324,
+        "error": null,
+        "agent_output": "## Fixed! \u2713\n\n**Bug found:** In `/private/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/stylebench_9kc9_39w/src/validators/email.py` at line 63\n\n**Issue:** The length validation had an incorrect comparison operator:\n```python\nif len(username_part) < 64 or len(domain_part) > 253:  # WRONG: < should be >\n```\n\nThis was rejecting all valid emails because the condition was checking if the username was **less than** 64 characters (which is almost all emails!), when it should check if it's **greater than** 64 characters.\n\n**Fix:** Changed `<` to `>`:\n```python\nif len(username_part) > 64 or len(domain_part) > 253:  # CORRECT\n```\n\n**Result:** All 895 tests now pass, including the previously failing `test_returns_true_on_valid_email[email@here.com]` test.\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "validators-original-024",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 895,
+      "tests_failed": 0,
+      "tests_total": 895,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-25T00:23:28.855404",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "src/validators/i18n/ru.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 66.55770182609558,
+        "error": null,
+        "agent_output": "Perfect! All 895 tests pass, including the previously failing test. \n\n## Summary\n\nI found and fixed the bug in the Russian INN validator. Here's what was wrong:\n\n**Bug Location:** `/private/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/stylebench_6sh60xxu/src/validators/i18n/ru.py` (lines 42-46)\n\n**The Problem:** \nThe validation logic for 10-digit Russian INN numbers had a flawed condition. When the control number equals 10 (which is valid in modulo 11 arithmetic), the algorithm should interpret it as 0 for the check digit. However, the original code:\n- Checked `if control_number < 9` (not < 10)\n- Used `(control_number % 10)` in the if branch but `control_number` directly in the else branch\n\nThis caused test case `'7709439560'` to fail:\n- control_number = 230 % 11 = 10\n- 10 < 9? No \u2192 goes to else branch\n- Checks if 10 == 0 \u2192 False (incorrect!)\n\n**The Fix:**\nSimplified the logic to always use `(control_number % 10) == digits[-1]`, which correctly handles the case where control_number = 10 (returns 0 via modulo, matching the expected check digit).\n\nThe fix is minimal and correct: all 895 tests pass, including the previously failing `test_returns_true_on_valid_ru_inn[7709439560]`.\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "validators-original-025",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 895,
+      "tests_failed": 0,
+      "tests_total": 895,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-25T00:25:05.710311",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "src/validators/i18n/ru.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 93.75494599342346,
+        "error": null,
+        "agent_output": "## Bug Found and Fixed \u2713\n\n**The Issue:**\nThe `ru_inn` function's 12-digit validation logic had a critical bug where it was only checking the first control digit when `control_number1 < 9`, completely skipping validation of the second control digit. This caused invalid INN numbers like `'026504247481'` to incorrectly return `True`.\n\n**The Fix:**\nI replaced the complex nested ternary operator (lines 53-59) with proper logic that:\n\n1. **Validates both control digits** - ensures the second control digit is always checked\n2. **Corrects the condition** - changed from `control_number1 < 9` to `control_number1 > 9` (consistent with the 10-digit logic)\n3. **Applies consistent rules** - both control digits follow the same pattern:\n   - If control_number > 9 (i.e., = 10), use `(control_number % 10)` which equals 0\n   - Otherwise, use the control_number directly\n\n**Result:**\n- The previously failing test `test_returns_false_on_valid_ru_inn[026504247481]` now passes\n- All 895 tests in the test suite pass \u2713\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "validators-original-026",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 895,
+      "tests_failed": 0,
+      "tests_total": 895,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-25T00:26:08.573499",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "src/validators/crypto_addresses/eth_address.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 60.16667413711548,
+        "error": null,
+        "agent_output": "Perfect! All 895 tests pass. \n\n## Summary\n\nI found and fixed the bug in the Ethereum address validation function.\n\n**Bug Location**: `src/validators/crypto_addresses/eth_address.py`, line 27\n\n**The Issue**: The ERC-55 checksum validation had an off-by-one error. The condition was:\n```python\nint(addr_hash[i], 16) >= 7 and addr[i].lower() != addr[i]\n```\n\n**The Fix**: Changed `>= 7` to `<= 7`:\n```python\nint(addr_hash[i], 16) <= 7 and addr[i].lower() != addr[i]\n```\n\n**Why This Was Wrong**: According to the ERC-55 checksum algorithm:\n- If hash digit >= 8, the character should be uppercase\n- If hash digit < 8, the character should be lowercase\n\nThe original code incorrectly treated hash digit 7 the same as digits 8-15, causing valid checksummed addresses like `0x5AEDA56215b167893e80B4fE645BA6d5Bab767DE` to be rejected when they had uppercase characters corresponding to hash digit 7.\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "validators-original-027",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 895,
+      "tests_failed": 0,
+      "tests_total": 895,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-25T00:26:39.693272",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "src/validators/i18n/fi.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 28.221417903900146,
+        "error": null,
+        "agent_output": "Perfect! All 895 tests pass. Here's a summary of the bug fix:\n\n## Bug Found and Fixed\n\n**Location:** `src/validators/i18n/fi.py`, line 101\n\n**The Problem:**\nThe condition for checking temporal SSNs had the wrong comparison operator:\n```python\nand (allow_temporal_ssn or int(gd[\"serial\"]) >= 899)\n```\n\nWhen `allow_temporal_ssn=False`, this evaluates to `int(gd[\"serial\"]) >= 899`, which **accepts** serial numbers 899 and above. However, temporal SSNs are defined as those with serials in the range [900-999], so they should be **rejected** when `allow_temporal_ssn=False`.\n\n**The Fix:**\nChanged the comparison from `>= 899` to `< 900`:\n```python\nand (allow_temporal_ssn or int(gd[\"serial\"]) < 900)\n```\n\nNow the logic works correctly:\n- When `allow_temporal_ssn=True`: Always accepts valid SSNs\n- When `allow_temporal_ssn=False`: Rejects SSNs with serial 900-999 (temporal SSNs)\n\nAll 895 tests pass, including the previously failing test `test_returns_failed_validation_on_temporal_ssn_when_not_allowed`.\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "validators-original-028",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 895,
+      "tests_failed": 0,
+      "tests_total": 895,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-25T00:27:28.552670",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "src/validators/card.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 45.684207916259766,
+        "error": null,
+        "agent_output": "Perfect! **Bug fixed.** \n\n## Summary\n\nThe bug was in the `card_number()` function in `src/validators/card.py` at line 36:\n\n**The Problem:**\n```python\nodd_sum = sum(digits[-0::-2])  # Wrong: -0 is same as 0\n```\n\nIn Python, `-0` equals `0`, so `digits[-0::-2]` is the same as `digits[0::-2]`, which only returns the first digit `[4]` instead of the correct sequence of digits for the Luhn algorithm.\n\n**The Fix:**\n```python\nodd_sum = sum(digits[-1::-2])  # Correct: starts from rightmost digit\n```\n\nThis correctly implements the Luhn algorithm by starting from the rightmost digit (index -1) and collecting every other digit going backwards.\n\n**Result:** All 126 card validation tests now pass, including the previously failing test for \"4242424242424242\".\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "validators-original-029",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "NO_FIX",
+      "tests_passed": 255,
+      "tests_failed": 1,
+      "tests_total": 256,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-25T00:29:30.869594",
+      "fix_result": {
+        "success": false,
+        "files_changed": [],
+        "patch": "",
+        "tokens_used": 0,
+        "time_seconds": 120.1017370223999,
+        "error": "Timeout after 120 seconds",
+        "agent_output": "",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "validators-original-030",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 895,
+      "tests_failed": 0,
+      "tests_total": 895,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-25T00:30:24.151954",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "src/validators/card.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 50.036882162094116,
+        "error": null,
+        "agent_output": "Excellent! All tests pass. Here's a summary of the bug and the fix:\n\n## Bug Summary\n\n**Location:** `src/validators/card.py`, line 37\n\n**Issue:** The Luhn algorithm implementation was multiplying digits by `1` instead of `2` when processing every second digit. This caused valid card numbers to fail validation.\n\n**The Fix:**\nChanged line 37 from:\n```python\neven_sum = sum(sum(divmod(1 * d, 10)) for d in digits[-2::-2])\n```\n\nTo:\n```python\neven_sum = sum(sum(divmod(2 * d, 10)) for d in digits[-2::-2])\n```\n\n**Why:** The Luhn algorithm requires doubling every second digit from right to left. The original code was multiplying by 1 (which had no effect), so it wasn't actually doubling the digits. For example, with card `4242424242424242`, the checksum should be:\n- Without fix: (16 + 32) % 10 = 8 \u2717 (invalid)\n- With fix: (16 + 64) % 10 = 0 \u2713 (valid)\n\nAll 895 tests now pass, including the previously failing test.\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "validators-original-031",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 895,
+      "tests_failed": 0,
+      "tests_total": 895,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-25T00:32:23.766183",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "src/validators/card.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 116.99741625785828,
+        "error": null,
+        "agent_output": "Perfect! All tests pass now. \n\n## Summary\n\n**Bug Found:** In `/private/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/stylebench__6qzlm6m/src/validators/card.py:37`, the Luhn algorithm implementation was using `divmod(2 * d, 9)` instead of `divmod(2 * d, 10)`.\n\n**The Issue:** When computing the sum of doubled digits in Luhn's algorithm, if a doubled digit is \u2265 10 (resulting in values 10-18), we must sum its digits. The `divmod` function with divisor 10 correctly splits a number into tens and units digits, but divisor 9 does not.\n\n**Example:**\n- For digit 8: `2*8 = 16`\n- `divmod(16, 10) = (1, 6)` \u2192 sum = 7 \u2713 (correct digit sum of 16)\n- `divmod(16, 9) = (1, 7)` \u2192 sum = 8 \u2717 (wrong)\n\n**Fix:** Changed line 37 from:\n```python\neven_sum = sum(sum(divmod(2 * d, 9)) for d in digits[-2::-2])\n```\nto:\n```python\neven_sum = sum(sum(divmod(2 * d, 10)) for d in digits[-2::-2])\n```\n\nAll 126 card validation tests now pass, including the previously failing test for card number `4000002760003184`.\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "validators-original-032",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 895,
+      "tests_failed": 0,
+      "tests_total": 895,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-25T00:33:15.310746",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "src/validators/card.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 48.656803131103516,
+        "error": null,
+        "agent_output": "Perfect! All 895 tests pass. Here's a summary of what I found and fixed:\n\n## Bug Summary\n\n**Location:** `/private/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/stylebench_be4xo3m0/src/validators/card.py:37`\n\n**The Bug:** The Luhn algorithm implementation was multiplying even-positioned digits by **1** instead of **2**:\n```python\neven_sum = sum(sum(divmod(1 * d, 10)) for d in digits[-2::-2])  # WRONG\n```\n\n**The Fix:** Changed the multiplier from `1` to `2`:\n```python\neven_sum = sum(sum(divmod(2 * d, 10)) for d in digits[-2::-2])  # CORRECT\n```\n\nThis is a fundamental part of Luhn's algorithm, which requires doubling every second digit (from right to left) to validate credit card numbers. The bug caused valid card numbers like `4242424242424242` to be incorrectly rejected as invalid.\n\n\u2705 All 895 tests now pass, including the previously failing test case.\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "validators-original-033",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 895,
+      "tests_failed": 0,
+      "tests_total": 895,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-25T00:33:37.615450",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "src/validators/card.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 19.57788896560669,
+        "error": null,
+        "agent_output": "Perfect! All tests pass now. \u2705\n\n**Summary:**\n- **Bug location:** `src/validators/card.py:37`\n- **Issue:** Division operator (`/`) instead of multiplication (`*`) in the Luhn algorithm\n- **Fix:** Changed `2 / d` to `2 * d`\n- **Root cause:** The division caused a `ZeroDivisionError` when processing card numbers containing the digit 0 (like `4000002760003184`)\n\nThe Luhn algorithm requires doubling even-positioned digits (from the right), not dividing them. The one-character fix resolves the issue and all 126 tests now pass.\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "validators-original-034",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 895,
+      "tests_failed": 0,
+      "tests_total": 895,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-25T00:33:51.954417",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "src/validators/i18n/ru.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 11.516733169555664,
+        "error": null,
+        "agent_output": "Perfect! The bug was a simple typo: the 10-digit INN validation was using division (`/`) instead of multiplication (`*`) for calculating the control number. This caused a ZeroDivisionError when the weight coefficient was 0.\n\nThe fix changes line 41 from:\n```python\ncontrol_number = sum([d / w for d, w in zip(digits, weight_coefs)]) % 11\n```\n\nto:\n```python\ncontrol_number = sum([d * w for d, w in zip(digits, weight_coefs)]) % 11\n```\n\nThis matches the correct algorithm used for 12-digit INNs (lines 50-52) and the standard Russian INN validation algorithm.\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "validators-original-035",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 895,
+      "tests_failed": 0,
+      "tests_total": 895,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-25T00:34:14.329613",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "src/validators/i18n/ru.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 19.762282133102417,
+        "error": null,
+        "agent_output": "## \u2705 Bug Fixed!\n\n**The Issue:** Line 50 in `src/validators/i18n/ru.py` used division (`d / w`) instead of multiplication (`d * w`), causing a `ZeroDivisionError` when validating 12-digit Russian INN numbers (because the weight coefficients array has zeros at the end).\n\n**The Fix:** Changed:\n```python\ncontrol_number1 = sum([d / w for d, w in zip(digits, weight_coefs1)]) % 11\n```\n\nTo:\n```python\ncontrol_number1 = sum([d * w for d, w in zip(digits, weight_coefs1)]) % 11\n```\n\nThis aligns with the correct algorithm for Russian INN validation and matches the approach used for 10-digit INNs on line 41.\n\n**Result:** All 895 tests now pass! \u2713\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "validators-original-036",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 895,
+      "tests_failed": 0,
+      "tests_total": 895,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-25T00:34:38.038915",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "src/validators/i18n/ru.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 21.156198978424072,
+        "error": null,
+        "agent_output": "Perfect! \u2705 Bug fixed successfully.\n\n**The Issue:**\nLine 52 in `src/validators/i18n/ru.py` was using division (`d / w`) instead of multiplication (`d * w`), causing a ZeroDivisionError when dividing by the last weight coefficient (which is 0).\n\n**The Fix:**\nChanged line 52 from:\n```python\ncontrol_number2 = sum([d / w for d, w in zip(digits, weight_coefs2)]) % 11\n```\nto:\n```python\ncontrol_number2 = sum([d * w for d, w in zip(digits, weight_coefs2)]) % 11\n```\n\nThis matches the correct pattern used in the 10-digit and first 12-digit control number calculations.\n\n**Results:**\n- All 20 Russian validator tests now pass\n- All 895 tests in the suite pass with no regressions\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "validators-original-037",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 895,
+      "tests_failed": 0,
+      "tests_total": 895,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-25T00:35:20.022193",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "src/validators/i18n/fr.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 39.4042911529541,
+        "error": null,
+        "agent_output": "Perfect! All tests pass now. \n\n## Summary\n\nI found and fixed the bug in `src/validators/i18n/fr.py` at **line 105**.\n\n**The Bug:**\nThe condition `if control_key is not None:` had inverted logic. It should be `if control_key is None:`.\n\n**What was happening:**\n- When a control key was **not provided** (None), the code tried to validate it by calling `int(control_key)` at line 119, which caused a `TypeError: int() argument must be... not 'NoneType'`\n- When a control key **was provided**, the code incorrectly returned True without validating the checksum\n\n**The Fix:**\nChanged line 105 from:\n```python\nif control_key is not None:\n```\nto:\n```python\nif control_key is None:\n```\n\nThis ensures that when no control key is provided, the function returns True immediately. When a control key is provided, it continues to validate the checksum.\n\nAll 895 tests now pass, including the previously failing test case `test_returns_true_on_valid_ssn[1 84 12 76 451 089]`.\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "validators-original-038",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 895,
+      "tests_failed": 0,
+      "tests_total": 895,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-25T00:35:45.499354",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "src/validators/card.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 22.986235857009888,
+        "error": null,
+        "agent_output": "Perfect! All tests pass now. \n\n## Summary\n\nI found and fixed the bug in `/src/validators/card.py` at line 106 in the `amex` function.\n\n**The Bug:** The length check was using `!=` instead of `==`:\n```python\nreturn card_number(value) and len(value) != 15 and pattern.match(value)\n```\n\n**The Fix:** Changed it to properly validate that American Express cards are exactly 15 digits:\n```python\nreturn card_number(value) and len(value) == 15 and pattern.match(value)\n```\n\nAmerican Express cards are 15 digits long (unlike Visa, Mastercard, and others which are 16 digits), so the condition was incorrectly rejecting valid cards. All 126 card validation tests now pass.\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "validators-original-039",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 895,
+      "tests_failed": 0,
+      "tests_total": 895,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-25T00:36:23.567087",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "src/validators/card.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 35.288679122924805,
+        "error": null,
+        "agent_output": "Perfect! All 895 tests now pass. \n\n## Summary\n\n**Bug Found:** In `/private/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/stylebench_8refpjyi/src/validators/card.py` at line 128 in the `unionpay` function.\n\n**The Issue:** The length validation used `!=` (not equal to) instead of `==` (equal to):\n```python\nreturn card_number(value) and len(value) != 16 and pattern.match(value)\n```\n\nThis rejected any card with exactly 16 digits, but UnionPay cards must have 16 digits (like the test card `'6200000000000005'`).\n\n**The Fix:** Changed the condition to require exactly 16 digits:\n```python\nreturn card_number(value) and len(value) == 16 and pattern.match(value)\n```\n\nThis makes the UnionPay validator consistent with other card type validators (Visa, Mastercard, JCB, Discover, and Mir all require 16 digits).\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "validators-original-040",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 895,
+      "tests_failed": 0,
+      "tests_total": 895,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-25T00:36:53.344010",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "src/validators/card.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 27.183638095855713,
+        "error": null,
+        "agent_output": "## \u2705 Bug Fixed!\n\n**Issue**: The JCB card validator at `src/validators/card.py:172` had a logic error using `!=` instead of `==` for the length check.\n\n**The Bug**:\n```python\nreturn card_number(value) and len(value) != 16 and pattern.match(value)\n```\n\nThis rejected any JCB card that WAS 16 digits long, which is backwards. The test card `3566002020360505` is exactly 16 digits and should be valid.\n\n**The Fix**:\n```python\nreturn card_number(value) and len(value) == 16 and pattern.match(value)\n```\n\nNow JCB cards are validated correctly, consistent with other card validators (Visa, Mastercard, UnionPay, Discover, and Mir all require exactly 16 digits).\n\n**Result**: All 895 tests now pass! \u2728\n",
+        "rate_limited": false
+      }
+    }
+  ],
+  "summary": {
+    "by_agent": {
+      "claude": {
+        "total": 20,
+        "passed": 19
+      }
+    },
+    "by_mode": {
+      "with_tests": {
+        "total": 20,
+        "passed": 19
+      }
+    },
+    "by_evaluation": {
+      "PASS": 19,
+      "FAIL": 0,
+      "ERROR": 0,
+      "TIMEOUT": 0,
+      "NO_FIX": 1
+    }
+  }
+}

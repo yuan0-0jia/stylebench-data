@@ -180,6 +180,166 @@
         "../../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpcc5zx9kn/original/python-markdown/tests/test_apis.py::TestMarkdownBasics::testSimpleInput"
       ],
       "exit_code": 1
+    },
+    {
+      "bug_id": "python-markdown-original-021",
+      "test_output": "........................................................................ [  8%]\n.........................................F\n=================================== FAILURES ===================================\n_______________________ TestBasic.test_codeblock_in_list _______________________\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpliwxww2l/original/python-markdown/markdown/test_tools.py:166: in test\n    self.assertMultiLineEqual(output, expected)\nE   AssertionError: '<ul>\\n<li>A list item with a code block</li>\\n</ul>[192 chars]pre>' != '<ul>\\n<li>\\n<p>A list item with a code block</p>\\n<[139 chars]/ul>'\nE     <ul>\nE   - <li>A list item with a code block</li>\nE   - </ul>\nE     <li>\nE   + <p>A list item with a code block</p>\nE   - <pre><code>    Some *code*\nE   ?            ----\nE   + <pre><code>Some *code*\nE     </code></pre>\nE     </li>\nE   - <ul>\nE   - <li>Another list item</li>\nE   - </ul>\nE     <li>\nE   + <p>Another list item</p>\nE   - <pre><code>    More code\nE   ?            ----\nE   + <pre><code>More code\nE   + \nE   + And more code\nE     </code></pre>\nE     </li>\nE   + </ul>- <pre><code>    And more code\nE   - </code></pre>\n=========================== short test summary info ============================\nFAILED ../../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpliwxww2l/original/python-markdown/tests/test_legacy.py::TestBasic::test_codeblock_in_list\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 113 passed in 0.20s\nwarning: `VIRTUAL_ENV=/Users/yuan/stylebench/.venv` does not match the project environment path `.venv` and will be ignored; use `--active` to target the active environment instead\n",
+      "failing_tests": [
+        "../../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpliwxww2l/original/python-markdown/tests/test_legacy.py::TestBasic::test_codeblock_in_list"
+      ],
+      "exit_code": 1
+    },
+    {
+      "bug_id": "python-markdown-original-022",
+      "test_output": "........................................................................ [  8%]\n........................................................................ [ 16%]\n............................................ssssssssssssssssssssssssssss [ 24%]\nssssssssssssssssss..s..............................ss................... [ 32%]\n........................................................................ [ 40%]\n........................................................................ [ 48%]\n........................................................................ [ 56%]\n.......................ss..........................................F\n=================================== FAILURES ===================================\n__________________________ TestAttrList.test_table_td __________________________\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpliwxww2l/original/python-markdown/tests/test_syntax/extensions/test_attr_list.py:82: in test_table_td\n    self.assertMarkdownRenders(\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpliwxww2l/original/python-markdown/markdown/test_tools.py:77: in assertMarkdownRenders\n    self.assertMultiLineEqual(output, expected)\nE   AssertionError: '<p>| A { .foo }  | <em class=\"foo\">B</em> [261 chars]</p>' != '<table>\\n<thead>\\n<tr>\\n<th class=\"foo\">A<[380 chars]ble>'\nE   - <p>| A { .foo }  | <em class=\"foo\">B</em> F |\nE   - |-------------|-------------|-------|---------------|--------------|\nE   - | a { .foo }  | } | C { } | D{ .foo }     | E { .foo <em class=\"foo\">b</em> f |\nE   - | valid on td | inline      | empty | missing space | not at end   |} | c { } | d{ .foo }     | e { .foo </p>+ <table>\nE   + <thead>\nE   + <tr>\nE   + <th class=\"foo\">A</th>\nE   + <th><em class=\"foo\">B</em></th>\nE   + <th>C { }</th>\nE   + <th>D{ .foo }</th>\nE   + <th>E { .foo } F</th>\nE   + </tr>\nE   + </thead>\nE   + <tbody>\nE   + <tr>\nE   + <td class=\"foo\">a</td>\nE   + <td><em class=\"foo\">b</em></td>\nE   + <td>c { }</td>\nE   + <td>d{ .foo }</td>\nE   + <td>e { .foo } f</td>\nE   + </tr>\nE   + <tr>\nE   + <td>valid on td</td>\nE   + <td>inline</td>\nE   + <td>empty</td>\nE   + <td>missing space</td>\nE   + <td>not at end</td>\nE   + </tr>\nE   + </tbody>\nE   + </table>\n=========================== short test summary info ============================\nFAILED ../../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpliwxww2l/original/python-markdown/tests/test_syntax/extensions/test_attr_list.py::TestAttrList::test_table_td\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 520 passed, 51 skipped in 0.69s\nwarning: `VIRTUAL_ENV=/Users/yuan/stylebench/.venv` does not match the project environment path `.venv` and will be ignored; use `--active` to target the active environment instead\n",
+      "failing_tests": [
+        "../../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpliwxww2l/original/python-markdown/tests/test_syntax/extensions/test_attr_list.py::TestAttrList::test_table_td"
+      ],
+      "exit_code": 1
+    },
+    {
+      "bug_id": "python-markdown-original-023",
+      "test_output": "........................................................................ [  8%]\n........................................................................ [ 16%]\n............................................ssssssssssssssssssssssssssss [ 24%]\nssssssssssssssssss..s..............................ss................... [ 32%]\n........................................................................ [ 40%]\n........................................................................ [ 48%]\n........................................................................ [ 56%]\n.......................ss............................................sss [ 65%]\nsssssssssssssssssssssssssssssssssssss...........................ssssssss [ 73%]\nsssssssssss...................................................F\n=================================== FAILURES ===================================\n___________________ TestTableBlocks.test_inline_code_blocks ____________________\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpliwxww2l/original/python-markdown/tests/test_syntax/extensions/test_tables.py:388: in test_inline_code_blocks\n    self.assertMarkdownRenders(\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpliwxww2l/original/python-markdown/markdown/test_tools.py:77: in assertMarkdownRenders\n    self.assertMultiLineEqual(output, expected)\nE   AssertionError: '<p>M[433 chars]n<td>`word</td>\\n<td>2`</td>\\n</tr>\\n<tr>\\n<td[449 chars]ble>' != '<p>M[433 chars]n<td><code>word |2</code></td>\\n<td>word 3</td[546 chars]ble>'\nE   Diff is 1565 characters long. Set self.maxDiff to None to see it.\n=========================== short test summary info ============================\nFAILED ../../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpliwxww2l/original/python-markdown/tests/test_syntax/extensions/test_tables.py::TestTableBlocks::test_inline_code_blocks\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 600 passed, 110 skipped in 0.84s\nwarning: `VIRTUAL_ENV=/Users/yuan/stylebench/.venv` does not match the project environment path `.venv` and will be ignored; use `--active` to target the active environment instead\n",
+      "failing_tests": [
+        "../../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpliwxww2l/original/python-markdown/tests/test_syntax/extensions/test_tables.py::TestTableBlocks::test_inline_code_blocks"
+      ],
+      "exit_code": 1
+    },
+    {
+      "bug_id": "python-markdown-original-024",
+      "test_output": "........................................................................ [  8%]\n........................................................................ [ 16%]\n............................................ssssssssssssssssssssssssssss [ 24%]\nssssssssssssssssss..s..............................ss................... [ 32%]\n........................................................................ [ 40%]\n........................................................................ [ 48%]\n........................................................................ [ 56%]\n.......................ss............................................sss [ 65%]\nsssssssssssssssssssssssssssssssssssss...........................ssssssss [ 73%]\nsssssssssss............................................................. [ 81%]\n........................................................................ [ 89%]\n............................................F\n=================================== FAILURES ===================================\n_____________________ TestAdvancedImages.test_single_quote _____________________\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpliwxww2l/original/python-markdown/tests/test_syntax/inline/test_images.py:110: in test_single_quote\n    self.assertMarkdownRenders(\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpliwxww2l/original/python-markdown/markdown/test_tools.py:77: in assertMarkdownRenders\n    self.assertMultiLineEqual(output, expected)\nE   AssertionError: '<p>![test](link\"notitle.png)</p>' != '<p><img alt=\"test\" src=\"link&quot;notitle.png\" /></p>'\nE   - <p>![test](link\"notitle.png)</p>\nE   + <p><img alt=\"test\" src=\"link&quot;notitle.png\" /></p>\n=========================== short test summary info ============================\nFAILED ../../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpliwxww2l/original/python-markdown/tests/test_syntax/inline/test_images.py::TestAdvancedImages::test_single_quote\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 726 passed, 110 skipped in 0.82s\nwarning: `VIRTUAL_ENV=/Users/yuan/stylebench/.venv` does not match the project environment path `.venv` and will be ignored; use `--active` to target the active environment instead\n",
+      "failing_tests": [
+        "../../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpliwxww2l/original/python-markdown/tests/test_syntax/inline/test_images.py::TestAdvancedImages::test_single_quote"
+      ],
+      "exit_code": 1
+    },
+    {
+      "bug_id": "python-markdown-original-025",
+      "test_output": "........................................................................ [  8%]\n........................................................................ [ 16%]\n............................................ssssssssssssssssssssssssssss [ 24%]\nssssssssssssssssss..s..............................ss................... [ 32%]\n........................................................................ [ 40%]\n........................................................................ [ 48%]\n........................................................................ [ 56%]\n.......................ss..........................................F\n=================================== FAILURES ===================================\n__________________________ TestAttrList.test_table_td __________________________\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpliwxww2l/original/python-markdown/tests/test_syntax/extensions/test_attr_list.py:82: in test_table_td\n    self.assertMarkdownRenders(\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpliwxww2l/original/python-markdown/markdown/test_tools.py:77: in assertMarkdownRenders\n    self.assertMultiLineEqual(output, expected)\nE   AssertionError: '<p>| A { .foo }  | <em class=\"foo\">B</em> [261 chars]</p>' != '<table>\\n<thead>\\n<tr>\\n<th class=\"foo\">A<[380 chars]ble>'\nE   - <p>| A { .foo }  | <em class=\"foo\">B</em> F |\nE   - |-------------|-------------|-------|---------------|--------------|\nE   - | a { .foo }  | } | C { } | D{ .foo }     | E { .foo <em class=\"foo\">b</em> f |\nE   - | valid on td | inline      | empty | missing space | not at end   |} | c { } | d{ .foo }     | e { .foo </p>+ <table>\nE   + <thead>\nE   + <tr>\nE   + <th class=\"foo\">A</th>\nE   + <th><em class=\"foo\">B</em></th>\nE   + <th>C { }</th>\nE   + <th>D{ .foo }</th>\nE   + <th>E { .foo } F</th>\nE   + </tr>\nE   + </thead>\nE   + <tbody>\nE   + <tr>\nE   + <td class=\"foo\">a</td>\nE   + <td><em class=\"foo\">b</em></td>\nE   + <td>c { }</td>\nE   + <td>d{ .foo }</td>\nE   + <td>e { .foo } f</td>\nE   + </tr>\nE   + <tr>\nE   + <td>valid on td</td>\nE   + <td>inline</td>\nE   + <td>empty</td>\nE   + <td>missing space</td>\nE   + <td>not at end</td>\nE   + </tr>\nE   + </tbody>\nE   + </table>\n=========================== short test summary info ============================\nFAILED ../../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpliwxww2l/original/python-markdown/tests/test_syntax/extensions/test_attr_list.py::TestAttrList::test_table_td\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 520 passed, 51 skipped in 0.69s\nwarning: `VIRTUAL_ENV=/Users/yuan/stylebench/.venv` does not match the project environment path `.venv` and will be ignored; use `--active` to target the active environment instead\n",
+      "failing_tests": [
+        "../../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpliwxww2l/original/python-markdown/tests/test_syntax/extensions/test_attr_list.py::TestAttrList::test_table_td"
+      ],
+      "exit_code": 1
+    },
+    {
+      "bug_id": "python-markdown-original-026",
+      "test_output": "........................................................................ [  8%]\n............................................F\n=================================== FAILURES ===================================\n_________________________ TestBasic.test_links_inline __________________________\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpliwxww2l/original/python-markdown/markdown/test_tools.py:166: in test\n    self.assertMultiLineEqual(output, expected)\nE   AssertionError: '<p>J[48 chars]/url/ &quot;title&quot;\">URL and title</a>.</p[193 chars]</p>' != '<p>J[48 chars]/url/\" title=\"title\">URL and title</a>.</p>\\n<[178 chars]</p>'\nE   Diff is 777 characters long. Set self.maxDiff to None to see it.\n=========================== short test summary info ============================\nFAILED ../../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpliwxww2l/original/python-markdown/tests/test_legacy.py::TestBasic::test_links_inline\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 116 passed in 0.21s\nwarning: `VIRTUAL_ENV=/Users/yuan/stylebench/.venv` does not match the project environment path `.venv` and will be ignored; use `--active` to target the active environment instead\n",
+      "failing_tests": [
+        "../../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpliwxww2l/original/python-markdown/tests/test_legacy.py::TestBasic::test_links_inline"
+      ],
+      "exit_code": 1
+    },
+    {
+      "bug_id": "python-markdown-original-027",
+      "test_output": "........................................................................ [  8%]\n........................................................................ [ 16%]\n............................................ssssssssssssssssssssssssssss [ 24%]\nssssssssssssssssss..s..............................ss................... [ 32%]\n........................................................................ [ 40%]\n........................................................................ [ 48%]\n........................................................................ [ 56%]\n.......................ss............................................sss [ 65%]\nsssssssssssssssssssssssssssssssssssss...........................ssssssss [ 73%]\nsssssssssss............................................................. [ 81%]\n........................................................................ [ 89%]\n..................................F\n=================================== FAILURES ===================================\n_________________ TestAdvancedImages.test_mixed_title_quotes1 __________________\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpliwxww2l/original/python-markdown/tests/test_syntax/inline/test_images.py:70: in test_mixed_title_quotes1\n    self.assertMarkdownRenders(\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpliwxww2l/original/python-markdown/markdown/test_tools.py:77: in assertMarkdownRenders\n    self.assertMultiLineEqual(output, expected)\nE   AssertionError: '<p><[15 chars]src=\"http://link.com/\\'.png&quot;title&quot;\" /> more text</p>' != '<p><[15 chars]src=\"http://link.com/\\'.png\" title=\"title\" /> more text</p>'\nE   - <p><img alt=\"Text\" src=\"http://link.com/'.png&quot;title&quot;\" /> more text</p>\nE   ?                                              ^^^^^^     ^^^^ ^\nE   + <p><img alt=\"Text\" src=\"http://link.com/'.png\" title=\"title\" /> more text</p>\nE   ?                                              ^^     ^^ ^^^^\n=========================== short test summary info ============================\nFAILED ../../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpliwxww2l/original/python-markdown/tests/test_syntax/inline/test_images.py::TestAdvancedImages::test_mixed_title_quotes1\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 716 passed, 110 skipped in 0.81s\nwarning: `VIRTUAL_ENV=/Users/yuan/stylebench/.venv` does not match the project environment path `.venv` and will be ignored; use `--active` to target the active environment instead\n",
+      "failing_tests": [
+        "../../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpliwxww2l/original/python-markdown/tests/test_syntax/inline/test_images.py::TestAdvancedImages::test_mixed_title_quotes1"
+      ],
+      "exit_code": 1
+    },
+    {
+      "bug_id": "python-markdown-original-028",
+      "test_output": "........................................................................ [  8%]\n........................................................................ [ 16%]\n............................................ssssssssssssssssssssssssssss [ 24%]\nssssssssssssssssss.F\n=================================== FAILURES ===================================\n________________________ TestExtensions.test_attr_list _________________________\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpliwxww2l/original/python-markdown/markdown/test_tools.py:157: in test\n    output = markdown(input, **kwargs)\n             ^^^^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpliwxww2l/original/python-markdown/markdown/core.py:482: in markdown\n    return md.convert(text)\n           ^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpliwxww2l/original/python-markdown/markdown/core.py:357: in convert\n    root = self.parser.parseDocument(self.lines).getroot()\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpliwxww2l/original/python-markdown/markdown/blockparser.py:117: in parseDocument\n    self.parseChunk(self.root, '\\n'.join(lines))\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpliwxww2l/original/python-markdown/markdown/blockparser.py:136: in parseChunk\n    self.parseBlocks(parent, text.split('\\n\\n'))\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpliwxww2l/original/python-markdown/markdown/blockparser.py:158: in parseBlocks\n    if processor.run(parent, blocks) is not False:\n       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpliwxww2l/original/python-markdown/markdown/extensions/def_list.py:44: in run\n    raw_block[:m.start()].split('\\n') if term.strip()]\n               ^^^^^^^\nE   AttributeError: 'NoneType' object has no attribute 'start'\n=========================== short test summary info ============================\nFAILED ../../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpliwxww2l/original/python-markdown/tests/test_legacy.py::TestExtensions::test_attr_list\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 189 passed, 46 skipped in 0.37s\nwarning: `VIRTUAL_ENV=/Users/yuan/stylebench/.venv` does not match the project environment path `.venv` and will be ignored; use `--active` to target the active environment instead\n",
+      "failing_tests": [
+        "../../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpliwxww2l/original/python-markdown/tests/test_legacy.py::TestExtensions::test_attr_list"
+      ],
+      "exit_code": 1
+    },
+    {
+      "bug_id": "python-markdown-original-029",
+      "test_output": "........................................................................ [  8%]\n........................................................................ [ 16%]\n............................................ssssssssssssssssssssssssssss [ 24%]\nssssssssssssssssss..s..........F\n=================================== FAILURES ===================================\n_____________________ TestExtensionsExtra.test_def_in_list _____________________\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpliwxww2l/original/python-markdown/markdown/test_tools.py:166: in test\n    self.assertMultiLineEqual(output, expected)\nE   AssertionError: '<p>* A List item\\n* \\n    A def term\\n    : [276 chars]/dl>' != '<p>: a paragraph that starts with a colon</p[296 chars]/ul>'\nE   + <p>: a paragraph that starts with a colon</p>\nE   - <p>* A List item\nE   - * \nE   -     A def term\nE   -     : A def item\nE   -     : a second</p>\nE     <ul>\nE   + <li>A List item</li>\nE   + <li>\nE   + <dl>\nE   + <dt>A def term</dt>\nE   + <dd>A def item</dd>\nE   + <dd>a second</dd>\nE   + </dl>\nE   + </li>\nE     <li>\nE     <dl>\nE     <dt>Another def term</dt>\nE     <dd>\nE     <p>a loose item</p>\nE     </dd>\nE     <dd>\nE     <p>a second</p>\nE     </dd>\nE     </dl>\nE     </li>\nE     <li>\nE     <p>: a list item that starts with a colon</p>\nE     </li>\nE   - </ul>\nE   ?      -\nE   + </ul>- <dl>\nE   - <dd>a paragraph that starts with a colon</dd>\nE   - </dl>\n=========================== short test summary info ============================\nFAILED ../../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpliwxww2l/original/python-markdown/tests/test_legacy.py::TestExtensionsExtra::test_def_in_list\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 200 passed, 47 skipped in 0.40s\nwarning: `VIRTUAL_ENV=/Users/yuan/stylebench/.venv` does not match the project environment path `.venv` and will be ignored; use `--active` to target the active environment instead\n",
+      "failing_tests": [
+        "../../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpliwxww2l/original/python-markdown/tests/test_legacy.py::TestExtensionsExtra::test_def_in_list"
+      ],
+      "exit_code": 1
+    },
+    {
+      "bug_id": "python-markdown-original-030",
+      "test_output": "........................................................................ [  8%]\n........................................................................ [ 16%]\n............................................ssssssssssssssssssssssssssss [ 24%]\nssssssssssssssssss..s............F\n=================================== FAILURES ===================================\n______________________ TestExtensionsExtra.test_footnote _______________________\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpliwxww2l/original/python-markdown/markdown/test_tools.py:166: in test\n    self.assertMultiLineEqual(output, expected)\nE   AssertionError: '<p>T[2369 chars]</a></p>\\n</li>\\n<li id=\"fn:b\">\\n<p>2&#160;<a [1239 chars]div>' != '<p>T[2369 chars]</a><a class=\"footnote-backref\" href=\"#fnref2:[1639 chars]div>'\nE   Diff is 4367 characters long. Set self.maxDiff to None to see it.\n=========================== short test summary info ============================\nFAILED ../../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpliwxww2l/original/python-markdown/tests/test_legacy.py::TestExtensionsExtra::test_footnote\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 202 passed, 47 skipped in 0.40s\nwarning: `VIRTUAL_ENV=/Users/yuan/stylebench/.venv` does not match the project environment path `.venv` and will be ignored; use `--active` to target the active environment instead\n",
+      "failing_tests": [
+        "../../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpliwxww2l/original/python-markdown/tests/test_legacy.py::TestExtensionsExtra::test_footnote"
+      ],
+      "exit_code": 1
+    },
+    {
+      "bug_id": "python-markdown-original-031",
+      "test_output": "........................................................................ [  8%]\n........................................................................ [ 16%]\n............................................ssssssssssssssssssssssssssss [ 24%]\nssssssssssssssssss..s............F\n=================================== FAILURES ===================================\n______________________ TestExtensionsExtra.test_footnote _______________________\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpliwxww2l/original/python-markdown/markdown/test_tools.py:166: in test\n    self.assertMultiLineEqual(output, expected)\nE   AssertionError: '<p>T[2469 chars]</a></p>\\n</li>\\n<li id=\"fn:b\">\\n<p>2&#160;<a [1339 chars]div>' != '<p>T[2469 chars]</a><a class=\"footnote-backref\" href=\"#fnref3:[1539 chars]div>'\nE   Diff is 5195 characters long. Set self.maxDiff to None to see it.\n=========================== short test summary info ============================\nFAILED ../../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpliwxww2l/original/python-markdown/tests/test_legacy.py::TestExtensionsExtra::test_footnote\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 202 passed, 47 skipped in 0.39s\nwarning: `VIRTUAL_ENV=/Users/yuan/stylebench/.venv` does not match the project environment path `.venv` and will be ignored; use `--active` to target the active environment instead\n",
+      "failing_tests": [
+        "../../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpliwxww2l/original/python-markdown/tests/test_legacy.py::TestExtensionsExtra::test_footnote"
+      ],
+      "exit_code": 1
+    },
+    {
+      "bug_id": "python-markdown-original-032",
+      "test_output": "........................................................................ [  8%]\n........................................................................ [ 16%]\n............................................ssssssssssssssssssssssssssss [ 24%]\nssssssssssssssssss..s...........F\n=================================== FAILURES ===================================\n____________________ TestExtensionsExtra.test_extra_config _____________________\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpliwxww2l/original/python-markdown/markdown/test_tools.py:166: in test\n    self.assertMultiLineEqual(output, expected)\nE   AssertionError: '<div[48 chars]\\n<p>1&#160;<a class=\"footnote-backref\" href=\"[188 chars]</p>' != '<div[48 chars]\\n<p>A Footnote.&#160;<a class=\"footnote-backr[198 chars]</p>'\nE     <div class=\"footnote\">\nE     <hr />\nE     <ol>\nE     <li id=\"fn:1\">\nE   - <p>1&#160;<a class=\"footnote-backref\" href=\"#fnref:1\" title=\"Jump back to footnote 1 in the text\">&#8617;</a></p>\nE   ?    ^\nE   + <p>A Footnote.&#160;<a class=\"footnote-backref\" href=\"#fnref:1\" title=\"Jump back to footnote 1 in the text\">&#8617;</a></p>\nE   ?    ^^^^^^^^^^^\nE     </li>\nE     </ol>\nE     </div>\nE     <p>Some text with a footnote<sup id=\"fnref:1\"><a class=\"footnote-ref\" href=\"#fn:1\">1</a></sup>.</p>\n=========================== short test summary info ============================\nFAILED ../../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpliwxww2l/original/python-markdown/tests/test_legacy.py::TestExtensionsExtra::test_extra_config\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 201 passed, 47 skipped in 0.40s\nwarning: `VIRTUAL_ENV=/Users/yuan/stylebench/.venv` does not match the project environment path `.venv` and will be ignored; use `--active` to target the active environment instead\n",
+      "failing_tests": [
+        "../../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpliwxww2l/original/python-markdown/tests/test_legacy.py::TestExtensionsExtra::test_extra_config"
+      ],
+      "exit_code": 1
+    },
+    {
+      "bug_id": "python-markdown-original-033",
+      "test_output": "........................................................................ [  8%]\n........................................................................ [ 16%]\n.......................F\n=================================== FAILURES ===================================\n_____________________________ TestMisc.test_lists7 _____________________________\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpliwxww2l/original/python-markdown/markdown/test_tools.py:166: in test\n    self.assertMultiLineEqual(output, expected)\nE   AssertionError: '<ul>[46 chars]i>\\n<pre><code>* item 2-2\\n* item 2-3\\n* item [988 chars]/ul>' != '<ul>[46 chars]i>\\n<li>item 2-2</li>\\n<li>item 2-3</li>\\n<li>[995 chars]/ul>'\nE   Diff is 1684 characters long. Set self.maxDiff to None to see it.\n=========================== short test summary info ============================\nFAILED ../../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpliwxww2l/original/python-markdown/tests/test_legacy.py::TestMisc::test_lists7\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 167 passed in 0.27s\nwarning: `VIRTUAL_ENV=/Users/yuan/stylebench/.venv` does not match the project environment path `.venv` and will be ignored; use `--active` to target the active environment instead\n",
+      "failing_tests": [
+        "../../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpliwxww2l/original/python-markdown/tests/test_legacy.py::TestMisc::test_lists7"
+      ],
+      "exit_code": 1
+    },
+    {
+      "bug_id": "python-markdown-original-034",
+      "test_output": "........................................................................ [  8%]\n........................................................................ [ 16%]\n............................................ssssssssssssssssssssssssssss [ 24%]\nssssssssssssssssss..s..............................ss................... [ 32%]\n........................................................................ [ 40%]\n........................................................................ [ 48%]\n........................................................................ [ 56%]\n.......................ss..............................F\n=================================== FAILURES ===================================\n_____________________ TestAdmonition.test_definition_list ______________________\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpliwxww2l/original/python-markdown/tests/test_syntax/extensions/test_admonition.py:150: in test_definition_list\n    self.assertMarkdownRenders(\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpliwxww2l/original/python-markdown/markdown/test_tools.py:77: in assertMarkdownRenders\n    self.assertMultiLineEqual(output, expected)\nE   AssertionError: '<ul>[137 chars]p>\\n</dd>\\n</dl>\\n<pre><code>More text\\n</code[110 chars]/ul>' != '<ul>[137 chars]p>\\n<p>More text</p>\\n</dd>\\n<dd>\\n<p>Another\\[70 chars]/ul>'\nE     <ul>\nE     <li>\nE     <p>List</p>\nE     <div class=\"admonition note\">\nE     <p class=\"admonition-title\">Admontion</p>\nE     <dl>\nE     <dt>Term</dt>\nE     <dd>\nE     <p>Definition</p>\nE   + <p>More text</p>\nE   + </dd>\nE   + <dd>\nE   + <p>Another\nE   + definition</p>\nE   + <p>Even more text</p>\nE     </dd>\nE     </dl>\nE   - <pre><code>More text\nE   - </code></pre>\nE   - <dl>\nE   - <dd>Another\nE   - definition</dd>\nE   - </dl>\nE   - <pre><code>Even more text\nE   - </code></pre>\nE     </div>\nE     </li>\nE     </ul>\n=========================== short test summary info ============================\nFAILED ../../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpliwxww2l/original/python-markdown/tests/test_syntax/extensions/test_admonition.py::TestAdmonition::test_definition_list\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 508 passed, 51 skipped in 0.68s\nwarning: `VIRTUAL_ENV=/Users/yuan/stylebench/.venv` does not match the project environment path `.venv` and will be ignored; use `--active` to target the active environment instead\n",
+      "failing_tests": [
+        "../../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpliwxww2l/original/python-markdown/tests/test_syntax/extensions/test_admonition.py::TestAdmonition::test_definition_list"
+      ],
+      "exit_code": 1
+    },
+    {
+      "bug_id": "python-markdown-original-035",
+      "test_output": "........................................................................ [  8%]\n........................................................................ [ 16%]\n............................................ssssssssssssssssssssssssssss [ 24%]\nssssssssssssssssss..s..............................ss................... [ 32%]\n........................................................................ [ 40%]\n........................................................................ [ 48%]\n........................................................................ [ 56%]\n.......................ss..............................F\n=================================== FAILURES ===================================\n_____________________ TestAdmonition.test_definition_list ______________________\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpliwxww2l/original/python-markdown/tests/test_syntax/extensions/test_admonition.py:150: in test_definition_list\n    self.assertMarkdownRenders(\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpliwxww2l/original/python-markdown/markdown/test_tools.py:77: in assertMarkdownRenders\n    self.assertMultiLineEqual(output, expected)\nE   AssertionError: '<ul>[137 chars]p>\\n</dd>\\n</dl>\\n<pre><code>More text\\n</code[110 chars]/ul>' != '<ul>[137 chars]p>\\n<p>More text</p>\\n</dd>\\n<dd>\\n<p>Another\\[70 chars]/ul>'\nE     <ul>\nE     <li>\nE     <p>List</p>\nE     <div class=\"admonition note\">\nE     <p class=\"admonition-title\">Admontion</p>\nE     <dl>\nE     <dt>Term</dt>\nE     <dd>\nE     <p>Definition</p>\nE   + <p>More text</p>\nE   + </dd>\nE   + <dd>\nE   + <p>Another\nE   + definition</p>\nE   + <p>Even more text</p>\nE     </dd>\nE     </dl>\nE   - <pre><code>More text\nE   - </code></pre>\nE   - <dl>\nE   - <dd>Another\nE   - definition</dd>\nE   - </dl>\nE   - <pre><code>Even more text\nE   - </code></pre>\nE     </div>\nE     </li>\nE     </ul>\n=========================== short test summary info ============================\nFAILED ../../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpliwxww2l/original/python-markdown/tests/test_syntax/extensions/test_admonition.py::TestAdmonition::test_definition_list\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 508 passed, 51 skipped in 0.66s\nwarning: `VIRTUAL_ENV=/Users/yuan/stylebench/.venv` does not match the project environment path `.venv` and will be ignored; use `--active` to target the active environment instead\n",
+      "failing_tests": [
+        "../../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpliwxww2l/original/python-markdown/tests/test_syntax/extensions/test_admonition.py::TestAdmonition::test_definition_list"
+      ],
+      "exit_code": 1
+    },
+    {
+      "bug_id": "python-markdown-original-036",
+      "test_output": "........................................................................ [  8%]\n........................................................................ [ 16%]\n............................................ssssssssssssssssssssssssssss [ 24%]\nssssssssssssssssss..s..............................ss................... [ 32%]\n........................................................................ [ 40%]\n........................................................................ [ 48%]\n........................................................................ [ 56%]\n.......................ss............................................sss [ 65%]\nsssssssssssssssssssssssssssssssssssssF\n=================================== FAILURES ===================================\n_________________ TestDefList.test_def_list_nested_admontions __________________\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpliwxww2l/original/python-markdown/tests/test_syntax/extensions/test_def_list.py:279: in test_def_list_nested_admontions\n    self.assertMarkdownRenders(\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpliwxww2l/original/python-markdown/markdown/test_tools.py:77: in assertMarkdownRenders\n    self.assertMultiLineEqual(output, expected)\nE   AssertionError: '<dl>[167 chars]n<li>list</li>\\n</ol>\\n<pre><code>continue\\n</[43 chars]/dl>' != '<dl>[167 chars]n<li>\\n<p>list</p>\\n<p>continue</p>\\n</li>\\n</[35 chars]/dl>'\nE     <dl>\nE     <dt>term</dt>\nE     <dd>\nE     <p>definition</p>\nE     <div class=\"admonition note\">\nE     <p class=\"admonition-title\">Admontion</p>\nE     <dl>\nE     <dt>term</dt>\nE     <dd>\nE     <p>definition</p>\nE     <ol>\nE   + <li>\nE   - <li>list</li>\nE   ?  ^^       ^^\nE   + <p>list</p>\nE   ?  ^       ^\nE   + <p>continue</p>\nE   + </li>\nE     </ol>\nE   - <pre><code>continue\nE   - </code></pre>\nE     </dd>\nE     </dl>\nE     </div>\nE     </dd>\nE     </dl>\n=========================== short test summary info ============================\nFAILED ../../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpliwxww2l/original/python-markdown/tests/test_syntax/extensions/test_def_list.py::TestDefList::test_def_list_nested_admontions\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 522 passed, 91 skipped in 0.67s\nwarning: `VIRTUAL_ENV=/Users/yuan/stylebench/.venv` does not match the project environment path `.venv` and will be ignored; use `--active` to target the active environment instead\n",
+      "failing_tests": [
+        "../../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpliwxww2l/original/python-markdown/tests/test_syntax/extensions/test_def_list.py::TestDefList::test_def_list_nested_admontions"
+      ],
+      "exit_code": 1
+    },
+    {
+      "bug_id": "python-markdown-original-037",
+      "test_output": "........................................................................ [  8%]\n........................................................................ [ 16%]\n............................................ssssssssssssssssssssssssssss [ 24%]\nssssssssssssssssss..s...............F\n=================================== FAILURES ===================================\n_____________ TestExtensionsExtra.test_footnote_placeholder_depth ______________\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpliwxww2l/original/python-markdown/markdown/test_tools.py:166: in test\n    self.assertMultiLineEqual(output, expected)\nE   AssertionError: '<blo[20 chars]e>\\n<p>///Footnotes Go Here///</p>\\n<p>Some te[316 chars]div>' != '<blo[20 chars]e>\\n<div class=\"footnote\">\\n<hr />\\n<ol>\\n<li [284 chars]ote>'\nE     <blockquote>\nE     <blockquote>\nE   - <p>///Footnotes Go Here///</p>\nE   - <p>Some text with a footnote<sup id=\"fnref:1\"><a class=\"footnote-ref\" href=\"#fn:1\">1</a></sup>.</p>\nE   - </blockquote>\nE   - </blockquote>\nE     <div class=\"footnote\">\nE     <hr />\nE     <ol>\nE     <li id=\"fn:1\">\nE     <p>A Footnote.&#160;<a class=\"footnote-backref\" href=\"#fnref:1\" title=\"Jump back to footnote 1 in the text\">&#8617;</a></p>\nE     </li>\nE     </ol>\nE   - </div>+ </div>\nE   ?       +\nE   + <p>Some text with a footnote<sup id=\"fnref:1\"><a class=\"footnote-ref\" href=\"#fn:1\">1</a></sup>.</p>\nE   + </blockquote>\nE   + </blockquote>\n=========================== short test summary info ============================\nFAILED ../../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpliwxww2l/original/python-markdown/tests/test_legacy.py::TestExtensionsExtra::test_footnote_placeholder_depth\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 205 passed, 47 skipped in 0.51s\nwarning: `VIRTUAL_ENV=/Users/yuan/stylebench/.venv` does not match the project environment path `.venv` and will be ignored; use `--active` to target the active environment instead\n",
+      "failing_tests": [
+        "../../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpliwxww2l/original/python-markdown/tests/test_legacy.py::TestExtensionsExtra::test_footnote_placeholder_depth"
+      ],
+      "exit_code": 1
+    },
+    {
+      "bug_id": "python-markdown-original-038",
+      "test_output": "........................................................................ [  8%]\n........................................................................ [ 16%]\n............................................ssssssssssssssssssssssssssss [ 24%]\nssssssssssssssssss..s..............................ss................... [ 32%]\n........................................................................ [ 40%]\n........................................................................ [ 48%]\n........................................................................ [ 56%]\n.......................ss............................................sss [ 65%]\nsssssssssssssssssssssssssssssssssssss...........................ssssssss [ 73%]\nsssssssssss........................................................F\n=================================== FAILURES ===================================\n__________________ TestTableBlocks.test_single_column_tables ___________________\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpliwxww2l/original/python-markdown/tests/test_syntax/extensions/test_tables.py:714: in test_single_column_tables\n    self.assertMarkdownRenders(\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpliwxww2l/original/python-markdown/markdown/test_tools.py:77: in assertMarkdownRenders\n    self.assertMultiLineEqual(output, expected)\nE   AssertionError: '<p>S[251 chars]e>\\n<p>Is a Table |\\n---------- |</p>\\n<table>[616 chars]</p>' != '<p>S[251 chars]e>\\n<table>\\n<thead>\\n<tr>\\n<th>Is a Table</th[610 chars]</p>'\nE   Diff is 1297 characters long. Set self.maxDiff to None to see it.\n=========================== short test summary info ============================\nFAILED ../../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpliwxww2l/original/python-markdown/tests/test_syntax/extensions/test_tables.py::TestTableBlocks::test_single_column_tables\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 605 passed, 110 skipped in 0.83s\nwarning: `VIRTUAL_ENV=/Users/yuan/stylebench/.venv` does not match the project environment path `.venv` and will be ignored; use `--active` to target the active environment instead\n",
+      "failing_tests": [
+        "../../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpliwxww2l/original/python-markdown/tests/test_syntax/extensions/test_tables.py::TestTableBlocks::test_single_column_tables"
+      ],
+      "exit_code": 1
+    },
+    {
+      "bug_id": "python-markdown-original-039",
+      "test_output": "...................................F\n=================================== FAILURES ===================================\n_______________ TestErrors.testDotNotationExtensionWithBadClass ________________\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpliwxww2l/original/python-markdown/tests/test_apis.py:393: in testDotNotationExtensionWithBadClass\n    self.assertRaises(\nE   AssertionError: AttributeError not raised by Markdown\n=========================== short test summary info ============================\nFAILED ../../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpliwxww2l/original/python-markdown/tests/test_apis.py::TestErrors::testDotNotationExtensionWithBadClass\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 35 passed in 0.17s\nwarning: `VIRTUAL_ENV=/Users/yuan/stylebench/.venv` does not match the project environment path `.venv` and will be ignored; use `--active` to target the active environment instead\n",
+      "failing_tests": [
+        "../../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpliwxww2l/original/python-markdown/tests/test_apis.py::TestErrors::testDotNotationExtensionWithBadClass"
+      ],
+      "exit_code": 1
+    },
+    {
+      "bug_id": "python-markdown-original-040",
+      "test_output": "........................................................................ [  8%]\n........................................................................ [ 16%]\n............................................ssssssssssssssssssssssssssss [ 24%]\nssssssssssssssssss..s.................F\n=================================== FAILURES ===================================\n___________________ TestExtensionsExtra.test_markdown_syntax ___________________\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpliwxww2l/original/python-markdown/markdown/test_tools.py:166: in test\n    self.assertMultiLineEqual(output, expected)\nE   AssertionError: '<h1>[44 chars]u\">\\n<pre><code>&lt;li&gt;&lt;a href=\"/project[32366 chars]pre>' != '<h1>[44 chars]u\">\\n    <li><a href=\"/projects/markdown/\" tit[32282 chars]pre>'\nE   Diff is 34495 characters long. Set self.maxDiff to None to see it.\n=========================== short test summary info ============================\nFAILED ../../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpliwxww2l/original/python-markdown/tests/test_legacy.py::TestExtensionsExtra::test_markdown_syntax\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 207 passed, 47 skipped in 0.57s\nwarning: `VIRTUAL_ENV=/Users/yuan/stylebench/.venv` does not match the project environment path `.venv` and will be ignored; use `--active` to target the active environment instead\n",
+      "failing_tests": [
+        "../../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpliwxww2l/original/python-markdown/tests/test_legacy.py::TestExtensionsExtra::test_markdown_syntax"
+      ],
+      "exit_code": 1
     }
   ],
   "_hidden": [
@@ -362,6 +522,186 @@
       "original_text": "+",
       "mutated_text": "-",
       "context": "...ile                 e.args = (message,) + e.args[1:]                 raise      o..."
+    },
+    {
+      "bug_id": "python-markdown-original-021",
+      "file_path": "markdown/blockprocessors.py",
+      "line_number": 237,
+      "mutation_type": "lt_gt",
+      "original_text": ">",
+      "mutated_text": "<",
+      "context": "...ndent level.         while indent_level > level:             child = self.lastChi..."
+    },
+    {
+      "bug_id": "python-markdown-original-022",
+      "file_path": "markdown/extensions/tables.py",
+      "line_number": 68,
+      "mutation_type": "lt_gt",
+      "original_text": ">",
+      "mutated_text": "<",
+      "context": "...en(row)             is_table = row0_len > 1              # Each row in a single c..."
+    },
+    {
+      "bug_id": "python-markdown-original-023",
+      "file_path": "markdown/extensions/tables.py",
+      "line_number": 190,
+      "mutation_type": "lt_gt",
+      "original_text": "<",
+      "mutated_text": ">",
+      "context": "...tic_len = len(tics)         while pos < tic_len:             try:..."
+    },
+    {
+      "bug_id": "python-markdown-original-024",
+      "file_path": "markdown/inlinepatterns.py",
+      "line_number": 769,
+      "mutation_type": "lt_gt",
+      "original_text": ">",
+      "mutated_text": "<",
+      "context": "...elif backtrack_count > 0:                         backtrack_co..."
+    },
+    {
+      "bug_id": "python-markdown-original-025",
+      "file_path": "markdown/extensions/tables.py",
+      "line_number": 81,
+      "mutation_type": "le_ge",
+      "original_text": "<=",
+      "mutated_text": ">=",
+      "context": "...row) == row0_len) and set(''.join(row)) <= set('|:- ')                 if is_table..."
+    },
+    {
+      "bug_id": "python-markdown-original-026",
+      "file_path": "markdown/inlinepatterns.py",
+      "line_number": 801,
+      "mutation_type": "le_ge",
+      "original_text": ">=",
+      "mutated_text": "<=",
+      "context": "...losed                     if exit_quote >= 0 and quote == last:..."
+    },
+    {
+      "bug_id": "python-markdown-original-027",
+      "file_path": "markdown/inlinepatterns.py",
+      "line_number": 804,
+      "mutation_type": "le_ge",
+      "original_text": ">=",
+      "mutated_text": "<=",
+      "context": "...elif exit_alt_quote >= 0 and alt_quote == last:..."
+    },
+    {
+      "bug_id": "python-markdown-original-028",
+      "file_path": "markdown/extensions/def_list.py",
+      "line_number": 41,
+      "mutation_type": "minus_one",
+      "original_text": "0",
+      "mutated_text": "-1",
+      "context": "...| None:          raw_block = blocks.pop(0)         m = self.RE.search(raw_block)..."
+    },
+    {
+      "bug_id": "python-markdown-original-029",
+      "file_path": "markdown/extensions/def_list.py",
+      "line_number": 59,
+      "mutation_type": "minus_one",
+      "original_text": "0",
+      "mutated_text": "-1",
+      "context": "...ment or list.             blocks.insert(0, raw_block)             return False..."
+    },
+    {
+      "bug_id": "python-markdown-original-030",
+      "file_path": "markdown/extensions/footnotes.py",
+      "line_number": 140,
+      "mutation_type": "minus_one",
+      "original_text": "1",
+      "mutated_text": "0",
+      "context": "...self.found_refs[original_ref] += 1         else:             self.found_re..."
+    },
+    {
+      "bug_id": "python-markdown-original-031",
+      "file_path": "markdown/extensions/footnotes.py",
+      "line_number": 142,
+      "mutation_type": "minus_one",
+      "original_text": "1",
+      "mutated_text": "0",
+      "context": "...self.found_refs[original_ref] = 1         return reference      def findF..."
+    },
+    {
+      "bug_id": "python-markdown-original-032",
+      "file_path": "markdown/extensions/footnotes.py",
+      "line_number": 253,
+      "mutation_type": "minus_one",
+      "original_text": "2",
+      "mutated_text": "1",
+      "context": "...oup(1)             fn_blocks = [m.group(2)]              # Handle rest of block..."
+    },
+    {
+      "bug_id": "python-markdown-original-033",
+      "file_path": "markdown/blockprocessors.py",
+      "line_number": 227,
+      "mutation_type": "mul_div",
+      "original_text": "/",
+      "mutated_text": "*",
+      "context": "...indent_level = len(m.group(1))/self.tab_length         else:..."
+    },
+    {
+      "bug_id": "python-markdown-original-034",
+      "file_path": "markdown/extensions/admonition.py",
+      "line_number": 93,
+      "mutation_type": "is_is_not",
+      "original_text": "is not",
+      "mutated_text": "is",
+      "context": "...indent = 0             while last_child is not None:                 if (..."
+    },
+    {
+      "bug_id": "python-markdown-original-035",
+      "file_path": "markdown/extensions/admonition.py",
+      "line_number": 96,
+      "mutation_type": "is_is_not",
+      "original_text": "is not",
+      "mutated_text": "is",
+      "context": "...* 2) and                     last_child is not None and last_child.tag in ('ul', 'ol',..."
+    },
+    {
+      "bug_id": "python-markdown-original-036",
+      "file_path": "markdown/extensions/admonition.py",
+      "line_number": 102,
+      "mutation_type": "is_is_not",
+      "original_text": "is not",
+      "mutated_text": "is",
+      "context": "...ld = self.lastChild(sibling) if sibling is not None else None                      # C..."
+    },
+    {
+      "bug_id": "python-markdown-original-037",
+      "file_path": "markdown/extensions/footnotes.py",
+      "line_number": 158,
+      "mutation_type": "is_is_not",
+      "original_text": "is not",
+      "mutated_text": "is",
+      "context": "...der(child)                 if child_res is not None:                     return child_..."
+    },
+    {
+      "bug_id": "python-markdown-original-038",
+      "file_path": "markdown/extensions/tables.py",
+      "line_number": 75,
+      "mutation_type": "is_is_not",
+      "original_text": "is not",
+      "mutated_text": "is",
+      "context": "...self.RE_END_BORDER.search(rows[index]) is not None                     if not is_tabl..."
+    },
+    {
+      "bug_id": "python-markdown-original-039",
+      "file_path": "markdown/core.py",
+      "line_number": 216,
+      "mutation_type": "eq_ne",
+      "original_text": "==",
+      "mutated_text": "!=",
+      "context": "...l.get_installed_extensions() if ep.name == ext_name]         if entry_points:..."
+    },
+    {
+      "bug_id": "python-markdown-original-040",
+      "file_path": "markdown/extensions/md_in_html.py",
+      "line_number": 84,
+      "mutation_type": "eq_ne",
+      "original_text": "==",
+      "mutated_text": "!=",
+      "context": "...get('markdown', '0')         if md_attr == 'markdown':             # `<tag markdow..."
     }
   ]
 }

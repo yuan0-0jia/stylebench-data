@@ -176,6 +176,166 @@
         "../../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpa4ozja4l/nodocs_full/more-itertools/tests/test_more.py::PeekableTests::test_multi_prepend_peek"
       ],
       "exit_code": 1
+    },
+    {
+      "bug_id": "more-itertools-nodocs_full-021",
+      "test_output": ".................................................................................. [ 11%]\n......................................................... [ 19%]\n........................................................................ [ 30%]\n.................................................. [ 37%]\n..................................................................... [ 47%]\n..................................... [ 52%]\n.................................F\n=================================== FAILURES ===================================\n________________ NthCombinationWithReplacementTests.test_basic _________________\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpjee4gx9q/nodocs_full/more-itertools/tests/test_more.py:4880: in test_basic\n    actual = mi.nth_combination_with_replacement(iterable, r, index)\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpjee4gx9q/nodocs_full/more-itertools/more_itertools/more.py:1913: in nth_combination_with_replacement\n    result.append(pool[i])\n                  ^^^^^^^\nE   IndexError: tuple index out of range\n=========================== short test summary info ============================\nFAILED ../../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpjee4gx9q/nodocs_full/more-itertools/tests/test_more.py::NthCombinationWithReplacementTests::test_basic\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 400 passed, 2117 subtests passed in 1.11s\nwarning: `VIRTUAL_ENV=/Users/yuan/stylebench/.venv` does not match the project environment path `.venv` and will be ignored; use `--active` to target the active environment instead\n",
+      "failing_tests": [
+        "../../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpjee4gx9q/nodocs_full/more-itertools/tests/test_more.py::NthCombinationWithReplacementTests::test_basic"
+      ],
+      "exit_code": 1
+    },
+    {
+      "bug_id": "more-itertools-nodocs_full-022",
+      "test_output": ".................................................................................. [ 11%]\n......................................................... [ 19%]\n........................................................................ [ 30%]\n.................................................. [ 37%]\n..................................................................... [ 47%]\n..................................... [ 52%]\n.................................... [ 57%]\n..........................................F\n=================================== FAILURES ===================================\n___________________________ ChunkedEvenTests.test_4 ____________________________\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpjee4gx9q/nodocs_full/more-itertools/tests/test_more.py:5185: in test_4\n    self._test_finite('ABCD', 3, [['A', 'B'], ['C', 'D']])\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpjee4gx9q/nodocs_full/more-itertools/tests/test_more.py:5200: in _test_finite\n    self.assertEqual(list(mi.chunked_even(seq, n)), expected)\nE   AssertionError: Lists differ: [['A', 'B', 'C', 'D']] != [['A', 'B'], ['C', 'D']]\nE   \nE   First differing element 0:\nE   ['A', 'B', 'C', 'D']\nE   ['A', 'B']\nE   \nE   Second list contains 1 additional elements.\nE   First extra element 1:\nE   ['C', 'D']\nE   \nE   - [['A', 'B', 'C', 'D']]\nE   + [['A', 'B'], ['C', 'D']]\nE   ?           +  +\n=========================== short test summary info ============================\nFAILED ../../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpjee4gx9q/nodocs_full/more-itertools/tests/test_more.py::ChunkedEvenTests::test_4\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 445 passed, 2117 subtests passed in 1.17s\nwarning: `VIRTUAL_ENV=/Users/yuan/stylebench/.venv` does not match the project environment path `.venv` and will be ignored; use `--active` to target the active environment instead\n",
+      "failing_tests": [
+        "../../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpjee4gx9q/nodocs_full/more-itertools/tests/test_more.py::ChunkedEvenTests::test_4"
+      ],
+      "exit_code": 1
+    },
+    {
+      "bug_id": "more-itertools-nodocs_full-023",
+      "test_output": ".................................................................................. [ 11%]\n......................................................... [ 19%]\n........................................................................ [ 30%]\n.................................................. [ 37%]\n..................................................................... [ 47%]\n..................................... [ 52%]\n.................................... [ 57%]\n...........................................F\n=================================== FAILURES ===================================\n___________________________ ChunkedEvenTests.test_5 ____________________________\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpjee4gx9q/nodocs_full/more-itertools/tests/test_more.py:5188: in test_5\n    self._test_finite('ABCDE', 3, [['A', 'B', 'C'], ['D', 'E']])\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpjee4gx9q/nodocs_full/more-itertools/tests/test_more.py:5200: in _test_finite\n    self.assertEqual(list(mi.chunked_even(seq, n)), expected)\nE   AssertionError: Lists differ: [['A', 'B'], ['C', 'D'], ['E']] != [['A', 'B', 'C'], ['D', 'E']]\nE   \nE   First differing element 0:\nE   ['A', 'B']\nE   ['A', 'B', 'C']\nE   \nE   First list contains 1 additional elements.\nE   First extra element 2:\nE   ['E']\nE   \nE   - [['A', 'B'], ['C', 'D'], ['E']]\nE   ?           -  -        -  -\nE   \nE   + [['A', 'B', 'C'], ['D', 'E']]\nE   ?                +  +\n=========================== short test summary info ============================\nFAILED ../../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpjee4gx9q/nodocs_full/more-itertools/tests/test_more.py::ChunkedEvenTests::test_5\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 446 passed, 2117 subtests passed in 1.13s\nwarning: `VIRTUAL_ENV=/Users/yuan/stylebench/.venv` does not match the project environment path `.venv` and will be ignored; use `--active` to target the active environment instead\n",
+      "failing_tests": [
+        "../../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpjee4gx9q/nodocs_full/more-itertools/tests/test_more.py::ChunkedEvenTests::test_5"
+      ],
+      "exit_code": 1
+    },
+    {
+      "bug_id": "more-itertools-nodocs_full-024",
+      "test_output": ".................................................................................. [ 11%]\n......................................................... [ 19%]\n........................................................................ [ 30%]\n.................................................. [ 37%]\n..................................................................... [ 47%]\n..................................... [ 52%]\n.................................... [ 57%]\n.........................................F\n=================================== FAILURES ===================================\n___________________________ ChunkedEvenTests.test_1 ____________________________\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpjee4gx9q/nodocs_full/more-itertools/tests/test_more.py:5182: in test_1\n    self._test_finite('A', 1, [['A']])\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpjee4gx9q/nodocs_full/more-itertools/tests/test_more.py:5200: in _test_finite\n    self.assertEqual(list(mi.chunked_even(seq, n)), expected)\nE   AssertionError: Lists differ: [] != [['A']]\nE   \nE   Second list contains 1 additional elements.\nE   First extra element 0:\nE   ['A']\nE   \nE   - []\nE   + [['A']]\n=========================== short test summary info ============================\nFAILED ../../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpjee4gx9q/nodocs_full/more-itertools/tests/test_more.py::ChunkedEvenTests::test_1\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 444 passed, 2117 subtests passed in 1.15s\nwarning: `VIRTUAL_ENV=/Users/yuan/stylebench/.venv` does not match the project environment path `.venv` and will be ignored; use `--active` to target the active environment instead\n",
+      "failing_tests": [
+        "../../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpjee4gx9q/nodocs_full/more-itertools/tests/test_more.py::ChunkedEvenTests::test_1"
+      ],
+      "exit_code": 1
+    },
+    {
+      "bug_id": "more-itertools-nodocs_full-025",
+      "test_output": ".................................................................................. [ 11%]\n......................................................... [ 19%]\n........................................................................ [ 30%]\n.................................................. [ 37%]\n..................................................................... [ 47%]\n..................................... [ 52%]\n.................................... [ 57%]\n...........................................F\n=================================== FAILURES ===================================\n___________________________ ChunkedEvenTests.test_5 ____________________________\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpjee4gx9q/nodocs_full/more-itertools/tests/test_more.py:5188: in test_5\n    self._test_finite('ABCDE', 3, [['A', 'B', 'C'], ['D', 'E']])\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpjee4gx9q/nodocs_full/more-itertools/tests/test_more.py:5200: in _test_finite\n    self.assertEqual(list(mi.chunked_even(seq, n)), expected)\nE   AssertionError: Lists differ: [['A', 'B', 'C']] != [['A', 'B', 'C'], ['D', 'E']]\nE   \nE   Second list contains 1 additional elements.\nE   First extra element 1:\nE   ['D', 'E']\nE   \nE   - [['A', 'B', 'C']]\nE   + [['A', 'B', 'C'], ['D', 'E']]\n=========================== short test summary info ============================\nFAILED ../../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpjee4gx9q/nodocs_full/more-itertools/tests/test_more.py::ChunkedEvenTests::test_5\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 446 passed, 2117 subtests passed in 1.17s\nwarning: `VIRTUAL_ENV=/Users/yuan/stylebench/.venv` does not match the project environment path `.venv` and will be ignored; use `--active` to target the active environment instead\n",
+      "failing_tests": [
+        "../../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpjee4gx9q/nodocs_full/more-itertools/tests/test_more.py::ChunkedEvenTests::test_5"
+      ],
+      "exit_code": 1
+    },
+    {
+      "bug_id": "more-itertools-nodocs_full-026",
+      "test_output": ".............................F\n=================================== FAILURES ===================================\n______________________ PeekableTests.test_prepend_slicing ______________________\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpjee4gx9q/nodocs_full/more-itertools/tests/test_more.py:420: in test_prepend_slicing\n    self.assertEqual(p[1:8], pseq[1:8])\nE   AssertionError: Lists differ: [40, 50] != [40, 50, 0, 1, 2, 3, 4]\nE   \nE   Second list contains 5 additional elements.\nE   First extra element 2:\nE   0\nE   \nE   - [40, 50]\nE   + [40, 50, 0, 1, 2, 3, 4]\n=========================== short test summary info ============================\nFAILED ../../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpjee4gx9q/nodocs_full/more-itertools/tests/test_more.py::PeekableTests::test_prepend_slicing\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 29 passed, 13 subtests passed in 0.24s\nwarning: `VIRTUAL_ENV=/Users/yuan/stylebench/.venv` does not match the project environment path `.venv` and will be ignored; use `--active` to target the active environment instead\n",
+      "failing_tests": [
+        "../../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpjee4gx9q/nodocs_full/more-itertools/tests/test_more.py::PeekableTests::test_prepend_slicing"
+      ],
+      "exit_code": 1
+    },
+    {
+      "bug_id": "more-itertools-nodocs_full-027",
+      "test_output": "..................F\n=================================== FAILURES ===================================\n_________________________ PeekableTests.test_indexing __________________________\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpjee4gx9q/nodocs_full/more-itertools/tests/test_more.py:264: in test_indexing\n    self.assertEqual(p[2], 'd')\n                     ^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpjee4gx9q/nodocs_full/more-itertools/more_itertools/more.py:311: in __getitem__\n    return self._cache[index]\n           ^^^^^^^^^^^^^^^^^^\nE   IndexError: deque index out of range\n=========================== short test summary info ============================\nFAILED ../../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpjee4gx9q/nodocs_full/more-itertools/tests/test_more.py::PeekableTests::test_indexing\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 18 passed, 13 subtests passed in 0.25s\nwarning: `VIRTUAL_ENV=/Users/yuan/stylebench/.venv` does not match the project environment path `.venv` and will be ignored; use `--active` to target the active environment instead\n",
+      "failing_tests": [
+        "../../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpjee4gx9q/nodocs_full/more-itertools/tests/test_more.py::PeekableTests::test_indexing"
+      ],
+      "exit_code": 1
+    },
+    {
+      "bug_id": "more-itertools-nodocs_full-028",
+      "test_output": ".................................................................................. [ 11%]\n......................................................... [ 19%]\n........................................................................ [ 30%]\n.................................................. [ 37%]\n..................................................................... [ 47%]\n..................................... [ 52%]\n....F\n=================================== FAILURES ===================================\n___________ SampleTests.test_invariance_under_permutations_weighted ____________\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpjee4gx9q/nodocs_full/more-itertools/tests/test_more.py:4576: in test_invariance_under_permutations_weighted\n    self.assertTrue(difference_in_means < 4.4)\nE   AssertionError: False is not true\n=========================== short test summary info ============================\nFAILED ../../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpjee4gx9q/nodocs_full/more-itertools/tests/test_more.py::SampleTests::test_invariance_under_permutations_weighted\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 371 passed, 2081 subtests passed in 0.76s\nwarning: `VIRTUAL_ENV=/Users/yuan/stylebench/.venv` does not match the project environment path `.venv` and will be ignored; use `--active` to target the active environment instead\n",
+      "failing_tests": [
+        "../../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpjee4gx9q/nodocs_full/more-itertools/tests/test_more.py::SampleTests::test_invariance_under_permutations_weighted"
+      ],
+      "exit_code": 1
+    },
+    {
+      "bug_id": "more-itertools-nodocs_full-029",
+      "test_output": "..................F\n=================================== FAILURES ===================================\n_________________________ PeekableTests.test_indexing __________________________\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpjee4gx9q/nodocs_full/more-itertools/tests/test_more.py:260: in test_indexing\n    self.assertEqual(p[0], 'a')\n                     ^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpjee4gx9q/nodocs_full/more-itertools/more_itertools/more.py:311: in __getitem__\n    return self._cache[index]\n           ^^^^^^^^^^^^^^^^^^\nE   IndexError: deque index out of range\n=========================== short test summary info ============================\nFAILED ../../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpjee4gx9q/nodocs_full/more-itertools/tests/test_more.py::PeekableTests::test_indexing\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 18 passed, 13 subtests passed in 0.24s\nwarning: `VIRTUAL_ENV=/Users/yuan/stylebench/.venv` does not match the project environment path `.venv` and will be ignored; use `--active` to target the active environment instead\n",
+      "failing_tests": [
+        "../../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpjee4gx9q/nodocs_full/more-itertools/tests/test_more.py::PeekableTests::test_indexing"
+      ],
+      "exit_code": 1
+    },
+    {
+      "bug_id": "more-itertools-nodocs_full-030",
+      "test_output": "..........................................................................F\n=================================== FAILURES ===================================\n__________________________ SubstringsTests.test_basic __________________________\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpjee4gx9q/nodocs_full/more-itertools/tests/test_more.py:883: in test_basic\n    self.assertEqual(actual, expected)\nE   AssertionError: Lists differ: [(), (), (), (), (0,), (1,), (2,), (3,), (0[52 chars], 3)] != [(0,), (1,), (2,), (3,), (0, 1), (1, 2), (2[36 chars], 3)]\nE   \nE   First differing element 0:\nE   ()\nE   (0,)\nE   \nE   First list contains 4 additional elements.\nE   First extra element 10:\nE   (2, 3)\nE   \nE   - [(),\nE   -  (),\nE   -  (),\nE   -  (),\nE   -  (0,),\nE   ? ^\nE   \nE   + [(0,),\nE   ? ^\nE   \nE      (1,),\nE      (2,),\nE      (3,),\nE      (0, 1),\nE      (1, 2),\nE      (2, 3),\nE      (0, 1, 2),\nE      (1, 2, 3),\nE      (0, 1, 2, 3)]\n=========================== short test summary info ============================\nFAILED ../../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpjee4gx9q/nodocs_full/more-itertools/tests/test_more.py::SubstringsTests::test_basic\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 74 passed, 62 subtests passed in 0.34s\nwarning: `VIRTUAL_ENV=/Users/yuan/stylebench/.venv` does not match the project environment path `.venv` and will be ignored; use `--active` to target the active environment instead\n",
+      "failing_tests": [
+        "../../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpjee4gx9q/nodocs_full/more-itertools/tests/test_more.py::SubstringsTests::test_basic"
+      ],
+      "exit_code": 1
+    },
+    {
+      "bug_id": "more-itertools-nodocs_full-031",
+      "test_output": "..........................................................................F\n=================================== FAILURES ===================================\n__________________________ SubstringsTests.test_basic __________________________\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpjee4gx9q/nodocs_full/more-itertools/tests/test_more.py:883: in test_basic\n    self.assertEqual(actual, expected)\nE   AssertionError: Lists differ: [(0,)[16 chars],), (0, 1), (1, 2), (2, 3), (0, 1, 2), (1, 2, 3)] != [(0,)[16 chars],), (0, 1), (1, 2), (2, 3), (0, 1, 2), (1, 2, 3), (0, 1, 2, 3)]\nE   \nE   Second list contains 1 additional elements.\nE   First extra element 9:\nE   (0, 1, 2, 3)\nE   \nE   - [(0,), (1,), (2,), (3,), (0, 1), (1, 2), (2, 3), (0, 1, 2), (1, 2, 3)]\nE   + [(0,),\nE   +  (1,),\nE   +  (2,),\nE   +  (3,),\nE   +  (0, 1),\nE   +  (1, 2),\nE   +  (2, 3),\nE   +  (0, 1, 2),\nE   +  (1, 2, 3),\nE   +  (0, 1, 2, 3)]\n=========================== short test summary info ============================\nFAILED ../../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpjee4gx9q/nodocs_full/more-itertools/tests/test_more.py::SubstringsTests::test_basic\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 74 passed, 62 subtests passed in 0.37s\nwarning: `VIRTUAL_ENV=/Users/yuan/stylebench/.venv` does not match the project environment path `.venv` and will be ignored; use `--active` to target the active environment instead\n",
+      "failing_tests": [
+        "../../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpjee4gx9q/nodocs_full/more-itertools/tests/test_more.py::SubstringsTests::test_basic"
+      ],
+      "exit_code": 1
+    },
+    {
+      "bug_id": "more-itertools-nodocs_full-032",
+      "test_output": "..........................................................................F\n=================================== FAILURES ===================================\n__________________________ SubstringsTests.test_basic __________________________\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpjee4gx9q/nodocs_full/more-itertools/tests/test_more.py:883: in test_basic\n    self.assertEqual(actual, expected)\nE   AssertionError: Lists differ: [(0,), (1,), (2,), (0, 1), (1, 2), (0, 1, 2)] != [(0,), (1,), (2,), (3,), (0, 1), (1, 2), (2, 3), (0, 1, 2), ([18 chars], 3)]\nE   \nE   First differing element 3:\nE   (0, 1)\nE   (3,)\nE   \nE   Second list contains 4 additional elements.\nE   First extra element 6:\nE   (2, 3)\nE   \nE   - [(0,), (1,), (2,), (0, 1), (1, 2), (0, 1, 2)]\nE   + [(0,),\nE   +  (1,),\nE   +  (2,),\nE   +  (3,),\nE   +  (0, 1),\nE   +  (1, 2),\nE   +  (2, 3),\nE   +  (0, 1, 2),\nE   +  (1, 2, 3),\nE   +  (0, 1, 2, 3)]\n=========================== short test summary info ============================\nFAILED ../../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpjee4gx9q/nodocs_full/more-itertools/tests/test_more.py::SubstringsTests::test_basic\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 74 passed, 62 subtests passed in 0.34s\nwarning: `VIRTUAL_ENV=/Users/yuan/stylebench/.venv` does not match the project environment path `.venv` and will be ignored; use `--active` to target the active environment instead\n",
+      "failing_tests": [
+        "../../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpjee4gx9q/nodocs_full/more-itertools/tests/test_more.py::SubstringsTests::test_basic"
+      ],
+      "exit_code": 1
+    },
+    {
+      "bug_id": "more-itertools-nodocs_full-033",
+      "test_output": ".................................................................................. [ 11%]\n...................F\n=================================== FAILURES ===================================\n__________________ InterleaveEvenlyTests.test_degenerate_one ___________________\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpjee4gx9q/nodocs_full/more-itertools/more_itertools/more.py:630: in interleave_evenly\n    yield next(iters_secondary[i])\n          ^^^^^^^^^^^^^^^^^^^^^^^^\nE   StopIteration\n\nThe above exception was the direct cause of the following exception:\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpjee4gx9q/nodocs_full/more-itertools/tests/test_more.py:1145: in test_degenerate_one\n    actual = list(mi.interleave_evenly([a, b]))\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nE   RuntimeError: generator raised StopIteration\n=========================== short test summary info ============================\nFAILED ../../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpjee4gx9q/nodocs_full/more-itertools/tests/test_more.py::InterleaveEvenlyTests::test_degenerate_one\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 101 passed, 62 subtests passed in 0.39s\nwarning: `VIRTUAL_ENV=/Users/yuan/stylebench/.venv` does not match the project environment path `.venv` and will be ignored; use `--active` to target the active environment instead\n",
+      "failing_tests": [
+        "../../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpjee4gx9q/nodocs_full/more-itertools/tests/test_more.py::InterleaveEvenlyTests::test_degenerate_one"
+      ],
+      "exit_code": 1
+    },
+    {
+      "bug_id": "more-itertools-nodocs_full-034",
+      "test_output": ".................................................................................. [ 11%]\n......................................................... [ 19%]\n........................................................................ [ 30%]\n.................................................. [ 37%]\n..................................................................... [ 47%]\n..................................... [ 52%]\n.................................... [ 57%]\n.............................................................................................. [ 70%]\n.............................................F\n=================================== FAILURES ===================================\n___________________ DiscreteFourierTransformTests.test_basic ___________________\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpjee4gx9q/nodocs_full/more-itertools/tests/test_more.py:6294: in test_basic\n    self.assertTrue(all(map(cmath.isclose, mi.dft(xarr), Xarr)))\n                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpjee4gx9q/nodocs_full/more-itertools/more_itertools/more.py:2323: in dft\n    yield _complex_sumprod(xarr, coeffs)\n          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpjee4gx9q/nodocs_full/more-itertools/more_itertools/more.py:2316: in _complex_sumprod\n    return complex(_fsumprod(r1, r2), _fsumprod(i1, i2))\n                   ^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpjee4gx9q/nodocs_full/more-itertools/more_itertools/more.py:199: in _fsumprod\n    return fsum(chain.from_iterable(map(dl_mul, p, q)))\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpjee4gx9q/nodocs_full/more-itertools/more_itertools/more.py:195: in dl_mul\n    zz = p - z + q + xx_lo / yy_lo\n                     ^^^^^^^^^^^^^\nE   ZeroDivisionError: float division by zero\n=========================== short test summary info ============================\nFAILED ../../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpjee4gx9q/nodocs_full/more-itertools/tests/test_more.py::DiscreteFourierTransformTests::test_basic\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 542 passed, 2245 subtests passed in 1.26s\nwarning: `VIRTUAL_ENV=/Users/yuan/stylebench/.venv` does not match the project environment path `.venv` and will be ignored; use `--active` to target the active environment instead\n",
+      "failing_tests": [
+        "../../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpjee4gx9q/nodocs_full/more-itertools/tests/test_more.py::DiscreteFourierTransformTests::test_basic"
+      ],
+      "exit_code": 1
+    },
+    {
+      "bug_id": "more-itertools-nodocs_full-035",
+      "test_output": ".................................................................................. [ 11%]\n..................F\n=================================== FAILURES ===================================\n_________________ InterleaveEvenlyTests.test_degenerate_empty __________________\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpjee4gx9q/nodocs_full/more-itertools/tests/test_more.py:1152: in test_degenerate_empty\n    actual = list(mi.interleave_evenly([a, b]))\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpjee4gx9q/nodocs_full/more-itertools/more_itertools/more.py:620: in interleave_evenly\n    errors = [delta_primary // dims] / len(deltas_secondary)\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nE   TypeError: unsupported operand type(s) for /: 'list' and 'int'\n=========================== short test summary info ============================\nFAILED ../../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpjee4gx9q/nodocs_full/more-itertools/tests/test_more.py::InterleaveEvenlyTests::test_degenerate_empty\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 100 passed, 62 subtests passed in 0.41s\nwarning: `VIRTUAL_ENV=/Users/yuan/stylebench/.venv` does not match the project environment path `.venv` and will be ignored; use `--active` to target the active environment instead\n",
+      "failing_tests": [
+        "../../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpjee4gx9q/nodocs_full/more-itertools/tests/test_more.py::InterleaveEvenlyTests::test_degenerate_empty"
+      ],
+      "exit_code": 1
+    },
+    {
+      "bug_id": "more-itertools-nodocs_full-036",
+      "test_output": ".................................................................................. [ 11%]\n......................................................... [ 19%]\n........................................................................ [ 30%]\nF\n=================================== FAILURES ===================================\n_________________________ AdjacentTests.test_call_once _________________________\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpjee4gx9q/nodocs_full/more-itertools/tests/test_more.py:2481: in test_call_once\n    actual = list(mi.adjacent(predicate, iterable))\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpjee4gx9q/nodocs_full/more-itertools/more_itertools/more.py:503: in windowed\n    window = deque(islice(iterator, n), maxlen=n)\n                   ^^^^^^^^^^^^^^^^^^^\nE   ValueError: Stop argument for islice() must be None or an integer: 0 <= x <= sys.maxsize.\n=========================== short test summary info ============================\nFAILED ../../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpjee4gx9q/nodocs_full/more-itertools/tests/test_more.py::AdjacentTests::test_call_once\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 211 passed, 77 subtests passed in 0.42s\nwarning: `VIRTUAL_ENV=/Users/yuan/stylebench/.venv` does not match the project environment path `.venv` and will be ignored; use `--active` to target the active environment instead\n",
+      "failing_tests": [
+        "../../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpjee4gx9q/nodocs_full/more-itertools/tests/test_more.py::AdjacentTests::test_call_once"
+      ],
+      "exit_code": 1
+    },
+    {
+      "bug_id": "more-itertools-nodocs_full-037",
+      "test_output": ".................................................................................. [ 11%]\n......................................................... [ 19%]\n........................................................................ [ 30%]\n.................................................. [ 37%]\n..................................................................... [ 47%]\n..................................... [ 52%]\n....F\n=================================== FAILURES ===================================\n___________ SampleTests.test_invariance_under_permutations_weighted ____________\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpjee4gx9q/nodocs_full/more-itertools/tests/test_more.py:4576: in test_invariance_under_permutations_weighted\n    self.assertTrue(difference_in_means < 4.4)\nE   AssertionError: False is not true\n=========================== short test summary info ============================\nFAILED ../../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpjee4gx9q/nodocs_full/more-itertools/tests/test_more.py::SampleTests::test_invariance_under_permutations_weighted\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 371 passed, 2081 subtests passed in 0.81s\nwarning: `VIRTUAL_ENV=/Users/yuan/stylebench/.venv` does not match the project environment path `.venv` and will be ignored; use `--active` to target the active environment instead\n",
+      "failing_tests": [
+        "../../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpjee4gx9q/nodocs_full/more-itertools/tests/test_more.py::SampleTests::test_invariance_under_permutations_weighted"
+      ],
+      "exit_code": 1
+    },
+    {
+      "bug_id": "more-itertools-nodocs_full-038",
+      "test_output": ".................................................................................. [ 11%]\n......................................................... [ 19%]\n........................................................................ [ 30%]\n.................................................. [ 37%]\n..................................................................... [ 47%]\n..................................... [ 52%]\n........F\n=================================== FAILURES ===================================\n_________________ SampleTests.test_scale_invariance_of_weights _________________\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpjee4gx9q/nodocs_full/more-itertools/tests/test_more.py:4535: in test_scale_invariance_of_weights\n    self.assertEqual(first_sample, second_sample)\nE   AssertionError: Lists differ: ['f', 'e'] != ['b', 'a']\nE   \nE   First differing element 0:\nE   'f'\nE   'b'\nE   \nE   - ['f', 'e']\nE   ?   ^    ^\nE   \nE   + ['b', 'a']\nE   ?   ^    ^\n=========================== short test summary info ============================\nFAILED ../../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpjee4gx9q/nodocs_full/more-itertools/tests/test_more.py::SampleTests::test_scale_invariance_of_weights\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 375 passed, 2081 subtests passed in 0.75s\nwarning: `VIRTUAL_ENV=/Users/yuan/stylebench/.venv` does not match the project environment path `.venv` and will be ignored; use `--active` to target the active environment instead\n",
+      "failing_tests": [
+        "../../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpjee4gx9q/nodocs_full/more-itertools/tests/test_more.py::SampleTests::test_scale_invariance_of_weights"
+      ],
+      "exit_code": 1
+    },
+    {
+      "bug_id": "more-itertools-nodocs_full-039",
+      "test_output": ".................................................................................. [ 11%]\n................................F\n=================================== FAILURES ===================================\n__________________________ TestCollapse.test_collapse __________________________\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpjee4gx9q/nodocs_full/more-itertools/tests/test_more.py:1258: in test_collapse\n    self.assertEqual(list(mi.collapse(l)), [1, 2, 3, 4, 5])\n                     ^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpjee4gx9q/nodocs_full/more-itertools/more_itertools/more.py:658: in collapse\n    (base_type is None) and isinstance(node, base_type)\n                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^\nE   TypeError: isinstance() arg 2 must be a type, a tuple of types, or a union\n=========================== short test summary info ============================\nFAILED ../../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpjee4gx9q/nodocs_full/more-itertools/tests/test_more.py::TestCollapse::test_collapse\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 114 passed, 62 subtests passed in 0.39s\nwarning: `VIRTUAL_ENV=/Users/yuan/stylebench/.venv` does not match the project environment path `.venv` and will be ignored; use `--active` to target the active environment instead\n",
+      "failing_tests": [
+        "../../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpjee4gx9q/nodocs_full/more-itertools/tests/test_more.py::TestCollapse::test_collapse"
+      ],
+      "exit_code": 1
+    },
+    {
+      "bug_id": "more-itertools-nodocs_full-040",
+      "test_output": ".................................................................................. [ 11%]\n......................................................... [ 19%]\n........................................................................ [ 30%]\n.................................................. [ 37%]\n..................................................................... [ 47%]\n..................................... [ 52%]\n.................................... [ 57%]\n.......................................................................F\n=================================== FAILURES ===================================\n________________________ ClassifyUniqueTests.test_basic ________________________\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpjee4gx9q/nodocs_full/more-itertools/tests/test_more.py:5569: in test_basic\n    list(mi.classify_unique('mississippi')),\n    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpjee4gx9q/nodocs_full/more-itertools/more_itertools/more.py:2149: in classify_unique\n    k = key(element) if use_key else element\n        ^^^^^^^^^^^^\nE   TypeError: 'NoneType' object is not callable\n=========================== short test summary info ============================\nFAILED ../../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpjee4gx9q/nodocs_full/more-itertools/tests/test_more.py::ClassifyUniqueTests::test_basic\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!\n1 failed, 474 passed, 2239 subtests passed in 1.13s\nwarning: `VIRTUAL_ENV=/Users/yuan/stylebench/.venv` does not match the project environment path `.venv` and will be ignored; use `--active` to target the active environment instead\n",
+      "failing_tests": [
+        "../../../../../../../../../var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/tmpjee4gx9q/nodocs_full/more-itertools/tests/test_more.py::ClassifyUniqueTests::test_basic"
+      ],
+      "exit_code": 1
     }
   ],
   "_hidden": [
@@ -358,6 +518,186 @@
       "original_text": "0",
       "mutated_text": "1",
       "context": "...turn default         return self._cache[0]      def prepend(self, *items):..."
+    },
+    {
+      "bug_id": "more-itertools-nodocs_full-021",
+      "file_path": "more_itertools/more.py",
+      "line_number": 1908,
+      "mutation_type": "lt_gt",
+      "original_text": "<",
+      "mutated_text": ">",
+      "context": "...comb(n + r - 1, r)             if index < num_combs:                 break..."
+    },
+    {
+      "bug_id": "more-itertools-nodocs_full-022",
+      "file_path": "more_itertools/more.py",
+      "line_number": 2050,
+      "mutation_type": "lt_gt",
+      "original_text": ">",
+      "mutated_text": "<",
+      "context": "...(length, n)     num_lists = q + (1 if r > 0 else 0)     q, r = divmod(length, num..."
+    },
+    {
+      "bug_id": "more-itertools-nodocs_full-023",
+      "file_path": "more_itertools/more.py",
+      "line_number": 2052,
+      "mutation_type": "lt_gt",
+      "original_text": ">",
+      "mutated_text": "<",
+      "context": "...num_lists)     full_size = q + (1 if r > 0 else 0)     partial_size = full_size..."
+    },
+    {
+      "bug_id": "more-itertools-nodocs_full-024",
+      "file_path": "more_itertools/more.py",
+      "line_number": 2057,
+      "mutation_type": "lt_gt",
+      "original_text": ">",
+      "mutated_text": "<",
+      "context": "...= num_full * full_size     if full_size > 0:         for i in range(0, partial_st..."
+    },
+    {
+      "bug_id": "more-itertools-nodocs_full-025",
+      "file_path": "more_itertools/more.py",
+      "line_number": 2061,
+      "mutation_type": "lt_gt",
+      "original_text": ">",
+      "mutated_text": "<",
+      "context": "...i : i + full_size]      if partial_size > 0:         for i in range(partial_start..."
+    },
+    {
+      "bug_id": "more-itertools-nodocs_full-026",
+      "file_path": "more_itertools/more.py",
+      "line_number": 296,
+      "mutation_type": "le_ge",
+      "original_text": ">=",
+      "mutated_text": "<=",
+      "context": "...len = len(self._cache)             if n >= cache_len:                 self._cache...."
+    },
+    {
+      "bug_id": "more-itertools-nodocs_full-027",
+      "file_path": "more_itertools/more.py",
+      "line_number": 308,
+      "mutation_type": "le_ge",
+      "original_text": ">=",
+      "mutated_text": "<=",
+      "context": "...che.extend(self._it)         elif index >= cache_len:             self._cache.exte..."
+    },
+    {
+      "bug_id": "more-itertools-nodocs_full-028",
+      "file_path": "more_itertools/more.py",
+      "line_number": 1656,
+      "mutation_type": "le_ge",
+      "original_text": ">=",
+      "mutated_text": "<=",
+      "context": "...p(weights, iterator):         if weight >= weights_to_skip:             smallest_w..."
+    },
+    {
+      "bug_id": "more-itertools-nodocs_full-029",
+      "file_path": "more_itertools/more.py",
+      "line_number": 309,
+      "mutation_type": "minus_one",
+      "original_text": "1",
+      "mutated_text": "0",
+      "context": "...._cache.extend(islice(self._it, index + 1 - cache_len))          return self._cac..."
+    },
+    {
+      "bug_id": "more-itertools-nodocs_full-030",
+      "file_path": "more_itertools/more.py",
+      "line_number": 521,
+      "mutation_type": "minus_one",
+      "original_text": "1",
+      "mutated_text": "0",
+      "context": "...tem_count = len(seq)     for n in range(1, item_count + 1):         slices = map(..."
+    },
+    {
+      "bug_id": "more-itertools-nodocs_full-031",
+      "file_path": "more_itertools/more.py",
+      "line_number": 521,
+      "mutation_type": "minus_one",
+      "original_text": "1",
+      "mutated_text": "0",
+      "context": "...seq)     for n in range(1, item_count + 1):         slices = map(slice, range(ite..."
+    },
+    {
+      "bug_id": "more-itertools-nodocs_full-032",
+      "file_path": "more_itertools/more.py",
+      "line_number": 522,
+      "mutation_type": "minus_one",
+      "original_text": "1",
+      "mutated_text": "0",
+      "context": "...ange(item_count), range(n, item_count + 1))         yield from map(getitem, repea..."
+    },
+    {
+      "bug_id": "more-itertools-nodocs_full-033",
+      "file_path": "more_itertools/more.py",
+      "line_number": 618,
+      "mutation_type": "minus_one",
+      "original_text": "0",
+      "mutated_text": "-1",
+      "context": "...rimary, deltas_secondary = lengths_desc[0], lengths_desc[1:]     iter_primary, it..."
+    },
+    {
+      "bug_id": "more-itertools-nodocs_full-034",
+      "file_path": "more_itertools/more.py",
+      "line_number": 195,
+      "mutation_type": "mul_div",
+      "original_text": "*",
+      "mutated_text": "/",
+      "context": "...= p + q         zz = p - z + q + xx_lo * yy_lo         return z, zz      def _fs..."
+    },
+    {
+      "bug_id": "more-itertools-nodocs_full-035",
+      "file_path": "more_itertools/more.py",
+      "line_number": 620,
+      "mutation_type": "mul_div",
+      "original_text": "*",
+      "mutated_text": "/",
+      "context": "...:]     errors = [delta_primary // dims] * len(deltas_secondary)      to_yield = s..."
+    },
+    {
+      "bug_id": "more-itertools-nodocs_full-036",
+      "file_path": "more_itertools/more.py",
+      "line_number": 934,
+      "mutation_type": "mul_div",
+      "original_text": "*",
+      "mutated_text": "/",
+      "context": "...elected = map(any, windowed(selected, 2 * distance + 1))     return zip(adjacent_..."
+    },
+    {
+      "bug_id": "more-itertools-nodocs_full-037",
+      "file_path": "more_itertools/more.py",
+      "line_number": 1644,
+      "mutation_type": "mul_div",
+      "original_text": "/",
+      "mutated_text": "*",
+      "context": "...ict):      weight_keys = (log(random()) / weight for weight in weights)      rese..."
+    },
+    {
+      "bug_id": "more-itertools-nodocs_full-038",
+      "file_path": "more_itertools/more.py",
+      "line_number": 1653,
+      "mutation_type": "mul_div",
+      "original_text": "/",
+      "mutated_text": "*",
+      "context": "...[0]     weights_to_skip = log(random()) / smallest_weight_key      for weight, el..."
+    },
+    {
+      "bug_id": "more-itertools-nodocs_full-039",
+      "file_path": "more_itertools/more.py",
+      "line_number": 658,
+      "mutation_type": "is_is_not",
+      "original_text": "is not",
+      "mutated_text": "is",
+      "context": "...bytes)) or (                 (base_type is not None) and isinstance(node, base_type)..."
+    },
+    {
+      "bug_id": "more-itertools-nodocs_full-040",
+      "file_path": "more_itertools/more.py",
+      "line_number": 2145,
+      "mutation_type": "is_is_not",
+      "original_text": "is not",
+      "mutated_text": "is",
+      "context": "...()     seen_list = []     use_key = key is not None     previous = None      for i, el..."
     }
   ]
 }

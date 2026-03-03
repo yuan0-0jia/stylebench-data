@@ -1,0 +1,259 @@
+{
+  "metadata": {
+    "catalog": "/Users/yuan/stylebench-data/bugs_canonical/more-itertools-nodocs_full.json",
+    "repo": "/Users/yuan/stylebench-data/nodocs_full/more-itertools",
+    "repo_name": "more-itertools",
+    "timestamp": "2026-02-25T07:46:08.151236",
+    "total_trials": 9,
+    "manifest_used": false,
+    "hit_rate_limit": false
+  },
+  "results": [
+    {
+      "bug_id": "more-itertools-nodocs_full-032",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 701,
+      "tests_failed": 0,
+      "tests_total": 701,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-25T07:37:38.309531",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "more_itertools/more.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 46.51046085357666,
+        "error": null,
+        "agent_output": "## \u2705 Bug Fixed!\n\n**The Issue:**\nIn `/private/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/stylebench_oms1tc_v/more_itertools/more.py` at line 522, the `substrings` function had an off-by-one error:\n\n```python\nslices = map(slice, range(item_count), range(n, item_count + 0))  # \u274c Wrong\n```\n\nThe `range(n, item_count + 0)` was missing the last element, causing the function to not generate all valid substring end positions.\n\n**The Fix:**\nChanged `item_count + 0` to `item_count + 1`:\n\n```python\nslices = map(slice, range(item_count), range(n, item_count + 1))  # \u2705 Correct\n```\n\n**Why This Works:**\nThe `map(slice, ...)` function pairs start and stop indices. For a sequence of length 4 with n=2 substrings:\n- Start indices: [0, 1, 2, 3]\n- Stop indices need to be: [2, 3, 4] to create slices (0,2), (1,3), (2,4)\n- The fix ensures `range(2, 5)` = [2, 3, 4] instead of the incorrect `range(2, 4)` = [2, 3]\n\n**Test Results:** \u2705 All 564 tests pass, including the previously failing `SubstringsTests::test_basic`\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "more-itertools-nodocs_full-033",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 701,
+      "tests_failed": 0,
+      "tests_total": 701,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-25T07:39:25.417569",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "more_itertools/more.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 96.20375990867615,
+        "error": null,
+        "agent_output": "Excellent! All 564 tests pass. Let me show you a summary of the fixes I made:\n\n## Summary of Fixes\n\nI found and fixed two bugs in the `interleave_evenly` function in `/private/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/stylebench_pr0h2gu5/more_itertools/more.py`:\n\n### Bug 1: StopIteration in Generator (lines 630-632)\n**Problem**: When trying to yield from an exhausted secondary iterator, `StopIteration` was raised inside the generator function, which Python 3.7+ converts to `RuntimeError: generator raised StopIteration`.\n\n**Fix**: Wrapped the `next(iters_secondary[i])` call in a try-except block to gracefully handle exhausted iterators:\n```python\ntry:\n    yield next(iters_secondary[i])\n    to_yield -= 1\n    errors[i] += delta_primary\nexcept StopIteration:\n    pass\n```\n\n### Bug 2: Incorrect Delta Calculation (line 618)\n**Problem**: `delta_primary` was using `lengths_desc[-1]` (the smallest length) instead of `lengths_desc[0]` (the largest/primary length), causing the error tracking algorithm to yield secondary items too frequently.\n\n**Fix**: Changed:\n```python\ndelta_primary, deltas_secondary = lengths_desc[-1], lengths_desc[1:]\n```\nto:\n```python\ndelta_primary, deltas_secondary = lengths_desc[0], lengths_desc[1:]\n```\n\nThis ensures the error accumulation properly distributes items from shorter iterables evenly throughout the output.\n\n\u2705 All 564 tests now pass, including the previously failing `test_degenerate_one`.\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "more-itertools-nodocs_full-034",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 701,
+      "tests_failed": 0,
+      "tests_total": 701,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-25T07:40:14.795915",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "more_itertools/more.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 37.73182702064514,
+        "error": null,
+        "agent_output": "## Summary\n\n\u2705 **Bug Fixed Successfully**\n\n**Location:** `/more_itertools/more.py`, line 195 in the `dl_mul` function\n\n**The Problem:**\n```python\nzz = p - z + q + xx_lo / yy_lo  # BUG: division operator\n```\n\n**The Solution:**\n```python\nzz = p - z + q + xx_lo * yy_lo  # FIXED: multiplication operator\n```\n\n**Root Cause:**\nThe `dl_mul` function implements the Dekker product algorithm, which performs high-precision floating-point multiplication. The final error term should be computed as `xx_lo * yy_lo` (multiplication), not `xx_lo / yy_lo` (division). The typo caused:\n1. A `ZeroDivisionError` when `yy_lo` happened to be zero\n2. Completely incorrect results even when division didn't fail\n\n**Test Results:**\n- \u2705 Previously failing test now passes: `DiscreteFourierTransformTests::test_basic`\n- \u2705 All 564 tests in test_more.py pass\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "more-itertools-nodocs_full-035",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 701,
+      "tests_failed": 0,
+      "tests_total": 701,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-25T07:40:54.715633",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "more_itertools/more.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 28.995419025421143,
+        "error": null,
+        "agent_output": "Perfect! All tests pass. \n\n## Summary\n\nI found and fixed the bug in `more_itertools/more.py:620` in the `interleave_evenly` function.\n\n**The Bug:**\n```python\nerrors = [delta_primary // dims] / len(deltas_secondary)\n```\n\nThis line attempted to divide a list by an integer, which is not supported in Python and caused the `TypeError`.\n\n**The Fix:**\n```python\nerrors = [delta_primary // dims] * len(deltas_secondary)\n```\n\nThe operator should be `*` (multiplication) instead of `/` (division). This creates a list with `len(deltas_secondary)` elements, each initialized to the value `delta_primary // dims`, which is the correct behavior needed by the rest of the algorithm that uses `errors` on subsequent lines.\n\nAll 564 tests now pass, including the previously failing `test_degenerate_empty` test.\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "more-itertools-nodocs_full-036",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 701,
+      "tests_failed": 0,
+      "tests_total": 701,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-25T07:42:19.957920",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "more_itertools/more.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 74.70667099952698,
+        "error": null,
+        "agent_output": "## Summary\n\nI found and fixed the bug! The issue was on **line 934** of `/more_itertools/more.py` in the `adjacent` function.\n\n**The Bug:**\n```python\nadjacent_to_selected = map(any, windowed(selected, 2 / distance + 1))\n```\n\nThe code was using floating-point division `/` instead of multiplication `*`. When `distance=1` (the default), this produced `2 / 1 + 1 = 3.0` (a float), but `windowed` requires an integer window size since it passes the value to `islice()`, which strictly requires an integer.\n\n**The Fix:**\n```python\nadjacent_to_selected = map(any, windowed(selected, 2 * distance + 1))\n```\n\nChanged `/` to `*` so the window size is calculated correctly as `2 * distance + 1`, which produces:\n- distance=1 \u2192 window_size=3\n- distance=2 \u2192 window_size=5  \n- distance=3 \u2192 window_size=7\n\nThis correctly covers all items within the specified distance of a matching predicate. All 564 tests now pass! \u2713\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "more-itertools-nodocs_full-037",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 701,
+      "tests_failed": 0,
+      "tests_total": 701,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-25T07:43:31.289714",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "more_itertools/more.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 59.4038450717926,
+        "error": null,
+        "agent_output": "## Summary\n\nI found and fixed the bug in the weighted sampling algorithm!\n\n**Bug Location:** `/private/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/stylebench_8b3ceer7/more_itertools/more.py`, line 1644\n\n**The Issue:**\nThe `_sample_weighted` function was using multiplication instead of division when computing initial weight keys:\n```python\nweight_keys = (log(random()) * weight for weight in weights)  # WRONG\n```\n\n**The Fix:**\nChanged it to use division, which is the correct formula for the Efraimidis-Spirakis weighted random sampling algorithm:\n```python\nweight_keys = (log(random()) / weight for weight in weights)  # CORRECT\n```\n\n**Why This Was a Bug:**\nThe test `test_invariance_under_permutations_weighted` checks that weighted sampling produces statistically equivalent results regardless of the data order. Using multiplication instead of division violated this invariance property, causing the sample means from differently ordered datasets to differ by more than the expected threshold (4.4).\n\nThe fix ensures the algorithm correctly implements weighted reservoir sampling, where items with higher weights have a proportionally higher probability of being selected.\n\n**Test Results:**\n- \u2705 Previously failing test now passes\n- \u2705 All 564 tests in test_more.py pass\n- \u2705 All 137 tests in test_recipes.py pass\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "more-itertools-nodocs_full-038",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 701,
+      "tests_failed": 0,
+      "tests_total": 701,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-25T07:44:59.044103",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "more_itertools/more.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 76.68804001808167,
+        "error": null,
+        "agent_output": "Excellent! All tests pass. \n\n## Summary\n\n**Bug Found:** In `more_itertools/more.py` at line 1653 in the `_sample_weighted` function.\n\n**The Issue:** \nLine 1653 used multiplication (`*`) instead of division (`/`):\n```python\nweights_to_skip = log(random()) * smallest_weight_key  # WRONG\n```\n\nBut line 1663 (which updates the same variable) correctly used division:\n```python\nweights_to_skip = log(random()) / smallest_weight_key  # CORRECT\n```\n\n**Why This Caused the Failure:**\nThe test `test_scale_invariance_of_weights` verifies that scaling all weights by the same factor produces the same sampling results. When weights are scaled by a constant factor, the algorithm should be invariant to this scaling. The incorrect multiplication operator broke this invariance by incorrectly propagating the weight scaling into the `weights_to_skip` threshold, which then affected the comparison `if weight >= weights_to_skip` differently than intended.\n\n**The Fix:**\nChanged line 1653 from multiplication to division to match line 1663 and maintain proper scale invariance:\n```python\nweights_to_skip = log(random()) / smallest_weight_key  # FIXED\n```\n\nAll 564 tests now pass! \u2713\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "more-itertools-nodocs_full-039",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 701,
+      "tests_failed": 0,
+      "tests_total": 701,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-25T07:45:33.942667",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "more_itertools/more.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 24.348010063171387,
+        "error": null,
+        "agent_output": "## Summary\n\n**Bug found and fixed!**\n\n### The Issue\nIn `/more_itertools/more.py` at line 658, there was a logic error in the `collapse` function:\n\n```python\n(base_type is None) and isinstance(node, base_type)\n```\n\nWhen `base_type is None`, the code tries to call `isinstance(node, None)`, which fails because `None` is not a valid type argument for `isinstance()`.\n\n### The Fix\nChanged the condition from `base_type is None` to `base_type is not None`:\n\n```python\n(base_type is not None) and isinstance(node, base_type)\n```\n\nThis ensures that `isinstance()` is only called when `base_type` is actually a type. The logic now correctly:\n- Yields strings and bytes as-is\n- Yields nodes that match the `base_type` if one is provided\n- Collapses everything else recursively\n\n### Test Results\n\u2705 All 564 tests pass (previously 1 failed)\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "more-itertools-nodocs_full-040",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 701,
+      "tests_failed": 0,
+      "tests_total": 701,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-25T07:46:08.140731",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "more_itertools/more.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 22.813523769378662,
+        "error": null,
+        "agent_output": "## Summary\n\n**Bug Found:** In `more_itertools/more.py:2145`, the logic for `use_key` was inverted:\n```python\nuse_key = key is None  # WRONG - backwards\n```\n\n**The Problem:** When `key` parameter is `None` (the default), `use_key` becomes `True`, causing the code to try to call `key(element)` (i.e., `None(element)`), which raises `TypeError: 'NoneType' object is not callable`.\n\n**The Fix:** Inverted the condition to:\n```python\nuse_key = key is not None  # CORRECT\n```\n\nNow:\n- When `key is None` \u2192 `use_key = False` \u2192 use `element` directly\n- When `key is not None` \u2192 `use_key = True` \u2192 call `key(element)`\n\nAll 564 tests now pass \u2713\n",
+        "rate_limited": false
+      }
+    }
+  ],
+  "summary": {
+    "by_agent": {
+      "claude": {
+        "total": 9,
+        "passed": 9
+      }
+    },
+    "by_mode": {
+      "with_tests": {
+        "total": 9,
+        "passed": 9
+      }
+    },
+    "by_evaluation": {
+      "PASS": 9,
+      "FAIL": 0,
+      "ERROR": 0,
+      "TIMEOUT": 0,
+      "NO_FIX": 0
+    }
+  }
+}

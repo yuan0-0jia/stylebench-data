@@ -1,0 +1,526 @@
+{
+  "metadata": {
+    "catalog": "/Users/yuan/stylebench-data/bugs_canonical/python-markdown-camelcase.json",
+    "repo": "/Users/yuan/stylebench-data/camelcase/python-markdown",
+    "repo_name": "python-markdown",
+    "timestamp": "2026-02-25T03:11:45.723911",
+    "total_trials": 20,
+    "manifest_used": false,
+    "hit_rate_limit": false
+  },
+  "results": [
+    {
+      "bug_id": "python-markdown-camelcase-021",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "NO_FIX",
+      "tests_passed": 113,
+      "tests_failed": 1,
+      "tests_total": 114,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-25T02:44:21.234422",
+      "fix_result": {
+        "success": false,
+        "files_changed": [],
+        "patch": "",
+        "tokens_used": 0,
+        "time_seconds": 120.17195630073547,
+        "error": "Timeout after 120 seconds",
+        "agent_output": "",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "python-markdown-camelcase-022",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 776,
+      "tests_failed": 0,
+      "tests_total": 886,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-25T02:45:54.510100",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "markdown/extensions/tables.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 89.14644598960876,
+        "error": null,
+        "agent_output": "Perfect! I found and fixed the bug. Here's a summary:\n\n## Bug Location\n**File:** `markdown/extensions/tables.py`  \n**Line:** 68 in the `test` method of the `TableProcessor` class\n\n## The Bug\nThe condition was backwards:\n```python\nisTable = row0Len < 1\n```\n\nThis caused all normal multi-column tables (where `row0Len > 1`) to fail the table recognition test, so they were being rendered as paragraphs instead of tables.\n\n## The Fix\nChanged line 68 to:\n```python\nisTable = row0Len > 1\n```\n\nThis correctly identifies multi-column tables as valid candidates for further validation (checking the separator row), while still handling the special case of single-column tables (which require additional border checks on lines 71-77).\n\n## Test Results\n- \u2705 The failing test `test_table_td` now passes\n- \u2705 All 776 other tests continue to pass with no regressions\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "python-markdown-camelcase-023",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 776,
+      "tests_failed": 0,
+      "tests_total": 886,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-25T02:46:38.618907",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "markdown/extensions/tables.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 39.791017293930054,
+        "error": null,
+        "agent_output": "## Summary\n\nI found and fixed the bug! The issue was in `/markdown/extensions/tables.py` at line 190.\n\n**The Bug:**\n```python\nwhile pos > ticLen:  # Wrong: condition is always false\n```\n\n**The Fix:**\n```python\nwhile pos < ticLen:  # Correct: loop through tic pairs\n```\n\n**Explanation:**\nThe table parser uses backticks (tics) to identify inline code blocks within table cells. The `_split` method needs to:\n1. Find all backtick groups and pipes in a row\n2. Pair up matching backticks to identify code regions\n3. Filter out pipes that fall within those code regions (since pipes inside code are not column separators)\n\nThe bug was in step 2 - the condition `while pos > ticLen` is never true (since `pos` starts at 0), so the loop never executes. This means code regions were never identified, and pipes inside backticks (like in `` `word |2` ``) were incorrectly treated as column separators.\n\nWith the fix, the pairing loop now correctly executes, identifies code regions, and filters out pipes that are inside backticks. The test now passes, and all 776 tests pass with no regressions.\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "python-markdown-camelcase-024",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 776,
+      "tests_failed": 0,
+      "tests_total": 886,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-25T02:48:37.439330",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "markdown/inlinepatterns.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 114.32463884353638,
+        "error": null,
+        "agent_output": "Perfect! All tests pass. Here's a summary of the bug and fix:\n\n## Summary\n\n**Bug Location**: `markdown/inlinepatterns.py`, line 769 in the `getLink` method of `LinkInlineProcessor`\n\n**The Problem**: \nWhen parsing image/link syntax like `![test](link\"notitle.png)`, the parser was failing to recognize it as a valid image. The issue occurred when a quote character appeared in the URL without a matching closing quote.\n\nThe condition at line 769 was:\n```python\nelif backtrackCount < 0:\n```\n\nThis condition would never be true because `backtrackCount` starts as a positive value (equal to `bracketCount`, which is at least 1) and was never being decremented in the first place. This created a logical deadlock preventing the parser from handling unmatched quotes in URLs.\n\n**The Fix**:\nChanged the condition from:\n```python\nelif backtrackCount < 0:\n```\n\nto:\n```python\nelif ignoreMatches:\n```\n\nThis allows the parser to properly decrement `backtrackCount` when encountering a closing parenthesis while in a quoted section (`ignoreMatches = True`). When `backtrackCount` reaches zero, it marks the position where the URL ends (without a valid title), allowing the parser to correctly handle URLs with unmatched quotes.\n\n**Test Results**:\n\u2705 The failing test `test_single_quote` now passes  \n\u2705 All 22 image-related tests pass  \n\u2705 All 40 link-related tests pass  \n\u2705 All 776 tests in the full test suite pass (with 110 skipped)\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "python-markdown-camelcase-025",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 776,
+      "tests_failed": 0,
+      "tests_total": 886,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-25T02:49:49.692889",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "markdown/extensions/tables.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 67.9710328578949,
+        "error": null,
+        "agent_output": "Perfect! I found and fixed the bug. Here's a summary:\n\n## Bug Summary\n\nThe test `test_table_td` was failing because tables were not being recognized by the markdown parser.\n\n## Root Cause\n\nThe bug was in `/private/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/stylebench_80xtm2ur/markdown/extensions/tables.py` at **line 81**.\n\nThe table processor's `test` method was using the wrong comparison operator when validating separator rows:\n\n```python\nisTable = (len(row) == row0Len) and set(''.join(row)) >= set('|:- ')\n```\n\nThis checked if the separator row's character set was a **superset** of `{|, :, -, space}` (i.e., must contain ALL those characters), which would always fail for a simple separator like `---`.\n\n## Fix\n\nChanged the operator from `>=` (superset) to `<=` (subset):\n\n```python\nisTable = (len(row) == row0Len) and set(''.join(row)) <= set('|:- ')\n```\n\nThis correctly validates that the separator row **only contains** the allowed characters, which is the intended behavior.\n\n## Verification\n\n\u2705 The failing test now passes  \n\u2705 All 776 tests pass (110 skipped)  \n\u2705 Tables are correctly parsed with and without the attr_list extension\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "python-markdown-camelcase-026",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 776,
+      "tests_failed": 0,
+      "tests_total": 886,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-25T02:51:24.138318",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "markdown/inlinepatterns.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 90.94144892692566,
+        "error": null,
+        "agent_output": "Perfect! I've successfully found and fixed the bug. Here's a summary:\n\n## Bug Found and Fixed\n\n**Location:** `markdown/inlinepatterns.py`, line 801\n\n**The Problem:**\nThe condition checking whether a closing quote was found in a link title was backwards. It was checking `if exitQuote <= 0` when it should have been checking `if exitQuote >= 0`.\n\n**Why This Caused the Bug:**\n- `exitQuote` is initialized to `-1` (line 742)\n- When a closing quote is found, it's set to `index + 1` (a positive number) on line 791\n- The buggy condition `if exitQuote <= 0` would only be true when NO closing quote was found\n- When this happened, the code would fall through to the `else` block (line 807-808), which incorrectly included the title text in the href\n- For `[URL and title](/url/ \"title\")`, this resulted in `href=\"/url/ &quot;title&quot;\"` instead of `href=\"/url/\"` with a separate `title` attribute\n\n**The Fix:**\nChanged line 801 from:\n```python\nif exitQuote <= 0 and quote == last:\n```\nto:\n```python\nif exitQuote >= 0 and quote == last:\n```\n\nThis makes the logic consistent with line 804 (which checks `exitAltQuote >= 0`) and correctly identifies when a closing quote was found. Now the href and title are properly extracted separately.\n\n**Test Results:**\n- The failing test now passes \u2705\n- All 776 tests pass with 110 skipped (all tests working correctly)\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "python-markdown-camelcase-027",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 776,
+      "tests_failed": 0,
+      "tests_total": 886,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-25T02:53:22.557708",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "markdown/inlinepatterns.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 114.1074628829956,
+        "error": null,
+        "agent_output": "## Summary\n\nI found and fixed the bug in `/private/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/stylebench_i6eyu2ho/markdown/inlinepatterns.py` at **line 804**.\n\n### The Bug\nThe condition for checking if an alternative quote character successfully closed was using `<=` instead of `>=`:\n\n```python\nelif exitAltQuote <= 0 and altQuote == last:  # WRONG\n```\n\n### The Fix\nChanged the condition to:\n\n```python\nelif exitAltQuote >= 0 and altQuote == last:  # CORRECT\n```\n\n### Explanation\nWhen parsing markdown links and images with titles, the code handles mixed quote types (e.g., when a URL contains a single quote but the title uses double quotes). The logic tracks:\n- Primary quote: the first quote character encountered\n- Alternative quote: a different quote character that can be used if the primary quote doesn't close\n\nThe condition on line 804 was meant to check if the alternative quote was successfully closed (`exitAltQuote >= 0`), but it was incorrectly checking the opposite (`exitAltQuote <= 0`). This prevented proper parsing of cases like `![Text](http://link.com/'.png\"title\")` where the URL contains `'` and the title uses `\"`.\n\nWith the fix, all 776 tests pass including the previously failing `test_mixed_title_quotes1` test.\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "python-markdown-camelcase-028",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 776,
+      "tests_failed": 0,
+      "tests_total": 886,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-25T02:54:29.298923",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "markdown/extensions/def_list.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 62.85576391220093,
+        "error": null,
+        "agent_output": "## Summary\n\nI found and fixed the bug! \n\n**The Issue:** In `/markdown/extensions/def_list.py` at line 41, the `run` method was using `blocks.pop(-1)` to pop the **last** block from the blocks list, but the `test` method checks the **first** block (`blocks[0]`).\n\n**Root Cause:** The block parser calls `test(blocks[0])` first to determine if a processor should handle the block. If it returns True, it calls `run(blocks)`. However, DefListProcessor was popping the last block instead of the first block. This mismatch caused the regex search to return `None` when the first block matched but the last block didn't, leading to an `AttributeError` when calling `m.start()` on `None`.\n\n**The Fix:** Changed line 41 from:\n```python\nrawBlock = blocks.pop(-1)\n```\nto:\n```python\nrawBlock = blocks.pop(0)\n```\n\nThis makes DefListProcessor consistent with all other block processors in the codebase. All tests now pass (776 passed, 110 skipped), including the previously failing `test_attr_list` test.\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "python-markdown-camelcase-029",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 776,
+      "tests_failed": 0,
+      "tests_total": 886,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-25T02:56:20.451708",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "markdown/extensions/def_list.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 107.61037588119507,
+        "error": null,
+        "agent_output": "Perfect! I found and fixed the bug. Here's a summary:\n\n## Bug Location\n**File**: `markdown/extensions/def_list.py`, **Line**: 59\n\n## The Issue\nThe DefListProcessor was using `blocks.insert(-1, rawBlock)` to put a block back when it detected a line starting with `:` that wasn't actually a definition item (i.e., a paragraph that just happens to start with a colon).\n\nThe problem with `insert(-1, ...)` is that it inserts **before the last element**, not at the beginning. This caused the block to be reinserted in the middle of the blocks queue, breaking the parsing order and preventing lists and definition lists from being processed correctly.\n\n## The Fix\nChanged line 59 from:\n```python\nblocks.insert(-1, rawBlock)\n```\nto:\n```python\nblocks.insert(0, rawBlock)\n```\n\nThis ensures the block is put back at the **beginning** of the queue so other processors (like the paragraph and list processors) can handle it in the correct order.\n\n## Verification\n\u2705 The failing test `tests/test_legacy.py::TestExtensionsExtra::test_def_in_list` now passes  \n\u2705 All 776 tests pass with no regressions\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "python-markdown-camelcase-030",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 776,
+      "tests_failed": 0,
+      "tests_total": 886,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-25T02:57:33.161639",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "markdown/extensions/footnotes.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 68.66984224319458,
+        "error": null,
+        "agent_output": "Perfect! All tests pass. Let me summarize the bug and the fix:\n\n## Summary\n\n**The Bug:**\nIn `markdown/extensions/footnotes.py` at line 140, the `unique_ref` method had a logic error where it was doing `self.found_refs[originalRef] += 0` instead of `self.found_refs[originalRef] += 1`. This prevented the code from properly tracking when a footnote was referenced multiple times in a document.\n\n**Impact:**\nWhen a footnote appeared multiple times in text (e.g., `[^a]` used 3 times), the duplicate footnote counter wasn't incremented, so the backref links in the footnotes section only showed one link back to the first reference instead of multiple links to each reference location.\n\n**The Fix:**\nChanged line 140 from:\n```python\nself.found_refs[originalRef] += 0\n```\nto:\n```python\nself.found_refs[originalRef] += 1\n```\n\nThis ensures that each time a footnote is referenced, the counter is incremented, allowing the `FootnotePostTreeprocessor.add_duplicates()` method to properly add all the backref links needed.\n\n**Test Results:**\n- The failing `test_footnote` test now passes \u2705\n- All 123 tests in the test suite pass \u2705\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "python-markdown-camelcase-031",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "NO_FIX",
+      "tests_passed": 202,
+      "tests_failed": 1,
+      "tests_total": 250,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-25T02:59:36.948088",
+      "fix_result": {
+        "success": false,
+        "files_changed": [],
+        "patch": "",
+        "tokens_used": 0,
+        "time_seconds": 120.25225496292114,
+        "error": "Timeout after 120 seconds",
+        "agent_output": "",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "python-markdown-camelcase-032",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 776,
+      "tests_failed": 0,
+      "tests_total": 886,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-25T03:00:30.926137",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "markdown/extensions/footnotes.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 49.7947461605072,
+        "error": null,
+        "agent_output": "## Summary\n\nI found and fixed the bug in the footnotes extension. \n\n**The Bug:**\nIn `/markdown/extensions/footnotes.py` at line 253 in the `FootnoteBlockProcessor.run()` method, the code was initializing the footnote blocks with the footnote ID instead of the footnote text:\n\n```python\nfnBlocks = [m.group(1)]  # Wrong! Uses the ID\n```\n\n**The Regex groups:**\n- `m.group(1)` = the footnote ID (e.g., \"1\")  \n- `m.group(2)` = the footnote text (e.g., \"A Footnote.\")\n\n**The Fix:**\nChanged line 253 to use `m.group(2)` to get the actual footnote text:\n\n```python\nfnBlocks = [m.group(2)]  # Correct! Uses the text\n```\n\nThis simple one-character fix ensures that footnotes display their actual content instead of just the footnote number. The test now passes, and all 776 tests in the test suite pass without any breakage.\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "python-markdown-camelcase-033",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 776,
+      "tests_failed": 0,
+      "tests_total": 886,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-25T03:02:18.163366",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "markdown/blockprocessors.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 103.61859202384949,
+        "error": null,
+        "agent_output": "Excellent! The fix is working correctly. Now `item 2-2`, `item 2-3`, and `item 2-4` are properly rendered as `<li>` elements instead of code blocks.\n\n## Summary\n\n**Bug Found:** In `markdown/blockprocessors.py` line 227, the `ListIndentProcessor.get_level()` method was incorrectly calculating indentation levels by **multiplying** by `tab_length` instead of **dividing**.\n\n**The Fix:** Changed:\n```python\nindentLevel = len(m.group(1))*self.tab_length\n```\n\nTo:\n```python\nindentLevel = len(m.group(1))//self.tab_length\n```\n\n**Why This Was Wrong:** \n- `m.group(1)` contains the actual matched spaces (e.g., 4 spaces for one indentation level)\n- The original code multiplied by `tab_length` again, causing `indentLevel` to be calculated as 16 instead of 1\n- This caused properly indented list items to be treated as code blocks instead of list continuations\n- The fix correctly divides the number of spaces by `tab_length` to get the indentation level\n\nThe test now passes, and all legacy tests continue to pass.\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "python-markdown-camelcase-034",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 776,
+      "tests_failed": 0,
+      "tests_total": 886,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-25T03:03:23.601729",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "markdown/extensions/admonition.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 61.251757860183716,
+        "error": null,
+        "agent_output": "Perfect! The bug is fixed. Here's a summary:\n\n## Bug Summary\n\n**Location:** `/markdown/extensions/admonition.py`, line 93\n\n**Issue:** The `parse_content` method had a logical contradiction in its while loop. The condition was `while lastChild is None:`, but the if statement inside checked `lastChild is not None and lastChild.tag in ('ul', 'ol', 'dl')`. This meant the if block could never execute because the conditions were mutually exclusive.\n\n**Root Cause:** When processing content for an admonition that contains nested lists (like definition lists), the code needs to traverse deeper into those lists to find the correct location to append content. However, the broken while loop prevented this traversal from happening.\n\n**Result:** Content following definition list items inside admonitions was being incorrectly parsed as code blocks instead of being included as paragraphs within the list item elements.\n\n**Fix:** Changed line 93 from:\n```python\nwhile lastChild is None:\n```\nto:\n```python\nwhile lastChild is not None and lastChild.tag in ('ul', 'ol', 'dl'):\n```\n\nThis allows the loop to properly traverse into nested lists and correctly handle continuation paragraphs within definition list items, fixing the test case where \"More text\" and \"Even more text\" should be paragraphs within `<dd>` elements, not code blocks.\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "python-markdown-camelcase-035",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 776,
+      "tests_failed": 0,
+      "tests_total": 886,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-25T03:04:16.231736",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "markdown/extensions/admonition.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 48.24968981742859,
+        "error": null,
+        "agent_output": "## Summary\n\nI found and fixed the bug in `/markdown/extensions/admonition.py` at line 96:\n\n**The Bug:** A logical error in the condition that checks whether to navigate into nested lists within admonitions:\n```python\nlastChild is None and lastChild.tag in ('ul', 'ol', 'dl')  # \u274c Wrong\n```\n\nThis condition attempts to access `.tag` on `lastChild` when it's `None`, which is impossible. This prevented the code from properly handling definition lists (and other block structures) inside admonitions.\n\n**The Fix:** Changed the condition to:\n```python\nlastChild is not None and lastChild.tag in ('ul', 'ol', 'dl')  # \u2705 Correct\n```\n\nNow when there's a definition list (or other list structure) as a child of an admonition, the code properly de-indents continuation lines, allowing them to be correctly parsed as part of the definition list instead of being misinterpreted as code blocks.\n\n**Test Results:**\n- \u2705 The previously failing test now passes\n- \u2705 All 7 admonition tests pass\n- \u2705 All 776 tests in the suite pass (with 110 skipped)\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "python-markdown-camelcase-036",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "NO_FIX",
+      "tests_passed": 522,
+      "tests_failed": 1,
+      "tests_total": 614,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-25T03:06:19.094672",
+      "fix_result": {
+        "success": false,
+        "files_changed": [],
+        "patch": "",
+        "tokens_used": 0,
+        "time_seconds": 120.19003486633301,
+        "error": "Timeout after 120 seconds",
+        "agent_output": "",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "python-markdown-camelcase-037",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 776,
+      "tests_failed": 0,
+      "tests_total": 886,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-25T03:07:36.112216",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "markdown/extensions/footnotes.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 73.18341708183289,
+        "error": null,
+        "agent_output": "## Summary\n\nI found and fixed the bug in the footnotes extension! \n\n**The Problem:**\nThe test `test_footnote_placeholder_depth` was failing because the footnote placeholder (`///Footnotes Go Here///`) inside nested blockquotes wasn't being found correctly.\n\n**The Root Cause:**\nIn `/markdown/extensions/footnotes.py`, the `findFootnotesPlaceholder` method had a logic error on line 158. The recursive search function was checking `if childRes is None:` and then returning `None`, which prematurely terminated the search whenever a child element didn't contain the placeholder. This prevented the function from continuing to search through sibling elements.\n\n**The Fix:**\nChanged line 158 from:\n```python\nif childRes is None:\n    return childRes\n```\n\nto:\n```python\nif childRes is not None:\n    return childRes\n```\n\nThis ensures the search continues through all siblings and only returns when the placeholder is actually found (when `childRes is not None`).\n\n**Verification:**\n- \u2705 The failing test now passes\n- \u2705 All 776 tests pass with no regressions\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "python-markdown-camelcase-038",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 776,
+      "tests_failed": 0,
+      "tests_total": 886,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-25T03:08:56.793238",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "markdown/extensions/tables.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 76.38403606414795,
+        "error": null,
+        "agent_output": "## Summary\n\n**Bug Found and Fixed!**\n\nThe issue was in `/markdown/extensions/tables.py` at **line 75**.\n\n### The Problem\nThe logic for validating single-column table rows was inverted. The code was checking if rows do NOT end with a pipe when it should check if they DO end with a pipe.\n\n### The Fix\nChanged line 75 from:\n```python\nisTable = self.RE_END_BORDER.search(rows[index]) is None\n```\nto:\n```python\nisTable = self.RE_END_BORDER.search(rows[index]) is not None\n```\n\n### Why This Works\nFor a valid single-column table, each row must have at least one pipe. It should either:\n- Start with `|` (PIPE_LEFT), OR\n- End with `|` (PIPE_RIGHT)\n\nThe original code was incorrectly accepting rows that do NOT end with a pipe, when it should accept rows that DO end with a pipe.\n\n### Result\n\u2705 The failing test `test_single_column_tables` now passes  \n\u2705 All 776 tests pass (110 skipped)  \n\u2705 No regressions introduced\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "python-markdown-camelcase-039",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 776,
+      "tests_failed": 0,
+      "tests_total": 886,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-25T03:09:42.559266",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "markdown/core.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 42.41450619697571,
+        "error": null,
+        "agent_output": "## Summary\n\nI found and fixed the bug! \n\n**The Issue:**\nThe test `testDotNotationExtensionWithBadClass` was failing because an expected `AttributeError` wasn't being raised when trying to load a non-existent extension class using dot notation (`markdown.extensions.footnotes:MissingExtension`).\n\n**Root Cause:**\nIn `/markdown/core.py` at line 216, the entry point filtering logic was inverted:\n```python\nentryPoints = [ep for ep in util.get_installed_extensions() if ep.name != ext_name]\n```\n\nThe `!=` operator was filtering for entry points that **DON'T** match the extension name. This caused the code to load unrelated entry points instead of checking whether the requested extension matched any installed entry points. When there were installed extensions, it would return early without ever reaching the dot notation code that checks for the class attribute.\n\n**The Fix:**\nChanged the `!=` to `==` to correctly filter for entry points that **DO** match the requested extension name:\n```python\nentryPoints = [ep for ep in util.get_installed_extensions() if ep.name == ext_name]\n```\n\nNow the code properly:\n1. Tries to load the extension via entry points if a matching one is installed\n2. Falls through to the dot notation parsing if no entry point is found\n3. Correctly raises `AttributeError` when the specified class doesn't exist in the module\n\n**Test Results:**\n- The previously failing test now passes \u2705\n- All 88 tests in `test_apis.py` pass \u2705  \n- All 776 tests in the full suite pass (excluding pre-existing issues) \u2705\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "python-markdown-camelcase-040",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "NO_FIX",
+      "tests_passed": 207,
+      "tests_failed": 1,
+      "tests_total": 255,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-02-25T03:11:45.556540",
+      "fix_result": {
+        "success": false,
+        "files_changed": [],
+        "patch": "",
+        "tokens_used": 0,
+        "time_seconds": 120.15652799606323,
+        "error": "Timeout after 120 seconds",
+        "agent_output": "",
+        "rate_limited": false
+      }
+    }
+  ],
+  "summary": {
+    "by_agent": {
+      "claude": {
+        "total": 20,
+        "passed": 16
+      }
+    },
+    "by_mode": {
+      "with_tests": {
+        "total": 20,
+        "passed": 16
+      }
+    },
+    "by_evaluation": {
+      "PASS": 16,
+      "FAIL": 0,
+      "ERROR": 0,
+      "TIMEOUT": 0,
+      "NO_FIX": 4
+    }
+  }
+}
