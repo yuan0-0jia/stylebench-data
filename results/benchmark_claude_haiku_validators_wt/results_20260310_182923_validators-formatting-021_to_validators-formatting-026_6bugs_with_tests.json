@@ -1,0 +1,184 @@
+{
+  "metadata": {
+    "catalog": "/Users/yuan/stylebench-data/bugs_canonical/validators-formatting.json",
+    "repo": "/Users/yuan/stylebench-data/formatting/validators",
+    "repo_name": "validators",
+    "timestamp": "2026-03-10T18:29:23.266048",
+    "total_trials": 6,
+    "manifest_used": false,
+    "hit_rate_limit": true
+  },
+  "results": [
+    {
+      "bug_id": "validators-formatting-021",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "FAIL",
+      "tests_passed": 35,
+      "tests_failed": 1,
+      "tests_total": 36,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-03-10T18:25:01.851871",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "src/validators/crypto_addresses/eth_address.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 42.32707715034485,
+        "error": null,
+        "agent_output": "Fixed! The bug was in the checksum validation logic in `/private/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/stylebench_9pbd09do/src/validators/crypto_addresses/eth_address.py:26-28`.\n\nThe EIP-55 Ethereum checksum standard specifies that:\n- Characters should be uppercase when the keccak hash value is >= 8\n- Characters should be lowercase when the keccak hash value is < 8\n\nThe original code incorrectly used `< 7` and `<= 7` thresholds with inverted logic. The fix changes it to the correct `>= 8` and `< 8` thresholds with proper rejection conditions.\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "validators-formatting-022",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 895,
+      "tests_failed": 0,
+      "tests_total": 895,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-03-10T18:25:19.468368",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "src/validators/email.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 16.1678569316864,
+        "error": null,
+        "agent_output": "Done! The bug was a simple logic error on line 63. The condition was checking if the username part is **less than** 64 characters (`<`) when it should check if it's **greater than** 64 characters (`>`). This was causing all valid emails to be rejected since most usernames are less than 64 characters.\n\nThe fix changes:\n```python\nif len(username_part) < 64 or len(domain_part) > 253:\n```\n\nto:\n\n```python\nif len(username_part) > 64 or len(domain_part) > 253:\n```\n\nThis correctly validates that the username part doesn't exceed 64 characters and the domain part doesn't exceed 253 characters, per RFC specifications.\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "validators-formatting-023",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 895,
+      "tests_failed": 0,
+      "tests_total": 895,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-03-10T18:25:48.129585",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "src/validators/email.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 27.065754890441895,
+        "error": null,
+        "agent_output": "Fixed! The bug was on line 63. The condition was checking `len(username_part) < 64` (rejecting valid short usernames) when it should check `len(username_part) > 64` (rejecting usernames that exceed the RFC limit). This caused 'email@here.com' to fail validation when it should pass.\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "validators-formatting-024",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 895,
+      "tests_failed": 0,
+      "tests_total": 895,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-03-10T18:26:58.920563",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "src/validators/i18n/ru.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 69.26485204696655,
+        "error": null,
+        "agent_output": "Perfect! The fix is in place. Here's a summary of the bug and the fix:\n\n## Bug Found\nThe 10-digit Russian INN validation had an inverted condition boundary. When the control number was 10, it was comparing the raw value (10) against the last digit instead of using modulo 10.\n\n**Failing test case:** `'7709439560'`\n- Control number calculation: (7\u00d72 + 7\u00d74 + 0\u00d710 + 9\u00d73 + 4\u00d75 + 3\u00d79 + 9\u00d74 + 5\u00d76 + 6\u00d78 + 0\u00d70) % 11 = 230 % 11 = **10**\n- Last digit: **0**\n\n**Bug:** The condition `if control_number < 9` was False, so it checked `10 == 0` \u2192 False \u274c\n\n**Fix:** Changed to `if control_number < 10`, so it checks `(10 % 10) == 0` \u2192 True \u2713\n\nThe 10-digit validation now correctly handles the case where the control number is 10, which should map to a last digit of 0.\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "validators-formatting-025",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 895,
+      "tests_failed": 0,
+      "tests_total": 895,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-03-10T18:28:24.023541",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "src/validators/i18n/ru.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 83.40525889396667,
+        "error": null,
+        "agent_output": "Done! I found and fixed the bug in the Russian INN validator.\n\n**The issue:** Line 61 in `/src/validators/i18n/ru.py` had the condition `if control_number1 < 9` when it should be `if control_number1 > 9`. This incorrect condition caused the validator to skip the second control digit check in most cases, allowing invalid INNs to pass validation.\n\n**The fix:** Changed `< 9` to `> 9` to match the 10-digit INN validation logic and correctly implement the Russian INN checksum algorithm.\n\nThis ensures that both control digits are properly validated for 12-digit INNs. The invalid number '026504247481' will now correctly fail validation, while the valid number '026504247480' will pass.\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "validators-formatting-026",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 895,
+      "tests_failed": 0,
+      "tests_total": 895,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-03-10T18:29:17.498918",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "src/validators/crypto_addresses/eth_address.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 51.99698781967163,
+        "error": null,
+        "agent_output": "Done! The bug was a logic error in the EIP-55 checksum validation. Line 27 had `>= 7` when it should be `<= 7`. This was causing the validator to reject valid mixed-case Ethereum addresses (like the test case `0x5AEDA56215b167893e80B4fE645BA6d5Bab767DE`) where uppercase letters appeared at positions corresponding to hash digits >= 8.\n\nThe fix ensures the checksum validation correctly implements the EIP-55 specification:\n- Hash digit > 7 \u2192 character must be uppercase  \n- Hash digit \u2264 7 \u2192 character must be lowercase\n",
+        "rate_limited": false
+      }
+    }
+  ],
+  "summary": {
+    "by_agent": {
+      "claude": {
+        "total": 6,
+        "passed": 5
+      }
+    },
+    "by_mode": {
+      "with_tests": {
+        "total": 6,
+        "passed": 5
+      }
+    },
+    "by_evaluation": {
+      "PASS": 5,
+      "FAIL": 1,
+      "ERROR": 0,
+      "TIMEOUT": 0,
+      "NO_FIX": 0
+    }
+  }
+}

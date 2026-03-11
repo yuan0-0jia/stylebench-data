@@ -1,0 +1,528 @@
+{
+  "metadata": {
+    "catalog": "/Users/yuan/stylebench-data/bugs_canonical/more-itertools-nodocstrings.json",
+    "repo": "/Users/yuan/stylebench-data/nodocstrings/more-itertools",
+    "repo_name": "more-itertools",
+    "timestamp": "2026-03-10T17:58:57.703257",
+    "total_trials": 20,
+    "manifest_used": false,
+    "hit_rate_limit": false
+  },
+  "results": [
+    {
+      "bug_id": "more-itertools-nodocstrings-001",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 701,
+      "tests_failed": 0,
+      "tests_total": 701,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-03-10T17:42:19.112598",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "more_itertools/more.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 18.543204069137573,
+        "error": null,
+        "agent_output": "Fixed! The bug was a logic error in the `chunked` function at line 214. The condition was checking `if len(chunk) == n` when it should check `if len(chunk) != n`. \n\nThis caused it to raise an error when chunks were the **correct** size instead of when they were the **incorrect** size. Now it properly:\n- Allows `'ABCDEF'` with n=3 to succeed (both chunks have size 3)\n- Raises an error for `'ABCDE'` with n=3 (the last chunk has size 2, not 3)\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "more-itertools-nodocstrings-002",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 701,
+      "tests_failed": 0,
+      "tests_total": 701,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-03-10T17:43:09.384701",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "more_itertools/more.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 39.93160104751587,
+        "error": null,
+        "agent_output": "Perfect! I found and fixed the bug. The issue was on **line 487** in `/private/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/stylebench_y6ajd0uy/more_itertools/more.py`.\n\n**The Problem:**\nThe condition was backwards:\n```python\nalgorithm = _full if (r != size) else partial(_partial, r=r)\n```\n\nThis was calling `_partial` when `r == size`, but `_partial` expects `r < size`. When `r == size`, the `tail` becomes empty (`A[r:]` = `A[size:]`), causing an IndexError when trying to access `tail[-1]` at line 432.\n\n**The Fix:**\nChanged the condition to correctly route to the right algorithm:\n```python\nalgorithm = _full if (r == size) else partial(_partial, r=r)\n```\n\nNow:\n- `_full` is used for full permutations (when r == size)\n- `_partial` is used for partial permutations (when r < size)\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "more-itertools-nodocstrings-003",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 701,
+      "tests_failed": 0,
+      "tests_total": 701,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-03-10T17:43:32.975714",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "more_itertools/more.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 13.146214008331299,
+        "error": null,
+        "agent_output": "**Bug fixed:** The condition on line 509 was backwards. It checked `if n != 0:` which rejected the default value `n=1`. Changed it to `if n < 1:` to correctly validate that n must be greater than 0.\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "more-itertools-nodocstrings-004",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 701,
+      "tests_failed": 0,
+      "tests_total": 701,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-03-10T17:43:57.373903",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "more_itertools/more.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 12.691906929016113,
+        "error": null,
+        "agent_output": "Fixed! The bug was a simple typo on line 195 where the variable should be `xx_hi` instead of `yx_hi`. This variable is used on line 197 in the Dekker-Knuth multiplication algorithm for the discrete Fourier transform calculation.\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "more-itertools-nodocstrings-005",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 701,
+      "tests_failed": 0,
+      "tests_total": 701,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-03-10T17:44:51.567361",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "more_itertools/more.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 42.673503160476685,
+        "error": null,
+        "agent_output": "Fixed! The bug was a typo on line 196 of `more_itertools/more.py`. The variable was named `xy_hi` instead of `yy_hi`, causing the `NameError` when the code tried to use `yy_hi` on line 197.\n\nThe corrected line now properly unpacks the split result of `y` into `yy_hi` and `yy_lo`.\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "more-itertools-nodocstrings-006",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 701,
+      "tests_failed": 0,
+      "tests_total": 701,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-03-10T17:45:26.782123",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "more_itertools/more.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 23.898816108703613,
+        "error": null,
+        "agent_output": "Done! I found and fixed the bug. The issue was on **line 204** of `more_itertools/more.py`:\n\n**Bug:** `maq(dl_mul, p, q)` - `maq` is not defined\n**Fix:** Changed to `map(dl_mul, p, q)` - using the built-in `map` function\n\nThe `_fsumprod` function is part of the extended precision summation algorithm used in the discrete Fourier transform implementation. It applies the `dl_mul` multiplication function to pairs of elements from two sequences, then chains and sums the results. The typo `maq` should have been `map`.\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "more-itertools-nodocstrings-007",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 701,
+      "tests_failed": 0,
+      "tests_total": 701,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-03-10T17:46:06.090804",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "more_itertools/more.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 28.663394689559937,
+        "error": null,
+        "agent_output": "Done! The bug was in the `__bool__` method at line 264. It was returning `True` when the iterator was exhausted, but it should return `False`. \n\nThe fix changes the exception handler to return `False` instead of `True` when `peek()` raises `StopIteration`, making an exhausted peekable iterator correctly evaluate to `False` in boolean contexts.\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "more-itertools-nodocstrings-008",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 701,
+      "tests_failed": 0,
+      "tests_total": 701,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-03-10T17:46:40.688349",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "more_itertools/more.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 24.46053409576416,
+        "error": null,
+        "agent_output": "Fixed! The bug was in the `__bool__` method on line 265. It was returning `False` in both cases\u2014when there were items and when there weren't. \n\nThe corrected logic now returns:\n- `True` when `peek()` succeeds (items are available)\n- `False` when `peek()` raises `StopIteration` (iterator is exhausted)\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "more-itertools-nodocstrings-009",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 701,
+      "tests_failed": 0,
+      "tests_total": 701,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-03-10T17:47:33.538419",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "more_itertools/more.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 41.611767053604126,
+        "error": null,
+        "agent_output": "Fixed! The bug was on line 342 in `more_itertools/more.py`. The `iterate` function had `while False:` which meant the loop never executed, so it yielded nothing. \n\nChanged it to `while True:` so the function properly:\n1. Yields the current start value\n2. Applies the function to generate the next value\n3. Repeats infinitely (or until `StopIteration` is raised)\n\nThis will now correctly produce `[1, 2, 4, 8, 16, 32, 64, 128, 256, 512]` as expected by the test.\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "more-itertools-nodocstrings-010",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "FAIL",
+      "tests_passed": 1,
+      "tests_failed": 1,
+      "tests_total": 2,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-03-10T17:48:03.042457",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "more_itertools/more.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 28.553359031677246,
+        "error": null,
+        "agent_output": "Fixed! The bug was that the condition checking for `n is None` was in the wrong branch. It was checking in the `else` block (when `strict=False`) but should have been in the `if strict:` block.\n\n**The issue:**\n- When `strict=False` (the default), the code was incorrectly raising an error when `n=None`\n- But the error message says \"when using strict mode\", indicating the check should only happen when `strict=True`\n\n**The fix:**\nMoved the `if n is None:` check into the `if strict:` branch. Now:\n- When `strict=True` and `n=None`: raises ValueError (as intended)\n- When `strict=False` and `n=None`: allows it to proceed normally, returning the entire iterable as one chunk, which is what the test expects\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "more-itertools-nodocstrings-011",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 701,
+      "tests_failed": 0,
+      "tests_total": 701,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-03-10T17:48:53.815555",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "more_itertools/more.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 40.66626596450806,
+        "error": null,
+        "agent_output": "Fixed! The bug was in the `_get_slice` method at line 301. \n\n**The Problem:**\nWhen slicing with negative indices like `(-4, -3, 1)`, the code tried to calculate how many items to cache with:\n```python\nn = min(max(start, stop) + 1, maxsize)\n```\n\nThis resulted in `n = -2` (a negative number), causing the cache condition `if n >= cache_len` to fail. No items were cached, so the slice returned an empty list instead of the expected result.\n\n**The Solution:**\nWhen negative indices are present, we need all remaining items to properly compute the slice. The fix simplifies the logic to just cache all items from the iterator when we detect negative indices, which is what the comment already indicated was needed.\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "more-itertools-nodocstrings-012",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 701,
+      "tests_failed": 0,
+      "tests_total": 701,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-03-10T17:49:42.996190",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "more_itertools/more.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 38.965487003326416,
+        "error": null,
+        "agent_output": "Done! The bug was a logic inversion on lines 490-496. When `sortable` is `True`, the code tried to use `indices` and `permuted_items`, which are only defined in the `except` block (when items aren't sortable). \n\nThe fix swaps the two branches so that:\n- When items **are** sortable: use `algorithm(items)` directly\n- When items **aren't** sortable: use `algorithm(indices)` with `permuted_items` to map indices back to items\n\nThis eliminates the `UnboundLocalError` and makes the logic correct.\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "more-itertools-nodocstrings-013",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 701,
+      "tests_failed": 0,
+      "tests_total": 701,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-03-10T17:50:21.194598",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "more_itertools/more.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 27.44639801979065,
+        "error": null,
+        "agent_output": "Fixed! The bug was a logic error in the `count` method on line 1166. The `not` operator was inverting the result, returning `False` instead of `1` when a value was in the range.\n\nThe corrected logic:\n- When value is in the range: `int(True)` returns `1` \u2713\n- When value is not in range: `int(False)` returns `0` \u2713\n\nThis now matches the expected test behavior.\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "more-itertools-nodocstrings-014",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 701,
+      "tests_failed": 0,
+      "tests_total": 701,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-03-10T17:50:52.122424",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "more_itertools/more.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 20.107216119766235,
+        "error": null,
+        "agent_output": "Fixed! The bug was on line 1978. The condition was inverted\u2014it was checking `if element not in seenlist:` when it should be `if element in seenlist:`. \n\nThe logic now correctly returns `False` when a duplicate non-hashable element is found, instead of returning `False` for all unique non-hashable elements.\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "more-itertools-nodocstrings-015",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 701,
+      "tests_failed": 0,
+      "tests_total": 701,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-03-10T17:51:34.966859",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "more_itertools/more.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 31.930084943771362,
+        "error": null,
+        "agent_output": "Done! The bug was a simple logic inversion. In the `except TypeError` block, the condition should check `if k not in seen_list:` instead of `if k in seen_list:`.\n\nThe function now correctly:\n1. Appends non-hashable keys to `seen_list` on first occurrence\n2. Yields the element only when the non-hashable key is found again (duplicate)\n\nThis fixes the test case where `duplicates_everseen(iterable, lambda x: x)` with non-hashable list keys should return `[]` (no duplicates) instead of yielding all items.\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "more-itertools-nodocstrings-016",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "NO_FIX",
+      "tests_passed": 542,
+      "tests_failed": 1,
+      "tests_total": 543,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-03-10T17:53:36.375170",
+      "fix_result": {
+        "success": false,
+        "files_changed": [],
+        "patch": "",
+        "tokens_used": 0,
+        "time_seconds": 120.01656603813171,
+        "error": "Timeout after 120 seconds",
+        "agent_output": "",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "more-itertools-nodocstrings-017",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "NO_FIX",
+      "tests_passed": 542,
+      "tests_failed": 1,
+      "tests_total": 543,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-03-10T17:55:37.873454",
+      "fix_result": {
+        "success": false,
+        "files_changed": [],
+        "patch": "",
+        "tokens_used": 0,
+        "time_seconds": 120.01638102531433,
+        "error": "Timeout after 120 seconds",
+        "agent_output": "",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "more-itertools-nodocstrings-018",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "NO_FIX",
+      "tests_passed": 543,
+      "tests_failed": 1,
+      "tests_total": 544,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-03-10T17:57:39.495768",
+      "fix_result": {
+        "success": false,
+        "files_changed": [],
+        "patch": "",
+        "tokens_used": 0,
+        "time_seconds": 120.0172770023346,
+        "error": "Timeout after 120 seconds",
+        "agent_output": "",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "more-itertools-nodocstrings-019",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 701,
+      "tests_failed": 0,
+      "tests_total": 701,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-03-10T17:58:18.878327",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "more_itertools/more.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 28.51646065711975,
+        "error": null,
+        "agent_output": "Fixed! The bug was an off-by-one error in the `nth_or_last` function. The slice was using `n + 2` instead of `n + 1`, which caused it to skip over the element at index `n` and return the wrong element. The fix changes line 249 from `islice(iterable, n + 2)` to `islice(iterable, n + 1)`.\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "more-itertools-nodocstrings-020",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 701,
+      "tests_failed": 0,
+      "tests_total": 701,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-03-10T17:58:57.697110",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "more_itertools/more.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 28.508114099502563,
+        "error": null,
+        "agent_output": "Done! The bug was a simple off-by-one error. The `peek()` method was returning `self._cache[1]` instead of `self._cache[0]`. Since the cache is a deque and `__next__` pops from the left (index 0), `peek()` should also return the element at index 0.\n",
+        "rate_limited": false
+      }
+    }
+  ],
+  "summary": {
+    "by_agent": {
+      "claude": {
+        "total": 20,
+        "passed": 16
+      }
+    },
+    "by_mode": {
+      "with_tests": {
+        "total": 20,
+        "passed": 16
+      }
+    },
+    "by_evaluation": {
+      "PASS": 16,
+      "FAIL": 1,
+      "ERROR": 0,
+      "TIMEOUT": 0,
+      "NO_FIX": 3
+    }
+  }
+}

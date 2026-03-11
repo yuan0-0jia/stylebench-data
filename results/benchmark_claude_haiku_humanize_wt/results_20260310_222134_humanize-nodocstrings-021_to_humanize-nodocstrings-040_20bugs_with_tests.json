@@ -1,0 +1,534 @@
+{
+  "metadata": {
+    "catalog": "/Users/yuan/stylebench-data/bugs_canonical/humanize-nodocstrings.json",
+    "repo": "/Users/yuan/stylebench-data/nodocstrings/humanize",
+    "repo_name": "humanize",
+    "timestamp": "2026-03-10T22:21:34.532399",
+    "total_trials": 20,
+    "manifest_used": false,
+    "hit_rate_limit": false
+  },
+  "results": [
+    {
+      "bug_id": "humanize-nodocstrings-021",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 684,
+      "tests_failed": 0,
+      "tests_total": 737,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-03-10T22:10:17.228963",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "src/humanize/filesize.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 20.62589740753174,
+        "error": null,
+        "agent_output": "Fixed! The bug was on line 54 of `filesize.py`. The condition should be `if abs_bytes < base:` instead of `if abs_bytes > base:`. \n\nWith this fix:\n- For values less than 1000, it correctly returns them as \"Bytes\" \n- For values >= 1000, it properly calculates the appropriate suffix (kB, MB, GB, etc.)\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "humanize-nodocstrings-022",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 684,
+      "tests_failed": 0,
+      "tests_total": 737,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-03-10T22:10:57.194825",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "src/humanize/time.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 37.474786043167114,
+        "error": null,
+        "agent_output": "Done! The bug was on line 106 of `src/humanize/time.py`. The condition `delta.microseconds > 1000` was backwards. It should be `< 1000` to properly handle microsecond-level precision:\n\n- When we have less than 1000 microseconds (like 1 or 4), we should display them as microseconds\n- When we have 1000+ microseconds, they should be converted to milliseconds (handled by the second condition on line 113)\n\nThe fix ensures that a 1 microsecond delta with `minimum_unit='microseconds'` now returns `\"1 microsecond\"` instead of `\"a moment\"`.\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "humanize-nodocstrings-023",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 684,
+      "tests_failed": 0,
+      "tests_total": 737,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-03-10T22:11:26.729476",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "src/humanize/time.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 26.825313091278076,
+        "error": null,
+        "agent_output": "Done! I found and fixed the bug. The issue was on line 113 of `/private/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/stylebench_acoayl21/src/humanize/time.py`.\n\n**The bug:** The condition `1000 >= delta.microseconds < 1_000_000` was using `>=` instead of `<=`, which prevented millisecond-level values (1000-999999 microseconds) from being properly formatted when `minimum_unit='microseconds'`.\n\n**The fix:** Changed `1000 >= delta.microseconds` to `1000 <= delta.microseconds` so the range check correctly identifies values that should be displayed as milliseconds.\n\nWith this fix, `naturaldelta(0.004, minimum_unit='microseconds')` will now correctly return `'4 milliseconds'` instead of `'a moment'`.\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "humanize-nodocstrings-024",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 684,
+      "tests_failed": 0,
+      "tests_total": 737,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-03-10T22:12:02.274163",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "src/humanize/time.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 32.907713890075684,
+        "error": null,
+        "agent_output": "Fixed! The bug was in the `_suitable_minimum_unit` function at line 291 in `src/humanize/time.py`.\n\n**The problem:** When the minimum unit is suppressed, the code was searching for units **smaller** than the minimum unit (`unit < min_unit`). But since MICROSECONDS is the smallest unit, there are no smaller units to fall back to.\n\n**The fix:** Changed `unit < min_unit` to `unit > min_unit` so it searches for **larger** units as replacements. This allows the code to find MILLISECONDS when MICROSECONDS is suppressed, which produces the expected output \"1.20 milliseconds\".\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "humanize-nodocstrings-025",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 684,
+      "tests_failed": 0,
+      "tests_total": 737,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-03-10T22:12:44.010786",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "src/humanize/time.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 39.631267070770264,
+        "error": null,
+        "agent_output": "Perfect! I found and fixed the bug. The issue was in line 417 of `/private/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/stylebench_4v91r1_2/src/humanize/time.py`.\n\n**The problem:** The condition was checking `if fmt_value < 0` (less than zero) when it should have been checking `if fmt_value > 0` (greater than zero). This prevented non-zero units from being added to the output text unless they were the minimum unit.\n\n**The fix:** Changed the condition from `fmt_value < 0` to `fmt_value > 0` so that any unit with a non-zero value gets included in the result. Now `precisedelta(dt.timedelta(milliseconds=67_000))` will correctly return `\"1 minute and 7 seconds\"` instead of just `\"7 seconds\"`.\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "humanize-nodocstrings-026",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 684,
+      "tests_failed": 0,
+      "tests_total": 737,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-03-10T22:13:11.798946",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "src/humanize/time.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 25.082247257232666,
+        "error": null,
+        "agent_output": "Perfect! I found and fixed the bug. The issue was on **line 113** of `/private/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/stylebench_9xbftq7k/src/humanize/time.py`.\n\n**The Bug:** The condition `1000 >= delta.microseconds < 1_000_000` was checking if microseconds is less than 1000, when it should check if it's greater than or equal to 1000.\n\n**The Fix:** Changed `>=` to `<=` so the condition now reads `1000 <= delta.microseconds < 1_000_000`, which correctly identifies when a timedelta's microseconds value is in the milliseconds range (1000-999999 microseconds).\n\nThis was preventing the function from converting 4000 microseconds to \"4 milliseconds\" when `minimum_unit=\"microseconds\"` was specified. Now it will properly handle that case.\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "humanize-nodocstrings-027",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 684,
+      "tests_failed": 0,
+      "tests_total": 737,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-03-10T22:13:58.991992",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "src/humanize/time.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 45.14596104621887,
+        "error": null,
+        "agent_output": "Perfect! I found and fixed the bug. \n\n**The Issue:** Line 382 had the wrong comparison operator in the millisecond promotion logic.\n\n**The Bug:** `if msecs <= 1_000` should be `if msecs >= 1_000`\n\n**Why it was broken:** When `msecs = 0`, the condition `msecs <= 1_000` was true, causing the code to subtract 1000 from milliseconds and add 1 to seconds\u2014even though there were no milliseconds to promote. This turned 7 seconds into 8 seconds, causing the test to fail.\n\n**Why the fix works:** The correct condition `msecs >= 1_000` only triggers when milliseconds actually exceed 1000 and need to be promoted to seconds, matching the logic of all the other promotion conditions below it (`secs >= 60`, `minutes >= 60`, `hours >= 24`, etc.).\n\nThe test should now pass with the expected output \"1 minute and 7 seconds\".\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "humanize-nodocstrings-028",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 684,
+      "tests_failed": 0,
+      "tests_total": 737,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-03-10T22:14:29.617840",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "src/humanize/time.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 28.76965093612671,
+        "error": null,
+        "agent_output": "Done! The bug was a logic error in the rounding promotion code at line 385. It was checking `if secs <= 60` when it should have been `if secs >= 60`. This caused any seconds value of 60 or less to incorrectly get promoted to minutes.\n\nWith 67 seconds (1 minute and 7 seconds), the code was incorrectly converting it to 2 minutes because:\n- First it correctly calculated minutes=1, secs=7 from `divmod(67, 60)`\n- Then the buggy condition `secs <= 60` was true (7 <= 60), so it subtracted 60 from secs and added 1 to minutes\n- This resulted in minutes=2, secs=-53\n\nThe fix changes line 385 to use `>=` like all the other unit overflow checks in the same block, so it only promotes to the next unit when the current unit exceeds its maximum value (60 for seconds).\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "humanize-nodocstrings-029",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 684,
+      "tests_failed": 0,
+      "tests_total": 737,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-03-10T22:15:02.506596",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "src/humanize/time.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 30.98600697517395,
+        "error": null,
+        "agent_output": "Fixed! The bug was on line 388 of `/private/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/stylebench_liedkbmy/src/humanize/time.py`.\n\nThe issue was a comparison operator error: `if minutes <= 60` should be `if minutes >= 60`. \n\nThe logic is supposed to promote minutes to hours when minutes is 60 or greater (similar to how lines 385-387 promote seconds to minutes when seconds >= 60). The reversed comparison was causing minutes to be incorrectly converted to hours whenever it was 60 or less, which explains why 67 seconds (1 minute 7 seconds) was being converted to \"1 hour and 7 seconds\" instead.\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "humanize-nodocstrings-030",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 684,
+      "tests_failed": 0,
+      "tests_total": 737,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-03-10T22:15:26.632356",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "src/humanize/time.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 22.178441047668457,
+        "error": null,
+        "agent_output": "Fixed! The bug was a simple logic error on line 391. The condition used `<=` (less than or equal to) instead of `>=` (greater than or equal to). \n\n**The problem:** The condition `if hours <= 24` is always true for any valid hour value (0-23), causing the code to always subtract 24 from hours and add 1 day, even when there aren't 24 hours to convert.\n\n**The fix:** Changed it to `if hours >= 24`, which correctly only promotes hours to days when there are 24 or more hours to convert.\n\nThis resolves the test failure where `precisedelta(timedelta(milliseconds=67_000))` was returning \"1 day, 1 minute and 7 seconds\" instead of \"1 minute and 7 seconds\".\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "humanize-nodocstrings-031",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 684,
+      "tests_failed": 0,
+      "tests_total": 737,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-03-10T22:16:09.710496",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "src/humanize/filesize.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 41.194294929504395,
+        "error": null,
+        "agent_output": "Perfect! The fix is complete. Here's what I found and fixed:\n\n**The Bug:** In `src/humanize/filesize.py` at line 54-55, the code was always returning \"Bytes\" (plural) for values less than the base unit, even when the value was exactly 1.\n\n**The Fix:** Added a check to return the singular form \"Byte\" when `abs_bytes == 1` and `gnu == False`. This handles:\n- `1` \u2192 \"1 Byte\" (singular)\n- `1.0` \u2192 \"1 Byte\" (singular)\n- `\"1\"` \u2192 \"1 Byte\" (singular)\n- `300` \u2192 \"300 Bytes\" (plural)\n- `1.123...` \u2192 \"1 Bytes\" (plural, since the value is not exactly 1)\n\nThe change is minimal and focused on fixing the exact issue where the test expected singular \"Byte\" but the code was returning plural \"Bytes\".\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "humanize-nodocstrings-032",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 684,
+      "tests_failed": 0,
+      "tests_total": 737,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-03-10T22:16:35.045236",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "src/humanize/filesize.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 23.403323888778687,
+        "error": null,
+        "agent_output": "Fixed! The bug was an off-by-one error in the suffix array indexing at line 58. The expression `suffix[exp - 0]` should be `suffix[exp - 1]` so that when `exp = 1` (dividing by base^1 = 1000), it correctly uses the first suffix `\" kB\"` at index 0, instead of the second suffix `\" MB\"` at index 1.\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "humanize-nodocstrings-033",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 684,
+      "tests_failed": 0,
+      "tests_total": 737,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-03-10T22:17:52.990677",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "src/humanize/number.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 76.01161527633667,
+        "error": null,
+        "agent_output": "Perfect! I found and fixed the bug. The issue was on line 147 of `/private/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/stylebench_6hyo610q/src/humanize/number.py`.\n\n**The Bug:** The code was checking `powers[ordinal + 0]` (the current power), when it should check `powers[ordinal + 1]` (the next power).\n\n**Why it failed:** When input was 1000:\n- It calculated `ordinal = 0` (thousand) with `power = 1000`\n- After rounding: `rounded_value * power = 1.0 * 1000 = 1000`\n- The buggy condition checked if `1000 == powers[0]` (which is 1000) \u2192 **True**\n- This incorrectly bumped up to ordinal 1 (million) instead of staying at 0 (thousand)\n\n**The fix:** Changed the condition to check `powers[ordinal + 1]` instead:\n- Now it correctly checks if `1000 == powers[1]` (which is 1000000) \u2192 **False**\n- So ordinal stays at 0 and returns \"1.0 thousand\" \u2713\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "humanize-nodocstrings-034",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 684,
+      "tests_failed": 0,
+      "tests_total": 737,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-03-10T22:18:13.910899",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "src/humanize/number.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 18.868193864822388,
+        "error": null,
+        "agent_output": "Done. The bug was a simple off-by-one error in the denominator limit. The `fractional` function was using `limit_denominator(999)` which caused it to find `332/997` as the best approximation for 0.333. By increasing the limit to 1000, it now correctly finds `333/1000` as the best approximation, which matches the test expectation.\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "humanize-nodocstrings-035",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 684,
+      "tests_failed": 0,
+      "tests_total": 737,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-03-10T22:18:37.056704",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "src/humanize/number.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 21.25274085998535,
+        "error": null,
+        "agent_output": "Done. The bug was on line 197: the condition was checking `denominator == 0`, but when a whole number is passed (like 1), the Fraction object for 0 has `denominator == 1`, not 0. Changed it to `denominator == 1` so integers return just the integer value (e.g., \"1\" instead of \"1 0/1\").\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "humanize-nodocstrings-036",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 684,
+      "tests_failed": 0,
+      "tests_total": 737,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-03-10T22:18:56.252148",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "src/humanize/filesize.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 17.4066002368927,
+        "error": null,
+        "agent_output": "Done! The bug was on line 58 of the filesize.py file. The code was **multiplying** by `base**exp` instead of **dividing**. \n\nThe fix changes:\n```python\nret: str = format % (bytes_ * (base**exp)) + suffix[exp - 1]\n```\n\nto:\n```python\nret: str = format % (bytes_ / (base**exp)) + suffix[exp - 1]\n```\n\nThis correctly converts bytes to the appropriate unit (e.g., 1000 bytes becomes 1.0 kB, not 1000000.0 kB).\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "humanize-nodocstrings-037",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "FAIL",
+      "tests_passed": 161,
+      "tests_failed": 1,
+      "tests_total": 215,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-03-10T22:19:28.563150",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "src/humanize/number.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 30.929081201553345,
+        "error": null,
+        "agent_output": "The bug is fixed. The condition on line 147 was incorrectly checking `rounded_value / power == powers[ordinal + 1]`, which is dimensionally wrong. When we round up a value like 999.999999 to 1000.0 within a scale, we've crossed into the next power of 10. The correct check is simply `rounded_value >= 1000`, which detects when we need to move to the next scale level and reset the value to 1.0.\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "humanize-nodocstrings-038",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 684,
+      "tests_failed": 0,
+      "tests_total": 737,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-03-10T22:19:55.378777",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "src/humanize/time.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 24.894204139709473,
+        "error": null,
+        "agent_output": "Perfect! The bug was a simple operator error. On line 102, the code was multiplying `days * 30.5` instead of dividing `days / 30.5` to convert remaining days into months. The fix changes one character from `*` to `/`.\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "humanize-nodocstrings-039",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 684,
+      "tests_failed": 0,
+      "tests_total": 737,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-03-10T22:20:25.573845",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "src/humanize/time.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 28.300229787826538,
+        "error": null,
+        "agent_output": "The bug was found and fixed! The issue was on line 360 in `src/humanize/time.py`:\n\n**The Problem:** The divisor was `24 / 3600` (\u2248 0.00667) instead of `24 * 3600` (= 86400, the number of seconds in a day).\n\nWhen dividing 67 seconds by 0.00667, it incorrectly produced ~10050 days instead of keeping it as seconds.\n\n**The Fix:** Changed `24 / 3600` to `24 * 3600` on line 360, so the seconds-to-days conversion now uses the correct divisor (86400 seconds per day).\n\nThis was a simple arithmetic error that caused the massive miscalculation in the time delta parsing.\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "humanize-nodocstrings-040",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 684,
+      "tests_failed": 0,
+      "tests_total": 737,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-03-10T22:21:34.467666",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "src/humanize/number.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 66.9607617855072,
+        "error": null,
+        "agent_output": "Done! The bug was on line 147. The condition was using `not largest_ordinal` when it should use `largest_ordinal`. \n\nThe logic should be: \"If we haven't exceeded the available powers AND rounding caused us to land exactly at the next power threshold, then bump up to the next unit.\" The negation was preventing the adjustment from happening, causing values like 999,999,999 to return \"1000.0 million\" instead of \"1.0 billion\".\n",
+        "rate_limited": false
+      }
+    }
+  ],
+  "summary": {
+    "by_agent": {
+      "claude": {
+        "total": 20,
+        "passed": 19
+      }
+    },
+    "by_mode": {
+      "with_tests": {
+        "total": 20,
+        "passed": 19
+      }
+    },
+    "by_evaluation": {
+      "PASS": 19,
+      "FAIL": 1,
+      "ERROR": 0,
+      "TIMEOUT": 0,
+      "NO_FIX": 0
+    }
+  }
+}

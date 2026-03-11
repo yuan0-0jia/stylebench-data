@@ -1,0 +1,532 @@
+{
+  "metadata": {
+    "catalog": "/Users/yuan/stylebench-data/bugs_canonical/validators-camelcase.json",
+    "repo": "/Users/yuan/stylebench-data/camelcase/validators",
+    "repo_name": "validators",
+    "timestamp": "2026-03-10T18:11:18.414837",
+    "total_trials": 20,
+    "manifest_used": false,
+    "hit_rate_limit": false
+  },
+  "results": [
+    {
+      "bug_id": "validators-camelcase-021",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 895,
+      "tests_failed": 0,
+      "tests_total": 895,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-03-10T17:59:46.953004",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "src/validators/crypto_addresses/eth_address.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 65.17739391326904,
+        "error": null,
+        "agent_output": "Done! The bug was in the checksum validation thresholds at eth_address.py:26-27. The values were `< 7` and `<= 7` instead of `>= 8` and `< 8`, causing contradictory validation requirements for addresses with mixed case checksums like `0x5AEDA56215b167893e80B4fE645BA6d5Bab767DE`.\n\nThe fix aligns the validation logic with the EIP-55 Ethereum checksum standard:\n- Hash digit >= 8 \u2192 character must be uppercase  \n- Hash digit < 8 \u2192 character must be lowercase\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "validators-camelcase-022",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 895,
+      "tests_failed": 0,
+      "tests_total": 895,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-03-10T18:00:06.254813",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "src/validators/email.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 17.869039058685303,
+        "error": null,
+        "agent_output": "Fixed! The bug was on line 63: the condition was checking `len(usernamePart) < 64` when it should check `len(usernamePart) > 64`. This was incorrectly rejecting all emails with username parts shorter than 64 characters (which is the normal case). The corrected condition now properly validates that both the username and domain parts are within RFC limits.\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "validators-camelcase-023",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 895,
+      "tests_failed": 0,
+      "tests_total": 895,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-03-10T18:00:25.269681",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "src/validators/email.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 17.552604913711548,
+        "error": null,
+        "agent_output": "Done! The bug was on line 63: it was checking `len(usernamePart) < 64` when it should be `> 64`. This was rejecting valid emails with short usernames since \"email\" (5 characters) is less than 64. Fixed it to correctly validate max 64 characters for the local part per RFC standards.\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "validators-camelcase-024",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 895,
+      "tests_failed": 0,
+      "tests_total": 895,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-03-10T18:01:22.739450",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "src/validators/i18n/ru.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 55.969945192337036,
+        "error": null,
+        "agent_output": "Perfect! The fix is applied. The bug was in the 10-digit INN validation logic (lines 42-46).\n\n**The issue:** When `controlNumber = 10` (which happens for the test value '7709439560'), the original code checked `controlNumber == digits[-1]` (i.e., `10 == 0`), which is False.\n\n**The fix:** The correct algorithm should always use `(controlNumber % 10) == digits[-1]`, which properly handles the case where the result is 10 (mapping it to check digit 0).\n\nFor the test case '7709439560':\n- Sum of weighted products = 230\n- controlNumber = 230 % 11 = 10\n- Check: (10 % 10) == 0 \u2192 True \u2713\n\nThe fix is minimal and focused on the failing test case without modifying any test files or making unnecessary changes to the 12-digit INN logic.\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "validators-camelcase-025",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "NO_FIX",
+      "tests_passed": 224,
+      "tests_failed": 1,
+      "tests_total": 225,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-03-10T18:03:23.688351",
+      "fix_result": {
+        "success": false,
+        "files_changed": [],
+        "patch": "",
+        "tokens_used": 0,
+        "time_seconds": 120.04261708259583,
+        "error": "Timeout after 120 seconds",
+        "agent_output": "",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "validators-camelcase-026",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 895,
+      "tests_failed": 0,
+      "tests_total": 895,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-03-10T18:03:54.684669",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "src/validators/crypto_addresses/eth_address.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 29.514261960983276,
+        "error": null,
+        "agent_output": "Fixed! The bug was in the ERC55 checksum validation logic on line 27. The condition `int(addrHash[i], 16) >= 7` was incorrect because it overlapped with the previous condition `int(addrHash[i], 16) > 7`, creating a logical contradiction. For hash values 8-15, both conditions would be true, requiring the character to be both uppercase AND lowercase, which is impossible.\n\nChanged line 27 from:\n```python\nint(addrHash[i], 16) >= 7 and addr[i].lower() != addr[i]\n```\n\nTo:\n```python\nint(addrHash[i], 16) < 8 and addr[i].lower() != addr[i]\n```\n\nThis correctly implements the ERC55 algorithm: hash digits >= 8 require uppercase characters, and hash digits < 8 require lowercase characters.\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "validators-camelcase-027",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 895,
+      "tests_failed": 0,
+      "tests_total": 895,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-03-10T18:04:24.323139",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "src/validators/i18n/fi.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 28.226398944854736,
+        "error": null,
+        "agent_output": "Done! I found and fixed the bug.\n\n**The Issue:**\nThe condition on line 101 was checking `int(gd[\"serial\"]) >= 899` when it should check `int(gd[\"serial\"]) < 900`. \n\nAccording to the docstring, temporal SSNs have serials in the range [900-999]. The original condition would incorrectly accept a temporal SSN (like serial 900) even when `allowTemporalSsn=False` because `900 >= 899` is `True`.\n\n**The Fix:**\nChanged line 101 from:\n```python\nand (allowTemporalSsn or int(gd[\"serial\"]) >= 899)\n```\nto:\n```python\nand (allowTemporalSsn or int(gd[\"serial\"]) < 900)\n```\n\nNow the logic correctly means: \"Accept the SSN if temporal SSNs are allowed, OR if the serial number is not temporal (i.e., less than 900).\"\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "validators-camelcase-028",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 895,
+      "tests_failed": 0,
+      "tests_total": 895,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-03-10T18:05:04.930573",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "src/validators/card.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 39.180603981018066,
+        "error": null,
+        "agent_output": "Done! I found and fixed the bug in the `cardNumber` function:\n\n**The Issue:**\nLine 36 had `oddSum = sum(digits[-0::-2])` which is incorrect. In Python, `-0` is the same as `0`, so this slice starts at index 0 and goes backwards, only including the first digit instead of starting from the rightmost digit.\n\n**The Fix:**\nChanged it to `oddSum = sum(digits[-1::-2])` to correctly start from the last digit (index -1) and go backwards by 2 steps.\n\nThis is the correct implementation for Luhn's algorithm, which validates card numbers by:\n1. Summing digits at odd positions from the right\n2. Summing doubled digits at even positions from the right  \n3. Checking if the total is divisible by 10\n\nFor the test card '4242424242424242', this will now correctly sum to 80 (divisible by 10), making it pass validation.\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "validators-camelcase-029",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 895,
+      "tests_failed": 0,
+      "tests_total": 895,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-03-10T18:05:51.728485",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "src/validators/card.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 45.35582184791565,
+        "error": null,
+        "agent_output": "Done! The bug was in the Luhn algorithm implementation at line 36 of `card.py`. \n\n**The Issue:** The slice `digits[-1::-1]` sums **all** digits, but the Luhn algorithm requires summing only **every other digit** starting from the rightmost one.\n\n**The Fix:** Changed `digits[-1::-1]` to `digits[-1::-2]` to properly select every second digit in reverse order.\n\nThis minimal one-character fix (changing the slice step from `-1` to `-2`) correctly implements the Luhn algorithm for validating card numbers.\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "validators-camelcase-030",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 895,
+      "tests_failed": 0,
+      "tests_total": 895,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-03-10T18:06:31.983754",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "src/validators/card.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 38.775256872177124,
+        "error": null,
+        "agent_output": "Done! I found and fixed the bug.\n\n**The Issue:**\nIn `src/validators/card.py` line 37, the Luhn algorithm implementation was multiplying by 1 instead of 2 when validating card numbers. The Luhn algorithm specifically requires doubling every second digit from the rightmost position.\n\n**The Fix:**\nChanged:\n```python\nevenSum = sum(sum(divmod(1 * d, 10)) for d in digits[-2::-2])\n```\n\nTo:\n```python\nevenSum = sum(sum(divmod(2 * d, 10)) for d in digits[-2::-2])\n```\n\nThis was causing all valid card numbers (including `4242424242424242`) to fail validation. With the correct multiplication by 2, the Luhn checksum is now calculated properly, allowing valid card numbers to pass validation.\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "validators-camelcase-031",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 895,
+      "tests_failed": 0,
+      "tests_total": 895,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-03-10T18:08:11.143210",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "src/validators/card.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 97.60929703712463,
+        "error": null,
+        "agent_output": "Done! The bug was in the Luhn algorithm implementation on **line 37 of `src/validators/card.py`**.\n\n**The problem:** The code used `divmod(2 * d, 9)` instead of `divmod(2 * d, 10)`. \n\n**The fix:** Changed to `divmod(2 * d, 10)` to correctly implement the Luhn algorithm, which requires summing the digits when doubling a digit results in a two-digit number (e.g., 2\u00d78=16 \u2192 1+6=7).\n\nThis fixes the validation for card number `4000002760003184` and other cards that were incorrectly rejected.\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "validators-camelcase-032",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 895,
+      "tests_failed": 0,
+      "tests_total": 895,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-03-10T18:08:39.679640",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "src/validators/card.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 27.16615319252014,
+        "error": null,
+        "agent_output": "Done! The bug was on line 37 of `card.py`. The Luhn algorithm requires doubling every second digit, but the code was multiplying by `1` instead of `2`. This caused valid card numbers to be incorrectly rejected.\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "validators-camelcase-033",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 895,
+      "tests_failed": 0,
+      "tests_total": 895,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-03-10T18:08:56.516319",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "src/validators/card.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 15.302925109863281,
+        "error": null,
+        "agent_output": "Done. The bug was a simple operator error: `2 / d` should be `2 * d`. The Luhn algorithm multiplies even-positioned digits by 2, not divides. This was causing a ZeroDivisionError when the card number contained a 0 digit.\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "validators-camelcase-034",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 895,
+      "tests_failed": 0,
+      "tests_total": 895,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-03-10T18:09:10.862770",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "src/validators/i18n/ru.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 12.951077938079834,
+        "error": null,
+        "agent_output": "Done. The bug was a simple operator error\u2014line 41 was using division (`/`) instead of multiplication (`*`) for the weight coefficient calculation. This caused a `ZeroDivisionError` when the last weight coefficient (0) was encountered. The fix aligns with the correct algorithm used for 12-digit INN validation.\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "validators-camelcase-035",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 895,
+      "tests_failed": 0,
+      "tests_total": 895,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-03-10T18:09:25.457749",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "src/validators/i18n/ru.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 13.23479413986206,
+        "error": null,
+        "agent_output": "Fixed! The bug was on line 50 where division (`/`) was used instead of multiplication (`*`). This caused a ZeroDivisionError when the weight coefficient was 0. The fix aligns with the multiplication pattern used in lines 41 and 52.\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "validators-camelcase-036",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 895,
+      "tests_failed": 0,
+      "tests_total": 895,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-03-10T18:09:38.850585",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "src/validators/i18n/ru.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 11.91900086402893,
+        "error": null,
+        "agent_output": "Done! The bug was on line 52: it was using division `/` instead of multiplication `*`. The line should be:\n\n```python\ncontrolNumber2 = sum([d * w for d, w in zip(digits, weightCoefs2)]) % 11\n```\n\nThis matches the correct pattern used on line 50 for `controlNumber1`. The division operator was causing the `ZeroDivisionError` because `weightCoefs2` ends with a `0`, and you can't divide by zero.\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "validators-camelcase-037",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 895,
+      "tests_failed": 0,
+      "tests_total": 895,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-03-10T18:09:59.693478",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "src/validators/i18n/fr.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 19.506160974502563,
+        "error": null,
+        "agent_output": "Done! The bug was on line 105 of `/src/validators/i18n/fr.py`. The condition was inverted - it should check `if controlKey is None:` (when no control key is provided) instead of `if controlKey is not None:`. This was causing the code to attempt `int(controlKey)` on a `None` value when validating SSNs without a control key.\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "validators-camelcase-038",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 895,
+      "tests_failed": 0,
+      "tests_total": 895,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-03-10T18:10:28.592952",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "src/validators/card.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 27.44853711128235,
+        "error": null,
+        "agent_output": "Fixed! The bug was a logic error on line 106 of `src/validators/card.py`. The condition was checking `len(value) != 15` (rejecting 15-digit cards), when it should have been checking `len(value) == 15` (accepting exactly 15-digit cards). American Express cards are always 15 digits long, so the test card '378282246310005' was correctly failing validation.\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "validators-camelcase-039",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 895,
+      "tests_failed": 0,
+      "tests_total": 895,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-03-10T18:10:47.601881",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "src/validators/card.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 17.622905015945435,
+        "error": null,
+        "agent_output": "Done! The bug was a simple logic error in the `unionpay` function at line 128. It was checking `len(value) != 16` (not equal to 16) when it should have been checking `len(value) == 16` (equal to 16). The test card `'6200000000000005'` has exactly 16 digits and is valid, so it needs to pass the length check like all other 16-digit card validators.\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "validators-camelcase-040",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 895,
+      "tests_failed": 0,
+      "tests_total": 895,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-03-10T18:11:18.380276",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "src/validators/card.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 29.343619108200073,
+        "error": null,
+        "agent_output": "Done. The bug was on line 172 of `src/validators/card.py`: the JCB validator was using `len(value) != 16` instead of `len(value) == 16`. This rejected valid 16-digit JCB cards. The test card `3566002020360505` is 16 digits long and should pass validation.\n",
+        "rate_limited": false
+      }
+    }
+  ],
+  "summary": {
+    "by_agent": {
+      "claude": {
+        "total": 20,
+        "passed": 19
+      }
+    },
+    "by_mode": {
+      "with_tests": {
+        "total": 20,
+        "passed": 19
+      }
+    },
+    "by_evaluation": {
+      "PASS": 19,
+      "FAIL": 0,
+      "ERROR": 0,
+      "TIMEOUT": 0,
+      "NO_FIX": 1
+    }
+  }
+}

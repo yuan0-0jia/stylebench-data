@@ -1,0 +1,157 @@
+{
+  "metadata": {
+    "catalog": "/Users/yuan/stylebench-data/bugs_canonical/humanize-formatting.json",
+    "repo": "/Users/yuan/stylebench-data/formatting/humanize",
+    "repo_name": "humanize",
+    "timestamp": "2026-03-10T22:09:52.311173",
+    "total_trials": 5,
+    "manifest_used": false,
+    "hit_rate_limit": false
+  },
+  "results": [
+    {
+      "bug_id": "humanize-formatting-036",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 684,
+      "tests_failed": 0,
+      "tests_total": 737,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-03-10T22:03:22.043075",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "src/humanize/filesize.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 17.217005968093872,
+        "error": null,
+        "agent_output": "Done! The bug was a simple arithmetic operator error on line 98 of `filesize.py`. The code was **multiplying** (`bytes_ * (base**exp)`) when it should have been **dividing** (`bytes_ / (base**exp)`). This caused the byte values to be scaled up instead of down when converting to larger units.\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "humanize-formatting-037",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 684,
+      "tests_failed": 0,
+      "tests_total": 737,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-03-10T22:03:47.634718",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "src/humanize/number.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 23.62346076965332,
+        "error": null,
+        "agent_output": "Done! I found and fixed the bug. The issue was on **line 257** of `/private/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/stylebench_cp1ejqby/src/humanize/number.py`.\n\n**The Bug:**\nThe condition was using division instead of multiplication:\n```python\nrounded_value / power == powers[ordinal + 1]  # WRONG\n```\n\n**The Fix:**\nChanged it to multiplication:\n```python\nrounded_value * power == powers[ordinal + 1]  # CORRECT\n```\n\n**Why this fixes it:**\nFor the input `999999999`, after rounding with `'%.1f'` format:\n- `power = 1,000,000` (million)\n- `rounded_value = 1000.0` (999.999999 rounded up)\n- With the buggy division: `1000.0 / 1,000,000 = 0.001` \u2260 `1,000,000,000` \u2192 False, stays as \"1000.0 million\"\n- With the correct multiplication: `1000.0 * 1,000,000 = 1,000,000,000` \u2192 True, correctly upgrades to \"1.0 billion\"\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "humanize-formatting-038",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "NO_FIX",
+      "tests_passed": 324,
+      "tests_failed": 1,
+      "tests_total": 378,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-03-10T22:08:20.765768",
+      "fix_result": {
+        "success": false,
+        "files_changed": [],
+        "patch": "",
+        "tokens_used": 0,
+        "time_seconds": 272.0374982357025,
+        "error": "Timeout after 120 seconds",
+        "agent_output": "",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "humanize-formatting-039",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 684,
+      "tests_failed": 0,
+      "tests_total": 737,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-03-10T22:08:53.267042",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "src/humanize/time.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 30.157706022262573,
+        "error": null,
+        "agent_output": "Fixed! The bug was a simple arithmetic operator error on line 592. The divisor for converting seconds to days was `24 / 3600` (which equals 0.00666...) when it should be `24 * 3600` (which equals 86400 seconds in a day).\n\nThis caused 67 seconds to incorrectly calculate as ~10050 days, which cascaded into the \"1 month and 10018 days\" output instead of \"1 minute and 7 seconds\".\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "humanize-formatting-040",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 684,
+      "tests_failed": 0,
+      "tests_total": 737,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-03-10T22:09:52.155987",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "src/humanize/number.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 56.755863189697266,
+        "error": null,
+        "agent_output": "Perfect! I found and fixed the bug. The issue was in the `intword` function at line 257 in `src/humanize/number.py`.\n\n**The Problem:**\nThe condition was `if not largest_ordinal and ...` when it should have been `if largest_ordinal and ...`.\n\n**Why it failed:**\n- For 999999999, the function divided by 10^6 (million) to get 999.999999\n- This rounded to 1000.0 million with the '%.1f' format\n- The code should detect that 1000.0 million = 1.0 billion and upgrade\n- But the condition `if not largest_ordinal and ...` was backwards - it would only trigger if we were at the maximum power (googol), not when we had successfully rounded up to the next tier\n\n**The fix:**\nChanged the condition from `if not largest_ordinal and ...` to `if largest_ordinal and ...`. This correctly checks: \"if we haven't reached the maximum power AND our rounding caused us to equal the next power level, then upgrade to the next unit.\"\n\nNow with this fix:\n- 999999999 correctly rounds from 999.999999 to 1000.0 million, detects the upgrade condition, and returns \"1.0 billion\" \u2713\n",
+        "rate_limited": false
+      }
+    }
+  ],
+  "summary": {
+    "by_agent": {
+      "claude": {
+        "total": 5,
+        "passed": 4
+      }
+    },
+    "by_mode": {
+      "with_tests": {
+        "total": 5,
+        "passed": 4
+      }
+    },
+    "by_evaluation": {
+      "PASS": 4,
+      "FAIL": 0,
+      "ERROR": 0,
+      "TIMEOUT": 0,
+      "NO_FIX": 1
+    }
+  }
+}

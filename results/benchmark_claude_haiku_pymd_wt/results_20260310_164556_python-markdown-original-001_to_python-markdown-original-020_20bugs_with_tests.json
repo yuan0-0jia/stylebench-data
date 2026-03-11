@@ -1,0 +1,530 @@
+{
+  "metadata": {
+    "catalog": "/Users/yuan/stylebench-data/bugs_canonical/python-markdown-original.json",
+    "repo": "/Users/yuan/stylebench-data/original/python-markdown",
+    "repo_name": "python-markdown",
+    "timestamp": "2026-03-10T16:45:56.184306",
+    "total_trials": 20,
+    "manifest_used": false,
+    "hit_rate_limit": false
+  },
+  "results": [
+    {
+      "bug_id": "python-markdown-original-001",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 776,
+      "tests_failed": 0,
+      "tests_total": 886,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-03-10T16:33:12.475206",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "markdown/__main__.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 14.537895202636719,
+        "error": null,
+        "agent_output": "Fixed! The bug was a logic error on lines 92-95. The condition was inverted:\n\n**The problem:** When `args` is empty (no input file provided), the code tried to access `args[0]`, causing an `IndexError`.\n\n**The solution:** Changed `if len(args) != 0:` to `if len(args) == 0:` so that:\n- When there are no arguments, `input_file = None`\n- When there are arguments, `input_file = args[0]`\n\nThis allows the test to pass options like `-e utf-8` without providing an input file.\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "python-markdown-original-002",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 776,
+      "tests_failed": 0,
+      "tests_total": 886,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-03-10T16:33:32.133537",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "markdown/__meta__.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 17.428711891174316,
+        "error": null,
+        "agent_output": "Done! The bug was a simple logic error on line 39. The condition for determining how many version parts to include was inverted:\n\n- **Before**: `parts = 2 if version_info[2] != 0 else 3` (included fewer parts when patch was non-zero)\n- **After**: `parts = 3 if version_info[2] != 0 else 2` (includes 3 parts when patch is non-zero)\n\nThis fixes the test case `_get_version((1, 1, 2, 'dev', 0))` to correctly return `\"1.1.2.dev0\"` instead of `\"1.1.dev0\"`.\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "python-markdown-original-003",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 776,
+      "tests_failed": 0,
+      "tests_total": 886,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-03-10T16:33:53.370307",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "markdown/__meta__.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 18.972037076950073,
+        "error": null,
+        "agent_output": "Fixed! The bug was a logic error on line 42. The condition was `!= 'dev'` (inverted) when it should be `== 'dev'`. This caused 'dev' versions to fall through to the `elif` that tried to look up 'dev' in a mapping dictionary that only contains 'alpha', 'beta', and 'rc', resulting in the KeyError.\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "python-markdown-original-004",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 776,
+      "tests_failed": 0,
+      "tests_total": 886,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-03-10T16:34:14.473270",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "markdown/__main__.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 19.189762115478516,
+        "error": null,
+        "agent_output": "The bug is fixed! The issue was on lines 92-95 in `markdown/__main__.py`:\n\n**The Problem:** After parsing options with `parser.parse_args()`, the code was checking the original `args` list instead of the `values` list that contains the remaining positional arguments. This caused `-e` to be incorrectly treated as an input file.\n\n**The Fix:** Changed the condition to check `len(values)` and access `values[0]` instead of `args[0]`, since `values` contains the unparsed positional arguments returned by the parser.\n\nThis ensures that when `parse_options(['-e', 'utf-8'])` is called, it correctly identifies that there are no positional arguments remaining and sets `input_file` to `None`.\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "python-markdown-original-005",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 776,
+      "tests_failed": 0,
+      "tests_total": 886,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-03-10T16:34:49.247354",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "markdown/__main__.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 32.76902389526367,
+        "error": null,
+        "agent_output": "Perfect! I found and fixed the bug. \n\n**The Issue:**\nThe `parse_options` function was checking `len(args)` instead of `len(values)` when determining the input file. The `parser.parse_args()` method returns remaining positional arguments in the second return value (`values`), not in the original `args` list. So when parsing `['-e', 'utf-8']`:\n- Both arguments are consumed by the parser\n- `values` becomes empty `[]`\n- But `args` still contains the original `['-e', 'utf-8']`\n- The code incorrectly checked `len(args)` (which was 2), and assigned `input_file = args[0]` which was `'-e'`\n\n**The Fix:**\nChanged lines 92 and 95 to use `values` instead of `args`:\n- Line 92: `if len(values) == 0:` (instead of `if len(args) == 0:`)\n- Line 95: `input_file = values[0]` (instead of `input_file = args[0]`)\n\nThis ensures that the input file is correctly extracted from the remaining positional arguments after option parsing, and won't incorrectly pick up option flags.\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "python-markdown-original-006",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 776,
+      "tests_failed": 0,
+      "tests_total": 886,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-03-10T16:35:03.950315",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "markdown/__main__.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 12.677333116531372,
+        "error": null,
+        "agent_output": "Done! The bug was on line 90 of `markdown/__main__.py`. The `parser.parse_args()` method was being called with `args` as both the arguments to parse AND as the values object to store options into. The second parameter should be omitted (defaults to `None`), which tells optparse to create a new Values object. By passing the list `args` as the second parameter, it tried to set attributes on a list object, causing the `AttributeError`.\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "python-markdown-original-007",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 776,
+      "tests_failed": 0,
+      "tests_total": 886,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-03-10T16:36:04.724272",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "markdown/__main__.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 58.78140592575073,
+        "error": null,
+        "agent_output": "Perfect! I found and fixed the bug. The issue was on **line 65** of `markdown/__main__.py`:\n\n**The Problem:**\nThe `-n` (no_lazy_ol) option had `default=False`, but it should have `default=True`.\n\n**Explanation:**\n- When the `-n` flag is NOT provided, `lazy_ol` should default to `True` (enable lazy ordered lists)\n- When the `-n` flag IS provided, `action='store_false'` sets `lazy_ol` to `False` (disable lazy ordered lists)\n\nThe test was failing because `parse_options(['-e', 'utf-8'])` was returning `lazy_ol: False` instead of the expected `lazy_ol: True`. The fix ensures the default is `True` when no options are specified.\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "python-markdown-original-008",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "NO_FIX",
+      "tests_passed": 5,
+      "tests_failed": 1,
+      "tests_total": 6,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-03-10T16:38:05.872256",
+      "fix_result": {
+        "success": false,
+        "files_changed": [],
+        "patch": "",
+        "tokens_used": 0,
+        "time_seconds": 120.0814220905304,
+        "error": "Timeout after 120 seconds",
+        "agent_output": "",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "python-markdown-original-009",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 776,
+      "tests_failed": 0,
+      "tests_total": 886,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-03-10T16:38:49.125336",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "markdown/blockprocessors.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 41.220020055770874,
+        "error": null,
+        "agent_output": "Done! I found and fixed the bug.\n\n**The Issue:**\nIn `/markdown/blockprocessors.py:525-531`, the `HRProcessor.test()` method had inverted logic. When a horizontal rule pattern was matched, it was returning `False` instead of `True`. \n\nThe `test()` method should return `True` when the processor should handle the block, but it was always returning `False`, so horizontal rules were never being processed and were instead being wrapped in paragraph tags by the ParagraphProcessor.\n\n**The Fix:**\nChanged line 530 from `return False` to `return True` when a match is found. This allows the HRProcessor to handle horizontal rules correctly and produce `<hr />` tags instead of `<p>---</p>`.\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "python-markdown-original-010",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 776,
+      "tests_failed": 0,
+      "tests_total": 886,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-03-10T16:39:16.118495",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "markdown/extensions/admonition.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 24.878753662109375,
+        "error": null,
+        "agent_output": "Done! The bug was on line 82 of `admonition.py`. The `parse_content` method should return a tuple `(sibling, block, the_rest)` but was incorrectly returning `None` in one code path. This caused the unpacking error at line 140 when the code tried to unpack the return value into three variables.\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "python-markdown-original-011",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "FAIL",
+      "tests_passed": 188,
+      "tests_failed": 1,
+      "tests_total": 235,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-03-10T16:39:36.406147",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "markdown/extensions/admonition.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 18.47170615196228,
+        "error": null,
+        "agent_output": "Done! The bug was in the `parse_content` method at line 121. It was returning `None` instead of a tuple, but:\n\n1. The method is declared to return `tuple[etree.Element | None, str, str]` (line 65)\n2. The `test` method tries to subscript the result with `[0]` (line 128)\n3. The `run` method unpacks it into three variables (line 140)\n\nThe fix returns `(None, old_block, '')` which is a proper 3-element tuple matching the return type and expected behavior when no sibling is found.\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "python-markdown-original-012",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 776,
+      "tests_failed": 0,
+      "tests_total": 886,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-03-10T16:40:10.976846",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "markdown/extensions/admonition.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 32.30726718902588,
+        "error": null,
+        "agent_output": "**Fixed!** The bug was in the `test` method of `AdmonitionProcessor` at line 126. \n\nThe logic was inverted: when the admonition regex pattern matched (which should mean \"yes, this is an admonition block\"), the method returned `None` (falsy), causing the processor to skip those blocks. This is why the `!!! note` syntax wasn't being converted to HTML.\n\nThe fix: Change `return None` to `return True` when the regex matches, allowing the processor to handle admonition blocks properly.\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "python-markdown-original-013",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 776,
+      "tests_failed": 0,
+      "tests_total": 886,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-03-10T16:40:29.221607",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "markdown/__main__.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 16.2149019241333,
+        "error": null,
+        "agent_output": "Fixed! The bug was on line 92: the condition was checking `if len(args) == 0:` and then trying to access `args[0]`, which raises an `IndexError` when the list is empty. Changed it to `if len(args) > 0:` to correctly handle the case where an input file argument is provided.\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "python-markdown-original-014",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 776,
+      "tests_failed": 0,
+      "tests_total": 886,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-03-10T16:40:44.990452",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "markdown/blockparser.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 13.813720703125,
+        "error": null,
+        "agent_output": "Fixed! The issue was in the `isstate` method logic - it was inverted. When the state list was empty, it tried to access `self[-1]`, causing the IndexError. The corrected version now:\n\n1. Returns `self[-1] == state` when the list is non-empty (has a state to check)\n2. Returns `False` when the list is empty (no state to match)\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "python-markdown-original-015",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 776,
+      "tests_failed": 0,
+      "tests_total": 886,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-03-10T16:40:59.734675",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "markdown/blockprocessors.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 12.576084852218628,
+        "error": null,
+        "agent_output": "Fixed! The bug was in the `lastChild` method at lines 78-83. The condition logic was inverted:\n\n- **Before**: If parent HAS children \u2192 return `None`, else \u2192 access `parent[-1]` (crashes)\n- **After**: If parent HAS children \u2192 return `parent[-1]`, else \u2192 return `None`\n\nThe method now correctly returns the last child when it exists, or `None` if the parent has no children.\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "python-markdown-original-016",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 776,
+      "tests_failed": 0,
+      "tests_total": 886,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-03-10T16:42:21.781731",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "markdown/blockprocessors.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 79.69205403327942,
+        "error": null,
+        "agent_output": "Perfect! I've fixed the bug. The issue was in the `ListIndentProcessor.test()` method in blockprocessors.py at line 177.\n\n**The Problem:** The condition used `parent.tag not in self.ITEM_TYPES`, which returned `True` whenever the parent was NOT a list item (like when parent was `<div>`). This caused indented code blocks to be incorrectly processed as list item children, wrapping them in `<li>` tags.\n\n**The Fix:** Changed the condition to use `in` instead of `not in` and added a check for `LIST_TYPES`. Now the processor only handles indented blocks when we're actually inside a list context:\n- Parent is an `<li>` element, OR  \n- Parent is a `<ul>` or `<ol>` element, OR\n- Parent's last child is a list\n\nThis ensures that a regular indented code block (like `    baz` after a regular paragraph) is correctly handled by `CodeBlockProcessor` instead of being wrapped in `<li>` tags.\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "python-markdown-original-017",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "FAIL",
+      "tests_passed": 113,
+      "tests_failed": 1,
+      "tests_total": 114,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-03-10T16:43:16.530881",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "markdown/blockprocessors.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 53.00824308395386,
+        "error": null,
+        "agent_output": "Perfect! I've fixed the bug. The issue was in the `ListIndentProcessor.test()` method (line 174-179). \n\n**The Problem:**\nThe condition was too permissive and matched indented blocks even when NOT in a list context. Specifically, the condition:\n```python\n(parent[-1].tag not in self.LIST_TYPES)\n```\nwould match any block where the last child wasn't a list (e.g., a `<p>` tag), causing the indented code block to be incorrectly wrapped in `<li>` tags.\n\n**The Fix:**\nI changed the logic to ensure we only apply `ListIndentProcessor` when we're actually in a list context:\n```python\nparent.tag in self.ITEM_TYPES or parent.tag in self.LIST_TYPES or\n    (len(parent) and parent[-1] is not None and\n        parent[-1].tag in self.ITEM_TYPES)\n```\n\nNow it only matches when:\n- parent is an `li` (inside a list item), OR\n- parent is a `ul` or `ol` (inside a list), OR\n- parent's last child is an `li` (continuing after a list item)\n\nThis prevents indented content after regular paragraphs from being treated as list items, allowing the `CodeBlockProcessor` to correctly handle indented code blocks instead.\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "python-markdown-original-018",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "NO_FIX",
+      "tests_passed": 113,
+      "tests_failed": 1,
+      "tests_total": 114,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-03-10T16:45:17.859517",
+      "fix_result": {
+        "success": false,
+        "files_changed": [],
+        "patch": "",
+        "tokens_used": 0,
+        "time_seconds": 120.08114004135132,
+        "error": "Timeout after 120 seconds",
+        "agent_output": "",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "python-markdown-original-019",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 776,
+      "tests_failed": 0,
+      "tests_total": 886,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-03-10T16:45:40.896812",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "markdown/__main__.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 21.060526847839355,
+        "error": null,
+        "agent_output": "Fixed! The bug was on line 81: the quiet option was using `CRITICAL-10` instead of `CRITICAL+10`. In Python logging, higher values suppress more messages, so the quiet option should set the level above CRITICAL (50), not below it. Changing it to `CRITICAL+10` (60) will now pass the test which expects `logging_level > CRITICAL`.\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "python-markdown-original-020",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 776,
+      "tests_failed": 0,
+      "tests_total": 886,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-03-10T16:45:56.099742",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "markdown/__main__.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 13.191622257232666,
+        "error": null,
+        "agent_output": "Fixed! The bug was on line 110. The code was trying to use the `-` (subtraction) operator on tuples, which isn't valid in Python:\n\n```python\ne.args = (message,) - e.args[1:]  # \u274c TypeError\n```\n\nThe correct syntax is to simply assign the message tuple:\n\n```python\ne.args = (message,)  # \u2713 Correct\n```\n\nThis replaces the exception's args with the new error message about the config file parsing failure, which is the intended behavior.\n",
+        "rate_limited": false
+      }
+    }
+  ],
+  "summary": {
+    "by_agent": {
+      "claude": {
+        "total": 20,
+        "passed": 16
+      }
+    },
+    "by_mode": {
+      "with_tests": {
+        "total": 20,
+        "passed": 16
+      }
+    },
+    "by_evaluation": {
+      "PASS": 16,
+      "FAIL": 2,
+      "ERROR": 0,
+      "TIMEOUT": 0,
+      "NO_FIX": 2
+    }
+  }
+}

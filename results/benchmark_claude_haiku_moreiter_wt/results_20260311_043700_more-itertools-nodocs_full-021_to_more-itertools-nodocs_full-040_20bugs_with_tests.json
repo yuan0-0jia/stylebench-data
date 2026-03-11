@@ -1,0 +1,518 @@
+{
+  "metadata": {
+    "catalog": "/Users/yuan/stylebench-data/bugs_canonical/more-itertools-nodocs_full.json",
+    "repo": "/Users/yuan/stylebench-data/nodocs_full/more-itertools",
+    "repo_name": "more-itertools",
+    "timestamp": "2026-03-11T04:37:00.527905",
+    "total_trials": 20,
+    "manifest_used": false,
+    "hit_rate_limit": false
+  },
+  "results": [
+    {
+      "bug_id": "more-itertools-nodocs_full-021",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 701,
+      "tests_failed": 0,
+      "tests_total": 701,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-03-10T23:25:03.774340",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "more_itertools/more.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 51.06914305686951,
+        "error": null,
+        "agent_output": "Done! I found and fixed the bug.\n\n**The Issue:**\nThe condition in the inner while loop at line 1908 was inverted. It had `if index > num_combs: break`, but it should be `if index < num_combs: break`.\n\n**Why it's a bug:**\nThe algorithm iterates through pool elements, calculating how many combinations start with each element. When the target index falls within an element's combinations (i.e., `index < num_combs`), we should select that element and break. The inverted condition caused the loop to continue incrementing `i` beyond the pool bounds, leading to an `IndexError` when trying to access `pool[i]`.\n\n**The fix:**\nChanged line 1908 from `if index > num_combs:` to `if index < num_combs:` so the loop breaks when we find the correct element rather than overshooting it.\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "more-itertools-nodocs_full-022",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "NO_FIX",
+      "tests_passed": 445,
+      "tests_failed": 1,
+      "tests_total": 446,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-03-11T00:12:54.957680",
+      "fix_result": {
+        "success": false,
+        "files_changed": [],
+        "patch": "",
+        "tokens_used": 0,
+        "time_seconds": 2869.7308180332184,
+        "error": "Timeout after 120 seconds",
+        "agent_output": "",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "more-itertools-nodocs_full-023",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "NO_FIX",
+      "tests_passed": 446,
+      "tests_failed": 1,
+      "tests_total": 447,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-03-11T00:46:24.794045",
+      "fix_result": {
+        "success": false,
+        "files_changed": [],
+        "patch": "",
+        "tokens_used": 0,
+        "time_seconds": 2008.0529389381409,
+        "error": "Timeout after 120 seconds",
+        "agent_output": "",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "more-itertools-nodocs_full-024",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "NO_FIX",
+      "tests_passed": 444,
+      "tests_failed": 1,
+      "tests_total": 445,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-03-11T01:21:03.692108",
+      "fix_result": {
+        "success": false,
+        "files_changed": [],
+        "patch": "",
+        "tokens_used": 0,
+        "time_seconds": 2077.3283030986786,
+        "error": "Timeout after 120 seconds",
+        "agent_output": "",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "more-itertools-nodocs_full-025",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "NO_FIX",
+      "tests_passed": 446,
+      "tests_failed": 1,
+      "tests_total": 447,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-03-11T02:11:33.789979",
+      "fix_result": {
+        "success": false,
+        "files_changed": [],
+        "patch": "",
+        "tokens_used": 0,
+        "time_seconds": 3028.569706439972,
+        "error": "Timeout after 120 seconds",
+        "agent_output": "",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "more-itertools-nodocs_full-026",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "NO_FIX",
+      "tests_passed": 29,
+      "tests_failed": 1,
+      "tests_total": 30,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-03-11T02:46:54.025762",
+      "fix_result": {
+        "success": false,
+        "files_changed": [],
+        "patch": "",
+        "tokens_used": 0,
+        "time_seconds": 2119.5999760627747,
+        "error": "Timeout after 120 seconds",
+        "agent_output": "",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "more-itertools-nodocs_full-027",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "NO_FIX",
+      "tests_passed": 18,
+      "tests_failed": 1,
+      "tests_total": 19,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-03-11T03:19:53.634233",
+      "fix_result": {
+        "success": false,
+        "files_changed": [],
+        "patch": "",
+        "tokens_used": 0,
+        "time_seconds": 1978.9289720058441,
+        "error": "Timeout after 120 seconds",
+        "agent_output": "",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "more-itertools-nodocs_full-028",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "NO_FIX",
+      "tests_passed": 371,
+      "tests_failed": 1,
+      "tests_total": 372,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-03-11T04:09:37.222775",
+      "fix_result": {
+        "success": false,
+        "files_changed": [],
+        "patch": "",
+        "tokens_used": 0,
+        "time_seconds": 2982.306027173996,
+        "error": "Timeout after 120 seconds",
+        "agent_output": "",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "more-itertools-nodocs_full-029",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 701,
+      "tests_failed": 0,
+      "tests_total": 701,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-03-11T04:10:09.706244",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "more_itertools/more.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 22.64159393310547,
+        "error": null,
+        "agent_output": "Perfect! I've fixed the bug. The issue was on line 309 in the `__getitem__` method of the `peekable` class.\n\n**The bug:** `index + 0 - cache_len` should be `index + 1 - cache_len`\n\n**Why:** To access an element at position `index` in the cache, we need to ensure we've fetched at least `index + 1` items total. The original code with `+ 0` would try to fetch 0 items when accessing index 0 with an empty cache, leaving the cache empty and causing an IndexError.\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "more-itertools-nodocs_full-030",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "NO_FIX",
+      "tests_passed": 74,
+      "tests_failed": 1,
+      "tests_total": 75,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-03-11T04:29:36.858368",
+      "fix_result": {
+        "success": false,
+        "files_changed": [],
+        "patch": "",
+        "tokens_used": 0,
+        "time_seconds": 1166.523031949997,
+        "error": "Timeout after 120 seconds",
+        "agent_output": "",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "more-itertools-nodocs_full-031",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 701,
+      "tests_failed": 0,
+      "tests_total": 701,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-03-11T04:30:10.560055",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "more_itertools/more.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 23.814908742904663,
+        "error": null,
+        "agent_output": "Done! The bug was on line 521 of `more_itertools/more.py`. The `substrings` function was starting its range from 0, which generated empty substrings. When `n=0`, the slices became `slice(0,0)`, `slice(1,1)`, etc., creating the 4 empty tuples seen at the beginning of the output.\n\nThe fix changes `range(0, item_count + 1)` to `range(1, item_count + 1)`, so the function now generates substrings of length 1 and above, matching the expected output.\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "more-itertools-nodocs_full-032",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 701,
+      "tests_failed": 0,
+      "tests_total": 701,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-03-11T04:30:56.417546",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "more_itertools/more.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 36.07468891143799,
+        "error": null,
+        "agent_output": "Done! The bug was on line 522 of `/private/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/stylebench_lcst9acd/more_itertools/more.py`.\n\n**The issue:** `range(n, item_count + 0)` should be `range(n, item_count + 1)`\n\n**Why it failed:** When `map()` combines two iterables of different lengths, it stops at the shortest. With `item_count=4` and `n=1`:\n- `range(4)` produces 4 start positions: `[0, 1, 2, 3]`\n- `range(1, 4)` produces only 3 end positions: `[1, 2, 3]`\n\nThis caused `map()` to create only 3 slices, missing `slice(3, 4)` which should generate the substring `(3,)`. The fix ensures the end positions range is the same length as the start positions, generating all required substrings.\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "more-itertools-nodocs_full-033",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 701,
+      "tests_failed": 0,
+      "tests_total": 701,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-03-11T04:32:17.270241",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "more_itertools/more.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 69.91304516792297,
+        "error": null,
+        "agent_output": "Fixed! The bug was on **line 618**. \n\nThe problem: `delta_primary` was being set to `lengths_desc[-1]` (the **shortest** sequence length) when it should be `lengths_desc[0]` (the **longest** sequence length).\n\nThis caused the error-balancing algorithm to fail. When trying to evenly interleave sequences of different lengths, the algorithm needs to know the primary (longest) iterator's length to properly balance errors and determine when to yield from secondary iterators. Using the shortest length instead caused it to try yielding from exhausted secondary iterators, which raised `StopIteration`.\n\nWith the fix, the algorithm will now correctly spread items from shorter iterables evenly throughout the longer ones, producing the expected output `[0, 1, 2, 5, 3, 4]` for the test case.\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "more-itertools-nodocs_full-034",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 701,
+      "tests_failed": 0,
+      "tests_total": 701,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-03-11T04:32:46.819714",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "more_itertools/more.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 18.359510898590088,
+        "error": null,
+        "agent_output": "Done! The bug was a typo in the `dl_mul` function on line 195. It had a division operator (`/`) instead of multiplication (`*`). This was causing a `ZeroDivisionError` when `yy_lo` happened to be zero during the DFT calculation. The fix changes `xx_lo / yy_lo` to `xx_lo * yy_lo`, which is the correct double-length multiplication algorithm.\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "more-itertools-nodocs_full-035",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "FAIL",
+      "tests_passed": 108,
+      "tests_failed": 1,
+      "tests_total": 109,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-03-11T04:33:31.178560",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "more_itertools/more.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 43.16226625442505,
+        "error": null,
+        "agent_output": "Fixed! The bug was on line 620. The original code tried to divide a list by an integer:\n\n```python\nerrors = [delta_primary // dims] / len(deltas_secondary)  # \u274c Can't divide list by int\n```\n\nThe fix properly computes the error value and creates a list with one element per secondary iterator:\n\n```python\nerrors = [(delta_primary // dims) / len(deltas_secondary)] * len(deltas_secondary)  # \u2705\n```\n\nThis initializes the `errors` list so it can be properly unpacked and updated in the loop at line 626.\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "more-itertools-nodocs_full-036",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 701,
+      "tests_failed": 0,
+      "tests_total": 701,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-03-11T04:34:11.007765",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "more_itertools/more.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 29.963163137435913,
+        "error": null,
+        "agent_output": "**Bug fixed!**\n\nThe issue was in the `adjacent` function at line 934. It was using division instead of multiplication:\n- **Before:** `windowed(selected, 2 / distance + 1)` \u2192 produces a float (3.0 when distance=1)\n- **After:** `windowed(selected, 2 * distance + 1)` \u2192 produces an integer (3 when distance=1)\n\nThe formula should multiply distance by 2 (distance items on left + distance items on right) then add 1 for the center item. The `windowed` function requires an integer for the window size parameter, which is then passed to `islice()`, which only accepts integers or None.\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "more-itertools-nodocs_full-037",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 701,
+      "tests_failed": 0,
+      "tests_total": 701,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-03-11T04:35:14.593288",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "more_itertools/more.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 52.885915994644165,
+        "error": null,
+        "agent_output": "The bug was in line 1644 of the `_sample_weighted` function. The weight key calculation was using multiplication (`*`) instead of division (`/`):\n\n**Before:** `weight_keys = (log(random()) * weight for weight in weights)`\n**After:** `weight_keys = (log(random()) / weight for weight in weights)`\n\nThis is the Efraimidis-Spirakis weighted reservoir sampling algorithm. The correct formula uses division so that larger weights produce larger keys, making items with higher weights more likely to be selected. With multiplication, the probability was inverted, causing items with smaller weights to be preferred - which explains why the test was failing (the two samples would have very different biases).\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "more-itertools-nodocs_full-038",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 701,
+      "tests_failed": 0,
+      "tests_total": 701,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-03-11T04:36:10.740945",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "more_itertools/more.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 45.87842321395874,
+        "error": null,
+        "agent_output": "Perfect! I found and fixed the bug. The issue was in the `_sample_weighted` function at line 1653:\n\n**The Bug:**\nLine 1653 had `weights_to_skip = log(random()) * smallest_weight_key` (using multiplication)\n\nBut line 1663 (the update within the loop) correctly uses division:\n`weights_to_skip = log(random()) / smallest_weight_key`\n\n**The Fix:**\nChanged line 1653 to use division instead of multiplication to make it consistent with line 1663.\n\n**Why This Broke Scale Invariance:**\nWhen weights are scaled by a constant factor (like dividing by 1e10), using multiplication in line 1653 would produce incorrect skip distances that don't scale properly, causing different sampling behavior. Using division ensures the algorithm is mathematically scale-invariant, so scaling all weights by the same factor produces the same results.\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "more-itertools-nodocs_full-039",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 701,
+      "tests_failed": 0,
+      "tests_total": 701,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-03-11T04:36:37.507884",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "more_itertools/more.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 15.885042905807495,
+        "error": null,
+        "agent_output": "Done! The bug was a logic error at line 658 in `more.py`. The condition checked `(base_type is None)` before calling `isinstance()`, which passed `None` to `isinstance()` and caused the TypeError.\n\n**The fix**: Changed `(base_type is None)` to `(base_type is not None)` so that `isinstance()` is only called when `base_type` is actually a type.\n\nThe `collapse()` function should only check `isinstance(node, base_type)` when `base_type` is not `None`.\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "more-itertools-nodocs_full-040",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 701,
+      "tests_failed": 0,
+      "tests_total": 701,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-03-11T04:37:00.522372",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "more_itertools/more.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 12.453794956207275,
+        "error": null,
+        "agent_output": "Fixed! The bug was a logical error on line 2149. When `key=None` (the default), `use_key` is `True`, but the original code tried to call `key(element)` in that case, causing the `TypeError: 'NoneType' object is not callable`. \n\nThe corrected logic now properly uses `element` directly when no key function is provided, and calls `key(element)` only when a key function exists.\n",
+        "rate_limited": false
+      }
+    }
+  ],
+  "summary": {
+    "by_agent": {
+      "claude": {
+        "total": 20,
+        "passed": 11
+      }
+    },
+    "by_mode": {
+      "with_tests": {
+        "total": 20,
+        "passed": 11
+      }
+    },
+    "by_evaluation": {
+      "PASS": 11,
+      "FAIL": 1,
+      "ERROR": 0,
+      "TIMEOUT": 0,
+      "NO_FIX": 8
+    }
+  }
+}

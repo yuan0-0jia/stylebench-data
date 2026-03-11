@@ -1,0 +1,157 @@
+{
+  "metadata": {
+    "catalog": "/Users/yuan/stylebench-data/bugs_canonical/python-markdown-camelcase.json",
+    "repo": "/Users/yuan/stylebench-data/camelcase/python-markdown",
+    "repo_name": "python-markdown",
+    "timestamp": "2026-03-10T18:29:56.725239",
+    "total_trials": 5,
+    "manifest_used": false,
+    "hit_rate_limit": true
+  },
+  "results": [
+    {
+      "bug_id": "python-markdown-camelcase-021",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "NO_FIX",
+      "tests_passed": 113,
+      "tests_failed": 1,
+      "tests_total": 114,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-03-10T18:23:23.601587",
+      "fix_result": {
+        "success": false,
+        "files_changed": [],
+        "patch": "",
+        "tokens_used": 0,
+        "time_seconds": 120.08951711654663,
+        "error": "Timeout after 120 seconds",
+        "agent_output": "",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "python-markdown-camelcase-022",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 776,
+      "tests_failed": 0,
+      "tests_total": 886,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-03-10T18:24:47.402626",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "markdown/extensions/tables.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 81.16197109222412,
+        "error": null,
+        "agent_output": "Perfect! I found and fixed the bug. \n\n**The Issue:**\nIn `/markdown/extensions/tables.py` at line 68, the condition was checking `isTable = row0Len < 1`, which is backwards. This meant the table processor would only recognize something as a table if it had **zero cells**, and would reject all normal tables with cells.\n\n**The Fix:**\nChanged line 68 from:\n```python\nisTable = row0Len < 1\n```\nto:\n```python\nisTable = row0Len > 1\n```\n\nThis correctly identifies tables with multiple columns. The logic now properly works:\n- `row0Len > 1`: Definitely a table (multiple columns) \u2713\n- `row0Len == 1`: Special case for single-column tables (handled on line 71)\n- `row0Len < 1`: Not a table\n\nThis simple comparison operator fix allows the table processor to correctly parse the test case, enabling the attr_list extension to then process the attribute syntax in the table cells.\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "python-markdown-camelcase-023",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 776,
+      "tests_failed": 0,
+      "tests_total": 886,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-03-10T18:25:15.590382",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "markdown/extensions/tables.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 25.552990913391113,
+        "error": null,
+        "agent_output": "Perfect! I've found and fixed the bug. \n\n**The Issue:**\nOn line 190 of `tables.py`, the condition was `while pos > ticLen:` when it should be `while pos < ticLen:`. This prevented the backtick pairing logic from ever executing, since `pos` starts at 0 and will never be greater than `ticLen`.\n\n**The Impact:**\nWithout proper backtick pairing, the code couldn't identify regions containing inline code (code enclosed in backticks). This caused pipes (`|`) inside backtick-enclosed code to be treated as cell separators instead of being protected as part of the code content.\n\n**The Fix:**\nChanged the condition from `>` to `<` so the loop properly iterates through all backtick groups and pairs them up. This allows the subsequent logic to correctly filter out pipes that fall within code regions, preventing the incorrect cell splitting that was failing the test.\n\nThe test expected `` `word |2` `` to render as `<code>word |2</code>` (single cell), but was instead being split on the pipe into two cells.\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "python-markdown-camelcase-024",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 776,
+      "tests_failed": 0,
+      "tests_total": 886,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-03-10T18:26:49.466979",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "markdown/inlinepatterns.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 91.06408905982971,
+        "error": null,
+        "agent_output": "Perfect! I found and fixed the bug. The issue was in the `getLink` method of the `LinkInlineProcessor` class at line 769.\n\n**The Problem:**\nWhen parsing `![test](link\"notitle.png)`, the parser encounters an unmatched quote in the URL. The code uses a backup bracket counter (`backtrackCount`) to track parentheses when in a potential title section (after a quote). However, the condition on line 769 was checking `elif backtrackCount < 0:` which prevented the backup counter from being decremented when encountering a closing `)`.\n\n**The Fix:**\nChanged line 769 from `elif backtrackCount < 0:` to `elif backtrackCount > 0:`. This mirrors the logic used for handling `(` on line 760 and allows the backup counter to properly track the closing parenthesis, enabling the fallback parsing logic that extracts the href without waiting for a closed quote.\n\n**How it works:**\n- When a quote is encountered, `ignoreMatches = True` and the current `bracketCount` is saved to `backtrackCount`\n- With the fix, when `)` is encountered and the quote isn't properly closed, `backtrackCount > 0` evaluates to true, allowing it to decrement\n- When `backtrackCount` reaches 0, `lastBracket` is set, signaling the fallback parsing location\n- The href is then correctly extracted as `link\"notitle.png` with the quote properly escaped in the HTML output\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "python-markdown-camelcase-025",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 776,
+      "tests_failed": 0,
+      "tests_total": 886,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-03-10T18:28:20.933681",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "markdown/extensions/tables.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 88.89935374259949,
+        "error": null,
+        "agent_output": "Done! I found and fixed the bug in `markdown/extensions/tables.py` at line 81.\n\n**The Issue:** The table validation check was using the wrong comparison operator (`>=` instead of `<=`). This caused the separator row validation to fail, preventing tables from being recognized as tables.\n\nThe check was requiring the separator row to contain ALL the characters `|:- ` (a superset), but separator rows only contain `-` characters (the pipes are delimiters, not content). This is why the test case with tables was rendering as a paragraph instead of an actual table.\n\n**The Fix:** Changed the operator from `>=` to `<=` so the check correctly validates that separator rows only contain valid separator characters, rather than requiring all of them to be present.\n",
+        "rate_limited": false
+      }
+    }
+  ],
+  "summary": {
+    "by_agent": {
+      "claude": {
+        "total": 5,
+        "passed": 4
+      }
+    },
+    "by_mode": {
+      "with_tests": {
+        "total": 5,
+        "passed": 4
+      }
+    },
+    "by_evaluation": {
+      "PASS": 4,
+      "FAIL": 0,
+      "ERROR": 0,
+      "TIMEOUT": 0,
+      "NO_FIX": 1
+    }
+  }
+}

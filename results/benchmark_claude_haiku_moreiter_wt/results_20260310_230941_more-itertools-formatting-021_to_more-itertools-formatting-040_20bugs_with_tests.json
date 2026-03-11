@@ -1,0 +1,534 @@
+{
+  "metadata": {
+    "catalog": "/Users/yuan/stylebench-data/bugs_canonical/more-itertools-formatting.json",
+    "repo": "/Users/yuan/stylebench-data/formatting/more-itertools",
+    "repo_name": "more-itertools",
+    "timestamp": "2026-03-10T23:09:41.431282",
+    "total_trials": 20,
+    "manifest_used": false,
+    "hit_rate_limit": false
+  },
+  "results": [
+    {
+      "bug_id": "more-itertools-formatting-021",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 701,
+      "tests_failed": 0,
+      "tests_total": 701,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-03-10T22:54:06.538151",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "more_itertools/more.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 111.19546699523926,
+        "error": null,
+        "agent_output": "Perfect! I've found and fixed the bug. The issue was in line 4243 of the `nth_combination_with_replacement` function:\n\n**The Problem:** The condition `if index > num_combs:` was inverted.\n\n**The Logic:**\n- `num_combs` represents how many combinations start with the current element\n- If the index falls within this bucket (`index < num_combs`), we should use this element\n- If not (`index >= num_combs`), we should skip to the next element and subtract the count\n\n**The Fix:** Changed `if index > num_combs:` to `if index < num_combs:` on line 4243. This ensures the algorithm breaks when it finds the correct bucket instead of continuing past all elements and causing an out-of-bounds access.\n\nThe fix is minimal and directly addresses the root cause of the `IndexError: tuple index out of range` that was occurring when `i` exceeded the pool size.\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "more-itertools-formatting-022",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 701,
+      "tests_failed": 0,
+      "tests_total": 701,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-03-10T22:55:01.758038",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "more_itertools/more.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 43.40550708770752,
+        "error": null,
+        "agent_output": "Fixed! The bug was a simple logic error on line 4505. The condition `r < 0` is impossible with `divmod()` - the remainder is always non-negative. When there's a remainder, we need an extra list, so the condition should be `r > 0`. This was causing all items to be put into a single chunk instead of being distributed evenly across multiple chunks.\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "more-itertools-formatting-023",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 701,
+      "tests_failed": 0,
+      "tests_total": 701,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-03-10T22:55:57.499561",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "more_itertools/more.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 45.004947900772095,
+        "error": null,
+        "agent_output": "Fixed! The bug was on line 4507 in `/private/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/stylebench_93p1sygi/more_itertools/more.py`.\n\n**The Issue:**\nThe condition `r < 0` is always false since `divmod()` remainder is never negative. It should be `r > 0`.\n\n**What it affected:**\n- With the wrong condition, `full_size` was calculated as 2 instead of 3\n- This caused chunks of [2, 2, 1] instead of [3, 2]\n- For 'ABCDE' with n=3: produced [['A','B'], ['C','D'], ['E']] instead of [['A','B','C'], ['D','E']]\n\n**The fix:**\nChanged line 4507 from:\n```python\nfull_size = q + (1 if r < 0 else 0)\n```\nto:\n```python\nfull_size = q + (1 if r > 0 else 0)\n```\n\nThis ensures that when there's a remainder from dividing items by number of chunks, the full-sized chunks get one extra item, distributing the load evenly.\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "more-itertools-formatting-024",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 701,
+      "tests_failed": 0,
+      "tests_total": 701,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-03-10T22:56:51.070043",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "more_itertools/more.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 41.483932971954346,
+        "error": null,
+        "agent_output": "Fixed! The bug was on line 4513 of `/private/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/stylebench_84e5p3y4/more_itertools/more.py`.\n\n**The problem:** The condition `if full_size < 0:` can never be true because `full_size` is calculated as `q + (1 if r > 0 else 0)`, which is always non-negative. This prevented the full-size chunks from being yielded, resulting in an empty list instead of the expected chunks.\n\n**The fix:** Changed the condition to `if full_size > 0:` so that full-size chunks are properly yielded when there are any to yield.\n\nThis fixes the failing test case where `chunked_even('A', 1)` now correctly returns `[['A']]` instead of `[]`.\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "more-itertools-formatting-025",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 701,
+      "tests_failed": 0,
+      "tests_total": 701,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-03-10T22:57:38.348314",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "more_itertools/more.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 35.645622968673706,
+        "error": null,
+        "agent_output": "Fixed! The bug was on line 4518 in `more.py`. The condition `if partial_size < 0:` should have been `if partial_size > 0:`. \n\nThe condition was incorrectly preventing the partial-sized chunks from being yielded. For test_5 with 5 items and n=3, this resulted in only the full-size chunk ['A', 'B', 'C'] being returned, while the partial-size chunk ['D', 'E'] was skipped.\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "more-itertools-formatting-026",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 701,
+      "tests_failed": 0,
+      "tests_total": 701,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-03-10T22:58:22.396734",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "more_itertools/more.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 33.655256032943726,
+        "error": null,
+        "agent_output": "Done! The bug was on line 454 in the `_get_slice` method. The condition `if n <= cache_len:` should have been `if n > cache_len:`.\n\n**The issue:** The logic was backwards. When we needed to fetch more items from the iterator (`n > cache_len`), the code skipped extending the cache. When we already had enough items (`n <= cache_len`), it tried to extend with a negative number of items.\n\n**The fix:** Changed the condition to `if n > cache_len:` so we extend the cache only when we need more items than what's currently cached.\n\nIn the test case, `p[1:8]` with 3 prepended items needed to fetch elements up to index 7 (9 items total), but the cache only had 3 items. The fix ensures we fetch the additional 6 items needed to complete the slice correctly.\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "more-itertools-formatting-027",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 701,
+      "tests_failed": 0,
+      "tests_total": 701,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-03-10T22:58:53.663786",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "more_itertools/more.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 20.68132996559143,
+        "error": null,
+        "agent_output": "Done! The bug was a simple logic error in the `__getitem__` method at line 466 of `more.py`.\n\n**The Issue:** The condition `elif index <= cache_len:` should have been `elif index >= cache_len:`.\n\n**Why:** To access an element at index `i`, we need the cache to contain at least `i + 1` elements. When `index >= cache_len`, we don't have enough cached elements yet, so we need to fetch more from the iterator. The original condition was backwards, causing the cache to never be extended when needed.\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "more-itertools-formatting-028",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 701,
+      "tests_failed": 0,
+      "tests_total": 701,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-03-10T23:00:33.724352",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "more_itertools/more.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 89.67641091346741,
+        "error": null,
+        "agent_output": "Perfect! I found and fixed the bug. The issue was in the `_sample_weighted` function at line 3760.\n\n**The Problem:**\nThe comparison operator was inverted. The algorithm maintains a `weights_to_skip` budget that represents how much weight we can skip before needing to replace an item. The condition should replace when the weight **exceeds** the budget, but it was doing the opposite.\n\n**The Fix:**\nChanged line 3760 from:\n```python\nif weight <= weights_to_skip:\n```\nto:\n```python\nif weight > weights_to_skip:\n```\n\nThis ensures that replacements happen when the current weight exceeds the skip budget, not when it's small. This fix makes the weighted sampling algorithm invariant to the order of the input data, which is exactly what the failing test was checking for.\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "more-itertools-formatting-029",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 701,
+      "tests_failed": 0,
+      "tests_total": 701,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-03-10T23:01:01.901828",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "more_itertools/more.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 18.02030110359192,
+        "error": null,
+        "agent_output": "Fixed! The bug was an off-by-one error on line 467. \n\n**The Issue:** When accessing an element at index position `n`, the cache needs to contain at least `n + 1` elements. The original code used `index + 0 - cache_len`, which meant when accessing `p[0]` on an empty cache, it would try to fetch `0` elements instead of `1`.\n\n**The Fix:** Changed `index + 0 - cache_len` to `index + 1 - cache_len` so the iterator fetches enough elements to satisfy the requested index.\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "more-itertools-formatting-030",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 701,
+      "tests_failed": 0,
+      "tests_total": 701,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-03-10T23:01:54.074323",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "more_itertools/more.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 41.94305610656738,
+        "error": null,
+        "agent_output": "Done! The bug was in the `substrings` function at lines 1046-1048:\n\n**The Issue:** The loop started at `n=0`, which created empty slices like `slice(0,0)`, `slice(1,1)`, etc. \u2014 producing the four empty tuples at the start of the output.\n\n**The Fix:**\n- Changed loop start from `range(0, ...)` to `range(1, ...)` (substring lengths now start at 1, not 0)\n- Changed start positions from `range(item_count)` to `range(item_count - n + 1)` (prevents out-of-bounds)\n- Changed end range from `range(n, item_count + 1)` to `range(n, item_count + n)` (correct slice endpoints)\n\nThis now correctly generates substrings of all lengths from 1 to item_count, matching the expected test output.\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "more-itertools-formatting-031",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 701,
+      "tests_failed": 0,
+      "tests_total": 701,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-03-10T23:02:43.141123",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "more_itertools/more.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 38.27360701560974,
+        "error": null,
+        "agent_output": "Done! I found and fixed the bug.\n\n**The Bug:** In `more_itertools/more.py:1046`, the `substrings` function was using `range(0, item_count + 1)`, which caused it to generate empty slices when `n=0`. This resulted in four empty tuples `()` being yielded at the start.\n\n**The Fix:** Changed line 1046 from:\n```python\nfor n in range(0, item_count + 1):\n```\nto:\n```python\nfor n in range(1, item_count + 1):\n```\n\nThis ensures the function only generates substrings of length 1 or greater, matching the expected behavior where we start with single-element tuples like `(0,)`, then two-element tuples like `(0, 1)`, and so on.\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "more-itertools-formatting-032",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 701,
+      "tests_failed": 0,
+      "tests_total": 701,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-03-10T23:03:33.556247",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "more_itertools/more.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 40.10202884674072,
+        "error": null,
+        "agent_output": "Fixed! The bug was an off-by-one error on line 1047. Changed `range(n, item_count + 0)` to `range(n, item_count + 1)` to ensure the second range generates enough elements to pair with all starting positions.\n\nThis ensures that substrings ending with the last element (like (3,), (2,3), (1,2,3), (0,1,2,3)) are properly generated.\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "more-itertools-formatting-033",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 701,
+      "tests_failed": 0,
+      "tests_total": 701,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-03-10T23:04:14.279015",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "more_itertools/more.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 30.122692108154297,
+        "error": null,
+        "agent_output": "Fixed! The bug was on line 1300. The code was using `lengths_desc[-1]` (the **smallest** length after sorting descending) as `delta_primary` when it should use `lengths_desc[0]` (the **largest** length). \n\nAccording to the Bresenham algorithm comment and the function logic, the primary delta should be the longest iterable, not the shortest. This was causing the `StopIteration` error because the algorithm was incorrectly trying to yield from secondary iterators at wrong positions, including when they were already exhausted.\n\nThe change from `lengths_desc[-1]` to `lengths_desc[0]` ensures the longest iterable drives the algorithm correctly.\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "more-itertools-formatting-034",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 701,
+      "tests_failed": 0,
+      "tests_total": 701,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-03-10T23:04:46.557725",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "more_itertools/more.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 21.464651107788086,
+        "error": null,
+        "agent_output": "Fixed! The bug was a typo on line 193 in the `dl_mul` function. The error correction term in Dekker's extended precision multiplication algorithm was using division (`/`) instead of multiplication (`*`). \n\nThe line now correctly computes `xx_lo * yy_lo` instead of `xx_lo / yy_lo`, which eliminates the `ZeroDivisionError` and properly implements the algorithm according to the referenced paper.\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "more-itertools-formatting-035",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 701,
+      "tests_failed": 0,
+      "tests_total": 701,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-03-10T23:05:35.377490",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "more_itertools/more.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 38.53691029548645,
+        "error": null,
+        "agent_output": "Fixed! The bug was on line 1302 of `more_itertools/more.py`. The code was using the division operator `/` instead of the multiplication operator `*`. \n\nThe line was trying to divide a list `[delta_primary // dims]` by an integer `len(deltas_secondary)`, which causes a TypeError. It should multiply the list element by the count to create the proper error list for Bresenham's algorithm across multiple secondary iterables.\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "more-itertools-formatting-036",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 701,
+      "tests_failed": 0,
+      "tests_total": 701,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-03-10T23:06:43.003921",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "more_itertools/more.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 57.68526911735535,
+        "error": null,
+        "agent_output": "Done! I found and fixed the bug. \n\n**The Issue:**\nLine 2135 in `more_itertools/more.py` used division (`2 / distance + 1`) which produces a float in Python 3. The `windowed` function requires an integer for the window size parameter, causing the `islice()` call to fail with a ValueError.\n\n**The Fix:**\nChanged `2 / distance + 1` to `2 * distance + 1`. This:\n1. Produces an integer result (fixing the immediate error)\n2. Correctly calculates the window size for the adjacent function (a window of size `2 * distance + 1` checks the current item plus `distance` items on each side)\n\nFor example:\n- With `distance=1`: window size = 3 (checks current item \u00b1 1)\n- With `distance=2`: window size = 5 (checks current item \u00b1 2)\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "more-itertools-formatting-037",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "FAIL",
+      "tests_passed": 371,
+      "tests_failed": 1,
+      "tests_total": 372,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-03-10T23:07:50.813143",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "more_itertools/more.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 65.79260206222534,
+        "error": null,
+        "agent_output": "Done! I found and fixed the bugs in the weighted sampling algorithm (`_sample_weighted` function):\n\n**Bug 1 (Line 3744):** Changed `log(random()) * weight` to `log(random()) / weight`\n\n**Bug 2 (Line 3764):** Changed `exp(weight * smallest_weight_key)` to `exp(smallest_weight_key / weight)`\n\nThese bugs inverted the weighting logic in the A-ExpJ algorithm. Using multiplication instead of division caused items with smaller weights to be selected more often, introducing significant bias. The test `test_invariance_under_permutations_weighted` was designed to detect this by sampling from the same data in different orders and expecting similar distributions. With the multiplication operator, the bias became large enough to fail the test (difference in means \u2265 4.4).\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "more-itertools-formatting-038",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 701,
+      "tests_failed": 0,
+      "tests_total": 701,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-03-10T23:08:44.402543",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "more_itertools/more.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 43.06312012672424,
+        "error": null,
+        "agent_output": "Done! The bug was on line 3757 of `/private/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/stylebench_zv3iovsw/more_itertools/more.py`.\n\n**The issue:** Line 3757 was using multiplication (`*`) instead of division (`/`):\n```python\nweights_to_skip = log(random()) * smallest_weight_key  # WRONG\n```\n\n**The fix:** Changed it to division to match the operation on line 3769:\n```python\nweights_to_skip = log(random()) / smallest_weight_key  # CORRECT\n```\n\n**Why this fixes scale invariance:** When weights are scaled by a constant factor c, the `smallest_weight_key` is also scaled by 1/c. With division, `weights_to_skip` scales appropriately to maintain the same relative comparisons with the weights. Multiplication breaks this invariance, causing different sampling outcomes for scaled weights.\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "more-itertools-formatting-039",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 701,
+      "tests_failed": 0,
+      "tests_total": 701,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-03-10T23:09:14.136350",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "more_itertools/more.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 19.574601888656616,
+        "error": null,
+        "agent_output": "Done! The bug was at line 1385. The condition had the logic reversed:\n- **Wrong**: `(base_type is None) and isinstance(node, base_type)` \u2014 tries to call isinstance with `None` when base_type is None\n- **Fixed**: `(base_type is not None) and isinstance(node, base_type)` \u2014 only calls isinstance when base_type is actually a type\n\nThis was preventing the code from properly handling the case where `base_type` isn't specified (defaults to None).\n",
+        "rate_limited": false
+      }
+    },
+    {
+      "bug_id": "more-itertools-formatting-040",
+      "agent": "claude",
+      "mode": "with_tests",
+      "evaluation": "PASS",
+      "tests_passed": 701,
+      "tests_failed": 0,
+      "tests_total": 701,
+      "repo_name": "",
+      "style": "",
+      "mutation_type": "",
+      "timestamp": "2026-03-10T23:09:41.425546",
+      "fix_result": {
+        "success": true,
+        "files_changed": [
+          "more_itertools/more.py"
+        ],
+        "patch": "(hash-based change detection)",
+        "tokens_used": 0,
+        "time_seconds": 16.1801438331604,
+        "error": null,
+        "agent_output": "**Bug found and fixed!**\n\nThe bug was on line 4692 in `/private/var/folders/46/f_t_23kj4ts9glvnmcb6gr7m0000gn/T/stylebench_kwafitxn/more_itertools/more.py`:\n\n**Original (incorrect):**\n```python\nuse_key = key is None\n```\n\n**Fixed:**\n```python\nuse_key = key is not None\n```\n\n**Explanation:**\nThe logic was inverted. When `key is None` (not provided), `use_key` was being set to `True`, which then caused line 4696 to try calling `key(element)` on a `None` value. The correct logic is: use the key function only when `key is not None`.\n",
+        "rate_limited": false
+      }
+    }
+  ],
+  "summary": {
+    "by_agent": {
+      "claude": {
+        "total": 20,
+        "passed": 19
+      }
+    },
+    "by_mode": {
+      "with_tests": {
+        "total": 20,
+        "passed": 19
+      }
+    },
+    "by_evaluation": {
+      "PASS": 19,
+      "FAIL": 1,
+      "ERROR": 0,
+      "TIMEOUT": 0,
+      "NO_FIX": 0
+    }
+  }
+}
